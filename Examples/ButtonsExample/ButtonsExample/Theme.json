@@ -1,0 +1,31 @@
+{
+    "constants": {
+        "RedColor": "#f93d38",
+        "BlueColor": "#50b5ed",
+        "WhiteColor": "#f1efeb",
+        "RegularFontName": "AvenirNext-Regular",
+        "H5FontSize": 16
+    },
+    "classes": {
+        "Background": {
+            "backgroundColor": "WhiteColor"
+        },
+        "Button": {
+            "fontName": "RegularFontName",
+            "fontSize": "H5FontSize",
+            "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
+            "borderWidth": 1.0,
+            "cornerRadius": 5.0
+        },
+        "DestructiveButton": {
+            "_superclass": "Button",
+            "textColor": "RedColor",
+            "borderColor": "RedColor"
+        },
+        "PrimaryButton": {
+            "_superclass": "Button",
+            "textColor": "BlueColor",
+            "borderColor": "BlueColor"
+        }
+    }
+}

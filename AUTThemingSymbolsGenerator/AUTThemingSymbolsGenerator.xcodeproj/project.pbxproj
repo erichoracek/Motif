@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
+		3ABF07351A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m */; };
+		3ABF073B1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m */; };
+		3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */; };
+		3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */; };
+		3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB6F8F1A50A8B7004EDEF3 /* main.m */; };
+		5B6D32EBB81D04E595B440B4 /* libPods-AUTThemingSymbolsGenerator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A6FE039D1F66E47A2E15218 /* libPods-AUTThemingSymbolsGenerator.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3ADB6F8A1A50A8B7004EDEF3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24707A0F821A04A59FBF7394 /* Pods-AUTThemingSymbolsGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AUTThemingSymbolsGenerator.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-AUTThemingSymbolsGenerator/Pods-AUTThemingSymbolsGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
+		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
+		3ABF07331A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemingSymbolsGenerator.h; sourceTree = "<group>"; };
+		3ABF07341A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemingSymbolsGenerator.m; sourceTree = "<group>"; };
+		3ABF07391A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AUTTheme+SymbolsGeneration.h"; sourceTree = "<group>"; };
+		3ABF073A1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AUTTheme+SymbolsGeneration.m"; sourceTree = "<group>"; };
+		3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBOptionsHelper+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
+		3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBOptionsHelper+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
+		3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CLIHelpers.h"; sourceTree = "<group>"; };
+		3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CLIHelpers.m"; sourceTree = "<group>"; };
+		3ADB6F8C1A50A8B7004EDEF3 /* auttheming-symbols-generator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "auttheming-symbols-generator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB6F8F1A50A8B7004EDEF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A6FE039D1F66E47A2E15218 /* libPods-AUTThemingSymbolsGenerator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AUTThemingSymbolsGenerator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD5DEFB8328C3C6FCEF53D7B /* Pods-AUTThemingSymbolsGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AUTThemingSymbolsGenerator.release.xcconfig"; path = "../Pods/Target Support Files/Pods-AUTThemingSymbolsGenerator/Pods-AUTThemingSymbolsGenerator.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3ADB6F891A50A8B7004EDEF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B6D32EBB81D04E595B440B4 /* libPods-AUTThemingSymbolsGenerator.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3ADB6F831A50A8B7004EDEF3 = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8E1A50A8B7004EDEF3 /* AUTThemingSymbolsGenerator */,
+				3ADB6F8D1A50A8B7004EDEF3 /* Products */,
+				987CEE9F30FB281F5CB25B78 /* Pods */,
+				62694A310AC109295AD8C761 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3ADB6F8D1A50A8B7004EDEF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8C1A50A8B7004EDEF3 /* auttheming-symbols-generator */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3ADB6F8E1A50A8B7004EDEF3 /* AUTThemingSymbolsGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8F1A50A8B7004EDEF3 /* main.m */,
+				3ABF07331A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.h */,
+				3ABF07341A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m */,
+				3ABF07391A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.h */,
+				3ABF073A1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m */,
+				3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */,
+				3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */,
+				3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */,
+				3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */,
+				3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */,
+				3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */,
+			);
+			path = AUTThemingSymbolsGenerator;
+			sourceTree = "<group>";
+		};
+		62694A310AC109295AD8C761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A6FE039D1F66E47A2E15218 /* libPods-AUTThemingSymbolsGenerator.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		987CEE9F30FB281F5CB25B78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24707A0F821A04A59FBF7394 /* Pods-AUTThemingSymbolsGenerator.debug.xcconfig */,
+				FD5DEFB8328C3C6FCEF53D7B /* Pods-AUTThemingSymbolsGenerator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3ADB6F8B1A50A8B7004EDEF3 /* AUTThemingSymbolsGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "AUTThemingSymbolsGenerator" */;
+			buildPhases = (
+				9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */,
+				3ADB6F881A50A8B7004EDEF3 /* Sources */,
+				3ADB6F891A50A8B7004EDEF3 /* Frameworks */,
+				3ADB6F8A1A50A8B7004EDEF3 /* CopyFiles */,
+				E1073F23AE98EF2180E7B39A /* Copy Pods Resources */,
+				3ABF07421A51453500E6A83C /* Copy to /usr/local/bin */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AUTThemingSymbolsGenerator;
+			productName = AUTThemingSymbolsGenerator;
+			productReference = 3ADB6F8C1A50A8B7004EDEF3 /* auttheming-symbols-generator */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3ADB6F841A50A8B7004EDEF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Automatic Labs, Inc";
+				TargetAttributes = {
+					3ADB6F8B1A50A8B7004EDEF3 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3ADB6F871A50A8B7004EDEF3 /* Build configuration list for PBXProject "AUTThemingSymbolsGenerator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3ADB6F831A50A8B7004EDEF3;
+			productRefGroup = 3ADB6F8D1A50A8B7004EDEF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3ADB6F8B1A50A8B7004EDEF3 /* AUTThemingSymbolsGenerator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3ABF07421A51453500E6A83C /* Copy to /usr/local/bin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy to /usr/local/bin";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME} /usr/local/bin/${PRODUCT_NAME}";
+		};
+		9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1073F23AE98EF2180E7B39A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AUTThemingSymbolsGenerator/Pods-AUTThemingSymbolsGenerator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3ADB6F881A50A8B7004EDEF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ABF073B1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m in Sources */,
+				3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */,
+				3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */,
+				3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */,
+				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
+				3ABF07351A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3ADB6F911A50A8B7004EDEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3ADB6F921A50A8B7004EDEF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3ADB6F941A50A8B7004EDEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24707A0F821A04A59FBF7394 /* Pods-AUTThemingSymbolsGenerator.debug.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "auttheming-symbols-generator";
+			};
+			name = Debug;
+		};
+		3ADB6F951A50A8B7004EDEF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD5DEFB8328C3C6FCEF53D7B /* Pods-AUTThemingSymbolsGenerator.release.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "auttheming-symbols-generator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3ADB6F871A50A8B7004EDEF3 /* Build configuration list for PBXProject "AUTThemingSymbolsGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB6F911A50A8B7004EDEF3 /* Debug */,
+				3ADB6F921A50A8B7004EDEF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "AUTThemingSymbolsGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB6F941A50A8B7004EDEF3 /* Debug */,
+				3ADB6F951A50A8B7004EDEF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3ADB6F841A50A8B7004EDEF3 /* Project object */;
+}

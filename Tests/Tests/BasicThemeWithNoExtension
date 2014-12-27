@@ -1,0 +1,10 @@
+{
+  "constants": {
+    "constant1": "value"
+  },
+  "classes": {
+    "class1": {
+      "class1Property": "constant1"
+    }
+  }
+}

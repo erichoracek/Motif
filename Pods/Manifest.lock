@@ -1,0 +1,25 @@
+PODS:
+  - AUTTheming (0.0.1):
+    - AUTTheming/ValueTransformers
+  - AUTTheming/ValueTransformers (0.0.1):
+    - UIColor-HTMLColors (= 1.0.0)
+  - GBCli (1.1)
+  - Masonry (0.5.3)
+  - UIColor-HTMLColors (1.0.0)
+
+DEPENDENCIES:
+  - AUTTheming (from `./`)
+  - GBCli
+  - Masonry
+
+EXTERNAL SOURCES:
+  AUTTheming:
+    :path: ./
+
+SPEC CHECKSUMS:
+  AUTTheming: b424dac8784bee215b42e225e2b6558a0062f496
+  GBCli: 304718a0ff52cb39ea7ae1bcb3c4cb40c5a48c8d
+  Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
+  UIColor-HTMLColors: fbf3e9648f1e699aa4cdb39d0cf348b7ef814be5
+
+COCOAPODS: 0.34.4
