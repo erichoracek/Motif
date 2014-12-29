@@ -5,10 +5,10 @@
       location = "group:Examples/ButtonsExample/ButtonsExample.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Tests/Tests.xcodeproj">
+      location = "group:AUTThemingSymbolsGenerator/AUTThemingSymbolsGenerator.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AUTThemingSymbolsGenerator/AUTThemingSymbolsGenerator.xcodeproj">
+      location = "group:Tests/Tests.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
