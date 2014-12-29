@@ -4,22 +4,22 @@
 
 #import <Foundation/Foundation.h>
 
-extern const struct AUTThemeConstantKeys {
+extern const struct ThemeConstantKeys {
     __unsafe_unretained NSString *WhiteColor;
     __unsafe_unretained NSString *RegularFontName;
     __unsafe_unretained NSString *H5FontSize;
     __unsafe_unretained NSString *RedColor;
     __unsafe_unretained NSString *BlueColor;
-} AUTThemeConstantKeys;
+} ThemeConstantKeys;
 
-extern const struct AUTThemeClassNames {
+extern const struct ThemeClassNames {
     __unsafe_unretained NSString *Button;
     __unsafe_unretained NSString *Background;
     __unsafe_unretained NSString *DestructiveButton;
     __unsafe_unretained NSString *PrimaryButton;
-} AUTThemeClassNames;
+} ThemeClassNames;
 
-extern const struct AUTThemeProperties {
+extern const struct ThemeProperties {
     __unsafe_unretained NSString *fontSize;
     __unsafe_unretained NSString *fontName;
     __unsafe_unretained NSString *borderColor;
@@ -28,4 +28,4 @@ extern const struct AUTThemeProperties {
     __unsafe_unretained NSString *contentEdgeInsets;
     __unsafe_unretained NSString *backgroundColor;
     __unsafe_unretained NSString *textColor;
-} AUTThemeProperties;
+} ThemeProperties;

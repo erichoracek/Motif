@@ -9,29 +9,29 @@
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTValueTransformers.h>
 #import "UIButton+Theming.h"
-#import "AUTThemeSymbols.h"
+#import "ThemeSymbols.h"
 
 @implementation UIButton (Theming)
 
 + (void)load
 {
-    [self aut_registerThemeProperty:AUTThemeProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applier:^(UIColor *textColor, UIButton *button) {
+    [self aut_registerThemeProperty:ThemeProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applier:^(UIColor *textColor, UIButton *button) {
         [button setTitleColor:textColor forState:UIControlStateNormal];
     }];
     
-    [self aut_registerThemeProperty:AUTThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applier:^(NSValue *edgeInsets, UIButton *button) {
+    [self aut_registerThemeProperty:ThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applier:^(NSValue *edgeInsets, UIButton *button) {
         button.contentEdgeInsets = edgeInsets.UIEdgeInsetsValue;
     }];
     
     [self aut_registerThemeProperties:@[
-        AUTThemeProperties.fontName,
-        AUTThemeProperties.fontSize
+        ThemeProperties.fontName,
+        ThemeProperties.fontSize
     ] valueTransformerNamesOrRequiredClasses:@[
         [NSString class],
         [NSNumber class]
     ] applier:^(NSDictionary *properties, UIButton *button) {
-        NSString *name = properties[AUTThemeProperties.fontName];
-        CGFloat size = [properties[AUTThemeProperties.fontSize] floatValue];
+        NSString *name = properties[ThemeProperties.fontName];
+        CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
         button.titleLabel.font = [UIFont fontWithName:name size:size];
     }];
 }

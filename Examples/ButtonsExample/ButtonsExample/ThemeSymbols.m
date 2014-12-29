@@ -2,9 +2,9 @@
 // To update these symbols, run the command:
 // $ auttheming-symbols-generator -t Theme.json
 
-#import "AUTThemeSymbols.h"
+#import "ThemeSymbols.h"
 
-const struct AUTThemeConstantKeys AUTThemeConstantKeys = {
+const struct ThemeConstantKeys ThemeConstantKeys = {
     .WhiteColor = @"WhiteColor",
     .RegularFontName = @"RegularFontName",
     .H5FontSize = @"H5FontSize",
@@ -12,14 +12,14 @@ const struct AUTThemeConstantKeys AUTThemeConstantKeys = {
     .BlueColor = @"BlueColor",
 };
 
-const struct AUTThemeClassNames AUTThemeClassNames = {
+const struct ThemeClassNames ThemeClassNames = {
     .Button = @"Button",
     .Background = @"Background",
     .DestructiveButton = @"DestructiveButton",
     .PrimaryButton = @"PrimaryButton",
 };
 
-const struct AUTThemeProperties AUTThemeProperties = {
+const struct ThemeProperties ThemeProperties = {
     .fontSize = @"fontSize",
     .fontName = @"fontName",
     .borderColor = @"borderColor",

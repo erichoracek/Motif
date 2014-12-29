@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
 #import <Masonry/Masonry.h>
+#import <AUTTheming/AUTTheming.h>
 #import "View.h"
+#import "ThemeSymbols.h"
 
 @interface View ()
 
@@ -53,7 +54,7 @@ static const CGFloat ButtonPadding = 10.0;
     self = [super init];
     if (self) {
         self.aut_theme = theme;
-        [self aut_applyThemeClassWithName:@"Background"];
+        [self aut_applyThemeClassWithName:ThemeClassNames.Background];
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
     }
@@ -65,7 +66,7 @@ static const CGFloat ButtonPadding = 10.0;
     if (!_saveButton) {
         self.saveButton = ({
             UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [button aut_applyThemeClassWithName:@"PrimaryButton" fromTheme:self.aut_theme];
+            [button aut_applyThemeClassWithName:ThemeClassNames.PrimaryButton fromTheme:self.aut_theme];
             [button setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
             button;
         });
@@ -78,7 +79,7 @@ static const CGFloat ButtonPadding = 10.0;
     if (!_deleteButton) {
         self.deleteButton = ({
             UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [button aut_applyThemeClassWithName:@"DestructiveButton" fromTheme:self.aut_theme];
+            [button aut_applyThemeClassWithName:ThemeClassNames.DestructiveButton fromTheme:self.aut_theme];
             [button setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
             button;
         });

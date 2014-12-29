@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3ABF074B1A514C2300E6A83C /* AUTThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074A1A514C2300E6A83C /* AUTThemeSymbols.m */; };
+		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
 		3AD69A501A4F750B0002FA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A4F1A4F750B0002FA8F /* main.m */; };
 		3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A521A4F750B0002FA8F /* AppDelegate.m */; };
 		3AD69A561A4F750B0002FA8F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A551A4F750B0002FA8F /* ViewController.m */; };
@@ -21,8 +21,8 @@
 
 /* Begin PBXFileReference section */
 		176724CCBC52C1E0F49047B8 /* libPods-ButtonsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ButtonsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ABF07491A514C2300E6A83C /* AUTThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeSymbols.h; sourceTree = "<group>"; };
-		3ABF074A1A514C2300E6A83C /* AUTThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeSymbols.m; sourceTree = "<group>"; };
+		3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
+		3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSymbols.m; sourceTree = "<group>"; };
 		3AD69A4A1A4F750B0002FA8F /* ButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD69A4E1A4F750B0002FA8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AD69A4F1A4F750B0002FA8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				3AD69A791A4F7A0D0002FA8F /* Theme.json */,
-				3ABF07491A514C2300E6A83C /* AUTThemeSymbols.h */,
-				3ABF074A1A514C2300E6A83C /* AUTThemeSymbols.m */,
+				3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */,
+				3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */,
 				3AD69A511A4F750B0002FA8F /* AppDelegate.h */,
 				3AD69A521A4F750B0002FA8F /* AppDelegate.m */,
 				3AD69A541A4F750B0002FA8F /* ViewController.h */,
@@ -227,8 +227,8 @@
 				3AD69A561A4F750B0002FA8F /* ViewController.m in Sources */,
 				3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */,
 				3AD69A801A4FA1480002FA8F /* View.m in Sources */,
-				3ABF074B1A514C2300E6A83C /* AUTThemeSymbols.m in Sources */,
 				3AD69A501A4F750B0002FA8F /* main.m in Sources */,
+				3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */,
 				3AD69A781A4F78980002FA8F /* UIButton+Theming.m in Sources */,
 				3AD69A751A4F788E0002FA8F /* UIView+Theming.m in Sources */,
 			);
