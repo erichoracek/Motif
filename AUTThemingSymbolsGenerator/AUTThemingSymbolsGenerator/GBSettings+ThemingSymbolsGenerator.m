@@ -30,7 +30,7 @@ NSString * const AUTSettingsOptionVerbose = @"verbose";
 - (void)aut_applyDefaults
 {
     self.aut_output = @"./";
-    self.aut_prefix = @"AUT";
+    self.aut_prefix = @"";
     self.aut_shouldIndentUsingTabs = NO;
     self.aut_indentationCount = 4;
 }
