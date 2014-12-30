@@ -205,8 +205,9 @@ static NSString * const WarningFormat = @"\
         return [enumName stringByAppendingString:@"ConstantKeys"];
     case SymbolTypeProperties:
         return [enumName stringByAppendingString:@"Properties"];
+    default:
+        return nil;
     }
-    return nil;
 }
 
 - (NSArray *)symbolsForType:(SymbolType)symbolType
@@ -218,8 +219,9 @@ static NSString * const WarningFormat = @"\
         return [self constantKeys];
     case SymbolTypeProperties:
         return [self properties];
+    default:
+        return nil;
     }
-    return nil;
 }
 
 - (NSArray *)constantKeys
