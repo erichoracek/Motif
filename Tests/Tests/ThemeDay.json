@@ -1,0 +1,10 @@
+{
+  "constants": {
+    "AUTContentBackgroundColor": "AUTWhiteDark",
+    "AUTContentForegroundColor": "AUTWhiteLight",
+    "AUTSeparatorColor": "#bdc0c6",
+    "AUTHeadingTextColor": "AUTGrayDark",
+    "AUTParagraphTextColor": "AUTGray",
+    "AUTHeadingSmallFontName": "AUTFontNameSemiStrong"
+  }
+}
