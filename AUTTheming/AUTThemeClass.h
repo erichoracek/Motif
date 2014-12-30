@@ -10,6 +10,9 @@
 
 @class AUTTheme;
 
+/**
+ An AUTThemeClass represents a class from a JSON theme file.
+ */
 @interface AUTThemeClass : NSObject
 
 /**
@@ -17,6 +20,11 @@
  */
 @property (nonatomic, readonly) NSString *name;
 
+/**
+ The properties of the theme class as specified in the JSON theme file.
+ 
+ This dictionary is keyed by property names with values of the properties values.
+ */
 @property (nonatomic, readonly) NSDictionary *properties;
 
 @end

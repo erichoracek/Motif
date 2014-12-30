@@ -12,11 +12,18 @@
 
 - (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants;
 
+/**
+ Readwrite verison of public name property.
+ */
 @property (nonatomic) NSString *name;
+
+/**
+ The property constants for this specific theme class, keyed by constants.
+ */
 @property (nonatomic) NSDictionary *propertiesConstants;
 
 /**
- The resolved properties across all superclasses
+ The resolved property constants across all superclasses.
  */
 @property (nonatomic, readonly) NSDictionary *resolvedPropertiesConstants;
 

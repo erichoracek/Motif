@@ -19,7 +19,9 @@
 #pragma mark - Private
 
 /**
- Cache to hold transformed values for the theme keyed by the transformer name.
+ A cache to hold transformed mapped values on this constant.
+ 
+ Keyed by the transformer name.
  
  @see NSValueTransformer
  */

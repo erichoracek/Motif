@@ -12,13 +12,37 @@
 @class AUTThemeClass;
 @class AUTTheme;
 
+/**
+ A theme applier is an abstract protocol that defines the methods and properties required to apply an AUTThemeClass from an AUTTheme to an object.
+ 
+ You likely won't even have to use an AUTThemeApplier directly. The easiest way to register an applier is by using the `+[NSObject aut_registerTheme...applier:]` methods, which is a convenience method for creating and registering one of the below appliers.
+ 
+ Alternatively, an applier can be initialized and added using the `+[NSObject aut_registerThemeApplier:]` method.
+ */
 @protocol AUTThemeApplier <NSObject>
 
+/**
+ The properties that the theme applier is responsible for applying to the target object.
+ */
 @property (nonatomic, readonly) NSArray *properties;
 
-- (void)applyClass:(AUTThemeClass *)class fromTheme:(AUTTheme *)theme toObject:(id)object;
-
+/**
+ Returns whether the receiving applier should be used apply the properties in the specified class to an object.
+ 
+ @param class The theme class that is being querying for application.
+ 
+ @return Whether the receiving applier should apply the specified theme class.
+ */
 - (BOOL)shouldApplyClass:(AUTThemeClass *)class;
+
+/**
+ Applies an AUTThemeClass from an AUTTheme to an object.
+ 
+ @param class  The class that should have its properties applied
+ @param theme  The theme that should be applied to the specified class.
+ @param object The object that should have the class applied to it.
+ */
+- (void)applyClass:(AUTThemeClass *)class fromTheme:(AUTTheme *)theme toObject:(id)object;
 
 @end
 
