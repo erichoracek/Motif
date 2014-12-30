@@ -7,7 +7,7 @@
 //
 
 #import <objc/runtime.h>
-#import "AUTThemeApplier.h"
+#import "AUTThemeClassApplicable.h"
 #import "AUTThemeConstant.h"
 #import "AUTThemeClass+Private.h"
 

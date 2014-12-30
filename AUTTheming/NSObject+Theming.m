@@ -11,7 +11,7 @@
 #import "NSObject+ThemingPrivate.h"
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
-#import "AUTThemeApplier.h"
+#import "AUTThemeClassApplicable.h"
 
 static char ThemeClassName;
 static char Theme;

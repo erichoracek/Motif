@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 #import "NSObject+ThemeAppliers.h"
 #import "NSObject+ThemingPrivate.h"
-#import "AUTThemeApplier.h"
+#import "AUTThemeClassApplicable.h"
 
 @implementation NSObject (ThemeAppliers)
 

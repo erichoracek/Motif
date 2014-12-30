@@ -8,6 +8,6 @@
 
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
-#import "AUTThemeApplier.h"
+#import "AUTThemeClassApplicable.h"
 #import "NSObject+Theming.h"
 #import "NSObject+ThemeAppliers.h"
