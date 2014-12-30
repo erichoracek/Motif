@@ -185,4 +185,47 @@
     XCTAssertEqualObjects(valueForProperty, themeClass1, @"The theme class must have '%@' as a value for the '%@' property", value, property);
 }
 
+#pragma mark - Identical Classes
+
+- (void)testRegisteringMultipleClassesWithIdenticalNamesAcrossThemes
+{
+    NSString *class = @"class";
+    NSString *value1 = @"value1";
+    NSString *property1 = @"class1";
+    NSString *value2 = @"value";
+    NSString *property2 = @"property2";
+    
+    NSDictionary *theme1AttributesDictionary = @{
+        AUTThemeClassesKey: @{
+            class: @{
+                property1: value1
+            }
+        }
+    };
+    NSDictionary *theme2AttributesDictionary = @{
+        AUTThemeClassesKey: @{
+            class: @{
+                property2: value2
+            }
+        }
+    };
+    
+    AUTTheme *theme = [AUTTheme new];
+    
+    NSError *error;
+    [theme addConstantsAndClassesFromRawAttributesDictionary:theme1AttributesDictionary forThemeWithName:@"" error:nil];
+    [theme addConstantsAndClassesFromRawAttributesDictionary:theme2AttributesDictionary forThemeWithName:@"" error:&error];
+    XCTAssertNotNil(error, @"Must have error when class with duplciate name is registered");
+    
+    AUTThemeClass *themeClass = [theme themeClassForName:class];
+    XCTAssertNotNil(themeClass, @"Class must exist when registered");
+    
+    id valueForProperty1 = themeClass.properties[property1];
+    XCTAssertNil(valueForProperty1, @"Original class property must no longer exist when overwritten");
+    
+    id valueForProperty2 = themeClass.properties[property2];
+    XCTAssertNotNil(valueForProperty2, @"Overwritten class property must exist");
+    XCTAssertEqualObjects(value2, valueForProperty2, @"Value must match registered property");
+}
+
 @end

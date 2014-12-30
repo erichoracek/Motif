@@ -118,7 +118,7 @@ NSString * const AUTThemeClassesKey = @"classes";
         return;
     }
     NSDictionary *constants = [self constantsMappedFromRawConstants:rawConstants];
-    [self addMappedConstantsFromDictionary:constants];
+    [self addMappedConstantsFromDictionary:constants error:error];
 }
 
 - (NSDictionary *)constantsMappedFromRawConstants:(NSDictionary *)rawConstants
@@ -166,7 +166,7 @@ NSString * const AUTThemeClassesKey = @"classes";
         return;
     }
     NSDictionary *mappedClasses = [self classesMappedFromRawClasses:rawClasses error:error];
-    [self addMappedClassesFromDictionary:mappedClasses];
+    [self addMappedClassesFromDictionary:mappedClasses error:error];
 }
 
 - (NSDictionary *)classesMappedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error
@@ -267,8 +267,14 @@ NSString * const AUTThemeClassesKey = @"classes";
     return _mappedConstants;
 }
 
-- (void)addMappedConstantsFromDictionary:(NSDictionary *)dictionary
+- (void)addMappedConstantsFromDictionary:(NSDictionary *)dictionary error:(NSError **)error
 {
+    NSSet *intersectingKeys = [self entriesFromDictionary:dictionary willIntersectKeysWhenAddedToDictionary:self.mappedConstants];
+    if (intersectingKeys.count && error) {
+        NSString *errorDescription = [NSString stringWithFormat:@"Registering new constants with identical names to previously-defined constants will overwrite existing constants with the following names: %@", intersectingKeys];
+        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+    }
+    
     NSMutableDictionary *constants = [self.mappedConstants mutableCopy];
     [constants addEntriesFromDictionary:dictionary];
     self.mappedConstants = [constants copy];
@@ -284,11 +290,31 @@ NSString * const AUTThemeClassesKey = @"classes";
     return _mappedClasses;
 }
 
-- (void)addMappedClassesFromDictionary:(NSDictionary *)dictionary
+- (void)addMappedClassesFromDictionary:(NSDictionary *)dictionary error:(NSError **)error
 {
+    NSSet *intersectingKeys = [self entriesFromDictionary:dictionary willIntersectKeysWhenAddedToDictionary:self.mappedClasses];
+    if (intersectingKeys.count && error) {
+        NSString *errorDescription = [NSString stringWithFormat:@"Registering new classes with identical names to previously-defined classes will overwrite existing classes with the following names: %@", intersectingKeys];
+        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+    }
+    
     NSMutableDictionary *classes = [self.mappedClasses mutableCopy];
     [classes addEntriesFromDictionary:dictionary];
     self.mappedClasses = [classes copy];
+}
+
+#pragma mark Overlapping Dictionary Keys
+
+- (NSSet *)entriesFromDictionary:(NSDictionary *)fromDictionary willIntersectKeysWhenAddedToDictionary:(NSDictionary *)toDictionary
+{
+    NSSet *existingKeys = [NSSet setWithArray:toDictionary.allKeys];
+    NSSet *newKeys = [NSSet setWithArray:fromDictionary.allKeys];
+    if ([existingKeys intersectsSet:newKeys]) {
+        NSMutableSet *intersectingKeys = [existingKeys mutableCopy];
+        [intersectingKeys intersectSet:newKeys];
+        return intersectingKeys;
+    }
+    return nil;
 }
 
 @end
