@@ -54,7 +54,7 @@
 
 @end
 
-@interface AUTThemePropertyApplier ()
+@interface AUTThemeClassPropertyApplier ()
 
 @property (nonatomic, copy) NSString *property;
 @property (nonatomic, copy) NSString *valueTransformerName;
@@ -63,7 +63,7 @@
 
 @end
 
-@implementation AUTThemePropertyApplier
+@implementation AUTThemeClassPropertyApplier
 
 #pragma mark - AUTThemePropertyApplier
 
@@ -137,7 +137,7 @@
 
 @end
 
-@interface AUTThemePropertiesApplier ()
+@interface AUTThemeClassPropertiesApplier ()
 
 @property (nonatomic, copy) AUTThemePropertiesApplierBlock applier;
 @property (nonatomic) NSArray *properties;
@@ -145,7 +145,7 @@
 
 @end
 
-@implementation AUTThemePropertiesApplier
+@implementation AUTThemeClassPropertiesApplier
 
 #pragma mark - AUTThemePropertiesApplier
 
@@ -200,7 +200,7 @@
         
         Class requiredClass = [self requiredClassForPropertyAtIndex:propertyIndex];
         NSString *valueTransformerName = [self valueTransformerNameForPropertyAtIndex:propertyIndex];
-        id value = [AUTThemePropertyApplier valueFromConstant:constant forProperty:property onObject:object withRequiredClass:requiredClass valueTransformerName:valueTransformerName];
+        id value = [AUTThemeClassPropertyApplier valueFromConstant:constant forProperty:property onObject:object withRequiredClass:requiredClass valueTransformerName:valueTransformerName];
         
         valuesForProperties[property] = value;
     }];

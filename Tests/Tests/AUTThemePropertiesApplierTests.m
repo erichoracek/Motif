@@ -29,7 +29,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> propertyApplier = [objectClass aut_registerThemeProperties:properties.allObjects applier:^(NSDictionary *valuesForProperties, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperties:properties.allObjects applier:^(NSDictionary *valuesForProperties, id objectToTheme) {
         BOOL equalProperties = [properties isEqualToSet:[NSSet setWithArray:valuesForProperties.allKeys]];
         BOOL equalValues = [values isEqualToSet:[NSSet setWithArray:valuesForProperties.allValues]];
         XCTAssertTrue(equalProperties, @"Must pass the same set of properties that the appliers are registered");

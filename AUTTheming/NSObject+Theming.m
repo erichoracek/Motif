@@ -83,10 +83,10 @@ static char Theme;
     NSDictionary *valuesForProperties = class.properties;
     NSMutableSet *unappliedProperties = [NSMutableSet setWithArray:valuesForProperties.allKeys];
     
-    for (id <AUTThemeApplier> applier in [[self class] aut_themeAppliers]) {
-        if ([applier shouldApplyClass:class]) {
-            [applier applyClass:class fromTheme:self.aut_theme toObject:self];
-            NSSet *appliedProperties = [NSSet setWithArray:applier.properties];
+    for (id <AUTThemeClassApplicable> classApplier in [[self class] aut_themeAppliers]) {
+        if ([classApplier shouldApplyClass:class]) {
+            [classApplier applyClass:class fromTheme:self.aut_theme toObject:self];
+            NSSet *appliedProperties = [NSSet setWithArray:classApplier.properties];
             [unappliedProperties minusSet:appliedProperties];
         }
     }

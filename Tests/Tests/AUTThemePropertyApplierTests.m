@@ -36,7 +36,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> propertyApplier = [objectClass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
@@ -63,7 +63,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applier:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
@@ -86,7 +86,7 @@
     Class objectClass = [NSObject class];
     id object = [objectClass new];
     
-    id <AUTThemeApplier> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applier:^(id propertyValue, id objectToTheme) {}];
+    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applier:^(id propertyValue, id objectToTheme) {}];
     
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
     @try {
@@ -122,7 +122,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> applier = [objectClass aut_registerThemeProperty:property valueTransformerName:valueTransfomerName applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property valueTransformerName:valueTransfomerName applier:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(pointValue, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
@@ -151,7 +151,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> applier = [objectSuperclass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> applier = [objectSuperclass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
@@ -179,12 +179,12 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeApplier> propertyApplier = [objectClass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property applier:^(id propertyValue, id objectToTheme) {
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
     }];
     
-    id <AUTThemeApplier> propertyNotInClassApplier = [objectClass aut_registerThemeProperty:propertyNotInClass applier:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyNotInClassApplier = [objectClass aut_registerThemeProperty:propertyNotInClass applier:^(id propertyValue, id objectToTheme) {
         XCTFail(@"This applier must not be invoked");
     }];
     

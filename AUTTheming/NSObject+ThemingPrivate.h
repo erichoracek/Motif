@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+ThemeAppliers.h"
 
-@protocol AUTThemeApplier;
+@protocol AUTThemeClassApplicable;
 
 @interface NSObject (ThemingPrivate)
 
-+ (void)aut_deregisterThemeApplier:(id <AUTThemeApplier>)applier;
++ (void)aut_deregisterThemeApplier:(id <AUTThemeClassApplicable>)applier;
 
 /**
  The theme appliers registered for this class resolved across the entire class hierarchy.

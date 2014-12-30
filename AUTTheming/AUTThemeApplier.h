@@ -13,13 +13,13 @@
 @class AUTTheme;
 
 /**
- A theme applier is an abstract protocol that defines the methods and properties required to apply an AUTThemeClass from an AUTTheme to an object.
+ AUTThemeClassApplicable is an abstract protocol that defines the methods and properties required to apply an AUTThemeClass from an AUTTheme to an object.
  
  You likely won't even have to use an AUTThemeApplier directly. The easiest way to register an applier is by using the `+[NSObject aut_registerTheme...applier:]` methods, which is a convenience method for creating and registering one of the below appliers.
  
  Alternatively, an applier can be initialized and added using the `+[NSObject aut_registerThemeApplier:]` method.
  */
-@protocol AUTThemeApplier <NSObject>
+@protocol AUTThemeClassApplicable <NSObject>
 
 /**
  The properties that the theme applier is responsible for applying to the target object.
@@ -46,7 +46,7 @@
 
 @end
 
-@interface AUTThemeClassApplier : NSObject <AUTThemeApplier>
+@interface AUTThemeClassApplier : NSObject <AUTThemeClassApplicable>
 
 - (instancetype)initWithClassApplier:(AUTThemeClassApplierBlock)applier;
 
@@ -54,7 +54,7 @@
 
 @end
 
-@interface AUTThemePropertyApplier : NSObject <AUTThemeApplier>
+@interface AUTThemeClassPropertyApplier : NSObject <AUTThemeClassApplicable>
 
 - (instancetype)initWithProperty:(NSString *)property applier:(AUTThemePropertyApplierBlock)applier valueTransformerName:(NSString *)name requiredClass:(Class)class;
 
@@ -65,7 +65,7 @@
 
 @end
 
-@interface AUTThemePropertiesApplier : NSObject <AUTThemeApplier>
+@interface AUTThemeClassPropertiesApplier : NSObject <AUTThemeClassApplicable>
 
 - (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applier:(AUTThemePropertiesApplierBlock)applier;
 

@@ -24,40 +24,40 @@
 
 + (id)aut_registerThemeProperty:(NSString *)property applier:(AUTThemePropertyApplierBlock)applierBlock
 {
-    AUTThemePropertyApplier *applier = [[AUTThemePropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:nil requiredClass:nil];
+    AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:nil requiredClass:nil];
     [self aut_registerThemeApplier:applier];
     return applier;
 }
 
 + (id)aut_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applier:(AUTThemePropertyApplierBlock)applierBlock
 {
-    AUTThemePropertyApplier *applier = [[AUTThemePropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:nil requiredClass:valueClass];
+    AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:nil requiredClass:valueClass];
     [self aut_registerThemeApplier:applier];
     return applier;
 }
 
 + (id)aut_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applier:(AUTThemePropertyApplierBlock)applierBlock
 {
-    AUTThemePropertyApplier *applier = [[AUTThemePropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:transformerName requiredClass:nil];
+    AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property applier:applierBlock valueTransformerName:transformerName requiredClass:nil];
     [self aut_registerThemeApplier:applier];
     return applier;
 }
 
 + (id)aut_registerThemeProperties:(NSArray *)properties applier:(AUTThemePropertiesApplierBlock)applierBlock
 {
-    AUTThemePropertiesApplier *applier = [[AUTThemePropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:nil applier:applierBlock];
+    AUTThemeClassPropertiesApplier *applier = [[AUTThemeClassPropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:nil applier:applierBlock];
     [self aut_registerThemeApplier:applier];
     return applier;
 }
 
 + (id)aut_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applier:(AUTThemePropertiesApplierBlock)applierBlock
 {
-    AUTThemePropertiesApplier *applier = [[AUTThemePropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:transformersOrClasses applier:applierBlock];
+    AUTThemeClassPropertiesApplier *applier = [[AUTThemeClassPropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:transformersOrClasses applier:applierBlock];
     [self aut_registerThemeApplier:applier];
     return applier;
 }
 
-+ (void)aut_registerThemeApplier:(id <AUTThemeApplier>)applier
++ (void)aut_registerThemeApplier:(id <AUTThemeClassApplicable>)applier
 {
     [[self aut_classThemeAppliers] addObject:applier];
 }
@@ -68,7 +68,7 @@
 
 #pragma mark - Public
 
-+ (void)aut_deregisterThemeApplier:(id <AUTThemeApplier>)applier
++ (void)aut_deregisterThemeApplier:(id <AUTThemeClassApplicable>)applier
 {
     [[self aut_classThemeAppliers] removeObject:applier];
 }
