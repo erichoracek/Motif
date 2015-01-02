@@ -19,12 +19,12 @@
         },
         "DestructiveButton": {
             "_superclass": "Button",
-            "textColor": "RedColor",
+            "tintColor": "RedColor",
             "borderColor": "RedColor"
         },
         "PrimaryButton": {
             "_superclass": "Button",
-            "textColor": "BlueColor",
+            "tintColor": "BlueColor",
             "borderColor": "BlueColor"
         }
     }

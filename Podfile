@@ -1,38 +1,48 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-Framework_name = 'AUTTheming'
-Podspec_path = './'
+FRAMEWORK_NAME = 'AUTTheming'
+PODSPEC_PATH = './'
 # Target Names
-Tests_target_name = 'Tests'
-Theming_cli_target_name = 'AUTThemingSymbolsGenerator'
-Buttons_target_name = 'ButtonsExample'
+TESTS_TARGET_NAME = 'Tests'
+THEMING_SYMBOLS_GENERATOR_TARGET_NAME = 'AUTThemingSymbolsGenerator'
+BUTTONS_EXAMPLE_TARGET_NAME = 'ButtonsExample'
+DYNAMIC_THEMES_EXAMPLE_TARGET_NAME = 'DynamicThemesExample'
 # Paths
-Example_folder_name = 'Examples'
-Tests_path = "#{Tests_target_name}/#{Tests_target_name}"
-Buttons_path = "#{Example_folder_name}/#{Buttons_target_name}/#{Buttons_target_name}"
-Theming_cli_path = "#{Theming_cli_target_name}/#{Theming_cli_target_name}"
+EXAMPLES_FOLDER = 'Examples'
+TESTS_PATH = "#{TESTS_TARGET_NAME}/#{TESTS_TARGET_NAME}"
+BUTTONS_EXAMPLE_PATH = "#{EXAMPLES_FOLDER}/#{BUTTONS_EXAMPLE_TARGET_NAME}/#{BUTTONS_EXAMPLE_TARGET_NAME}"
+DYNAMIC_THEMES_EXAMPLE_PATH = "#{EXAMPLES_FOLDER}/#{DYNAMIC_THEMES_EXAMPLE_TARGET_NAME}/#{DYNAMIC_THEMES_EXAMPLE_TARGET_NAME}"
+THEMING_SYMBOLS_GENERATOR_PATH = "#{THEMING_SYMBOLS_GENERATOR_TARGET_NAME}/#{THEMING_SYMBOLS_GENERATOR_TARGET_NAME}"
 
-workspace Framework_name
+workspace FRAMEWORK_NAME
 
-xcodeproj Tests_path
-target Tests_target_name do
+xcodeproj TESTS_PATH
+target TESTS_TARGET_NAME do
   platform :ios, '7.0'
-  xcodeproj Tests_path
-  pod Framework_name, :path => Podspec_path
+  xcodeproj TESTS_PATH
+  pod FRAMEWORK_NAME, :path => PODSPEC_PATH
 end
 
-xcodeproj Buttons_path
-target Buttons_target_name do
+xcodeproj BUTTONS_EXAMPLE_PATH
+target BUTTONS_EXAMPLE_TARGET_NAME do
   platform :ios, '7.0'
-  xcodeproj Buttons_path
+  xcodeproj BUTTONS_EXAMPLE_PATH
   pod 'Masonry'
-  pod Framework_name, :path => Podspec_path
+  pod FRAMEWORK_NAME, :path => PODSPEC_PATH
 end
 
-xcodeproj Theming_cli_path
-target Theming_cli_target_name do
+xcodeproj DYNAMIC_THEMES_EXAMPLE_PATH
+target DYNAMIC_THEMES_EXAMPLE_TARGET_NAME do
+  platform :ios, '7.0'
+  xcodeproj DYNAMIC_THEMES_EXAMPLE_PATH
+  pod 'Masonry'
+  pod FRAMEWORK_NAME, :path => PODSPEC_PATH
+end
+
+xcodeproj THEMING_SYMBOLS_GENERATOR_PATH
+target THEMING_SYMBOLS_GENERATOR_TARGET_NAME do
   platform :osx, '10.8'
-  xcodeproj Theming_cli_path
-  pod Framework_name, :path => Podspec_path
+  xcodeproj THEMING_SYMBOLS_GENERATOR_PATH
+  pod FRAMEWORK_NAME, :path => PODSPEC_PATH
   pod 'GBCli'
 end

@@ -14,13 +14,10 @@
 @implementation UIButton (Theming)
 
 + (void)load
-{
-    [self aut_registerThemeProperty:ThemeProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applier:^(UIColor *textColor, UIButton *button) {
-        [button setTitleColor:textColor forState:UIControlStateNormal];
-    }];
-    
-    [self aut_registerThemeProperty:ThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applier:^(NSValue *edgeInsets, UIButton *button) {
+{    
+    [self aut_registerThemeProperty:ThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applierBlock:^(NSValue *edgeInsets, UIButton *button) {
         button.contentEdgeInsets = edgeInsets.UIEdgeInsetsValue;
+        [button invalidateIntrinsicContentSize];
     }];
     
     [self aut_registerThemeProperties:@[
@@ -29,7 +26,7 @@
     ] valueTransformerNamesOrRequiredClasses:@[
         [NSString class],
         [NSNumber class]
-    ] applier:^(NSDictionary *properties, UIButton *button) {
+    ] applierBlock:^(NSDictionary *properties, UIButton *button) {
         NSString *name = properties[ThemeProperties.fontName];
         CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
         button.titleLabel.font = [UIFont fontWithName:name size:size];

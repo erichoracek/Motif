@@ -10,12 +10,12 @@
 		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
 		3AD69A501A4F750B0002FA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A4F1A4F750B0002FA8F /* main.m */; };
 		3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A521A4F750B0002FA8F /* AppDelegate.m */; };
-		3AD69A561A4F750B0002FA8F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A551A4F750B0002FA8F /* ViewController.m */; };
+		3AD69A561A4F750B0002FA8F /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */; };
 		3AD69A751A4F788E0002FA8F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A741A4F788E0002FA8F /* UIView+Theming.m */; };
 		3AD69A781A4F78980002FA8F /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A771A4F78980002FA8F /* UIButton+Theming.m */; };
 		3AD69A7A1A4F7A0D0002FA8F /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A791A4F7A0D0002FA8F /* Theme.json */; };
-		3AD69A801A4FA1480002FA8F /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A7F1A4FA1480002FA8F /* View.m */; };
-		3AD69A821A4FB2BC0002FA8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A811A4FB2BC0002FA8F /* Assets.xcassets */; };
+		3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */; };
+		3AD69A821A4FB2BC0002FA8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A811A4FB2BC0002FA8F /* Images.xcassets */; };
 		6D159411CE0A551EF5748DAA /* libPods-ButtonsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 176724CCBC52C1E0F49047B8 /* libPods-ButtonsExample.a */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +28,16 @@
 		3AD69A4F1A4F750B0002FA8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AD69A511A4F750B0002FA8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AD69A521A4F750B0002FA8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3AD69A541A4F750B0002FA8F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3AD69A551A4F750B0002FA8F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3AD69A541A4F750B0002FA8F /* ButtonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
+		3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
 		3AD69A731A4F788E0002FA8F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3AD69A741A4F788E0002FA8F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
 		3AD69A761A4F78980002FA8F /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
 		3AD69A771A4F78980002FA8F /* UIButton+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Theming.m"; sourceTree = "<group>"; };
 		3AD69A791A4F7A0D0002FA8F /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
-		3AD69A7E1A4FA1480002FA8F /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
-		3AD69A7F1A4FA1480002FA8F /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
-		3AD69A811A4FB2BC0002FA8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AD69A7E1A4FA1480002FA8F /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
+		3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
+		3AD69A811A4FB2BC0002FA8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5C08A77B9895974C0CBD2AF8 /* Pods-ButtonsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D07B585B5F752D737E82C7C6 /* Pods-ButtonsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,15 +80,15 @@
 				3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */,
 				3AD69A511A4F750B0002FA8F /* AppDelegate.h */,
 				3AD69A521A4F750B0002FA8F /* AppDelegate.m */,
-				3AD69A541A4F750B0002FA8F /* ViewController.h */,
-				3AD69A551A4F750B0002FA8F /* ViewController.m */,
-				3AD69A7E1A4FA1480002FA8F /* View.h */,
-				3AD69A7F1A4FA1480002FA8F /* View.m */,
+				3AD69A541A4F750B0002FA8F /* ButtonsViewController.h */,
+				3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */,
+				3AD69A7E1A4FA1480002FA8F /* ButtonsView.h */,
+				3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */,
 				3AD69A731A4F788E0002FA8F /* UIView+Theming.h */,
 				3AD69A741A4F788E0002FA8F /* UIView+Theming.m */,
 				3AD69A761A4F78980002FA8F /* UIButton+Theming.h */,
 				3AD69A771A4F78980002FA8F /* UIButton+Theming.m */,
-				3AD69A811A4FB2BC0002FA8F /* Assets.xcassets */,
+				3AD69A811A4FB2BC0002FA8F /* Images.xcassets */,
 				3AD69A4D1A4F750B0002FA8F /* Supporting Files */,
 			);
 			path = ButtonsExample;
@@ -179,7 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD69A821A4FB2BC0002FA8F /* Assets.xcassets in Resources */,
+				3AD69A821A4FB2BC0002FA8F /* Images.xcassets in Resources */,
 				3AD69A7A1A4F7A0D0002FA8F /* Theme.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,9 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD69A561A4F750B0002FA8F /* ViewController.m in Sources */,
+				3AD69A561A4F750B0002FA8F /* ButtonsViewController.m in Sources */,
 				3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */,
-				3AD69A801A4FA1480002FA8F /* View.m in Sources */,
+				3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */,
 				3AD69A501A4F750B0002FA8F /* main.m in Sources */,
 				3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */,
 				3AD69A781A4F78980002FA8F /* UIButton+Theming.m in Sources */,

@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25C4C419154AC79D8F508A59 /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */; };
+		3ADB35EA1A5645B30059796A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
+		3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
+		3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
+		3ADB36121A567C820059796A /* Buttons.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB360D1A567C820059796A /* Buttons.json */; };
+		3ADB36131A567C820059796A /* Colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB360E1A567C820059796A /* Colors.json */; };
+		3ADB36141A567C820059796A /* DarkMappings.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB360F1A567C820059796A /* DarkMappings.json */; };
+		3ADB36151A567C820059796A /* LightMappings.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36101A567C820059796A /* LightMappings.json */; };
+		3ADB36161A567C820059796A /* Typography.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36111A567C820059796A /* Typography.json */; };
+		3ADB36181A567D8B0059796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
+		3ADB362C1A5681CB0059796A /* ButtonsSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362B1A5681CB0059796A /* ButtonsSymbols.m */; };
+		3ADB36331A56820D0059796A /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* ButtonsView.m */; };
+		3ADB36341A56820D0059796A /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB36301A56820D0059796A /* UIView+Theming.m */; };
+		3ADB36351A56820D0059796A /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB36321A56820D0059796A /* UIButton+Theming.m */; };
+		3ADB36381A568DAA0059796A /* UINavigationBar+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB36371A568DAA0059796A /* UINavigationBar+Theming.m */; };
+		3ADB363B1A568EE20059796A /* NavigationSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363A1A568EE20059796A /* NavigationSymbols.m */; };
+		3ADB363D1A5691020059796A /* Navigation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB363C1A5691020059796A /* Navigation.json */; };
+		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.release.xcconfig"; sourceTree = "<group>"; };
+		3ADB35E41A5645B30059796A /* DynamicThemesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB35E81A5645B30059796A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3ADB35EC1A5645B30059796A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3ADB35EE1A5645B30059796A /* ButtonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
+		3ADB35EF1A5645B30059796A /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
+		3ADB360D1A567C820059796A /* Buttons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Buttons.json; sourceTree = "<group>"; };
+		3ADB360E1A567C820059796A /* Colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Colors.json; sourceTree = "<group>"; };
+		3ADB360F1A567C820059796A /* DarkMappings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkMappings.json; sourceTree = "<group>"; };
+		3ADB36101A567C820059796A /* LightMappings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LightMappings.json; sourceTree = "<group>"; };
+		3ADB36111A567C820059796A /* Typography.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Typography.json; sourceTree = "<group>"; };
+		3ADB36171A567D8B0059796A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3ADB362A1A5681CB0059796A /* ButtonsSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsSymbols.h; sourceTree = "<group>"; };
+		3ADB362B1A5681CB0059796A /* ButtonsSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsSymbols.m; sourceTree = "<group>"; };
+		3ADB362D1A56820D0059796A /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
+		3ADB362E1A56820D0059796A /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
+		3ADB362F1A56820D0059796A /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
+		3ADB36301A56820D0059796A /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
+		3ADB36311A56820D0059796A /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
+		3ADB36321A56820D0059796A /* UIButton+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Theming.m"; sourceTree = "<group>"; };
+		3ADB36361A568DAA0059796A /* UINavigationBar+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Theming.h"; sourceTree = "<group>"; };
+		3ADB36371A568DAA0059796A /* UINavigationBar+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Theming.m"; sourceTree = "<group>"; };
+		3ADB36391A568EE20059796A /* NavigationSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationSymbols.h; sourceTree = "<group>"; };
+		3ADB363A1A568EE20059796A /* NavigationSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationSymbols.m; sourceTree = "<group>"; };
+		3ADB363C1A5691020059796A /* Navigation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Navigation.json; sourceTree = "<group>"; };
+		3ADB363E1A5692220059796A /* UIColor+LightnessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LightnessType.h"; sourceTree = "<group>"; };
+		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
+		701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.debug.xcconfig"; sourceTree = "<group>"; };
+		8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3ADB35E11A5645B30059796A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C4C419154AC79D8F508A59 /* libPods-DynamicThemesExample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		078D737A13DCE0E82C6F76DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3ADB35DB1A5645B30059796A = {
+			isa = PBXGroup;
+			children = (
+				3ADB35E61A5645B30059796A /* DynamicThemesExample */,
+				3ADB35E51A5645B30059796A /* Products */,
+				078D737A13DCE0E82C6F76DD /* Frameworks */,
+				D0EEB0F737464781819EE8A2 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		3ADB35E51A5645B30059796A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB35E41A5645B30059796A /* DynamicThemesExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3ADB35E61A5645B30059796A /* DynamicThemesExample */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB360E1A567C820059796A /* Colors.json */,
+				3ADB36111A567C820059796A /* Typography.json */,
+				3ADB360F1A567C820059796A /* DarkMappings.json */,
+				3ADB36101A567C820059796A /* LightMappings.json */,
+				3ADB360D1A567C820059796A /* Buttons.json */,
+				3ADB363C1A5691020059796A /* Navigation.json */,
+				3ADB362A1A5681CB0059796A /* ButtonsSymbols.h */,
+				3ADB362B1A5681CB0059796A /* ButtonsSymbols.m */,
+				3ADB36391A568EE20059796A /* NavigationSymbols.h */,
+				3ADB363A1A568EE20059796A /* NavigationSymbols.m */,
+				3ADB35EB1A5645B30059796A /* AppDelegate.h */,
+				3ADB35EC1A5645B30059796A /* AppDelegate.m */,
+				3ADB35EE1A5645B30059796A /* ButtonsViewController.h */,
+				3ADB35EF1A5645B30059796A /* ButtonsViewController.m */,
+				3ADB362D1A56820D0059796A /* ButtonsView.h */,
+				3ADB362E1A56820D0059796A /* ButtonsView.m */,
+				3ADB362F1A56820D0059796A /* UIView+Theming.h */,
+				3ADB36301A56820D0059796A /* UIView+Theming.m */,
+				3ADB36311A56820D0059796A /* UIButton+Theming.h */,
+				3ADB36321A56820D0059796A /* UIButton+Theming.m */,
+				3ADB36361A568DAA0059796A /* UINavigationBar+Theming.h */,
+				3ADB36371A568DAA0059796A /* UINavigationBar+Theming.m */,
+				3ADB363E1A5692220059796A /* UIColor+LightnessType.h */,
+				3ADB363F1A5692220059796A /* UIColor+LightnessType.m */,
+				3ADB36171A567D8B0059796A /* Images.xcassets */,
+				3ADB35E71A5645B30059796A /* Supporting Files */,
+			);
+			path = DynamicThemesExample;
+			sourceTree = "<group>";
+		};
+		3ADB35E71A5645B30059796A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB35E81A5645B30059796A /* Info.plist */,
+				3ADB35E91A5645B30059796A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0EEB0F737464781819EE8A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */,
+				1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3ADB35E31A5645B30059796A /* DynamicThemesExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "DynamicThemesExample" */;
+			buildPhases = (
+				4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */,
+				3ADB35E01A5645B30059796A /* Sources */,
+				3ADB35E11A5645B30059796A /* Frameworks */,
+				3ADB35E21A5645B30059796A /* Resources */,
+				19580EBAC1CBA80205834F5D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicThemesExample;
+			productName = VariableThemesExample;
+			productReference = 3ADB35E41A5645B30059796A /* DynamicThemesExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3ADB35DC1A5645B30059796A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Automatic Labs, Inc";
+				TargetAttributes = {
+					3ADB35E31A5645B30059796A = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3ADB35DF1A5645B30059796A /* Build configuration list for PBXProject "DynamicThemesExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3ADB35DB1A5645B30059796A;
+			productRefGroup = 3ADB35E51A5645B30059796A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3ADB35E31A5645B30059796A /* DynamicThemesExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3ADB35E21A5645B30059796A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADB36161A567C820059796A /* Typography.json in Resources */,
+				3ADB36121A567C820059796A /* Buttons.json in Resources */,
+				3ADB36131A567C820059796A /* Colors.json in Resources */,
+				3ADB363D1A5691020059796A /* Navigation.json in Resources */,
+				3ADB36181A567D8B0059796A /* Images.xcassets in Resources */,
+				3ADB36151A567C820059796A /* LightMappings.json in Resources */,
+				3ADB36141A567C820059796A /* DarkMappings.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19580EBAC1CBA80205834F5D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3ADB35E01A5645B30059796A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADB36331A56820D0059796A /* ButtonsView.m in Sources */,
+				3ADB363B1A568EE20059796A /* NavigationSymbols.m in Sources */,
+				3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */,
+				3ADB36351A56820D0059796A /* UIButton+Theming.m in Sources */,
+				3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */,
+				3ADB36341A56820D0059796A /* UIView+Theming.m in Sources */,
+				3ADB35EA1A5645B30059796A /* main.m in Sources */,
+				3ADB36381A568DAA0059796A /* UINavigationBar+Theming.m in Sources */,
+				3ADB362C1A5681CB0059796A /* ButtonsSymbols.m in Sources */,
+				3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3ADB36051A5645B30059796A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3ADB36061A5645B30059796A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3ADB36081A5645B30059796A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemesExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = DynamicThemesExample;
+			};
+			name = Debug;
+		};
+		3ADB36091A5645B30059796A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemesExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = DynamicThemesExample;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3ADB35DF1A5645B30059796A /* Build configuration list for PBXProject "DynamicThemesExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB36051A5645B30059796A /* Debug */,
+				3ADB36061A5645B30059796A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "DynamicThemesExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB36081A5645B30059796A /* Debug */,
+				3ADB36091A5645B30059796A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3ADB35DC1A5645B30059796A /* Project object */;
+}

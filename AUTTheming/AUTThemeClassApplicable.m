@@ -13,7 +13,7 @@
 
 @interface AUTThemeClassApplier ()
 
-@property (nonatomic, copy) AUTThemeClassApplierBlock applier;
+@property (nonatomic, copy) AUTThemeClassApplierBlock applierBlock;
 
 @end
 
@@ -21,12 +21,12 @@
 
 #pragma mark - AUTThemeClassApplier
 
-- (instancetype)initWithClassApplier:(AUTThemeClassApplierBlock)applier
+- (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock
 {
-    NSParameterAssert(applier);
+    NSParameterAssert(applierBlock);
     self = [super init];
     if (self) {
-        self.applier = applier;
+        self.applierBlock = applierBlock;
     }
     return self;
 }
@@ -40,11 +40,12 @@
     return @[];
 }
 
-- (void)applyClass:(AUTThemeClass *)class fromTheme:(AUTTheme *)theme toObject:(id)object;
+- (void)applyClass:(AUTThemeClass *)class toObject:(id)object;
 {
+    NSParameterAssert(class);
     NSParameterAssert(object);
     
-    self.applier(object);
+    self.applierBlock(class, object);
 }
 
 - (BOOL)shouldApplyClass:(AUTThemeClass *)class
@@ -59,7 +60,7 @@
 @property (nonatomic, copy) NSString *property;
 @property (nonatomic, copy) NSString *valueTransformerName;
 @property (nonatomic) Class requiredClass;
-@property (nonatomic, copy) AUTThemePropertyApplierBlock applier;
+@property (nonatomic, copy) AUTThemePropertyApplierBlock applierBlock;
 
 @end
 
@@ -67,14 +68,15 @@
 
 #pragma mark - AUTThemePropertyApplier
 
-- (instancetype)initWithProperty:(NSString *)property applier:(AUTThemePropertyApplierBlock)applier valueTransformerName:(NSString *)name requiredClass:(Class)class
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(NSString *)name requiredClass:(Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock
 {
     NSParameterAssert(property);
-    NSParameterAssert(applier);
+    NSParameterAssert(applierBlock);
+    
     self = [super init];
     if (self) {
         self.property = property;
-        self.applier = applier;
+        self.applierBlock = applierBlock;
         self.valueTransformerName = name;
         self.requiredClass = class;
     }
@@ -117,17 +119,16 @@
     return @[self.property];
 }
 
-- (void)applyClass:(AUTThemeClass *)class fromTheme:(AUTTheme *)theme toObject:(id)object;
+- (void)applyClass:(AUTThemeClass *)class toObject:(id)object;
 {
     NSParameterAssert(class);
-    NSParameterAssert(theme);
     NSParameterAssert(object);
     
     AUTThemeConstant *constant = class.resolvedPropertiesConstants[self.property];
     
     id value = [[self class] valueFromConstant:constant forProperty:self.property onObject:object withRequiredClass:self.requiredClass valueTransformerName:self.valueTransformerName];
     
-    self.applier(value, object);
+    self.applierBlock(value, object);
 }
 
 - (BOOL)shouldApplyClass:(AUTThemeClass *)class
@@ -139,7 +140,7 @@
 
 @interface AUTThemeClassPropertiesApplier ()
 
-@property (nonatomic, copy) AUTThemePropertiesApplierBlock applier;
+@property (nonatomic, copy) AUTThemePropertiesApplierBlock applierBlock;
 @property (nonatomic) NSArray *properties;
 @property (nonatomic) NSArray *valueTransformersOrRequiredClasses;
 
@@ -149,14 +150,15 @@
 
 #pragma mark - AUTThemePropertiesApplier
 
-- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applier:(AUTThemePropertiesApplierBlock)applier
+- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock
 {
     NSParameterAssert(properties);
-    NSParameterAssert(applier);
+    NSParameterAssert(applierBlock);
+    
     self = [super init];
     if (self) {
         self.properties = properties;
-        self.applier = applier;
+        self.applierBlock = applierBlock;
         if (valueTransformersOrRequiredClasses) {
             NSAssert(properties.count == valueTransformersOrRequiredClasses.count, @"The `properties` array and the `valueTransformersOrRequiredClasses` array must have the same number of elements.");
             self.valueTransformersOrRequiredClasses = valueTransformersOrRequiredClasses;
@@ -186,10 +188,9 @@
 
 #pragma mark - AUTThemePropertiesApplier <AUTThemeApplier>
 
-- (void)applyClass:(AUTThemeClass *)class fromTheme:(AUTTheme *)theme toObject:(id)object
+- (void)applyClass:(AUTThemeClass *)class toObject:(id)object
 {
     NSParameterAssert(class);
-    NSParameterAssert(theme);
     NSParameterAssert(object);
     
     NSMutableDictionary *valuesForProperties = [NSMutableDictionary new];
@@ -205,7 +206,7 @@
         valuesForProperties[property] = value;
     }];
     
-    self.applier([valuesForProperties copy], object);
+    self.applierBlock([valuesForProperties copy], object);
 }
 
 - (BOOL)shouldApplyClass:(AUTThemeClass *)class

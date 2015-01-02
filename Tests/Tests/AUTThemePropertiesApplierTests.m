@@ -11,7 +11,13 @@
 #import <AUTTheming/AUTTheme+Private.h>
 #import <AUTTheming/NSObject+ThemingPrivate.h>
 
+#import <UIKit/UIKit.h>
+
 @interface AUTThemePropertiesApplierTests : XCTestCase
+
+@end
+
+@interface DeallocatingObject : UIView
 
 @end
 
@@ -29,7 +35,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperties:properties.allObjects applier:^(NSDictionary *valuesForProperties, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperties:properties.allObjects applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
         BOOL equalProperties = [properties isEqualToSet:[NSSet setWithArray:valuesForProperties.allKeys]];
         BOOL equalValues = [values isEqualToSet:[NSSet setWithArray:valuesForProperties.allValues]];
         XCTAssertTrue(equalProperties, @"Must pass the same set of properties that the appliers are registered");
@@ -74,6 +80,15 @@
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;
+}
+
+@end
+
+@implementation DeallocatingObject
+
+- (void)dealloc
+{
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 @end

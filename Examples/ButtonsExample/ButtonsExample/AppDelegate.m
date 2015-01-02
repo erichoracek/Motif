@@ -8,7 +8,7 @@
 
 #import <AUTTheming/AUTTheming.h>
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "ButtonsViewController.h"
 
 @implementation AppDelegate
 
@@ -20,8 +20,9 @@
     [theme addAttributesFromThemeAtURL:[[NSBundle mainBundle] URLForResource:@"Theme" withExtension:@"json"] error:&error];
     NSAssert(!error, @"Error when adding attributes to theme: %@", error);
     
-    ViewController *viewController = [ViewController new];
-    viewController.aut_theme = theme;
+    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    
+    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:applier];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = viewController;

@@ -36,7 +36,7 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Theme class applier expectation"];
     
-    id <AUTThemeClassApplicable> applier = [NSObject aut_registerThemeClassApplier:^(id objectToTheme) {
+    id <AUTThemeClassApplicable> applier = [NSObject aut_registerThemeClassapplierBlock:^(id objectToTheme) {
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [expectation fulfill];
     }];

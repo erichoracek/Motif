@@ -21,11 +21,11 @@ extern const struct ThemeClassNames {
 
 extern const struct ThemeProperties {
     __unsafe_unretained NSString *fontSize;
+    __unsafe_unretained NSString *tintColor;
     __unsafe_unretained NSString *fontName;
-    __unsafe_unretained NSString *borderColor;
     __unsafe_unretained NSString *cornerRadius;
     __unsafe_unretained NSString *borderWidth;
+    __unsafe_unretained NSString *borderColor;
     __unsafe_unretained NSString *contentEdgeInsets;
     __unsafe_unretained NSString *backgroundColor;
-    __unsafe_unretained NSString *textColor;
 } ThemeProperties;

@@ -66,11 +66,13 @@ static NSString * const WarningFormat = @"\
     for (SymbolType symbolType = 0; symbolType < SymbolTypeCount; symbolType++) {
         
         NSString *symbolsDeclartion = [self symbolsDeclartionOfType:symbolType withFiletype:fileType indentation:indentation prefix:prefix];
-        NSData *data = [symbolsDeclartion dataUsingEncoding:NSUTF8StringEncoding];
-        [stream write:data.bytes maxLength:data.length];
-        
-        NSData *trailingWhitespaceData = [[self trailingWhitespaceForSymbolType:symbolType] dataUsingEncoding:NSUTF8StringEncoding];
-        [stream write:trailingWhitespaceData.bytes maxLength:trailingWhitespaceData.length];
+        if (symbolsDeclartion) {
+            NSData *data = [symbolsDeclartion dataUsingEncoding:NSUTF8StringEncoding];
+            [stream write:data.bytes maxLength:data.length];
+            
+            NSData *trailingWhitespaceData = [[self trailingWhitespaceForSymbolType:symbolType] dataUsingEncoding:NSUTF8StringEncoding];
+            [stream write:trailingWhitespaceData.bytes maxLength:trailingWhitespaceData.length];
+        }
     }
     
     [stream close];
@@ -129,12 +131,17 @@ static NSString * const WarningFormat = @"\
     NSParameterAssert(indendatiaon);
     NSParameterAssert(prefix);
     
+    NSArray *symbols = [self symbolsForType:symbolType];
+    if (!symbols || !symbols.count) {
+        return nil;
+    }
+    
     NSMutableArray *lines = [NSMutableArray new];
  
     NSString *enumName = [self enumNameForSymbolType:symbolType prefix:prefix];
     
     [lines addObject:[self openingDeclarationForFiletype:fileType enumName:enumName]];
-    for (NSString *symbol in [self symbolsForType:symbolType]) {
+    for (NSString *symbol in symbols) {
         [lines addObject:[self memberDeclarationForSymbol:symbol fileType:fileType indentation:indendatiaon]];
     }
     [lines addObject:[self closingDeclarationForFiletype:fileType enumName:enumName]];

@@ -21,11 +21,11 @@ const struct ThemeClassNames ThemeClassNames = {
 
 const struct ThemeProperties ThemeProperties = {
     .fontSize = @"fontSize",
+    .tintColor = @"tintColor",
     .fontName = @"fontName",
-    .borderColor = @"borderColor",
     .cornerRadius = @"cornerRadius",
     .borderWidth = @"borderWidth",
+    .borderColor = @"borderColor",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
-    .textColor = @"textColor",
 };

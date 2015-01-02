@@ -1,0 +1,10 @@
+{
+    "constants": {
+        "ContentBackgroundColor": "GrayColor",
+        "ContentForegroundColor": "GrayLightColor",
+        "DestructiveColor": "RedLightColor",
+        "PrimaryColor": "BlueLightColor",
+        "SeparatorColor": "GrayDarkColor",
+        "TextColor": "WhiteLightColor"
+    }
+}
