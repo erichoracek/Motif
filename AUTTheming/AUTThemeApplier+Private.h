@@ -10,17 +10,14 @@
 
 @class AUTThemeClass;
 
-/**
- A theme applier is responsible for 
- */
 @interface AUTThemeApplier ()
 
 /**
- The applicants of the theme classes, keyed by the the class names.
+ The applicants of the theme classes, keyed by the the theme class names that they had applied to them.
  
- The values of this dictionary are instances of NSHashTable, containing weak references to all of the objects that have had a class applied to it. If a theme is changed, an applier can apply the new theme to all of its objects.
+ The values of this dictionary are instances of NSHashTable, containing weak references to all of the objects that have had a class applied to it. When the theme is changed, an applier can apply the new theme to all of its objects.
  */
-@property (nonatomic) NSMutableDictionary *themeApplicants;
+@property (nonatomic) NSMutableDictionary *applicants;
 
 /**
  Applies a theme class to an object.
@@ -28,6 +25,6 @@
  @param class  The theme class that should be applied to the specified object.
  @param object The object that should have the be theme class applied to it.
  */
-- (void)applyClass:(AUTThemeClass *)class toObject:(id)object;
+- (void)applyClass:(AUTThemeClass *)class toApplicant:(id)applicant;
 
 @end

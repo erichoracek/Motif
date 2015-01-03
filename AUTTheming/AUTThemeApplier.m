@@ -18,8 +18,16 @@
 
 #pragma mark Public
 
+- (instancetype)init
+{
+    // Ensure that exception is thrown when just `init` is called.
+    self = [self initWithTheme:nil];
+    return self;
+}
+
 - (instancetype)initWithTheme:(AUTTheme *)theme
 {
+    NSParameterAssert(theme);
     self = [super init];
     if (theme) {
         self.theme = theme;
@@ -29,13 +37,15 @@
 
 - (void)setTheme:(AUTTheme *)theme
 {
-    if (theme != _theme) {
-        // The theme has just changed if there is an existing theme and it was just replaced
-        BOOL shouldReapply = (_theme && theme);
-        _theme = theme;
-        if (shouldReapply) {
-            [self applyThemeToPreviousApplicants];
-        }
+    NSAssert(theme, @"The theme property is not optional.");
+    if (theme == _theme) {
+        return;
+    }
+    // The theme has just changed if there is an existing theme and it was just replaced
+    BOOL shouldReapply = (_theme && theme);
+    _theme = theme;
+    if (shouldReapply) {
+        [self applyTheme:theme toApplicants:self.themeApplicants];
     }
 }
 
@@ -44,24 +54,29 @@
     if (!className || !object) {
         return;
     }
-    if (!self.theme) {
-        return;
-    }
-    AUTThemeClass *class = [self.theme themeClassForName:className];
-    if (!class) {
-        return;
-    }
-    [self applyClass:class toObject:object];
+    [self applyClassWithName:className fromTheme:self.theme toApplicant:object];
 }
 
 #pragma mark Private
 
-- (void)applyClass:(AUTThemeClass *)class toObject:(id)applicant
+- (void)applyClassWithName:(NSString *)className fromTheme:(AUTTheme *)theme toApplicant:(id)applicant
+{
+    if (!theme) {
+        return;
+    }
+    AUTThemeClass *class = [theme themeClassForName:className];
+    if (!class) {
+        return;
+    }
+    [self applyClass:class toApplicant:applicant];
+}
+
+- (void)applyClass:(AUTThemeClass *)class toApplicant:(id)applicant
 {
     NSParameterAssert(class);
     NSParameterAssert(applicant);
     
-    [self addThemeApplicant:applicant forClassName:class.name];
+    [self addApplicant:applicant forClassWithName:class.name];
     
     NSDictionary *properties = class.properties;
     NSMutableSet *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
@@ -89,48 +104,51 @@
     }
 }
 
-- (void)applyThemeToPreviousApplicants
+- (void)applyTheme:(AUTTheme *)theme toApplicants:(NSDictionary *)applicants
 {
-    for (NSString *className in self.themeApplicants) {
-        NSArray *applicants = [self themeApplicantsForClassName:className];
-        for (id applicant in applicants) {
-            [self applyClassWithName:className toObject:applicant];
+    for (NSString *className in applicants) {
+        NSArray *classApplicants = [self applicantsForClassWithName:className fromApplicants:applicants];
+        for (id classApplicant in classApplicants) {
+            [self applyClassWithName:className toObject:classApplicant];
         }
     }
 }
 
-- (void)addThemeApplicant:(id)object forClassName:(NSString *)className
-{
-    NSParameterAssert(object);
-    NSParameterAssert(className);
-    
-    NSHashTable *applicants = self.themeApplicants[className];
-    if (!applicants) {
-        // Maintain a weak objects has table to ensure the applicants are not retained by the applier
-        applicants = [NSHashTable weakObjectsHashTable];
-        self.themeApplicants[className] = applicants;
-    }
-    [applicants addObject:object];
-}
+#pragma mark Theme Applicants
 
-- (NSArray *)themeApplicantsForClassName:(NSString *)className
+- (NSArray *)applicantsForClassWithName:(NSString *)className fromApplicants:(NSDictionary *)applicants
 {
     NSParameterAssert(className);
+    NSParameterAssert(applicants);
     
-    NSHashTable *applicants = self.themeApplicants[className];
-    if (applicants) {
-        NSArray *allObjects = applicants.allObjects;
-        return (allObjects.count ? allObjects : nil);
+    NSHashTable *classApplicants = applicants[className];
+    if (classApplicants) {
+        NSArray *allClassApplicants = classApplicants.allObjects;
+        return (allClassApplicants.count ? allClassApplicants : nil);
     }
     return nil;
 }
 
+- (void)addApplicant:(id)applicant forClassWithName:(NSString *)className
+{
+    NSParameterAssert(applicant);
+    NSParameterAssert(className);
+    
+    NSHashTable *applicants = self.applicants[className];
+    if (!applicants) {
+        // Maintain a weak objects hash table to ensure the applicants are not retained by this applier instance
+        applicants = [NSHashTable weakObjectsHashTable];
+        self.applicants[className] = applicants;
+    }
+    [applicants addObject:applicant];
+}
+
 - (NSDictionary *)themeApplicants
 {
-    if (!_themeApplicants) {
-        self.themeApplicants = [NSMutableDictionary new];
+    if (!_applicants) {
+        self.applicants = [NSMutableDictionary new];
     }
-    return _themeApplicants;
+    return _applicants;
 }
 
 @end
