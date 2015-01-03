@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
-#import <AUTTheming/NSObject+ThemingPrivate.h>
+#import <AUTTheming/NSObject+ThemeClassAppliersPrivate.h>
 
 @interface AUTThemeClassApplierTests : XCTestCase
 
@@ -36,15 +36,16 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"Theme class applier expectation"];
     
-    id <AUTThemeClassApplicable> applier = [NSObject aut_registerThemeClassapplierBlock:^(id objectToTheme) {
+    id <AUTThemeClassApplicable> classApplier = [NSObject aut_registerThemeClassApplierBlock:^(AUTThemeClass *class, id objectToTheme) {
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [expectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [NSObject aut_deregisterThemeApplier:applier];
+        [NSObject aut_deregisterThemeClassApplier:classApplier];
     }];
 }
 

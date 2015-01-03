@@ -42,10 +42,11 @@
         [applierExpectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:propertyApplier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
@@ -63,16 +64,17 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:applier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
@@ -86,18 +88,19 @@
     Class objectClass = [NSObject class];
     id object = [objectClass new];
     
-    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {}];
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {}];
     
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
     @try {
-        [object aut_applyThemeClassWithName:class fromTheme:theme];
+        AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+        [themeApplier applyClassWithName:class toObject:object];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
     }
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:applier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
@@ -122,16 +125,17 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> applier = [objectClass aut_registerThemeProperty:property valueTransformerName:valueTransfomerName applierBlock:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property valueTransformerName:valueTransfomerName applierBlock:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(pointValue, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:applier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
@@ -151,16 +155,17 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> applier = [objectSuperclass aut_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
+    id <AUTThemeClassApplicable> propertyApplier = [objectSuperclass aut_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectSuperclass aut_deregisterThemeApplier:applier];
+        [objectSuperclass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
@@ -188,11 +193,12 @@
         XCTFail(@"This applier must not be invoked");
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:propertyApplier];
-        [objectClass aut_deregisterThemeApplier:propertyNotInClassApplier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
+        [objectClass aut_deregisterThemeClassApplier:propertyNotInClassApplier];
     }];
 }
 

@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
-#import <AUTTheming/NSObject+ThemingPrivate.h>
+#import <AUTTheming/NSObject+ThemeClassAppliersPrivate.h>
 
 #import <UIKit/UIKit.h>
 
@@ -43,10 +43,11 @@
         [applierExpectation fulfill];
     }];
     
-    [object aut_applyThemeClassWithName:class fromTheme:theme];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass aut_deregisterThemeApplier:propertyApplier];
+        [objectClass aut_deregisterThemeClassApplier:propertyApplier];
     }];
 }
 
