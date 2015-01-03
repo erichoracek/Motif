@@ -10,13 +10,13 @@
 
 @interface AUTThemeConstant ()
 
-#pragma mark - Public
+- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue;
 
 @property (nonatomic, copy) NSString *key;
-@property (nonatomic) id rawValue;
-@property (nonatomic) id mappedValue;
 
-#pragma mark - Private
+@property (nonatomic) id rawValue;
+
+@property (nonatomic) id mappedValue;
 
 /**
  A cache to hold transformed mapped values on this constant.

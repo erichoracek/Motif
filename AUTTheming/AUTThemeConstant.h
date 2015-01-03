@@ -10,8 +10,6 @@
 
 @interface AUTThemeConstant : NSObject
 
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue;
-
 /**
  The constant key, as specified in the JSON theme file.
  */
