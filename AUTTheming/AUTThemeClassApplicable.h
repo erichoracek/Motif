@@ -15,7 +15,7 @@
 /**
  AUTThemeClassApplicable is an abstract protocol that defines the methods and properties required to apply an AUTThemeClass from an AUTTheme to an object.
  
- You likely won't even have to use an AUTThemeApplier directly. The easiest way to register an applier is by using the `+[NSObject aut_registerTheme...applier:]` methods, which is a convenience method for creating and registering one of the below appliers.
+ You likely won't even have to use an object that conforms to AUTThemeClassApplicable directly. The easiest way to register an applier is by using the `+[NSObject aut_registerTheme...applierBlock:]` methods, which is a convenience method for creating and registering one of the below appliers.
  
  Alternatively, an applier can be initialized and added using the `+[NSObject aut_registerThemeApplier:]` method.
  */
