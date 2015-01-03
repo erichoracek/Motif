@@ -19,6 +19,14 @@
 
 @implementation AUTThemeClassApplier
 
+#pragma mark - NSObject
+
+- (instancetype)init
+{
+    self = [self initWithClassApplierBlock:nil];
+    return self;
+}
+
 #pragma mark - AUTThemeClassApplier
 
 - (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock
@@ -65,6 +73,14 @@
 @end
 
 @implementation AUTThemeClassPropertyApplier
+
+#pragma mark - NSObject
+
+- (instancetype)init
+{
+    self = [self initWithProperty:nil valueTransformerName:nil requiredClass:Nil applierBlock:nil];
+    return self;
+}
 
 #pragma mark - AUTThemePropertyApplier
 
@@ -147,6 +163,14 @@
 @end
 
 @implementation AUTThemeClassPropertiesApplier
+
+#pragma mark - NSObject
+
+- (instancetype)init
+{
+    self = [self initWithProperties:nil valueTransformersOrRequiredClasses:nil applierBlock:nil];
+    return self;
+}
 
 #pragma mark - AUTThemePropertiesApplier
 
