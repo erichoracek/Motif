@@ -23,7 +23,11 @@
 
 - (instancetype)init
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    // Ensure that exception is thrown when just `init` is called.
     self = [self initWithClassApplierBlock:nil];
+#pragma clang diagnostic pop
     return self;
 }
 
@@ -78,7 +82,11 @@
 
 - (instancetype)init
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    // Ensure that exception is thrown when just `init` is called.
     self = [self initWithProperty:nil valueTransformerName:nil requiredClass:Nil applierBlock:nil];
+#pragma clang diagnostic pop
     return self;
 }
 
@@ -168,7 +176,11 @@
 
 - (instancetype)init
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    // Ensure that exception is thrown when just `init` is called.
     self = [self initWithProperties:nil valueTransformersOrRequiredClasses:nil applierBlock:nil];
+#pragma clang diagnostic pop
     return self;
 }
 

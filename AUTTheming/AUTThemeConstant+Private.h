@@ -10,7 +10,7 @@
 
 @interface AUTThemeConstant ()
 
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue;
+- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue __attribute__ ((nonnull (1, 2, 3)));
 
 @property (nonatomic, copy) NSString *key;
 

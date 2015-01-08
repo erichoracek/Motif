@@ -48,7 +48,7 @@
 
 @interface AUTThemeClassApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull));
 
 @property (nonatomic, copy, readonly) AUTThemeClassApplierBlock applierBlock;
 
@@ -56,7 +56,7 @@
 
 @interface AUTThemeClassPropertyApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(NSString *)name requiredClass:(Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(NSString *)name requiredClass:(Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1, 4)));
 
 @property (nonatomic, copy, readonly) NSString *property;
 @property (nonatomic, copy, readonly) NSString *valueTransformerName;
@@ -67,7 +67,7 @@
 
 @interface AUTThemeClassPropertiesApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1, 3)));
 
 /**
  If nil, there are no value transfomer or required classes for this theme applier.

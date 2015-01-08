@@ -10,7 +10,7 @@
 
 @interface AUTThemeClass ()
 
-- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants;
+- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants __attribute__ ((nonnull (1, 2)));
 
 /**
  Readwrite verison of public name property.

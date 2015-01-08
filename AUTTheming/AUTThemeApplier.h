@@ -24,7 +24,7 @@
  
  @return An initialized theme applier.
  */
-- (instancetype)initWithTheme:(AUTTheme *)theme NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTheme:(AUTTheme *)theme NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull));
 
 /**
  The theme that the applier should be responsible for applying.

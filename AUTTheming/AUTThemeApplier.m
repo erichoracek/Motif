@@ -20,8 +20,11 @@
 
 - (instancetype)init
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
     self = [self initWithTheme:nil];
+#pragma clang diagnostic pop
     return self;
 }
 
@@ -35,7 +38,7 @@
     return self;
 }
 
-- (void)setTheme:(AUTTheme *)theme
+- (void)setTheme:(AUTTheme *)theme __attribute__ ((nonnull))
 {
     NSAssert(theme, @"The theme property is not optional.");
     if (theme == _theme) {
