@@ -45,7 +45,7 @@
     BOOL shouldReapply = (_theme && theme);
     _theme = theme;
     if (shouldReapply) {
-        [self applyTheme:theme toApplicants:self.themeApplicants];
+        [self applyTheme:theme toApplicants:self.applicants];
     }
 }
 
@@ -143,7 +143,7 @@
     [applicants addObject:applicant];
 }
 
-- (NSDictionary *)themeApplicants
+- (NSDictionary *)applicants
 {
     if (!_applicants) {
         self.applicants = [NSMutableDictionary new];
