@@ -55,11 +55,6 @@ NSString * const AUTThemeClassesKey = @"classes";
     return self.mappedClasses[name];
 }
 
-- (NSDictionary *)propertiesForClassWithKey:(NSString *)key
-{
-    return nil;
-}
-
 #pragma mark Theme Names
 
 - (NSArray *)names
