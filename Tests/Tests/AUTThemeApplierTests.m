@@ -18,17 +18,52 @@
 
 @implementation AUTThemeApplierTests
 
+- (void)testThemeReapplication
+{
+    AUTTheme *theme1 = [AUTTheme new];
+    AUTTheme *theme2 = [AUTTheme new];
+    
+    NSString *class = @"class";
+    NSString *property = @"property";
+    NSString *value1 = @"value1";
+    NSString *value2 = @"value2";
+    
+    NSError *error;
+    [theme1 addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value1}}} forThemeWithName:@"" error:&error];
+    XCTAssertNil(error, @"Error must be nil");
+    
+    [theme2 addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value2}}} forThemeWithName:@"" error:&error];
+    XCTAssertNil(error, @"Error must be nil");
+    
+    Class objectClass = [NSObject class];
+    id object = [objectClass new];
+    
+    XCTestExpectation *theme1ApplicationExpectation = [self expectationWithDescription:@"theme 1 application"];
+    XCTestExpectation *theme2ApplicationExpectation = [self expectationWithDescription:@"theme 2 application"];
+    
+    [objectClass aut_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
+        if (propertyValue == value1) {
+            [theme1ApplicationExpectation fulfill];
+        }
+        else if (propertyValue == value2) {
+            [theme2ApplicationExpectation fulfill];
+        }
+    }];
+    
+    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme1];
+    [applier applyClassWithName:class toObject:object];
+    applier.theme = theme2;
+    
+    [self waitForExpectationsWithTimeout:1.0 handler:nil];
+}
+
 - (void)testApplicantMemoryManagement
 {
     NSString *className = @"Class";
     
     AUTTheme *theme = [AUTTheme new];
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:@{
-        AUTThemeClassesKey: @{
-            className: @{}
-        }
-    } forThemeWithName:@"" error:&error];
+    [theme addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{className: @{}}} forThemeWithName:@"" error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];
