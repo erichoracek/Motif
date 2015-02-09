@@ -20,19 +20,16 @@
 
 - (void)testThemeReapplication
 {
-    AUTTheme *theme1 = [AUTTheme new];
-    AUTTheme *theme2 = [AUTTheme new];
-    
     NSString *class = @"class";
     NSString *property = @"property";
     NSString *value1 = @"value1";
     NSString *value2 = @"value2";
     
     NSError *error;
-    [theme1 addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value1}}} forThemeWithName:@"" error:&error];
+    AUTTheme *theme1 = [[AUTTheme alloc] initWithRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value1}}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
-    
-    [theme2 addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value2}}} forThemeWithName:@"" error:&error];
+
+    AUTTheme *theme2 = [[AUTTheme alloc] initWithRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value2}}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     Class objectClass = [NSObject class];
@@ -61,9 +58,10 @@
 {
     NSString *className = @"Class";
     
-    AUTTheme *theme = [AUTTheme new];
+    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey: @{className: @{}}};
+    
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:@{AUTThemeClassesKey: @{className: @{}}} forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];

@@ -60,7 +60,6 @@
 
 - (AUTTheme *)themeWithClass:(NSString *)class properties:(NSArray *)properties values:(NSArray *)values
 {
-    AUTTheme *theme = [AUTTheme new];
     
     NSMutableDictionary *rawClassDictionary = [NSMutableDictionary new];
     NSEnumerator *propertiesEnumerator = [properties objectEnumerator];
@@ -70,14 +69,14 @@
         rawClassDictionary[property] = value;
     }
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class: rawClassDictionary
         }
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;

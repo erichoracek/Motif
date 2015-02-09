@@ -18,15 +18,13 @@
 
 - (void)testInheritanceBetweenClasses
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *superclass = @"superclass";
     NSString *subclass = @"subclass";
     NSString *superclassProperty = @"property1";
     NSString *subclassProperty = @"property2";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             superclass: @{
                 superclassProperty: value,
@@ -39,7 +37,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *superclassThemeClass = [theme themeClassForName:superclass];
@@ -57,14 +55,12 @@
 
 - (void)testInvalidSuperclassValue
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *class = @"class";
     NSString *nonexistentClass = @"nonexistentClass";
     NSString *property = @"property";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class: @{
                 AUTThemeSuperclassKey: nonexistentClass,
@@ -74,7 +70,8 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    XCTAssertNotNil(theme);
     XCTAssertNotNil(error, @"Must have error with invalid superclass value");
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
 }

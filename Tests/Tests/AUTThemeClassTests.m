@@ -20,39 +20,35 @@
 
 - (void)testClassMappingInvalidClassObjectError
 {
-    AUTTheme *theme = [AUTTheme new];
-    
-    NSDictionary *themeAttributesDictionary = @{AUTThemeClassesKey: @0};
+    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey: @0};
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     
+    XCTAssertNotNil(theme);
     XCTAssert(error, @"Must have error with invalid class object");
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
 }
 
 - (void)testClassMappingInvalidClassObjectClassError
 {
-    AUTTheme *theme = [AUTTheme new];
-    
-    NSDictionary *themeAttributesDictionary = @{AUTThemeClassesKey:@{@"class": @0}};
+    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey:@{@"class": @0}};
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     
+    XCTAssertNotNil(theme);
     XCTAssert(error, @"Must have error with invalid class object class");
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
 }
 
 - (void)testClassMappingPropertyToValue
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *class = @"class";
     NSString *property = @"property";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class: @{
                 property: value
@@ -61,7 +57,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class];
@@ -75,14 +71,12 @@
 
 - (void)testClassMappingPropertyToValueFromConstant
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *class = @"class";
     NSString *property = @"property";
     NSString *value = @"value";
     NSString *constant = @"constant";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeConstantsKey: @{
             constant: value
         },
@@ -94,7 +88,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class];
@@ -108,15 +102,13 @@
 
 - (void)testClassToClassMappingFromPropertyValueWithinTheme
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *class1 = @"class1";
     NSString *class2 = @"class2";
     NSString *property = @"property";
     NSString *classProperty = @"class1Property";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class1: @{
                 property: value
@@ -128,7 +120,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme themeClassForName:class1];
@@ -145,22 +137,20 @@
 
 - (void)testClassToClassMappingFromPropertyValueBetweenThemes
 {
-    AUTTheme *theme = [AUTTheme new];
-    
     NSString *class1 = @"class1";
     NSString *class2 = @"class2";
     NSString *property = @"property";
     NSString *classProperty = @"class1Property";
     NSString *value = @"value";
     
-    NSDictionary *theme1AttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary1 = @{
         AUTThemeClassesKey: @{
             class1: @{
                 property: value
             }
         }
     };
-    NSDictionary *theme2AttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary2 = @{
         AUTThemeClassesKey: @{
             class2: @{
                 classProperty: class1
@@ -169,8 +159,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme1AttributesDictionary forThemeWithName:@"" error:&error];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme2AttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme themeClassForName:class1];
@@ -195,14 +184,14 @@
     NSString *value2 = @"value";
     NSString *property2 = @"property2";
     
-    NSDictionary *theme1AttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary1 = @{
         AUTThemeClassesKey: @{
             class: @{
                 property1: value1
             }
         }
     };
-    NSDictionary *theme2AttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary2 = @{
         AUTThemeClassesKey: @{
             class: @{
                 property2: value2
@@ -210,11 +199,8 @@
         }
     };
     
-    AUTTheme *theme = [AUTTheme new];
-    
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme1AttributesDictionary forThemeWithName:@"" error:nil];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme2AttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
     XCTAssertNotNil(error, @"Must have error when class with duplciate name is registered");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class];

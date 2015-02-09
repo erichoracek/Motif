@@ -18,6 +18,7 @@
 		3A342B041A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A342B031A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m */; };
 		3A342B061A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A342B051A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m */; };
 		3A342B211A4CC2400034A23C /* AUTThemePropertyApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A342B201A4CC2400034A23C /* AUTThemePropertyApplierTests.m */; };
+		3A3DD9151A88983500DBA831 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A3DD9141A88983500DBA831 /* Basic.json */; };
 		3AD69A3E1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */; };
 		3AD69A401A4F51220002FA8F /* AUTThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */; };
 		3AF158731A5E1A2C003458C0 /* AUTThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */; };
@@ -36,6 +37,7 @@
 		3A342B031A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeConstantEqualityTests.m; sourceTree = "<group>"; };
 		3A342B051A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassEqualityTests.m; sourceTree = "<group>"; };
 		3A342B201A4CC2400034A23C /* AUTThemePropertyApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertyApplierTests.m; sourceTree = "<group>"; };
+		3A3DD9141A88983500DBA831 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
 		3AAAFDCE1A48B8C7000E7102 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAAFDD21A48B8C7000E7102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassApplierTests.m; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */,
 				3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */,
 				3A21AD3D1A4A57DA008D44FD /* InvalidJSONTheme.json */,
+				3A3DD9141A88983500DBA831 /* Basic.json */,
 				3A21AD411A4A5B2E008D44FD /* BasicTheme.json */,
 				3A21AD451A4A5EDD008D44FD /* BasicThemeWithNoExtension */,
 				3AAAFDD11A48B8C7000E7102 /* Supporting Files */,
@@ -179,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A3DD9151A88983500DBA831 /* Basic.json in Resources */,
 				3A21AD3E1A4A57DA008D44FD /* InvalidJSONTheme.json in Resources */,
 				3A21AD461A4A5EDD008D44FD /* BasicThemeWithNoExtension in Resources */,
 				3A21AD431A4A5B2E008D44FD /* BasicTheme.json in Resources */,

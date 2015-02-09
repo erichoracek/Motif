@@ -206,9 +206,8 @@
 
 - (AUTTheme *)themeWithClass:(NSString *)class property:(NSString *)property value:(id)value
 {
-    AUTTheme *theme = [AUTTheme new];
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class: @{
                 property: value
@@ -217,7 +216,7 @@
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;

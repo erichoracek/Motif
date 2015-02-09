@@ -19,17 +19,15 @@
 
 - (void)testClassApplier
 {
-    AUTTheme *theme = [AUTTheme new];
- 
     NSString *class = @"class";
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeClassesKey: @{
             class: @{}
         }
     };
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];

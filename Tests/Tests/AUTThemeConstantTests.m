@@ -19,13 +19,11 @@
 
 - (void)testConstantMappingInvalidConstantObjectError
 {
-    AUTTheme *theme = [AUTTheme new];
-    
-    NSDictionary *themeAttributesDictionary = @{AUTThemeConstantsKey: @0};
-    
+    NSDictionary *rawAttributesDictionary = @{AUTThemeConstantsKey: @0};
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
-    
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+
+    XCTAssertNotNil(theme);
     XCTAssertNotNil(error);
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
 }
@@ -35,12 +33,10 @@
     NSString *key = @"key";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{AUTThemeConstantsKey: @{key: value}};
-    
-    AUTTheme *theme = [AUTTheme new];
+    NSDictionary *rawAttributesDictionary = @{AUTThemeConstantsKey: @{key: value}};
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     XCTAssertEqualObjects(value, [theme constantValueForKey:key], @"Constant value for key from theme must be equivalent to constant value in attributes dictionary");
@@ -52,14 +48,11 @@
     NSString *key2 = @"key2";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
-    NSDictionary *themeAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
-    
-    AUTTheme *theme = [AUTTheme new];
+    NSDictionary *rawAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
+    NSDictionary *rawAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary1 forThemeWithName:@"" error:&error];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary2 forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id key1Value = [theme constantValueForKey:key1];
@@ -76,16 +69,12 @@
     NSString *key3 = @"key3";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
-    NSDictionary *themeAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
-    NSDictionary *themeAttributesDictionary3 = @{AUTThemeConstantsKey: @{key3: key2}};
-    
-    AUTTheme *theme = [AUTTheme new];
+    NSDictionary *rawAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
+    NSDictionary *rawAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
+    NSDictionary *rawAttributesDictionary3 = @{AUTThemeConstantsKey: @{key3: key2}};
     
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary1 forThemeWithName:@"" error:&error];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary2 forThemeWithName:@"" error:&error];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary3 forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2, rawAttributesDictionary3] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id key1Value = [theme constantValueForKey:key1];
@@ -103,17 +92,15 @@
     NSString *key2 = @"key2";
     NSString *value = @"value";
     
-    NSDictionary *themeAttributesDictionary = @{
+    NSDictionary *rawAttributesDictionary = @{
         AUTThemeConstantsKey: @{
             key2: key1,
             key1: value
         }
     };
     
-    AUTTheme *theme = [AUTTheme new];
-    
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:themeAttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id key1Value = [theme constantValueForKey:key1];
@@ -131,22 +118,19 @@
     NSString *value1 = @"value1";
     NSString *value2 = @"value";
     
-    NSDictionary *theme1AttributesDictionary = @{
+    NSDictionary *themeAttributesDictionary1 = @{
         AUTThemeConstantsKey: @{
             constant: value1
         }
     };
-    NSDictionary *theme2AttributesDictionary = @{
+    NSDictionary *themeAttributesDictionary2 = @{
         AUTThemeConstantsKey: @{
             constant: value2
         }
     };
     
-    AUTTheme *theme = [AUTTheme new];
-    
     NSError *error;
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme1AttributesDictionary forThemeWithName:@"" error:nil];
-    [theme addConstantsAndClassesFromRawAttributesDictionary:theme2AttributesDictionary forThemeWithName:@"" error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[themeAttributesDictionary1, themeAttributesDictionary2] error:&error];
     XCTAssertNotNil(error, @"Must have error when constant with duplciate name is registered");
     
     id constantValue = [theme constantValueForKey:constant];
