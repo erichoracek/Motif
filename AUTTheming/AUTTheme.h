@@ -16,16 +16,62 @@
 @interface AUTTheme : NSObject
 
 /**
- The filenames of the themes that have been registered with this theme collection, in the order that they were added.
+ Creates a theme object from a theme file with the specified name.
+ 
+ @param themeName The name of the theme file. If the theme file ends with "Theme", then you may alternatively specify only the prefix before "Theme" as the theme name. Required.
+ @param error     If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
++ (instancetype)themeFromThemeNamed:(NSString *)themeName error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Creates a theme object from a set of one or mores theme files with the specified names.
+ 
+ @param themeNames Names of the theme files as NSStrings. If the theme file ends with "Theme", then you may alternatively specify only the prefix before "Theme" as the theme name. Required.
+ @param error      If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
++ (instancetype)themeFromThemesNamed:(NSArray *)themeNames error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Creates a theme object from a set of one or mores theme files with the specified names.
+ 
+ @param themeNames The names of the theme file. If the theme file ends with "Theme", then you may alternatively specify only the prefix before "Theme" as the theme name. Required.
+ @param bundle     The bundle that the themes should be loaded from. Optional.
+ @param error      If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
++ (instancetype)themeFromThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Initializes a theme from a theme file.
+ 
+ @param fileURL The NSURL reference to the theme file that the theme object should be created from. Required.
+ @param error   If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
+- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Initializes a theme from a theme file.
+ 
+ @param files   An array of NSURL reference to the theme file that the theme object should be created from. Required.
+ @param error   If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
+- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
+
+/**
+ The names of the theme files that have been registered with this theme, in the order that they were added.
  
  Does not include the extension of the theme name. If the file name is "filename.json", the name for will be "filename".
  */
 @property (nonatomic, readonly) NSArray *names;
-
-/**
- If the JSON at the specified URL does not exist or is unable to be parsed, an error is returned in the pass-by-reference error parameter.
- */
-- (void)addAttributesFromThemeAtURL:(NSURL *)URL error:(NSError **)error;
 
 /**
  The constant value from the theme collection for the specified key.
