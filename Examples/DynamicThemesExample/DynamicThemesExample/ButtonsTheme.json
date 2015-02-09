@@ -1,8 +1,5 @@
 {
     "classes": {
-        "Background": {
-            "backgroundColor": "ContentBackgroundColor"
-        },
         "Button": {
             "fontName": "RegularFontName",
             "fontSize": "H5FontSize",

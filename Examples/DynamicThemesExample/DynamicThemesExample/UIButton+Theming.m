@@ -9,25 +9,25 @@
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTValueTransformers.h>
 #import "UIButton+Theming.h"
-#import "ButtonsSymbols.h"
+#import "ThemeSymbols.h"
 
 @implementation UIButton (Theming)
 
 + (void)load
 {    
-    [self aut_registerThemeProperty:ButtonsProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applierBlock:^(NSValue *edgeInsets, UIButton *button) {
+    [self aut_registerThemeProperty:ButtonsThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applierBlock:^(NSValue *edgeInsets, UIButton *button) {
         button.contentEdgeInsets = edgeInsets.UIEdgeInsetsValue;
     }];
     
     [self aut_registerThemeProperties:@[
-        ButtonsProperties.fontName,
-        ButtonsProperties.fontSize
+        ButtonsThemeProperties.fontName,
+        ButtonsThemeProperties.fontSize
     ] valueTransformerNamesOrRequiredClasses:@[
         [NSString class],
         [NSNumber class]
     ] applierBlock:^(NSDictionary *properties, UIButton *button) {
-        NSString *name = properties[ButtonsProperties.fontName];
-        CGFloat size = [properties[ButtonsProperties.fontSize] floatValue];
+        NSString *name = properties[ButtonsThemeProperties.fontName];
+        CGFloat size = [properties[ButtonsThemeProperties.fontSize] floatValue];
         button.titleLabel.font = [UIFont fontWithName:name size:size];
     }];
 }

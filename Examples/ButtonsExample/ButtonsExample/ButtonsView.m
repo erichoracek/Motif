@@ -7,13 +7,10 @@
 //
 
 #import <Masonry/Masonry.h>
-#import <AUTTheming/AUTTheming.h>
 #import "ButtonsView.h"
-#import "ThemeSymbols.h"
 
 @interface ButtonsView ()
 
-@property (nonatomic) AUTThemeApplier *themeApplier;
 @property (nonatomic) UIButton *saveButton;
 @property (nonatomic) UIButton *deleteButton;
 
@@ -48,14 +45,12 @@ static const CGFloat ButtonPadding = 10.0;
     }];
 }
 
-#pragma mark - View
+#pragma mark - ButtonsView
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        self.themeApplier = applier;
-        [self.themeApplier applyClassWithName:ThemeClassNames.Background toObject:self];
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
     }
@@ -65,12 +60,7 @@ static const CGFloat ButtonPadding = 10.0;
 - (UIButton *)saveButton
 {
     if (!_saveButton) {
-        self.saveButton = ({
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [self.themeApplier applyClassWithName:ThemeClassNames.PrimaryButton toObject:button];
-            [button setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
-            button;
-        });
+        self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
     }
     return _saveButton;
 }
@@ -78,12 +68,7 @@ static const CGFloat ButtonPadding = 10.0;
 - (UIButton *)deleteButton
 {
     if (!_deleteButton) {
-        self.deleteButton = ({
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [self.themeApplier applyClassWithName:ThemeClassNames.DestructiveButton toObject:button];
-            [button setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
-            button;
-        });
+        self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
     }
     return _deleteButton;
 }

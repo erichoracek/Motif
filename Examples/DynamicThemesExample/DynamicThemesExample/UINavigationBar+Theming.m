@@ -8,42 +8,42 @@
 
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTValueTransformers.h>
+#import "ThemeSymbols.h"
 #import "UINavigationBar+Theming.h"
-#import "NavigationSymbols.h"
 #import "UIColor+LightnessType.h"
 
 @implementation UINavigationBar (Theming)
 
 + (void)load
 {
-    [self aut_registerThemeProperty:NavigationProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+    [self aut_registerThemeProperty:NavigationThemeProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         navigationBar.barTintColor = color;
         navigationBar.translucent = NO;
         navigationBar.barStyle = ((color.lightnessType == LightnessTypeLight) ? UIBarStyleDefault : UIBarStyleBlack);
     }];
     
-    [self aut_registerThemeProperty:NavigationProperties.tintColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+    [self aut_registerThemeProperty:NavigationThemeProperties.tintColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         navigationBar.tintColor = color;
     }];
     
     [self aut_registerThemeProperties:@[
-        NavigationProperties.fontName,
-        NavigationProperties.fontSize
+        NavigationThemeProperties.fontName,
+        NavigationThemeProperties.fontSize
     ] valueTransformerNamesOrRequiredClasses:@[
         [NSString class],
         [NSNumber class]
     ] applierBlock:^(NSDictionary *valuesForProperties, UINavigationBar *navigationBar) {
         NSMutableDictionary *attributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
-        NSString *name = valuesForProperties[NavigationProperties.fontName];
-        CGFloat size = [valuesForProperties[NavigationProperties.fontSize] floatValue];
+        NSString *name = valuesForProperties[NavigationThemeProperties.fontName];
+        CGFloat size = [valuesForProperties[NavigationThemeProperties.fontSize] floatValue];
         UIFont *font = [UIFont fontWithName:name size:size];
         attributes[NSFontAttributeName] = font;
         navigationBar.titleTextAttributes = attributes;
     }];
     
-    [self aut_registerThemeProperty:NavigationProperties.separatorColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+    [self aut_registerThemeProperty:NavigationThemeProperties.separatorColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         // Create an image of the specified color and set it as the shadow image
-        CGRect shadowImageRect = (CGRect){CGPointZero, (CGSize){1.0, 0.5}};
+        CGRect shadowImageRect = (CGRect){CGPointZero, {1.0, 0.5}};
         UIGraphicsBeginImageContextWithOptions(shadowImageRect.size, NO, 0.0);
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetFillColorWithColor(context, color.CGColor);
@@ -56,7 +56,7 @@
         [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     }];
     
-    [self aut_registerThemeProperty:NavigationProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+    [self aut_registerThemeProperty:NavigationThemeProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         NSMutableDictionary *attributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
         attributes[NSForegroundColorAttributeName] = color;
         navigationBar.titleTextAttributes = attributes;

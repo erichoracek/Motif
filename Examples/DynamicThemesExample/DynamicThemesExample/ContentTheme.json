@@ -1,0 +1,7 @@
+{
+    "classes": {
+        "ContentBackground": {
+            "backgroundColor": "ContentBackgroundColor"
+        }
+    }
+}

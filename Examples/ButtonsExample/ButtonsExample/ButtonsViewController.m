@@ -9,10 +9,11 @@
 #import <AUTTheming/AUTTheming.h>
 #import "ButtonsViewController.h"
 #import "ButtonsView.h"
+#import "ThemeSymbols.h"
 
 @interface ButtonsViewController ()
 
-@property (nonatomic) AUTThemeApplier *themeApplier;
+@property (nonatomic) ButtonsView *view;
 
 @end
 
@@ -22,7 +23,20 @@
 
 - (void)loadView
 {
-    self.view = [[ButtonsView alloc] initWithThemeApplier:self.themeApplier];
+    self.view = [ButtonsView new];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.themeApplier applyClassWithName:ThemeClassNames.ContentBackground toObject:self.view];
+    
+    [self.themeApplier applyClassWithName:ThemeClassNames.DestructiveButton toObject:self.view.deleteButton];
+    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
+    
+    [self.themeApplier applyClassWithName:ThemeClassNames.PrimaryButton toObject:self.view.saveButton];
+    [self.view.saveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -30,13 +44,13 @@
     return YES;
 }
 
-#pragma mark - ViewController
+#pragma mark - ButtonsViewController
 
 - (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier
 {
     self = [super init];
     if (self) {
-        self.themeApplier = applier;
+        _themeApplier = applier;
     }
     return self;
 }

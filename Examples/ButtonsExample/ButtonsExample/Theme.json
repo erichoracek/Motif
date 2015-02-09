@@ -7,7 +7,7 @@
         "H5FontSize": 16
     },
     "classes": {
-        "Background": {
+        "ContentBackground": {
             "backgroundColor": "WhiteColor"
         },
         "Button": {

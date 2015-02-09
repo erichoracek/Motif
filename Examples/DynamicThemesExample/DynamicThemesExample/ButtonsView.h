@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class AUTThemeApplier;
-
 @interface ButtonsView : UIView
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier;
-
-@property (nonatomic, readonly) AUTThemeApplier *themeApplier;
 @property (nonatomic, readonly) UIButton *saveButton;
 @property (nonatomic, readonly) UIButton *deleteButton;
 

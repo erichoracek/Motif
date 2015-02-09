@@ -2,11 +2,11 @@
 // To update these symbols, run the command:
 // $ auttheming-symbols-generator -t Theme.json
 
-#import "ThemeSymbols.h"
+#import "ThemeThemeSymbols.h"
 
-NSString * const ThemeName = @"Theme";
+NSString * const ThemeThemeName = @"Theme";
 
-const struct ThemeConstantKeys ThemeConstantKeys = {
+const struct ThemeThemeConstantKeys ThemeThemeConstantKeys = {
     .WhiteColor = @"WhiteColor",
     .RegularFontName = @"RegularFontName",
     .H5FontSize = @"H5FontSize",
@@ -14,14 +14,14 @@ const struct ThemeConstantKeys ThemeConstantKeys = {
     .BlueColor = @"BlueColor",
 };
 
-const struct ThemeClassNames ThemeClassNames = {
+const struct ThemeThemeClassNames ThemeThemeClassNames = {
     .Button = @"Button",
     .ContentBackground = @"ContentBackground",
     .DestructiveButton = @"DestructiveButton",
     .PrimaryButton = @"PrimaryButton",
 };
 
-const struct ThemeProperties ThemeProperties = {
+const struct ThemeThemeProperties ThemeThemeProperties = {
     .fontSize = @"fontSize",
     .tintColor = @"tintColor",
     .fontName = @"fontName",

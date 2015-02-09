@@ -7,13 +7,10 @@
 //
 
 #import <Masonry/Masonry.h>
-#import <AUTTheming/AUTTheming.h>
 #import "ButtonsView.h"
-#import "ButtonsSymbols.h"
 
 @interface ButtonsView ()
 
-@property (nonatomic) AUTThemeApplier *themeApplier;
 @property (nonatomic) UIButton *saveButton;
 @property (nonatomic) UIButton *deleteButton;
 
@@ -28,8 +25,8 @@
     return YES;
 }
 
-static const CGFloat ButtonWidth = 145.0;
-static const CGFloat ButtonPadding = 10.0;
+static CGFloat const ButtonWidth = 145.0;
+static CGFloat const ButtonPadding = 10.0;
 
 - (void)updateConstraints
 {
@@ -50,12 +47,10 @@ static const CGFloat ButtonPadding = 10.0;
 
 #pragma mark - ButtonsView
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        self.themeApplier = applier;
-        [self.themeApplier applyClassWithName:ButtonsClassNames.Background toObject:self];
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
     }
@@ -65,12 +60,7 @@ static const CGFloat ButtonPadding = 10.0;
 - (UIButton *)saveButton
 {
     if (!_saveButton) {
-        self.saveButton = ({
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [self.themeApplier applyClassWithName:ButtonsClassNames.PrimaryButton toObject:button];
-            [button setTitle:@"Save" forState:UIControlStateNormal];
-            button;
-        });
+        self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
     }
     return _saveButton;
 }
@@ -78,12 +68,7 @@ static const CGFloat ButtonPadding = 10.0;
 - (UIButton *)deleteButton
 {
     if (!_deleteButton) {
-        self.deleteButton = ({
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-            [self.themeApplier applyClassWithName:ButtonsClassNames.DestructiveButton toObject:button];
-            [button setTitle:@"Delete" forState:UIControlStateNormal];
-            button;
-        });
+        self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
     }
     return _deleteButton;
 }
