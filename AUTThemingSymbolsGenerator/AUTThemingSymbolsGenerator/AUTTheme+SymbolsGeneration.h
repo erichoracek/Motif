@@ -12,4 +12,10 @@
 
 - (void)generateSymbolsFilesInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation prefix:(NSString *)prefix;
 
++ (void)generateSymbolsUmbrellaHeaderFromThemes:(NSArray *)themes inDirectory:(NSURL *)directoryURL prefix:(NSString *)prefix;
+
+@property (nonatomic, readonly) NSArray *constantKeys;
+@property (nonatomic, readonly) NSArray *classNames;
+@property (nonatomic, readonly) NSArray *properties;
+
 @end

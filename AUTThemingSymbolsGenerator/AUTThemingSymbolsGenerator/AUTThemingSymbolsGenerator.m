@@ -31,14 +31,13 @@
     // Build an array of `AUTThemes` from the passed `theme` path params
     NSMutableArray *themes = [NSMutableArray new];
     for (NSString *themePath in settings.aut_themes) {
-        NSURL *themeURL = [NSURL fileURLFromPathParameter:themePath];
+        NSURL *themeURL = [NSURL aut_fileURLFromPathParameter:themePath];
         if (!themeURL) {
             gbfprintln(stderr, @"[!] Error: '%@' is an invalid file path. Please supply another.", themePath);
             return 1;
         }
-        AUTTheme *theme = [AUTTheme new];
         NSError *error;
-        [theme addAttributesFromThemeAtURL:themeURL error:&error];
+        AUTTheme *theme = [[AUTTheme alloc] initWithFile:themeURL error:&error];
         if (error) {
             gbfprintln(stderr, @"[!] Error: Unable to parse theme at URL '%@': %@", themeURL, error);
             return 1;
@@ -48,14 +47,20 @@
     
     // Ensure the output param is a valid path
     NSString *outputPath = settings.aut_output;
-    NSURL *outputDirectoryURL = [NSURL directoryURLFromPathParameter:outputPath];
+    NSURL *outputDirectoryURL = [NSURL aut_directoryURLFromPathParameter:outputPath];
     if (!outputDirectoryURL) {
         gbfprintln(stderr, @"[!] Error: '%@' is an invalid directory path. Please supply another.", outputPath);
         return 1;
     }
     
+    // Generate the symbols files for each theme
     for (AUTTheme *theme in themes) {
         [theme generateSymbolsFilesInDirectory:outputDirectoryURL indentation:settings.aut_indentation prefix:settings.aut_prefix];
+    }
+    
+    // If there is more than one theme, generate an umbrella header to enable consumers to import all symbols files at once
+    if (themes.count > 1) {
+        [AUTTheme generateSymbolsUmbrellaHeaderFromThemes:themes inDirectory:outputDirectoryURL prefix:settings.aut_prefix];
     }
     
     return 0;

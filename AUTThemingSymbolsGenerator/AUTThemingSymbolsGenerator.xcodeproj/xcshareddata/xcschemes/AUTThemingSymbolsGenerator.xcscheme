@@ -57,12 +57,6 @@
             ReferencedContainer = "container:AUTThemingSymbolsGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-t /Users/erh/Development/Automatic/AUTTheming/Examples/VariableThemesExample/VariableThemesExample/Buttons.json"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

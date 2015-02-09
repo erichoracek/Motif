@@ -10,7 +10,7 @@
 
 @interface NSURL (CLIHelpers)
 
-+ (NSURL *)fileURLFromPathParameter:(NSString *)path;
-+ (NSURL *)directoryURLFromPathParameter:(NSString *)path;
++ (NSURL *)aut_fileURLFromPathParameter:(NSString *)path;
++ (NSURL *)aut_directoryURLFromPathParameter:(NSString *)path;
 
 @end

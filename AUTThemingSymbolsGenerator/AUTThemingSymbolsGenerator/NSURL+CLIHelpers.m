@@ -10,7 +10,7 @@
 
 @implementation NSURL (CLIHelpers)
 
-+ (NSURL *)fileURLFromPathParameter:(NSString *)path
++ (NSURL *)aut_fileURLFromPathParameter:(NSString *)path
 {
     NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
     if (!resolvedURL) {
@@ -25,7 +25,7 @@
     return nil;
 }
 
-+ (NSURL *)directoryURLFromPathParameter:(NSString *)path
++ (NSURL *)aut_directoryURLFromPathParameter:(NSString *)path
 {
     NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
     if (!resolvedURL) {

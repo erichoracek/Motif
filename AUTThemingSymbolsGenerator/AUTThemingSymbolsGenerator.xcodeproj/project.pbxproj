@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */; };
 		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
 		3ABF07351A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m */; };
 		3ABF073B1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		24707A0F821A04A59FBF7394 /* Pods-AUTThemingSymbolsGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AUTThemingSymbolsGenerator.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-AUTThemingSymbolsGenerator/Pods-AUTThemingSymbolsGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+StringWriting.h"; sourceTree = "<group>"; };
+		3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+StringWriting.m"; sourceTree = "<group>"; };
 		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
 		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
 		3ABF07331A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemingSymbolsGenerator.h; sourceTree = "<group>"; };
@@ -58,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A3DD93F1A88B52F00DBA831 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8F1A50A8B7004EDEF3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3ADB6F831A50A8B7004EDEF3 = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +90,6 @@
 		3ADB6F8E1A50A8B7004EDEF3 /* AUTThemingSymbolsGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				3ADB6F8F1A50A8B7004EDEF3 /* main.m */,
 				3ABF07331A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.h */,
 				3ABF07341A50CEDA00E6A83C /* AUTThemingSymbolsGenerator.m */,
 				3ABF07391A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.h */,
@@ -90,6 +100,9 @@
 				3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */,
 				3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */,
 				3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */,
+				3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */,
+				3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */,
+				3A3DD93F1A88B52F00DBA831 /* Supporting Files */,
 			);
 			path = AUTThemingSymbolsGenerator;
 			sourceTree = "<group>";
@@ -179,6 +192,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME} /usr/local/bin/${PRODUCT_NAME}";
+			showEnvVarsInLog = 0;
 		};
 		9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -219,6 +233,7 @@
 			files = (
 				3ABF073B1A512DFE00E6A83C /* AUTTheme+SymbolsGeneration.m in Sources */,
 				3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */,
+				3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */,
 				3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */,
 				3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */,
 				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
