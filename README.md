@@ -1,6 +1,6 @@
 # AUTTheming
 
-> A lightweight and customizable CSS-style framework for Objective-C.
+_A lightweight and customizable CSS-style framework for Objective-C._
 
 ## Why should I use it?
 
@@ -14,34 +14,30 @@ Well, things about about to change. Take a look at the example below to see what
 
 <img src="README/buttons.png" alt="Horizontal Layout" height="91" width="339" />
 
-### `MyApp.json`:
+### `MyAppTheme.json`:
 
 ```javascript
 {
-    "constants": {
-        "RedColor": "#f93d38",
-        "BlueColor": "#50b5ed",
-        "RegularFontName": "AvenirNext-Regular",
-        "H5FontSize": 16
+    "$RedColor": "#f93d38",
+    "$BlueColor": "#50b5ed",
+    "$RegularFontName": "AvenirNext-Regular",
+    "$H5FontSize": 16
+    ".Button": {
+        "fontName": "$RegularFontName",
+        "fontSize": "$H5FontSize",
+        "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
+        "borderWidth": 1.0,
+        "cornerRadius": 5.0
     },
-    "classes": {
-        "Button": {
-            "fontName": "RegularFontName",
-            "fontSize": "H5FontSize",
-            "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
-            "borderWidth": 1.0,
-            "cornerRadius": 5.0
-        },
-        "DestructiveButton": {
-            "_superclass": "Button",
-            "textColor": "RedColor",
-            "borderColor": "RedColor"
-        },
-        "PrimaryButton": {
-            "_superclass": "Button",
-            "textColor": "BlueColor",
-            "borderColor": "BlueColor"
-        }
+    ".DestructiveButton": {
+        "_superclass": ".Button",
+        "textColor": "$RedColor",
+        "borderColor": "$RedColor"
+    },
+    ".PrimaryButton": {
+        "_superclass": ".Button",
+        "textColor": "$BlueColor",
+        "borderColor": "$BlueColor"
     }
 }
 ```
@@ -53,14 +49,14 @@ Well, things about about to change. Take a look at the example below to see what
 {
     [super viewDidLoad];
 
-    self.aut_theme = [AUTTheme new];
-    [self.aut_theme addAttributesFromThemeAtURL:[[NSBundle mainBundle] URLForResource:@"MyApp" withExtension:@"json"];
+    AUTTheme *theme = [AUTTheme themeWithThemeNamed:@"MyApp" error:nil];
+    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme]
 
     self.deleteButton = [UIButton new];
     self.saveButton = [UIButton new];
 
-    [self.deleteButtom aut_applyClass:@"DestructiveButton" fromTheme:self.aut_theme];
-    [self.saveButton aut_applyClass:@"PrimaryButton" fromTheme:self.aut_theme];
+    [themeApplier applyThemeClassWithName:@"DestructiveButton" toObject:self.deleteButton];
+    [themeApplier applyThemeClassWithName:@"PrimaryButton" toObject:self.deleteButton];
 }
 ```
 
@@ -92,7 +88,7 @@ Well, things about about to change. Take a look at the example below to see what
     [self aut_registerThemeProperty:@"textColor"
                valueTransformerName:AUTColorFromStringTransformer
                             applier:^(UIColor *textColor, UIButton *button) {
-        [button setTextColor:textColor forState:UIControlStateNormal];      
+        [button setTextColor:textColor forState:UIControlStateNormal];
     }];
 
     [self aut_registerThemeProperty:@"contentEdgeInsets"
@@ -114,4 +110,3 @@ Well, things about about to change. Take a look at the example below to see what
     }];
 }
 ```
-
