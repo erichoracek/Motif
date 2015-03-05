@@ -1,21 +1,19 @@
 {
-    "classes": {
-        "Button": {
-            "fontName": "RegularFontName",
-            "fontSize": "H5FontSize",
-            "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
-            "borderWidth": 1.0,
-            "cornerRadius": 5.0
-        },
-        "DestructiveButton": {
-            "_superclass": "Button",
-            "tintColor": "DestructiveColor",
-            "borderColor": "DestructiveColor"
-        },
-        "PrimaryButton": {
-            "_superclass": "Button",
-            "tintColor": "PrimaryColor",
-            "borderColor": "PrimaryColor"
-        }
+    ".Button": {
+        "fontName": "$RegularFontName",
+        "fontSize": "$H5FontSize",
+        "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
+        "borderWidth": 1.0,
+        "cornerRadius": 5.0
+    },
+    ".DestructiveButton": {
+        "_superclass": ".Button",
+        "tintColor": "$DestructiveColor",
+        "borderColor": "$DestructiveColor"
+    },
+    ".PrimaryButton": {
+        "_superclass": ".Button",
+        "tintColor": "$PrimaryColor",
+        "borderColor": "$PrimaryColor"
     }
 }

@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AUTTheming 0
 #define COCOAPODS_VERSION_PATCH_AUTTheming 1
 
+// AUTTheming/UIKit
+#define COCOAPODS_POD_AVAILABLE_AUTTheming_UIKit
+#define COCOAPODS_VERSION_MAJOR_AUTTheming_UIKit 0
+#define COCOAPODS_VERSION_MINOR_AUTTheming_UIKit 0
+#define COCOAPODS_VERSION_PATCH_AUTTheming_UIKit 1
+
 // AUTTheming/ValueTransformers
 #define COCOAPODS_POD_AVAILABLE_AUTTheming_ValueTransformers
 #define COCOAPODS_VERSION_MAJOR_AUTTheming_ValueTransformers 0

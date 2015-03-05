@@ -1,7 +1,5 @@
 {
-    "classes": {
-        "ContentBackground": {
-            "backgroundColor": "ContentBackgroundColor"
-        }
+    ".ContentBackground": {
+        "backgroundColor": "$ContentBackgroundColor"
     }
 }

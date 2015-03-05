@@ -104,19 +104,17 @@ typedef NS_ENUM(NSInteger, SymbolType) {
     
     // Add the necessary import
     NSString *import = [self symbolsImportForName:name fileType:fileType prefix:prefix];
-    [outputStream aut_writeString:[import stringByAppendingString:@"\n\n"]];
+    [outputStream aut_writeString:[NSString stringWithFormat:@"\n%@\n", import]];
     
     // Add the theme name constant
     NSString *nameConstant = [self symbolsThemeNameStringConstFromName:name forFiletype:fileType prefix:prefix];
-    [outputStream aut_writeString:[nameConstant stringByAppendingString:@"\n\n"]];
+    [outputStream aut_writeString:[NSString stringWithFormat:@"\n%@\n", nameConstant]];
     
     // Write all types of symbols from the theme
     for (SymbolType symbolType = 0; symbolType < SymbolTypeCount; symbolType++) {
         NSString *symbolsDeclartion = [self symbolsDeclartionOfType:symbolType withFiletype:fileType name:name indentation:indentation prefix:prefix];
         if (symbolsDeclartion) {
-            [outputStream aut_writeString:symbolsDeclartion];
-            NSString *trailingWhitespace = [self trailingWhitespaceForSymbolType:symbolType];
-            [outputStream aut_writeString:trailingWhitespace];
+            [outputStream aut_writeString:[NSString stringWithFormat:@"\n%@\n", symbolsDeclartion]];
         }
     }
     
@@ -191,7 +189,6 @@ static NSString * const WarningCommentFormat = @"\
 // WARNING: Do not modify. This file is machine-generated from '%@'.\n\
 // To update these symbols, run the command:\n\
 // $ %@\n\
-\n\
 ";
 
 + (NSString *)warningCommentForFilename:(NSString *)filename
@@ -295,11 +292,6 @@ static NSString * const WarningCommentFormat = @"\
             return @"};";
     }
     return nil;
-}
-
-- (NSString *)trailingWhitespaceForSymbolType:(SymbolType)symbolType
-{
-    return (((symbolType + 1) == SymbolTypeCount) ? @"\n" : @"\n\n");
 }
 
 - (NSString *)enumNameForSymbolType:(SymbolType)symbolType name:(NSString *)name prefix:(NSString *)prefix

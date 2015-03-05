@@ -1,12 +1,10 @@
 {
-    "classes": {
-        "NavigationBar": {
-            "tintColor": "PrimaryColor",
-            "backgroundColor": "ContentForegroundColor",
-            "fontName": "MediumFontName",
-            "fontSize": "H4FontSize",
-            "textColor": "TextColor",
-            "separatorColor": "SeparatorColor"
-        }
+    ".NavigationBar": {
+        "tintColor": "$PrimaryColor",
+        "backgroundColor": "$ContentForegroundColor",
+        "fontName": "$MediumFontName",
+        "fontSize": "$H4FontSize",
+        "textColor": "$TextColor",
+        "separatorColor": "$SeparatorColor"
     }
 }

@@ -1,8 +1,6 @@
 {
-    "constants": {
-        "RegularFontName": "AvenirNext-Regular",
-        "MediumFontName": "AvenirNext-Medium",
-        "H5FontSize": 16,
-        "H4FontSize": 20
-    }
+    "$RegularFontName": "AvenirNext-Regular",
+    "$MediumFontName": "AvenirNext-Medium",
+    "$H5FontSize": 16,
+    "$H4FontSize": 20
 }

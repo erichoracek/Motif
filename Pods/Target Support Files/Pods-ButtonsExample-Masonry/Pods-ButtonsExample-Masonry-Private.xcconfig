@@ -1,5 +1,6 @@
 #include "Pods-ButtonsExample-Masonry.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Masonry" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/GBCli" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Masonry" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors"
 OTHER_LDFLAGS = ${PODS_BUTTONSEXAMPLE_MASONRY_OTHER_LDFLAGS} -ObjC
 PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

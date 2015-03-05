@@ -1,6 +1,8 @@
 PODS:
   - AUTTheming (0.0.1):
-    - AUTTheming/ValueTransformers
+    - AUTTheming/UIKit (= 0.0.1)
+    - AUTTheming/ValueTransformers (= 0.0.1)
+  - AUTTheming/UIKit (0.0.1)
   - AUTTheming/ValueTransformers (0.0.1):
     - UIColor-HTMLColors (= 1.0.0)
   - GBCli (1.1)
@@ -17,9 +19,9 @@ EXTERNAL SOURCES:
     :path: ./
 
 SPEC CHECKSUMS:
-  AUTTheming: b424dac8784bee215b42e225e2b6558a0062f496
+  AUTTheming: 22d64b1979b0c5607237bddba433638f78d84340
   GBCli: 304718a0ff52cb39ea7ae1bcb3c4cb40c5a48c8d
   Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   UIColor-HTMLColors: fbf3e9648f1e699aa4cdb39d0cf348b7ef814be5
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.36.0.rc.1
