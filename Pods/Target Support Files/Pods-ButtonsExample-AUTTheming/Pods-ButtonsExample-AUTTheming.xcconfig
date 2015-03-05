@@ -1,1 +1,1 @@
-PODS_BUTTONSEXAMPLE_AUTTHEMING_OTHER_LDFLAGS = -framework "Foundation" -framework "UIKit"
+PODS_BUTTONSEXAMPLE_AUTTHEMING_OTHER_LDFLAGS = -framework "Foundation"

@@ -22,16 +22,6 @@
   "source_files": "AUTTheming/*.{h,m}",
   "subspecs": [
     {
-      "name": "UIKit",
-      "ios": {
-        "source_files": "AUTTheming/UIKit/*.{h,m}",
-        "frameworks": "UIKit"
-      },
-      "osx": {
-        "source_files": ""
-      }
-    },
-    {
       "name": "ValueTransformers",
       "ios": {
         "source_files": "AUTTheming/ValueTransformers/*.{h,m}",
