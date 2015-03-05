@@ -33,9 +33,9 @@
     [self.themeApplier applyClassWithName:ThemeClassNames.ContentBackground toObject:self.view];
     
     [self.themeApplier applyClassWithName:ThemeClassNames.DestructiveButton toObject:self.view.deleteButton];
-    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
-    
     [self.themeApplier applyClassWithName:ThemeClassNames.PrimaryButton toObject:self.view.saveButton];
+    
+    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
     [self.view.saveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
 }
 

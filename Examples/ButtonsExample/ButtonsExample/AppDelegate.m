@@ -17,7 +17,7 @@
 {
     NSError *error;
     AUTTheme *theme = [AUTTheme themeFromThemeNamed:ThemeName error:&error];
-    NSAssert(!error, @"Error when adding attributes to theme: %@", error);
+    NSAssert(!error, @"Error loading theme: %@", error);
     
     AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
     ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:themeApplier];
