@@ -37,7 +37,7 @@ NSString * const AUTColorFromStringTransformerName = @"AUTColorFromStringTransfo
     NSParameterAssert(value);
     NSAssert([value isKindOfClass:[self inputValueClass]], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass([self inputValueClass]));
     UIColor *color = [UIColor colorWithCSS:value];
-    NSAssert(color, @"Unable to transform color from input value %@", color);
+    NSAssert(color, @"Unable to transform color from input value '%@' (%@)", value, [value class]);
     return color;
 }
 

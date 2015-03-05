@@ -1,10 +1,6 @@
 {
-  "constants": {
-    "Constant": "value"
-  },
-  "classes": {
-    "Class": {
-      "property": "Constant"
+    "$Constant": "value",
+    ".Class": {
+        "property": "$Constant"
     }
-  }
 }

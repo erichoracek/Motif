@@ -6,10 +6,6 @@
 //
 //
 
-extern NSString * const AUTThemeConstantsKey;
-extern NSString * const AUTThemeClassesKey;
-extern NSString * const AUTThemeSuperclassKey;
-
 @interface AUTTheme ()
 
 /**
@@ -17,7 +13,7 @@ extern NSString * const AUTThemeSuperclassKey;
  */
 - (void)addAttributesFromThemeAtURL:(NSURL *)URL error:(NSError **)error;
 
-- (void)addConstantsAndClassesFromRawAttributesDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error;
+- (void)addConstantsAndClassesFromRawTheme:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error;
 
 @property (nonatomic) NSArray *filenames;
 @property (nonatomic) NSArray *fileURLs;
@@ -30,8 +26,8 @@ extern NSString * const AUTThemeSuperclassKey;
 
 @interface AUTTheme (Testing)
 
-- (instancetype)initWithRawAttributesDictionary:(NSDictionary *)dictionary error:(NSError **)error;
+- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme error:(NSError **)error;
 
-- (instancetype)initWithRawAttributesDictionaries:(NSArray *)dictionaries error:(NSError **)error;
+- (instancetype)initWithRawThemes:(NSArray *)rawThemes error:(NSError **)error;
 
 @end

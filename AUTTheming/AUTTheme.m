@@ -12,14 +12,10 @@
 #import "AUTThemeClass.h"
 #import "AUTThemeConstant.h"
 #import "AUTThemeConstant+Private.h"
+#import "AUTThemeParser.h"
 #import "NSURL+LastPathComponentWithoutExtension.h"
 
-// Public
 NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
-// Private
-NSString * const AUTThemeSuperclassKey = @"_superclass";
-NSString * const AUTThemeConstantsKey = @"constants";
-NSString * const AUTThemeClassesKey = @"classes";
 
 @implementation AUTTheme
 
@@ -37,7 +33,7 @@ NSString * const AUTThemeClassesKey = @"classes";
 
 #pragma mark - AUTTheme
 
-#pragma mark - Public
+#pragma mark Public
 
 + (instancetype)themeFromThemeNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error
 {
@@ -54,8 +50,6 @@ NSString * const AUTThemeClassesKey = @"classes";
     return [self themeFromThemesNamed:themeNames bundle:nil error:error];
 }
 
-static NSString * const JSONExtension = @"json";
-
 + (instancetype)themeFromThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(themeNames);
@@ -66,18 +60,9 @@ static NSString * const JSONExtension = @"json";
         bundle = [NSBundle mainBundle];
     }
     
-    NSMutableArray *fileURLs = [NSMutableArray new];
-    for (NSString *themeName in themeNames) {
-        NSAssert([themeName isKindOfClass:[NSString class]], @"The provided theme names must be of class NSString. %@ is instead kind of class %@", themeName, [themeName class]);
-        NSURL *fileURL = [bundle URLForResource:themeName withExtension:JSONExtension];
-        // If a theme with the exact name is not found, try appending 'Theme' to the end of the filename
-        if (!fileURL) {
-            NSString *themeNameWithThemeAppended = [NSString stringWithFormat:@"%@Theme", themeName];
-            fileURL = [bundle URLForResource:themeNameWithThemeAppended withExtension:JSONExtension];
-        }
-        NSAssert(fileURLs, @"No theme was found for the name: %@ in the bundle: %@. Perhaps you meant one of the following: %@", themeName, bundle, [bundle URLsForResourcesWithExtension:JSONExtension subdirectory:nil]);
-        [fileURLs addObject:fileURL];
-    }
+    // Build an array of URLs from the specified theme names
+    NSArray *fileURLs = [self fileURLsFromThemeNames:themeNames inBundle:bundle];
+    
     return [[AUTTheme alloc] initWithFiles:fileURLs error:error];
 }
 
@@ -88,9 +73,9 @@ static NSString * const JSONExtension = @"json";
     return self;
 }
 
-- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error
+- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error
 {
-    NSAssert(fileURLs.count > 0, @"Must provide at least one file URL.");
+    NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     self = [super init];
     if (self) {
         for (NSURL *fileURL in fileURLs) {
@@ -100,7 +85,7 @@ static NSString * const JSONExtension = @"json";
     return self;
 }
 
-- (void)addAttributesFromThemeAtURL:(NSURL *)fileURL error:(NSError **)error
+- (void)addAttributesFromThemeAtURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
 {
     // If the file is not a file URL, populate the error object
     if (!fileURL.isFileURL && error) {
@@ -123,12 +108,12 @@ static NSString * const JSONExtension = @"json";
     NSString *name = [self nameFromFileURL:fileURL];
     [self addNamesObject:name];
     
-    [self addConstantsAndClassesFromRawAttributesDictionary:JSONDictionary error:error];
+    [self addConstantsAndClassesFromRawTheme:JSONDictionary error:error];
 }
 
 - (id)constantValueForKey:(NSString *)key
 {
-    return [self constantForKey:key].mappedValue;
+    return [self constantForKey:key].value;
 }
 
 - (AUTThemeClass *)themeClassForName:(NSString *)name
@@ -148,159 +133,14 @@ static NSString * const JSONExtension = @"json";
 
 #pragma mark - Private
 
-- (void)addConstantsAndClassesFromRawAttributesDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error;
+- (void)addConstantsAndClassesFromRawTheme:(NSDictionary *)rawTheme error:(NSError *__autoreleasing *)error;
 {
-    NSParameterAssert(dictionary);
+    NSParameterAssert(rawTheme);
     
-    [self addConstantsFromRawAttributesDictionary:dictionary error:error];
-    if (error && *error) {
-        return;
-    }
+    AUTThemeParser *parser = [[AUTThemeParser alloc] initWithRawTheme:rawTheme inheritingFromTheme:self error:error];
     
-    [self addClassesFromRawAttributesDictionary:dictionary error:error];
-    if (error && *error) {
-        return;
-    }
-}
-
-#pragma mark Validation
-
-- (NSDictionary *)validatedDictionaryValueWithKey:(NSString *)key fromRawDictionary:(NSDictionary *)rawAttributesDictionary error:(NSError *__autoreleasing *)error
-{
-    NSDictionary *value = rawAttributesDictionary[key];
-    // If there is no value for the specified key, is it not an error, just return
-    if (!value) {
-        return nil;
-    }
-    // If the value for the specified key is a dictionary but is not a valid type, return with error
-    if (![value isKindOfClass:[NSDictionary class]] && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"The value for the '%@' key is not a dictionary.", key];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
-        return nil;
-    }
-    return value;
-}
-
-#pragma mark Constants
-
-- (void)addConstantsFromRawAttributesDictionary:(NSDictionary *)rawAttributesDictionary error:(NSError *__autoreleasing *)error
-{
-    NSParameterAssert(rawAttributesDictionary);
-    NSDictionary *rawConstants = [self validatedDictionaryValueWithKey:AUTThemeConstantsKey fromRawDictionary:rawAttributesDictionary error:error];
-    if (!rawConstants) {
-        return;
-    }
-    NSDictionary *constants = [self constantsMappedFromRawConstants:rawConstants];
-    [self addMappedConstantsFromDictionary:constants error:error];
-}
-
-- (NSDictionary *)constantsMappedFromRawConstants:(NSDictionary *)rawConstants
-{
-    NSMutableDictionary *constants = [NSMutableDictionary new];
-    [rawConstants enumerateKeysAndObjectsUsingBlock:^(NSString *key, id rawValue, BOOL *stop) {
-        AUTThemeConstant *constant = [self themeConstantMappedFromRawConstants:rawConstants withRawValue:rawValue forKey:key];
-        constants[key] = constant;
-    }];
-    return [constants copy];
-}
-
-- (AUTThemeConstant *)themeConstantMappedFromRawConstants:(NSDictionary *)rawConstants withRawValue:(NSString *)rawValue forKey:(NSString *)key
-{
-    id mappedValue;
-    
-    // If the passed rawValue exists as a constants key for this theme, set it as the mapped value
-    id mappedRawValue = rawConstants[rawValue];
-    if (mappedRawValue) {
-        mappedValue = mappedRawValue;
-    }
-    
-    // If the passed constant's value or the mapped value is a reference to an existing constant from a previous theme, set it as the mapped value
-    AUTThemeConstant *existingConstant = (self.mappedConstants[rawValue] ?: self.mappedConstants[mappedValue]);
-    if (existingConstant) {
-        mappedValue = existingConstant.mappedValue;
-    }
-    
-    // If the value is a class
-    AUTThemeClass *existingClass = (self.mappedClasses[rawValue] ?: self.mappedClasses[mappedValue]);
-    if (existingClass) {
-        mappedValue = existingClass;
-    }
-    
-    return [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue mappedValue:mappedValue];
-}
-
-#pragma mark Classes
-
-- (void)addClassesFromRawAttributesDictionary:(NSDictionary *)rawAttributesDictionary error:(NSError **)error
-{
-    NSParameterAssert(rawAttributesDictionary);
-    NSDictionary *rawClasses = [self validatedDictionaryValueWithKey:AUTThemeClassesKey fromRawDictionary:rawAttributesDictionary error:error];
-    if (!rawClasses) {
-        return;
-    }
-    NSDictionary *mappedClasses = [self classesMappedFromRawClasses:rawClasses error:error];
-    [self addMappedClassesFromDictionary:mappedClasses error:error];
-}
-
-- (NSDictionary *)classesMappedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error
-{
-    NSMutableDictionary *mappedClasses = [NSMutableDictionary new];
-    
-    for (id name in rawClasses) {
-        NSDictionary *rawProperties = [self validatedDictionaryValueWithKey:name fromRawDictionary:rawClasses error:error];
-        if (!rawProperties) {
-            break;
-        }
-        AUTThemeClass *themeClass = [self themeClassMappedFromRawProperties:rawProperties withName:name error:error];
-        if (themeClass) {
-            mappedClasses[name] = themeClass;
-        }
-    }
-    
-    // If any of the class properties contain references to other classes, map them to class objects
-    [mappedClasses enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeClass *class, BOOL *stop) {
-        [class.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeConstant *constant, BOOL *stop) {
-            id class = mappedClasses[constant.mappedValue];
-            if (class) {
-                constant.mappedValue = class;
-                return;
-            }
-            class = self.mappedClasses[constant.mappedValue];
-            if (class) {
-                constant.mappedValue = class;
-                return;
-            }
-        }];
-    }];
-    
-    // If any of the values for the superclass key do not resolve to class, pass error
-    // Error must be defined as __block because an exception is thrown when a pointer is dereferenced within a block enumerator
-    __block NSError *__error;
-    [mappedClasses enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeClass *class, BOOL *stop) {
-        [class.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeConstant *constant, BOOL *stop) {
-            if ([key isEqualToString:AUTThemeSuperclassKey] && ![constant.mappedValue isKindOfClass:[AUTThemeClass class]]) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The value for the 'superclass' property in '%@' must reference a valid theme class. It is currently '%@'", class.name, constant.mappedValue];
-                __error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
-            }
-        }];
-    }];
-    if (error && __error) {
-        *error = __error;
-    }
-    
-    return [mappedClasses copy];
-}
-
-- (AUTThemeClass *)themeClassMappedFromRawProperties:(NSDictionary *)rawProperties withName:(NSString *)name error:(NSError *__autoreleasing *)error
-{
-    NSParameterAssert(name);
-    NSParameterAssert(rawProperties);
-    
-    NSDictionary *mappedProperties = [self constantsMappedFromRawConstants:rawProperties];
-    AUTThemeClass *themeClass = [[AUTThemeClass alloc] initWithName:name propertiesConstants:mappedProperties];
-    themeClass.name = name;
-    
-    return themeClass;
+    [self addMappedConstantsFromDictionary:parser.parsedConstants error:error];
+    [self addMappedClassesFromDictionary:parser.parsedClasses error:error];
 }
 
 #pragma mark JSON
@@ -317,12 +157,14 @@ static NSString * const JSONExtension = @"json";
 
 #pragma mark Names
 
+static NSString * const ThemeNameOptionalSuffix = @"Theme";
+
 - (NSString *)nameFromFileURL:(NSURL *)fileURL
 {
     NSString *filenameWithoutExtension = fileURL.aut_lastPathComponentWithoutExtension;
     NSString *name = filenameWithoutExtension;
     // If the theme name ends with "Theme", then trim it out of the name
-    NSRange themeRange = [filenameWithoutExtension rangeOfString:@"Theme"];
+    NSRange themeRange = [filenameWithoutExtension rangeOfString:ThemeNameOptionalSuffix];
     if (themeRange.location != NSNotFound) {
         BOOL isThemeAtEndOfThemeName = (themeRange.location == (name.length - themeRange.length));
         BOOL isThemeSubstring = (themeRange.location != 0);
@@ -331,6 +173,32 @@ static NSString * const JSONExtension = @"json";
         }
     }
     return name;
+}
+
+static NSString * const JSONExtension = @"json";
+
++ (NSArray *)fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(NSBundle *)bundle
+{
+    // Build an array of fileURLs from the passed themeNames
+    NSMutableArray *fileURLs = [NSMutableArray new];
+    for (NSString *themeName in themeNames) {
+        
+        // Ensure the theme names are strings
+        NSAssert([themeName isKindOfClass:[NSString class]], @"The provided theme names must be of class NSString. %@ is instead kind of class %@", themeName, [themeName class]);
+        
+        NSURL *fileURL = [bundle URLForResource:themeName withExtension:JSONExtension];
+        
+        // If a theme with the exact name is not found, try appending 'Theme' to the end of the filename
+        if (!fileURL) {
+            NSString *themeNameWithThemeAppended = [themeName stringByAppendingString:ThemeNameOptionalSuffix];
+            fileURL = [bundle URLForResource:themeNameWithThemeAppended withExtension:JSONExtension];
+        }
+        
+        // If no file is found, throw an exception
+        NSAssert(fileURLs, @"No theme was found with the name '%@' in the bundle %@. Perhaps you meant one of the following: %@", themeName, bundle, [bundle URLsForResourcesWithExtension:JSONExtension subdirectory:nil]);
+        [fileURLs addObject:fileURL];
+    }
+    return [fileURLs copy];
 }
 
 - (void)addNamesObject:(NSString *)object
@@ -391,12 +259,9 @@ static NSString * const JSONExtension = @"json";
 
 - (void)addMappedConstantsFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
 {
-    NSSet *intersectingKeys = [self entriesFromDictionary:dictionary willIntersectKeysWhenAddedToDictionary:self.mappedConstants];
-    if (intersectingKeys.count && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"Registering new constants with identical names to previously-defined constants will overwrite existing constants with the following names: %@", intersectingKeys];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+    if (!dictionary.count) {
+        return;
     }
-    
     NSMutableDictionary *constants = [self.mappedConstants mutableCopy];
     [constants addEntriesFromDictionary:dictionary];
     self.mappedConstants = [constants copy];
@@ -414,47 +279,30 @@ static NSString * const JSONExtension = @"json";
 
 - (void)addMappedClassesFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
 {
-    NSSet *intersectingKeys = [self entriesFromDictionary:dictionary willIntersectKeysWhenAddedToDictionary:self.mappedClasses];
-    if (intersectingKeys.count && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"Registering new classes with identical names to previously-defined classes will overwrite existing classes with the following names: %@", intersectingKeys];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+    if (!dictionary.count) {
+        return;
     }
-    
     NSMutableDictionary *classes = [self.mappedClasses mutableCopy];
     [classes addEntriesFromDictionary:dictionary];
     self.mappedClasses = [classes copy];
-}
-
-#pragma mark Overlapping Dictionary Keys
-
-- (NSSet *)entriesFromDictionary:(NSDictionary *)fromDictionary willIntersectKeysWhenAddedToDictionary:(NSDictionary *)toDictionary
-{
-    NSSet *existingKeys = [NSSet setWithArray:toDictionary.allKeys];
-    NSSet *newKeys = [NSSet setWithArray:fromDictionary.allKeys];
-    if ([existingKeys intersectsSet:newKeys]) {
-        NSMutableSet *intersectingKeys = [existingKeys mutableCopy];
-        [intersectingKeys intersectSet:newKeys];
-        return intersectingKeys;
-    }
-    return nil;
 }
 
 @end
 
 @implementation AUTTheme (Testing)
 
-- (instancetype)initWithRawAttributesDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme error:(NSError *__autoreleasing *)error
 {
-    self = [self initWithRawAttributesDictionaries:@[dictionary] error:error];
+    self = [self initWithRawThemes:@[rawTheme] error:error];
     return self;
 }
 
-- (instancetype)initWithRawAttributesDictionaries:(NSArray *)dictionaries error:(NSError *__autoreleasing *)error
+- (instancetype)initWithRawThemes:(NSArray *)rawThemes error:(NSError *__autoreleasing *)error
 {
     self = [super init];
     if (self) {
-        for (NSDictionary *dictionary in dictionaries) {
-            [self addConstantsAndClassesFromRawAttributesDictionary:dictionary error:error];
+        for (NSDictionary *rawTheme in rawThemes) {
+            [self addConstantsAndClassesFromRawTheme:rawTheme error:error];
         }
     }
     return self;

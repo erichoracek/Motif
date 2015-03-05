@@ -10,6 +10,7 @@
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
 #import <AUTTheming/NSObject+ThemeClassAppliersPrivate.h>
+#import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeClassApplierTests : XCTestCase
 
@@ -19,15 +20,13 @@
 
 - (void)testClassApplier
 {
-    NSString *class = @"class";
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeClassesKey: @{
-            class: @{}
-        }
+    NSString *class = @".Class";
+    NSDictionary *rawTheme = @{
+        class: @{}
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];
@@ -40,7 +39,7 @@
     }];
     
     AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class toObject:object];
+    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [NSObject aut_deregisterThemeClassApplier:classApplier];

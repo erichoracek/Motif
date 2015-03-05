@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
+#import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeConstantTests : XCTestCase
 
@@ -17,12 +18,12 @@
 @implementation AUTThemeConstantTests
 
 
-- (void)testConstantMappingInvalidConstantObjectError
+- (void)testInvalidReferenceError
 {
-    NSDictionary *rawAttributesDictionary = @{AUTThemeConstantsKey: @0};
+    NSDictionary *rawTheme = @{@"invalidSymbol": @0};
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
-
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    
     XCTAssertNotNil(theme);
     XCTAssertNotNil(error);
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
@@ -30,110 +31,119 @@
 
 - (void)testConstantMapping
 {
-    NSString *key = @"key";
+    NSString *constant = @"$constant";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary = @{AUTThemeConstantsKey: @{key: value}};
+    NSDictionary *rawTheme = @{constant: value};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    XCTAssertEqualObjects(value, [theme constantValueForKey:key], @"Constant value for key from theme must be equivalent to constant value in attributes dictionary");
+    id constantValue = [theme constantValueForKey:constant.aut_symbol];
+    
+    XCTAssertEqualObjects(value, constantValue, @"Constant value for key from theme must be equivalent to constant value in attributes dictionary");
 }
 
 - (void)testConstantToConstantInterThemeMapping
 {
-    NSString *key1 = @"key1";
-    NSString *key2 = @"key2";
+    NSString *constant1 = @"$constant1";
+    NSString *constant2 = @"$constant2";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
-    NSDictionary *rawAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
+    NSDictionary *rawTheme1 = @{constant1: value};
+    NSDictionary *rawTheme2 = @{constant2: constant1};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id key1Value = [theme constantValueForKey:key1];
-    id key2Value = [theme constantValueForKey:key2];
+    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForKey:constant2.aut_symbol];
     
-    XCTAssertEqualObjects(key1Value, value, @"The key 1 constant must have a value of 'value'");
-    XCTAssertEqualObjects(key2Value, value, @"The key 2 constant must have a value of 'value'");
+    XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
+    XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
 }
 
 - (void)testConstantToConstantToConstantInterThemeMapping
 {
-    NSString *key1 = @"key1";
-    NSString *key2 = @"key2";
-    NSString *key3 = @"key3";
+    NSString *constant1 = @"$constant1";
+    NSString *constant2 = @"$constant2";
+    NSString *constant3 = @"$constant3";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary1 = @{AUTThemeConstantsKey: @{key1: value}};
-    NSDictionary *rawAttributesDictionary2 = @{AUTThemeConstantsKey: @{key2: key1}};
-    NSDictionary *rawAttributesDictionary3 = @{AUTThemeConstantsKey: @{key3: key2}};
+    NSDictionary *rawTheme1 = @{constant1: value};
+    NSDictionary *rawTheme2 = @{constant2: constant1};
+    NSDictionary *rawTheme3 = @{constant3: constant2};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2, rawAttributesDictionary3] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2, rawTheme3] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id key1Value = [theme constantValueForKey:key1];
-    id key2Value = [theme constantValueForKey:key2];
-    id key3Value = [theme constantValueForKey:key3];
+    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForKey:constant3.aut_symbol];
+    id constant3Value = [theme constantValueForKey:constant2.aut_symbol];
     
-    XCTAssertEqualObjects(key1Value, value, @"The key 1 constant must have a value of 'value'");
-    XCTAssertEqualObjects(key2Value, value, @"The key 2 constant must have a value of 'value'");
-    XCTAssertEqualObjects(key3Value, value, @"The key 3 constant must have a value of 'value'");
+    XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
+    XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
+    XCTAssertEqualObjects(constant3Value, value, @"Constant 3 must have a value of 'value'");
 }
 
 - (void)testConstantToConstantInnerThemeMapping
 {
-    NSString *key1 = @"key1";
-    NSString *key2 = @"key2";
+    NSString *constant1 = @"$constant1";
+    NSString *constant2 = @"$constant2";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeConstantsKey: @{
-            key2: key1,
-            key1: value
-        }
+    NSDictionary *rawTheme = @{
+        constant2: constant1,
+        constant1: value
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id key1Value = [theme constantValueForKey:key1];
-    id key2Value = [theme constantValueForKey:key2];
+    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForKey:constant2.aut_symbol];
     
-    XCTAssertEqualObjects(key1Value, value, @"The key 1 constant must have a value of 'value'");
-    XCTAssertEqualObjects(key2Value, value, @"The key 2 constant must have a value of 'value'");
+    XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
+    XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
+}
+
+- (void)testInvalidReferenceConstantToConstantInnerThemeMapping
+{
+    NSString *constant = @"$constant";
+    NSString *invalidConstantReference = @"$invalidConstantReference";
+    
+    NSDictionary *rawTheme = @{constant: invalidConstantReference};
+    
+    NSError *error;
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    XCTAssert(error, @"Error must be non-nil");
+    
+    id constantValue = [theme constantValueForKey:constant];
+    
+    XCTAssertNil(constantValue, @"Constant must have a value of 'value'");
 }
 
 #pragma mark - Identical Constants
 
 - (void)testRegisteringMultipleConstantsWithIdenticalNamesAcrossThemes
 {
-    NSString *constant = @"constant";
+    NSString *constant = @"$constant";
     NSString *value1 = @"value1";
-    NSString *value2 = @"value";
+    NSString *value2 = @"value2";
     
-    NSDictionary *themeAttributesDictionary1 = @{
-        AUTThemeConstantsKey: @{
-            constant: value1
-        }
-    };
-    NSDictionary *themeAttributesDictionary2 = @{
-        AUTThemeConstantsKey: @{
-            constant: value2
-        }
-    };
+    NSDictionary *themeAttributesDictionary1 = @{constant: value1};
+    NSDictionary *themeAttributesDictionary2 = @{constant: value2};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[themeAttributesDictionary1, themeAttributesDictionary2] error:&error];
-    XCTAssertNotNil(error, @"Must have error when constant with duplciate name is registered");
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[themeAttributesDictionary1, themeAttributesDictionary2] error:&error];
+    XCTAssertNotNil(error, @"Must have error when constant with duplicate name is registered");
     
-    id constantValue = [theme constantValueForKey:constant];
+    id constantValue = [theme constantValueForKey:constant.aut_symbol];
+    
     XCTAssertNotNil(constantValue, @"Constant must exist when registered");
     XCTAssertEqualObjects(value2, constantValue, @"Value must match second registered constant");
 }

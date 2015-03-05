@@ -31,14 +31,33 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"{%@: %@, %@: %@, %@: %@}",
+    return [NSString stringWithFormat:@"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
+        NSStringFromClass([self class]),
         NSStringFromSelector(@selector(key)), self.key,
         NSStringFromSelector(@selector(rawValue)), self.rawValue,
-        NSStringFromSelector(@selector(mappedValue)), self.mappedValue
+        NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
+        NSStringFromSelector(@selector(value)), self.value
     ];
 }
 
 #pragma mark - AUTThemeConstant
+
+#pragma mark Public
+
+@dynamic value;
+
+- (id)value
+{
+    // If the mapped value is a reference to another constant, return that constant's value
+    if ([self.mappedValue isKindOfClass:[AUTThemeConstant class]]) {
+        AUTThemeConstant *mappedConstant = (AUTThemeConstant *)self.mappedValue;
+        return mappedConstant.value;
+    }
+    // Otherwise, return either the mapped value or the raw value, in that order.
+    return (self.mappedValue ?: self.rawValue);
+}
+
+#pragma mark Private
 
 - (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue
 {
@@ -51,14 +70,6 @@
         self.mappedValue = mappedValue;
     }
     return self;
-}
-
-- (id)mappedValue
-{
-    if (!_mappedValue) {
-        return self.rawValue;
-    }
-    return _mappedValue;
 }
 
 #pragma mark Value Transformation
@@ -80,12 +91,12 @@
     
     NSValueTransformer *transformer = [NSValueTransformer valueTransformerForName:name];
     if (transformer) {
-        id transformedValue = [transformer transformedValue:self.mappedValue];
+        id transformedValue = [transformer transformedValue:self.value];
         [self.transformedValueCache setObject:transformedValue forKey:name];
         return transformedValue;
     }
     
-    return self.mappedValue;
+    return self.value;
 }
 
 #pragma mark Equality

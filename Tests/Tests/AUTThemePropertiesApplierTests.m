@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <UIKit/UIKit.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
 #import <AUTTheming/NSObject+ThemeClassAppliersPrivate.h>
-
-#import <UIKit/UIKit.h>
+#import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemePropertiesApplierTests : XCTestCase
 
@@ -25,7 +25,7 @@
 
 - (void)testPropertiesApplier
 {
-    NSString *class = @"class";
+    NSString *class = @".Class";
     NSSet *properties = [NSSet setWithArray:@[@"property1", @"property2"]];
     NSSet *values = [NSSet setWithArray:@[@"value1", @"value2"]];
     AUTTheme *theme = [self themeWithClass:class properties:properties.allObjects values:values.allObjects];
@@ -44,7 +44,7 @@
     }];
     
     AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class toObject:object];
+    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectClass aut_deregisterThemeClassApplier:propertyApplier];
@@ -69,14 +69,12 @@
         rawClassDictionary[property] = value;
     }
     
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeClassesKey: @{
-            class: rawClassDictionary
-        }
+    NSDictionary *rawTheme = @{
+        class: rawClassDictionary
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;

@@ -11,6 +11,7 @@
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
 #import <AUTTheming/AUTThemeApplier+Private.h>
+#import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeApplierTests : XCTestCase
 
@@ -20,16 +21,16 @@
 
 - (void)testThemeReapplication
 {
-    NSString *class = @"class";
+    NSString *class = @".Class";
     NSString *property = @"property";
     NSString *value1 = @"value1";
     NSString *value2 = @"value2";
     
     NSError *error;
-    AUTTheme *theme1 = [[AUTTheme alloc] initWithRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value1}}} error:&error];
+    AUTTheme *theme1 = [[AUTTheme alloc] initWithRawTheme:@{class: @{property: value1}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
-
-    AUTTheme *theme2 = [[AUTTheme alloc] initWithRawAttributesDictionary:@{AUTThemeClassesKey: @{class: @{property: value2}}} error:&error];
+    
+    AUTTheme *theme2 = [[AUTTheme alloc] initWithRawTheme:@{class: @{property: value2}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     Class objectClass = [NSObject class];
@@ -48,7 +49,7 @@
     }];
     
     AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme1];
-    [applier applyClassWithName:class toObject:object];
+    [applier applyClassWithName:class.aut_symbol toObject:object];
     applier.theme = theme2;
     
     [self waitForExpectationsWithTimeout:1.0 handler:nil];
@@ -56,19 +57,19 @@
 
 - (void)testApplicantMemoryManagement
 {
-    NSString *className = @"Class";
+    NSString *class = @".Class";
     
-    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey: @{className: @{}}};
+    NSDictionary *rawTheme = @{class: @{}};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];
     AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:className toObject:object];
+    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
-    NSHashTable *classApplicants = themeApplier.applicants[className];
+    NSHashTable *classApplicants = themeApplier.applicants[class.aut_symbol];
     XCTAssertNotNil(classApplicants, @"Must have an applicants hash table for the specified class");
     XCTAssertEqual(classApplicants.count, 1, @"Must have only one applicant added");
     // Ensure that autoreleased reference to object does no stay around and bump up the retain count of object for the duration of the test

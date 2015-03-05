@@ -11,6 +11,7 @@
 #import "AUTTheme.h"
 #import "AUTTheme+Private.h"
 #import "AUTThemeConstant.h"
+#import "NSString+ThemeSymbols.h"
 
 @implementation AUTThemeClass
 
@@ -32,7 +33,31 @@
     return (self.name.hash ^ self.propertiesConstants.hash);
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ {%@: %@, %@: %@}",
+        NSStringFromClass([self class]),
+        NSStringFromSelector(@selector(name)), self.name,
+        NSStringFromSelector(@selector(properties)), self.properties
+    ];
+}
+
 #pragma mark - AUTThemeClass
+
+#pragma mark Public
+
+@dynamic properties;
+
+- (NSDictionary *)properties
+{
+    NSMutableDictionary *properties = [NSMutableDictionary new];
+    [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *propertyName, AUTThemeConstant *propertyConstant, BOOL *stop) {
+        properties[propertyName] = propertyConstant.value;
+    }];
+    return [properties copy];
+}
+
+#pragma mark Private
 
 - (BOOL)isEqualToThemeClass:(AUTThemeClass *)themeClass
 {
@@ -63,33 +88,19 @@
     return self;
 }
 
-@dynamic properties;
-
-- (NSDictionary *)properties
-{
-    NSMutableDictionary *properties = [NSMutableDictionary new];
-    [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeConstant *themeConstant, BOOL *stop) {
-        if ([key isEqualToString:AUTThemeSuperclassKey]) {
-            AUTThemeClass *superclass = themeConstant.mappedValue;
-            [properties addEntriesFromDictionary:superclass.properties];
-        } else {
-            properties[key] = themeConstant.mappedValue;
-        }
-    }];
-    return [properties copy];
-}
-
 @dynamic resolvedPropertiesConstants;
 
 - (NSDictionary *)resolvedPropertiesConstants
 {
     NSMutableDictionary *propertiesConstants = [NSMutableDictionary new];
-    [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(id key, AUTThemeConstant *themeConstant, BOOL *stop) {
-        if ([key isEqualToString:AUTThemeSuperclassKey]) {
-            AUTThemeClass *superclass = themeConstant.mappedValue;
+    [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *propertyName, AUTThemeConstant *propertyConstant, BOOL *stop) {
+        // Resolve references to superclass into the properties constants dictionary
+        if (propertyName.aut_isSuperclassProperty) {
+            AUTThemeClass *superclass = (AUTThemeClass *)propertyConstant.value;
             [propertiesConstants addEntriesFromDictionary:superclass.resolvedPropertiesConstants];
+        } else {
+            propertiesConstants[propertyName] = propertyConstant;
         }
-        propertiesConstants[key] = themeConstant;
     }];
     return [propertiesConstants copy];
 }

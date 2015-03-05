@@ -11,6 +11,7 @@
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme+Private.h>
 #import <AUTTheming/AUTThemeClass+Private.h>
+#import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeClassTests : XCTestCase
 
@@ -18,24 +19,12 @@
 
 @implementation AUTThemeClassTests
 
-- (void)testClassMappingInvalidClassObjectError
-{
-    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey: @0};
-    
-    NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
-    
-    XCTAssertNotNil(theme);
-    XCTAssert(error, @"Must have error with invalid class object");
-    XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
-}
-
 - (void)testClassMappingInvalidClassObjectClassError
 {
-    NSDictionary *rawAttributesDictionary = @{AUTThemeClassesKey:@{@"class": @0}};
+    NSDictionary *rawTheme = @{@".Class": @0};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     
     XCTAssertNotNil(theme);
     XCTAssert(error, @"Must have error with invalid class object class");
@@ -44,23 +33,21 @@
 
 - (void)testClassMappingPropertyToValue
 {
-    NSString *class = @"class";
+    NSString *class = @".Class";
     NSString *property = @"property";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeClassesKey: @{
-            class: @{
-                property: value
-            }
+    NSDictionary *rawTheme = @{
+        class: @{
+            property: value
         }
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class];
+    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty = themeClass.properties[property];
@@ -71,27 +58,23 @@
 
 - (void)testClassMappingPropertyToValueFromConstant
 {
-    NSString *class = @"class";
+    NSString *class = @".Class";
     NSString *property = @"property";
     NSString *value = @"value";
-    NSString *constant = @"constant";
+    NSString *constant = @"$Constant";
     
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeConstantsKey: @{
-            constant: value
-        },
-        AUTThemeClassesKey: @{
-            class: @{
-                property: constant
-            }
+    NSDictionary *rawTheme = @{
+        constant: value,
+        class: @{
+            property: constant
         }
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class];
+    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty = themeClass.properties[property];
@@ -102,30 +85,28 @@
 
 - (void)testClassToClassMappingFromPropertyValueWithinTheme
 {
-    NSString *class1 = @"class1";
-    NSString *class2 = @"class2";
+    NSString *class1 = @".Class1";
+    NSString *class2 = @".Class2";
     NSString *property = @"property";
     NSString *classProperty = @"class1Property";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary = @{
-        AUTThemeClassesKey: @{
-            class1: @{
-                property: value
-            },
-            class2: @{
-                classProperty: class1
-            }
+    NSDictionary *rawTheme = @{
+        class1: @{
+            property: value
+        },
+        class2: @{
+            classProperty: class1
         }
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionary:rawAttributesDictionary error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass1 = [theme themeClassForName:class1];
+    AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
     XCTAssertNotNil(themeClass1, @"Class must exist when registered");
-    AUTThemeClass *themeClass2 = [theme themeClassForName:class2];
+    AUTThemeClass *themeClass2 = [theme themeClassForName:class2.aut_symbol];
     XCTAssertNotNil(themeClass2, @"Class must exist when registered");
 
     id valueForProperty = themeClass2.properties[classProperty];
@@ -137,34 +118,30 @@
 
 - (void)testClassToClassMappingFromPropertyValueBetweenThemes
 {
-    NSString *class1 = @"class1";
-    NSString *class2 = @"class2";
+    NSString *class1 = @".Class1";
+    NSString *class2 = @".Class2";
     NSString *property = @"property";
     NSString *classProperty = @"class1Property";
     NSString *value = @"value";
     
-    NSDictionary *rawAttributesDictionary1 = @{
-        AUTThemeClassesKey: @{
-            class1: @{
-                property: value
-            }
+    NSDictionary *rawTheme1 = @{
+        class1: @{
+            property: value
         }
     };
-    NSDictionary *rawAttributesDictionary2 = @{
-        AUTThemeClassesKey: @{
-            class2: @{
-                classProperty: class1
-            }
+    NSDictionary *rawTheme2 = @{
+        class2: @{
+            classProperty: class1
         }
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass1 = [theme themeClassForName:class1];
+    AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
     XCTAssertNotNil(themeClass1, @"Class must exist when registered");
-    AUTThemeClass *themeClass2 = [theme themeClassForName:class2];
+    AUTThemeClass *themeClass2 = [theme themeClassForName:class2.aut_symbol];
     XCTAssertNotNil(themeClass2, @"Class must exist when registered");
 
     id valueForProperty = themeClass2.properties[classProperty];
@@ -178,32 +155,28 @@
 
 - (void)testRegisteringMultipleClassesWithIdenticalNamesAcrossThemes
 {
-    NSString *class = @"class";
+    NSString *class = @".Class";
     NSString *value1 = @"value1";
-    NSString *property1 = @"class1";
-    NSString *value2 = @"value";
+    NSString *property1 = @"property1";
+    NSString *value2 = @"value2";
     NSString *property2 = @"property2";
     
-    NSDictionary *rawAttributesDictionary1 = @{
-        AUTThemeClassesKey: @{
-            class: @{
-                property1: value1
-            }
+    NSDictionary *rawTheme1 = @{
+        class: @{
+            property1: value1
         }
     };
-    NSDictionary *rawAttributesDictionary2 = @{
-        AUTThemeClassesKey: @{
-            class: @{
-                property2: value2
-            }
+    NSDictionary *rawTheme2 = @{
+        class: @{
+            property2: value2
         }
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawAttributesDictionaries:@[rawAttributesDictionary1, rawAttributesDictionary2] error:&error];
-    XCTAssertNotNil(error, @"Must have error when class with duplciate name is registered");
+    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
+    XCTAssertNotNil(error, @"Must have error when class with duplicate name is registered");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class];
+    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty1 = themeClass.properties[property1];

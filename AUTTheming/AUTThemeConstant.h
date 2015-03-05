@@ -16,14 +16,9 @@
 @property (nonatomic, copy, readonly) NSString *key;
 
 /**
- The raw value of the constant, directly serialized from the JSON file.
+ The value that the theme constant is referencing.
  */
-@property (nonatomic, readonly) id rawValue;
-
-/**
- Defaults as a pass-through accessor to `rawValue`, but is able to be set to and return a different value via `setMappedValue:`.
- */
-@property (nonatomic, readonly) id mappedValue;
+@property (nonatomic, readonly) id value;
 
 /**
  Shortcut for accessing a transformed value from registered value transformer.

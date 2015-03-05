@@ -110,7 +110,7 @@
 + (id)valueFromConstant:(AUTThemeConstant *)constant forProperty:(NSString *)property onObject:(id)object withRequiredClass:(Class)requiredClass valueTransformerName:(NSString *)valueTransformerName
 {
     NSAssert(constant, @"Constant must not be nil");
-    id value = constant.mappedValue;
+    id value = constant.value;
     
     // Enforce required class if necessary
     if (requiredClass) {
