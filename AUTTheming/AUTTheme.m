@@ -82,7 +82,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     NSMutableArray *validFileURLs = [NSMutableArray new];
     
     for (NSURL *fileURL in fileURLs) {
-        NSDictionary *themeDictionary = [self themeDictionaryFromJSONFileURL:fileURL error:error];
+        NSDictionary *themeDictionary = [[self class] themeDictionaryFromJSONFileURL:fileURL error:error];
         if (themeDictionary) {
             [themeDictionaries addObject:themeDictionary];
             [validFileURLs addObject:fileURL];
@@ -123,7 +123,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     return self;
 }
 
-- (NSDictionary *)themeDictionaryFromJSONFileURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
++ (NSDictionary *)themeDictionaryFromJSONFileURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
 {
     // If the file is not a file URL, populate the error object
     if (!fileURL.isFileURL) {
