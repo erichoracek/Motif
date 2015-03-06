@@ -69,8 +69,8 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 - (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error;
 {
     NSParameterAssert(fileURL);
-    self = [self initWithJSONFiles:@[fileURL] error:error];
-    return self;
+    
+    return [self initWithJSONFiles:@[fileURL] error:error];
 }
 
 - (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error
