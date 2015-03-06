@@ -7,7 +7,7 @@
 //
 
 #import "AUTThemeApplier.h"
-#import "AUTThemeApplier+Private.h"
+#import "AUTThemeApplier_Private.h"
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
 #import "AUTThemeClassApplicable.h"

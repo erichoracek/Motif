@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <AUTTheming/AUTThemeConstant+Private.h>
-#import <AUTTheming/AUTThemeClass+Private.h>
+#import <AUTTheming/AUTThemeConstant_Private.h>
+#import <AUTTheming/AUTThemeClass_Private.h>
 
 @interface AUTThemeClassEqualityTests : XCTestCase
 

@@ -1,5 +1,5 @@
 //
-//  AUTThemeConstant+Private.h
+//  AUTThemeConstant_Private.h
 //  Pods
 //
 //  Created by Eric Horacek on 12/24/14.

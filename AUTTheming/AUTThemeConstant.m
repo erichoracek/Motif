@@ -7,7 +7,7 @@
 //
 
 #import "AUTThemeConstant.h"
-#import "AUTThemeConstant+Private.h"
+#import "AUTThemeConstant_Private.h"
 
 @implementation AUTThemeConstant
 

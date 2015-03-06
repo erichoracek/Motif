@@ -7,11 +7,11 @@
 //
 
 #import "AUTTheme.h"
-#import "AUTTheme+Private.h"
-#import "AUTThemeClass+Private.h"
+#import "AUTTheme_Private.h"
+#import "AUTThemeClass_Private.h"
 #import "AUTThemeClass.h"
 #import "AUTThemeConstant.h"
-#import "AUTThemeConstant+Private.h"
+#import "AUTThemeConstant_Private.h"
 #import "AUTThemeParser.h"
 #import "NSURL+LastPathComponentWithoutExtension.h"
 

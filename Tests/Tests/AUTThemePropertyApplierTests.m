@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTValueTransformers.h>
-#import <AUTTheming/AUTTheme+Private.h>
+#import <AUTTheming/AUTTheme_Private.h>
 #import <AUTTheming/NSObject+ThemeClassAppliersPrivate.h>
 #import <AUTTheming/NSString+ThemeSymbols.h>
 

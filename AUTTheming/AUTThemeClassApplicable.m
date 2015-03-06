@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 #import "AUTThemeClassApplicable.h"
 #import "AUTThemeConstant.h"
-#import "AUTThemeClass+Private.h"
+#import "AUTThemeClass_Private.h"
 
 @interface AUTThemeClassApplier ()
 

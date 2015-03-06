@@ -1,5 +1,5 @@
 //
-//  AUTThemeClass+Private.h
+//  AUTThemeClass_Private.h
 //  AUTTheming
 //
 //  Created by Eric Horacek on 12/24/14.

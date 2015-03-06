@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <AutTheming/AUTThemeConstant+Private.h>
+#import <AutTheming/AUTThemeConstant_Private.h>
 
 @interface AUTThemeConstantEqualityTests : XCTestCase
 

@@ -8,7 +8,7 @@
 
 #import <GBCli/GBCli.h>
 #import <AUTTheming/AUTTheming.h>
-#import <AUTTheming/AUTTheme+Private.h>
+#import <AUTTheming/AUTTheme_Private.h>
 #import "AUTTheme+SymbolsGeneration.h"
 #import "NSOutputStream+StringWriting.h"
 

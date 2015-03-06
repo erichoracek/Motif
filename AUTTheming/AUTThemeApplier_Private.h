@@ -1,5 +1,5 @@
 //
-//  AUTThemeApplier+Private.h
+//  AUTThemeApplier_Private.h
 //  Pods
 //
 //  Created by Eric Horacek on 12/29/14.

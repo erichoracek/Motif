@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <AUTTheming/AUTTheming.h>
-#import <AUTTheming/AUTTheme+Private.h>
-#import <AUTTheming/AUTThemeClass+Private.h>
+#import <AUTTheming/AUTTheme_Private.h>
+#import <AUTTheming/AUTThemeClass_Private.h>
 #import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeClassTests : XCTestCase

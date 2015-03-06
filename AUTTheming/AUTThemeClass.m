@@ -7,9 +7,9 @@
 //
 
 #import "AUTThemeClass.h"
-#import "AUTThemeClass+Private.h"
+#import "AUTThemeClass_Private.h"
 #import "AUTTheme.h"
-#import "AUTTheme+Private.h"
+#import "AUTTheme_Private.h"
 #import "AUTThemeConstant.h"
 #import "NSString+ThemeSymbols.h"
 
