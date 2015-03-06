@@ -13,7 +13,7 @@
 #import "AUTThemeConstant.h"
 #import "AUTThemeConstant_Private.h"
 #import "AUTThemeParser.h"
-#import "NSURL+LastPathComponentWithoutExtension.h"
+#import "NSURL+ThemeNaming.h"
 
 NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
@@ -61,7 +61,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     }
     
     // Build an array of URLs from the specified theme names
-    NSArray *fileURLs = [self fileURLsFromThemeNames:themeNames inBundle:bundle];
+    NSArray *fileURLs = [NSURL aut_fileURLsFromThemeNames:themeNames inBundle:bundle];
     
     return [[AUTTheme alloc] initWithJSONFiles:fileURLs error:error];
 }
@@ -162,53 +162,9 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 {
     NSMutableArray *names = [NSMutableArray new];
     for (NSURL *fileURL in self.fileURLs) {
-        [names addObject:[self nameFromFileURL:fileURL]];
+        [names addObject:fileURL.aut_themeName];
     }
     return [names copy];
-}
-
-static NSString * const ThemeNameOptionalSuffix = @"Theme";
-
-- (NSString *)nameFromFileURL:(NSURL *)fileURL
-{
-    NSString *filenameWithoutExtension = fileURL.aut_lastPathComponentWithoutExtension;
-    NSString *name = filenameWithoutExtension;
-    // If the theme name ends with "Theme", then trim it out of the name
-    NSRange themeRange = [filenameWithoutExtension rangeOfString:ThemeNameOptionalSuffix];
-    if (themeRange.location != NSNotFound) {
-        BOOL isThemeAtEndOfThemeName = (themeRange.location == (name.length - themeRange.length));
-        BOOL isThemeSubstring = (themeRange.location != 0);
-        if (isThemeAtEndOfThemeName && isThemeSubstring) {
-            name = [name stringByReplacingCharactersInRange:themeRange withString:@""];
-        }
-    }
-    return name;
-}
-
-static NSString * const JSONExtension = @"json";
-
-+ (NSArray *)fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(NSBundle *)bundle
-{
-    // Build an array of fileURLs from the passed themeNames
-    NSMutableArray *fileURLs = [NSMutableArray new];
-    for (NSString *themeName in themeNames) {
-        
-        // Ensure the theme names are strings
-        NSAssert([themeName isKindOfClass:[NSString class]], @"The provided theme names must be of class NSString. %@ is instead kind of class %@", themeName, [themeName class]);
-        
-        NSURL *fileURL = [bundle URLForResource:themeName withExtension:JSONExtension];
-        
-        // If a theme with the exact name is not found, try appending 'Theme' to the end of the filename
-        if (!fileURL) {
-            NSString *themeNameWithThemeAppended = [themeName stringByAppendingString:ThemeNameOptionalSuffix];
-            fileURL = [bundle URLForResource:themeNameWithThemeAppended withExtension:JSONExtension];
-        }
-        
-        // If no file is found, throw an exception
-        NSAssert(fileURLs, @"No theme was found with the name '%@' in the bundle %@. Perhaps you meant one of the following: %@", themeName, bundle, [bundle URLsForResourcesWithExtension:JSONExtension subdirectory:nil]);
-        [fileURLs addObject:fileURL];
-    }
-    return [fileURLs copy];
 }
 
 #pragma mark Filenames
