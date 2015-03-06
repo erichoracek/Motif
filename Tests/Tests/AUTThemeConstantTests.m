@@ -22,7 +22,7 @@
 {
     NSDictionary *rawTheme = @{@"invalidSymbol": @0};
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     
     XCTAssertNotNil(theme);
     XCTAssertNotNil(error);
@@ -37,7 +37,7 @@
     NSDictionary *rawTheme = @{constant: value};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id constantValue = [theme constantValueForKey:constant.aut_symbol];
@@ -55,7 +55,7 @@
     NSDictionary *rawTheme2 = @{constant2: constant1};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
@@ -77,7 +77,7 @@
     NSDictionary *rawTheme3 = @{constant3: constant2};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2, rawTheme3] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2, rawTheme3] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
@@ -101,7 +101,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
@@ -119,7 +119,7 @@
     NSDictionary *rawTheme = @{constant: invalidConstantReference};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssert(error, @"Error must be non-nil");
     
     id constantValue = [theme constantValueForKey:constant];
@@ -139,7 +139,7 @@
     NSDictionary *themeAttributesDictionary2 = @{constant: value2};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[themeAttributesDictionary1, themeAttributesDictionary2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[themeAttributesDictionary1, themeAttributesDictionary2] error:&error];
     XCTAssertNotNil(error, @"Must have error when constant with duplicate name is registered");
     
     id constantValue = [theme constantValueForKey:constant.aut_symbol];

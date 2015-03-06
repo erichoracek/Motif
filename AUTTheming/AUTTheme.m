@@ -77,42 +77,71 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 {
     NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
-    self = [super init];
+    
+    NSMutableArray *themeDictionaries = [NSMutableArray new];
+    NSMutableArray *validFileURLs = [NSMutableArray new];
+    
+    for (NSURL *fileURL in fileURLs) {
+        NSDictionary *themeDictionary = [self themeDictionaryFromJSONFileURL:fileURL error:error];
+        if (themeDictionary) {
+            [themeDictionaries addObject:themeDictionary];
+            [validFileURLs addObject:fileURL];
+        }
+    }
+    
+    NSAssert((themeDictionaries.count > 0), @"None of the specified JSON theme files at the following URLs contained valid themes %@. Error %@", fileURLs, (error ? *error : nil));
+    
+    self = [self initWithThemeDictionaries:themeDictionaries error:error];
     if (self) {
-        for (NSURL *fileURL in fileURLs) {
-            [self addAttributesFromThemeAtURL:fileURL error:error];
+        for (NSURL *fileURL in validFileURLs) {
+            [self addFileURLsObject:fileURL];
         }
     }
     return self;
 }
 
-- (void)addAttributesFromThemeAtURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
+- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+{
+    NSParameterAssert(dictionary);
+    
+    return [self initWithThemeDictionaries:@[dictionary] error:error];
+}
+
+- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError *__autoreleasing *)error;
+{
+    NSParameterAssert(dictionaries);
+    NSAssert(dictionaries.count > 0, @"Must provide at least one theme dictionary");
+    
+    self = [super init];
+    if (self) {
+        for (NSDictionary *dictionary in dictionaries) {
+            AUTThemeParser *parser = [[AUTThemeParser alloc] initWithRawTheme:dictionary inheritingFromTheme:self error:error];
+            [self addConstantsFromDictionary:parser.parsedConstants];
+            [self addClassesFromDictionary:parser.parsedClasses];
+        }
+    }
+    return self;
+}
+
+- (NSDictionary *)themeDictionaryFromJSONFileURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
 {
     // If the file is not a file URL, populate the error object
     if (!fileURL.isFileURL) {
         if (error) {
             *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
-                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The specified file URL is invalid %@.", fileURL]
+                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The specified file URL is invalid %@", fileURL]
             }];
         }
-        return;
+        return nil;
     }
     
-    NSDictionary *JSONDictionary = [self dictionaryFromJSONFileAtURL:fileURL error:error];
-    // If the file is invalid JSON, return before registering it
-    if (!JSONDictionary) {
-        return;
+    NSData *JSONData = [NSData dataWithContentsOfURL:fileURL options:0 error:error];
+    if (!JSONData) {
+        return nil;
     }
     
-    [self addFileURLsObject:fileURL];
-    
-    NSString *filename = fileURL.lastPathComponent;
-    [self addFilenamesObject:filename];
-    
-    NSString *name = [self nameFromFileURL:fileURL];
-    [self addNamesObject:name];
-    
-    [self addConstantsAndClassesFromRawTheme:JSONDictionary error:error];
+    NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:error];
+    return JSONDictionary;
 }
 
 - (id)constantValueForKey:(NSString *)key
@@ -125,41 +154,18 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     return self.classes[name];
 }
 
-#pragma mark Theme Names
+#pragma mark Private
+
+#pragma mark Names
 
 - (NSArray *)names
 {
-    if (!_names) {
-        self.names = [NSArray new];
+    NSMutableArray *names = [NSMutableArray new];
+    for (NSURL *fileURL in self.fileURLs) {
+        [names addObject:[self nameFromFileURL:fileURL]];
     }
-    return _names;
+    return [names copy];
 }
-
-#pragma mark - Private
-
-- (void)addConstantsAndClassesFromRawTheme:(NSDictionary *)rawTheme error:(NSError *__autoreleasing *)error;
-{
-    NSParameterAssert(rawTheme);
-    
-    AUTThemeParser *parser = [[AUTThemeParser alloc] initWithRawTheme:rawTheme inheritingFromTheme:self error:error];
-    
-    [self addConstantsFromDictionary:parser.parsedConstants error:error];
-    [self addClassesFromDictionary:parser.parsedClasses error:error];
-}
-
-#pragma mark JSON
-
-- (NSDictionary *)dictionaryFromJSONFileAtURL:(NSURL *)URL error:(NSError **)error
-{
-    NSData *JSONData = [NSData dataWithContentsOfURL:URL options:0 error:error];
-    if (!JSONData) {
-        return nil;
-    }
-    NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:error];
-    return JSONDictionary;
-}
-
-#pragma mark Names
 
 static NSString * const ThemeNameOptionalSuffix = @"Theme";
 
@@ -205,28 +211,15 @@ static NSString * const JSONExtension = @"json";
     return [fileURLs copy];
 }
 
-- (void)addNamesObject:(NSString *)object
-{
-    NSMutableArray *names = [self.names mutableCopy];
-    [names addObject:object];
-    self.names = [names copy];
-}
-
 #pragma mark Filenames
 
 - (NSArray *)filenames
 {
-    if (!_filenames) {
-        self.filenames = [NSMutableArray new];
+    NSMutableArray *filenames = [NSMutableArray new];
+    for (NSURL *fileURL in self.fileURLs) {
+        [filenames addObject:fileURL.lastPathComponent];
     }
-    return _filenames;
-}
-
-- (void)addFilenamesObject:(NSString *)filename
-{
-    NSMutableSet *filenames = [self.filenames mutableCopy];
-    [filenames addObject:filename];
-    self.filenames = [filenames copy];
+    return [filenames copy];
 }
 
 #pragma mark FileURLs
@@ -261,7 +254,7 @@ static NSString * const JSONExtension = @"json";
     return _constants;
 }
 
-- (void)addConstantsFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+- (void)addConstantsFromDictionary:(NSDictionary *)dictionary
 {
     if (!dictionary.count) {
         return;
@@ -281,7 +274,7 @@ static NSString * const JSONExtension = @"json";
     return _classes;
 }
 
-- (void)addClassesFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+- (void)addClassesFromDictionary:(NSDictionary *)dictionary
 {
     if (!dictionary.count) {
         return;
@@ -289,27 +282,6 @@ static NSString * const JSONExtension = @"json";
     NSMutableDictionary *classes = [self.classes mutableCopy];
     [classes addEntriesFromDictionary:dictionary];
     self.classes = [classes copy];
-}
-
-@end
-
-@implementation AUTTheme (Testing)
-
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme error:(NSError *__autoreleasing *)error
-{
-    self = [self initWithRawThemes:@[rawTheme] error:error];
-    return self;
-}
-
-- (instancetype)initWithRawThemes:(NSArray *)rawThemes error:(NSError *__autoreleasing *)error
-{
-    self = [super init];
-    if (self) {
-        for (NSDictionary *rawTheme in rawThemes) {
-            [self addConstantsAndClassesFromRawTheme:rawTheme error:error];
-        }
-    }
-    return self;
 }
 
 @end

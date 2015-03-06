@@ -27,10 +27,10 @@
     NSString *value2 = @"value2";
     
     NSError *error;
-    AUTTheme *theme1 = [[AUTTheme alloc] initWithRawTheme:@{class: @{property: value1}} error:&error];
+    AUTTheme *theme1 = [[AUTTheme alloc] initWithThemeDictionary:@{class: @{property: value1}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTTheme *theme2 = [[AUTTheme alloc] initWithRawTheme:@{class: @{property: value2}} error:&error];
+    AUTTheme *theme2 = [[AUTTheme alloc] initWithThemeDictionary:@{class: @{property: value2}} error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     Class objectClass = [NSObject class];
@@ -62,7 +62,7 @@
     NSDictionary *rawTheme = @{class: @{}};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];

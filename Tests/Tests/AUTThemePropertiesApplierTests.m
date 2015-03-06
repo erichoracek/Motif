@@ -74,7 +74,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;

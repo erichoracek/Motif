@@ -36,7 +36,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *superclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
@@ -73,7 +73,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *superclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
@@ -105,7 +105,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNotNil(theme);
     XCTAssertNotNil(error, @"Must have error with invalid superclass value");
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
@@ -126,7 +126,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNotNil(theme);
     XCTAssertNotNil(error, @"Must have error with invalid superclass value");
     XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");

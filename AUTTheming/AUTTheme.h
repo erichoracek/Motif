@@ -64,7 +64,27 @@
  
  @return A theme object.
  */
-- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
+- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Initializes a theme from a theme dictionary.
+ 
+ @param dictionary The dictionary to initialze the theme from. Should mirror the syntax of the JSON theme files. Required.
+ @param error      If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
+- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError **)error __attribute__ ((nonnull (1)));
+
+/**
+ Initializes a theme from an array of theme dictionaries.
+ 
+ @param dictionaries The dictionaries to initialze the theme from. Should mirror the syntax of the JSON theme files. Required.
+ @param error        If an error occurs, upon return contains an NSError object that describes the problem.
+ 
+ @return A theme object.
+ */
+- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
 
 /**
  The constant value from the theme collection for the specified key.

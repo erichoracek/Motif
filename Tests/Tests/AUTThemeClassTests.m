@@ -24,7 +24,7 @@
     NSDictionary *rawTheme = @{@".Class": @0};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     
     XCTAssertNotNil(theme);
     XCTAssert(error, @"Must have error with invalid class object class");
@@ -44,7 +44,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
@@ -71,7 +71,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
@@ -101,7 +101,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawTheme:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
@@ -136,7 +136,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
@@ -173,7 +173,7 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithRawThemes:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNotNil(error, @"Must have error when class with duplicate name is registered");
     
     AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];

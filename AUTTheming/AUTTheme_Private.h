@@ -13,14 +13,14 @@
  
  Does not include the extension of the theme name. If the file name is "Filename.json", the name will be "Filename". If the name is "ColorsTheme.json", the name will be "Colors".
  */
-@property (nonatomic) NSArray *names;
+@property (nonatomic, readonly) NSArray *names;
 
 /**
  The filenames of the JSON themes that were added to the theme, in the order that they were added in.
  
  If the file name is "Filename.json", the file name will be "Filename".
  */
-@property (nonatomic) NSArray *filenames;
+@property (nonatomic, readonly) NSArray *filenames;
 
 /**
  The URLs of the JSON themes that were added to the theme, in the order that they were added in.
@@ -36,13 +36,5 @@
  The AUTThemeClass instances on the theme, keyed by their names.
  */
 @property (nonatomic) NSDictionary *classes;
-
-@end
-
-@interface AUTTheme (Testing)
-
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme error:(NSError **)error;
-
-- (instancetype)initWithRawThemes:(NSArray *)rawThemes error:(NSError **)error;
 
 @end

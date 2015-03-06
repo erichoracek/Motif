@@ -21,11 +21,17 @@
 - (void)testNonFileURLIsInvalid
 {
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:&error];
+    AUTTheme *theme;
     
-    XCTAssertNotNil(theme, @"Theme must be non-nil");
-    XCTAssertNotNil(error, @"Must throw error with non-filesystem URL is specified for theme");
-    XCTAssertEqual(error.domain, AUTThemingErrorDomain, @"Must have AUTTheming error domain");
+    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    @try {
+        theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:&error];
+    }
+    @catch (NSException *exception) {
+        [exceptionExpectation fulfill];
+    }
+    
+    [self waitForExpectationsWithTimeout:0.0 handler:nil];
 }
 
 - (void)testNonExistentFileURLIsInvalid
@@ -36,12 +42,17 @@
     NSURL *fileURL = [documentsDirectory URLByAppendingPathComponent:UUID.UUIDString];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+    AUTTheme *theme;
     
-    XCTAssertNotNil(theme, @"Theme must be non-nil");
-    XCTAssertNotNil(error, @"Must throw error with non-existent file URL is specified for theme");
-    XCTAssertEqual(error.domain, NSCocoaErrorDomain, @"Must have cocoa error domain");
-    XCTAssertEqual(error.code, 260, @"Must be 'No such file or directory' error");
+    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    @try {
+        theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+    }
+    @catch (NSException *exception) {
+        [exceptionExpectation fulfill];
+    }
+    
+    [self waitForExpectationsWithTimeout:0.0 handler:nil];
 }
 
 - (void)testInvalidJSONFileIsInvalid
@@ -49,12 +60,17 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"InvalidJSONTheme" withExtension:@"json"];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+    AUTTheme *theme;
     
-    XCTAssertNotNil(theme, @"Theme must be non-nil");
-    XCTAssertNotNil(error, @"Must throw error with non-existent file URL is specified for theme");
-    XCTAssertEqual(error.domain, NSCocoaErrorDomain, @"Must have cocoa error domain");
-    XCTAssertEqual(error.code, 3840, @"Must be 'Badly formed object character' error code");
+    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    @try {
+        theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+    }
+    @catch (NSException *exception) {
+        [exceptionExpectation fulfill];
+    }
+    
+    [self waitForExpectationsWithTimeout:0.0 handler:nil];
 }
 
 - (void)testJSONFileIsAdded
