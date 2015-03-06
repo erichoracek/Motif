@@ -116,16 +116,16 @@
 
 - (NSDictionary *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error
 {
-    NSMutableDictionary *constants = [NSMutableDictionary new];
+    NSMutableDictionary *parsedConstants = [NSMutableDictionary new];
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
-        AUTThemeConstant *constant = [self constantFromRawSymbol:rawSymbol rawValue:rawValue error:error];
-        constants[constant.key] = constant;
+        AUTThemeConstant *constant = [self constantParsedFromRawSymbol:rawSymbol rawValue:rawValue error:error];
+        parsedConstants[constant.key] = constant;
     };
-    return [constants copy];
+    return [parsedConstants copy];
 }
 
-- (AUTThemeConstant *)constantFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError *__autoreleasing *)error
+- (AUTThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError *__autoreleasing *)error
 {
     // If the symbol is a reference (in the case of a root-level constant), use it. Otherwise it is a reference to
     // in a class' properties, so just keep it as-is
@@ -235,7 +235,7 @@
 - (NSDictionary *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error
 {
     // Create AUTThemeClass objects from the raw classes
-    NSMutableDictionary *mappedClasses = [NSMutableDictionary new];
+    NSMutableDictionary *parsedClasses = [NSMutableDictionary new];
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
         NSDictionary *rawProperties = [rawClasses aut_dictionaryValueForKey:rawClassName error:error];
@@ -246,10 +246,10 @@
         AUTThemeClass *class = [self classParsedFromRawProperties:rawProperties rawName:rawClassName error:error];
         
         if (class) {
-            mappedClasses[class.name] = class;
+            parsedClasses[class.name] = class;
         }
     }
-    return [mappedClasses copy];
+    return [parsedClasses copy];
 }
 
 - (AUTThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError *__autoreleasing *)error
