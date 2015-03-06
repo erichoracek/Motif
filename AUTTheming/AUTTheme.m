@@ -75,6 +75,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 - (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error
 {
+    NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     self = [super init];
     if (self) {
@@ -88,9 +89,12 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 - (void)addAttributesFromThemeAtURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
 {
     // If the file is not a file URL, populate the error object
-    if (!fileURL.isFileURL && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"The URL %@ is not a valid file URL.", fileURL];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+    if (!fileURL.isFileURL) {
+        if (error) {
+            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The specified file URL is invalid %@.", fileURL]
+            }];
+        }
         return;
     }
     
