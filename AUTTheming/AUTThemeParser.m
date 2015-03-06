@@ -202,7 +202,7 @@
             // This is an invalid reference, so remove it from the resolved constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The named class value for property '%@' ('%@') was not found as a registered class", parsedConstant.key, parsedConstant.value];
+                NSString *errorDescription = [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue];
                 *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
             }
         }
@@ -216,7 +216,7 @@
             // This is an invalid reference, so remove it from the resolved constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.value];
+                NSString *errorDescription = [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue];
                 *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
             }
         }
