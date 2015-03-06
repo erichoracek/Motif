@@ -53,7 +53,7 @@
             NavigationThemeName,
             ContentThemeName
         ] error:&error];
-        NSAssert(!error, @"Error when creating theme: %@", error);
+        NSAssert(!error, @"Error loading theme: %@", error);
         self.lightTheme = theme;
     }
     return _lightTheme;
@@ -71,7 +71,7 @@
             NavigationThemeName,
             ContentThemeName
         ] error:&error];
-        NSAssert(!error, @"Error when creating theme: %@", error);
+        NSAssert(!error, @"Error loading theme: %@", error);
         self.darkTheme = theme;
     }
     return _darkTheme;
