@@ -58,8 +58,9 @@
         // Determine the invalid keys from the raw theme
         NSArray *invalidSymbols = [self invalidSymbolsFromRawTheme:rawTheme rawConstants:rawConstants rawClasses:rawClasses];
         if (invalidSymbols.count && error) {
-            NSString *errorDescription = [NSString stringWithFormat:@"The following symbols in the theme are invalid %@", invalidSymbols];
-            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
+                NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The following symbols in the theme are invalid %@", invalidSymbols]
+            }];
         }
         
         // Map the constants from the raw theme
@@ -167,8 +168,9 @@
             [resolvedClasses removeObjectForKey:parsedClass.name];
             // Populate the error
             if (error) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The value for the 'superclass' property in '%@' must reference a valid theme class. It is currently '%@'", parsedClass.name, superclass];
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+                    NSLocalizedDescriptionKey:[NSString stringWithFormat:@"The value for the 'superclass' property in '%@' must reference a valid theme class. It is currently '%@'", parsedClass.name, superclass]
+                }];
             }
         }
     }
@@ -194,6 +196,7 @@
         
         switch (reference.type) {
         case AUTThemeSymbolTypeConstant: {
+            // Locate the referenced constant in the existing constants dictionary
             AUTThemeConstant *constantReference = constants[reference.symbol];
             if (constantReference) {
                 parsedConstant.mappedValue = constantReference;
@@ -202,12 +205,14 @@
             // This is an invalid reference, so remove it from the resolved constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue];
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
+                    NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue]
+                }];
             }
         }
         break;
         case AUTThemeSymbolTypeClass: {
+            // Locate the referenced class in the existing constants dictionary
             AUTThemeClass *classReference = classes[reference.symbol];
             if (classReference) {
                 parsedConstant.mappedValue = classReference;
@@ -216,8 +221,9 @@
             // This is an invalid reference, so remove it from the resolved constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                NSString *errorDescription = [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue];
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
+                    NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue]
+                }];
             }
         }
         break;
@@ -242,9 +248,8 @@
         if (!rawProperties) {
             break;
         }
-        // Create a theme class from this
+        // Create a theme class from this properties dictionary
         AUTThemeClass *class = [self classParsedFromRawProperties:rawProperties rawName:rawClassName error:error];
-        
         if (class) {
             parsedClasses[class.name] = class;
         }
@@ -270,8 +275,9 @@
 {
     NSSet *intersectingConstants = [existingConstants aut_intersectingKeysWithDictionary:parsedConstants];
     if (intersectingConstants.count && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"Registering new constants with identical names to previously-defined constants will overwrite existing constants with the following names: %@", intersectingConstants];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+            NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Registering new constants with identical names to previously-defined constants will overwrite existing constants with the following names: %@", intersectingConstants]
+        }];
     }
     NSMutableDictionary *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
@@ -282,8 +288,9 @@
 {
     NSSet *intersectingClasses = [existingClasses aut_intersectingKeysWithDictionary:parsedClasses];
     if (intersectingClasses.count && error) {
-        NSString *errorDescription = [NSString stringWithFormat:@"Registering new classes with identical names to previously-defined classes will overwrite existing classes with the following names: %@", intersectingClasses];
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+            NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Registering new classes with identical names to previously-defined classes will overwrite existing classes with the following names: %@", intersectingClasses]
+        }];
     }
     NSMutableDictionary *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];
@@ -331,8 +338,9 @@
     // If the value for the specified key is a dictionary but is not a valid type, return with error
     if (![value isKindOfClass:[NSDictionary class]]) {
         if (error) {
-            NSString *errorDescription = [NSString stringWithFormat:@"The value for the key '%@' is not a dictionary.", key];
-            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey : errorDescription}];
+            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The value for the key '%@' is not a dictionary", key]
+            }];
         }
         return nil;
     }
