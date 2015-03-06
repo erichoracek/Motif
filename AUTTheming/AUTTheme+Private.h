@@ -9,17 +9,32 @@
 @interface AUTTheme ()
 
 /**
- If the JSON at the specified URL does not exist or is unable to be parsed, an error is returned in the pass-by-reference error parameter.
+ The names of the JSON themes that were added to the theme, in the order that they were added in.
+ 
+ Does not include the extension of the theme name. If the file name is "Filename.json", the name will be "Filename". If the name is "ColorsTheme.json", the name will be "Colors".
  */
-- (void)addAttributesFromThemeAtURL:(NSURL *)URL error:(NSError **)error;
+@property (nonatomic) NSArray *names;
 
-- (void)addConstantsAndClassesFromRawTheme:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error;
-
+/**
+ The filenames of the JSON themes that were added to the theme, in the order that they were added in.
+ 
+ If the file name is "Filename.json", the file name will be "Filename".
+ */
 @property (nonatomic) NSArray *filenames;
+
+/**
+ The URLs of the JSON themes that were added to the theme, in the order that they were added in.
+ */
 @property (nonatomic) NSArray *fileURLs;
 
-@property (nonatomic) NSArray *names;
+/**
+ The AUTThemeConstant instances on the theme, keyed by their names.
+ */
 @property (nonatomic) NSDictionary *constants;
+
+/**
+ The AUTThemeClass instances on the theme, keyed by their names.
+ */
 @property (nonatomic) NSDictionary *classes;
 
 @end

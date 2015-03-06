@@ -67,13 +67,6 @@
 - (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
 
 /**
- The names of the themes that have been registered with this theme, in the order that they were added.
- 
- Does not include the extension of the theme name. If the file name is "Filename.json", the name for will be "Filename". If the name is "ColorsTheme.json", the name will be "Colors".
- */
-@property (nonatomic, readonly) NSArray *names;
-
-/**
  The constant value from the theme collection for the specified key.
  
  @param key The key for the desired constant.
