@@ -9,7 +9,7 @@
     },
     ".Button": {
         "fontName": "$RegularFontName",
-        "fontSize": "$H5FontSsize",
+        "fontSize": "$H5FontSize",
         "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
         "borderWidth": 1.0,
         "cornerRadius": 5.0
