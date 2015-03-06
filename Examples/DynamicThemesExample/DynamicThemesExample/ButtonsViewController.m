@@ -21,6 +21,8 @@
 
 #pragma mark - UIViewController
 
+@dynamic view;
+
 - (void)loadView
 {
     self.view = [ButtonsView new];
@@ -31,14 +33,13 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(toggleTheme)];
-    self.navigationItem.title = @"Dynamic Theming";
+    self.navigationItem.title = NSLocalizedString(@"Dynamic Theming", nil);
     
     [self.themeApplier applyClassWithName:ContentThemeClassNames.ContentBackground toObject:self.view];
-    
     [self.themeApplier applyClassWithName:ButtonsThemeClassNames.DestructiveButton toObject:self.view.deleteButton];
-    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
-    
     [self.themeApplier applyClassWithName:ButtonsThemeClassNames.PrimaryButton toObject:self.view.saveButton];
+    
+    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
     [self.view.saveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
 }
 

@@ -21,6 +21,8 @@
 
 #pragma mark - UIViewController
 
+@dynamic view;
+
 - (void)loadView
 {
     self.view = [ButtonsView new];
@@ -31,7 +33,6 @@
     [super viewDidLoad];
     
     [self.themeApplier applyClassWithName:ThemeClassNames.ContentBackground toObject:self.view];
-    
     [self.themeApplier applyClassWithName:ThemeClassNames.DestructiveButton toObject:self.view.deleteButton];
     [self.themeApplier applyClassWithName:ThemeClassNames.PrimaryButton toObject:self.view.saveButton];
     
