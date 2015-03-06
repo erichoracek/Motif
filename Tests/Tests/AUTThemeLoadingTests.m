@@ -21,7 +21,7 @@
 - (void)testNonFileURLIsInvalid
 {
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:[NSURL URLWithString:@"http://www.google.com"] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNotNil(error, @"Must throw error with non-filesystem URL is specified for theme");
@@ -36,7 +36,7 @@
     NSURL *fileURL = [documentsDirectory URLByAppendingPathComponent:UUID.UUIDString];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNotNil(error, @"Must throw error with non-existent file URL is specified for theme");
@@ -49,7 +49,7 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"InvalidJSONTheme" withExtension:@"json"];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNotNil(error, @"Must throw error with non-existent file URL is specified for theme");
@@ -62,7 +62,7 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"BasicTheme" withExtension:@"json"];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNil(error, @"Error must be nil with basic theme");
@@ -76,7 +76,7 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeName withExtension:@"json"];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNil(error, @"Error must be nil when loading valid theme");
@@ -90,7 +90,7 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeFilename withExtension:@"json"];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNotNil(theme, @"Theme must be non-nil");
     XCTAssertNil(error, @"Error must be nil when loading valid theme");
@@ -103,7 +103,7 @@
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeName withExtension:nil];
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithFile:fileURL error:&error];
+    AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
     
     XCTAssertNil(error, @"Error must be nil when loading valid theme");
     XCTAssertTrue([theme.names containsObject:themeName], @"Theme must contain theme filename after it is added");

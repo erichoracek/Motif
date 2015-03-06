@@ -16,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSError *error;
-    AUTTheme *theme = [AUTTheme themeFromThemeNamed:ThemeName error:&error];
+    AUTTheme *theme = [AUTTheme themeFromJSONThemeNamed:ThemeName error:&error];
     NSAssert(!error, @"Error loading theme: %@", error);
     
     AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];

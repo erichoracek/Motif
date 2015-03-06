@@ -45,7 +45,7 @@
 {
     if (!_lightTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme themeFromThemesNamed:@[
+        AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
             ColorsThemeName,
             TypographyThemeName,
             LightMappingsThemeName,
@@ -63,7 +63,7 @@
 {
     if (!_darkTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme themeFromThemesNamed:@[
+        AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
             ColorsThemeName,
             TypographyThemeName,
             DarkMappingsThemeName,

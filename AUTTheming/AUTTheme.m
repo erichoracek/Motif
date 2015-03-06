@@ -26,7 +26,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    self = [self initWithFile:nil error:NULL];
+    self = [self initWithJSONFile:nil error:NULL];
 #pragma clang diagnostic pop
     return self;
 }
@@ -35,22 +35,22 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 #pragma mark Public
 
-+ (instancetype)themeFromThemeNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error
++ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(themeName);
     
-    return [self themeFromThemesNamed:@[themeName] error:error];
+    return [self themeFromJSONThemesNamed:@[themeName] error:error];
 }
 
-+ (instancetype)themeFromThemesNamed:(NSArray *)themeNames error:(NSError *__autoreleasing *)error
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
-    return [self themeFromThemesNamed:themeNames bundle:nil error:error];
+    return [self themeFromJSONThemesNamed:themeNames bundle:nil error:error];
 }
 
-+ (instancetype)themeFromThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
@@ -63,17 +63,17 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     // Build an array of URLs from the specified theme names
     NSArray *fileURLs = [self fileURLsFromThemeNames:themeNames inBundle:bundle];
     
-    return [[AUTTheme alloc] initWithFiles:fileURLs error:error];
+    return [[AUTTheme alloc] initWithJSONFiles:fileURLs error:error];
 }
 
-- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error;
+- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error;
 {
     NSParameterAssert(fileURL);
-    self = [self initWithFiles:@[fileURL] error:error];
+    self = [self initWithJSONFiles:@[fileURL] error:error];
     return self;
 }
 
-- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error
+- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");

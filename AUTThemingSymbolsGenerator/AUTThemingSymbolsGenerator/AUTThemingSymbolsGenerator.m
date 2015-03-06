@@ -37,7 +37,7 @@
             return 1;
         }
         NSError *error;
-        AUTTheme *theme = [[AUTTheme alloc] initWithFile:themeURL error:&error];
+        AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:themeURL error:&error];
         if (error) {
             gbfprintln(stderr, @"[!] Error: Unable to parse theme at URL '%@': %@", themeURL, error);
             return 1;

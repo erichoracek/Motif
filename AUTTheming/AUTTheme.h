@@ -23,7 +23,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromThemeNamed:(NSString *)themeName error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError **)error __attribute__ ((nonnull (1)));
 
 /**
  Creates a theme object from a set of one or mores theme files with the specified names.
@@ -33,7 +33,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromThemesNamed:(NSArray *)themeNames error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError **)error __attribute__ ((nonnull (1)));
 
 /**
  Creates a theme object from a set of one or mores theme files with the specified names.
@@ -44,7 +44,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error __attribute__ ((nonnull (1)));
 
 /**
  Initializes a theme from a theme file.
@@ -54,7 +54,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error __attribute__ ((nonnull (1)));
+- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error __attribute__ ((nonnull (1)));
 
 /**
  Initializes a theme from a theme file.
@@ -64,7 +64,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
+- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
 
 /**
  The constant value from the theme collection for the specified key.
