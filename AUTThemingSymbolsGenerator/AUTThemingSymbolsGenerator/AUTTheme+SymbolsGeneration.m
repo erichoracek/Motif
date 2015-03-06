@@ -66,18 +66,18 @@ typedef NS_ENUM(NSInteger, SymbolType) {
 
 - (NSArray *)constantKeys
 {
-    return self.mappedConstants.allKeys;
+    return self.constants.allKeys;
 }
 
 - (NSArray *)classNames
 {
-    return self.mappedClasses.allKeys;
+    return self.classes.allKeys;
 }
 
 - (NSArray *)properties
 {
     NSMutableSet *properties = [NSMutableSet new];
-    for (AUTThemeClass *class in self.mappedClasses.allValues) {
+    for (AUTThemeClass *class in self.classes.allValues) {
         [properties addObjectsFromArray:class.properties.allKeys];
     }
     return properties.allObjects;

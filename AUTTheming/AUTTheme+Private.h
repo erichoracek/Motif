@@ -19,8 +19,8 @@
 @property (nonatomic) NSArray *fileURLs;
 
 @property (nonatomic) NSArray *names;
-@property (nonatomic) NSDictionary *mappedConstants;
-@property (nonatomic) NSDictionary *mappedClasses;
+@property (nonatomic) NSDictionary *constants;
+@property (nonatomic) NSDictionary *classes;
 
 @end
 

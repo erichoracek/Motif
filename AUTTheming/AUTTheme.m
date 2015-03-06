@@ -122,7 +122,7 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 - (AUTThemeClass *)themeClassForName:(NSString *)name
 {
-    return self.mappedClasses[name];
+    return self.classes[name];
 }
 
 #pragma mark Theme Names
@@ -143,8 +143,8 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     
     AUTThemeParser *parser = [[AUTThemeParser alloc] initWithRawTheme:rawTheme inheritingFromTheme:self error:error];
     
-    [self addMappedConstantsFromDictionary:parser.parsedConstants error:error];
-    [self addMappedClassesFromDictionary:parser.parsedClasses error:error];
+    [self addConstantsFromDictionary:parser.parsedConstants error:error];
+    [self addClassesFromDictionary:parser.parsedClasses error:error];
 }
 
 #pragma mark JSON
@@ -250,45 +250,45 @@ static NSString * const JSONExtension = @"json";
 
 - (AUTThemeConstant *)constantForKey:(NSString *)key
 {
-    return self.mappedConstants[key];
+    return self.constants[key];
 }
 
-- (NSDictionary *)mappedConstants
+- (NSDictionary *)constants
 {
-    if (!_mappedConstants) {
-        _mappedConstants = [NSDictionary new];
+    if (!_constants) {
+        _constants = [NSDictionary new];
     }
-    return _mappedConstants;
+    return _constants;
 }
 
-- (void)addMappedConstantsFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+- (void)addConstantsFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
 {
     if (!dictionary.count) {
         return;
     }
-    NSMutableDictionary *constants = [self.mappedConstants mutableCopy];
+    NSMutableDictionary *constants = [self.constants mutableCopy];
     [constants addEntriesFromDictionary:dictionary];
-    self.mappedConstants = [constants copy];
+    self.constants = [constants copy];
 }
 
 #pragma mark Classes
 
-- (NSDictionary *)mappedClasses
+- (NSDictionary *)classes
 {
-    if (!_mappedClasses) {
-        _mappedClasses = [NSDictionary new];
+    if (!_classes) {
+        _classes = [NSDictionary new];
     }
-    return _mappedClasses;
+    return _classes;
 }
 
-- (void)addMappedClassesFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
+- (void)addClassesFromDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error
 {
     if (!dictionary.count) {
         return;
     }
-    NSMutableDictionary *classes = [self.mappedClasses mutableCopy];
+    NSMutableDictionary *classes = [self.classes mutableCopy];
     [classes addEntriesFromDictionary:dictionary];
-    self.mappedClasses = [classes copy];
+    self.classes = [classes copy];
 }
 
 @end

@@ -66,8 +66,8 @@
         NSDictionary *parsedConstants = [self constantsParsedFromRawConstants:rawConstants error:error];
         NSDictionary *parsedClasses = [self classesParsedFromRawClasses:rawClasses error:error];
         
-        NSDictionary *mergedConstants = [self mergeParsedConstants:parsedConstants intoExistingConstants:theme.mappedConstants error:error];
-        NSDictionary *mergedClasses = [self mergeParsedConstants:parsedClasses intoExistingConstants:theme.mappedClasses error:error];
+        NSDictionary *mergedConstants = [self mergeParsedConstants:parsedConstants intoExistingConstants:theme.constants error:error];
+        NSDictionary *mergedClasses = [self mergeParsedConstants:parsedClasses intoExistingConstants:theme.classes error:error];
         
         parsedConstants = [self resolveReferenceInParsedConstants:parsedConstants fromConstants:mergedConstants classes:mergedClasses error:error];
         parsedClasses = [self resolveReferencesInParsedClasses:parsedClasses fromConstants:mergedConstants classes:mergedClasses error:error];
