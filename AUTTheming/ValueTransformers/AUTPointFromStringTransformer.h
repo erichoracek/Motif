@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTReverseTransformedValueClass.h"
+#import "AUTObjCTypeValueTransformer.h"
 
 /**
  Transforms an NSString to a NSValue wrapping a CGPoint struct.
  
  Allows reverse transformation.
  */
-@interface AUTPointFromStringTransformer : NSValueTransformer
+@interface AUTPointFromStringTransformer : NSValueTransformer  <AUTReverseTransformedValueClass, AUTObjCTypeValueTransformer>
 
 @end
 

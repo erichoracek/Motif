@@ -35,15 +35,16 @@ NSString * const AUTColorFromStringTransformerName = @"AUTColorFromStringTransfo
 - (UIColor *)transformedValue:(NSString *)value
 {
     NSParameterAssert(value);
-    NSAssert([value isKindOfClass:[self inputValueClass]], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass([self inputValueClass]));
+    __unused Class reverseTransformedValueClass = [[self class] reverseTransformedValueClass];
+    NSAssert([value isKindOfClass:reverseTransformedValueClass], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass(reverseTransformedValueClass));
     UIColor *color = [UIColor colorWithCSS:value];
     NSAssert(color, @"Unable to transform color from input value '%@' (%@)", value, [value class]);
     return color;
 }
 
-#pragma mark - AUTColorFromStringTransformer
+#pragma mark - AUTColorFromStringTransformer <AUTReverseTransformedValueClass>
 
-- (Class)inputValueClass
++ (Class)reverseTransformedValueClass
 {
     return [NSString class];
 }

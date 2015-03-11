@@ -21,11 +21,7 @@
         navigationBar.translucent = NO;
         navigationBar.barStyle = ((color.lightnessType == LightnessTypeLight) ? UIBarStyleDefault : UIBarStyleBlack);
     }];
-    
-    [self aut_registerThemeProperty:NavigationThemeProperties.tintColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-        navigationBar.tintColor = color;
-    }];
-    
+        
     [self aut_registerThemeProperties:@[
         NavigationThemeProperties.fontName,
         NavigationThemeProperties.fontSize

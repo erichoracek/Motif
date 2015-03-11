@@ -14,12 +14,7 @@
 @implementation UIButton (Theming)
 
 + (void)load
-{    
-    [self aut_registerThemeProperty:ThemeProperties.contentEdgeInsets valueTransformerName:AUTEdgeInsetsFromStringTransformerName applierBlock:^(NSValue *edgeInsets, UIButton *button) {
-        button.contentEdgeInsets = edgeInsets.UIEdgeInsetsValue;
-        [button invalidateIntrinsicContentSize];
-    }];
-    
+{
     [self aut_registerThemeProperties:@[
         ThemeProperties.fontName,
         ThemeProperties.fontSize

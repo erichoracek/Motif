@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTReverseTransformedValueClass.h"
+#import "AUTObjCTypeValueTransformer.h"
 
 /**
  Transforms an NSString to a NSValue wrapping a UIEdgeInsets struct.
  
  Allows reverse transformation.
  */
-@interface AUTEdgeInsetsFromStringTransformer : NSValueTransformer
+@interface AUTEdgeInsetsFromStringTransformer : NSValueTransformer <AUTReverseTransformedValueClass, AUTObjCTypeValueTransformer>
 
 @end
 

@@ -30,10 +30,6 @@
     [self aut_registerThemeProperty:ThemeProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UIView *view) {
         view.backgroundColor = color;
     }];
-    
-    [self aut_registerThemeProperty:ThemeProperties.tintColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *tintColor, UIButton *button) {
-        button.tintColor = tintColor;
-    }];
 }
 
 @end

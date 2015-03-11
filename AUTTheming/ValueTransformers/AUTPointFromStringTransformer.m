@@ -29,7 +29,8 @@ NSString * const AUTPointFromStringTransformerName = @"AUTPointFromStringTransfo
 - (NSValue *)transformedValue:(NSString *)value
 {
     NSParameterAssert(value);
-    NSAssert([value isKindOfClass:[self inputValueClass]], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass([self inputValueClass]));
+    __unused Class reverseTransformedValueClass = [[self class] reverseTransformedValueClass];
+    NSAssert([value isKindOfClass:reverseTransformedValueClass], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass(reverseTransformedValueClass));
     return [NSValue valueWithCGPoint:CGPointFromString(value)];
 }
 
@@ -38,11 +39,18 @@ NSString * const AUTPointFromStringTransformerName = @"AUTPointFromStringTransfo
     return NSStringFromCGPoint([value CGPointValue]);
 }
 
-#pragma mark - AUTPointFromStringTransformer
+#pragma mark - AUTEdgeInsetsFromStringTransformer <AUTReverseTransformedValueClass>
 
-- (Class)inputValueClass
++ (Class)reverseTransformedValueClass
 {
     return [NSString class];
+}
+
+#pragma mark - AUTEdgeInsetsFromStringTransformer <AUTObjCTypeValueTransformer>
+
++ (const char *)transformedValueObjCType
+{
+    return @encode(CGPoint);
 }
 
 @end

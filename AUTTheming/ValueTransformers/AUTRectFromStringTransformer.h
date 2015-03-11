@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTReverseTransformedValueClass.h"
+#import "AUTObjCTypeValueTransformer.h"
 
 /**
  Transforms an NSString to a NSValue wrapping a CGRect struct.
  
  Allows reverse transformation.
  */
-@interface AUTRectFromStringTransformer : NSValueTransformer
+@interface AUTRectFromStringTransformer : NSValueTransformer <AUTReverseTransformedValueClass, AUTObjCTypeValueTransformer>
 
 @end
 

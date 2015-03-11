@@ -19,8 +19,10 @@
 		3A342B061A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A342B051A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m */; };
 		3A342B211A4CC2400034A23C /* AUTThemePropertyApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A342B201A4CC2400034A23C /* AUTThemePropertyApplierTests.m */; };
 		3A3DD9151A88983500DBA831 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A3DD9141A88983500DBA831 /* Basic.json */; };
+		3AD33F501AAC228A004DC416 /* AUTThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD33F4F1AAC228A004DC416 /* AUTThemeNameTests.m */; };
 		3AD69A3E1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */; };
 		3AD69A401A4F51220002FA8F /* AUTThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */; };
+		3AE440241AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */; };
 		3AF158731A5E1A2C003458C0 /* AUTThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +42,10 @@
 		3A3DD9141A88983500DBA831 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
 		3AAAFDCE1A48B8C7000E7102 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAAFDD21A48B8C7000E7102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AD33F4F1AAC228A004DC416 /* AUTThemeNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeNameTests.m; sourceTree = "<group>"; };
 		3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassApplierTests.m; sourceTree = "<group>"; };
 		3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertiesApplierTests.m; sourceTree = "<group>"; };
+		3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
 		3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeApplierTests.m; sourceTree = "<group>"; };
 		8E323D79F96C6F15ED715DBB /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,6 +93,8 @@
 				3A342B201A4CC2400034A23C /* AUTThemePropertyApplierTests.m */,
 				3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */,
 				3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */,
+				3AD33F4F1AAC228A004DC416 /* AUTThemeNameTests.m */,
+				3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */,
 				3A21AD3D1A4A57DA008D44FD /* InvalidJSONTheme.json */,
 				3A3DD9141A88983500DBA831 /* Basic.json */,
 				3A21AD411A4A5B2E008D44FD /* BasicTheme.json */,
@@ -232,11 +238,13 @@
 				3A21AD5A1A4B6F9A008D44FD /* AUTThemeClassTests.m in Sources */,
 				3AD69A3E1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m in Sources */,
 				3A21AD581A4B6EF9008D44FD /* AUTThemeConstantTests.m in Sources */,
+				3AE440241AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m in Sources */,
 				3A342B211A4CC2400034A23C /* AUTThemePropertyApplierTests.m in Sources */,
 				3A267A2C1A4D33C100347DDC /* AUTThemeClassInheritanceTests.m in Sources */,
 				3A342B041A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m in Sources */,
 				3AF158731A5E1A2C003458C0 /* AUTThemeApplierTests.m in Sources */,
 				3A342B061A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m in Sources */,
+				3AD33F501AAC228A004DC416 /* AUTThemeNameTests.m in Sources */,
 				3AD69A401A4F51220002FA8F /* AUTThemePropertiesApplierTests.m in Sources */,
 				3A21AD3C1A4A115F008D44FD /* AUTThemeLoadingTests.m in Sources */,
 			);

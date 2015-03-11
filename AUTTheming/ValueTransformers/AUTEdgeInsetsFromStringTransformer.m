@@ -29,7 +29,8 @@ NSString * const AUTEdgeInsetsFromStringTransformerName = @"AUTEdgeInsetsFromStr
 - (NSValue *)transformedValue:(NSString *)value
 {
     NSParameterAssert(value);
-    NSAssert([value isKindOfClass:[self inputValueClass]], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass([self inputValueClass]));
+    __unused Class reverseTransformedValueClass = [[self class] reverseTransformedValueClass];
+    NSAssert([value isKindOfClass:reverseTransformedValueClass], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass(reverseTransformedValueClass));
     return [NSValue valueWithUIEdgeInsets:UIEdgeInsetsFromString(value)];
 }
 
@@ -38,11 +39,18 @@ NSString * const AUTEdgeInsetsFromStringTransformerName = @"AUTEdgeInsetsFromStr
     return NSStringFromUIEdgeInsets([value UIEdgeInsetsValue]);
 }
 
-#pragma mark - AUTEdgeInsetsFromStringTransformer
+#pragma mark - AUTEdgeInsetsFromStringTransformer <AUTReverseTransformedValueClass>
 
-- (Class)inputValueClass
++ (Class)reverseTransformedValueClass
 {
     return [NSString class];
+}
+
+#pragma mark - AUTEdgeInsetsFromStringTransformer <AUTObjCTypeValueTransformer>
+
++ (const char *)transformedValueObjCType
+{
+    return @encode(UIEdgeInsets);
 }
 
 @end
