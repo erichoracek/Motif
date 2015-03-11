@@ -149,7 +149,7 @@
             [applicant setValue:value forKeyPath:property];
         }
         @catch (NSException *exception) {
-            NSString *className = NSStringFromClass([applicant class]);
+            __unused NSString *className = NSStringFromClass([applicant class]);
             NSAssert3(NO, @"'%@' doesn't have a theme applier for the property '%@' or doesn't implement the keypath '%@'. You must support one of them.", className, property, property);
         }
 

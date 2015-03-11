@@ -116,16 +116,16 @@
     if (requiredClass) {
         BOOL isValueOfRequiredClass = [value isKindOfClass:requiredClass];
         if (!isValueOfRequiredClass) {
-            NSString *applierClassName = NSStringFromClass([object class]);
-            NSString *requiredClassName = NSStringFromClass(requiredClass);
-            NSString *valueClassName = NSStringFromClass([value class]);
+            __unused NSString *applierClassName = NSStringFromClass([object class]);
+            __unused NSString *requiredClassName = NSStringFromClass(requiredClass);
+            __unused NSString *valueClassName = NSStringFromClass([value class]);
             NSAssert(isValueOfRequiredClass, @"The theme applier on '%@' requires that the value for property '%@' is of class '%@'. It is instead an instace of '%@'", applierClassName, requiredClassName, property, valueClassName);
         }
     }
     
     // Transform value if necessary
     if (valueTransformerName) {
-        NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForName:valueTransformerName];
+        __unused NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForName:valueTransformerName];
         NSAssert(valueTransformer, @"There is no value transfomer registered for the name '%@'. Before applying a theme, you must first register a value transformer instance using `+[NSValueTransformer setValueTransformer:forName:]` for the specified name.", valueTransformerName);
         id transformedValue = [constant transformedValueFromTransformerWithName:valueTransformerName];
         value = transformedValue;
