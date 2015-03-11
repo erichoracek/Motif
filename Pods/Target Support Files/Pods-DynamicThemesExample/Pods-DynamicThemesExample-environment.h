@@ -21,12 +21,18 @@
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
 #define COCOAPODS_VERSION_MAJOR_Masonry 0
-#define COCOAPODS_VERSION_MINOR_Masonry 5
-#define COCOAPODS_VERSION_PATCH_Masonry 3
+#define COCOAPODS_VERSION_MINOR_Masonry 6
+#define COCOAPODS_VERSION_PATCH_Masonry 1
 
 // UIColor-HTMLColors
 #define COCOAPODS_POD_AVAILABLE_UIColor_HTMLColors
 #define COCOAPODS_VERSION_MAJOR_UIColor_HTMLColors 1
 #define COCOAPODS_VERSION_MINOR_UIColor_HTMLColors 0
 #define COCOAPODS_VERSION_PATCH_UIColor_HTMLColors 0
+
+// libextobjc/RuntimeExtensions
+#define COCOAPODS_POD_AVAILABLE_libextobjc_RuntimeExtensions
+#define COCOAPODS_VERSION_MAJOR_libextobjc_RuntimeExtensions 0
+#define COCOAPODS_VERSION_MINOR_libextobjc_RuntimeExtensions 4
+#define COCOAPODS_VERSION_PATCH_libextobjc_RuntimeExtensions 1
 

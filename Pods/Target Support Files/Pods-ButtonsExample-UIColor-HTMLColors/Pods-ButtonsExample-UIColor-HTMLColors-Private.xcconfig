@@ -1,6 +1,6 @@
 #include "Pods-ButtonsExample-UIColor-HTMLColors.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/UIColor-HTMLColors" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/UIColor-HTMLColors" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors" "${PODS_ROOT}/Headers/Public/libextobjc"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}
 SKIP_INSTALL = YES

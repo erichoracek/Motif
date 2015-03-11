@@ -19,6 +19,11 @@
     "tag": "0.0.1"
   },
   "frameworks": "Foundation",
+  "dependencies": {
+    "libextobjc/RuntimeExtensions": [
+      "~> 0.4.0"
+    ]
+  },
   "source_files": "AUTTheming/*.{h,m}",
   "subspecs": [
     {

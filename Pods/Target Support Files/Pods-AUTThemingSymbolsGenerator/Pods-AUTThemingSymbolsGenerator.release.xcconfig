@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/GBCli"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AUTTheming" -isystem "${PODS_ROOT}/Headers/Public/GBCli"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-AUTThemingSymbolsGenerator-AUTTheming" -l"Pods-AUTThemingSymbolsGenerator-GBCli" -framework "Foundation"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/GBCli" "${PODS_ROOT}/Headers/Public/libextobjc"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AUTTheming" -isystem "${PODS_ROOT}/Headers/Public/GBCli" -isystem "${PODS_ROOT}/Headers/Public/libextobjc"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-AUTThemingSymbolsGenerator-AUTTheming" -l"Pods-AUTThemingSymbolsGenerator-GBCli" -l"Pods-AUTThemingSymbolsGenerator-libextobjc" -framework "Foundation"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/../Pods

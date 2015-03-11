@@ -1,4 +1,4 @@
-#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://coveralls.io/repos/cloudkite/Masonry/badge.png?branch=master)](https://coveralls.io/r/cloudkite/Masonry?branch=master)
+#Masonry [![Build Status](https://travis-ci.org/Masonry/Masonry.svg?branch=master)](https://travis-ci.org/Masonry/Masonry) [![Coverage Status](https://img.shields.io/coveralls/Masonry/Masonry.svg?style=flat-square)](https://coveralls.io/r/Masonry/Masonry)
 
 Masonry is a light-weight layout framework which wraps AutoLayout with a nicer syntax. Masonry has its own layout DSL which provides a chainable way of describing your NSLayoutConstraints which results in layout code that is more concise and readable.
 Masonry supports iOS and Mac OS X.
@@ -152,7 +152,7 @@ make.edges.mas_equalTo(UIEdgeInsetsMake(10, 0, 10, 0));
 make.left.mas_equalTo(view).mas_offset(UIEdgeInsetsMake(10, 0, 10, 0));
 ```
 
-By default, macros which support [autoboxing](https://en.wikipedia.org/wiki/Autoboxing#Autoboxing) are prefixed with `mas_`. Unprefixed versions are available by defining `MAS_SHORTHAND_GLOBAL` before importing Masonry.
+By default, macros which support [autoboxing](https://en.wikipedia.org/wiki/Autoboxing#Autoboxing) are prefixed with `mas_`. Unprefixed versions are available by defining `MAS_SHORTHAND_GLOBALS` before importing Masonry.
 
 #### 4. NSArray
 
@@ -277,15 +277,12 @@ Alternatively if you are only updating the constant value of the constraint you 
 ```obj-c
 - (void)changeButtonPosition {
     [self.button mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(self.buttonSize.width));
-        make.height.equalTo(@(self.buttonSize.height));
+        make.size.equalTo(self.buttonSize);
         
         if (topLeft) {
-        	make.top.equalTo(@10);
-        	make.left.equalTo(@10);
+        	make.top.and.left.offset(10);
         } else {
-        	make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
-        	make.right.equalTo(self.view.mas_right).with.offset(-10);
+        	make.bottom.and.right.offset(-10);
         }
     }];
 }
@@ -341,6 +338,16 @@ If you want to use masonry without all those pesky 'mas_' prefixes. Add #define 
 
 Get busy Masoning
 >`#import "Masonry.h"`
+
+## Code Snippets
+
+Copy the included code snippets to ``~/Library/Developer/Xcode/UserData/CodeSnippets`` to write your masonry blocks at lightning speed!
+
+`mas_make` -> `[<view> mas_makeConstraints:^(MASConstraintMaker *make){<code>}];`
+    
+`mas_update` -> `[<view> mas_updateConstraints:^(MASConstraintMaker *make){<code>}];`
+    
+`mas_remake` -> `[<view> mas_remakeConstraints:^(MASConstraintMaker *make){<code>}];`
 
 ## Features
 * Not limited to subset of Auto Layout. Anything NSLayoutConstraint can do, Masonry can do too!
