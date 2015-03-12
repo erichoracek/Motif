@@ -137,11 +137,25 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     
     NSData *JSONData = [NSData dataWithContentsOfURL:fileURL options:0 error:error];
     if (!JSONData) {
+        if (error) {
+            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Unable to load contents of file at URL %@", fileURL]
+            }];
+        }
         return nil;
     }
     
-    NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:error];
-    return JSONDictionary;
+    id JSONObject = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:error];
+    if (![JSONObject isKindOfClass:[NSDictionary class]]) {
+        if (error) {
+            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
+                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The provided JSON does not have a dictionary as the root object. It is instead %@", JSONObject]
+            }];
+        }
+        return nil;
+    }
+    
+    return JSONObject;
 }
 
 - (id)constantValueForKey:(NSString *)key
