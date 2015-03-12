@@ -95,7 +95,7 @@
     NSMutableDictionary *propertiesConstants = [NSMutableDictionary new];
     [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *propertyName, AUTThemeConstant *propertyConstant, BOOL *stop) {
         // Resolve references to superclass into the properties constants dictionary
-        if (propertyName.aut_isSuperclassProperty) {
+        if (propertyName.aut_isSuperclassProperty && [propertyConstant.value isKindOfClass:[AUTThemeClass class]]) {
             AUTThemeClass *superclass = (AUTThemeClass *)propertyConstant.value;
             [propertiesConstants addEntriesFromDictionary:superclass.resolvedPropertiesConstants];
         } else {

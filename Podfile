@@ -46,3 +46,17 @@ target THEMING_SYMBOLS_GENERATOR_TARGET_NAME do
   pod FRAMEWORK_NAME, :path => PODSPEC_PATH
   pod 'GBCli'
 end
+
+# Add AUTTHEMING_DISABLE_SYMBOL_RESOLUTION define to preprocessor macros in theming symbols generator project
+post_install do |installer|
+  installer.project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if target.to_s == "Pods-#{THEMING_SYMBOLS_GENERATOR_TARGET_NAME}-#{FRAMEWORK_NAME}"
+        preprocessor_definitions = config.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
+        preprocessor_definitions = [ '$(inherited)' ] if preprocessor_definitions == nil
+        preprocessor_definitions.push('AUTTHEMING_DISABLE_SYMBOL_RESOLUTION') if target.to_s.include?(THEMING_SYMBOLS_GENERATOR_TARGET_NAME)
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = preprocessor_definitions
+      end
+    end
+  end
+end

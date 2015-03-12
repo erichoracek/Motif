@@ -67,11 +67,17 @@
         NSDictionary *parsedConstants = [self constantsParsedFromRawConstants:rawConstants error:error];
         NSDictionary *parsedClasses = [self classesParsedFromRawClasses:rawClasses error:error];
         
+// For the theming symbols generator CLI, allow for parsing raw themes without resolving their symbols (since each
+// passed theme is parsed separately)
+#if !defined(AUTTHEMING_DISABLE_SYMBOL_RESOLUTION)
+        
         NSDictionary *mergedConstants = [self mergeParsedConstants:parsedConstants intoExistingConstants:theme.constants error:error];
         NSDictionary *mergedClasses = [self mergeParsedConstants:parsedClasses intoExistingConstants:theme.classes error:error];
         
         parsedConstants = [self resolveReferenceInParsedConstants:parsedConstants fromConstants:mergedConstants classes:mergedClasses error:error];
         parsedClasses = [self resolveReferencesInParsedClasses:parsedClasses fromConstants:mergedConstants classes:mergedClasses error:error];
+        
+#endif
         
         _parsedConstants = parsedConstants;
         _parsedClasses = parsedClasses;
