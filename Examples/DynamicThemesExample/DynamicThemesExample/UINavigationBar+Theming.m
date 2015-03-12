@@ -11,6 +11,7 @@
 #import "ThemeSymbols.h"
 #import "UINavigationBar+Theming.h"
 #import "UIColor+LightnessType.h"
+#import "UILabel+Theming.h"
 
 @implementation UINavigationBar (Theming)
 
@@ -19,22 +20,14 @@
     [self aut_registerThemeProperty:NavigationThemeProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         navigationBar.barTintColor = color;
         navigationBar.translucent = NO;
-        navigationBar.barStyle = ((color.lightnessType == LightnessTypeLight) ? UIBarStyleDefault : UIBarStyleBlack);
+        navigationBar.barStyle = [navigationBar aut_barStyleForColor:color];
     }];
         
-    [self aut_registerThemeProperties:@[
-        NavigationThemeProperties.fontName,
-        NavigationThemeProperties.fontSize
-    ] valueTransformerNamesOrRequiredClasses:@[
-        [NSString class],
-        [NSNumber class]
-    ] applierBlock:^(NSDictionary *valuesForProperties, UINavigationBar *navigationBar) {
-        NSMutableDictionary *attributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
-        NSString *name = valuesForProperties[NavigationThemeProperties.fontName];
-        CGFloat size = [valuesForProperties[NavigationThemeProperties.fontSize] floatValue];
-        UIFont *font = [UIFont fontWithName:name size:size];
-        attributes[NSFontAttributeName] = font;
-        navigationBar.titleTextAttributes = attributes;
+    [self aut_registerThemeProperty:NavigationThemeProperties.text requiringValueOfClass:[AUTThemeClass class] applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
+        NSMutableDictionary *titleTextAttributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
+        NSDictionary *themeClassTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
+        [titleTextAttributes addEntriesFromDictionary:themeClassTextAttributes];
+        navigationBar.titleTextAttributes = [titleTextAttributes copy];
     }];
     
     [self aut_registerThemeProperty:NavigationThemeProperties.separatorColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
@@ -51,12 +44,17 @@
         // A 'backgroundImage' is required for the shadow image to work.
         [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     }];
-    
-    [self aut_registerThemeProperty:NavigationThemeProperties.textColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-        NSMutableDictionary *attributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
-        attributes[NSForegroundColorAttributeName] = color;
-        navigationBar.titleTextAttributes = attributes;
-    }];
+}
+
+- (UIBarStyle)aut_barStyleForColor:(UIColor *)color
+{
+    switch (color.lightnessType) {
+    case LightnessTypeDark:
+        return UIBarStyleBlack;
+    case LightnessTypeLight:
+    default:
+        return UIBarStyleDefault;
+    }
 }
 
 @end

@@ -7,11 +7,12 @@
 NSString * const LightMappingsThemeName = @"LightMappingsTheme";
 
 const struct LightMappingsThemeConstantKeys LightMappingsThemeConstantKeys = {
-    .DestructiveColor = @"DestructiveColor",
-    .SeparatorColor = @"SeparatorColor",
-    .TextColor = @"TextColor",
-    .ContentForegroundColor = @"ContentForegroundColor",
     .ContentBackgroundColor = @"ContentBackgroundColor",
+    .DestructiveColor = @"DestructiveColor",
+    .ContentForegroundColor = @"ContentForegroundColor",
+    .SeparatorColor = @"SeparatorColor",
     .PrimaryColor = @"PrimaryColor",
+    .BodyTextColor = @"BodyTextColor",
+    .PrimaryButtonTextColor = @"PrimaryButtonTextColor",
+    .HeadingTextColor = @"HeadingTextColor",
 };
-

@@ -47,8 +47,8 @@
         NSError *error;
         AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
             ColorsThemeName,
-            TypographyThemeName,
             LightMappingsThemeName,
+            TypographyThemeName,
             ButtonsThemeName,
             NavigationThemeName,
             ContentThemeName
@@ -65,8 +65,8 @@
         NSError *error;
         AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
             ColorsThemeName,
-            TypographyThemeName,
             DarkMappingsThemeName,
+            TypographyThemeName,
             ButtonsThemeName,
             NavigationThemeName,
             ContentThemeName

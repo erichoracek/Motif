@@ -15,15 +15,9 @@
 
 + (void)load
 {
-    [self aut_registerThemeProperties:@[
-        ButtonsThemeProperties.fontName,
-        ButtonsThemeProperties.fontSize
-    ] valueTransformerNamesOrRequiredClasses:@[
-        [NSString class],
-        [NSNumber class]
-    ] applierBlock:^(NSDictionary *properties, UIButton *button) {
-        NSString *name = properties[ButtonsThemeProperties.fontName];
-        CGFloat size = [properties[ButtonsThemeProperties.fontSize] floatValue];
+    [self aut_registerThemeProperty:ButtonsThemeProperties.text requiringValueOfClass:[AUTThemeClass class] applierBlock:^(AUTThemeClass *themeClass, UIButton *button) {
+        NSString *name = themeClass.properties[TypographyThemeProperties.fontName];
+        CGFloat size = [themeClass.properties[TypographyThemeProperties.fontSize] floatValue];
         button.titleLabel.font = [UIFont fontWithName:name size:size];
     }];
 }

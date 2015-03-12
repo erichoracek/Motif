@@ -1,18 +1,30 @@
 {
     ".Button": {
-        "fontName": "$RegularFontName",
-        "fontSize": "$H5FontSize",
+        "text": ".SubheadText",
         "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
-        "borderWidth": 1.0,
         "cornerRadius": 5.0
     },
     ".DestructiveButton": {
         "_superclass": ".Button",
+        "backgroundColor": "$DestructiveColor",
+        "tintColor": "$PrimaryButtonTextColor"
+    },
+    ".CreativeButton": {
+        "_superclass": ".Button",
+        "backgroundColor": "$PrimaryColor",
+        "tintColor": "$PrimaryButtonTextColor"
+    },
+    ".SecondaryButton": {
+        "_superclass": ".Button",
+        "borderWidth": 1.0
+    },
+    ".DestructiveSecondaryButton": {
+        "_superclass": ".SecondaryButton",
         "tintColor": "$DestructiveColor",
         "borderColor": "$DestructiveColor"
     },
-    ".PrimaryButton": {
-        "_superclass": ".Button",
+    ".CreativeSecondaryButton": {
+        "_superclass": ".SecondaryButton",
         "tintColor": "$PrimaryColor",
         "borderColor": "$PrimaryColor"
     }

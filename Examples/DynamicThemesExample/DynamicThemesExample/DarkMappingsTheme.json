@@ -4,5 +4,8 @@
     "$DestructiveColor": "$RedLightColor",
     "$PrimaryColor": "$BlueLightColor",
     "$SeparatorColor": "$GrayDarkColor",
-    "$TextColor": "$WhiteLightColor"
+    "$HeadingTextColor": "$WhiteColor",
+    "$BodyTextColor": "$WhiteLightColor",
+    "$CaptionTextColor": "$WhiteDarkColor",
+    "$PrimaryButtonTextColor": "$WhiteLightColor"
 }

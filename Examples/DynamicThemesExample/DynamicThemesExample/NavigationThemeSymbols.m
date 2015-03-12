@@ -11,10 +11,8 @@ const struct NavigationThemeClassNames NavigationThemeClassNames = {
 };
 
 const struct NavigationThemeProperties NavigationThemeProperties = {
-    .textColor = @"textColor",
     .tintColor = @"tintColor",
-    .fontName = @"fontName",
     .backgroundColor = @"backgroundColor",
     .separatorColor = @"separatorColor",
-    .fontSize = @"fontSize",
+    .text = @"text",
 };

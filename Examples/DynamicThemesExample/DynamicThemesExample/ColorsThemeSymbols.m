@@ -8,14 +8,13 @@ NSString * const ColorsThemeName = @"ColorsTheme";
 
 const struct ColorsThemeConstantKeys ColorsThemeConstantKeys = {
     .RedDarkColor = @"RedDarkColor",
-    .WhiteColor = @"WhiteColor",
+    .BlueDarkColor = @"BlueDarkColor",
     .WhiteDarkColor = @"WhiteDarkColor",
     .GrayLightColor = @"GrayLightColor",
     .GrayColor = @"GrayColor",
     .BlueLightColor = @"BlueLightColor",
     .GrayDarkColor = @"GrayDarkColor",
     .RedLightColor = @"RedLightColor",
-    .BlueDarkColor = @"BlueDarkColor",
     .WhiteLightColor = @"WhiteLightColor",
+    .WhiteColor = @"WhiteColor",
 };
-

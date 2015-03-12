@@ -7,9 +7,28 @@
 extern NSString * const TypographyThemeName;
 
 extern const struct TypographyThemeConstantKeys {
-    __unsafe_unretained NSString *RegularFontName;
     __unsafe_unretained NSString *MediumFontName;
-    __unsafe_unretained NSString *H5FontSize;
-    __unsafe_unretained NSString *H4FontSize;
+    __unsafe_unretained NSString *TitleFontSize;
+    __unsafe_unretained NSString *CaptionFontSize;
+    __unsafe_unretained NSString *SubheadFontSize;
+    __unsafe_unretained NSString *LightFontName;
+    __unsafe_unretained NSString *RegularFontName;
+    __unsafe_unretained NSString *HeadlineFontSize;
+    __unsafe_unretained NSString *BodyFontSize;
+    __unsafe_unretained NSString *DisplayFontSize;
 } TypographyThemeConstantKeys;
 
+extern const struct TypographyThemeClassNames {
+    __unsafe_unretained NSString *HeadlineText;
+    __unsafe_unretained NSString *DisplayText;
+    __unsafe_unretained NSString *TitleText;
+    __unsafe_unretained NSString *SubheadText;
+    __unsafe_unretained NSString *BodyText;
+    __unsafe_unretained NSString *CaptionText;
+} TypographyThemeClassNames;
+
+extern const struct TypographyThemeProperties {
+    __unsafe_unretained NSString *fontSize;
+    __unsafe_unretained NSString *color;
+    __unsafe_unretained NSString *fontName;
+} TypographyThemeProperties;

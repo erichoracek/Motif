@@ -11,10 +11,8 @@ extern const struct NavigationThemeClassNames {
 } NavigationThemeClassNames;
 
 extern const struct NavigationThemeProperties {
-    __unsafe_unretained NSString *textColor;
     __unsafe_unretained NSString *tintColor;
-    __unsafe_unretained NSString *fontName;
     __unsafe_unretained NSString *backgroundColor;
     __unsafe_unretained NSString *separatorColor;
-    __unsafe_unretained NSString *fontSize;
+    __unsafe_unretained NSString *text;
 } NavigationThemeProperties;

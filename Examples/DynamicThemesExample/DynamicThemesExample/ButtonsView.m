@@ -11,8 +11,7 @@
 
 @interface ButtonsView ()
 
-@property (nonatomic) UIButton *saveButton;
-@property (nonatomic) UIButton *deleteButton;
+@property (nonatomic, readonly) NSArray *textLabels;
 
 @end
 
@@ -25,7 +24,7 @@
     return YES;
 }
 
-static CGFloat const ButtonWidth = 145.0;
+static CGFloat const SectionPadding = 40.0;
 static CGFloat const ButtonPadding = 10.0;
 
 - (void)updateConstraints
@@ -33,15 +32,45 @@ static CGFloat const ButtonPadding = 10.0;
     [super updateConstraints];
         
     [self.saveButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
+        make.top.equalTo(self).offset(SectionPadding);
+        make.left.equalTo(@(ButtonPadding));
         make.right.equalTo(self.mas_centerX).offset(-(ButtonPadding / 2.0));
-        make.width.equalTo(@(ButtonWidth));
+        make.width.equalTo(self.deleteButton);
     }];
     
     [self.deleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_centerX).offset(ButtonPadding / 2.0);
         make.centerY.equalTo(self.saveButton);
-        make.width.equalTo(@(ButtonWidth));
+        make.width.equalTo(self.saveButton);
+    }];
+    
+    [self.secondarySaveButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.saveButton.mas_bottom).offset(10.0);
+        make.left.equalTo(self.saveButton);
+        make.width.equalTo(self.saveButton);
+    }];
+    
+    [self.secondaryDeleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.deleteButton);
+        make.centerY.equalTo(self.secondarySaveButton);
+        make.width.equalTo(self.secondarySaveButton);
+    }];
+    
+    __block UIView *topView = self.secondarySaveButton;
+    [self.textLabels enumerateObjectsUsingBlock:^(UILabel *textLabel, NSUInteger textLabelIndex, BOOL *stop) {
+        
+        [textLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(ButtonPadding);
+            make.right.equalTo(self).offset(-ButtonPadding);
+            make.top.equalTo(topView.mas_bottom).offset((textLabelIndex == 0) ? SectionPadding : ButtonPadding);
+            make.width.equalTo(self).offset(-ButtonPadding * 2.0);
+            
+            if (textLabelIndex == (self.textLabels.count - 1)) {
+                make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
+            }
+        }];
+        
+        topView = textLabel;
     }];
 }
 
@@ -51,26 +80,43 @@ static CGFloat const ButtonPadding = 10.0;
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
+        _deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _secondarySaveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
+        _secondaryDeleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        
+        _displayTextLabel = [UILabel new];
+        _headlineTextLabel = [UILabel new];
+        _titleTextLabel = [UILabel new];
+        _subheadTextLabel = [UILabel new];
+        _bodyTextLabel = [UILabel new];
+        _captionTextLabel = [UILabel new];
+        
+        _textLabels = @[
+            self.displayTextLabel,
+            self.headlineTextLabel,
+            self.titleTextLabel,
+            self.subheadTextLabel,
+            self.bodyTextLabel,
+            self.captionTextLabel
+        ];
+        
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
+        [self addSubview:self.secondarySaveButton];
+        [self addSubview:self.secondaryDeleteButton];
+        
+        [self addSubview:self.displayTextLabel];
+        [self addSubview:self.headlineTextLabel];
+        [self addSubview:self.titleTextLabel];
+        [self addSubview:self.subheadTextLabel];
+        [self addSubview:self.bodyTextLabel];
+        [self addSubview:self.captionTextLabel];
+        
+        self.bodyTextLabel.numberOfLines = 0;
     }
     return self;
-}
-
-- (UIButton *)saveButton
-{
-    if (!_saveButton) {
-        self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
-    }
-    return _saveButton;
-}
-
-- (UIButton *)deleteButton
-{
-    if (!_deleteButton) {
-        self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    }
-    return _deleteButton;
 }
 
 @end

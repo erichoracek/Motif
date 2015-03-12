@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ButtonsView : UIView
+@interface ButtonsView : UIScrollView
 
 @property (nonatomic, readonly) UIButton *saveButton;
 @property (nonatomic, readonly) UIButton *deleteButton;
+
+@property (nonatomic, readonly) UIButton *secondarySaveButton;
+@property (nonatomic, readonly) UIButton *secondaryDeleteButton;
+
+@property (nonatomic, readonly) UILabel *displayTextLabel;
+@property (nonatomic, readonly) UILabel *headlineTextLabel;
+@property (nonatomic, readonly) UILabel *titleTextLabel;
+@property (nonatomic, readonly) UILabel *subheadTextLabel;
+@property (nonatomic, readonly) UILabel *bodyTextLabel;
+@property (nonatomic, readonly) UILabel *captionTextLabel;
 
 @end

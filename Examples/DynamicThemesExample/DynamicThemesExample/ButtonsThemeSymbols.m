@@ -7,17 +7,21 @@
 NSString * const ButtonsThemeName = @"ButtonsTheme";
 
 const struct ButtonsThemeClassNames ButtonsThemeClassNames = {
-    .DestructiveButton = @"DestructiveButton",
-    .PrimaryButton = @"PrimaryButton",
     .Button = @"Button",
+    .CreativeButton = @"CreativeButton",
+    .DestructiveSecondaryButton = @"DestructiveSecondaryButton",
+    .SecondaryButton = @"SecondaryButton",
+    .DestructiveButton = @"DestructiveButton",
+    .CreativeSecondaryButton = @"CreativeSecondaryButton",
 };
 
 const struct ButtonsThemeProperties ButtonsThemeProperties = {
-    .fontSize = @"fontSize",
     .tintColor = @"tintColor",
-    .fontName = @"fontName",
-    .borderColor = @"borderColor",
     .borderWidth = @"borderWidth",
+    .borderColor = @"borderColor",
     .cornerRadius = @"cornerRadius",
+    .text = @"text",
     .contentEdgeInsets = @"contentEdgeInsets",
+    .backgroundColor = @"backgroundColor",
+    ._superclass = @"_superclass",
 };

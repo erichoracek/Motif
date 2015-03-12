@@ -31,6 +31,7 @@
 		3ADB36381A568DAA0059796A /* UINavigationBar+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB36371A568DAA0059796A /* UINavigationBar+Theming.m */; };
 		3ADB363D1A5691020059796A /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB363C1A5691020059796A /* NavigationTheme.json */; };
 		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
+		3AFAF8E91AB1196A00561F24 /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF8E81AB1196A00561F24 /* UILabel+Theming.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		3ADB363C1A5691020059796A /* NavigationTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NavigationTheme.json; sourceTree = "<group>"; };
 		3ADB363E1A5692220059796A /* UIColor+LightnessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LightnessType.h"; sourceTree = "<group>"; };
 		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
+		3AFAF8E71AB1196A00561F24 /* UILabel+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Theming.h"; sourceTree = "<group>"; };
+		3AFAF8E81AB1196A00561F24 /* UILabel+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Theming.m"; sourceTree = "<group>"; };
 		701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.debug.xcconfig"; sourceTree = "<group>"; };
 		8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,9 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				3ADB360E1A567C820059796A /* ColorsTheme.json */,
-				3ADB36111A567C820059796A /* TypographyTheme.json */,
 				3ADB360F1A567C820059796A /* DarkMappingsTheme.json */,
 				3ADB36101A567C820059796A /* LightMappingsTheme.json */,
+				3ADB36111A567C820059796A /* TypographyTheme.json */,
 				3ADB360D1A567C820059796A /* ButtonsTheme.json */,
 				3ADB363C1A5691020059796A /* NavigationTheme.json */,
 				3A3DD8FC1A881F6200DBA831 /* ContentTheme.json */,
@@ -170,6 +173,8 @@
 				3ADB36321A56820D0059796A /* UIButton+Theming.m */,
 				3ADB36361A568DAA0059796A /* UINavigationBar+Theming.h */,
 				3ADB36371A568DAA0059796A /* UINavigationBar+Theming.m */,
+				3AFAF8E71AB1196A00561F24 /* UILabel+Theming.h */,
+				3AFAF8E81AB1196A00561F24 /* UILabel+Theming.m */,
 				3ADB363E1A5692220059796A /* UIColor+LightnessType.h */,
 				3ADB363F1A5692220059796A /* UIColor+LightnessType.m */,
 				3ADB36171A567D8B0059796A /* Images.xcassets */,
@@ -307,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A3DD9391A88AE4700DBA831 /* NavigationThemeSymbols.m in Sources */,
+				3AFAF8E91AB1196A00561F24 /* UILabel+Theming.m in Sources */,
 				3ADB36331A56820D0059796A /* ButtonsView.m in Sources */,
 				3A3DD92A1A88AD5D00DBA831 /* ColorsThemeSymbols.m in Sources */,
 				3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */,

@@ -1,6 +1,41 @@
 {
+    "$LightFontName": "AvenirNext-UltraLight",
     "$RegularFontName": "AvenirNext-Regular",
     "$MediumFontName": "AvenirNext-Medium",
-    "$H5FontSize": 16,
-    "$H4FontSize": 20
+    "$DisplayFontSize": 30,
+    "$HeadlineFontSize": 24,
+    "$TitleFontSize": 20,
+    "$SubheadFontSize": 16,
+    "$BodyFontSize": 13,
+    "$CaptionFontSize": 11,
+    ".DisplayText": {
+        "fontSize": "$DisplayFontSize",
+        "fontName": "$RegularFontName",
+        "color": "$HeadingTextColor"
+    },
+    ".HeadlineText": {
+        "fontSize": "$HeadlineFontSize",
+        "fontName": "$MediumFontName",
+        "color": "$HeadingTextColor"
+    },
+    ".TitleText": {
+        "fontSize": "$TitleFontSize",
+        "fontName": "$MediumFontName",
+        "color": "$HeadingTextColor"
+    },
+    ".SubheadText": {
+        "fontSize": "$SubheadFontSize",
+        "fontName": "$RegularFontName",
+        "color": "$HeadingTextColor"
+    },
+    ".BodyText": {
+        "fontSize": "$BodyFontSize",
+        "fontName": "$MediumFontName",
+        "color": "$BodyTextColor"
+    },
+    ".CaptionText": {
+        "fontSize": "$CaptionFontSize",
+        "fontName": "$RegularFontName",
+        "color": "$CaptionTextColor"
+    }
 }
