@@ -17,7 +17,7 @@
 
 @end
 
-@interface DeallocatingObject : UIView
+@interface AUTDeallocatingObject : UIView
 
 @end
 
@@ -82,11 +82,6 @@
 
 @end
 
-@implementation DeallocatingObject
-
-- (void)dealloc
-{
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
+@implementation AUTDeallocatingObject
 
 @end

@@ -20,12 +20,9 @@
 
 - (void)testNonFileURLIsInvalid
 {
-    NSError *error;
-    AUTTheme *theme;
-    
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
     @try {
-        theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:&error];
+        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
@@ -41,12 +38,9 @@
     NSUUID *UUID = [NSUUID new];
     NSURL *fileURL = [documentsDirectory URLByAppendingPathComponent:UUID.UUIDString];
     
-    NSError *error;
-    AUTTheme *theme;
-    
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
     @try {
-        theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
@@ -59,12 +53,9 @@
 {
     NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"InvalidJSONTheme" withExtension:@"json"];
     
-    NSError *error;
-    AUTTheme *theme;
-    
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
     @try {
-        theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
+        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
