@@ -25,7 +25,7 @@
 }
 
 static CGFloat const SectionPadding = 40.0;
-static CGFloat const ButtonPadding = 10.0;
+static CGFloat const ElementPadding = 10.0;
 
 - (void)updateConstraints
 {
@@ -33,13 +33,13 @@ static CGFloat const ButtonPadding = 10.0;
         
     [self.saveButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(SectionPadding);
-        make.left.equalTo(@(ButtonPadding));
-        make.right.equalTo(self.mas_centerX).offset(-(ButtonPadding / 2.0));
+        make.left.equalTo(@(ElementPadding));
+        make.right.equalTo(self.mas_centerX).offset(-(ElementPadding / 2.0));
         make.width.equalTo(self.deleteButton);
     }];
     
     [self.deleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_centerX).offset(ButtonPadding / 2.0);
+        make.left.equalTo(self.mas_centerX).offset(ElementPadding / 2.0);
         make.centerY.equalTo(self.saveButton);
         make.width.equalTo(self.saveButton);
     }];
@@ -60,10 +60,10 @@ static CGFloat const ButtonPadding = 10.0;
     [self.textLabels enumerateObjectsUsingBlock:^(UILabel *textLabel, NSUInteger textLabelIndex, BOOL *stop) {
         
         [textLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).offset(ButtonPadding);
-            make.right.equalTo(self).offset(-ButtonPadding);
-            make.top.equalTo(topView.mas_bottom).offset((textLabelIndex == 0) ? SectionPadding : ButtonPadding);
-            make.width.equalTo(self).offset(-ButtonPadding * 2.0);
+            make.left.equalTo(self).offset(ElementPadding);
+            make.right.equalTo(self).offset(-ElementPadding);
+            make.top.equalTo(topView.mas_bottom).offset((textLabelIndex == 0) ? SectionPadding : ElementPadding);
+            make.width.equalTo(self).offset(-ElementPadding * 2.0);
             
             if (textLabelIndex == (self.textLabels.count - 1)) {
                 make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
