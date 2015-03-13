@@ -69,7 +69,7 @@
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:themeDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil when creating theme");
-    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
     
     AUTTestCTypePropertiesObject *object = [AUTTestCTypePropertiesObject new];
     
@@ -101,7 +101,7 @@
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:themeDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil when creating theme");
-    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
     
     AUTTestObjCClassPropertiesObject *object = [AUTTestObjCClassPropertiesObject new];
     
@@ -126,7 +126,7 @@
     
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:themeDictionary error:&error];
     XCTAssertNil(error, @"Error must be nil when creating theme");
-    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
     
     AUTSubclassPropertyObject *object = [AUTSubclassPropertyObject new];
     

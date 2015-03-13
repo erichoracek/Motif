@@ -40,7 +40,7 @@
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier lightTheme:(AUTTheme *)lightTheme darkTheme:(AUTTheme *)darkTheme
+- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)applier lightTheme:(AUTTheme *)lightTheme darkTheme:(AUTTheme *)darkTheme
 {
     NSParameterAssert(applier);
     NSParameterAssert(lightTheme);

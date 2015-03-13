@@ -23,7 +23,7 @@
 		3AD69A3E1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */; };
 		3AD69A401A4F51220002FA8F /* AUTThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */; };
 		3AE440241AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */; };
-		3AF158731A5E1A2C003458C0 /* AUTThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */; };
+		3AF158731A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF158721A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassApplierTests.m; sourceTree = "<group>"; };
 		3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertiesApplierTests.m; sourceTree = "<group>"; };
 		3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
-		3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeApplierTests.m; sourceTree = "<group>"; };
+		3AF158721A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTDynamicThemeApplierTests.m; sourceTree = "<group>"; };
 		49F96B03EF2F0447B9913201 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB1322F68DAADD37AF11FC40 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,7 +91,7 @@
 				3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */,
 				3A342B201A4CC2400034A23C /* AUTThemePropertyApplierTests.m */,
 				3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */,
-				3AF158721A5E1A2C003458C0 /* AUTThemeApplierTests.m */,
+				3AF158721A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m */,
 				3AD33F4F1AAC228A004DC416 /* AUTThemeNameTests.m */,
 				3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */,
 				3A21AD3D1A4A57DA008D44FD /* InvalidJSONTheme.json */,
@@ -240,7 +240,7 @@
 				3A342B211A4CC2400034A23C /* AUTThemePropertyApplierTests.m in Sources */,
 				3A267A2C1A4D33C100347DDC /* AUTThemeClassInheritanceTests.m in Sources */,
 				3A342B041A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m in Sources */,
-				3AF158731A5E1A2C003458C0 /* AUTThemeApplierTests.m in Sources */,
+				3AF158731A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m in Sources */,
 				3A342B061A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m in Sources */,
 				3AD33F501AAC228A004DC416 /* AUTThemeNameTests.m in Sources */,
 				3AD69A401A4F51220002FA8F /* AUTThemePropertiesApplierTests.m in Sources */,

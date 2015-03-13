@@ -11,14 +11,15 @@ const struct SpecThemeClassNames SpecThemeClassNames = {
 };
 
 const struct SpecThemeProperties SpecThemeProperties = {
-    .headlineTextLabel = @"headlineTextLabel",
+    .saveButton = @"saveButton",
     .titleTextLabel = @"titleTextLabel",
-    .captionTextLabel = @"captionTextLabel",
     .deleteButton = @"deleteButton",
+    .captionTextLabel = @"captionTextLabel",
+    ._superclass = @"_superclass",
     .bodyTextLabel = @"bodyTextLabel",
     .displayTextLabel = @"displayTextLabel",
     .secondaryDeleteButton = @"secondaryDeleteButton",
     .secondarySaveButton = @"secondarySaveButton",
-    .saveButton = @"saveButton",
     .subheadTextLabel = @"subheadTextLabel",
+    .headlineTextLabel = @"headlineTextLabel",
 };

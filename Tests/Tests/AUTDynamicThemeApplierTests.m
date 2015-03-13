@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import <AUTTheming/AUTTheming.h>
 #import <AUTTheming/AUTTheme_Private.h>
-#import <AUTTheming/AUTThemeApplier_Private.h>
+#import <AUTTheming/AUTDynamicThemeApplier_Private.h>
 #import <AUTTheming/NSString+ThemeSymbols.h>
 
 @interface AUTThemeApplierTests : XCTestCase
@@ -48,7 +48,7 @@
         }
     }];
     
-    AUTThemeApplier *applier = [[AUTThemeApplier alloc] initWithTheme:theme1];
+    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme1];
     [applier applyClassWithName:class.aut_symbol toObject:object];
     applier.theme = theme2;
     
@@ -66,7 +66,7 @@
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
     [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
     NSHashTable *classApplicants = themeApplier.applicants[class.aut_symbol];

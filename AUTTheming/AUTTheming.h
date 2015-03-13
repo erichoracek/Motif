@@ -9,5 +9,5 @@
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
 #import "AUTThemeClassApplicable.h"
-#import "AUTThemeApplier.h"
+#import "AUTDynamicThemeApplier.h"
 #import "NSObject+ThemeClassAppliers.h"

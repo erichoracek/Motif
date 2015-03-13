@@ -91,7 +91,7 @@
     
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
     @try {
-        AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
+        AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
         [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     }
     @catch (NSException *exception) {

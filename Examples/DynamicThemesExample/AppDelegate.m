@@ -25,7 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Default to light theme
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:self.lightTheme];
+    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:self.lightTheme];
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:themeApplier lightTheme:self.lightTheme darkTheme:self.darkTheme];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];

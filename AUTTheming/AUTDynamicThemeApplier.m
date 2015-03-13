@@ -6,12 +6,12 @@
 //
 //
 
-#import "AUTThemeApplier.h"
-#import "AUTThemeApplier_Private.h"
+#import "AUTDynamicThemeApplier.h"
+#import "AUTDynamicThemeApplier_Private.h"
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
 
-@implementation AUTThemeApplier
+@implementation AUTDynamicThemeApplier
 
 #pragma mark - NSObject
 

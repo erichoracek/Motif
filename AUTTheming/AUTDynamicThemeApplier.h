@@ -15,7 +15,7 @@
  
  If the `theme` property is changed on an `AUTThemeApplier`, it reapplies the theme classes that were previously applied by it with classes from the new theme.
  */
-@interface AUTThemeApplier : NSObject
+@interface AUTDynamicThemeApplier : NSObject
 
 /**
  Initializes a theme applier with a theme.

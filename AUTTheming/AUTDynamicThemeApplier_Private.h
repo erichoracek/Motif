@@ -6,11 +6,11 @@
 //
 //
 
-#import "AUTThemeApplier.h"
+#import "AUTDynamicThemeApplier.h"
 
 @class AUTThemeClass;
 
-@interface AUTThemeApplier ()
+@interface AUTDynamicThemeApplier ()
 
 /**
  The applicants of the theme classes, keyed by the the theme class names that they had applied to them.
