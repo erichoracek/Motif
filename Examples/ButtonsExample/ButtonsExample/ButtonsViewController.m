@@ -32,12 +32,10 @@
 {
     [super viewDidLoad];
     
-    [self.themeApplier applyClassWithName:ThemeClassNames.ContentBackground toObject:self.view];
-    [self.themeApplier applyClassWithName:ThemeClassNames.DestructiveButton toObject:self.view.deleteButton];
-    [self.themeApplier applyClassWithName:ThemeClassNames.PrimaryButton toObject:self.view.saveButton];
+    [self.theme applyClassWithName:ThemeClassNames.ButtonsView toObject:self.view];
     
-    [self.view.deleteButton setTitle:NSLocalizedString(@"Delete", nil) forState:UIControlStateNormal];
-    [self.view.saveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [self.view.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+    [self.view.saveButton setTitle:@"Save" forState:UIControlStateNormal];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -47,11 +45,13 @@
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier
+- (instancetype)initWithTheme:(AUTTheme *)theme
 {
+    NSParameterAssert(theme);
+    
     self = [super init];
     if (self) {
-        _themeApplier = applier;
+        _theme = theme;
     }
     return self;
 }

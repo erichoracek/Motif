@@ -34,6 +34,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = navigationController;
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -51,7 +52,8 @@
             TypographyThemeName,
             ButtonsThemeName,
             NavigationThemeName,
-            ContentThemeName
+            ContentThemeName,
+            SpecThemeName
         ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.lightTheme = theme;
@@ -69,7 +71,8 @@
             TypographyThemeName,
             ButtonsThemeName,
             NavigationThemeName,
-            ContentThemeName
+            ContentThemeName,
+            SpecThemeName
         ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.darkTheme = theme;

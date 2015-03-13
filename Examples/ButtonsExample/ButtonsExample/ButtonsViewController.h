@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class AUTThemeApplier;
+#import <AUTTheming/AUTTheme.h>
 
 @interface ButtonsViewController : UIViewController
 
-- (instancetype)initWithThemeApplier:(AUTThemeApplier *)applier;
+- (instancetype)initWithTheme:(AUTTheme *)theme;
 
-@property (nonatomic, readonly) AUTThemeApplier *themeApplier;
+@property (nonatomic, readonly) AUTTheme *theme;
 
 @end

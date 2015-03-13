@@ -51,26 +51,13 @@ static const CGFloat ButtonPadding = 10.0;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.saveButton];
+        _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        
         [self addSubview:self.deleteButton];
+        [self addSubview:self.saveButton];
     }
     return self;
-}
-
-- (UIButton *)saveButton
-{
-    if (!_saveButton) {
-        self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    }
-    return _saveButton;
-}
-
-- (UIButton *)deleteButton
-{
-    if (!_deleteButton) {
-        self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    }
-    return _deleteButton;
 }
 
 @end

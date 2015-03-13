@@ -10,4 +10,8 @@
 
 @interface UINavigationBar (Theming)
 
+- (UIBarStyle)aut_barStyleForColor:(UIColor *)color;
+
+- (void)aut_setShadowColor:(UIColor *)color;
+
 @end

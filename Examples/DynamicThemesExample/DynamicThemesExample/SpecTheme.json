@@ -1,0 +1,15 @@
+{
+    ".Spec": {
+      "_superclass": ".ContentBackground",
+      "saveButton": ".CreativeButton",
+      "deleteButton": ".DestructiveButton",
+      "secondarySaveButton": ".DestructiveSecondaryButton",
+      "secondaryDeleteButton": ".CreativeSecondaryButton",
+      "displayTextLabel": ".DisplayText",
+      "headlineTextLabel": ".HeadlineText",
+      "titleTextLabel": ".TitleText",
+      "subheadTextLabel": ".SubheadText",
+      "bodyTextLabel": ".BodyText",
+      "captionTextLabel": ".CaptionText"
+    }
+}

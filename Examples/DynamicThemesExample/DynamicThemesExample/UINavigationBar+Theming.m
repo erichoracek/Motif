@@ -19,42 +19,45 @@
 {
     [self aut_registerThemeProperty:NavigationThemeProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
         navigationBar.barTintColor = color;
-        navigationBar.translucent = NO;
         navigationBar.barStyle = [navigationBar aut_barStyleForColor:color];
+        // Translucency must be set to NO for an opaque background color to appear correctly
+        navigationBar.translucent = NO;
     }];
-        
+    
     [self aut_registerThemeProperty:NavigationThemeProperties.text requiringValueOfClass:[AUTThemeClass class] applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
-        NSMutableDictionary *titleTextAttributes = (navigationBar.titleTextAttributes ? [navigationBar.titleTextAttributes mutableCopy] : [NSMutableDictionary new]);
-        NSDictionary *themeClassTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
-        [titleTextAttributes addEntriesFromDictionary:themeClassTextAttributes];
-        navigationBar.titleTextAttributes = [titleTextAttributes copy];
+        navigationBar.titleTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
     }];
     
     [self aut_registerThemeProperty:NavigationThemeProperties.separatorColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-        // Create an image of the specified color and set it as the shadow image
-        CGRect shadowImageRect = (CGRect){CGPointZero, {1.0, 0.5}};
-        UIGraphicsBeginImageContextWithOptions(shadowImageRect.size, NO, 0.0);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, color.CGColor);
-        CGContextFillRect(context, shadowImageRect);
-        UIImage *shadowImage = UIGraphicsGetImageFromCurrentImageContext();
-        // Allow image to be resized
-        shadowImage = [shadowImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
-        [navigationBar setShadowImage:shadowImage];
-        // A 'backgroundImage' is required for the shadow image to work.
-        [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        [navigationBar aut_setShadowColor:color];
     }];
 }
 
 - (UIBarStyle)aut_barStyleForColor:(UIColor *)color
 {
-    switch (color.lightnessType) {
-    case LightnessTypeDark:
+    switch (color.aut_lightnessType) {
+    case AUTLightnessTypeDark:
         return UIBarStyleBlack;
-    case LightnessTypeLight:
+    case AUTLightnessTypeLight:
     default:
         return UIBarStyleDefault;
     }
+}
+
+- (void)aut_setShadowColor:(UIColor *)color
+{
+    // Create an image of the specified color and set it as the shadow image
+    CGRect shadowImageRect = (CGRect){CGPointZero, {1.0, 0.5}};
+    UIGraphicsBeginImageContextWithOptions(shadowImageRect.size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextFillRect(context, shadowImageRect);
+    UIImage *shadowImage = UIGraphicsGetImageFromCurrentImageContext();
+    // Allow image to be resized
+    shadowImage = [shadowImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
+    [self setShadowImage:shadowImage];
+    // A 'backgroundImage' is required for the shadow image to work.
+    [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 
 @end

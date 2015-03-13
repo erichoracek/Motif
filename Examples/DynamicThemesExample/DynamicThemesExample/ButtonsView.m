@@ -93,15 +93,6 @@ static CGFloat const ElementPadding = 10.0;
         _bodyTextLabel = [UILabel new];
         _captionTextLabel = [UILabel new];
         
-        _textLabels = @[
-            self.displayTextLabel,
-            self.headlineTextLabel,
-            self.titleTextLabel,
-            self.subheadTextLabel,
-            self.bodyTextLabel,
-            self.captionTextLabel
-        ];
-        
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
         [self addSubview:self.secondarySaveButton];
@@ -115,8 +106,32 @@ static CGFloat const ElementPadding = 10.0;
         [self addSubview:self.captionTextLabel];
         
         self.bodyTextLabel.numberOfLines = 0;
+        
+        [self.deleteButton setTitle:@"Delete Button" forState:UIControlStateNormal];
+        [self.saveButton setTitle:@"Save Button" forState:UIControlStateNormal];
+        [self.secondaryDeleteButton setTitle:@"Delete Button" forState:UIControlStateNormal];
+        [self.secondarySaveButton setTitle:@"Save Button" forState:UIControlStateNormal];
+        
+        self.displayTextLabel.text = @"Display";
+        self.headlineTextLabel.text = @"Headline";
+        self.titleTextLabel.text = @"Title";
+        self.subheadTextLabel.text = @"Subhead";
+        self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.";
+        self.captionTextLabel.text = @"Caption";
     }
     return self;
+}
+
+- (NSArray *)textLabels
+{
+    return  @[
+        self.displayTextLabel,
+        self.headlineTextLabel,
+        self.titleTextLabel,
+        self.subheadTextLabel,
+        self.bodyTextLabel,
+        self.captionTextLabel
+    ];
 }
 
 @end

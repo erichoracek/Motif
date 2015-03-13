@@ -19,8 +19,7 @@
     AUTTheme *theme = [AUTTheme themeFromJSONThemeNamed:ThemeName error:&error];
     NSAssert(!error, @"Error loading theme: %@", error);
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:themeApplier];
+    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithTheme:theme];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = viewController;

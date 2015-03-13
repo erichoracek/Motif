@@ -10,24 +10,26 @@ const struct ThemeConstantKeys ThemeConstantKeys = {
     .WhiteColor = @"WhiteColor",
     .RegularFontName = @"RegularFontName",
     .H5FontSize = @"H5FontSize",
-    .RedColor = @"RedColor",
     .BlueColor = @"BlueColor",
+    .RedColor = @"RedColor",
 };
 
 const struct ThemeClassNames ThemeClassNames = {
     .Button = @"Button",
-    .ContentBackground = @"ContentBackground",
-    .DestructiveButton = @"DestructiveButton",
     .PrimaryButton = @"PrimaryButton",
+    .DestructiveButton = @"DestructiveButton",
+    .ContentBackground = @"ContentBackground",
+    .ButtonsView = @"ButtonsView",
 };
 
 const struct ThemeProperties ThemeProperties = {
     .fontSize = @"fontSize",
     .tintColor = @"tintColor",
     .fontName = @"fontName",
-    .cornerRadius = @"cornerRadius",
-    .borderWidth = @"borderWidth",
     .borderColor = @"borderColor",
+    .borderWidth = @"borderWidth",
+    .cornerRadius = @"cornerRadius",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
+    ._superclass = @"_superclass",
 };

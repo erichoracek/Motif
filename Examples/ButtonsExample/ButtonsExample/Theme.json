@@ -23,5 +23,10 @@
         "_superclass": ".Button",
         "tintColor": "$BlueColor",
         "borderColor": "$BlueColor"
+    },
+    ".ButtonsView": {
+        "_superclass": ".ContentBackground",
+        "saveButton": ".PrimaryButton",
+        "deleteButton": ".DestructiveButton"
     }
 }

@@ -16,6 +16,8 @@
 		3A3DD9371A88AE4700DBA831 /* ButtonsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9321A88AE4700DBA831 /* ButtonsThemeSymbols.m */; };
 		3A3DD9381A88AE4700DBA831 /* ContentThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9341A88AE4700DBA831 /* ContentThemeSymbols.m */; };
 		3A3DD9391A88AE4700DBA831 /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9361A88AE4700DBA831 /* NavigationThemeSymbols.m */; };
+		3A9930DF1AB23B7500B1D7B2 /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A9930DE1AB23B7500B1D7B2 /* SpecTheme.json */; };
+		3A9930E21AB23BA400B1D7B2 /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9930E11AB23BA400B1D7B2 /* SpecThemeSymbols.m */; };
 		3ADB35EA1A5645B30059796A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
 		3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
 		3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
@@ -52,6 +54,9 @@
 		3A3DD9351A88AE4700DBA831 /* NavigationThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationThemeSymbols.h; sourceTree = "<group>"; };
 		3A3DD9361A88AE4700DBA831 /* NavigationThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationThemeSymbols.m; sourceTree = "<group>"; };
 		3A3DD93A1A88AE5500DBA831 /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
+		3A9930DE1AB23B7500B1D7B2 /* SpecTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SpecTheme.json; sourceTree = "<group>"; };
+		3A9930E01AB23BA400B1D7B2 /* SpecThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecThemeSymbols.h; sourceTree = "<group>"; };
+		3A9930E11AB23BA400B1D7B2 /* SpecThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecThemeSymbols.m; sourceTree = "<group>"; };
 		3ADB35E41A5645B30059796A /* DynamicThemesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E81A5645B30059796A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 				3ADB360D1A567C820059796A /* ButtonsTheme.json */,
 				3ADB363C1A5691020059796A /* NavigationTheme.json */,
 				3A3DD8FC1A881F6200DBA831 /* ContentTheme.json */,
+				3A9930DE1AB23B7500B1D7B2 /* SpecTheme.json */,
 				3A3DD93B1A88AE6600DBA831 /* Generated Symbols */,
 			);
 			name = Themes;
@@ -135,6 +141,8 @@
 				3A3DD9361A88AE4700DBA831 /* NavigationThemeSymbols.m */,
 				3A3DD9331A88AE4700DBA831 /* ContentThemeSymbols.h */,
 				3A3DD9341A88AE4700DBA831 /* ContentThemeSymbols.m */,
+				3A9930E01AB23BA400B1D7B2 /* SpecThemeSymbols.h */,
+				3A9930E11AB23BA400B1D7B2 /* SpecThemeSymbols.m */,
 			);
 			name = "Generated Symbols";
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 				3ADB36151A567C820059796A /* LightMappingsTheme.json in Resources */,
 				3ADB36141A567C820059796A /* DarkMappingsTheme.json in Resources */,
 				3A3DD8FD1A881F6200DBA831 /* ContentTheme.json in Resources */,
+				3A9930DF1AB23B7500B1D7B2 /* SpecTheme.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +322,7 @@
 			files = (
 				3A3DD9391A88AE4700DBA831 /* NavigationThemeSymbols.m in Sources */,
 				3AFAF8E91AB1196A00561F24 /* UILabel+Theming.m in Sources */,
+				3A9930E21AB23BA400B1D7B2 /* SpecThemeSymbols.m in Sources */,
 				3ADB36331A56820D0059796A /* ButtonsView.m in Sources */,
 				3A3DD92A1A88AD5D00DBA831 /* ColorsThemeSymbols.m in Sources */,
 				3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */,

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, LightnessType) {
-    LightnessTypeLight,
-    LightnessTypeDark
+typedef NS_ENUM(NSInteger, AUTLightnessType) {
+    AUTLightnessTypeLight,
+    AUTLightnessTypeDark
 };
 
 @interface UIColor (lightnessType)
 
-- (LightnessType)lightnessType;
+- (AUTLightnessType)aut_lightnessType;
 
 @end
