@@ -1,5 +1,5 @@
 //
-//  AUTThemeApplier.m
+//  AUTDynamicThemeApplier.m
 //  Pods
 //
 //  Created by Eric Horacek on 12/29/14.
@@ -25,7 +25,7 @@
     return self;
 }
 
-#pragma mark - AUTThemeApplier
+#pragma mark - AUTDynamicThemeApplier
 
 #pragma mark Public
 

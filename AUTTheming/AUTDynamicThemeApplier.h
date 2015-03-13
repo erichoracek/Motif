@@ -1,5 +1,5 @@
 //
-//  AUTThemeApplier.h
+//  AUTDynamicThemeApplier.h
 //  Pods
 //
 //  Created by Eric Horacek on 12/29/14.
@@ -13,7 +13,7 @@
 /**
  A theme applier is responsible for applying an AUTTheme to objects.
  
- If the `theme` property is changed on an `AUTThemeApplier`, it reapplies the theme classes that were previously applied by it with classes from the new theme.
+ If the `theme` property is changed on an `AUTDynamicThemeApplier`, it reapplies the theme classes that were previously applied by it with classes from the new theme.
  */
 @interface AUTDynamicThemeApplier : NSObject
 

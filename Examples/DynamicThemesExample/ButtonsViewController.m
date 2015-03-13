@@ -58,7 +58,7 @@
 - (void)toggleTheme
 {
     BOOL isCurrentlyDisplayingLightTheme = (self.themeApplier.theme == self.lightTheme);
-    // Changing an AUTThemeApplier's theme property reapplies it to all previously applied themes
+    // Changing an AUTDynamicThemeApplier's theme property reapplies it to all previously applied themes
     self.themeApplier.theme = (isCurrentlyDisplayingLightTheme ? self.darkTheme : self.lightTheme);
 }
 

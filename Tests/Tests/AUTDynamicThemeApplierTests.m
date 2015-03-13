@@ -1,5 +1,5 @@
 //
-//  AUTThemeApplierTests.m
+//  AUTDynamicThemeApplierTests.m
 //  Tests
 //
 //  Created by Eric Horacek on 1/7/15.
@@ -13,11 +13,11 @@
 #import <AUTTheming/AUTDynamicThemeApplier_Private.h>
 #import <AUTTheming/NSString+ThemeSymbols.h>
 
-@interface AUTThemeApplierTests : XCTestCase
+@interface AUTDynamicThemeApplierTests : XCTestCase
 
 @end
 
-@implementation AUTThemeApplierTests
+@implementation AUTDynamicThemeApplierTests
 
 - (void)testThemeReapplication
 {

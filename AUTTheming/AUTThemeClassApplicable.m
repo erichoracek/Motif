@@ -1,5 +1,5 @@
 //
-//  AUTThemeApplier.m
+//  AUTDynamicThemeApplier.m
 //  Pods
 //
 //  Created by Eric Horacek on 12/26/14.
@@ -43,7 +43,7 @@
     return self;
 }
 
-#pragma mark - AUTThemeClassApplier <AUTThemeApplier>
+#pragma mark - AUTThemeClassApplier <AUTDynamicThemeApplier>
 
 @dynamic properties;
 
@@ -134,7 +134,7 @@
     return value;
 }
 
-#pragma mark - AUTThemePropertyApplier <AUTThemeApplier>
+#pragma mark - AUTThemePropertyApplier <AUTDynamicThemeApplier>
 
 @dynamic properties;
 
@@ -222,7 +222,7 @@
     return nil;
 }
 
-#pragma mark - AUTThemePropertiesApplier <AUTThemeApplier>
+#pragma mark - AUTThemePropertiesApplier <AUTDynamicThemeApplier>
 
 - (void)applyClass:(AUTThemeClass *)class toObject:(id)object
 {
