@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25C4C419154AC79D8F508A59 /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */; };
 		3A3DD8FD1A881F6200DBA831 /* ContentTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A3DD8FC1A881F6200DBA831 /* ContentTheme.json */; };
 		3A3DD92A1A88AD5D00DBA831 /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD91D1A88AD5D00DBA831 /* ColorsThemeSymbols.m */; };
 		3A3DD92B1A88AD5D00DBA831 /* DarkMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD91F1A88AD5D00DBA831 /* DarkMappingsThemeSymbols.m */; };
@@ -34,10 +33,10 @@
 		3ADB363D1A5691020059796A /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB363C1A5691020059796A /* NavigationTheme.json */; };
 		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
 		3AFAF8E91AB1196A00561F24 /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF8E81AB1196A00561F24 /* UILabel+Theming.m */; };
+		7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.release.xcconfig"; sourceTree = "<group>"; };
 		3A3DD8FC1A881F6200DBA831 /* ContentTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContentTheme.json; sourceTree = "<group>"; };
 		3A3DD91C1A88AD5D00DBA831 /* ColorsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsThemeSymbols.h; sourceTree = "<group>"; };
 		3A3DD91D1A88AD5D00DBA831 /* ColorsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorsThemeSymbols.m; sourceTree = "<group>"; };
@@ -83,8 +82,9 @@
 		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
 		3AFAF8E71AB1196A00561F24 /* UILabel+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Theming.h"; sourceTree = "<group>"; };
 		3AFAF8E81AB1196A00561F24 /* UILabel+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Theming.m"; sourceTree = "<group>"; };
-		701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.debug.xcconfig"; sourceTree = "<group>"; };
-		8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.debug.xcconfig"; sourceTree = "<group>"; };
+		5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.release.xcconfig"; sourceTree = "<group>"; };
+		F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C4C419154AC79D8F508A59 /* libPods-DynamicThemesExample.a in Frameworks */,
+				7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +102,7 @@
 		078D737A13DCE0E82C6F76DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8D681F83F29E7714C0A72438 /* libPods-DynamicThemesExample.a */,
+				F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 				3ADB35E61A5645B30059796A /* DynamicThemesExample */,
 				3ADB35E51A5645B30059796A /* Products */,
 				078D737A13DCE0E82C6F76DD /* Frameworks */,
-				D0EEB0F737464781819EE8A2 /* Pods */,
+				63A46562F72343C715BF0B19 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,11 +200,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D0EEB0F737464781819EE8A2 /* Pods */ = {
+		63A46562F72343C715BF0B19 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */,
-				1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */,
+				4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */,
+				5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */ = {
@@ -423,7 +423,7 @@
 		};
 		3ADB36081A5645B30059796A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 701202E60F3C6F43D1DAD356 /* Pods-DynamicThemesExample.debug.xcconfig */;
+			baseConfigurationReference = 4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -435,7 +435,7 @@
 		};
 		3ADB36091A5645B30059796A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E64E6D76DCA0297A7E55AE2 /* Pods-DynamicThemesExample.release.xcconfig */;
+			baseConfigurationReference = 5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

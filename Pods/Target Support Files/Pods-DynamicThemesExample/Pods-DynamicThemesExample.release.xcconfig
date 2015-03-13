@@ -3,4 +3,4 @@ HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/H
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AUTTheming" -isystem "${PODS_ROOT}/Headers/Public/Masonry" -isystem "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors" -isystem "${PODS_ROOT}/Headers/Public/libextobjc"
 OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-DynamicThemesExample-AUTTheming" -l"Pods-DynamicThemesExample-Masonry" -l"Pods-DynamicThemesExample-UIColor-HTMLColors" -l"Pods-DynamicThemesExample-libextobjc" -framework "Foundation" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
-PODS_ROOT = ${SRCROOT}/../../Pods
+PODS_ROOT = ${SRCROOT}/../Pods

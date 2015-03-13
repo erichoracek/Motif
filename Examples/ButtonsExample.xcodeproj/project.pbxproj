@@ -16,11 +16,10 @@
 		3AD69A7A1A4F7A0D0002FA8F /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A791A4F7A0D0002FA8F /* Theme.json */; };
 		3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */; };
 		3AD69A821A4FB2BC0002FA8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A811A4FB2BC0002FA8F /* Images.xcassets */; };
-		6D159411CE0A551EF5748DAA /* libPods-ButtonsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 176724CCBC52C1E0F49047B8 /* libPods-ButtonsExample.a */; };
+		FF4B3282D8827C89AD146996 /* libPods-ButtonsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6A8D58DDA276ED677BC6DE /* libPods-ButtonsExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		176724CCBC52C1E0F49047B8 /* libPods-ButtonsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ButtonsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
 		3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSymbols.m; sourceTree = "<group>"; };
 		3AD69A4A1A4F750B0002FA8F /* ButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +37,9 @@
 		3AD69A7E1A4FA1480002FA8F /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
 		3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
 		3AD69A811A4FB2BC0002FA8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5C08A77B9895974C0CBD2AF8 /* Pods-ButtonsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.debug.xcconfig"; sourceTree = "<group>"; };
-		D07B585B5F752D737E82C7C6 /* Pods-ButtonsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.release.xcconfig"; sourceTree = "<group>"; };
+		3E6A8D58DDA276ED677BC6DE /* libPods-ButtonsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ButtonsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7918559E697B2D49F5C68EF3 /* Pods-ButtonsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.release.xcconfig"; sourceTree = "<group>"; };
+		B33F962A405559D68C2276A6 /* Pods-ButtonsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonsExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D159411CE0A551EF5748DAA /* libPods-ButtonsExample.a in Frameworks */,
+				FF4B3282D8827C89AD146996 /* libPods-ButtonsExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +59,8 @@
 			children = (
 				3AD69A4C1A4F750B0002FA8F /* ButtonsExample */,
 				3AD69A4B1A4F750B0002FA8F /* Products */,
-				56595BC0576AFE000310CD4D /* Pods */,
 				6DE4D76277E1B49110B96DA9 /* Frameworks */,
+				53612DF78D0F5E4F5C31B7DA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,11 +103,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		56595BC0576AFE000310CD4D /* Pods */ = {
+		53612DF78D0F5E4F5C31B7DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5C08A77B9895974C0CBD2AF8 /* Pods-ButtonsExample.debug.xcconfig */,
-				D07B585B5F752D737E82C7C6 /* Pods-ButtonsExample.release.xcconfig */,
+				B33F962A405559D68C2276A6 /* Pods-ButtonsExample.debug.xcconfig */,
+				7918559E697B2D49F5C68EF3 /* Pods-ButtonsExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -115,7 +115,7 @@
 		6DE4D76277E1B49110B96DA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				176724CCBC52C1E0F49047B8 /* libPods-ButtonsExample.a */,
+				3E6A8D58DDA276ED677BC6DE /* libPods-ButtonsExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ButtonsExample/Pods-ButtonsExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -317,7 +317,7 @@
 		};
 		3AD69A6E1A4F750B0002FA8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C08A77B9895974C0CBD2AF8 /* Pods-ButtonsExample.debug.xcconfig */;
+			baseConfigurationReference = B33F962A405559D68C2276A6 /* Pods-ButtonsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -330,7 +330,7 @@
 		};
 		3AD69A6F1A4F750B0002FA8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D07B585B5F752D737E82C7C6 /* Pods-ButtonsExample.release.xcconfig */;
+			baseConfigurationReference = 7918559E697B2D49F5C68EF3 /* Pods-ButtonsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
