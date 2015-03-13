@@ -38,8 +38,7 @@
         [expectation fulfill];
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [NSObject aut_deregisterThemeClassApplier:classApplier];

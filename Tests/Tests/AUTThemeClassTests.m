@@ -47,7 +47,7 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
+    AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty = themeClass.properties[property];
@@ -74,7 +74,7 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
+    AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty = themeClass.properties[property];
@@ -104,9 +104,9 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
+    AUTThemeClass *themeClass1 = [theme classForName:class1.aut_symbol];
     XCTAssertNotNil(themeClass1, @"Class must exist when registered");
-    AUTThemeClass *themeClass2 = [theme themeClassForName:class2.aut_symbol];
+    AUTThemeClass *themeClass2 = [theme classForName:class2.aut_symbol];
     XCTAssertNotNil(themeClass2, @"Class must exist when registered");
 
     id valueForProperty = themeClass2.properties[classProperty];
@@ -139,9 +139,9 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *themeClass1 = [theme themeClassForName:class1.aut_symbol];
+    AUTThemeClass *themeClass1 = [theme classForName:class1.aut_symbol];
     XCTAssertNotNil(themeClass1, @"Class must exist when registered");
-    AUTThemeClass *themeClass2 = [theme themeClassForName:class2.aut_symbol];
+    AUTThemeClass *themeClass2 = [theme classForName:class2.aut_symbol];
     XCTAssertNotNil(themeClass2, @"Class must exist when registered");
 
     id valueForProperty = themeClass2.properties[classProperty];
@@ -176,7 +176,7 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNotNil(error, @"Must have error when class with duplicate name is registered");
     
-    AUTThemeClass *themeClass = [theme themeClassForName:class.aut_symbol];
+    AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];
     XCTAssertNotNil(themeClass, @"Class must exist when registered");
     
     id valueForProperty1 = themeClass.properties[property1];

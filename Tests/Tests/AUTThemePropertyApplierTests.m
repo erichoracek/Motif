@@ -43,8 +43,7 @@
         [applierExpectation fulfill];
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectClass aut_deregisterThemeClassApplier:propertyApplier];
@@ -71,8 +70,7 @@
         [applierExpectation fulfill];
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectClass aut_deregisterThemeClassApplier:propertyApplier];
@@ -132,8 +130,7 @@
         [applierExpectation fulfill];
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectClass aut_deregisterThemeClassApplier:propertyApplier];
@@ -162,8 +159,7 @@
         [applierExpectation fulfill];
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectSuperclass aut_deregisterThemeClassApplier:propertyApplier];
@@ -194,8 +190,7 @@
         XCTFail(@"This applier must not be invoked");
     }];
     
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
-    [themeApplier applyClassWithName:class.aut_symbol toObject:object];
+    [theme applyClassWithName:class.aut_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
         [objectClass aut_deregisterThemeClassApplier:propertyApplier];

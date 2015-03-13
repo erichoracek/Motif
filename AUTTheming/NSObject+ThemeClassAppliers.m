@@ -73,7 +73,7 @@
     [[self aut_classThemeClassAppliers] removeObject:applier];
 }
 
-+ (NSArray *)aut_themeClassAppliers;
++ (NSArray *)aut_themeClassAppliers
 {
     NSMutableArray *appliers = [[NSMutableArray alloc] initWithArray:[self aut_classThemeClassAppliers]];
     Class superclass = [self superclass];

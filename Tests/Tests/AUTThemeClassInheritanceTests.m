@@ -39,8 +39,8 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *superclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
-    AUTThemeClass *subclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
+    AUTThemeClass *superclassThemeClass = [theme classForName:superclass.aut_symbol];
+    AUTThemeClass *subclassThemeClass = [theme classForName:superclass.aut_symbol];
     XCTAssertNotNil(superclassThemeClass);
     XCTAssertNotNil(subclassThemeClass);
     
@@ -76,8 +76,8 @@
     AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTThemeClass *superclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
-    AUTThemeClass *subclassThemeClass = [theme themeClassForName:superclass.aut_symbol];
+    AUTThemeClass *superclassThemeClass = [theme classForName:superclass.aut_symbol];
+    AUTThemeClass *subclassThemeClass = [theme classForName:superclass.aut_symbol];
     XCTAssertNotNil(superclassThemeClass);
     XCTAssertNotNil(subclassThemeClass);
     
