@@ -19,12 +19,4 @@
  */
 @property (nonatomic) NSMutableDictionary *applicants;
 
-/**
- Applies a theme class to an object.
- 
- @param class  The theme class that should be applied to the specified object.
- @param object The object that should have the be theme class applied to it.
- */
-- (void)applyClass:(AUTThemeClass *)class toApplicant:(id)applicant;
-
 @end

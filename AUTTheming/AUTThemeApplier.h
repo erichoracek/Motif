@@ -38,7 +38,9 @@
  
  @param className If className is nil or does not map to an existing class on theme, this method has no effect.
  @param object    If the object is nil or has no registered class appliers, this method has no effect.
+ 
+ @return Whether the class was applied to the object.
  */
-- (void)applyClassWithName:(NSString *)className toObject:(id)object;
+- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object;
 
 @end

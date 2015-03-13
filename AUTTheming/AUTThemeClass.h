@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class AUTTheme;
-
 /**
  An AUTThemeClass represents a class from a JSON theme file.
  */
@@ -26,5 +24,14 @@
  This dictionary is keyed by property names with values of the properties values.
  */
 @property (nonatomic, readonly) NSDictionary *properties;
+
+/**
+ Applies this theme class to an object.
+ 
+ @param object The object that this theme class should be applied to.
+ 
+ @return Whether the application was successful.
+ */
+- (BOOL)applyToObject:(id)object;
 
 @end

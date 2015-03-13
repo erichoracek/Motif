@@ -163,9 +163,18 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     return [self constantForKey:key].value;
 }
 
-- (AUTThemeClass *)themeClassForName:(NSString *)name
+- (AUTThemeClass *)classForName:(NSString *)name
 {
     return self.classes[name];
+}
+
+- (BOOL)applyClassWithName:(NSString *)name toObject:(id)object
+{
+    AUTThemeClass *class = [self classForName:name];
+    if (!class) {
+        return NO;
+    }
+    return [class applyToObject:object];
 }
 
 #pragma mark Private

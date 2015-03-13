@@ -102,7 +102,17 @@
  
  @return The class for the specified name, or if there is none, `nil`.
  */
-- (AUTThemeClass *)themeClassForName:(NSString *)name;
+- (AUTThemeClass *)classForName:(NSString *)name;
+
+/**
+ Applies a theme class with the specified name to an object.
+ 
+ @param name   If name is nil or does not map to an existing class on theme, this method has no effect.
+ @param object If the object is nil or has no registered class appliers, this method has no effect.
+ 
+ @return Whether the class was applied to the object.
+ */
+- (BOOL)applyClassWithName:(NSString *)name toObject:(id)object;
 
 @end
 
