@@ -11,33 +11,43 @@
 @class AUTTheme;
 
 /**
- A theme applier is responsible for applying an AUTTheme to objects.
+ A dynamic theme applier enables dynamic theming, allowing the objects that are
+ themed to have a new theme reapplied to them by simply changing the theme
+ property on the dynamic theme applier that initially applied their theme class.
  
- If the `theme` property is changed on an `AUTDynamicThemeApplier`, it reapplies the theme classes that were previously applied by it with classes from the new theme.
+ If the `theme` property is changed on an `AUTDynamicThemeApplier`, it reapplies
+ the theme classes that were previously applied by it with classes from the new
+ theme. If some classes are unavailable in the new theme, they are ignored, and
+ no style is applied to the object.
  */
 @interface AUTDynamicThemeApplier : NSObject
 
 /**
- Initializes a theme applier with a theme.
+ Initializes a dynamic theme applier with a theme.
  
- @param theme The theme that the applier instance should be responsible for applying. Must not be nil.
+ @param theme The theme that the dynamic theme applier instance should be
+              responsible for applying. Must not be nil.
  
  @return An initialized theme applier.
  */
 - (instancetype)initWithTheme:(AUTTheme *)theme NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull));
 
 /**
- The theme that the applier should be responsible for applying.
+ The theme that the dynamic theme applier should be responsible for applying.
  
- When the theme is changed, the objects that had the previous theme applied to theme have the same theme classes reapplied to them from the new theme. The value of this property may not be nil.
+ When the theme is changed, the objects that had the previous theme applied to
+ theme have the same theme classes reapplied to them from the new theme.
+ The value of this property may not be nil.
  */
 @property (nonatomic) AUTTheme *theme;
 
 /**
  Applies a theme class with the specified name to an object.
  
- @param className If className is nil or does not map to an existing class on theme, this method has no effect.
- @param object    If the object is nil or has no registered class appliers, this method has no effect.
+ @param className If className is nil or does not map to an existing class on
+                  theme, this method has no effect.
+ @param object    If the object is nil or has no registered class appliers, 
+                  this method has no effect.
  
  @return Whether the class was applied to the object.
  */
