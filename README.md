@@ -60,12 +60,11 @@ Alternatively, you can clone this repo and follow along to a similar example in 
 
     NSError *error;
     AUTTheme *theme = [AUTTheme themeWithThemeNamed:@"Theme" error:&error];
-    AUTThemeApplier *themeApplier = [[AUTThemeApplier alloc] initWithTheme:theme];
     NSAssert(!error, @"Error loading theme %@", error);
     
-    [themeApplier applyThemeClassWithName:@"PrimaryButton" toObject:self.saveButton];
-    [themeApplier applyThemeClassWithName:@"DestructiveButton" toObject:self.deleteButton];
-    [themeApplier applyThemeClassWithName:@"ContentBackground" toObject:self.view];
+    [theme applyClassWithName:@"PrimaryButton" toObject:self.saveButton];
+    [theme applyClassWithName:@"DestructiveButton" toObject:self.deleteButton];
+    [theme applyClassWithName:@"ContentBackground" toObject:self.view];
 }
 ```
 
@@ -104,12 +103,6 @@ Alternatively, you can clone this repo and follow along to a similar example in 
                valueTransformerName:AUTColorFromStringTransformer
                             applier:^(UIColor *textColor, UIButton *button) {
         [button setTextColor:textColor forState:UIControlStateNormal];
-    }];
-
-    [self aut_registerThemeProperty:@"contentEdgeInsets"
-               valueTransformerName:AUTStringEdgeInsetsTransformer
-                            applier:^(NSValue *edgeInsets, UIButton *button) {
-        button.contentEdgeInsets = edgeInsets.UIEdgeInsetsValue;
     }];
 
     [self aut_registerThemeProperties:@[
