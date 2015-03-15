@@ -21,6 +21,16 @@
 
 #pragma mark - NSObject
 
+- (instancetype)init
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    // Ensure that exception is thrown when just `init` is called.
+    self = [self initWithName:nil propertiesConstants:nil];
+#pragma clang diagnostic pop
+    return self;
+}
+
 - (BOOL)isEqual:(id)object
 {
     if (self == object) {
@@ -64,6 +74,8 @@
 
 - (BOOL)applyToObject:(id)object
 {
+    NSParameterAssert(object);
+    
     if (!object) {
         return NO;
     }

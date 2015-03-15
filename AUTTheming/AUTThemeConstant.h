@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AUTThemeConstant : NSObject
 
 /**
@@ -29,6 +31,8 @@
  
  @return The transformed value.
  */
-- (id)transformedValueFromTransformerWithName:(NSString *)name;
+- (nullable id)transformedValueFromTransformerWithName:(NSString *)name;
 
 @end
+
+NS_ASSUME_NONNULL_END

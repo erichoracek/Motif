@@ -8,6 +8,8 @@
 
 #import "AUTThemeConstant.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AUTThemeConstant ()
 
 #pragma mark - Public
@@ -22,7 +24,7 @@
 /**
  Initializes a new instance of an AUTThemeConstant.
  */
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue __attribute__ ((nonnull (1, 2)));
+- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(nullable id)mappedValue;
 
 /**
  The raw value of the constant, directly deserialized from the JSON file.
@@ -34,7 +36,7 @@
  
  Can be either an AUTThemeClass, AUTThemeConstant, or nil if the constant is not a reference.
  */
-@property (nonatomic) id mappedValue;
+@property (nonatomic, nullable) id mappedValue;
 
 /**
  A cache to hold transformed mapped values on this constant.
@@ -43,6 +45,8 @@
  
  @see NSValueTransformer
  */
-@property (nonatomic) NSCache *transformedValueCache;
+@property (nonatomic, null_resettable) NSCache *transformedValueCache;
 
 @end
+
+NS_ASSUME_NONNULL_END

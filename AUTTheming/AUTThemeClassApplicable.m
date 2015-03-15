@@ -62,6 +62,8 @@
 
 - (BOOL)shouldApplyClass:(AUTThemeClass *)class
 {
+    NSParameterAssert(class);
+    
     return YES;
 }
 

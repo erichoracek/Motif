@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class AUTThemeClass;
 
 /**
@@ -23,7 +25,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the specified names.
@@ -33,7 +35,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the specified names.
@@ -44,7 +46,7 @@
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error __attribute__ ((nonnull (1)));
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -54,7 +56,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error __attribute__ ((nonnull (1)));
+- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -64,7 +66,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error __attribute__ ((nonnull (1)));
+- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error;
 
 /**
  Initializes a theme from a theme dictionary.
@@ -74,7 +76,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError **)error __attribute__ ((nonnull (1)));
+- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError **)error;
 
 /**
  Initializes a theme from an array of theme dictionaries.
@@ -84,7 +86,7 @@
  
  @return A theme object.
  */
-- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError **)error NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1)));
+- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError **)error;
 
 /**
  The constant value from the theme collection for the specified key.
@@ -120,3 +122,5 @@
  The domain for theme parsing errors.
  */
 extern NSString * const AUTThemingErrorDomain;
+
+NS_ASSUME_NONNULL_END

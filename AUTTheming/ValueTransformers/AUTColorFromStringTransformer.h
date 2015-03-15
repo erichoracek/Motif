@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AUTReverseTransformedValueClass.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Transforms an NSString to a UIColor.
  
@@ -19,3 +21,5 @@
 @end
 
 extern NSString * const AUTColorFromStringTransformerName;
+
+NS_ASSUME_NONNULL_END

@@ -12,6 +12,8 @@
 
 - (NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary
 {
+    NSParameterAssert(dictionary);
+    
     if (!dictionary) {
         return nil;
     }

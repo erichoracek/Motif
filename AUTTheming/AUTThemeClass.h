@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  An AUTThemeClass represents a class from a JSON theme file.
  */
@@ -35,3 +37,5 @@
 - (BOOL)applyToObject:(id)object;
 
 @end
+
+NS_ASSUME_NONNULL_END

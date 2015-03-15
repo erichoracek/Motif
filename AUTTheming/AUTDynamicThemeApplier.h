@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class AUTTheme;
 
 /**
@@ -30,7 +32,7 @@
  
  @return An initialized theme applier.
  */
-- (instancetype)initWithTheme:(AUTTheme *)theme NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull));
+- (instancetype)initWithTheme:(AUTTheme *)theme NS_DESIGNATED_INITIALIZER;
 
 /**
  The theme that the dynamic theme applier should be responsible for applying.
@@ -54,3 +56,5 @@
 - (BOOL)applyClassWithName:(NSString *)className toObject:(id)object;
 
 @end
+
+NS_ASSUME_NONNULL_END

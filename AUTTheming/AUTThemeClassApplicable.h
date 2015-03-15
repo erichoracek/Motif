@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+ThemeClassAppliers.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class AUTThemeClass;
 @class AUTTheme;
 
@@ -48,7 +50,7 @@
 
 @interface AUTThemeClassApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull));
+- (instancetype)initWithClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy, readonly) AUTThemeClassApplierBlock applierBlock;
 
@@ -56,25 +58,30 @@
 
 @interface AUTThemeClassPropertyApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(NSString *)name requiredClass:(Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1, 4)));
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(nullable NSString *)name requiredClass:(nullable Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy, readonly) NSString *property;
-@property (nonatomic, copy, readonly) NSString *valueTransformerName;
-@property (nonatomic, readonly) Class requiredClass;
+
+@property (nonatomic, copy, readonly, nullable) NSString *valueTransformerName;
+
+@property (nonatomic, readonly, nullable) Class requiredClass;
+
 @property (nonatomic, copy, readonly) AUTThemePropertyApplierBlock applierBlock;
 
 @end
 
 @interface AUTThemeClassPropertiesApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER __attribute__ ((nonnull (1, 3)));
+- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
  If nil, there are no value transfomer or required classes for this theme applier.
  */
-@property (nonatomic, readonly) NSArray *valueTransformersOrRequiredClasses;
+@property (nonatomic, readonly, nullable) NSArray *valueTransformersOrRequiredClasses;
 
 
 @property (nonatomic, copy, readonly) AUTThemePropertiesApplierBlock applierBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

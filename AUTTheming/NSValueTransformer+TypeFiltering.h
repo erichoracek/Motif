@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (TypeFiltering)
 
 /**
@@ -19,7 +21,7 @@
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toObjCType:(const char *)objCType;
++ (nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toObjCType:(nullable const char *)objCType;
 
 /**
  Returns the first value trasformer that is able to transform the specified object to the Obj-C class.
@@ -29,6 +31,8 @@
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toClass:(Class)class;
++ (nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)class;
 
 @end
+
+NS_ASSUME_NONNULL_END

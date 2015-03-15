@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSURL (LastPathComponentWithoutExtension)
 
-@property (nonatomic, readonly) NSString *aut_lastPathComponentWithoutExtension;
+@property (nonatomic, readonly, nullable) NSString *aut_lastPathComponentWithoutExtension;
 
 @end
+
+NS_ASSUME_NONNULL_END

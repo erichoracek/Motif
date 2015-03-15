@@ -17,11 +17,13 @@
 
 - (instancetype)init
 {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    self = [self initWithTheme:nil];
-#pragma clang diagnostic pop
+    
+    __nonnull id var = nil;
+    self = [self initWithTheme:var];
+//#pragma clang diagnostic pop
     return self;
 }
 
@@ -42,6 +44,7 @@
 - (void)setTheme:(AUTTheme *)theme __attribute__ ((nonnull))
 {
     NSAssert(theme, @"The theme property is not optional.");
+    
     if (theme == _theme) {
         return;
     }
@@ -53,8 +56,11 @@
     }
 }
 
-- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object
+- (BOOL)applyClassWithName:(__nonnull NSString *)className toObject:(__nonnull id)object
 {
+    NSParameterAssert(className);
+    NSParameterAssert(object);
+    
     if (!className || !object) {
         return NO;
     }

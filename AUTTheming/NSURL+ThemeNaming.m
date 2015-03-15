@@ -33,6 +33,13 @@ static NSString * const JSONExtension = @"json";
 
 + (NSArray *)aut_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(NSBundle *)bundle
 {
+    NSParameterAssert(themeNames);
+    
+    // Default to main bundle if bundle is nil
+    if (!bundle) {
+        bundle = [NSBundle mainBundle];
+    }
+    
     // Build an array of fileURLs from the passed themeNames
     NSMutableArray *fileURLs = [NSMutableArray new];
     for (NSString *themeName in themeNames) {

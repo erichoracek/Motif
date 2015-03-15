@@ -8,9 +8,14 @@
 
 #import "AUTThemeClass.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AUTThemeClass ()
 
-- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants __attribute__ ((nonnull (1, 2)));
+/**
+ Designated initializer for AUTThemeClass
+ */
+- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants NS_DESIGNATED_INITIALIZER;
 
 /**
  Readwrite verison of the public name property.
@@ -28,3 +33,5 @@
 @property (nonatomic, readonly) NSDictionary *resolvedPropertiesConstants;
 
 @end
+
+NS_ASSUME_NONNULL_END

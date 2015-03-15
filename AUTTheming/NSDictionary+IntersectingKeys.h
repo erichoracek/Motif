@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSDictionary (IntersectingKeys)
 
 /**
@@ -17,6 +19,8 @@
  
  @return The set of keys that intersect with the specified dictionary's keys. Nil if no keys are found.
  */
-- (NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
+- (nullable NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

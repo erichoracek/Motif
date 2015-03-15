@@ -55,11 +55,6 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
-    // Default to main bundle if bundle is nil
-    if (!bundle) {
-        bundle = [NSBundle mainBundle];
-    }
-    
     // Build an array of URLs from the specified theme names
     NSArray *fileURLs = [NSURL aut_fileURLsFromThemeNames:themeNames inBundle:bundle];
     
@@ -125,6 +120,8 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 + (NSDictionary *)themeDictionaryFromJSONFileURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error
 {
+    NSParameterAssert(fileURL);
+    
     // If the file is not a file URL, populate the error object
     if (!fileURL.isFileURL) {
         if (error) {
@@ -160,16 +157,23 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 - (id)constantValueForKey:(NSString *)key
 {
+    NSParameterAssert(key);
+    
     return [self constantForKey:key].value;
 }
 
 - (AUTThemeClass *)classForName:(NSString *)name
 {
+    NSParameterAssert(name);
+    
     return self.classes[name];
 }
 
 - (BOOL)applyClassWithName:(NSString *)name toObject:(id)object
 {
+    NSParameterAssert(name);
+    NSParameterAssert(object);
+    
     AUTThemeClass *class = [self classForName:name];
     if (!class) {
         return NO;

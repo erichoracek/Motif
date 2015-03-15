@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class AUTThemeClass;
 @protocol AUTThemeClassApplicable;
 
-typedef void (^AUTThemeClassApplierBlock)(AUTThemeClass *class, id objectToTheme);
+typedef void (^AUTThemeClassApplierBlock)(AUTThemeClass * __nonnull class, id __nonnull objectToTheme);
 
-typedef void (^AUTThemePropertyApplierBlock)(id propertyValue, id objectToTheme);
+typedef void (^AUTThemePropertyApplierBlock)(id __nonnull propertyValue, id __nonnull objectToTheme);
 
-typedef void (^AUTThemePropertiesApplierBlock)(NSDictionary *valuesForProperties, id objectToTheme);
+typedef void (^AUTThemePropertiesApplierBlock)(NSDictionary * __nonnull valuesForProperties, id __nonnull objectToTheme);
 
 @interface NSObject (ThemeAppliers)
 
@@ -34,3 +36,5 @@ typedef void (^AUTThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
 + (void)aut_registerThemeClassApplier:(id <AUTThemeClassApplicable>)applier;
 
 @end
+
+NS_ASSUME_NONNULL_END

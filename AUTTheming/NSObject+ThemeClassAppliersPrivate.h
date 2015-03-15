@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+ThemeClassAppliers.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol AUTThemeClassApplicable;
 
 @interface NSObject (ThemingPrivate)
@@ -26,3 +28,5 @@
 + (NSMutableArray *)aut_classThemeClassAppliers;
 
 @end
+
+NS_ASSUME_NONNULL_END

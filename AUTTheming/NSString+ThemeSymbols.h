@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, AUTThemeSymbolType) {
     AUTThemeSymbolTypeNone,
     AUTThemeSymbolTypeConstant,
@@ -28,10 +30,12 @@ extern NSString * const AUTThemeSuperclassKey;
 
 @property (nonatomic, readonly) BOOL aut_isRawSymbolConstantReference;
 
-@property (nonatomic, readonly) NSString *aut_symbol;
+@property (nonatomic, readonly, nullable) NSString *aut_symbol;
 
 @property (nonatomic, readonly) AUTThemeSymbolType aut_symbolType;
 
 @property (nonatomic, readonly) BOOL aut_isSuperclassProperty;
 
 @end
+
+NS_ASSUME_NONNULL_END

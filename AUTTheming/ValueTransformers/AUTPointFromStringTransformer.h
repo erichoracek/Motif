@@ -10,6 +10,8 @@
 #import "AUTReverseTransformedValueClass.h"
 #import "AUTObjCTypeValueTransformer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Transforms an NSString to a NSValue wrapping a CGPoint struct.
  
@@ -20,3 +22,5 @@
 @end
 
 extern NSString * const AUTPointFromStringTransformerName;
+
+NS_ASSUME_NONNULL_END
