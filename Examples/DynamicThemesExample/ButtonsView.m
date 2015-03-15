@@ -45,7 +45,7 @@ static CGFloat const ElementPadding = 10.0;
     }];
     
     [self.secondarySaveButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.saveButton.mas_bottom).offset(10.0);
+        make.top.equalTo(self.saveButton.mas_bottom).offset(ElementPadding);
         make.left.equalTo(self.saveButton);
         make.width.equalTo(self.saveButton);
     }];
