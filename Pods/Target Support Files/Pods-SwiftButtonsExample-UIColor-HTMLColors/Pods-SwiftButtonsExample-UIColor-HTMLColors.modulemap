@@ -1,0 +1,6 @@
+framework module UIColor_HTMLColors {
+  umbrella header "Pods-SwiftButtonsExample-UIColor-HTMLColors-umbrella.h"
+
+  export *
+  module * { export * }
+}
