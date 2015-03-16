@@ -17,13 +17,11 @@
 
 - (instancetype)init
 {
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wnonnull"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    
-    __nonnull id var = nil;
-    self = [self initWithTheme:var];
-//#pragma clang diagnostic pop
+    self = [self initWithTheme:nil];
+#pragma clang diagnostic pop
     return self;
 }
 
