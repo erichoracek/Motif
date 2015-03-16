@@ -1,5 +1,7 @@
 # AUTTheming
 
+[![Build Status](https://travis-ci.org/erichoracek/AUTTheming.svg?branch=master)](https://travis-ci.org/erichoracek/AUTTheming)
+
 _A lightweight and customizable CSS-style framework for Objective-C._
 
 ## Why should I use it?
