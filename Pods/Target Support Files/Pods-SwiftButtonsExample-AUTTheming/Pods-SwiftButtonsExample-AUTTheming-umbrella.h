@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "AUTBackwardsCompatableNullability.h"
 #import "AUTDynamicThemeApplier.h"
 #import "AUTDynamicThemeApplier_Private.h"
 #import "AUTObjCTypeValueTransformer.h"
