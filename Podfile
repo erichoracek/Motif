@@ -62,12 +62,22 @@ end
 post_install do |installer|
   installer.project.targets.each do |target|
     target.build_configurations.each do |config|
+      
+      # Add macro to pods preprocessor definitions for theming symbols generator project
       if target.to_s == "Pods-#{THEMING_SYMBOLS_GENERATOR_TARGET_NAME}-#{FRAMEWORK_NAME}"
+        # Preprocessor Definitions
         preprocessor_definitions = config.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
         preprocessor_definitions = [ '$(inherited)' ] if preprocessor_definitions == nil
         preprocessor_definitions.push('AUTTHEMING_DISABLE_SYMBOL_RESOLUTION') if target.to_s.include?(THEMING_SYMBOLS_GENERATOR_TARGET_NAME)
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = preprocessor_definitions
       end
+      
+      # Enable coverage reports for tests target
+      if target.to_s == "Pods-#{TESTS_TARGET_NAME}-#{FRAMEWORK_NAME}"
+        config.build_settings['GCC_GENERATE_TEST_COVERAGE_FILES'] = 'YES'
+        config.build_settings['GCC_INSTRUMENT_PROGRAM_FLOW_ARCS'] = 'YES'
+      end
+      
     end
   end
 end
