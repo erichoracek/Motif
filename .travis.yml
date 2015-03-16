@@ -1,0 +1,7 @@
+language: objective-c
+before_install:
+  - export LANG=en_US.UTF-8
+script:
+  - rake lint
+  - rake test
+  - rake build_examples
