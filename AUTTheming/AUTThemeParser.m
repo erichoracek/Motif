@@ -32,13 +32,6 @@
 
 @end
 
-@interface AUTThemeParser ()
-
-@property (nonatomic) NSDictionary *parsedConstants;
-@property (nonatomic) NSDictionary *parsedClasses;
-
-@end
-
 @implementation AUTThemeParser
 
 #pragma mark - Public
