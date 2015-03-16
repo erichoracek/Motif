@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (IntersectingKeys)
 
@@ -19,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The set of keys that intersect with the specified dictionary's keys. Nil if no keys are found.
  */
-- (nullable NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
+- (aut_nullable NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

@@ -8,7 +8,7 @@
 
 #import "AUTThemeConstant.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTThemeConstant ()
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a new instance of an AUTThemeConstant.
  */
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(nullable id)mappedValue;
+- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(aut_nullable id)mappedValue;
 
 /**
  The raw value of the constant, directly deserialized from the JSON file.
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  Can be either an AUTThemeClass, AUTThemeConstant, or nil if the constant is not a reference.
  */
-@property (nonatomic, nullable) id mappedValue;
+@property (nonatomic, aut_nullable) id mappedValue;
 
 /**
  A cache to hold transformed mapped values on this constant.
@@ -45,8 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @see NSValueTransformer
  */
-@property (nonatomic, null_resettable) NSCache *transformedValueCache;
+@property (nonatomic, aut_null_resettable) NSCache *transformedValueCache;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

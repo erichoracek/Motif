@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 #import "NSObject+ThemeClassAppliers.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @class AUTThemeClass;
 @class AUTTheme;
@@ -58,13 +59,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTThemeClassPropertyApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(nullable NSString *)name requiredClass:(nullable Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(aut_nullable NSString *)name requiredClass:(aut_nullable Class)class applierBlock:(AUTThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy, readonly) NSString *property;
 
-@property (nonatomic, copy, readonly, nullable) NSString *valueTransformerName;
+@property (nonatomic, copy, readonly, aut_nullable) NSString *valueTransformerName;
 
-@property (nonatomic, readonly, nullable) Class requiredClass;
+@property (nonatomic, readonly, aut_nullable) Class requiredClass;
 
 @property (nonatomic, copy, readonly) AUTThemePropertyApplierBlock applierBlock;
 
@@ -72,16 +73,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTThemeClassPropertiesApplier : NSObject <AUTThemeClassApplicable>
 
-- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(aut_nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
  If nil, there are no value transfomer or required classes for this theme applier.
  */
-@property (nonatomic, readonly, nullable) NSArray *valueTransformersOrRequiredClasses;
+@property (nonatomic, readonly, aut_nullable) NSArray *valueTransformersOrRequiredClasses;
 
 
 @property (nonatomic, copy, readonly) AUTThemePropertiesApplierBlock applierBlock;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTThemeConstant : NSObject
 
@@ -31,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The transformed value.
  */
-- (nullable id)transformedValueFromTransformerWithName:(NSString *)name;
+- (aut_nullable id)transformedValueFromTransformerWithName:(NSString *)name;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

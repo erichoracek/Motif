@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSValueTransformer (TypeFiltering)
 
@@ -21,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toObjCType:(nullable const char *)objCType;
++ (aut_nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toObjCType:(aut_nullable const char *)objCType;
 
 /**
  Returns the first value trasformer that is able to transform the specified object to the Obj-C class.
@@ -31,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)class;
++ (aut_nullable NSValueTransformer *)aut_valueTransformerForTransformingObject:(id)object toClass:(aut_nullable Class)class;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

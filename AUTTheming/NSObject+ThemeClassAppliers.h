@@ -7,17 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @class AUTThemeClass;
 @protocol AUTThemeClassApplicable;
 
-typedef void (^AUTThemeClassApplierBlock)(AUTThemeClass * __nonnull class, id __nonnull objectToTheme);
+typedef void (^AUTThemeClassApplierBlock)(__aut_nonnull AUTThemeClass * class, __aut_nonnull id objectToTheme);
 
-typedef void (^AUTThemePropertyApplierBlock)(id __nonnull propertyValue, id __nonnull objectToTheme);
+typedef void (^AUTThemePropertyApplierBlock)(__aut_nonnull id propertyValue, __aut_nonnull id objectToTheme);
 
-typedef void (^AUTThemePropertiesApplierBlock)(NSDictionary * __nonnull valuesForProperties, id __nonnull objectToTheme);
+typedef void (^AUTThemePropertiesApplierBlock)(__aut_nonnull NSDictionary * valuesForProperties, __aut_nonnull id objectToTheme);
 
 @interface NSObject (ThemeAppliers)
 
@@ -37,4 +38,4 @@ typedef void (^AUTThemePropertiesApplierBlock)(NSDictionary * __nonnull valuesFo
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

@@ -10,7 +10,7 @@
 #import "AUTReverseTransformedValueClass.h"
 #import "AUTObjCTypeValueTransformer.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 /**
  Transforms an NSString to a NSValue wrapping a UIEdgeInsets struct.
@@ -23,4 +23,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const AUTEdgeInsetsFromStringTransformerName;
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (ThemeNaming)
 
 /**
  The theme name derived from this NSURL, if there is one.
  */
-@property (nonatomic, readonly, nullable) NSString *aut_themeName;
+@property (nonatomic, readonly, aut_nullable) NSString *aut_themeName;
 
 /**
  Returns an array of NSURLs matching the theme names passed in to the method.
@@ -29,8 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An array of NSURLs.
  */
-+ (NSArray *)aut_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(nullable NSBundle *)bundle;
++ (NSArray *)aut_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(aut_nullable NSBundle *)bundle;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

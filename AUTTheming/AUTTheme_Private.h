@@ -6,7 +6,7 @@
 //
 //
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTTheme ()
 
@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The URLs of the JSON themes that were added to the theme, in the order that they were added in.
  */
-@property (nonatomic, null_resettable) NSArray *fileURLs;
+@property (nonatomic, aut_null_resettable) NSArray *fileURLs;
 
 /**
  The AUTThemeConstant instances on the theme, keyed by their names.
  */
-@property (nonatomic, null_resettable) NSDictionary *constants;
+@property (nonatomic, aut_null_resettable) NSDictionary *constants;
 
 /**
  The AUTThemeClass instances on the theme, keyed by their names.
  */
-@property (nonatomic, null_resettable) NSDictionary *classes;
+@property (nonatomic, aut_null_resettable) NSDictionary *classes;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

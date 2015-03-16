@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @class AUTTheme;
 
 @interface AUTThemeParser : NSObject
 
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(nullable AUTTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(aut_nullable AUTTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, readonly) NSDictionary *rawTheme;
 
@@ -24,4 +25,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

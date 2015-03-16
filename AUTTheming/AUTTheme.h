@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @class AUTThemeClass;
 
@@ -46,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
++ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(aut_nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -123,4 +124,4 @@ NS_ASSUME_NONNULL_BEGIN
  */
 extern NSString * const AUTThemingErrorDomain;
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

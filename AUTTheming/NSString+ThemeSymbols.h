@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, AUTThemeSymbolType) {
     AUTThemeSymbolTypeNone,
@@ -30,7 +31,7 @@ extern NSString * const AUTThemeSuperclassKey;
 
 @property (nonatomic, readonly) BOOL aut_isRawSymbolConstantReference;
 
-@property (nonatomic, readonly, nullable) NSString *aut_symbol;
+@property (nonatomic, readonly, aut_nullable) NSString *aut_symbol;
 
 @property (nonatomic, readonly) AUTThemeSymbolType aut_symbolType;
 
@@ -38,4 +39,4 @@ extern NSString * const AUTThemeSuperclassKey;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

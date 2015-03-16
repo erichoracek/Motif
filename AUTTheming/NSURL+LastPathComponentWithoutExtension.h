@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AUTBackwardsCompatableNullability.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (LastPathComponentWithoutExtension)
 
-@property (nonatomic, readonly, nullable) NSString *aut_lastPathComponentWithoutExtension;
+@property (nonatomic, readonly, aut_nullable) NSString *aut_lastPathComponentWithoutExtension;
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+ThemeClassAppliers.h"
 
-NS_ASSUME_NONNULL_BEGIN
+AUT_NS_ASSUME_NONNULL_BEGIN
 
 @protocol AUTThemeClassApplicable;
 
@@ -29,4 +29,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+AUT_NS_ASSUME_NONNULL_END

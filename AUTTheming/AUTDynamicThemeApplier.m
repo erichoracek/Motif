@@ -39,7 +39,7 @@
     return self;
 }
 
-- (void)setTheme:(AUTTheme *)theme __attribute__ ((nonnull))
+- (void)setTheme:(AUTTheme *)theme
 {
     NSAssert(theme, @"The theme property is not optional.");
     
@@ -54,7 +54,7 @@
     }
 }
 
-- (BOOL)applyClassWithName:(__nonnull NSString *)className toObject:(__nonnull id)object
+- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object
 {
     NSParameterAssert(className);
     NSParameterAssert(object);
