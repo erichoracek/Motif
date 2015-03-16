@@ -21,9 +21,4 @@
     return lastPathComponent;
 }
 
-+ (NSSet *)keyPathsForValuesAffectingAut_lastPathComponentWithoutExtension
-{
-    return [NSSet setWithObject:NSStringFromSelector(@selector(lastPathComponent))];
-}
-
 @end
