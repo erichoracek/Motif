@@ -84,6 +84,8 @@
 
 - (id)transformedValueFromTransformerWithName:(NSString *)name
 {
+    NSParameterAssert(name);
+    
     id cachedValue = [self.transformedValueCache objectForKey:name];
     if (cachedValue) {
         return cachedValue;
