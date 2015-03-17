@@ -10,12 +10,12 @@
     "ios": "7.0"
   },
   "summary": "Style sheets for iOS and appliers",
-  "homepage": "https://github.com/automatic/AUTTheming",
+  "homepage": "https://github.com/erichoracek/AUTTheming",
   "authors": {
     "Eric Horacek": "eric@automatic.com"
   },
   "source": {
-    "git": "git@github.com:Automatic/#{s.name}.git",
+    "git": "https://github.com/erichoracek/#{s.name}.git",
     "tag": "0.0.1"
   },
   "frameworks": "Foundation",
@@ -25,20 +25,12 @@
     ]
   },
   "source_files": "AUTTheming/*.{h,m}",
-  "subspecs": [
-    {
-      "name": "ValueTransformers",
-      "ios": {
-        "source_files": "AUTTheming/ValueTransformers/*.{h,m}",
-        "dependencies": {
-          "UIColor-HTMLColors": [
-            "1.0.0"
-          ]
-        }
-      },
-      "osx": {
-        "source_files": ""
-      }
+  "ios": {
+    "source_files": "AUTTheming/ValueTransformers/*.{h,m}",
+    "dependencies": {
+      "UIColor-HTMLColors": [
+        "1.0.0"
+      ]
     }
-  ]
+  }
 }

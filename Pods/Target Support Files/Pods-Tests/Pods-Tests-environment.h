@@ -12,12 +12,6 @@
 #define COCOAPODS_VERSION_MINOR_AUTTheming 0
 #define COCOAPODS_VERSION_PATCH_AUTTheming 1
 
-// AUTTheming/ValueTransformers
-#define COCOAPODS_POD_AVAILABLE_AUTTheming_ValueTransformers
-#define COCOAPODS_VERSION_MAJOR_AUTTheming_ValueTransformers 0
-#define COCOAPODS_VERSION_MINOR_AUTTheming_ValueTransformers 0
-#define COCOAPODS_VERSION_PATCH_AUTTheming_ValueTransformers 1
-
 // UIColor-HTMLColors
 #define COCOAPODS_POD_AVAILABLE_UIColor_HTMLColors
 #define COCOAPODS_VERSION_MAJOR_UIColor_HTMLColors 1

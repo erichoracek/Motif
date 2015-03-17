@@ -1,8 +1,5 @@
 PODS:
   - AUTTheming (0.0.1):
-    - AUTTheming/ValueTransformers (= 0.0.1)
-    - libextobjc/RuntimeExtensions (~> 0.4.0)
-  - AUTTheming/ValueTransformers (0.0.1):
     - libextobjc/RuntimeExtensions (~> 0.4.0)
     - UIColor-HTMLColors (= 1.0.0)
   - Cartography (0.2.1)
@@ -30,7 +27,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/robb/Cartography.git
 
 SPEC CHECKSUMS:
-  AUTTheming: 52a5cfbbc4e5952b2ff11d455cae701d18d0e0e4
+  AUTTheming: 41bbf9b1d6f46fbb476a0c3cb608acdbecfa7def
   Cartography: bfd61a6b2f784ed20fff698c6119ee0dda2da9ea
   GBCli: 304718a0ff52cb39ea7ae1bcb3c4cb40c5a48c8d
   libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
