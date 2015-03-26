@@ -12,12 +12,11 @@ import AUTTheming
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // MARK: AppDelegate <UIApplicationDelegate>
+    // MARK: AppDelegate: UIApplicationDelegate
     
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         window = UIWindow(frame: UIScreen.mainScreen().bounds);
         window!.rootViewController = ViewController(theme: theme)
         window!.makeKeyAndVisible()

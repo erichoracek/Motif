@@ -10,12 +10,8 @@ import UIKit
 import AUTTheming
 
 class ViewController: UIViewController {
-
-    // MARK: - UIView
     
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - UIViewController
     
     override func loadView() {
         self.view = ButtonsView.new()
@@ -25,13 +21,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         theme.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, toObject:buttonsView)
-        
+
         buttonsView.saveButton.setTitle("Save", forState: UIControlState.Normal)
         buttonsView.deleteButton.setTitle("Delete", forState: UIControlState.Normal)
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    // MARK: - UIViewController: NSCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: ViewController

@@ -19,10 +19,6 @@ class ButtonsView: UIView {
         addSubview(deleteButton)
     }
     
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override class func requiresConstraintBasedLayout() -> Bool {
         return true
     }
@@ -41,6 +37,12 @@ class ButtonsView: UIView {
             view.centerY == view.superview!.centerY
             view.width == self.ButtonWidth
         }
+    }
+    
+    // MARK: - UIView: NSCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - ButtonsView
