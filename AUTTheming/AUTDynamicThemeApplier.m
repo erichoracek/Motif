@@ -10,6 +10,7 @@
 #import "AUTDynamicThemeApplier_Private.h"
 #import "AUTTheme.h"
 #import "AUTThemeClass.h"
+#import "NSObject+ThemeClassName.h"
 
 @implementation AUTDynamicThemeApplier
 
@@ -64,54 +65,30 @@
     }
     BOOL didApply = [self.theme applyClassWithName:className toObject:object];
     if (didApply) {
-        [self addApplicant:object forClassWithName:className];
+        [self addApplicantsObject:object];
     }
     return didApply;
 }
 
 #pragma mark Private
 
-- (void)applyTheme:(AUTTheme *)theme toApplicants:(NSDictionary *)applicants
+- (void)applyTheme:(AUTTheme *)theme toApplicants:(NSHashTable *)applicants
 {
-    for (NSString *className in applicants) {
-        NSArray *classApplicants = [self applicantsForClassWithName:className fromApplicants:applicants];
-        for (id classApplicant in classApplicants) {
-            [self applyClassWithName:className toObject:classApplicant];
-        }
+    for (NSObject *applicant in applicants) {
+        [self applyClassWithName:applicant.aut_themeClassName toObject:applicant];
     }
 }
 
-- (NSArray *)applicantsForClassWithName:(NSString *)className fromApplicants:(NSDictionary *)applicants
+- (void)addApplicantsObject:(id)object
 {
-    NSParameterAssert(className);
-    NSParameterAssert(applicants);
-    
-    NSHashTable *classApplicants = applicants[className];
-    if (classApplicants) {
-        NSArray *allClassApplicants = classApplicants.allObjects;
-        return (allClassApplicants.count ? allClassApplicants : nil);
-    }
-    return nil;
+    NSParameterAssert(object);
+    [self.applicants addObject:object];
 }
 
-- (void)addApplicant:(id)applicant forClassWithName:(NSString *)className
-{
-    NSParameterAssert(applicant);
-    NSParameterAssert(className);
-    
-    NSHashTable *applicants = self.applicants[className];
-    if (!applicants) {
-        // Maintain a weak objects hash table to ensure the applicants are not retained by this applier instance
-        applicants = [NSHashTable weakObjectsHashTable];
-        self.applicants[className] = applicants;
-    }
-    [applicants addObject:applicant];
-}
-
-- (NSDictionary *)applicants
+- (NSHashTable *)applicants
 {
     if (!_applicants) {
-        self.applicants = [NSMutableDictionary new];
+        self.applicants = [NSHashTable weakObjectsHashTable];
     }
     return _applicants;
 }

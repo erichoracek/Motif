@@ -18,6 +18,7 @@
 #import "NSDictionary+IntersectingKeys.h"
 #import "NSObject+ThemeClassAppliers.h"
 #import "NSObject+ThemeClassAppliersPrivate.h"
+#import "NSObject+ThemeClassName.h"
 #import "NSString+ThemeSymbols.h"
 #import "NSURL+LastPathComponentWithoutExtension.h"
 #import "NSURL+ThemeNaming.h"

@@ -69,12 +69,12 @@
     AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
     [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
-    NSHashTable *classApplicants = themeApplier.applicants[class.aut_symbol];
-    XCTAssertNotNil(classApplicants, @"Must have an applicants hash table for the specified class");
-    XCTAssertEqual(classApplicants.count, 1, @"Must have only one applicant added");
+    NSHashTable *applicants = themeApplier.applicants;
+    XCTAssertNotNil(applicants, @"Must have an applicants hash table");
+    XCTAssertEqual(applicants.count, 1, @"Must have only one applicant added");
     // Ensure that autoreleased reference to object does no stay around and bump up the retain count of object for the duration of the test
     @autoreleasepool {
-        XCTAssertTrue([classApplicants containsObject:object], @"Applicants must contain object which has theme applied to it");
+        XCTAssertTrue([applicants containsObject:object], @"Applicants must contain object which has theme applied to it");
     }
     
     CFIndex objectRetainCount = CFGetRetainCount((void *)object);
@@ -84,7 +84,7 @@
     object = nil;
     
     // Must query `-[NSHashTable allObjects].count` because the hash table contains a nil reference at this point and has yet to clean it up and reconcile its count
-    XCTAssertEqual(classApplicants.allObjects.count, 0, @"After object is deallocated, applicants must no longer contain it");
+    XCTAssertEqual(applicants.allObjects.count, 0, @"After object is deallocated, applicants must no longer contain it");
 }
 
 @end

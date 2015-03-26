@@ -16,6 +16,7 @@
 #import "NSValueTransformer+TypeFiltering.h"
 #import "AUTThemeClassApplicable.h"
 #import "NSObject+ThemeClassAppliersPrivate.h"
+#import "NSObject+ThemeClassName.h"
 
 @implementation AUTThemeClass
 
@@ -157,8 +158,9 @@
             __unused NSString *className = NSStringFromClass([object class]);
             NSAssert3(NO, @"'%@' doesn't have a theme applier for the property '%@' or doesn't implement the keypath '%@'. You must support one of them.", className, property, property);
         }
-        
     }
+    
+    [object aut_setThemeClassName:self.name];
     
     return YES;
 }

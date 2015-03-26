@@ -11,3 +11,4 @@
 #import "AUTThemeClassApplicable.h"
 #import "AUTDynamicThemeApplier.h"
 #import "NSObject+ThemeClassAppliers.h"
+#import "NSObject+ThemeClassName.h"
