@@ -20,11 +20,12 @@ extension UIButton {
                 NSString.self,
                 NSNumber.self
             ], applierBlock: { (properties, button: AnyObject) -> Void in
-                let name = properties[ThemeProperties.fontName.rawValue] as! String
-                let size = properties[ThemeProperties.fontSize.rawValue] as! NSNumber
-                let button = button as! UIButton
-                
-                button.titleLabel!.font = UIFont(name: name, size: CGFloat(size.floatValue))
+                if
+                    let name = properties[ThemeProperties.fontName.rawValue] as? String,
+                    let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber,
+                    let button = button as? UIButton {
+                        button.titleLabel!.font = UIFont(name: name, size: CGFloat(size.floatValue))
+                }
             }
         )
         

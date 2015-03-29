@@ -17,9 +17,11 @@ extension UIView {
             ThemeProperties.backgroundColor.rawValue,
             valueTransformerName: AUTColorFromStringTransformerName,
             applierBlock: { (color, view) -> Void in
-                let view: UIView = view as! UIView
-                let color: UIColor = color as! UIColor
-                view.backgroundColor = color
+                if
+                    let view = view as? UIView,
+                    let color = color as? UIColor {
+                        view.backgroundColor = color
+                }
             }
         )
         
@@ -27,9 +29,11 @@ extension UIView {
             ThemeProperties.borderColor.rawValue,
             valueTransformerName: AUTColorFromStringTransformerName,
             applierBlock: { (color, view) -> Void in
-                let view: UIView = view as! UIView
-                let color: UIColor = color as! UIColor
-                view.layer.borderColor = color.CGColor
+                if
+                    let view = view as? UIView,
+                    let color = color as? UIColor {
+                        view.layer.borderColor = color.CGColor
+                }
             }
         )
         
@@ -37,9 +41,11 @@ extension UIView {
             ThemeProperties.cornerRadius.rawValue,
             requiringValueOfClass: NSNumber.self,
             applierBlock: { (cornerRadius, view) -> Void in
-                let view = view as! UIView
-                let cornerRadius = cornerRadius as! NSNumber
-                view.layer.cornerRadius = CGFloat(cornerRadius.floatValue)
+                if
+                    let view = view as? UIView,
+                    let cornerRadius = cornerRadius as? NSNumber {
+                        view.layer.cornerRadius = CGFloat(cornerRadius.floatValue)
+                }
             }
         )
         
@@ -47,9 +53,11 @@ extension UIView {
             ThemeProperties.borderWidth.rawValue,
             requiringValueOfClass: NSNumber.self,
             applierBlock: { (borderWidth, view) -> Void in
-                let view = view as! UIView
-                let borderWidth = borderWidth as! NSNumber
-                view.layer.borderWidth = CGFloat(borderWidth.floatValue)
+                if
+                    let view = view as? UIView,
+                    let borderWidth = borderWidth as? NSNumber {
+                        view.layer.borderWidth = CGFloat(borderWidth.floatValue)
+                }
             }
         )
         
