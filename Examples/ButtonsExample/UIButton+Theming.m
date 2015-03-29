@@ -15,17 +15,18 @@
 
 + (void)load
 {
-    [self aut_registerThemeProperties:@[
-        ThemeProperties.fontName,
-        ThemeProperties.fontSize
-    ] valueTransformerNamesOrRequiredClasses:@[
-        [NSString class],
-        [NSNumber class]
-    ] applierBlock:^(NSDictionary *properties, UIButton *button) {
-        NSString *name = properties[ThemeProperties.fontName];
-        CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
-        button.titleLabel.font = [UIFont fontWithName:name size:size];
-    }];
+    [self
+        aut_registerThemeProperties:@[
+            ThemeProperties.fontName,
+            ThemeProperties.fontSize
+        ] valueTransformerNamesOrRequiredClasses:@[
+            [NSString class],
+            [NSNumber class]
+        ] applierBlock:^(NSDictionary *properties, UIButton *button) {
+            NSString *name = properties[ThemeProperties.fontName];
+            CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
+            button.titleLabel.font = [UIFont fontWithName:name size:size];
+        }];
 }
 
 @end

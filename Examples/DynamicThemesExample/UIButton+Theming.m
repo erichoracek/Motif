@@ -15,8 +15,11 @@
 
 + (void)load
 {
-    [self aut_registerThemeProperty:ButtonsThemeProperties.text requiringValueOfClass:[AUTThemeClass class] applierBlock:^(AUTThemeClass *themeClass, UIButton *button) {
-        [themeClass applyToObject:button.titleLabel];
+    [self
+        aut_registerThemeProperty:ButtonsThemeProperties.text
+        requiringValueOfClass:[AUTThemeClass class]
+        applierBlock:^(AUTThemeClass *themeClass, UIButton *button) {
+            [themeClass applyToObject:button.titleLabel];
     }];
 }
 

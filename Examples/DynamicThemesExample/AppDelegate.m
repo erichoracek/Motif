@@ -46,15 +46,16 @@
 {
     if (!_lightTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
-            ColorsThemeName,
-            LightMappingsThemeName,
-            TypographyThemeName,
-            ButtonsThemeName,
-            NavigationThemeName,
-            ContentThemeName,
-            SpecThemeName
-        ] error:&error];
+        AUTTheme *theme = [AUTTheme
+            themeFromJSONThemesNamed:@[
+                ColorsThemeName,
+                LightMappingsThemeName,
+                TypographyThemeName,
+                ButtonsThemeName,
+                NavigationThemeName,
+                ContentThemeName,
+                SpecThemeName
+            ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.lightTheme = theme;
     }
@@ -65,15 +66,16 @@
 {
     if (!_darkTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme themeFromJSONThemesNamed:@[
-            ColorsThemeName,
-            DarkMappingsThemeName,
-            TypographyThemeName,
-            ButtonsThemeName,
-            NavigationThemeName,
-            ContentThemeName,
-            SpecThemeName
-        ] error:&error];
+        AUTTheme *theme = [AUTTheme
+            themeFromJSONThemesNamed:@[
+                ColorsThemeName,
+                DarkMappingsThemeName,
+                TypographyThemeName,
+                ButtonsThemeName,
+                NavigationThemeName,
+                ContentThemeName,
+                SpecThemeName
+            ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.darkTheme = theme;
     }

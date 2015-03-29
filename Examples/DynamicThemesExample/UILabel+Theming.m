@@ -15,20 +15,24 @@
 
 + (void)load
 {
-    [self aut_registerThemeProperties:@[
-        TypographyThemeProperties.fontSize,
-        TypographyThemeProperties.fontName,
-    ] valueTransformerNamesOrRequiredClasses:@[
-        [NSNumber class],
-        [NSString class],
-    ] applierBlock:^(NSDictionary *valuesForProperties, UILabel *label) {
-        NSString *name = valuesForProperties[TypographyThemeProperties.fontName];
-        CGFloat size = [valuesForProperties[TypographyThemeProperties.fontSize] floatValue];
-        label.font = [UIFont fontWithName:name size:size];
-    }];
+    [self
+        aut_registerThemeProperties:@[
+            TypographyThemeProperties.fontSize,
+            TypographyThemeProperties.fontName,
+        ] valueTransformerNamesOrRequiredClasses:@[
+            [NSNumber class],
+            [NSString class],
+        ] applierBlock:^(NSDictionary *valuesForProperties, UILabel *label) {
+            NSString *name = valuesForProperties[TypographyThemeProperties.fontName];
+            CGFloat size = [valuesForProperties[TypographyThemeProperties.fontSize] floatValue];
+            label.font = [UIFont fontWithName:name size:size];
+        }];
     
-    [self aut_registerThemeProperty:TypographyThemeProperties.color valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UILabel *label) {
-        label.textColor = color;
+    [self
+        aut_registerThemeProperty:TypographyThemeProperties.color
+        valueTransformerName:AUTColorFromStringTransformerName
+        applierBlock:^(UIColor *color, UILabel *label) {
+            label.textColor = color;
     }];
 }
 

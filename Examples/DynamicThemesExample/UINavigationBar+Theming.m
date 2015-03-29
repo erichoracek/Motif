@@ -17,19 +17,28 @@
 
 + (void)load
 {
-    [self aut_registerThemeProperty:NavigationThemeProperties.backgroundColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-        navigationBar.barTintColor = color;
-        navigationBar.barStyle = [navigationBar aut_barStyleForColor:color];
-        // Translucency must be set to NO for an opaque background color to appear correctly
-        navigationBar.translucent = NO;
+    [self
+        aut_registerThemeProperty:NavigationThemeProperties.backgroundColor
+        valueTransformerName:AUTColorFromStringTransformerName
+        applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+            navigationBar.barTintColor = color;
+            navigationBar.barStyle = [navigationBar aut_barStyleForColor:color];
+            // Translucency must be set to NO for an opaque background color to appear correctly
+            navigationBar.translucent = NO;
     }];
     
-    [self aut_registerThemeProperty:NavigationThemeProperties.text requiringValueOfClass:[AUTThemeClass class] applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
-        navigationBar.titleTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
+    [self
+        aut_registerThemeProperty:NavigationThemeProperties.text
+        requiringValueOfClass:[AUTThemeClass class]
+        applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
+            navigationBar.titleTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
     }];
     
-    [self aut_registerThemeProperty:NavigationThemeProperties.separatorColor valueTransformerName:AUTColorFromStringTransformerName applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-        [navigationBar aut_setShadowColor:color];
+    [self
+        aut_registerThemeProperty:NavigationThemeProperties.separatorColor
+        valueTransformerName:AUTColorFromStringTransformerName
+        applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+            [navigationBar aut_setShadowColor:color];
     }];
 }
 

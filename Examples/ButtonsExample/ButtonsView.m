@@ -32,17 +32,19 @@ static const CGFloat ButtonPadding = 10.0;
 {
     [super updateConstraints];
         
-    [self.saveButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.right.equalTo(self.mas_centerX).offset(-(ButtonPadding / 2.0));
-        make.width.equalTo(@(ButtonWidth));
-    }];
+    [self.saveButton
+        mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self);
+            make.right.equalTo(self.mas_centerX).offset(-(ButtonPadding / 2.0));
+            make.width.equalTo(@(ButtonWidth));
+        }];
     
-    [self.deleteButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_centerX).offset((ButtonPadding / 2.0));
-        make.centerY.equalTo(self.saveButton);
-        make.width.equalTo(@(ButtonWidth));
-    }];
+    [self.deleteButton
+        mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.mas_centerX).offset((ButtonPadding / 2.0));
+            make.centerY.equalTo(self.saveButton);
+            make.width.equalTo(@(ButtonWidth));
+        }];
 }
 
 #pragma mark - ButtonsView
