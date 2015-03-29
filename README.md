@@ -76,23 +76,26 @@ Alternatively, you can clone this repo and follow along to a similar example in 
 ```objective-c
 + (void)load
 {
-    [self aut_registerThemeProperty:@"borderWidth"
-              requiringValueOfClass:[NSNumber class]
-                            applier:^(NSNumber *width, UIView *view) {
-        view.layer.borderWidth = width.floatValue;
-    }];
+    [self
+        aut_registerThemeProperty:@"borderWidth"
+        requiringValueOfClass:[NSNumber class]
+        applier:^(NSNumber *width, UIView *view) {
+            view.layer.borderWidth = width.floatValue;
+        }];
 
-    [self aut_registerThemeProperty:@"borderColor"
-               valueTransformerName:AUTColorFromStringTransformerName
-                            applier:^(UIColor *color, UIView *view) {
-        view.layer.borderColor = color.CGColor;
-    }];
+    [self
+        aut_registerThemeProperty:@"borderColor"
+        valueTransformerName:AUTColorFromStringTransformerName
+        applier:^(UIColor *color, UIView *view) {
+            view.layer.borderColor = color.CGColor;
+        }];
     
-    [self aut_registerThemeProperty:@"backgroundColor"
-               valueTransformerName:AUTColorFromStringTransformerName
-                            applier:^(UIColor *color, UIView *view) {
-        view.backgroundColor = color;
-    }];
+    [self
+        aut_registerThemeProperty:@"backgroundColor"
+        valueTransformerName:AUTColorFromStringTransformerName
+        applier:^(UIColor *color, UIView *view) {
+            view.backgroundColor = color;
+        }];
 }
 ```
 
@@ -101,22 +104,24 @@ Alternatively, you can clone this repo and follow along to a similar example in 
 ```objective-c
 + (void)load
 {
-    [self aut_registerThemeProperty:@"textColor"
-               valueTransformerName:AUTColorFromStringTransformer
-                            applier:^(UIColor *textColor, UIButton *button) {
-        [button setTextColor:textColor forState:UIControlStateNormal];
+    [self
+        aut_registerThemeProperty:@"textColor"
+        valueTransformerName:AUTColorFromStringTransformer
+        applier:^(UIColor *textColor, UIButton *button) {
+            [button setTextColor:textColor forState:UIControlStateNormal];
     }];
 
-    [self aut_registerThemeProperties:@[
-        @"fontName",
-        @"fontSize"
-    ] valueTransformersNamesOrRequiredClasses:@[
-        [NSString class],
-        [NSNumber class]
-    ] applier:^(NSDictionary *properties, UIButton *button) {
-        NSString *name = properties[@"fontName"];
-        CGFloat size = [properties[@"fontSize"] floatValue];
-        button.titleLabel.font = [UIFont fontWithName:name size:size];
-    }];
+    [self
+        aut_registerThemeProperties:@[
+            @"fontName",
+            @"fontSize"
+        ] valueTransformersNamesOrRequiredClasses:@[
+            [NSString class],
+            [NSNumber class]
+        ] applier:^(NSDictionary *properties, UIButton *button) {
+            NSString *name = properties[@"fontName"];
+            CGFloat size = [properties[@"fontSize"] floatValue];
+            button.titleLabel.font = [UIFont fontWithName:name size:size];
+        }];
 }
 ```
