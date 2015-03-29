@@ -31,5 +31,4 @@ const struct ThemeProperties ThemeProperties = {
     .cornerRadius = @"cornerRadius",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
-    ._superclass = @"_superclass",
 };

@@ -23,5 +23,4 @@ extern const struct ButtonsThemeProperties {
     __unsafe_unretained NSString *text;
     __unsafe_unretained NSString *contentEdgeInsets;
     __unsafe_unretained NSString *backgroundColor;
-    __unsafe_unretained NSString *_superclass;
 } ButtonsThemeProperties;

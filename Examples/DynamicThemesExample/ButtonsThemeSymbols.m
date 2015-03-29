@@ -23,5 +23,4 @@ const struct ButtonsThemeProperties ButtonsThemeProperties = {
     .text = @"text",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
-    ._superclass = @"_superclass",
 };

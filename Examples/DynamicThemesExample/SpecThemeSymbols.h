@@ -15,7 +15,6 @@ extern const struct SpecThemeProperties {
     __unsafe_unretained NSString *titleTextLabel;
     __unsafe_unretained NSString *deleteButton;
     __unsafe_unretained NSString *captionTextLabel;
-    __unsafe_unretained NSString *_superclass;
     __unsafe_unretained NSString *bodyTextLabel;
     __unsafe_unretained NSString *displayTextLabel;
     __unsafe_unretained NSString *secondaryDeleteButton;

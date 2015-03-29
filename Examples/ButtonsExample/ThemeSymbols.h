@@ -31,5 +31,4 @@ extern const struct ThemeProperties {
     __unsafe_unretained NSString *cornerRadius;
     __unsafe_unretained NSString *contentEdgeInsets;
     __unsafe_unretained NSString *backgroundColor;
-    __unsafe_unretained NSString *_superclass;
 } ThemeProperties;

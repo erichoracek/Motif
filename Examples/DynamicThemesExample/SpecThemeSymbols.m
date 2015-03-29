@@ -15,7 +15,6 @@ const struct SpecThemeProperties SpecThemeProperties = {
     .titleTextLabel = @"titleTextLabel",
     .deleteButton = @"deleteButton",
     .captionTextLabel = @"captionTextLabel",
-    ._superclass = @"_superclass",
     .bodyTextLabel = @"bodyTextLabel",
     .displayTextLabel = @"displayTextLabel",
     .secondaryDeleteButton = @"secondaryDeleteButton",
