@@ -10,13 +10,15 @@
 
 @implementation NSURL (LastPathComponentWithoutExtension)
 
-- (NSString *)aut_lastPathComponentWithoutExtension
-{
+- (NSString *)aut_lastPathComponentWithoutExtension {
     NSString *lastPathComponent = self.lastPathComponent;
     // Trim path extension if there is one
     if (lastPathComponent.pathExtension) {
-        NSString *extensionIncludingDot = [@"." stringByAppendingString:lastPathComponent.pathExtension];
-        lastPathComponent = [lastPathComponent stringByReplacingOccurrencesOfString:extensionIncludingDot withString:@""];
+        NSString *extensionIncludingDot = [@"."
+            stringByAppendingString:lastPathComponent.pathExtension];
+        lastPathComponent = [lastPathComponent
+            stringByReplacingOccurrencesOfString:extensionIncludingDot
+            withString:@""];
     }
     return lastPathComponent;
 }

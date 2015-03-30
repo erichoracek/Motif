@@ -13,15 +13,14 @@
 
 @implementation UIButton (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         aut_registerThemeProperties:@[
             ThemeProperties.fontName,
             ThemeProperties.fontSize
         ] valueTransformerNamesOrRequiredClasses:@[
-            [NSString class],
-            [NSNumber class]
+            NSString.class,
+            NSNumber.class
         ] applierBlock:^(NSDictionary *properties, UIButton *button) {
             NSString *name = properties[ThemeProperties.fontName];
             CGFloat size = [properties[ThemeProperties.fontSize] floatValue];

@@ -28,20 +28,27 @@
     NSString *class = @".Class";
     NSSet *properties = [NSSet setWithArray:@[@"property1", @"property2"]];
     NSSet *values = [NSSet setWithArray:@[@"value1", @"value2"]];
-    AUTTheme *theme = [self themeWithClass:class properties:properties.allObjects values:values.allObjects];
+    AUTTheme *theme = [self
+        themeWithClass:class properties:properties.allObjects
+        values:values.allObjects];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
-    XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
+    XCTestExpectation *applierExpectation = [self
+        expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperties:properties.allObjects applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
-        BOOL equalProperties = [properties isEqualToSet:[NSSet setWithArray:valuesForProperties.allKeys]];
-        BOOL equalValues = [values isEqualToSet:[NSSet setWithArray:valuesForProperties.allValues]];
-        XCTAssertTrue(equalProperties, @"Must pass the same set of properties that the appliers are registered");
-        XCTAssertTrue(equalValues, @"Must pass the same set of value that the appliers are registered for");
-        [applierExpectation fulfill];
-    }];
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass
+        aut_registerThemeProperties:properties.allObjects
+        applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
+            NSSet *propertiesSet = [NSSet setWithArray:valuesForProperties.allKeys];
+            NSSet *valuesSet = [NSSet setWithArray:valuesForProperties.allValues];
+            BOOL equalProperties = [properties isEqualToSet:propertiesSet];
+            BOOL equalValues = [values isEqualToSet:valuesSet];
+            XCTAssertTrue(equalProperties, @"Must pass the same set of properties that the appliers are registered");
+            XCTAssertTrue(equalValues, @"Must pass the same set of value that the appliers are registered for");
+            [applierExpectation fulfill];
+        }];
     
     [theme applyClassWithName:class.aut_symbol toObject:object];
     
@@ -73,7 +80,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     return theme;

@@ -13,15 +13,14 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError *error;
     AUTTheme *theme = [AUTTheme themeFromJSONThemeNamed:ThemeName error:&error];
     NSAssert(!error, @"Error loading theme: %@", error);
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithTheme:theme];
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     

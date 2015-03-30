@@ -13,11 +13,10 @@
 
 @implementation UIButton (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         aut_registerThemeProperty:ButtonsThemeProperties.text
-        requiringValueOfClass:[AUTThemeClass class]
+        requiringValueOfClass:AUTThemeClass.class
         applierBlock:^(AUTThemeClass *themeClass, UIButton *button) {
             [themeClass applyToObject:button.titleLabel];
     }];

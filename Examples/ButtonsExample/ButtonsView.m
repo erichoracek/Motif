@@ -20,16 +20,14 @@
 
 #pragma mark - UIView
 
-+ (BOOL)requiresConstraintBasedLayout
-{
++ (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
 
-static const CGFloat ButtonWidth = 145.0;
-static const CGFloat ButtonPadding = 10.0;
+static CGFloat const ButtonWidth = 145.0;
+static CGFloat const ButtonPadding = 10.0;
 
-- (void)updateConstraints
-{
+- (void)updateConstraints {
     [super updateConstraints];
         
     [self.saveButton
@@ -49,8 +47,7 @@ static const CGFloat ButtonPadding = 10.0;
 
 #pragma mark - ButtonsView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];

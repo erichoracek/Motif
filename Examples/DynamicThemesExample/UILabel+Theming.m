@@ -13,15 +13,14 @@
 
 @implementation UILabel (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         aut_registerThemeProperties:@[
             TypographyThemeProperties.fontSize,
             TypographyThemeProperties.fontName,
         ] valueTransformerNamesOrRequiredClasses:@[
-            [NSNumber class],
-            [NSString class],
+            NSNumber.class,
+            NSString.class,
         ] applierBlock:^(NSDictionary *valuesForProperties, UILabel *label) {
             NSString *name = valuesForProperties[TypographyThemeProperties.fontName];
             CGFloat size = [valuesForProperties[TypographyThemeProperties.fontSize] floatValue];
@@ -36,8 +35,7 @@
     }];
 }
 
-+ (NSDictionary *)aut_textAttributesForThemeClass:(AUTThemeClass *)themeClass
-{
++ (NSDictionary *)aut_textAttributesForThemeClass:(AUTThemeClass *)themeClass {
     NSMutableDictionary *attributes = [NSMutableDictionary new];
     
     NSString *name = themeClass.properties[TypographyThemeProperties.fontName];

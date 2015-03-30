@@ -12,15 +12,6 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 
 @interface AUTThemeConstant ()
 
-#pragma mark - Public
-
-/**
- Readwrite version of the public property
- */
-@property (nonatomic, copy) NSString *key;
-
-#pragma mark - Private
-
 /**
  Initializes a new instance of an AUTThemeConstant.
  */
@@ -29,12 +20,14 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 /**
  The raw value of the constant, directly deserialized from the JSON file.
  */
-@property (nonatomic) id rawValue;
+@property (nonatomic, readonly) id rawValue;
 
 /**
- If the theme constant is a reference to a class or a constant, the object that it is referencing.
+ If the theme constant is a reference to a class or a constant, the object that
+ it is referencing.
  
- Can be either an AUTThemeClass, AUTThemeConstant, or nil if the constant is not a reference.
+ Can be either an AUTThemeClass, AUTThemeConstant, or nil if the constant is not
+ a reference.
  */
 @property (nonatomic, aut_nullable) id mappedValue;
 

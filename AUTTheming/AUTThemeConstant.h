@@ -26,9 +26,11 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 /**
  Shortcut for accessing a transformed value from registered value transformer.
  
- The trasformed values are cached before being returned, and as such this is the best way to access value-transformed values on the theme constant.
+ The trasformed values are cached before being returned, and as such this is the
+ best way to access value-transformed values on the theme constant.
  
- @param name The name of the value transformer that should transform constant value.
+ @param name The name of the value transformer that should transform constant
+             value.
  
  @return The transformed value.
  */

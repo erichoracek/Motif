@@ -23,13 +23,11 @@
 
 @dynamic view;
 
-- (void)loadView
-{
+- (void)loadView {
     self.view = [ButtonsView new];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.theme applyClassWithName:ThemeClassNames.ButtonsView toObject:self.view];
@@ -38,15 +36,13 @@
     [self.view.saveButton setTitle:@"Save" forState:UIControlStateNormal];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithTheme:(AUTTheme *)theme
-{
+- (instancetype)initWithTheme:(AUTTheme *)theme {
     NSParameterAssert(theme);
     
     self = [super init];

@@ -11,14 +11,16 @@
 
 @implementation NSObject (ThemeClassName)
 
-- (NSString *)aut_themeClassName
-{
+- (NSString *)aut_themeClassName {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)aut_setThemeClassName:(NSString *)themeClassName
-{
-    objc_setAssociatedObject(self, @selector(aut_themeClassName), themeClassName, OBJC_ASSOCIATION_COPY);
+- (void)aut_setThemeClassName:(NSString *)themeClassName {
+    objc_setAssociatedObject(
+        self,
+        @selector(aut_themeClassName),
+        themeClassName,
+        OBJC_ASSOCIATION_COPY);
 }
 
 @end

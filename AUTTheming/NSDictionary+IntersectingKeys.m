@@ -10,8 +10,7 @@
 
 @implementation NSDictionary (IntersectingKeys)
 
-- (NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary
-{
+- (NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary {
     NSParameterAssert(dictionary);
     
     if (!dictionary) {

@@ -18,11 +18,6 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants NS_DESIGNATED_INITIALIZER;
 
 /**
- Readwrite verison of the public name property.
- */
-@property (nonatomic) NSString *name;
-
-/**
  The property constants for this specific theme class, keyed by constants.
  */
 @property (nonatomic) NSDictionary *propertiesConstants;

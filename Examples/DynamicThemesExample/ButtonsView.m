@@ -19,16 +19,14 @@
 
 #pragma mark - UIView
 
-+ (BOOL)requiresConstraintBasedLayout
-{
++ (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
 
 static CGFloat const SectionPadding = 40.0;
 static CGFloat const ElementPadding = 10.0;
 
-- (void)updateConstraints
-{
+- (void)updateConstraints {
     [super updateConstraints];
         
     [self.saveButton
@@ -81,11 +79,9 @@ static CGFloat const ElementPadding = 10.0;
 
 #pragma mark - ButtonsView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
         _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
         _deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _secondarySaveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
@@ -127,9 +123,8 @@ static CGFloat const ElementPadding = 10.0;
     return self;
 }
 
-- (NSArray *)textLabels
-{
-    return  @[
+- (NSArray *)textLabels {
+    return @[
         self.displayTextLabel,
         self.headlineTextLabel,
         self.titleTextLabel,

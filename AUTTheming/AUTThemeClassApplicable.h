@@ -16,21 +16,28 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 @class AUTTheme;
 
 /**
- AUTThemeClassApplicable is an abstract protocol that defines the methods and properties required to apply an AUTThemeClass from an AUTTheme to an object.
+ AUTThemeClassApplicable is an abstract protocol that defines the methods and
+ properties required to apply an AUTThemeClass from an AUTTheme to an object.
  
- You likely won't even have to use an object that conforms to AUTThemeClassApplicable directly. The easiest way to register an applier is by using the `+[NSObject aut_registerTheme...applierBlock:]` methods, which is a convenience method for creating and registering one of the below appliers.
+ You likely won't ever have to use an object that conforms to
+ AUTThemeClassApplicable directly. The easiest way to register an applier is by
+ using the `+[NSObject aut_registerTheme...applierBlock:]` methods, which is a
+ convenience method for creating and registering one of the below appliers.
  
- Alternatively, an applier can be initialized and added using the `+[NSObject aut_registerThemeApplier:]` method.
+ Alternatively, an applier can be initialized and added using the
+ `+[NSObject aut_registerThemeApplier:]` method.
  */
 @protocol AUTThemeClassApplicable <NSObject>
 
 /**
- The properties that the theme applier is responsible for applying to the target object.
+ The properties that the theme applier is responsible for applying to the target
+ object.
  */
 @property (nonatomic, readonly) NSArray *properties;
 
 /**
- Returns whether the receiving applier should be used apply the properties in the specified class to an object.
+ Returns whether the receiving applier should be used apply the properties in
+ the specified class to an object.
  
  @param class The theme class that is being querying for application.
  

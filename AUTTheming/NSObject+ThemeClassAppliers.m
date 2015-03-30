@@ -15,8 +15,7 @@
 
 #pragma mark - Public
 
-+ (id)aut_registerThemeClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock
-{
++ (id)aut_registerThemeClassApplierBlock:(AUTThemeClassApplierBlock)applierBlock {
     NSParameterAssert(applierBlock);
     
     AUTThemeClassApplier *applier = [[AUTThemeClassApplier alloc] initWithClassApplierBlock:applierBlock];
@@ -24,20 +23,26 @@
     return applier;
 }
 
-+ (id)aut_registerThemeProperty:(NSString *)property applierBlock:(AUTThemePropertyApplierBlock)applierBlock
-{
++ (id)aut_registerThemeProperty:(NSString *)property applierBlock:(AUTThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property);
     NSParameterAssert(applierBlock);
     
-    AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property valueTransformerName:nil requiredClass:nil applierBlock:applierBlock];
+    AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc]
+        initWithProperty:property
+        valueTransformerName:nil
+        requiredClass:nil
+        applierBlock:applierBlock];
+    
     [self aut_registerThemeClassApplier:applier];
     return applier;
 }
 
-+ (id)aut_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(AUTThemePropertyApplierBlock)applierBlock
-{
++ (id)aut_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(AUTThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property);
-    NSAssert(valueClass, @"valueClass is Nil. Use the equivalent method without valueClass as a parameter instead.");
+    NSAssert(
+        valueClass,
+        @"valueClass is Nil. Use the equivalent method without valueClass as a "
+             "parameter instead.");
     NSParameterAssert(applierBlock);
     
     AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property valueTransformerName:nil requiredClass:valueClass applierBlock:applierBlock];
@@ -45,10 +50,12 @@
     return applier;
 }
 
-+ (id)aut_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applierBlock:(AUTThemePropertyApplierBlock)applierBlock
-{
++ (id)aut_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applierBlock:(AUTThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property);
-    NSAssert(transformerName, @"transformerName is nil. Use the equivalent method without transformerName instead.");
+    NSAssert(
+        transformerName,
+        @"transformerName is nil. Use the equivalent method without "
+             "transformerName instead.");
     NSParameterAssert(applierBlock);
     
     AUTThemeClassPropertyApplier *applier = [[AUTThemeClassPropertyApplier alloc] initWithProperty:property valueTransformerName:transformerName requiredClass:nil applierBlock:applierBlock];
@@ -56,8 +63,7 @@
     return applier;
 }
 
-+ (id)aut_registerThemeProperties:(NSArray *)properties applierBlock:(AUTThemePropertiesApplierBlock)applierBlock
-{
++ (id)aut_registerThemeProperties:(NSArray *)properties applierBlock:(AUTThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties);
     NSParameterAssert(applierBlock);
     
@@ -66,10 +72,12 @@
     return applier;
 }
 
-+ (id)aut_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock
-{
++ (id)aut_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(AUTThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties);
-    NSAssert(transformersOrClasses, @"transformersOrClasses is nil. Use the equivalent method without transformersOrClasses instead.");
+    NSAssert(
+        transformersOrClasses,
+        @"transformersOrClasses is nil. Use the equivalent method without "
+             "transformersOrClasses instead.");
     NSParameterAssert(applierBlock);
     
     AUTThemeClassPropertiesApplier *applier = [[AUTThemeClassPropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:transformersOrClasses applierBlock:applierBlock];
@@ -77,13 +85,16 @@
     return applier;
 }
 
-+ (void)aut_registerThemeClassApplier:(id <AUTThemeClassApplicable>)applier
-{
++ (void)aut_registerThemeClassApplier:(id <AUTThemeClassApplicable>)applier {
     NSParameterAssert(applier);
     
-    NSAssert([NSThread isMainThread], @"Theme class applier registration should only be invoked from the main thread in +[NSObject load] methods.");
+    NSAssert(
+        NSThread.isMainThread,
+        @"Theme class applier registration should only be invoked from the "
+            "main thread in +[NSObject load] or +[NSObject initialize] "
+            "methods.");
     
-    [[self aut_classThemeClassAppliers] addObject:applier];
+    [self.aut_classThemeClassAppliers addObject:applier];
 }
 
 @end
@@ -92,31 +103,36 @@
 
 #pragma mark - Public
 
-+ (void)aut_deregisterThemeClassApplier:(id <AUTThemeClassApplicable>)applier
-{
++ (void)aut_deregisterThemeClassApplier:(id <AUTThemeClassApplicable>)applier {
     NSParameterAssert(applier);
     
-    NSAssert([NSThread isMainThread], @"Theme class applier deregistration should only be invoked from the main thread.");
+    NSAssert(
+        NSThread.isMainThread,
+        @"Theme class applier deregistration should only be invoked from the "
+            "main thread.");
     
-    [[self aut_classThemeClassAppliers] removeObject:applier];
+    [self.aut_classThemeClassAppliers removeObject:applier];
 }
 
-+ (NSArray *)aut_themeClassAppliers
-{
-    NSMutableArray *appliers = [[NSMutableArray alloc] initWithArray:[self aut_classThemeClassAppliers]];
-    Class superclass = [self superclass];
++ (NSArray *)aut_themeClassAppliers {
+    NSMutableArray *appliers = [NSMutableArray new];
+    Class class = self.class;
     do {
-        [appliers addObjectsFromArray:[superclass aut_classThemeClassAppliers]];
-    } while ((superclass = [superclass superclass]));
+        NSArray *classAppliers = class.aut_classThemeClassAppliers;
+        [appliers addObjectsFromArray:classAppliers];
+    } while ((class = class.superclass));
     return appliers;
 }
 
-+ (NSMutableArray *)aut_classThemeClassAppliers
-{
++ (NSMutableArray *)aut_classThemeClassAppliers {
     NSMutableArray *appliers = objc_getAssociatedObject(self, _cmd);
     if (!appliers) {
         appliers = [NSMutableArray new];
-        objc_setAssociatedObject(self, _cmd, appliers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(
+            self,
+            _cmd,
+            appliers,
+            OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return appliers;
 }

@@ -15,8 +15,7 @@
 
 @implementation UINavigationBar (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         aut_registerThemeProperty:NavigationThemeProperties.backgroundColor
         valueTransformerName:AUTColorFromStringTransformerName
@@ -29,7 +28,7 @@
     
     [self
         aut_registerThemeProperty:NavigationThemeProperties.text
-        requiringValueOfClass:[AUTThemeClass class]
+        requiringValueOfClass:AUTThemeClass.class
         applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
             navigationBar.titleTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
     }];
@@ -42,8 +41,7 @@
     }];
 }
 
-- (UIBarStyle)aut_barStyleForColor:(UIColor *)color
-{
+- (UIBarStyle)aut_barStyleForColor:(UIColor *)color {
     switch (color.aut_lightnessType) {
     case AUTLightnessTypeDark:
         return UIBarStyleBlack;
@@ -53,8 +51,7 @@
     }
 }
 
-- (void)aut_setShadowColor:(UIColor *)color
-{
+- (void)aut_setShadowColor:(UIColor *)color {
     // Create an image of the specified color and set it as the shadow image
     CGRect shadowImageRect = (CGRect){CGPointZero, {1.0, 0.5}};
     UIGraphicsBeginImageContextWithOptions(shadowImageRect.size, NO, 0.0);

@@ -10,38 +10,39 @@
 
 @implementation NSURL (CLIHelpers)
 
-+ (NSURL *)aut_fileURLFromPathParameter:(NSString *)path
-{
++ (NSURL *)aut_fileURLFromPathParameter:(NSString *)path {
     NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
     if (!resolvedURL) {
         return nil;
     }
     // Ensure the URL isn't a directory and exists
     BOOL isDirectory = NO;
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:resolvedURL.path isDirectory:&isDirectory];
+    BOOL exists = [NSFileManager.defaultManager
+        fileExistsAtPath:resolvedURL.path
+        isDirectory:&isDirectory];
     if (exists && !isDirectory) {
         return resolvedURL;
     }
     return nil;
 }
 
-+ (NSURL *)aut_directoryURLFromPathParameter:(NSString *)path
-{
++ (NSURL *)aut_directoryURLFromPathParameter:(NSString *)path {
     NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
     if (!resolvedURL) {
         return nil;
     }
     // Ensure the URL isn't a directory and exists
     BOOL isDirectory = NO;
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:resolvedURL.path isDirectory:&isDirectory];
+    BOOL exists = [NSFileManager.defaultManager
+        fileExistsAtPath:resolvedURL.path
+        isDirectory:&isDirectory];
     if (exists && isDirectory) {
         return resolvedURL;
     }
     return nil;
 }
 
-+ (NSURL *)URLResolvedFromPathParameter:(NSString *)path
-{
++ (NSURL *)URLResolvedFromPathParameter:(NSString *)path {
     if (!path) {
         return nil;
     }

@@ -18,7 +18,8 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 + (void)aut_deregisterThemeClassApplier:(id <AUTThemeClassApplicable>)applier;
 
 /**
- The theme class appliers registered for this class resolved across the entire class hierarchy.
+ The theme class appliers registered for this class resolved across the entire
+ class hierarchy.
  */
 + (NSArray *)aut_themeClassAppliers;
 

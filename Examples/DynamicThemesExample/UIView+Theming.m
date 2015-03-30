@@ -14,11 +14,10 @@
 
 @implementation UIView (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         aut_registerThemeProperty:ButtonsThemeProperties.borderWidth
-        requiringValueOfClass:[NSNumber class]
+        requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *width, UIView *view) {
             view.layer.borderWidth = width.floatValue;
     }];
@@ -32,7 +31,7 @@
     
     [self
         aut_registerThemeProperty:ButtonsThemeProperties.cornerRadius
-        requiringValueOfClass:[NSNumber class]
+        requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *cornerRadius, UIView *view) {
             view.layer.cornerRadius = cornerRadius.floatValue;
     }];

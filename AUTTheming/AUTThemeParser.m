@@ -36,8 +36,7 @@
 
 #pragma mark - Public
 
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(AUTTheme *)theme error:(NSError *__autoreleasing *)error
-{
+- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(AUTTheme *)theme error:(NSError *__autoreleasing *)error {
     NSParameterAssert(rawTheme);
     
     self = [super init];
@@ -49,26 +48,54 @@
         NSDictionary *rawClasses = [self rawClassesFromRawTheme:rawTheme];
         
         // Determine the invalid keys from the raw theme
-        NSArray *invalidSymbols = [self invalidSymbolsFromRawTheme:rawTheme rawConstants:rawConstants rawClasses:rawClasses];
+        NSArray *invalidSymbols = [self
+            invalidSymbolsFromRawTheme:rawTheme
+            rawConstants:rawConstants
+            rawClasses:rawClasses];
         if (invalidSymbols.count && error) {
-            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
-                NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The following symbols in the theme are invalid %@", invalidSymbols]
-            }];
+            NSString *localizedDescription = [NSString stringWithFormat:
+                @"The following symbols in the theme are invalid %@",
+                invalidSymbols];
+            *error = [NSError
+                errorWithDomain:AUTThemingErrorDomain
+                code:0
+                userInfo:@{
+                    NSLocalizedDescriptionKey: localizedDescription
+                }];
         }
         
         // Map the constants from the raw theme
-        NSDictionary *parsedConstants = [self constantsParsedFromRawConstants:rawConstants error:error];
-        NSDictionary *parsedClasses = [self classesParsedFromRawClasses:rawClasses error:error];
+        NSDictionary *parsedConstants = [self
+            constantsParsedFromRawConstants:rawConstants
+            error:error];
+        NSDictionary *parsedClasses = [self
+            classesParsedFromRawClasses:rawClasses
+            error:error];
         
-// For the theming symbols generator CLI, allow for parsing raw themes without resolving their symbols (since each
-// passed theme is parsed separately)
+// For the theming symbols generator CLI, allow for parsing raw themes without
+// resolving their symbols (since each passed theme is parsed separately)
 #if !defined(AUTTHEMING_DISABLE_SYMBOL_RESOLUTION)
         
-        NSDictionary *mergedConstants = [self mergeParsedConstants:parsedConstants intoExistingConstants:theme.constants error:error];
-        NSDictionary *mergedClasses = [self mergeParsedClasses:parsedClasses intoExistingClasses:theme.classes error:error];
+        NSDictionary *mergedConstants = [self
+            mergeParsedConstants:parsedConstants
+            intoExistingConstants:theme.constants
+            error:error];
+        NSDictionary *mergedClasses = [self
+            mergeParsedClasses:parsedClasses
+            intoExistingClasses:theme.classes
+            error:error];
         
-        parsedConstants = [self resolveReferenceInParsedConstants:parsedConstants fromConstants:mergedConstants classes:mergedClasses error:error];
-        parsedClasses = [self resolveReferencesInParsedClasses:parsedClasses fromConstants:mergedConstants classes:mergedClasses error:error];
+        parsedConstants = [self
+            resolveReferenceInParsedConstants:parsedConstants
+            fromConstants:mergedConstants
+            classes:mergedClasses
+            error:error];
+        
+        parsedClasses = [self
+            resolveReferencesInParsedClasses:parsedClasses
+            fromConstants:mergedConstants
+            classes:mergedClasses
+            error:error];
         
 #endif
         
@@ -82,8 +109,7 @@
 
 #pragma mark Raw Theme Parsing
 
-- (NSDictionary *)rawConstantsFromRawTheme:(NSDictionary *)rawTheme
-{
+- (NSDictionary *)rawConstantsFromRawTheme:(NSDictionary *)rawTheme {
     NSMutableDictionary *rawConstants = [NSMutableDictionary new];
     for (NSString *symbol in rawTheme) {
         if (symbol.aut_isRawSymbolConstantReference) {
@@ -93,8 +119,7 @@
     return [rawConstants copy];
 }
 
-- (NSDictionary *)rawClassesFromRawTheme:(NSDictionary *)rawTheme
-{
+- (NSDictionary *)rawClassesFromRawTheme:(NSDictionary *)rawTheme {
     NSMutableDictionary *rawClasses = [NSMutableDictionary new];
     for (NSString *symbol in rawTheme) {
         if (symbol.aut_isRawSymbolClassReference) {
@@ -104,9 +129,9 @@
     return [rawClasses copy];
 }
 
-- (NSArray *)invalidSymbolsFromRawTheme:(NSDictionary *)rawThemeDictionary rawConstants:(NSDictionary *)rawConstants rawClasses:(NSDictionary *)rawClasses
-{
-    NSMutableSet *remainingKeys = [NSMutableSet setWithArray:rawThemeDictionary.allKeys];
+- (NSArray *)invalidSymbolsFromRawTheme:(NSDictionary *)rawThemeDictionary rawConstants:(NSDictionary *)rawConstants rawClasses:(NSDictionary *)rawClasses {
+    NSMutableSet *remainingKeys = [NSMutableSet
+        setWithArray:rawThemeDictionary.allKeys];
     [remainingKeys minusSet:[NSSet setWithArray:rawConstants.allKeys]];
     [remainingKeys minusSet:[NSSet setWithArray:rawClasses.allKeys]];
     return remainingKeys.allObjects;
@@ -114,29 +139,34 @@
 
 #pragma mark Constants
 
-- (NSDictionary *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error
-{
+- (NSDictionary *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *parsedConstants = [NSMutableDictionary new];
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
-        AUTThemeConstant *constant = [self constantParsedFromRawSymbol:rawSymbol rawValue:rawValue error:error];
+        AUTThemeConstant *constant = [self
+            constantParsedFromRawSymbol:rawSymbol
+            rawValue:rawValue
+            error:error];
         parsedConstants[constant.key] = constant;
     };
     return [parsedConstants copy];
 }
 
-- (AUTThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError *__autoreleasing *)error
-{
-    // If the symbol is a reference (in the case of a root-level constant), use it. Otherwise it is a reference to
-    // in a class' properties, so just keep it as-is
+- (AUTThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError *__autoreleasing *)error {
+    // If the symbol is a reference (in the case of a root-level constant), use
+    // it. Otherwise it is a reference to in a class' properties, so just keep
+    // it as-is
     NSString *symbol = rawSymbol;
     if (symbol.aut_isRawSymbolConstantReference) {
         symbol = rawSymbol.aut_symbol;
     }
     
     // If the rawValue is not a string, it is not a reference, so return as-is
-    if (![rawValue isKindOfClass:[NSString class]]) {
-        return [[AUTThemeConstant alloc] initWithKey:symbol rawValue:rawValue mappedValue:nil];
+    if (![rawValue isKindOfClass:NSString.class]) {
+        return [[AUTThemeConstant alloc]
+            initWithKey:symbol
+            rawValue:rawValue
+            mappedValue:nil];
     }
     
     // We now know that this constant's value is a string, so cast it
@@ -145,31 +175,47 @@
     
     // Determine if this string value is a symbol reference
     if (rawValueString.aut_isRawSymbolReference) {
-        reference = [[AUTThemeSymbolReference alloc] initWithRawSymbol:rawValueString];
+        reference = [[AUTThemeSymbolReference alloc]
+            initWithRawSymbol:rawValueString];
     }
     
-    return [[AUTThemeConstant alloc] initWithKey:symbol rawValue:rawValue mappedValue:reference];
+    return [[AUTThemeConstant alloc]
+        initWithKey:symbol
+        rawValue:rawValue
+        mappedValue:reference];
 }
 
-- (NSDictionary *)resolveReferencesInParsedClasses:(NSDictionary *)parsedClasses fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error
-{
+- (NSDictionary *)resolveReferencesInParsedClasses:(NSDictionary *)parsedClasses fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
-    
-    for (AUTThemeClass *parsedClass in [parsedClasses objectEnumerator].allObjects) {
+    NSArray *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
+    for (AUTThemeClass *parsedClass in parsedClassObjects) {
         
         // Resolve the references within this class
-        parsedClass.propertiesConstants = [self resolveReferenceInParsedConstants:parsedClass.propertiesConstants fromConstants:constants classes:classes error:error];
+        parsedClass.propertiesConstants = [self
+            resolveReferenceInParsedConstants:parsedClass.propertiesConstants
+            fromConstants:constants
+            classes:classes
+            error:error];
         
         // If there is a superclass reference and it is to invalid property
-        id superclass = [parsedClass.propertiesConstants[AUTThemeSuperclassKey] mappedValue];
-        if (superclass && ![superclass isKindOfClass:[AUTThemeClass class]]) {
+        id superclass = [parsedClass.propertiesConstants[AUTThemeSuperclassKey]
+            mappedValue];
+        if (superclass && ![superclass isKindOfClass:AUTThemeClass.class]) {
             // Do not resolve this class
             [resolvedClasses removeObjectForKey:parsedClass.name];
             // Populate the error
             if (error) {
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
-                    NSLocalizedDescriptionKey:[NSString stringWithFormat:@"The value for the 'superclass' property in '%@' must reference a valid theme class. It is currently '%@'", parsedClass.name, superclass]
-                }];
+                NSString *localizedDescription = [NSString stringWithFormat:
+                    @"The value for the 'superclass' property in '%@' must "
+                        "reference a valid theme class. It is currently '%@'",
+                    parsedClass.name,
+                    superclass];
+                *error = [NSError
+                    errorWithDomain:AUTThemingErrorDomain
+                    code:1
+                    userInfo:@{
+                        NSLocalizedDescriptionKey: localizedDescription
+                    }];
             }
         }
     }
@@ -177,36 +223,51 @@
     return [resolvedClasses copy];
 }
 
-- (NSDictionary *)resolveReferenceInParsedConstants:(NSDictionary *)parsedConstants fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error
-{
+- (NSDictionary *)resolveReferenceInParsedConstants:(NSDictionary *)parsedConstants fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
     
-    for (AUTThemeConstant *parsedConstant in [parsedConstants objectEnumerator].allObjects) {
+    NSArray *parsedConstantObjects = [parsedConstants
+        objectEnumerator].allObjects;
+    for (AUTThemeConstant *parsedConstant in parsedConstantObjects) {
         
         id mappedValue = parsedConstant.mappedValue;
         
         // If the constant does not have a reference as its value, continue
-        if (!mappedValue || ![mappedValue isKindOfClass:[AUTThemeSymbolReference class]]) {
+        BOOL isMappedValueSymbolReference = [mappedValue
+            isKindOfClass:AUTThemeSymbolReference.class];
+        if (!mappedValue || !isMappedValueSymbolReference) {
             continue;
         }
         
-        // Otherwise, the constant has a symbol reference as its mapped value, so resolve it
-        AUTThemeSymbolReference *reference = (AUTThemeSymbolReference *)mappedValue;
+        // Otherwise, the constant has a symbol reference as its mapped value,
+        // so resolve it
+        AUTThemeSymbolReference *reference;
+        reference = (AUTThemeSymbolReference *)mappedValue;
         
         switch (reference.type) {
         case AUTThemeSymbolTypeConstant: {
-            // Locate the referenced constant in the existing constants dictionary
+            // Locate the referenced constant in the existing constants
+            // dictionary
             AUTThemeConstant *constantReference = constants[reference.symbol];
             if (constantReference) {
                 parsedConstant.mappedValue = constantReference;
                 continue;
             }
-            // This is an invalid reference, so remove it from the resolved constants
+            // This is an invalid reference, so remove it from the resolved
+            // constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
-                    NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue]
-                }];
+                NSString *localizedDescription = [NSString stringWithFormat:
+                    @"The named constant value for property '%@' ('%@') was "
+                        "not found as a registered constant",
+                    parsedConstant.key,
+                    parsedConstant.rawValue];
+                *error = [NSError
+                    errorWithDomain:AUTThemingErrorDomain
+                    code:0
+                    userInfo:@{
+                        NSLocalizedDescriptionKey: localizedDescription
+                    }];
             }
         }
         break;
@@ -217,12 +278,21 @@
                 parsedConstant.mappedValue = classReference;
                 continue;
             }
-            // This is an invalid reference, so remove it from the resolved constants
+            // This is an invalid reference, so remove it from the resolved
+            // constants
             [resolvedConstants removeObjectForKey:parsedConstant.key];
             if (error) {
-                *error = [NSError errorWithDomain:AUTThemingErrorDomain code:0 userInfo:@{
-                    NSLocalizedDescriptionKey: [NSString stringWithFormat:@"The named constant value for property '%@' ('%@') was not found as a registered constant", parsedConstant.key, parsedConstant.rawValue]
-                }];
+                NSString *localizedDescription = [NSString stringWithFormat:
+                    @"The named constant value for property '%@' ('%@') was "
+                        "not found as a registered constant",
+                    parsedConstant.key,
+                    parsedConstant.rawValue];
+                *error = [NSError
+                    errorWithDomain:AUTThemingErrorDomain
+                    code:0
+                    userInfo:@{
+                        NSLocalizedDescriptionKey: localizedDescription
+                    }];
             }
         }
         break;
@@ -237,18 +307,22 @@
 
 #pragma mark Classes
 
-- (NSDictionary *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error
-{
+- (NSDictionary *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error {
     // Create AUTThemeClass objects from the raw classes
     NSMutableDictionary *parsedClasses = [NSMutableDictionary new];
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
-        NSDictionary *rawProperties = [rawClasses aut_dictionaryValueForKey:rawClassName error:error];
+        NSDictionary *rawProperties = [rawClasses
+            aut_dictionaryValueForKey:rawClassName
+            error:error];
         if (!rawProperties) {
             break;
         }
         // Create a theme class from this properties dictionary
-        AUTThemeClass *class = [self classParsedFromRawProperties:rawProperties rawName:rawClassName error:error];
+        AUTThemeClass *class = [self
+            classParsedFromRawProperties:rawProperties
+            rawName:rawClassName
+            error:error];
         if (class) {
             parsedClasses[class.name] = class;
         }
@@ -256,40 +330,61 @@
     return [parsedClasses copy];
 }
 
-- (AUTThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError *__autoreleasing *)error
-{
+- (AUTThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError *__autoreleasing *)error {
     NSParameterAssert(rawName);
     NSParameterAssert(rawProperties);
     
     NSString *name = rawName.aut_symbol;
-    NSDictionary *mappedProperties = [self constantsParsedFromRawConstants:rawProperties error:error];
-    AUTThemeClass *class = [[AUTThemeClass alloc] initWithName:name propertiesConstants:mappedProperties];
+    
+    NSDictionary *mappedProperties = [self
+        constantsParsedFromRawConstants:rawProperties
+        error:error];
+    
+    AUTThemeClass *class = [[AUTThemeClass alloc]
+        initWithName:name
+        propertiesConstants:mappedProperties];
     
     return class;
 }
 
 #pragma mark Merging
 
-- (NSDictionary *)mergeParsedConstants:(NSDictionary *)parsedConstants intoExistingConstants:(NSDictionary *)existingConstants error:(NSError *__autoreleasing *)error
-{
-    NSSet *intersectingConstants = [existingConstants aut_intersectingKeysWithDictionary:parsedConstants];
+- (NSDictionary *)mergeParsedConstants:(NSDictionary *)parsedConstants intoExistingConstants:(NSDictionary *)existingConstants error:(NSError *__autoreleasing *)error {
+    NSSet *intersectingConstants = [existingConstants
+        aut_intersectingKeysWithDictionary:parsedConstants];
     if (intersectingConstants.count && error) {
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
-            NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Registering new constants with identical names to previously-defined constants will overwrite existing constants with the following names: %@", intersectingConstants]
-        }];
+        NSString *localizedDescription = [NSString stringWithFormat:
+            @"Registering new constants with identical names to "
+                "previously-defined constants will overwrite existing "
+                "constants with the following names: %@",
+            intersectingConstants];
+        *error = [NSError
+            errorWithDomain:AUTThemingErrorDomain
+            code:1
+            userInfo:@{
+                NSLocalizedDescriptionKey : localizedDescription
+            }];
     }
     NSMutableDictionary *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
     return [mergedConstants copy];
 }
 
-- (NSDictionary *)mergeParsedClasses:(NSDictionary *)parsedClasses intoExistingClasses:(NSDictionary *)existingClasses error:(NSError *__autoreleasing *)error
-{
-    NSSet *intersectingClasses = [existingClasses aut_intersectingKeysWithDictionary:parsedClasses];
+- (NSDictionary *)mergeParsedClasses:(NSDictionary *)parsedClasses intoExistingClasses:(NSDictionary *)existingClasses error:(NSError *__autoreleasing *)error {
+    NSSet *intersectingClasses = [existingClasses
+        aut_intersectingKeysWithDictionary:parsedClasses];
     if (intersectingClasses.count && error) {
-        *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
-            NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Registering new classes with identical names to previously-defined classes will overwrite existing classes with the following names: %@", intersectingClasses]
-        }];
+        NSString *localizedDescription = [NSString stringWithFormat:
+            @"Registering new classes with identical names to "
+                "previously-defined classes will overwrite existing classes "
+                "with the following names: %@",
+            intersectingClasses];
+        *error = [NSError
+            errorWithDomain:AUTThemingErrorDomain
+            code:1
+            userInfo:@{
+                NSLocalizedDescriptionKey : localizedDescription
+            }];
     }
     NSMutableDictionary *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];
@@ -303,8 +398,7 @@
 @dynamic symbol;
 @dynamic type;
 
-- (instancetype)initWithRawSymbol:(NSString *)rawSymbol
-{
+- (instancetype)initWithRawSymbol:(NSString *)rawSymbol {
     NSParameterAssert(rawSymbol.aut_isRawSymbolReference);
     self = [super init];
     if (self) {
@@ -313,13 +407,11 @@
     return self;
 }
 
-- (NSString *)symbol
-{
+- (NSString *)symbol {
     return self.rawSymbol.aut_symbol;
 }
 
-- (AUTThemeSymbolType)type
-{
+- (AUTThemeSymbolType)type {
     return self.rawSymbol.aut_symbolType;
 }
 
@@ -327,19 +419,26 @@
 
 @implementation NSDictionary (DictionaryValueValidation)
 
-- (NSDictionary *)aut_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error
-{
+- (NSDictionary *)aut_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
     NSDictionary *value = self[key];
-    // If there is no value for the specified key, is it not an error, just return
+    // If there is no value for the specified key, is it not an error, just
+    // return
     if (!value) {
         return nil;
     }
-    // If the value for the specified key is a dictionary but is not a valid type, return with error
-    if (![value isKindOfClass:[NSDictionary class]]) {
+    // If the value for the specified key is a dictionary but is not a valid
+    // type, return with error
+    if (![value isKindOfClass:NSDictionary.class]) {
         if (error) {
-            *error = [NSError errorWithDomain:AUTThemingErrorDomain code:1 userInfo:@{
-                NSLocalizedDescriptionKey : [NSString stringWithFormat:@"The value for the key '%@' is not a dictionary", key]
-            }];
+            NSString *localizedDescription = [NSString stringWithFormat:
+                @"The value for the key '%@' is not a dictionary",
+                key];
+            *error = [NSError
+                errorWithDomain:AUTThemingErrorDomain
+                code:1
+                userInfo:@{
+                    NSLocalizedDescriptionKey : localizedDescription
+                }];
         }
         return nil;
     }

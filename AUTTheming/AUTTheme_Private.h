@@ -11,21 +11,26 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 @interface AUTTheme ()
 
 /**
- The names of the JSON themes that were added to the theme, in the order that they were added in.
+ The names of the JSON themes that were added to the theme, in the order that
+ they were added in.
  
- Does not include the extension of the theme name. If the file name is "Filename.json", the name will be "Filename". If the name is "ColorsTheme.json", the name will be "Colors".
+ Does not include the extension of the theme name. If the file name is
+ "Filename.json", the name will be "Filename". If the name is
+ "ColorsTheme.json", the name will be "Colors".
  */
 @property (nonatomic, readonly) NSArray *names;
 
 /**
- The filenames of the JSON themes that were added to the theme, in the order that they were added in.
+ The filenames of the JSON themes that were added to the theme, in the order
+ that they were added in.
  
  If the file name is "Filename.json", the file name will be "Filename".
  */
 @property (nonatomic, readonly) NSArray *filenames;
 
 /**
- The URLs of the JSON themes that were added to the theme, in the order that they were added in.
+ The URLs of the JSON themes that were added to the theme, in the order that
+ they were added in.
  */
 @property (nonatomic, aut_null_resettable) NSArray *fileURLs;
 

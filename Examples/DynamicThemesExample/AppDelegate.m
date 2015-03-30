@@ -22,19 +22,27 @@
 
 #pragma mark - AppDelegate <UIApplicationDelegate>
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    
     // Default to light theme
-    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:self.lightTheme];
+    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc]
+        initWithTheme:self.lightTheme];
     
-    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:themeApplier lightTheme:self.lightTheme darkTheme:self.darkTheme];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    ButtonsViewController *viewController = [[ButtonsViewController alloc]
+        initWithThemeApplier:themeApplier
+        lightTheme:self.lightTheme
+        darkTheme:self.darkTheme];
     
-    [themeApplier applyClassWithName:NavigationThemeClassNames.NavigationBar toObject:navigationController.navigationBar];
+    UINavigationController *navigationController = [[UINavigationController alloc]
+        initWithRootViewController:viewController];
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [themeApplier
+        applyClassWithName:NavigationThemeClassNames.NavigationBar
+        toObject:navigationController.navigationBar];
+    
     self.window.rootViewController = navigationController;
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = UIColor.whiteColor;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -42,8 +50,7 @@
 
 #pragma mark - AppDelegate
 
-- (AUTTheme *)lightTheme
-{
+- (AUTTheme *)lightTheme {
     if (!_lightTheme) {
         NSError *error;
         AUTTheme *theme = [AUTTheme
@@ -62,8 +69,7 @@
     return _lightTheme;
 }
 
-- (AUTTheme *)darkTheme
-{
+- (AUTTheme *)darkTheme {
     if (!_darkTheme) {
         NSError *error;
         AUTTheme *theme = [AUTTheme

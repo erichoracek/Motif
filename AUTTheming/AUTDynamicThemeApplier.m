@@ -16,38 +16,35 @@
 
 #pragma mark - NSObject
 
-- (instancetype)init
-{
+- (instancetype)init {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    self = [self initWithTheme:nil];
+    return [self initWithTheme:nil];
 #pragma clang diagnostic pop
-    return self;
 }
 
 #pragma mark - AUTDynamicThemeApplier
 
 #pragma mark Public
 
-- (instancetype)initWithTheme:(AUTTheme *)theme
-{
+- (instancetype)initWithTheme:(AUTTheme *)theme {
     NSParameterAssert(theme);
     self = [super init];
     if (theme) {
-        self.theme = theme;
+        _theme = theme;
     }
     return self;
 }
 
-- (void)setTheme:(AUTTheme *)theme
-{
+- (void)setTheme:(AUTTheme *)theme {
     NSAssert(theme, @"The theme property is not optional.");
     
     if (theme == _theme) {
         return;
     }
-    // The theme has just changed if there is an existing theme and it was just replaced
+    // The theme has just changed if there is an existing theme and it was just
+    // replaced
     BOOL shouldReapply = (_theme && theme);
     _theme = theme;
     if (shouldReapply) {
@@ -55,8 +52,7 @@
     }
 }
 
-- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object
-{
+- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object {
     NSParameterAssert(className);
     NSParameterAssert(object);
     
@@ -72,23 +68,22 @@
 
 #pragma mark Private
 
-- (void)applyTheme:(AUTTheme *)theme toApplicants:(NSHashTable *)applicants
-{
+- (void)applyTheme:(AUTTheme *)theme toApplicants:(NSHashTable *)applicants {
     for (NSObject *applicant in applicants) {
-        [self applyClassWithName:applicant.aut_themeClassName toObject:applicant];
+        [self
+            applyClassWithName:applicant.aut_themeClassName
+            toObject:applicant];
     }
 }
 
-- (void)addApplicantsObject:(id)object
-{
+- (void)addApplicantsObject:(id)object {
     NSParameterAssert(object);
     [self.applicants addObject:object];
 }
 
-- (NSHashTable *)applicants
-{
+- (NSHashTable *)applicants {
     if (!_applicants) {
-        self.applicants = [NSHashTable weakObjectsHashTable];
+        self.applicants = NSHashTable.weakObjectsHashTable;
     }
     return _applicants;
 }

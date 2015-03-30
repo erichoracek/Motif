@@ -15,38 +15,48 @@ NSString * const AUTColorFromStringTransformerName = @"AUTColorFromStringTransfo
 
 #pragma mark - NSObject
 
-+ (void)load
-{
-    [NSValueTransformer setValueTransformer:[[self class] new] forName:AUTColorFromStringTransformerName];
++ (void)load {
+    [self
+        setValueTransformer:[self new]
+        forName:AUTColorFromStringTransformerName];
 }
 
 #pragma mark - NSValueTransformer
 
-+ (Class)transformedValueClass
-{
-    return [UIColor class];
++ (Class)transformedValueClass {
+    return UIColor.class;
 }
 
-+ (BOOL)allowsReverseTransformation
-{
++ (BOOL)allowsReverseTransformation {
     return NO;
 }
 
-- (UIColor *)transformedValue:(NSString *)value
-{
+- (UIColor *)transformedValue:(NSString *)value {
     NSParameterAssert(value);
-    __unused Class reverseTransformedValueClass = [[self class] reverseTransformedValueClass];
-    NSAssert([value isKindOfClass:reverseTransformedValueClass], @"Input value to '%@' must be of type '%@'", NSStringFromClass([self class]), NSStringFromClass(reverseTransformedValueClass));
+    
+    __unused Class reverseTransformedValueClass = [self.class
+        reverseTransformedValueClass];
+    
+    NSAssert(
+        [value isKindOfClass:reverseTransformedValueClass],
+        @"Input value to '%@' must be of type '%@'",
+        NSStringFromClass(self.class),
+        NSStringFromClass(reverseTransformedValueClass));
+    
     UIColor *color = [UIColor colorWithCSS:value];
-    NSAssert(color, @"Unable to transform color from input value '%@' (%@)", value, [value class]);
+    NSAssert(
+        color,
+        @"Unable to transform color from input value '%@' (%@)",
+        value,
+        value.class);
+    
     return color;
 }
 
 #pragma mark - AUTColorFromStringTransformer <AUTReverseTransformedValueClass>
 
-+ (Class)reverseTransformedValueClass
-{
-    return [NSString class];
++ (Class)reverseTransformedValueClass {
+    return NSString.class;
 }
 
 @end

@@ -10,8 +10,7 @@
 
 @implementation UIColor (LightnessType)
 
-- (AUTLightnessType)aut_lightnessType
-{
+- (AUTLightnessType)aut_lightnessType {
     // Color lightness (luma) formula from http://robots.thoughtbot.com/closer-look-color-lightness
     CGFloat red, blue, green;
     [self getRed:&red green:&green blue:&blue alpha:NULL];

@@ -16,8 +16,7 @@
 
 @implementation AUTThemingSymbolsGenerator
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
     static id sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -26,8 +25,7 @@
     return sharedInstance;
 }
 
-- (int)runWithSettings:(GBSettings *)settings;
-{
+- (int)runWithSettings:(GBSettings *)settings; {
     // Build an array of `AUTThemes` from the passed `theme` path params
     NSMutableArray *themes = [NSMutableArray new];
     for (NSString *themePath in settings.aut_themes) {
@@ -37,7 +35,9 @@
             return 1;
         }
         NSError *error;
-        AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:themeURL error:&error];
+        AUTTheme *theme = [[AUTTheme alloc]
+            initWithJSONFile:themeURL
+            error:&error];
         if (error) {
             gbfprintln(stderr, @"[!] Error: Unable to parse theme at URL '%@': %@", themeURL, error);
             return 1;
@@ -47,7 +47,9 @@
     
     // Ensure the output param is a valid path
     NSString *outputPath = settings.aut_output;
-    NSURL *outputDirectoryURL = [NSURL aut_directoryURLFromPathParameter:outputPath];
+    NSURL *outputDirectoryURL = [NSURL
+        aut_directoryURLFromPathParameter:outputPath];
+    
     if (!outputDirectoryURL) {
         gbfprintln(stderr, @"[!] Error: '%@' is an invalid directory path. Please supply another.", outputPath);
         return 1;
@@ -55,12 +57,19 @@
     
     // Generate the symbols files for each theme
     for (AUTTheme *theme in themes) {
-        [theme generateSymbolsFilesInDirectory:outputDirectoryURL indentation:settings.aut_indentation prefix:settings.aut_prefix];
+        [theme
+            generateSymbolsFilesInDirectory:outputDirectoryURL
+            indentation:settings.aut_indentation
+            prefix:settings.aut_prefix];
     }
     
-    // If there is more than one theme, generate an umbrella header to enable consumers to import all symbols files at once
+    // If there is more than one theme, generate an umbrella header to enable
+    // consumers to import all symbols files at once
     if (themes.count > 1) {
-        [AUTTheme generateSymbolsUmbrellaHeaderFromThemes:themes inDirectory:outputDirectoryURL prefix:settings.aut_prefix];
+        [AUTTheme
+            generateSymbolsUmbrellaHeaderFromThemes:themes
+            inDirectory:outputDirectoryURL
+            prefix:settings.aut_prefix];
     }
     
     return 0;
@@ -68,13 +77,18 @@
 
 @end
 
-int AUTThemingSymbolsGeneratorMain(int argc, const char *argv[])
-{
+int AUTThemingSymbolsGeneratorMain(int argc, const char *argv[]) {
     int result = 0;
     @autoreleasepool {
         
-        GBSettings *defaultSettings = [GBSettings aut_settingsWithName:@"defaults" parent:nil];
-        GBSettings *settings = [GBSettings aut_settingsWithName:@"arguments" parent:defaultSettings];
+        GBSettings *defaultSettings = [GBSettings
+            aut_settingsWithName:@"defaults"
+            parent:nil];
+        
+        GBSettings *settings = [GBSettings
+            aut_settingsWithName:@"arguments"
+            parent:defaultSettings];
+        
         [defaultSettings aut_applyDefaults];
         
         GBOptionsHelper *options = [GBOptionsHelper new];
@@ -85,13 +99,15 @@ int AUTThemingSymbolsGeneratorMain(int argc, const char *argv[])
         [parser registerOptions:options];
         [parser parseOptionsWithArguments:(char **)argv count:argc];
         
-        // If there are either no args supplied or the help arg is supplied, display help and exit
+        // If there are either no args supplied or the help arg is supplied,
+        // display help and exit
         if (argc == 1 || settings.aut_help) {
             [options printHelp];
             return 0;
         }
         
-        result = [[AUTThemingSymbolsGenerator sharedInstance] runWithSettings:settings];
+        result = [AUTThemingSymbolsGenerator.sharedInstance
+            runWithSettings:settings];
     }
     return result;
 }

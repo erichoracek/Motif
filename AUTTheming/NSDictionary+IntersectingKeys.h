@@ -18,7 +18,8 @@ AUT_NS_ASSUME_NONNULL_BEGIN
  
  @param dictionary The dictionary to compare keys to.
  
- @return The set of keys that intersect with the specified dictionary's keys. Nil if no keys are found.
+ @return The set of keys that intersect with the specified dictionary's keys.
+         Nil if no keys are found.
  */
 - (aut_nullable NSSet *)aut_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
 

@@ -10,8 +10,7 @@
 
 @implementation NSOutputStream (StringWriting)
 
-- (NSInteger)aut_writeString:(NSString *)string
-{
+- (NSInteger)aut_writeString:(NSString *)string {
     NSData *stringData = [string dataUsingEncoding:NSUTF8StringEncoding];
     return [self write:stringData.bytes maxLength:stringData.length];
 }

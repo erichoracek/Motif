@@ -21,8 +21,14 @@
     NSString *rawValue = @"rawValue";
     NSString *mappedValue = @"mappedValue";
     
-    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue mappedValue:mappedValue];
-    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue mappedValue:mappedValue];
+    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue
+        mappedValue:mappedValue];
+    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue
+        mappedValue:mappedValue];
     
     XCTAssertEqualObjects(constant1, constant2, @"Equivalent objects must be equal.");
 }
@@ -34,8 +40,14 @@
     NSString *rawValue = @"rawValue";
     NSString *mappedValue = @"mappedValue";
     
-    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc] initWithKey:key1 rawValue:rawValue mappedValue:mappedValue];
-    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc] initWithKey:key2 rawValue:rawValue mappedValue:mappedValue];
+    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
+        initWithKey:key1
+        rawValue:rawValue
+        mappedValue:mappedValue];
+    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
+        initWithKey:key2
+        rawValue:rawValue
+        mappedValue:mappedValue];
     
     XCTAssertNotEqualObjects(constant1, constant2, @"Objects with different keys must not be equal.");
 }
@@ -47,8 +59,14 @@
     NSString *rawValue2 = @"rawValue2";
     NSString *mappedValue = @"mappedValue";
     
-    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue1 mappedValue:mappedValue];
-    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue2 mappedValue:mappedValue];
+    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue1
+        mappedValue:mappedValue];
+    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue2
+        mappedValue:mappedValue];
     
     XCTAssertNotEqualObjects(constant1, constant2, @"Objects with different raw values must not be equal.");
 }
@@ -60,8 +78,14 @@
     NSString *mappedValue1 = @"mappedValue1";
     NSString *mappedValue2 = @"mappedValue2";
     
-    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue mappedValue:mappedValue1];
-    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc] initWithKey:key rawValue:rawValue mappedValue:mappedValue2];
+    AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue
+        mappedValue:mappedValue1];
+    AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
+        initWithKey:key
+        rawValue:rawValue
+        mappedValue:mappedValue2];
     
     XCTAssertNotEqualObjects(constant1, constant2, @"Objects with different raw values must not be equal.");
 }

@@ -18,8 +18,7 @@ NSString * const AUTSettingsOptionVerbose = @"verbose";
 
 @implementation GBSettings (AUTThemingSymbolsGenerator)
 
-+ (instancetype)aut_settingsWithName:(NSString *)name parent:(GBSettings *)parent
-{
++ (instancetype)aut_settingsWithName:(NSString *)name parent:(GBSettings *)parent {
     id result = [self settingsWithName:name parent:parent];
     if (result) {
         [result registerArrayForKey:AUTSettingsOptionThemes];
@@ -27,8 +26,7 @@ NSString * const AUTSettingsOptionVerbose = @"verbose";
     return result;
 }
 
-- (void)aut_applyDefaults
-{
+- (void)aut_applyDefaults {
     self.aut_output = @"./";
     self.aut_prefix = @"";
     self.aut_shouldIndentUsingTabs = NO;
@@ -45,15 +43,13 @@ GB_SYNTHESIZE_BOOL(aut_verbose, aut_setVerbose, AUTSettingsOptionVerbose)
 
 #pragma mark - Derived Properties
 
-- (NSString *)aut_indentationCharacter
-{
+- (NSString *)aut_indentationCharacter {
     return (self.aut_shouldIndentUsingTabs ? @"\t" : @" ");
 }
 
-- (NSString *)aut_indentation
-{
+- (NSString *)aut_indentation {
     NSMutableString *indentationString = [NSMutableString new];
-    for (NSInteger characterIndex = 0; characterIndex < self.aut_indentationCount; characterIndex++) {
+    for (NSInteger _ = 0; _ < self.aut_indentationCount; _++) {
         [indentationString appendString:self.aut_indentationCharacter];
     }
     return [indentationString copy];

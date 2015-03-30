@@ -23,16 +23,18 @@
 
 @dynamic view;
 
-- (void)loadView
-{
+- (void)loadView {
     self.view = [ButtonsView new];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(toggleTheme)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+        target:self
+        action:@selector(toggleTheme)];
+    
     self.navigationItem.title = @"Dynamic Theming";
     
     [self.themeApplier applyClassWithName:SpecThemeClassNames.Spec toObject:self.view];
@@ -40,8 +42,7 @@
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)applier lightTheme:(AUTTheme *)lightTheme darkTheme:(AUTTheme *)darkTheme
-{
+- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)applier lightTheme:(AUTTheme *)lightTheme darkTheme:(AUTTheme *)darkTheme {
     NSParameterAssert(applier);
     NSParameterAssert(lightTheme);
     NSParameterAssert(darkTheme);
@@ -55,11 +56,10 @@
     return self;
 }
 
-- (void)toggleTheme
-{
-    BOOL isCurrentlyDisplayingLightTheme = (self.themeApplier.theme == self.lightTheme);
+- (void)toggleTheme {
+    BOOL isDisplayingLightTheme = (self.themeApplier.theme == self.lightTheme);
     // Changing an AUTDynamicThemeApplier's theme property reapplies it to all previously applied themes
-    self.themeApplier.theme = (isCurrentlyDisplayingLightTheme ? self.darkTheme : self.lightTheme);
+    self.themeApplier.theme = (isDisplayingLightTheme ? self.darkTheme : self.lightTheme);
 }
 
 @end

@@ -20,9 +20,13 @@
 
 - (void)testNonFileURLIsInvalid
 {
-    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    XCTestExpectation *exceptionExpectation = [self
+        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    
     @try {
-        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:[NSURL URLWithString:@"http://www.google.com"] error:nil];
+        NSURL *URL = [NSURL URLWithString:@"http://www.google.com"];
+        __unused AUTTheme *theme = [[AUTTheme alloc]
+            initWithJSONFile:URL error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
@@ -34,13 +38,22 @@
 - (void)testNonExistentFileURLIsInvalid
 {
     // Generate a non-existent file with a random UUID filename
-    NSURL *documentsDirectory = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
-    NSUUID *UUID = [NSUUID new];
-    NSURL *fileURL = [documentsDirectory URLByAppendingPathComponent:UUID.UUIDString];
+    NSURL *documentsDirectory = [NSFileManager.defaultManager
+        URLsForDirectory:NSDocumentDirectory
+        inDomains:NSUserDomainMask].lastObject;
     
-    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    NSUUID *UUID = [NSUUID new];
+    
+    NSURL *fileURL = [documentsDirectory
+        URLByAppendingPathComponent:UUID.UUIDString];
+    
+    XCTestExpectation *exceptionExpectation = [self
+        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    
     @try {
-        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:nil];
+        __unused AUTTheme *theme = [[AUTTheme alloc]
+            initWithJSONFile:fileURL
+            error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
@@ -51,11 +64,18 @@
 
 - (void)testInvalidJSONFileIsInvalid
 {
-    NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"InvalidJSONTheme" withExtension:@"json"];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSURL *fileURL = [bundle
+        URLForResource:@"InvalidJSONTheme"
+        withExtension:@"json"];
     
-    XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    XCTestExpectation *exceptionExpectation = [self
+        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
+    
     @try {
-        __unused AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:nil];
+        __unused AUTTheme *theme = [[AUTTheme alloc]
+            initWithJSONFile:fileURL
+            error:nil];
     }
     @catch (NSException *exception) {
         [exceptionExpectation fulfill];
@@ -66,7 +86,7 @@
 
 - (void)testJSONFileIsAdded
 {
-    NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"BasicTheme" withExtension:@"json"];
+    NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:@"BasicTheme" withExtension:@"json"];
     
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
@@ -80,7 +100,8 @@
 - (void)testThemeNameMatchesFilename
 {
     NSString *themeName = @"Basic";
-    NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeName withExtension:@"json"];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSURL *fileURL = [bundle URLForResource:themeName withExtension:@"json"];
     
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
@@ -94,7 +115,8 @@
 {
     NSString *themeName = @"Basic";
     NSString *themeFilename = [NSString stringWithFormat:@"%@Theme", themeName];
-    NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeFilename withExtension:@"json"];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSURL *fileURL = [bundle URLForResource:themeFilename withExtension:@"json"];
     
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];
@@ -107,7 +129,8 @@
 - (void)testThemeNameMatchesFilenameWithoutExtension
 {
     NSString *themeName = @"BasicThemeWithNoExtension";
-    NSURL *fileURL = [[NSBundle bundleForClass:[self class]] URLForResource:themeName withExtension:nil];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSURL *fileURL = [bundle URLForResource:themeName withExtension:nil];
     
     NSError *error;
     AUTTheme *theme = [[AUTTheme alloc] initWithJSONFile:fileURL error:&error];

@@ -32,16 +32,19 @@
     NSString *value = @"value";
     AUTTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
-    XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
+    XCTestExpectation *applierExpectation = [self
+        expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
-        XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
-        XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
-        [applierExpectation fulfill];
-    }];
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass
+        aut_registerThemeProperty:property
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
+            XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
+            [applierExpectation fulfill];
+        }];
     
     [theme applyClassWithName:class.aut_symbol toObject:object];
     
@@ -59,16 +62,19 @@
     NSNumber *value = @0;
     AUTTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {
-        XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
-        XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
-        [applierExpectation fulfill];
-    }];
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass
+        aut_registerThemeProperty:property
+        requiringValueOfClass:NSNumber.class
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
+            XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
+            [applierExpectation fulfill];
+        }];
     
     [theme applyClassWithName:class.aut_symbol toObject:object];
     
@@ -84,10 +90,11 @@
     NSString *value = @"supposedToBeNumber";
     AUTTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
-    id <AUTThemeClassApplicable> propertyApplier = [objectClass aut_registerThemeProperty:property requiringValueOfClass:[NSNumber class] applierBlock:^(id propertyValue, id objectToTheme) {}];
+    id <AUTThemeClassApplicable> propertyApplier = [objectClass
+        aut_registerThemeProperty:property requiringValueOfClass:NSNumber.class applierBlock:^(id propertyValue, id objectToTheme) {}];
     
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
     @try {
@@ -119,7 +126,7 @@
     
     AUTTheme *theme = [self themeWithClass:class property:property value:pointThemeValue];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
@@ -146,7 +153,7 @@
     NSString *value = @"value";
     AUTTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = [AUTTestSubclass class];
+    Class objectClass = AUTTestSubclass.class;
     Class objectSuperclass = [objectClass superclass];
     
     id object = [objectClass new];
@@ -176,7 +183,7 @@
     NSString *value = @"value";
     AUTTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];

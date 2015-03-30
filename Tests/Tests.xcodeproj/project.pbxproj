@@ -27,12 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A21AD3B1A4A115F008D44FD /* AUTThemeLoadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeLoadingTests.m; sourceTree = "<group>"; };
+		3A21AD3B1A4A115F008D44FD /* AUTThemeLoadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AUTThemeLoadingTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3A21AD3D1A4A57DA008D44FD /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
 		3A21AD411A4A5B2E008D44FD /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
 		3A21AD451A4A5EDD008D44FD /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3A21AD571A4B6EF9008D44FD /* AUTThemeConstantTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeConstantTests.m; sourceTree = "<group>"; };
-		3A21AD591A4B6F9A008D44FD /* AUTThemeClassTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassTests.m; sourceTree = "<group>"; };
+		3A21AD591A4B6F9A008D44FD /* AUTThemeClassTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AUTThemeClassTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3A267A2B1A4D33C100347DDC /* AUTThemeClassInheritanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassInheritanceTests.m; sourceTree = "<group>"; };
 		3A342B031A4BFEBB0034A23C /* AUTThemeConstantEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeConstantEqualityTests.m; sourceTree = "<group>"; };
 		3A342B051A4BFF0E0034A23C /* AUTThemeClassEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassEqualityTests.m; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		3AD69A3D1A4EBCDB0002FA8F /* AUTThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeClassApplierTests.m; sourceTree = "<group>"; };
 		3AD69A3F1A4F51220002FA8F /* AUTThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertiesApplierTests.m; sourceTree = "<group>"; };
 		3AE440231AAECED500BD32F7 /* AUTThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
-		3AF158721A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTDynamicThemeApplierTests.m; sourceTree = "<group>"; };
+		3AF158721A5E1A2C003458C0 /* AUTDynamicThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AUTDynamicThemeApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		49F96B03EF2F0447B9913201 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB1322F68DAADD37AF11FC40 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */

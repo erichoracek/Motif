@@ -13,9 +13,12 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 @interface AUTDynamicThemeApplier ()
 
 /**
- The applicants of the theme classes, keyed by the the theme class names that they had applied to them.
+ The applicants of the theme classes, keyed by the the theme class names that
+ they had applied to them.
  
- An NSHashTable, containing weak references to all of the objects that have had a class applied to it. When the theme property is changed, this enables an applier instance to apply the new theme to all of its previous applicants.
+ An NSHashTable, containing weak references to all of the objects that have had
+ a class applied to it. When the theme property is changed, this enables an
+ applier instance to apply the new theme to all of its previous applicants.
  */
 @property (nonatomic, aut_null_resettable) NSHashTable *applicants;
 

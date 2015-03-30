@@ -19,14 +19,16 @@
 - (void)testThemeName
 {
     NSString *name = @"Name";
-    NSURL *themeName = [NSURL URLWithString:[NSString stringWithFormat:@"file:///%@.json", name]];
+    NSString *URLString = [NSString stringWithFormat:@"file:///%@.json", name];
+    NSURL *themeName = [NSURL URLWithString:URLString];
     XCTAssertEqualObjects(themeName.aut_themeName, name);
 }
 
 - (void)testThemeNamedThemeIsNotTrimmed
 {
     NSString *name = @"Theme";
-    NSURL *themeName = [NSURL URLWithString:[NSString stringWithFormat:@"file:///%@.json", name]];
+    NSString *URLString = [NSString stringWithFormat:@"file:///%@.json", name];
+    NSURL *themeName = [NSURL URLWithString:URLString];
     XCTAssertEqualObjects(themeName.aut_themeName, name);
 }
 
@@ -34,7 +36,11 @@
 {
     NSString *optionalSuffix = @"Theme";
     NSString *name = @"Name";
-    NSURL *themeName = [NSURL URLWithString:[NSString stringWithFormat:@"file:///%@%@.json", name, optionalSuffix]];
+    NSString *URLString = [NSString stringWithFormat:
+        @"file:///%@%@.json",
+        name,
+        optionalSuffix];
+    NSURL *themeName = [NSURL URLWithString:URLString];
     XCTAssertEqualObjects(themeName.aut_themeName, name);
 }
 

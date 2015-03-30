@@ -24,7 +24,9 @@
     NSDictionary *rawTheme = @{@".Class": @0};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     
     XCTAssertNotNil(theme);
     XCTAssert(error, @"Must have error with invalid class object class");
@@ -44,7 +46,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];
@@ -71,7 +75,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];
@@ -101,7 +107,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme classForName:class1.aut_symbol];
@@ -112,7 +120,7 @@
     id valueForProperty = themeClass2.properties[classProperty];
     
     XCTAssertNotNil(valueForProperty, @"Theme class must have '%@' as a property", class1);
-    XCTAssertTrue([valueForProperty isKindOfClass:[AUTThemeClass class]], @"Class %@ must be of theme class", classProperty);
+    XCTAssertTrue([valueForProperty isKindOfClass:AUTThemeClass.class], @"Class %@ must be of theme class", classProperty);
     XCTAssertEqualObjects(valueForProperty, themeClass1, @"The theme class must have '%@' as a value for the '%@' property", value, property);
 }
 
@@ -136,7 +144,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionaries:@[rawTheme1, rawTheme2]
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     AUTThemeClass *themeClass1 = [theme classForName:class1.aut_symbol];
@@ -147,7 +157,7 @@
     id valueForProperty = themeClass2.properties[classProperty];
     
     XCTAssertNotNil(valueForProperty, @"Theme class must have '%@' as a property", class1);
-    XCTAssertTrue([valueForProperty isKindOfClass:[AUTThemeClass class]], @"Class %@ must be of theme class", classProperty);
+    XCTAssertTrue([valueForProperty isKindOfClass:AUTThemeClass.class], @"Class %@ must be of theme class", classProperty);
     XCTAssertEqualObjects(valueForProperty, themeClass1, @"The theme class must have '%@' as a value for the '%@' property", value, property);
 }
 
@@ -173,7 +183,9 @@
     };
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionaries:@[rawTheme1, rawTheme2] error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionaries:@[rawTheme1, rawTheme2]
+        error:&error];
     XCTAssertNotNil(error, @"Must have error when class with duplicate name is registered");
     
     AUTThemeClass *themeClass = [theme classForName:class.aut_symbol];

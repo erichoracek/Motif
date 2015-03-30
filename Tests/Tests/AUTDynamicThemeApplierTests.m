@@ -27,13 +27,17 @@
     NSString *value2 = @"value2";
     
     NSError *error;
-    AUTTheme *theme1 = [[AUTTheme alloc] initWithThemeDictionary:@{class: @{property: value1}} error:&error];
+    AUTTheme *theme1 = [[AUTTheme alloc]
+        initWithThemeDictionary:@{class: @{property: value1}}
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    AUTTheme *theme2 = [[AUTTheme alloc] initWithThemeDictionary:@{class: @{property: value2}} error:&error];
+    AUTTheme *theme2 = [[AUTTheme alloc]
+        initWithThemeDictionary:@{class: @{property: value2}}
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    Class objectClass = [NSObject class];
+    Class objectClass = NSObject.class;
     id object = [objectClass new];
     
     XCTestExpectation *theme1ApplicationExpectation = [self expectationWithDescription:@"theme 1 application"];
@@ -48,7 +52,8 @@
         }
     }];
     
-    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme1];
+    AUTDynamicThemeApplier *applier = [[AUTDynamicThemeApplier alloc]
+        initWithTheme:theme1];
     [applier applyClassWithName:class.aut_symbol toObject:object];
     applier.theme = theme2;
     
@@ -62,11 +67,14 @@
     NSDictionary *rawTheme = @{class: @{}};
     
     NSError *error;
-    AUTTheme *theme = [[AUTTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    AUTTheme *theme = [[AUTTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
     NSObject *object = [NSObject new];
-    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc] initWithTheme:theme];
+    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc]
+        initWithTheme:theme];
     [themeApplier applyClassWithName:class.aut_symbol toObject:object];
     
     NSHashTable *applicants = themeApplier.applicants;

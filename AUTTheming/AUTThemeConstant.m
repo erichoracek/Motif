@@ -13,31 +13,28 @@
 
 #pragma mark - NSObject
 
-- (BOOL)isEqual:(id)object
-{
+- (BOOL)isEqual:(id)object {
     if (self == object) {
         return YES;
     }
-    if (![object isKindOfClass:[self class]]) {
+    if (![object isKindOfClass:self.class]) {
         return NO;
     }
     return [self isEqualToThemeConstant:object];
 }
 
-- (NSUInteger)hash
-{
+- (NSUInteger)hash {
     return (self.key.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
-        NSStringFromClass([self class]),
+- (NSString *)description {
+    return [NSString stringWithFormat:
+        @"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
+        NSStringFromClass(self.class),
         NSStringFromSelector(@selector(key)), self.key,
         NSStringFromSelector(@selector(rawValue)), self.rawValue,
         NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
-        NSStringFromSelector(@selector(value)), self.value
-    ];
+        NSStringFromSelector(@selector(value)), self.value];
 }
 
 #pragma mark - AUTThemeConstant
@@ -46,44 +43,42 @@
 
 @dynamic value;
 
-- (id)value
-{
-    // If the mapped value is a reference to another constant, return that constant's value
-    if ([self.mappedValue isKindOfClass:[AUTThemeConstant class]]) {
+- (id)value {
+    // If the mapped value is a reference to another constant, return that
+    // constant's value
+    if ([self.mappedValue isKindOfClass:AUTThemeConstant.class]) {
         AUTThemeConstant *mappedConstant = (AUTThemeConstant *)self.mappedValue;
         return mappedConstant.value;
     }
-    // Otherwise, return either the mapped value or the raw value, in that order.
+    // Otherwise, return either the mapped value or the raw value, in that
+    // order.
     return (self.mappedValue ?: self.rawValue);
 }
 
 #pragma mark Private
 
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue
-{
+- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue {
     NSParameterAssert(key);
     NSParameterAssert(rawValue);
     self = [super init];
     if (self) {
-        self.key = key;
-        self.rawValue = rawValue;
-        self.mappedValue = mappedValue;
+        _key = key;
+        _rawValue = rawValue;
+        _mappedValue = mappedValue;
     }
     return self;
 }
 
 #pragma mark Value Transformation
 
-- (NSCache *)transformedValueCache
-{
+- (NSCache *)transformedValueCache {
     if (!_transformedValueCache) {
         self.transformedValueCache = [NSCache new];
     }
     return _transformedValueCache;
 }
 
-- (id)transformedValueFromTransformerWithName:(NSString *)name
-{
+- (id)transformedValueFromTransformerWithName:(NSString *)name {
     NSParameterAssert(name);
     
     id cachedValue = [self.transformedValueCache objectForKey:name];
@@ -91,7 +86,9 @@
         return cachedValue;
     }
     
-    NSValueTransformer *transformer = [NSValueTransformer valueTransformerForName:name];
+    NSValueTransformer *transformer = [NSValueTransformer
+        valueTransformerForName:name];
+    
     if (transformer) {
         id transformedValue = [transformer transformedValue:self.value];
         [self.transformedValueCache setObject:transformedValue forKey:name];
@@ -103,8 +100,7 @@
 
 #pragma mark Equality
 
-- (BOOL)isEqualToThemeConstant:(AUTThemeConstant *)themeConstant
-{
+- (BOOL)isEqualToThemeConstant:(AUTThemeConstant *)themeConstant {
     if (!themeConstant) {
         return NO;
     }

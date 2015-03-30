@@ -16,23 +16,25 @@ NSString * const AUTThemeSuperclassKey = @"_superclass";
 
 @implementation NSString (ThemeSymbols)
 
-- (BOOL)aut_isRawSymbolReference
-{
-    return (self.aut_isRawSymbolClassReference || self.aut_isRawSymbolConstantReference);
+- (BOOL)aut_isRawSymbolReference {
+    return (
+        self.aut_isRawSymbolClassReference ||
+        self.aut_isRawSymbolConstantReference);
 }
 
-- (BOOL)aut_isRawSymbolConstantReference
-{
-    return ([self hasPrefix:AUTConstantPrefixSymbol] && (self.length > AUTConstantPrefixSymbol.length));
+- (BOOL)aut_isRawSymbolConstantReference {
+    return (
+        [self hasPrefix:AUTConstantPrefixSymbol] &&
+        (self.length > AUTConstantPrefixSymbol.length));
 }
 
-- (BOOL)aut_isRawSymbolClassReference
-{
-    return ([self hasPrefix:AUTClassPrefixSymbol] && (self.length > AUTClassPrefixSymbol.length));
+- (BOOL)aut_isRawSymbolClassReference {
+    return (
+        [self hasPrefix:AUTClassPrefixSymbol] &&
+        (self.length > AUTClassPrefixSymbol.length));
 }
 
-- (NSString *)aut_symbol
-{
+- (NSString *)aut_symbol {
     switch (self.aut_symbolType) {
     case AUTThemeSymbolTypeClass:
         return [self substringFromIndex:AUTClassPrefixSymbol.length];
@@ -43,8 +45,7 @@ NSString * const AUTThemeSuperclassKey = @"_superclass";
     }
 }
 
-- (AUTThemeSymbolType)aut_symbolType
-{
+- (AUTThemeSymbolType)aut_symbolType {
     if (self.aut_isRawSymbolClassReference) {
         return AUTThemeSymbolTypeClass;
     }
@@ -54,8 +55,7 @@ NSString * const AUTThemeSuperclassKey = @"_superclass";
     return AUTThemeSymbolTypeNone;
 }
 
-- (BOOL)aut_isSuperclassProperty
-{
+- (BOOL)aut_isSuperclassProperty {
     return [self isEqualToString:AUTThemeSuperclassKey];
 }
 

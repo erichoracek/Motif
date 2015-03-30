@@ -24,7 +24,8 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 /**
  The properties of the theme class as specified in the JSON theme file.
  
- This dictionary is keyed by property names with values of the properties values.
+ This dictionary is keyed by property names with values of the properties
+ values.
  */
 @property (nonatomic, readonly) NSDictionary *properties;
 
