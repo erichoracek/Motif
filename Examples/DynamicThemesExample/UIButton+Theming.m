@@ -7,7 +7,6 @@
 //
 
 #import <AUTTheming/AUTTheming.h>
-#import <AUTTheming/AUTValueTransformers.h>
 #import "UIButton+Theming.h"
 #import "ThemeSymbols.h"
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
 //
 
-#import <libextobjc/EXTRuntimeExtensions.h>
+#import "AUTRuntimeExtensions.h"
 #import "AUTThemeClass.h"
 #import "AUTThemeClass_Private.h"
 #import "AUTTheme.h"
@@ -112,8 +112,8 @@
             
             // Create a property attributes struct to figure out attributes of
             // the properties
-            ext_propertyAttributes *propertyAttributes = NULL;
-            propertyAttributes = ext_copyPropertyAttributes(objc_property);
+            aut_propertyAttributes *propertyAttributes = NULL;
+            propertyAttributes = aut_copyPropertyAttributes(objc_property);
             if (propertyAttributes == NULL) {
                 continue;
             }

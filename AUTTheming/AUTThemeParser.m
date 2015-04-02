@@ -72,32 +72,28 @@
             classesParsedFromRawClasses:rawClasses
             error:error];
         
-// For the theming symbols generator CLI, allow for parsing raw themes without
-// resolving their symbols (since each passed theme is parsed separately)
-#if !defined(AUTTHEMING_DISABLE_SYMBOL_RESOLUTION)
-        
-        NSDictionary *mergedConstants = [self
-            mergeParsedConstants:parsedConstants
-            intoExistingConstants:theme.constants
-            error:error];
-        NSDictionary *mergedClasses = [self
-            mergeParsedClasses:parsedClasses
-            intoExistingClasses:theme.classes
-            error:error];
-        
-        parsedConstants = [self
-            resolveReferenceInParsedConstants:parsedConstants
-            fromConstants:mergedConstants
-            classes:mergedClasses
-            error:error];
-        
-        parsedClasses = [self
-            resolveReferencesInParsedClasses:parsedClasses
-            fromConstants:mergedConstants
-            classes:mergedClasses
-            error:error];
-        
-#endif
+        if (self.class.shouldResolveReferences) {
+            NSDictionary *mergedConstants = [self
+                mergeParsedConstants:parsedConstants
+                intoExistingConstants:theme.constants
+                error:error];
+            NSDictionary *mergedClasses = [self
+                mergeParsedClasses:parsedClasses
+                intoExistingClasses:theme.classes
+                error:error];
+            
+            parsedConstants = [self
+                resolveReferenceInParsedConstants:parsedConstants
+                fromConstants:mergedConstants
+                classes:mergedClasses
+                error:error];
+            
+            parsedClasses = [self
+                resolveReferencesInParsedClasses:parsedClasses
+                fromConstants:mergedConstants
+                classes:mergedClasses
+                error:error];
+        }
         
         _parsedConstants = parsedConstants;
         _parsedClasses = parsedClasses;
@@ -389,6 +385,31 @@
     NSMutableDictionary *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];
     return [mergedClasses copy];
+}
+
+static BOOL ShouldResolveReferences = YES;
+
++ (dispatch_queue_t)globalSettingsQueue {
+    static dispatch_queue_t settingsQueue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        settingsQueue = dispatch_queue_create("com.automatic.auttheming.settingsqueue", DISPATCH_QUEUE_CONCURRENT);
+    });
+    return settingsQueue;
+}
+
++ (BOOL)shouldResolveReferences {
+    __block BOOL result = NO;
+    dispatch_sync(self.globalSettingsQueue, ^{
+        result = ShouldResolveReferences;
+    });
+    return result;
+}
+
++ (void)setShouldResolveReferences:(BOOL)shouldResolveReferences {
+    dispatch_barrier_async(self.globalSettingsQueue, ^{
+        ShouldResolveReferences = shouldResolveReferences;
+    });
 }
 
 @end

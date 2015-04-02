@@ -1,6 +1,0 @@
-framework module AUTTheming {
-  umbrella header "Pods-SwiftButtonsExample-AUTTheming-umbrella.h"
-
-  export *
-  module * { export * }
-}

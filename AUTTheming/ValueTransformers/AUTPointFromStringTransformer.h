@@ -17,7 +17,7 @@ AUT_NS_ASSUME_NONNULL_BEGIN
  
  Allows reverse transformation.
  */
-@interface AUTPointFromStringTransformer : NSValueTransformer  <AUTReverseTransformedValueClass, AUTObjCTypeValueTransformer>
+@interface AUTPointFromStringTransformer : NSValueTransformer <AUTReverseTransformedValueClass, AUTObjCTypeValueTransformer>
 
 @end
 

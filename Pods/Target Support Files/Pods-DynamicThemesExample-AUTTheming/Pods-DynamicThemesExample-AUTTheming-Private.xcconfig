@@ -1,6 +1,0 @@
-#include "Pods-DynamicThemesExample-AUTTheming.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/AUTTheming" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AUTTheming" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/UIColor-HTMLColors" "${PODS_ROOT}/Headers/Public/libextobjc"
-OTHER_LDFLAGS = ${PODS_DYNAMICTHEMESEXAMPLE_AUTTHEMING_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES

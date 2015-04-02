@@ -1,7 +1,11 @@
 language: objective-c
-before_install:
-  - export LANG=en_US.UTF-8
+env:
+  global:
+  - LANG=en_US.UTF-8
+install:
+- bundle install --jobs=3
+- bundle exec pod install
 script:
-  - rake lint
-  - rake test
-  - rake build_examples
+- rake run_tests
+- rake build_examples
+- rake lint_podspec

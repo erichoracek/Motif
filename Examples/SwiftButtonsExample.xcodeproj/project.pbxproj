@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0D6BDD1ACBB37B00F8FB14 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; };
+		3A179D881AC93D3F00BD598C /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179D841AC93D2700BD598C /* AUTTheming.framework */; };
+		3A5B95671ACBB45100AF677C /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; };
+		3A5B95681ACBB45100AF677C /* Cartography.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A7EC5E71AB51D5C00FD37F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */; };
 		3A7EC5E91AB51D5C00FD37F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC5E81AB51D5C00FD37F3 /* ViewController.swift */; };
 		3A7EC5EE1AB51D5C00FD37F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7EC5ED1AB51D5C00FD37F3 /* Images.xcassets */; };
@@ -15,11 +19,25 @@
 		3A7EC6141AB5277200FD37F3 /* UIView+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6131AB5277200FD37F3 /* UIView+Theming.swift */; };
 		3A7EC6161AB5657D00FD37F3 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6151AB5657D00FD37F3 /* ButtonsView.swift */; };
 		3A7EC6181AB56B2200FD37F3 /* UIButton+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6171AB56B2200FD37F3 /* UIButton+Theming.swift */; };
-		47FFD360CDE4B443C183893F /* Pods_SwiftButtonsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C86CE8861A010640F818F72 /* Pods_SwiftButtonsExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3A179D8A1AC93D3F00BD598C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A5B95681ACBB45100AF677C /* Cartography.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2D82FBCF72CD2BD9961B6D67 /* Pods-SwiftButtonsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftButtonsExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SwiftButtonsExample/Pods-SwiftButtonsExample.release.xcconfig"; sourceTree = "<group>"; };
+		3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
+		3A179D841AC93D2700BD598C /* AUTTheming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EC5E11AB51D5C00FD37F3 /* SwiftButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EC5E51AB51D5C00FD37F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,8 +48,6 @@
 		3A7EC6131AB5277200FD37F3 /* UIView+Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Theming.swift"; sourceTree = "<group>"; };
 		3A7EC6151AB5657D00FD37F3 /* ButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		3A7EC6171AB56B2200FD37F3 /* UIButton+Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Theming.swift"; sourceTree = "<group>"; };
-		7C86CE8861A010640F818F72 /* Pods_SwiftButtonsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftButtonsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B183C9E030CEC9ECE25402DB /* Pods-SwiftButtonsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftButtonsExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SwiftButtonsExample/Pods-SwiftButtonsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,26 +55,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47FFD360CDE4B443C183893F /* Pods_SwiftButtonsExample.framework in Frameworks */,
+				3A179D881AC93D3F00BD598C /* AUTTheming.framework in Frameworks */,
+				3A0D6BDD1ACBB37B00F8FB14 /* Cartography.framework in Frameworks */,
+				3A5B95671ACBB45100AF677C /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28132C187D7FC915A2D591CF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B183C9E030CEC9ECE25402DB /* Pods-SwiftButtonsExample.debug.xcconfig */,
-				2D82FBCF72CD2BD9961B6D67 /* Pods-SwiftButtonsExample.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		2A6D4EACD2B9159DEB73C54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C86CE8861A010640F818F72 /* Pods_SwiftButtonsExample.framework */,
+				3A179D841AC93D2700BD598C /* AUTTheming.framework */,
+				3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -68,7 +78,6 @@
 			children = (
 				3A7EC5E31AB51D5C00FD37F3 /* SwiftButtonsExample */,
 				3A7EC5E21AB51D5C00FD37F3 /* Products */,
-				28132C187D7FC915A2D591CF /* Pods */,
 				2A6D4EACD2B9159DEB73C54C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -112,12 +121,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A7EC6001AB51D5C00FD37F3 /* Build configuration list for PBXNativeTarget "SwiftButtonsExample" */;
 			buildPhases = (
-				43A0E2F2B64244FB10C0004A /* Check Pods Manifest.lock */,
 				3A7EC5DD1AB51D5C00FD37F3 /* Sources */,
 				3A7EC5DE1AB51D5C00FD37F3 /* Frameworks */,
 				3A7EC5DF1AB51D5C00FD37F3 /* Resources */,
-				33EE7B2EB03719B9FB66A6F1 /* Copy Pods Resources */,
-				CA6FA61450E9AD05B2CCDBF3 /* Embed Pods Frameworks */,
+				3A179D8A1AC93D3F00BD598C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,54 +179,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		33EE7B2EB03719B9FB66A6F1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SwiftButtonsExample/Pods-SwiftButtonsExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		43A0E2F2B64244FB10C0004A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CA6FA61450E9AD05B2CCDBF3 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SwiftButtonsExample/Pods-SwiftButtonsExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		3A7EC5DD1AB51D5C00FD37F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -312,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -322,9 +281,12 @@
 		};
 		3A7EC6011AB51D5C00FD37F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B183C9E030CEC9ECE25402DB /* Pods-SwiftButtonsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../Carthage/**",
+				);
 				INFOPLIST_FILE = SwiftButtonsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -333,9 +295,12 @@
 		};
 		3A7EC6021AB51D5C00FD37F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D82FBCF72CD2BD9961B6D67 /* Pods-SwiftButtonsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../Carthage/**",
+				);
 				INFOPLIST_FILE = SwiftButtonsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

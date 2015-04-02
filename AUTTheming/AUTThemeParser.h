@@ -23,6 +23,14 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSDictionary *parsedClasses;
 
+/**
+ Whether theme parsers should globally resolve their constants, producing errors
+ when references are invalid.
+ 
+ @param shouldResolveReferences Whether references should be resolved.
+ */
++ (void)setShouldResolveReferences:(BOOL)shouldResolveReferences;
+
 @end
 
 AUT_NS_ASSUME_NONNULL_END

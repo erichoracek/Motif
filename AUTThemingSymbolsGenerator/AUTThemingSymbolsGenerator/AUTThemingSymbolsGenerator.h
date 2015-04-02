@@ -10,6 +10,8 @@
 
 @interface AUTThemingSymbolsGenerator : NSObject
 
++ (instancetype)sharedInstance;
+
 @end
 
 int AUTThemingSymbolsGeneratorMain(int argc, const char *argv[]);

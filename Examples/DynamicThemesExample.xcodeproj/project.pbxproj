@@ -15,6 +15,8 @@
 		3A3DD9371A88AE4700DBA831 /* ButtonsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9321A88AE4700DBA831 /* ButtonsThemeSymbols.m */; };
 		3A3DD9381A88AE4700DBA831 /* ContentThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9341A88AE4700DBA831 /* ContentThemeSymbols.m */; };
 		3A3DD9391A88AE4700DBA831 /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9361A88AE4700DBA831 /* NavigationThemeSymbols.m */; };
+		3A73B87B1ACD158100A6A2E0 /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; };
+		3A73B87C1ACD158100A6A2E0 /* AUTTheming.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A9930DF1AB23B7500B1D7B2 /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A9930DE1AB23B7500B1D7B2 /* SpecTheme.json */; };
 		3A9930E21AB23BA400B1D7B2 /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9930E11AB23BA400B1D7B2 /* SpecThemeSymbols.m */; };
 		3ADB35EA1A5645B30059796A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
@@ -36,6 +38,20 @@
 		7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3AE26FDE1ACD14960012FD2E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A73B87C1ACD158100A6A2E0 /* AUTTheming.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3A3DD8FC1A881F6200DBA831 /* ContentTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContentTheme.json; sourceTree = "<group>"; };
 		3A3DD91C1A88AD5D00DBA831 /* ColorsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsThemeSymbols.h; sourceTree = "<group>"; };
@@ -53,6 +69,7 @@
 		3A3DD9351A88AE4700DBA831 /* NavigationThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationThemeSymbols.h; sourceTree = "<group>"; };
 		3A3DD9361A88AE4700DBA831 /* NavigationThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationThemeSymbols.m; sourceTree = "<group>"; };
 		3A3DD93A1A88AE5500DBA831 /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
+		3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9930DE1AB23B7500B1D7B2 /* SpecTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SpecTheme.json; sourceTree = "<group>"; };
 		3A9930E01AB23BA400B1D7B2 /* SpecThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecThemeSymbols.h; sourceTree = "<group>"; };
 		3A9930E11AB23BA400B1D7B2 /* SpecThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecThemeSymbols.m; sourceTree = "<group>"; };
@@ -92,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A73B87B1ACD158100A6A2E0 /* AUTTheming.framework in Frameworks */,
 				7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */,
+				3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,6 +240,7 @@
 				3ADB35E11A5645B30059796A /* Frameworks */,
 				3ADB35E21A5645B30059796A /* Resources */,
 				19580EBAC1CBA80205834F5D /* Copy Pods Resources */,
+				3AE26FDE1ACD14960012FD2E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -413,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -427,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemesExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DynamicThemesExample;
@@ -439,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemesExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DynamicThemesExample;

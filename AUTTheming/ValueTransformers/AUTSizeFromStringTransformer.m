@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "AUTSizeFromStringTransformer.h"
 
 NSString * const AUTSizeFromStringTransformerName = @"AUTSizeFromStringTransformer";

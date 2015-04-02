@@ -1,52 +1,62 @@
-desc 'Run the Cocoapods library linter on AUTTheming'
-task :lint do
-  setup_environment
-  sh "bundle exec pod lib lint --allow-warnings '#{ENV['PODSPEC_PATH']}'"
+task :bootstrap do
+  sh("git submodule update --init --recursive")
 end
 
-desc 'Run the Tests on AUTTheming'
-task :test do
-  setup_environment
-  sh %{ \
-    xcodebuild test \
-    -workspace '#{ENV['WORKSPACE_PATH']}' \
-    -scheme '#{ENV['SCHEME_TESTS']}' \
-    -destination '#{ENV['DEST_SIM']}' \
-    | xcpretty --color ; exit ${PIPESTATUS[0]}
-  }
+task :run_tests_ios => [:bootstrap, :clean] do
+  sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_IOS} | #{PRETTIFY}")
 end
 
-desc 'Build the AUTTheming Example projects'
-task :build_examples do
-  setup_environment
-  # Build buttons example
-  sh %{ \
-    xcodebuild build \
-    -workspace '#{ENV['WORKSPACE_PATH']}' \
-    -scheme '#{ENV['SCHEME_BUTTONS_EXAMPLE']}' \
-    -destination '#{ENV['DEST_SIM']}' \
-    | xcpretty --color ; exit ${PIPESTATUS[0]}
-  }
-  # Build swift example
-  sh %{ \
-    xcodebuild build \
-    -workspace '#{ENV['WORKSPACE_PATH']}' \
-    -scheme '#{ENV['SCHEME_DYNAMIC_THEMES_EXAMPLE']}' \
-    -destination '#{ENV['DEST_SIM']}' \
-    | xcpretty --color ; exit ${PIPESTATUS[0]}
-  }
+task :run_tests_osx => [:bootstrap, :clean] do
+  sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_OSX} | #{PRETTIFY}")
+end
+
+task :run_tests => [:run_tests_ios, :run_tests_osx]
+
+task :build_buttons_example => [:bootstrap, :clean] do
+  sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUTTONS_EXAMPLE} | #{PRETTIFY}")
+end
+
+task :build_dynamic_themes_example => [:bootstrap, :clean] do
+  sh("#{BUILD_TOOL} #{BUILD_FLAGS_DYNAMIC_THEMES_EXAMPLE} | #{PRETTIFY}")
+end
+
+task :build_examples => [:build_dynamic_themes_example, :build_buttons_example]
+
+task :lint_podspec do
+  sh("#{LINT_TOOL} #{LINT_FLAGS}")
+end
+
+task :clean do
+  sh("rm -rf '#{DERIVED_DATA_PATH}'")
 end
 
 private
 
 LIBRARY_NAME = 'AUTTheming'
+WORKSPACE_PATH = "#{LIBRARY_NAME}.xcworkspace"
+PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
+SCHEME_BUTTONS_EXAMPLE = 'ButtonsExample'
+SCHEME_DYNAMIC_THEMES_EXAMPLE = 'DynamicThemesExample'
+DESTINATION = 'platform=iOS Simulator,name=iPhone 4s,OS=latest'
+DERIVED_DATA_PATH = "/tmp/#{LIBRARY_NAME}"
 
-def setup_environment
-  ENV['WORKSPACE'] = "#{__FILE__.gsub "/Rakefile", ""}"
-  ENV['WORKSPACE_PATH'] = "#{ENV['WORKSPACE']}/#{LIBRARY_NAME}.xcworkspace"
-  ENV['PODSPEC_PATH'] = "#{ENV['WORKSPACE']}/#{LIBRARY_NAME}.podspec"
-  ENV['SCHEME_TESTS'] = 'Tests'
-  ENV['SCHEME_BUTTONS_EXAMPLE'] = 'ButtonsExample'
-  ENV['SCHEME_DYNAMIC_THEMES_EXAMPLE'] = 'DynamicThemesExample'
-  ENV['DEST_SIM'] = 'platform=iOS Simulator,name=iPhone 4s,OS=latest'
-end
+LINT_TOOL = 'bundle exec pod lib lint'
+BUILD_TOOL = 'xcodebuild'
+
+LINT_FLAGS =
+  "--allow-warnings "\
+  "#{PODSPEC_PATH}"
+
+BUILD_FLAGS =
+  "-workspace '#{WORKSPACE_PATH}' "\
+  "-derivedDataPath '#{DERIVED_DATA_PATH}'"
+  
+BUILD_FLAGS_IOS = BUILD_FLAGS + " -destination '#{DESTINATION}'"
+
+BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' " + BUILD_FLAGS_IOS
+BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
+
+BUILD_FLAGS_DYNAMIC_THEMES_EXAMPLE = "build -scheme '#{SCHEME_DYNAMIC_THEMES_EXAMPLE}' " + BUILD_FLAGS_IOS
+BUILD_FLAGS_BUTTONS_EXAMPLE = "build -scheme '#{SCHEME_BUTTONS_EXAMPLE}' " + BUILD_FLAGS_IOS
+
+PRETTIFY = "xcpretty --color; exit ${PIPESTATUS[0]}"

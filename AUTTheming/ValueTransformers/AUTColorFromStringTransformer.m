@@ -6,7 +6,7 @@
 //
 //
 
-#import <UIColor-HTMLColors/UIColor+HTMLColors.h>
+#import "UIColor+HTMLColors.h"
 #import "AUTColorFromStringTransformer.h"
 
 NSString * const AUTColorFromStringTransformerName = @"AUTColorFromStringTransformer";
@@ -43,7 +43,7 @@ NSString * const AUTColorFromStringTransformerName = @"AUTColorFromStringTransfo
         NSStringFromClass(self.class),
         NSStringFromClass(reverseTransformedValueClass));
     
-    UIColor *color = [UIColor colorWithCSS:value];
+    UIColor *color = [UIColor aut_colorWithCSS:value];
     NSAssert(
         color,
         @"Unable to transform color from input value '%@' (%@)",

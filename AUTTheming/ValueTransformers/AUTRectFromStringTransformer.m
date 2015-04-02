@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "AUTRectFromStringTransformer.h"
 
 NSString * const AUTRectFromStringTransformerName = @"AUTRectFromStringTransformer";

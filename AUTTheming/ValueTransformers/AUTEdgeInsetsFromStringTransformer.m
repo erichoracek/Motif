@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "AUTEdgeInsetsFromStringTransformer.h"
 
 NSString * const AUTEdgeInsetsFromStringTransformerName = @"AUTEdgeInsetsFromStringTransformer";

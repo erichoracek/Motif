@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:AUTTheming.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Examples/DynamicThemesExample.xcodeproj">
    </FileRef>
    <FileRef
@@ -12,9 +15,6 @@
    </FileRef>
    <FileRef
       location = "group:AUTThemingSymbolsGenerator/AUTThemingSymbolsGenerator.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Tests/Tests.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

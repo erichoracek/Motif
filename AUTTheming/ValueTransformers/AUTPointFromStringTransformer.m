@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "AUTPointFromStringTransformer.h"
 
 NSString * const AUTPointFromStringTransformerName = @"AUTPointFromStringTransformer";

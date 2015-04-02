@@ -6,21 +6,9 @@
 // project.
 
 
-// AUTTheming
-#define COCOAPODS_POD_AVAILABLE_AUTTheming
-#define COCOAPODS_VERSION_MAJOR_AUTTheming 0
-#define COCOAPODS_VERSION_MINOR_AUTTheming 0
-#define COCOAPODS_VERSION_PATCH_AUTTheming 1
-
 // GBCli
 #define COCOAPODS_POD_AVAILABLE_GBCli
 #define COCOAPODS_VERSION_MAJOR_GBCli 1
 #define COCOAPODS_VERSION_MINOR_GBCli 1
 #define COCOAPODS_VERSION_PATCH_GBCli 0
-
-// libextobjc/RuntimeExtensions
-#define COCOAPODS_POD_AVAILABLE_libextobjc_RuntimeExtensions
-#define COCOAPODS_VERSION_MAJOR_libextobjc_RuntimeExtensions 0
-#define COCOAPODS_VERSION_MINOR_libextobjc_RuntimeExtensions 4
-#define COCOAPODS_VERSION_PATCH_libextobjc_RuntimeExtensions 1
 

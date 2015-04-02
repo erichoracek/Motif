@@ -1,0 +1,8 @@
+[submodule "Carthage/Checkouts/xcconfigs"]
+	path = Carthage/Checkouts/xcconfigs
+	url = https://github.com/jspahrsummers/xcconfigs.git
+	ignore = all
+[submodule "Carthage/Checkouts/cartography"]
+	path = Carthage/Checkouts/cartography
+	url = https://github.com/robb/cartography.git
+	ignore = all

@@ -7,7 +7,6 @@
 //
 
 #import <AUTTheming/AUTTheming.h>
-#import <AUTTheming/AUTValueTransformers.h>
 #import "ThemeSymbols.h"
 #import "UINavigationBar+Theming.h"
 #import "UIColor+LightnessType.h"

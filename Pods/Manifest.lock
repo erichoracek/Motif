@@ -1,37 +1,13 @@
 PODS:
-  - AUTTheming (0.0.1):
-    - libextobjc/RuntimeExtensions (~> 0.4.0)
-    - UIColor-HTMLColors (= 1.0.0)
-  - Cartography (0.2.1)
   - GBCli (1.1)
-  - libextobjc/RuntimeExtensions (0.4.1)
   - Masonry (0.6.1)
-  - UIColor-HTMLColors (1.0.0)
 
 DEPENDENCIES:
-  - AUTTheming (from `./`)
-  - Cartography (from `https://github.com/robb/Cartography.git`, branch `xcode6-3`)
   - GBCli
   - Masonry
 
-EXTERNAL SOURCES:
-  AUTTheming:
-    :path: ./
-  Cartography:
-    :branch: xcode6-3
-    :git: https://github.com/robb/Cartography.git
-
-CHECKOUT OPTIONS:
-  Cartography:
-    :commit: ed0cdcac357cf157c43b2f4e36814ba7bae6b84d
-    :git: https://github.com/robb/Cartography.git
-
 SPEC CHECKSUMS:
-  AUTTheming: 41bbf9b1d6f46fbb476a0c3cb608acdbecfa7def
-  Cartography: bfd61a6b2f784ed20fff698c6119ee0dda2da9ea
-  GBCli: 304718a0ff52cb39ea7ae1bcb3c4cb40c5a48c8d
-  libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
-  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
-  UIColor-HTMLColors: fbf3e9648f1e699aa4cdb39d0cf348b7ef814be5
+  GBCli: e5f988fadb68e1e3c01919f134009fed9796fde0
+  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
 
 COCOAPODS: 0.36.0

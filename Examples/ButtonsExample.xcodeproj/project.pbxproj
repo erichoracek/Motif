@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A73B87E1ACD15B000A6A2E0 /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* AUTTheming.framework */; };
+		3A73B8801ACD15C500A6A2E0 /* AUTTheming.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* AUTTheming.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
 		3AD69A501A4F750B0002FA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A4F1A4F750B0002FA8F /* main.m */; };
 		3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A521A4F750B0002FA8F /* AppDelegate.m */; };
@@ -19,7 +21,22 @@
 		FF4B3282D8827C89AD146996 /* libPods-ButtonsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6A8D58DDA276ED677BC6DE /* libPods-ButtonsExample.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3AE26FCE1ACD135B0012FD2E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A73B8801ACD15C500A6A2E0 /* AUTTheming.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3A73B87D1ACD15B000A6A2E0 /* AUTTheming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
 		3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSymbols.m; sourceTree = "<group>"; };
 		3AD69A4A1A4F750B0002FA8F /* ButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A73B87E1ACD15B000A6A2E0 /* AUTTheming.framework in Frameworks */,
 				FF4B3282D8827C89AD146996 /* libPods-ButtonsExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +133,7 @@
 		6DE4D76277E1B49110B96DA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A73B87D1ACD15B000A6A2E0 /* AUTTheming.framework */,
 				3E6A8D58DDA276ED677BC6DE /* libPods-ButtonsExample.a */,
 			);
 			name = Frameworks;
@@ -132,6 +151,7 @@
 				3AD69A471A4F750B0002FA8F /* Frameworks */,
 				3AD69A481A4F750B0002FA8F /* Resources */,
 				88EAB4DC825D64A4DF46A1B6 /* Copy Pods Resources */,
+				3AE26FCE1ACD135B0012FD2E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -307,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

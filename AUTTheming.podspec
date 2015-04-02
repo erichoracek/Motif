@@ -14,10 +14,14 @@ Pod::Spec.new do |s|
   s.author = { 'Eric Horacek' => 'eric@automatic.com' }
   s.source = { :git => 'https://github.com/erichoracek/#{s.name}.git', :tag => s.version.to_s}
   s.frameworks = 'Foundation'
-  s.dependency 'libextobjc/RuntimeExtensions', '~> 0.4.0'
+  s.ios.frameworks = 'UIKit'
 
-  s.source_files = "#{s.name}/*.{h,m}"
-  s.ios.source_files = "#{s.name}/ValueTransformers/*.{h,m}"
-  s.ios.dependency 'UIColor-HTMLColors', '1.0.0'
-
+  s.source_files = [
+    "#{s.name}/*.{h,m}",
+    "#{s.name}/RuntimeExtensions/*.{h,m}"
+  ]
+  s.ios.source_files = [
+    "#{s.name}/ValueTransformers/*.{h,m}",
+    "#{s.name}/UIColor-HTMLColors/*.{h,m}"
+  ]
 end

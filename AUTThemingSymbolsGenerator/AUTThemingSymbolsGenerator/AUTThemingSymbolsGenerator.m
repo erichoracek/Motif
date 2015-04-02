@@ -26,6 +26,9 @@
 }
 
 - (int)runWithSettings:(GBSettings *)settings; {
+    // Do not resolve references when parsing themes
+    [AUTThemeParser setShouldResolveReferences:NO];
+    
     // Build an array of `AUTThemes` from the passed `theme` path params
     NSMutableArray *themes = [NSMutableArray new];
     for (NSString *themePath in settings.aut_themes) {
