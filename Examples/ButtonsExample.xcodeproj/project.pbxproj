@@ -146,6 +146,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AD69A6D1A4F750B0002FA8F /* Build configuration list for PBXNativeTarget "ButtonsExample" */;
 			buildPhases = (
+				3AC874811ACE6DEA009E0D82 /* Generate Theme Symbols */,
 				73C0CA75FBABAB354BAB437B /* Check Pods Manifest.lock */,
 				3AD69A461A4F750B0002FA8F /* Sources */,
 				3AD69A471A4F750B0002FA8F /* Frameworks */,
@@ -207,6 +208,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3AC874811ACE6DEA009E0D82 /* Generate Theme Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Theme Symbols";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='auttheming-symbols-generator'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/${PRODUCT_NAME}\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${THEMES_DIR}\"";
+		};
 		73C0CA75FBABAB354BAB437B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

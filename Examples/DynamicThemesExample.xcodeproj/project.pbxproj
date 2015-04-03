@@ -235,6 +235,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "DynamicThemesExample" */;
 			buildPhases = (
+				3AC874801ACE679D009E0D82 /* Generate Theme Symbols */,
 				4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */,
 				3ADB35E01A5645B30059796A /* Sources */,
 				3ADB35E11A5645B30059796A /* Frameworks */,
@@ -316,6 +317,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AC874801ACE679D009E0D82 /* Generate Theme Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Theme Symbols";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='auttheming-symbols-generator'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/${PRODUCT_NAME}\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${THEMES_DIR}\"";
 			showEnvVarsInLog = 0;
 		};
 		4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */ = {
