@@ -181,26 +181,6 @@ static NSString * const NamePrefix = @"Theme";
     return symbolsName;
 }
 
-+ (NSString *)commandToGenerateSymbols {
-    NSString *processName = NSProcessInfo.processInfo.processName;
-    
-    NSArray *arguments = NSProcessInfo.processInfo.arguments;
-    NSArray *argumentsMinusProcessName = [arguments
-        subarrayWithRange:(NSRange){
-            .location = 1,
-            .length = (arguments.count - 1)
-        }];
-    NSString *argumentsAsString = [argumentsMinusProcessName
-        componentsJoinedByString:@" "];
-
-    NSString *command = [NSString stringWithFormat:
-        @"%@ %@",
-        processName,
-        argumentsAsString];
-
-    return command;
-}
-
 + (NSString *)symbolsFilenameFromName:(NSString *)name forFileType:(FileType)filetype prefix:(NSString *)prefix {
     NSParameterAssert(name);
     NSParameterAssert(prefix);
@@ -231,8 +211,6 @@ static NSString * const NamePrefix = @"Theme";
 
 static NSString * const WarningCommentFormat = @"\
 // WARNING: Do not modify. This file is machine-generated from '%@'.\n\
-// To update these symbols, run the command:\n\
-// $ %@\n\
 ";
 
 + (NSString *)warningCommentForFilename:(NSString *)filename {
@@ -240,8 +218,7 @@ static NSString * const WarningCommentFormat = @"\
     
     return [NSString stringWithFormat:
         WarningCommentFormat,
-        filename,
-        [self commandToGenerateSymbols]];
+        filename];
 }
 
 - (NSString *)symbolsImportForName:(NSString *)name fileType:(FileType)fileType prefix:(NSString *)prefix {

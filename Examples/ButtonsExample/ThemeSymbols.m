@@ -1,6 +1,4 @@
 // WARNING: Do not modify. This file is machine-generated from 'Theme.json'.
-// To update these symbols, run the command:
-// $ auttheming-symbols-generator -t Theme.json
 
 #import "ThemeSymbols.h"
 
@@ -24,6 +22,7 @@ const struct ThemeClassNames ThemeClassNames = {
 
 const struct ThemeProperties ThemeProperties = {
     .fontSize = @"fontSize",
+    .deleteButton = @"deleteButton",
     .tintColor = @"tintColor",
     .fontName = @"fontName",
     .borderColor = @"borderColor",
@@ -31,4 +30,5 @@ const struct ThemeProperties ThemeProperties = {
     .cornerRadius = @"cornerRadius",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
+    .saveButton = @"saveButton",
 };
