@@ -101,7 +101,7 @@
             __unused NSString *applierClassName = NSStringFromClass(object.class);
             __unused NSString *requiredClassName = NSStringFromClass(requiredClass);
             __unused NSString *valueClassName = NSStringFromClass(value.class);
-            NSAssert(isValueOfRequiredClass, @"The theme applier on '%@' requires that the value for property '%@' is of class '%@'. It is instead an instace of '%@'", applierClassName, requiredClassName, property, valueClassName);
+            NSAssert(isValueOfRequiredClass, @"The theme applier on '%@' requires that the value for property '%@' is of class '%@'. It is instead an instace of '%@'", applierClassName, property, requiredClassName, valueClassName);
         }
     }
     
