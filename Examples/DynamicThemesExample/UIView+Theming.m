@@ -8,28 +8,27 @@
 
 #import <AUTTheming/AUTTheming.h>
 #import "UIView+Theming.h"
-#import "ButtonsThemeSymbols.h"
-#import "ContentThemeSymbols.h"
+#import "ThemeSymbols.h"
 
 @implementation UIView (Theming)
 
 + (void)load {
     [self
-        aut_registerThemeProperty:ButtonsThemeProperties.borderWidth
+        aut_registerThemeProperty:ControlsThemeProperties.borderWidth
         requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *width, UIView *view) {
             view.layer.borderWidth = width.floatValue;
     }];
 
     [self
-        aut_registerThemeProperty:ButtonsThemeProperties.borderColor
+        aut_registerThemeProperty:ControlsThemeProperties.borderColor
         valueTransformerName:AUTColorFromStringTransformerName
         applierBlock:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
     }];
     
     [self
-        aut_registerThemeProperty:ButtonsThemeProperties.cornerRadius
+        aut_registerThemeProperty:ControlsThemeProperties.cornerRadius
         requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *cornerRadius, UIView *view) {
             view.layer.cornerRadius = cornerRadius.floatValue;

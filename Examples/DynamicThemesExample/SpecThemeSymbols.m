@@ -9,14 +9,17 @@ const struct SpecThemeClassNames SpecThemeClassNames = {
 };
 
 const struct SpecThemeProperties SpecThemeProperties = {
-    .saveButton = @"saveButton",
-    .titleTextLabel = @"titleTextLabel",
-    .deleteButton = @"deleteButton",
-    .captionTextLabel = @"captionTextLabel",
-    .bodyTextLabel = @"bodyTextLabel",
-    .displayTextLabel = @"displayTextLabel",
-    .secondaryDeleteButton = @"secondaryDeleteButton",
-    .secondarySaveButton = @"secondarySaveButton",
-    .subheadTextLabel = @"subheadTextLabel",
     .headlineTextLabel = @"headlineTextLabel",
+    .displayTextLabel = @"displayTextLabel",
+    .captionTextLabel = @"captionTextLabel",
+    .toggle = @"toggle",
+    .titleTextLabel = @"titleTextLabel",
+    .secondaryDeleteButton = @"secondaryDeleteButton",
+    .saveButton = @"saveButton",
+    .deleteButton = @"deleteButton",
+    .subheadTextLabel = @"subheadTextLabel",
+    .bodyTextLabel = @"bodyTextLabel",
+    .slider = @"slider",
+    .segmentedControl = @"segmentedControl",
+    .secondarySaveButton = @"secondarySaveButton",
 };

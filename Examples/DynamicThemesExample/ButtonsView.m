@@ -67,14 +67,32 @@ static CGFloat const ElementPadding = 10.0;
                 make.right.equalTo(self).offset(-ElementPadding);
                 make.top.equalTo(topView.mas_bottom).offset((textLabelIndex == 0) ? SectionPadding : ElementPadding);
                 make.width.equalTo(self).offset(-ElementPadding * 2.0);
-                
-                if (textLabelIndex == (self.textLabels.count - 1)) {
-                    make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
-                }
             }];
         
         topView = textLabel;
     }];
+    
+    [self.toggle
+        mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(ElementPadding);
+            make.top.equalTo([self.textLabels.lastObject mas_bottom]).offset(SectionPadding);
+        }];
+    
+    [self.slider
+        mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.toggle.mas_right).offset(ElementPadding);
+            make.right.equalTo(self).offset(-ElementPadding);
+            make.centerY.equalTo(self.toggle);
+        }];
+    
+    [self.segmentedControl
+        mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.toggle.mas_bottom).offset(SectionPadding);
+            make.left.equalTo(self).offset(ElementPadding);
+            make.right.equalTo(self).offset(-ElementPadding);
+            make.height.equalTo(@32.0);
+            make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
+        }];
 }
 
 #pragma mark - ButtonsView
@@ -82,6 +100,8 @@ static CGFloat const ElementPadding = 10.0;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.alwaysBounceVertical = YES;
+        
         _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
         _deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _secondarySaveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
@@ -94,6 +114,15 @@ static CGFloat const ElementPadding = 10.0;
         _bodyTextLabel = [UILabel new];
         _captionTextLabel = [UILabel new];
         
+        _toggle = [UISwitch new];
+        _slider = [UISlider new];
+        _segmentedControl = [[UISegmentedControl alloc]
+            initWithItems:@[
+                @"One",
+                @"Two",
+                @"Three"
+            ]];
+        
         [self addSubview:self.saveButton];
         [self addSubview:self.deleteButton];
         [self addSubview:self.secondarySaveButton];
@@ -105,6 +134,10 @@ static CGFloat const ElementPadding = 10.0;
         [self addSubview:self.subheadTextLabel];
         [self addSubview:self.bodyTextLabel];
         [self addSubview:self.captionTextLabel];
+        
+        [self addSubview:self.toggle];
+        [self addSubview:self.slider];
+        [self addSubview:self.segmentedControl];
         
         self.bodyTextLabel.numberOfLines = 0;
         
@@ -119,6 +152,10 @@ static CGFloat const ElementPadding = 10.0;
         self.subheadTextLabel.text = @"Subhead";
         self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.";
         self.captionTextLabel.text = @"Caption";
+        
+        self.toggle.on = YES;
+        self.slider.value = 0.5;
+        self.segmentedControl.selectedSegmentIndex = 0;
     }
     return self;
 }

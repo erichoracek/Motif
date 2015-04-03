@@ -58,7 +58,7 @@
                 ColorsThemeName,
                 LightMappingsThemeName,
                 TypographyThemeName,
-                ButtonsThemeName,
+                ControlsThemeName,
                 NavigationThemeName,
                 ContentThemeName,
                 SpecThemeName
@@ -77,7 +77,7 @@
                 ColorsThemeName,
                 DarkMappingsThemeName,
                 TypographyThemeName,
-                ButtonsThemeName,
+                ControlsThemeName,
                 NavigationThemeName,
                 ContentThemeName,
                 SpecThemeName

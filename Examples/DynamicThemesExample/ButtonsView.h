@@ -23,4 +23,8 @@
 @property (nonatomic, readonly) UILabel *bodyTextLabel;
 @property (nonatomic, readonly) UILabel *captionTextLabel;
 
+@property (nonatomic, readonly) UISwitch *toggle;
+@property (nonatomic, readonly) UISlider *slider;
+@property (nonatomic, readonly) UISegmentedControl *segmentedControl;
+
 @end

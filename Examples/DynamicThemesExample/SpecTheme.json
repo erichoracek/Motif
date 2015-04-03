@@ -1,15 +1,18 @@
 {
     ".Spec": {
-      "_superclass": ".ContentBackground",
-      "saveButton": ".CreativeButton",
-      "deleteButton": ".DestructiveButton",
-      "secondarySaveButton": ".CreativeSecondaryButton",
-      "secondaryDeleteButton": ".DestructiveSecondaryButton",
-      "displayTextLabel": ".DisplayText",
-      "headlineTextLabel": ".HeadlineText",
-      "titleTextLabel": ".TitleText",
-      "subheadTextLabel": ".SubheadText",
-      "bodyTextLabel": ".BodyText",
-      "captionTextLabel": ".CaptionText"
+        "_superclass": ".ContentBackground",
+        "saveButton": ".CreativeButton",
+        "deleteButton": ".DestructiveButton",
+        "secondarySaveButton": ".CreativeSecondaryButton",
+        "secondaryDeleteButton": ".DestructiveSecondaryButton",
+        "displayTextLabel": ".DisplayText",
+        "headlineTextLabel": ".HeadlineText",
+        "titleTextLabel": ".TitleText",
+        "subheadTextLabel": ".SubheadText",
+        "bodyTextLabel": ".BodyText",
+        "captionTextLabel": ".CaptionText",
+        "toggle": ".Toggle",
+        "slider": ".Slider",
+        "segmentedControl": ".SegmentedControl"
     }
 }

@@ -9,14 +9,17 @@ extern const struct SpecThemeClassNames {
 } SpecThemeClassNames;
 
 extern const struct SpecThemeProperties {
-    __unsafe_unretained NSString *saveButton;
-    __unsafe_unretained NSString *titleTextLabel;
-    __unsafe_unretained NSString *deleteButton;
-    __unsafe_unretained NSString *captionTextLabel;
-    __unsafe_unretained NSString *bodyTextLabel;
-    __unsafe_unretained NSString *displayTextLabel;
-    __unsafe_unretained NSString *secondaryDeleteButton;
-    __unsafe_unretained NSString *secondarySaveButton;
-    __unsafe_unretained NSString *subheadTextLabel;
     __unsafe_unretained NSString *headlineTextLabel;
+    __unsafe_unretained NSString *displayTextLabel;
+    __unsafe_unretained NSString *captionTextLabel;
+    __unsafe_unretained NSString *toggle;
+    __unsafe_unretained NSString *titleTextLabel;
+    __unsafe_unretained NSString *secondaryDeleteButton;
+    __unsafe_unretained NSString *saveButton;
+    __unsafe_unretained NSString *deleteButton;
+    __unsafe_unretained NSString *subheadTextLabel;
+    __unsafe_unretained NSString *bodyTextLabel;
+    __unsafe_unretained NSString *slider;
+    __unsafe_unretained NSString *segmentedControl;
+    __unsafe_unretained NSString *secondarySaveButton;
 } SpecThemeProperties;

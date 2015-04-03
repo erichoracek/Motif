@@ -27,5 +27,21 @@
         "_superclass": ".SecondaryButton",
         "tintColor": "$PrimaryColor",
         "borderColor": "$PrimaryColor"
+    },
+    ".Toggle": {
+        "onTintColor": "$PrimaryColor",
+        "tintColor": "$SeparatorColor",
+    },
+    ".Slider": {
+        "minimumTrackTintColor": "$PrimaryColor",
+        "maximumTrackTintColor": "$SeparatorColor"
+    },
+    ".SegmentedControlText": {
+        "_superclass": ".SubheadText",
+        "color": "$PrimaryColor"
+    },
+    ".SegmentedControl": {
+        "tintColor": "$PrimaryColor",
+        "text": ".SegmentedControlText"
     }
 }
