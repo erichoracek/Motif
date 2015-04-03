@@ -232,7 +232,10 @@
                 // In the case of the symbol generator, the superclasses could
                 // not be resolved, and thus may strings rather than references
                 if ([superclass isKindOfClass:AUTThemeClass.class]) {
-                    NSDictionary *superclassProperties = superclass.resolvedPropertiesConstants;
+                    NSMutableDictionary *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
+                    // Ensure that subclasses are able to override properties
+                    // by removing keys from the resolved properties constants
+                    [superclassProperties removeObjectsForKeys:propertiesConstants.allKeys];
                     [propertiesConstants
                         addEntriesFromDictionary:superclassProperties];
                 }
