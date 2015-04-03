@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 
   s.source_files = [
     "#{s.name}/*.{h,m}",
-    "#{s.name}/RuntimeExtensions/*.{h,m}"
+    "#{s.name}/RuntimeExtensions/*.{h,m}",
+    "#{s.name}/Parsing/*.{h,m}"
   ]
   s.ios.source_files = [
     "#{s.name}/ValueTransformers/*.{h,m}",

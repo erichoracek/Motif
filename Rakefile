@@ -43,9 +43,7 @@ DERIVED_DATA_PATH = "/tmp/#{LIBRARY_NAME}"
 LINT_TOOL = 'bundle exec pod lib lint'
 BUILD_TOOL = 'xcodebuild'
 
-LINT_FLAGS =
-  "--allow-warnings "\
-  "#{PODSPEC_PATH}"
+LINT_FLAGS = "#{PODSPEC_PATH}"
 
 BUILD_FLAGS =
   "-workspace '#{WORKSPACE_PATH}' "\
