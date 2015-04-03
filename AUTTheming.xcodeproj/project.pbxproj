@@ -10,7 +10,6 @@
 		3A179D8F1AC9483900BD598C /* AUTThemeClassApplicable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796481AC919FB00FD4320 /* AUTThemeClassApplicable.m */; };
 		3A179D901AC9483900BD598C /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796291AC919F300FD4320 /* NSURL+ThemeNaming.m */; };
 		3A179D911AC9483900BD598C /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796201AC919F300FD4320 /* NSObject+ThemeClassAppliers.m */; };
-		3A179D921AC9483900BD598C /* AUTThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7964E1AC919FB00FD4320 /* AUTThemeParser.m */; };
 		3A179D931AC9483900BD598C /* AUTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796431AC919FB00FD4320 /* AUTTheme.m */; };
 		3A179D941AC9483900BD598C /* AUTThemeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796461AC919FB00FD4320 /* AUTThemeClass.m */; };
 		3A179D951AC9483900BD598C /* AUTDynamicThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7963E1AC919FB00FD4320 /* AUTDynamicThemeApplier.m */; };
@@ -40,7 +39,6 @@
 		3A179DB91AC9483900BD598C /* AUTDynamicThemeApplier_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7963C1AC919FB00FD4320 /* AUTDynamicThemeApplier_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A179DBB1AC9483900BD598C /* AUTBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7963B1AC919FB00FD4320 /* AUTBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A179DBC1AC9483900BD598C /* AUTThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964C1AC919FB00FD4320 /* AUTThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A179DBD1AC9483900BD598C /* AUTThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964D1AC919FB00FD4320 /* AUTThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A179DBE1AC9483900BD598C /* NSObject+ThemeClassAppliers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7961F1AC919F300FD4320 /* NSObject+ThemeClassAppliers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A179DBF1AC9483900BD598C /* AUTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7969D1AC9290100FD4320 /* AUTRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A179DC01AC9483900BD598C /* NSObject+ThemeClassAppliersPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA796211AC919F300FD4320 /* NSObject+ThemeClassAppliersPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -98,8 +96,6 @@
 		3AA7965F1AC919FB00FD4320 /* AUTThemeConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964A1AC919FB00FD4320 /* AUTThemeConstant.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AA796601AC919FB00FD4320 /* AUTThemeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7964B1AC919FB00FD4320 /* AUTThemeConstant.m */; };
 		3AA796611AC919FB00FD4320 /* AUTThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964C1AC919FB00FD4320 /* AUTThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3AA796621AC919FB00FD4320 /* AUTThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964D1AC919FB00FD4320 /* AUTThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AA796631AC919FB00FD4320 /* AUTThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7964E1AC919FB00FD4320 /* AUTThemeParser.m */; };
 		3AA796641AC919FB00FD4320 /* AUTTheming.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* AUTTheming.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA796711AC91A0400FD4320 /* AUTColorFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA796661AC91A0400FD4320 /* AUTColorFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA796721AC91A0400FD4320 /* AUTColorFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796671AC91A0400FD4320 /* AUTColorFromStringTransformer.m */; };
@@ -127,6 +123,18 @@
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3AA7969F1AC9290100FD4320 /* AUTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7969D1AC9290100FD4320 /* AUTRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AA796A01AC9290100FD4320 /* AUTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7969E1AC9290100FD4320 /* AUTRuntimeExtensions.m */; };
+		3AC8746F1ACE5976009E0D82 /* AUTThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC8746D1ACE5976009E0D82 /* AUTThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AC874701ACE5976009E0D82 /* AUTThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC8746D1ACE5976009E0D82 /* AUTThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AC874711ACE5976009E0D82 /* AUTThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8746E1ACE5976009E0D82 /* AUTThemeParser.m */; };
+		3AC874721ACE5976009E0D82 /* AUTThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8746E1ACE5976009E0D82 /* AUTThemeParser.m */; };
+		3AC874751ACE59AE009E0D82 /* AUTThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC874731ACE59AE009E0D82 /* AUTThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3AC874761ACE59AE009E0D82 /* AUTThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC874731ACE59AE009E0D82 /* AUTThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3AC874771ACE59AE009E0D82 /* AUTThemeSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC874741ACE59AE009E0D82 /* AUTThemeSymbolReference.m */; };
+		3AC874781ACE59AE009E0D82 /* AUTThemeSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC874741ACE59AE009E0D82 /* AUTThemeSymbolReference.m */; };
+		3AC8747B1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC874791ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h */; };
+		3AC8747C1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC874791ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h */; };
+		3AC8747D1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8747A1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m */; };
+		3AC8747E1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8747A1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,8 +181,8 @@
 		3A79EC6B1AC9147E000CCC01 /* AUTTheming-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AUTTheming-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A79EC711AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A93F5701ACBB092001E7AD2 /* AUTThemingPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUTThemingPrivate.h; sourceTree = "<group>"; };
-		3AA7961D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IntersectingKeys.h"; sourceTree = "<group>"; };
-		3AA7961E1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IntersectingKeys.m"; sourceTree = "<group>"; };
+		3AA7961D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+IntersectingKeys.h"; path = "../NSDictionary+IntersectingKeys.h"; sourceTree = "<group>"; };
+		3AA7961E1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+IntersectingKeys.m"; path = "../NSDictionary+IntersectingKeys.m"; sourceTree = "<group>"; };
 		3AA7961F1AC919F300FD4320 /* NSObject+ThemeClassAppliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliers.h"; sourceTree = "<group>"; };
 		3AA796201AC919F300FD4320 /* NSObject+ThemeClassAppliers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClassAppliers.m"; sourceTree = "<group>"; };
 		3AA796211AC919F300FD4320 /* NSObject+ThemeClassAppliersPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliersPrivate.h"; sourceTree = "<group>"; };
@@ -206,8 +214,6 @@
 		3AA7964A1AC919FB00FD4320 /* AUTThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeConstant.h; sourceTree = "<group>"; };
 		3AA7964B1AC919FB00FD4320 /* AUTThemeConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeConstant.m; sourceTree = "<group>"; };
 		3AA7964C1AC919FB00FD4320 /* AUTThemeHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeHierarchy.h; sourceTree = "<group>"; };
-		3AA7964D1AC919FB00FD4320 /* AUTThemeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeParser.h; sourceTree = "<group>"; };
-		3AA7964E1AC919FB00FD4320 /* AUTThemeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeParser.m; sourceTree = "<group>"; };
 		3AA7964F1AC919FB00FD4320 /* AUTTheming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTTheming.h; sourceTree = "<group>"; };
 		3AA796661AC91A0400FD4320 /* AUTColorFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTColorFromStringTransformer.h; sourceTree = "<group>"; };
 		3AA796671AC91A0400FD4320 /* AUTColorFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTColorFromStringTransformer.m; sourceTree = "<group>"; };
@@ -237,6 +243,12 @@
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
 		3AA7969D1AC9290100FD4320 /* AUTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTRuntimeExtensions.h; sourceTree = "<group>"; };
 		3AA7969E1AC9290100FD4320 /* AUTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTRuntimeExtensions.m; sourceTree = "<group>"; };
+		3AC8746D1ACE5976009E0D82 /* AUTThemeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeParser.h; sourceTree = "<group>"; };
+		3AC8746E1ACE5976009E0D82 /* AUTThemeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeParser.m; sourceTree = "<group>"; };
+		3AC874731ACE59AE009E0D82 /* AUTThemeSymbolReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTThemeSymbolReference.h; sourceTree = "<group>"; };
+		3AC874741ACE59AE009E0D82 /* AUTThemeSymbolReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTThemeSymbolReference.m; sourceTree = "<group>"; };
+		3AC874791ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryValueValidation.h"; sourceTree = "<group>"; };
+		3AC8747A1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryValueValidation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,10 +403,6 @@
 				3AA7964A1AC919FB00FD4320 /* AUTThemeConstant.h */,
 				3AA7964B1AC919FB00FD4320 /* AUTThemeConstant.m */,
 				3AA7964C1AC919FB00FD4320 /* AUTThemeHierarchy.h */,
-				3AA7964D1AC919FB00FD4320 /* AUTThemeParser.h */,
-				3AA7964E1AC919FB00FD4320 /* AUTThemeParser.m */,
-				3AA7961D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h */,
-				3AA7961E1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m */,
 				3AA796221AC919F300FD4320 /* NSObject+ThemeClassName.h */,
 				3AA796231AC919F300FD4320 /* NSObject+ThemeClassName.m */,
 				3AA796241AC919F300FD4320 /* NSString+ThemeSymbols.h */,
@@ -405,6 +413,7 @@
 				3AA796291AC919F300FD4320 /* NSURL+ThemeNaming.m */,
 				3AA7962A1AC919F300FD4320 /* NSValueTransformer+TypeFiltering.h */,
 				3AA7962B1AC919F300FD4320 /* NSValueTransformer+TypeFiltering.m */,
+				3AC874661ACE593B009E0D82 /* Parsing */,
 				3AA796651AC91A0400FD4320 /* ValueTransformers */,
 				3A555A2C1ACD035200726EC9 /* UIColor-HTMLColors */,
 				3AA7969C1AC9290100FD4320 /* RuntimeExtensions */,
@@ -482,6 +491,21 @@
 			path = RuntimeExtensions;
 			sourceTree = "<group>";
 		};
+		3AC874661ACE593B009E0D82 /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8746D1ACE5976009E0D82 /* AUTThemeParser.h */,
+				3AC8746E1ACE5976009E0D82 /* AUTThemeParser.m */,
+				3AC874731ACE59AE009E0D82 /* AUTThemeSymbolReference.h */,
+				3AC874741ACE59AE009E0D82 /* AUTThemeSymbolReference.m */,
+				3AC874791ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h */,
+				3AC8747A1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m */,
+				3AA7961D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h */,
+				3AA7961E1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m */,
+			);
+			path = Parsing;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -496,17 +520,19 @@
 				3A179DAB1AC9483900BD598C /* AUTDynamicThemeApplier.h in Headers */,
 				3A179DAF1AC9483900BD598C /* AUTObjCTypeValueTransformer.h in Headers */,
 				3A179DB01AC9483900BD598C /* AUTTheme_Private.h in Headers */,
+				3AC874761ACE59AE009E0D82 /* AUTThemeSymbolReference.h in Headers */,
 				3A179DB41AC9483900BD598C /* AUTThemeClass.h in Headers */,
 				3A179DA91AC9483900BD598C /* NSURL+LastPathComponentWithoutExtension.h in Headers */,
 				3A179DAA1AC9483900BD598C /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3A179DAC1AC9483900BD598C /* NSURL+ThemeNaming.h in Headers */,
 				3A179DAD1AC9483900BD598C /* AUTThemeConstant_Private.h in Headers */,
 				3A179DB11AC9483900BD598C /* NSDictionary+IntersectingKeys.h in Headers */,
+				3AC8747C1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h in Headers */,
 				3A179DB71AC9483900BD598C /* NSString+ThemeSymbols.h in Headers */,
 				3A179DBC1AC9483900BD598C /* AUTThemeHierarchy.h in Headers */,
-				3A179DBD1AC9483900BD598C /* AUTThemeParser.h in Headers */,
 				3A179DBF1AC9483900BD598C /* AUTRuntimeExtensions.h in Headers */,
 				3A179DC01AC9483900BD598C /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
+				3AC874701ACE5976009E0D82 /* AUTThemeParser.h in Headers */,
 				3A179DC11AC9483900BD598C /* AUTThemeConstant.h in Headers */,
 				3A179DB51AC9483900BD598C /* AUTThemeClass_Private.h in Headers */,
 				3A179DB81AC9483900BD598C /* AUTThemeClassApplicable.h in Headers */,
@@ -529,6 +555,7 @@
 				3AA796541AC919FB00FD4320 /* AUTObjCTypeValueTransformer.h in Headers */,
 				3AA796561AC919FB00FD4320 /* AUTTheme_Private.h in Headers */,
 				3AA796711AC91A0400FD4320 /* AUTColorFromStringTransformer.h in Headers */,
+				3AC8746F1ACE5976009E0D82 /* AUTThemeParser.h in Headers */,
 				3AA7965A1AC919FB00FD4320 /* AUTThemeClass.h in Headers */,
 				3AA796591AC919FB00FD4320 /* AUTThemeClass_Private.h in Headers */,
 				3AA796771AC91A0400FD4320 /* AUTRectFromStringTransformer.h in Headers */,
@@ -536,10 +563,10 @@
 				3AA796391AC919F300FD4320 /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3AA796371AC919F300FD4320 /* NSURL+ThemeNaming.h in Headers */,
 				3AA7965E1AC919FB00FD4320 /* AUTThemeConstant_Private.h in Headers */,
+				3AC874751ACE59AE009E0D82 /* AUTThemeSymbolReference.h in Headers */,
 				3AA7962C1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3AA796331AC919F300FD4320 /* NSString+ThemeSymbols.h in Headers */,
 				3AA796611AC919FB00FD4320 /* AUTThemeHierarchy.h in Headers */,
-				3AA796621AC919FB00FD4320 /* AUTThemeParser.h in Headers */,
 				3AA7969F1AC9290100FD4320 /* AUTRuntimeExtensions.h in Headers */,
 				3AA796301AC919F300FD4320 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3AA7965F1AC919FB00FD4320 /* AUTThemeConstant.h in Headers */,
@@ -549,6 +576,7 @@
 				3AA796501AC919FB00FD4320 /* AUTBackwardsCompatableNullability.h in Headers */,
 				3AA7962E1AC919F300FD4320 /* NSObject+ThemeClassAppliers.h in Headers */,
 				3A179DCA1AC9491900BD598C /* AUTEdgeInsetsFromStringTransformer.h in Headers */,
+				3AC8747B1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.h in Headers */,
 				3AA796791AC91A0400FD4320 /* AUTSizeFromStringTransformer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -711,8 +739,9 @@
 			files = (
 				3A179D8F1AC9483900BD598C /* AUTThemeClassApplicable.m in Sources */,
 				3A179D901AC9483900BD598C /* NSURL+ThemeNaming.m in Sources */,
+				3AC874781ACE59AE009E0D82 /* AUTThemeSymbolReference.m in Sources */,
+				3AC8747E1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m in Sources */,
 				3A179D911AC9483900BD598C /* NSObject+ThemeClassAppliers.m in Sources */,
-				3A179D921AC9483900BD598C /* AUTThemeParser.m in Sources */,
 				3A179D931AC9483900BD598C /* AUTTheme.m in Sources */,
 				3A179D941AC9483900BD598C /* AUTThemeClass.m in Sources */,
 				3A179D951AC9483900BD598C /* AUTDynamicThemeApplier.m in Sources */,
@@ -722,6 +751,7 @@
 				3A179D9B1AC9483900BD598C /* AUTThemeConstant.m in Sources */,
 				3A179D9C1AC9483900BD598C /* NSURL+LastPathComponentWithoutExtension.m in Sources */,
 				3A179DA01AC9483900BD598C /* NSDictionary+IntersectingKeys.m in Sources */,
+				3AC874721ACE5976009E0D82 /* AUTThemeParser.m in Sources */,
 				3A179DA21AC9483900BD598C /* NSObject+ThemeClassName.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,8 +780,8 @@
 				3AA7965D1AC919FB00FD4320 /* AUTThemeClassApplicable.m in Sources */,
 				3AA796381AC919F300FD4320 /* NSURL+ThemeNaming.m in Sources */,
 				3A179DCB1AC9491900BD598C /* AUTEdgeInsetsFromStringTransformer.m in Sources */,
+				3AC8747D1ACE5AA0009E0D82 /* NSDictionary+DictionaryValueValidation.m in Sources */,
 				3AA7962F1AC919F300FD4320 /* NSObject+ThemeClassAppliers.m in Sources */,
-				3AA796631AC919FB00FD4320 /* AUTThemeParser.m in Sources */,
 				3AA796581AC919FB00FD4320 /* AUTTheme.m in Sources */,
 				3AA7965B1AC919FB00FD4320 /* AUTThemeClass.m in Sources */,
 				3AA796531AC919FB00FD4320 /* AUTDynamicThemeApplier.m in Sources */,
@@ -762,8 +792,10 @@
 				3AA796601AC919FB00FD4320 /* AUTThemeConstant.m in Sources */,
 				3AA796361AC919F300FD4320 /* NSURL+LastPathComponentWithoutExtension.m in Sources */,
 				3AA796761AC91A0400FD4320 /* AUTPointFromStringTransformer.m in Sources */,
+				3AC874771ACE59AE009E0D82 /* AUTThemeSymbolReference.m in Sources */,
 				3AA7967A1AC91A0400FD4320 /* AUTSizeFromStringTransformer.m in Sources */,
 				3AA796721AC91A0400FD4320 /* AUTColorFromStringTransformer.m in Sources */,
+				3AC874711ACE5976009E0D82 /* AUTThemeParser.m in Sources */,
 				3AA7962D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m in Sources */,
 				3A555A301ACD035200726EC9 /* UIColor+HTMLColors.m in Sources */,
 				3AA796321AC919F300FD4320 /* NSObject+ThemeClassName.m in Sources */,

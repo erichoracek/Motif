@@ -12,25 +12,11 @@
 #import "AUTThemeClass.h"
 #import "AUTThemeClass_Private.h"
 #import "AUTTheme.h"
+#import "AUTThemeSymbolReference.h"
 #import "AUTTheme_Private.h"
 #import "NSString+ThemeSymbols.h"
 #import "NSDictionary+IntersectingKeys.h"
-
-@interface AUTThemeSymbolReference : NSObject
-
-- (instancetype)initWithRawSymbol:(NSString *)rawSymbol;
-
-@property (nonatomic, readonly) NSString *rawSymbol;
-@property (nonatomic, readonly) NSString *symbol;
-@property (nonatomic, readonly) AUTThemeSymbolType type;
-
-@end
-
-@interface NSDictionary (DictionaryValueValidation)
-
-- (NSDictionary *)aut_dictionaryValueForKey:(NSString *)key error:(NSError **)error;
-
-@end
+#import "NSDictionary+DictionaryValueValidation.h"
 
 @implementation AUTThemeParser
 
@@ -410,60 +396,6 @@ static BOOL ShouldResolveReferences = YES;
     dispatch_barrier_async(self.globalSettingsQueue, ^{
         ShouldResolveReferences = shouldResolveReferences;
     });
-}
-
-@end
-
-@implementation AUTThemeSymbolReference
-
-@dynamic symbol;
-@dynamic type;
-
-- (instancetype)initWithRawSymbol:(NSString *)rawSymbol {
-    NSParameterAssert(rawSymbol.aut_isRawSymbolReference);
-    self = [super init];
-    if (self) {
-        _rawSymbol = rawSymbol;
-    }
-    return self;
-}
-
-- (NSString *)symbol {
-    return self.rawSymbol.aut_symbol;
-}
-
-- (AUTThemeSymbolType)type {
-    return self.rawSymbol.aut_symbolType;
-}
-
-@end
-
-@implementation NSDictionary (DictionaryValueValidation)
-
-- (NSDictionary *)aut_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
-    NSDictionary *value = self[key];
-    // If there is no value for the specified key, is it not an error, just
-    // return
-    if (!value) {
-        return nil;
-    }
-    // If the value for the specified key is a dictionary but is not a valid
-    // type, return with error
-    if (![value isKindOfClass:NSDictionary.class]) {
-        if (error) {
-            NSString *localizedDescription = [NSString stringWithFormat:
-                @"The value for the key '%@' is not a dictionary",
-                key];
-            *error = [NSError
-                errorWithDomain:AUTThemingErrorDomain
-                code:1
-                userInfo:@{
-                    NSLocalizedDescriptionKey : localizedDescription
-                }];
-        }
-        return nil;
-    }
-    return value;
 }
 
 @end
