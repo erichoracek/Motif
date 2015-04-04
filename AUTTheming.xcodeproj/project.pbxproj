@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A01C5B71AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A01C5B51AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A01C5B81AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C5B61AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.m */; };
 		3A179D8F1AC9483900BD598C /* AUTThemeClassApplicable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796481AC919FB00FD4320 /* AUTThemeClassApplicable.m */; };
 		3A179D901AC9483900BD598C /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796291AC919F300FD4320 /* NSURL+ThemeNaming.m */; };
 		3A179D911AC9483900BD598C /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796201AC919F300FD4320 /* NSObject+ThemeClassAppliers.m */; };
@@ -155,6 +157,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A01C5B51AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUTScreenBrightnessThemeApplier.h; sourceTree = "<group>"; };
+		3A01C5B61AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUTScreenBrightnessThemeApplier.m; sourceTree = "<group>"; };
 		3A179DC71AC9483900BD598C /* AUTTheming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A179E221AC9AE6000BD598C /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		3A179E241AC9AE6000BD598C /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 				3AA796291AC919F300FD4320 /* NSURL+ThemeNaming.m */,
 				3AA7962A1AC919F300FD4320 /* NSValueTransformer+TypeFiltering.h */,
 				3AA7962B1AC919F300FD4320 /* NSValueTransformer+TypeFiltering.m */,
+				3A01C5B51AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.h */,
+				3A01C5B61AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.m */,
 				3AC874661ACE593B009E0D82 /* Parsing */,
 				3AA796651AC91A0400FD4320 /* ValueTransformers */,
 				3A555A2C1ACD035200726EC9 /* UIColor-HTMLColors */,
@@ -553,6 +559,7 @@
 				3AA796311AC919F300FD4320 /* NSObject+ThemeClassName.h in Headers */,
 				3AA796521AC919FB00FD4320 /* AUTDynamicThemeApplier.h in Headers */,
 				3AA796541AC919FB00FD4320 /* AUTObjCTypeValueTransformer.h in Headers */,
+				3A01C5B71AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.h in Headers */,
 				3AA796561AC919FB00FD4320 /* AUTTheme_Private.h in Headers */,
 				3AA796711AC91A0400FD4320 /* AUTColorFromStringTransformer.h in Headers */,
 				3AC8746F1ACE5976009E0D82 /* AUTThemeParser.h in Headers */,
@@ -787,6 +794,7 @@
 				3AA796531AC919FB00FD4320 /* AUTDynamicThemeApplier.m in Sources */,
 				3AA7963A1AC919F300FD4320 /* NSValueTransformer+TypeFiltering.m in Sources */,
 				3AA796A01AC9290100FD4320 /* AUTRuntimeExtensions.m in Sources */,
+				3A01C5B81AD06A0F00AA479F /* AUTScreenBrightnessThemeApplier.m in Sources */,
 				3AA796341AC919F300FD4320 /* NSString+ThemeSymbols.m in Sources */,
 				3AA796781AC91A0400FD4320 /* AUTRectFromStringTransformer.m in Sources */,
 				3AA796601AC919FB00FD4320 /* AUTThemeConstant.m in Sources */,

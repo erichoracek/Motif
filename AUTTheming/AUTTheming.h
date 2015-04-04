@@ -27,6 +27,7 @@ FOUNDATION_EXPORT const unsigned char AUTThemingVersionString[];
 #import "AUTObjCTypeValueTransformer.h"
 
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import "AUTScreenBrightnessThemeApplier.h"
     #import "AUTColorFromStringTransformer.h"
     #import "AUTEdgeInsetsFromStringTransformer.h"
     #import "AUTPointFromStringTransformer.h"
