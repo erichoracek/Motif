@@ -15,6 +15,6 @@ typedef NS_ENUM(NSInteger, AUTLightnessType) {
 
 @interface UIColor (lightnessType)
 
-- (AUTLightnessType)aut_lightnessType;
+@property (nonatomic, readonly) AUTLightnessType aut_lightnessType;
 
 @end
