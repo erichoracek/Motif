@@ -5,7 +5,7 @@
       location = "group:AUTTheming.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Examples/DynamicThemesExample.xcodeproj">
+      location = "group:Examples/DynamicThemingExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Examples/ButtonsExample.xcodeproj">

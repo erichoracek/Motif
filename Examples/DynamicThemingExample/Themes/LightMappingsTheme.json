@@ -7,5 +7,6 @@
     "$HeadingTextColor": "$GrayColor",
     "$BodyTextColor": "$GrayDarkColor",
     "$CaptionTextColor": "$GrayLightColor",
-    "$PrimaryButtonTextColor": "$WhiteColor"
+    "$PrimaryButtonTextColor": "$WhiteColor",
+    "$ScrollIndicatorStyle": "dark"
 }

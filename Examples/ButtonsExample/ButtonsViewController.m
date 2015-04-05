@@ -30,7 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.theme applyClassWithName:ThemeClassNames.ButtonsView toObject:self.view];
+    [self.theme
+        applyClassWithName:ThemeClassNames.ButtonsView
+        toObject:self.view];
     
     [self.view.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
     [self.view.saveButton setTitle:@"Save" forState:UIControlStateNormal];

@@ -8,6 +8,7 @@ const struct DarkMappingsThemeConstantKeys DarkMappingsThemeConstantKeys = {
     .ContentBackgroundColor = @"ContentBackgroundColor",
     .DestructiveColor = @"DestructiveColor",
     .ContentForegroundColor = @"ContentForegroundColor",
+    .ScrollIndicatorStyle = @"ScrollIndicatorStyle",
     .SeparatorColor = @"SeparatorColor",
     .PrimaryColor = @"PrimaryColor",
     .BodyTextColor = @"BodyTextColor",

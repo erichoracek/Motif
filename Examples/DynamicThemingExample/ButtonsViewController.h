@@ -13,10 +13,8 @@
 
 @interface ButtonsViewController : UIViewController
 
-- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)applier lightTheme:(AUTTheme *)lightTheme darkTheme:(AUTTheme *)darkTheme;
+- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)themeApplier;
 
 @property (nonatomic, readonly) AUTDynamicThemeApplier *themeApplier;
-@property (nonatomic, readonly) AUTTheme *lightTheme;
-@property (nonatomic, readonly) AUTTheme *darkTheme;
 
 @end

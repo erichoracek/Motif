@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A01C5C11AD07E9900AA479F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* ButtonsView.m */; };
+		3A01C5C31AD07E9900AA479F /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
+		3A01C5C61AD07E9900AA479F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
+		3A01C5CB1AD07E9900AA479F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
+		3A01C5CD1AD07E9900AA479F /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
+		3A01C5D01AD07E9900AA479F /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; };
+		3A01C5D11AD07E9900AA479F /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */; };
+		3A01C5D71AD07E9900AA479F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
+		3A01C5DE1AD07E9900AA479F /* AUTTheming.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A01C5F31AD1CC7E00AA479F /* ColorsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */; };
+		3A01C5F41AD1CC7E00AA479F /* ColorsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */; };
+		3A01C5F51AD1CC7E00AA479F /* ContentTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */; };
+		3A01C5F61AD1CC7E00AA479F /* ContentTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */; };
+		3A01C5F71AD1CC7E00AA479F /* ControlsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */; };
+		3A01C5F81AD1CC7E00AA479F /* ControlsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */; };
+		3A01C5F91AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */; };
+		3A01C5FA1AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */; };
+		3A01C5FB1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */; };
+		3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */; };
+		3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
+		3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
+		3A01C5FF1AD1CC7E00AA479F /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */; };
+		3A01C6001AD1CC7E00AA479F /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */; };
+		3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
+		3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
+		3A01C6151AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */; };
+		3A01C6161AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */; };
+		3A01C6171AD1CC9400AA479F /* ContentThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */; };
+		3A01C6181AD1CC9400AA479F /* ContentThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */; };
+		3A01C6191AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */; };
+		3A01C61A1AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */; };
+		3A01C61B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m */; };
+		3A01C61C1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m */; };
+		3A01C61D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */; };
+		3A01C61E1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */; };
+		3A01C61F1AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */; };
+		3A01C6201AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */; };
+		3A01C6211AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */; };
+		3A01C6221AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */; };
+		3A01C6231AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */; };
+		3A01C6241AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */; };
+		3A01C6321AD1CCAC00AA479F /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6271AD1CCAC00AA479F /* UIButton+Theming.m */; };
+		3A01C6331AD1CCAC00AA479F /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6271AD1CCAC00AA479F /* UIButton+Theming.m */; };
+		3A01C6341AD1CCAC00AA479F /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6291AD1CCAC00AA479F /* UILabel+Theming.m */; };
+		3A01C6351AD1CCAC00AA479F /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6291AD1CCAC00AA479F /* UILabel+Theming.m */; };
+		3A01C6361AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62B1AD1CCAC00AA479F /* UINavigationBar+Theming.m */; };
+		3A01C6371AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62B1AD1CCAC00AA479F /* UINavigationBar+Theming.m */; };
+		3A01C6381AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62D1AD1CCAC00AA479F /* UIScrollView+Theming.m */; };
+		3A01C6391AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62D1AD1CCAC00AA479F /* UIScrollView+Theming.m */; };
+		3A01C63A1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */; };
+		3A01C63B1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */; };
+		3A01C63C1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
+		3A01C63D1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
+		3A73B87B1ACD158100A6A2E0 /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; };
+		3A73B87C1ACD158100A6A2E0 /* AUTTheming.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3ADB35EA1A5645B30059796A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
+		3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
+		3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
+		3ADB36181A567D8B0059796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
+		3ADB36331A56820D0059796A /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* ButtonsView.m */; };
+		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
+		7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3A01C5DD1AD07E9900AA479F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A01C5DE1AD07E9900AA479F /* AUTTheming.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE26FDE1ACD14960012FD2E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A73B87C1ACD158100A6A2E0 /* AUTTheming.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Screen Brightness Theming Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A01C5E81AD1C57800AA479F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ColorsTheme.json; sourceTree = "<group>"; };
+		3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContentTheme.json; sourceTree = "<group>"; };
+		3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControlsTheme.json; sourceTree = "<group>"; };
+		3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkMappingsTheme.json; sourceTree = "<group>"; };
+		3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LightMappingsTheme.json; sourceTree = "<group>"; };
+		3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NavigationTheme.json; sourceTree = "<group>"; };
+		3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SpecTheme.json; sourceTree = "<group>"; };
+		3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TypographyTheme.json; sourceTree = "<group>"; };
+		3A01C6041AD1CC9400AA479F /* ColorsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorsThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C6061AD1CC9400AA479F /* ContentThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C6081AD1CC9400AA479F /* ControlsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C60A1AD1CC9400AA479F /* DarkMappingsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkMappingsThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C60B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkMappingsThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C60C1AD1CC9400AA479F /* LightMappingsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightMappingsThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightMappingsThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C60E1AD1CC9400AA479F /* NavigationThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C6101AD1CC9400AA479F /* SpecThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C6121AD1CC9400AA479F /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6131AD1CC9400AA479F /* TypographyThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypographyThemeSymbols.h; sourceTree = "<group>"; };
+		3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypographyThemeSymbols.m; sourceTree = "<group>"; };
+		3A01C6261AD1CCAC00AA479F /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
+		3A01C6271AD1CCAC00AA479F /* UIButton+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Theming.m"; sourceTree = "<group>"; };
+		3A01C6281AD1CCAC00AA479F /* UILabel+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Theming.h"; sourceTree = "<group>"; };
+		3A01C6291AD1CCAC00AA479F /* UILabel+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Theming.m"; sourceTree = "<group>"; };
+		3A01C62A1AD1CCAC00AA479F /* UINavigationBar+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Theming.h"; sourceTree = "<group>"; };
+		3A01C62B1AD1CCAC00AA479F /* UINavigationBar+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Theming.m"; sourceTree = "<group>"; };
+		3A01C62C1AD1CCAC00AA479F /* UIScrollView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Theming.h"; sourceTree = "<group>"; };
+		3A01C62D1AD1CCAC00AA479F /* UIScrollView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Theming.m"; sourceTree = "<group>"; };
+		3A01C62E1AD1CCAC00AA479F /* UISegmentedControl+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+Theming.h"; sourceTree = "<group>"; };
+		3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Theming.m"; sourceTree = "<group>"; };
+		3A01C6301AD1CCAC00AA479F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
+		3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
+		3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dynamic Theming Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3ADB35EC1A5645B30059796A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3ADB35EE1A5645B30059796A /* ButtonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
+		3ADB35EF1A5645B30059796A /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
+		3ADB36171A567D8B0059796A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3ADB362D1A56820D0059796A /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
+		3ADB362E1A56820D0059796A /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
+		3ADB363E1A5692220059796A /* UIColor+LightnessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LightnessType.h"; sourceTree = "<group>"; };
+		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
+		4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.debug.xcconfig"; sourceTree = "<group>"; };
+		5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemesExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample.release.xcconfig"; sourceTree = "<group>"; };
+		F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A01C5CF1AD07E9900AA479F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A01C5D01AD07E9900AA479F /* AUTTheming.framework in Frameworks */,
+				3A01C5D11AD07E9900AA479F /* libPods-DynamicThemesExample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ADB35E11A5645B30059796A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A73B87B1ACD158100A6A2E0 /* AUTTheming.framework in Frameworks */,
+				7E2BB44D5E239EAF01E36E10 /* libPods-DynamicThemesExample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		078D737A13DCE0E82C6F76DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F486EF76D17735D66B7EF661 /* libPods-DynamicThemesExample.a */,
+				3A73B8791ACD157600A6A2E0 /* AUTTheming.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A01C5EA1AD1CC7E00AA479F /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */,
+				3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */,
+				3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */,
+				3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */,
+				3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */,
+				3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */,
+				3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */,
+				3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		3A01C6031AD1CC9400AA479F /* ThemeSymbols */ = {
+			isa = PBXGroup;
+			children = (
+				3A01C6041AD1CC9400AA479F /* ColorsThemeSymbols.h */,
+				3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */,
+				3A01C6061AD1CC9400AA479F /* ContentThemeSymbols.h */,
+				3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */,
+				3A01C6081AD1CC9400AA479F /* ControlsThemeSymbols.h */,
+				3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */,
+				3A01C60A1AD1CC9400AA479F /* DarkMappingsThemeSymbols.h */,
+				3A01C60B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m */,
+				3A01C60C1AD1CC9400AA479F /* LightMappingsThemeSymbols.h */,
+				3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */,
+				3A01C60E1AD1CC9400AA479F /* NavigationThemeSymbols.h */,
+				3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */,
+				3A01C6101AD1CC9400AA479F /* SpecThemeSymbols.h */,
+				3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */,
+				3A01C6121AD1CC9400AA479F /* ThemeSymbols.h */,
+				3A01C6131AD1CC9400AA479F /* TypographyThemeSymbols.h */,
+				3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */,
+			);
+			path = ThemeSymbols;
+			sourceTree = "<group>";
+		};
+		3A01C6251AD1CCAC00AA479F /* ThemingCategories */ = {
+			isa = PBXGroup;
+			children = (
+				3A01C6261AD1CCAC00AA479F /* UIButton+Theming.h */,
+				3A01C6271AD1CCAC00AA479F /* UIButton+Theming.m */,
+				3A01C6281AD1CCAC00AA479F /* UILabel+Theming.h */,
+				3A01C6291AD1CCAC00AA479F /* UILabel+Theming.m */,
+				3A01C62A1AD1CCAC00AA479F /* UINavigationBar+Theming.h */,
+				3A01C62B1AD1CCAC00AA479F /* UINavigationBar+Theming.m */,
+				3A01C62C1AD1CCAC00AA479F /* UIScrollView+Theming.h */,
+				3A01C62D1AD1CCAC00AA479F /* UIScrollView+Theming.m */,
+				3A01C62E1AD1CCAC00AA479F /* UISegmentedControl+Theming.h */,
+				3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */,
+				3A01C6301AD1CCAC00AA479F /* UIView+Theming.h */,
+				3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */,
+			);
+			path = ThemingCategories;
+			sourceTree = "<group>";
+		};
+		3ADB35DB1A5645B30059796A = {
+			isa = PBXGroup;
+			children = (
+				3ADB35E61A5645B30059796A /* DynamicThemingExample */,
+				3ADB35E51A5645B30059796A /* Products */,
+				078D737A13DCE0E82C6F76DD /* Frameworks */,
+				63A46562F72343C715BF0B19 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		3ADB35E51A5645B30059796A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */,
+				3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3ADB35E61A5645B30059796A /* DynamicThemingExample */ = {
+			isa = PBXGroup;
+			children = (
+				3A01C5EA1AD1CC7E00AA479F /* Themes */,
+				3A01C6031AD1CC9400AA479F /* ThemeSymbols */,
+				3A01C6251AD1CCAC00AA479F /* ThemingCategories */,
+				3ADB35EB1A5645B30059796A /* AppDelegate.h */,
+				3ADB35EC1A5645B30059796A /* AppDelegate.m */,
+				3ADB35EE1A5645B30059796A /* ButtonsViewController.h */,
+				3ADB35EF1A5645B30059796A /* ButtonsViewController.m */,
+				3ADB362D1A56820D0059796A /* ButtonsView.h */,
+				3ADB362E1A56820D0059796A /* ButtonsView.m */,
+				3ADB363E1A5692220059796A /* UIColor+LightnessType.h */,
+				3ADB363F1A5692220059796A /* UIColor+LightnessType.m */,
+				3ADB36171A567D8B0059796A /* Images.xcassets */,
+				3ADB35E71A5645B30059796A /* Supporting Files */,
+			);
+			path = DynamicThemingExample;
+			sourceTree = "<group>";
+		};
+		3ADB35E71A5645B30059796A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A01C5E81AD1C57800AA479F /* Info.plist */,
+				3ADB35E91A5645B30059796A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63A46562F72343C715BF0B19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */,
+				5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A01C5B91AD07E9900AA479F /* Screen Brightness Theming Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "Screen Brightness Theming Example" */;
+			buildPhases = (
+				3A01C5BA1AD07E9900AA479F /* Generate Theme Symbols */,
+				3A01C5BB1AD07E9900AA479F /* Check Pods Manifest.lock */,
+				3A01C5BC1AD07E9900AA479F /* Sources */,
+				3A01C5CF1AD07E9900AA479F /* Frameworks */,
+				3A01C5D21AD07E9900AA479F /* Resources */,
+				3A01C5DC1AD07E9900AA479F /* Copy Pods Resources */,
+				3A01C5DD1AD07E9900AA479F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Screen Brightness Theming Example";
+			productName = VariableThemesExample;
+			productReference = 3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3ADB35E31A5645B30059796A /* Dynamic Theming Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "Dynamic Theming Example" */;
+			buildPhases = (
+				3AC874801ACE679D009E0D82 /* Generate Theme Symbols */,
+				4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */,
+				3ADB35E01A5645B30059796A /* Sources */,
+				3ADB35E11A5645B30059796A /* Frameworks */,
+				3ADB35E21A5645B30059796A /* Resources */,
+				19580EBAC1CBA80205834F5D /* Copy Pods Resources */,
+				3AE26FDE1ACD14960012FD2E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dynamic Theming Example";
+			productName = VariableThemesExample;
+			productReference = 3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3ADB35DC1A5645B30059796A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Automatic Labs, Inc";
+				TargetAttributes = {
+					3ADB35E31A5645B30059796A = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3ADB35DF1A5645B30059796A /* Build configuration list for PBXProject "DynamicThemingExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3ADB35DB1A5645B30059796A;
+			productRefGroup = 3ADB35E51A5645B30059796A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3ADB35E31A5645B30059796A /* Dynamic Theming Example */,
+				3A01C5B91AD07E9900AA479F /* Screen Brightness Theming Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A01C5D21AD07E9900AA479F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A01C5D71AD07E9900AA479F /* Images.xcassets in Resources */,
+				3A01C5FA1AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */,
+				3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
+				3A01C5F81AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
+				3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
+				3A01C6001AD1CC7E00AA479F /* SpecTheme.json in Resources */,
+				3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
+				3A01C5F61AD1CC7E00AA479F /* ContentTheme.json in Resources */,
+				3A01C5F41AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ADB35E21A5645B30059796A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADB36181A567D8B0059796A /* Images.xcassets in Resources */,
+				3A01C5F91AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */,
+				3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
+				3A01C5F71AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
+				3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
+				3A01C5FF1AD1CC7E00AA479F /* SpecTheme.json in Resources */,
+				3A01C5FB1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
+				3A01C5F51AD1CC7E00AA479F /* ContentTheme.json in Resources */,
+				3A01C5F31AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19580EBAC1CBA80205834F5D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A01C5BA1AD07E9900AA479F /* Generate Theme Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Theme Symbols";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='auttheming-symbols-generator'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' | rm\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
+			showEnvVarsInLog = 0;
+		};
+		3A01C5BB1AD07E9900AA479F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3A01C5DC1AD07E9900AA479F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DynamicThemesExample/Pods-DynamicThemesExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AC874801ACE679D009E0D82 /* Generate Theme Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Theme Symbols";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='auttheming-symbols-generator'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' | rm\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
+			showEnvVarsInLog = 0;
+		};
+		4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A01C5BC1AD07E9900AA479F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A01C6181AD1CC9400AA479F /* ContentThemeSymbols.m in Sources */,
+				3A01C6161AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */,
+				3A01C6331AD1CCAC00AA479F /* UIButton+Theming.m in Sources */,
+				3A01C63B1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */,
+				3A01C6241AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */,
+				3A01C5C11AD07E9900AA479F /* ButtonsView.m in Sources */,
+				3A01C6201AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */,
+				3A01C5C31AD07E9900AA479F /* ButtonsViewController.m in Sources */,
+				3A01C5C61AD07E9900AA479F /* AppDelegate.m in Sources */,
+				3A01C61E1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */,
+				3A01C5CB1AD07E9900AA479F /* main.m in Sources */,
+				3A01C61A1AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */,
+				3A01C63D1AD1CCAC00AA479F /* UIView+Theming.m in Sources */,
+				3A01C6351AD1CCAC00AA479F /* UILabel+Theming.m in Sources */,
+				3A01C6391AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */,
+				3A01C61C1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */,
+				3A01C6221AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */,
+				3A01C6371AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */,
+				3A01C5CD1AD07E9900AA479F /* UIColor+LightnessType.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ADB35E01A5645B30059796A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A01C6171AD1CC9400AA479F /* ContentThemeSymbols.m in Sources */,
+				3A01C6151AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */,
+				3A01C6321AD1CCAC00AA479F /* UIButton+Theming.m in Sources */,
+				3A01C63A1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */,
+				3A01C6231AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */,
+				3ADB36331A56820D0059796A /* ButtonsView.m in Sources */,
+				3A01C61F1AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */,
+				3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */,
+				3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */,
+				3A01C61D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */,
+				3ADB35EA1A5645B30059796A /* main.m in Sources */,
+				3A01C6191AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */,
+				3A01C63C1AD1CCAC00AA479F /* UIView+Theming.m in Sources */,
+				3A01C6341AD1CCAC00AA479F /* UILabel+Theming.m in Sources */,
+				3A01C6381AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */,
+				3A01C61B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */,
+				3A01C6211AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */,
+				3A01C6361AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */,
+				3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3A01C5E01AD07E9900AA479F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "Screen Brightness Theming Example";
+			};
+			name = Debug;
+		};
+		3A01C5E11AD07E9900AA479F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "Screen Brightness Theming Example";
+			};
+			name = Release;
+		};
+		3ADB36051A5645B30059796A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3ADB36061A5645B30059796A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3ADB36081A5645B30059796A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1FA509A3F24D68CDC10AF8 /* Pods-DynamicThemesExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "Dynamic Theming Example";
+			};
+			name = Debug;
+		};
+		3ADB36091A5645B30059796A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BB35D8EA290C1932BA81DA3 /* Pods-DynamicThemesExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "Dynamic Theming Example";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "Screen Brightness Theming Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A01C5E01AD07E9900AA479F /* Debug */,
+				3A01C5E11AD07E9900AA479F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADB35DF1A5645B30059796A /* Build configuration list for PBXProject "DynamicThemingExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB36051A5645B30059796A /* Debug */,
+				3ADB36061A5645B30059796A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "Dynamic Theming Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB36081A5645B30059796A /* Debug */,
+				3ADB36091A5645B30059796A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3ADB35DC1A5645B30059796A /* Project object */;
+}

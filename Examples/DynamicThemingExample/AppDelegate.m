@@ -15,6 +15,7 @@
 
 @property (nonatomic) AUTTheme *lightTheme;
 @property (nonatomic) AUTTheme *darkTheme;
+@property (nonatomic) AUTDynamicThemeApplier *themeApplier;
 
 @end
 
@@ -25,19 +26,43 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     
-    // Default to light theme
-    AUTDynamicThemeApplier *themeApplier = [[AUTDynamicThemeApplier alloc]
+#if defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
+
+    self.themeApplier = [[AUTScreenBrightnessThemeApplier alloc]
+        initWithScreen:[UIScreen mainScreen]
+        lightTheme:self.lightTheme
+        darkTheme:self.darkTheme];
+    
+    ButtonsViewController *viewController = [[ButtonsViewController alloc]
+        initWithThemeApplier:self.themeApplier];
+    
+    viewController.navigationItem.title = @"Screen Brightness Theming";
+    viewController.navigationItem.prompt = @"Adjust the brightness to toggle "
+        "the theme.";
+    
+#else
+    
+    self.themeApplier = [[AUTDynamicThemeApplier alloc]
         initWithTheme:self.lightTheme];
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc]
-        initWithThemeApplier:themeApplier
-        lightTheme:self.lightTheme
-        darkTheme:self.darkTheme];
+        initWithThemeApplier:self.themeApplier];
+    
+    viewController.navigationItem.title = @"Dynamic Theming";
+    viewController.navigationItem.prompt = @"Tap the refresh button to toggle "
+        "the theme.";
+    
+    viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+        target:self
+        action:@selector(toggleTheme)];
+    
+#endif
     
     UINavigationController *navigationController = [[UINavigationController alloc]
         initWithRootViewController:viewController];
     
-    [themeApplier
+    [self.themeApplier
         applyClassWithName:NavigationThemeClassNames.NavigationBar
         toObject:navigationController.navigationBar];
     
@@ -87,5 +112,16 @@
     }
     return _darkTheme;
 }
+
+#if !defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
+
+- (void)toggleTheme {
+    BOOL onLightTheme = (self.themeApplier.theme == self.lightTheme);
+    // Changing an AUTDynamicThemeApplier's theme property reapplies it to all
+    // previously applied themes
+    self.themeApplier.theme = (onLightTheme ? self.darkTheme : self.lightTheme);
+}
+
+#endif
 
 @end

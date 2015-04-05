@@ -6,8 +6,10 @@ NSString * const ContentThemeName = @"ContentTheme";
 
 const struct ContentThemeClassNames ContentThemeClassNames = {
     .ContentBackground = @"ContentBackground",
+    .ScrollableContentBackground = @"ScrollableContentBackground",
 };
 
 const struct ContentThemeProperties ContentThemeProperties = {
     .backgroundColor = @"backgroundColor",
+    .scrollIndicatorStyle = @"scrollIndicatorStyle",
 };

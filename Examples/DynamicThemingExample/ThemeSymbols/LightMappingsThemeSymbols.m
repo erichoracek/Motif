@@ -8,6 +8,7 @@ const struct LightMappingsThemeConstantKeys LightMappingsThemeConstantKeys = {
     .ContentBackgroundColor = @"ContentBackgroundColor",
     .DestructiveColor = @"DestructiveColor",
     .ContentForegroundColor = @"ContentForegroundColor",
+    .ScrollIndicatorStyle = @"ScrollIndicatorStyle",
     .SeparatorColor = @"SeparatorColor",
     .PrimaryColor = @"PrimaryColor",
     .BodyTextColor = @"BodyTextColor",

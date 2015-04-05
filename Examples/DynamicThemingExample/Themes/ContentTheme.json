@@ -1,0 +1,9 @@
+{
+    ".ContentBackground": {
+        "backgroundColor": "$ContentBackgroundColor"
+    },
+    ".ScrollableContentBackground": {
+        "_superclass": ".ContentBackground",
+        "scrollIndicatorStyle": "$ScrollIndicatorStyle"
+    }
+}

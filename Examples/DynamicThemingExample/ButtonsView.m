@@ -25,6 +25,7 @@
 
 static CGFloat const SectionPadding = 40.0;
 static CGFloat const ElementPadding = 10.0;
+static CGFloat const SegmentedControlHeight = 32.0;
 
 - (void)updateConstraints {
     [super updateConstraints];
@@ -60,7 +61,6 @@ static CGFloat const ElementPadding = 10.0;
     
     __block UIView *topView = self.secondarySaveButton;
     [self.textLabels enumerateObjectsUsingBlock:^(UILabel *textLabel, NSUInteger textLabelIndex, BOOL *stop) {
-        
         [textLabel
             mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self).offset(ElementPadding);
@@ -90,7 +90,7 @@ static CGFloat const ElementPadding = 10.0;
             make.top.equalTo(self.toggle.mas_bottom).offset(SectionPadding);
             make.left.equalTo(self).offset(ElementPadding);
             make.right.equalTo(self).offset(-ElementPadding);
-            make.height.equalTo(@32.0);
+            make.height.equalTo(@(SegmentedControlHeight));
             make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
         }];
 }

@@ -1,6 +1,6 @@
 {
     ".Spec": {
-        "_superclass": ".ContentBackground",
+        "_superclass": ".ScrollableContentBackground",
         "saveButton": ".CreativeButton",
         "deleteButton": ".DestructiveButton",
         "secondarySaveButton": ".CreativeSecondaryButton",
