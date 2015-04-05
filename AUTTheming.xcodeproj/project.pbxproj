@@ -184,7 +184,6 @@
 		3A79EC641AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A79EC6B1AC9147E000CCC01 /* AUTTheming-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AUTTheming-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A79EC711AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A93F5701ACBB092001E7AD2 /* AUTThemingPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUTThemingPrivate.h; sourceTree = "<group>"; };
 		3AA7961D1AC919F300FD4320 /* NSDictionary+IntersectingKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+IntersectingKeys.h"; path = "../NSDictionary+IntersectingKeys.h"; sourceTree = "<group>"; };
 		3AA7961E1AC919F300FD4320 /* NSDictionary+IntersectingKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+IntersectingKeys.m"; path = "../NSDictionary+IntersectingKeys.m"; sourceTree = "<group>"; };
 		3AA7961F1AC919F300FD4320 /* NSObject+ThemeClassAppliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliers.h"; sourceTree = "<group>"; };
@@ -424,7 +423,6 @@
 				3A555A2C1ACD035200726EC9 /* UIColor-HTMLColors */,
 				3AA7969C1AC9290100FD4320 /* RuntimeExtensions */,
 				3A79EC631AC9147E000CCC01 /* Supporting Files */,
-				3A93F5701ACBB092001E7AD2 /* AUTThemingPrivate.h */,
 			);
 			path = AUTTheming;
 			sourceTree = "<group>";
