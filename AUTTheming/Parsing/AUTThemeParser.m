@@ -129,7 +129,7 @@
             constantParsedFromRawSymbol:rawSymbol
             rawValue:rawValue
             error:error];
-        parsedConstants[constant.key] = constant;
+        parsedConstants[constant.name] = constant;
     };
     return [parsedConstants copy];
 }
@@ -146,7 +146,7 @@
     // If the rawValue is not a string, it is not a reference, so return as-is
     if (![rawValue isKindOfClass:NSString.class]) {
         return [[AUTThemeConstant alloc]
-            initWithKey:symbol
+            initWithName:symbol
             rawValue:rawValue
             mappedValue:nil];
     }
@@ -162,7 +162,7 @@
     }
     
     return [[AUTThemeConstant alloc]
-        initWithKey:symbol
+        initWithName:symbol
         rawValue:rawValue
         mappedValue:reference];
 }
@@ -237,12 +237,12 @@
             }
             // This is an invalid reference, so remove it from the resolved
             // constants
-            [resolvedConstants removeObjectForKey:parsedConstant.key];
+            [resolvedConstants removeObjectForKey:parsedConstant.name];
             if (error) {
                 NSString *localizedDescription = [NSString stringWithFormat:
                     @"The named constant value for property '%@' ('%@') was "
                         "not found as a registered constant",
-                    parsedConstant.key,
+                    parsedConstant.name,
                     parsedConstant.rawValue];
                 *error = [NSError
                     errorWithDomain:AUTThemingErrorDomain
@@ -262,12 +262,12 @@
             }
             // This is an invalid reference, so remove it from the resolved
             // constants
-            [resolvedConstants removeObjectForKey:parsedConstant.key];
+            [resolvedConstants removeObjectForKey:parsedConstant.name];
             if (error) {
                 NSString *localizedDescription = [NSString stringWithFormat:
                     @"The named constant value for property '%@' ('%@') was "
                         "not found as a registered constant",
-                    parsedConstant.key,
+                    parsedConstant.name,
                     parsedConstant.rawValue];
                 *error = [NSError
                     errorWithDomain:AUTThemingErrorDomain

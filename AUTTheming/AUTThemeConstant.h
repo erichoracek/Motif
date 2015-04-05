@@ -14,9 +14,9 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 @interface AUTThemeConstant : NSObject
 
 /**
- The constant key, as specified in the JSON theme file.
+ The constant name, as specified in the JSON theme file.
  */
-@property (nonatomic, copy, readonly) NSString *key;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /**
  The value that the theme constant is referencing.

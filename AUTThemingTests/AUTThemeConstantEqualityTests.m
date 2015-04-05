@@ -22,11 +22,11 @@
     NSString *mappedValue = @"mappedValue";
     
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue];
     
@@ -41,11 +41,11 @@
     NSString *mappedValue = @"mappedValue";
     
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key1
+        initWithName:key1
         rawValue:rawValue
         mappedValue:mappedValue];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key2
+        initWithName:key2
         rawValue:rawValue
         mappedValue:mappedValue];
     
@@ -60,11 +60,11 @@
     NSString *mappedValue = @"mappedValue";
     
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue1
         mappedValue:mappedValue];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue2
         mappedValue:mappedValue];
     
@@ -79,11 +79,11 @@
     NSString *mappedValue2 = @"mappedValue2";
     
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue1];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue2];
     

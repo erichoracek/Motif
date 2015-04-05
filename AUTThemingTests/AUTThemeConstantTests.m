@@ -44,7 +44,7 @@
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id constantValue = [theme constantValueForKey:constant.aut_symbol];
+    id constantValue = [theme constantValueForName:constant.aut_symbol];
     
     XCTAssertEqualObjects(value, constantValue, @"Constant value for key from theme must be equivalent to constant value in attributes dictionary");
 }
@@ -64,8 +64,8 @@
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
-    id constant2Value = [theme constantValueForKey:constant2.aut_symbol];
+    id constant1Value = [theme constantValueForName:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForName:constant2.aut_symbol];
     
     XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
     XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
@@ -88,9 +88,9 @@
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
-    id constant2Value = [theme constantValueForKey:constant3.aut_symbol];
-    id constant3Value = [theme constantValueForKey:constant2.aut_symbol];
+    id constant1Value = [theme constantValueForName:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForName:constant3.aut_symbol];
+    id constant3Value = [theme constantValueForName:constant2.aut_symbol];
     
     XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
     XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
@@ -114,8 +114,8 @@
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    id constant1Value = [theme constantValueForKey:constant1.aut_symbol];
-    id constant2Value = [theme constantValueForKey:constant2.aut_symbol];
+    id constant1Value = [theme constantValueForName:constant1.aut_symbol];
+    id constant2Value = [theme constantValueForName:constant2.aut_symbol];
     
     XCTAssertEqualObjects(constant1Value, value, @"Constant 1 must have a value of 'value'");
     XCTAssertEqualObjects(constant2Value, value, @"Constant 2 must have a value of 'value'");
@@ -134,7 +134,7 @@
         error:&error];
     XCTAssert(error, @"Error must be non-nil");
     
-    id constantValue = [theme constantValueForKey:constant];
+    id constantValue = [theme constantValueForName:constant];
     
     XCTAssertNil(constantValue, @"Constant must have a value of 'value'");
 }
@@ -156,7 +156,7 @@
         error:&error];
     XCTAssertNotNil(error, @"Must have error when constant with duplicate name is registered");
     
-    id constantValue = [theme constantValueForKey:constant.aut_symbol];
+    id constantValue = [theme constantValueForName:constant.aut_symbol];
     
     XCTAssertNotNil(constantValue, @"Constant must exist when registered");
     XCTAssertEqualObjects(value2, constantValue, @"Value must match second registered constant");

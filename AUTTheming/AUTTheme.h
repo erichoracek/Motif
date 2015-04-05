@@ -111,11 +111,11 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 /**
  The constant value from the theme collection for the specified key.
  
- @param key The key for the desired constant.
+ @param name The name of the desired constant.
  
- @return The constant value for the specified key, or if there is none, `nil`.
+ @return The constant value for the specified name, or if there is none, `nil`.
  */
-- (id)constantValueForKey:(NSString *)key;
+- (aut_nullable id)constantValueForName:(NSString *)name;
 
 /**
  The class object for the specified class name.
@@ -124,7 +124,7 @@ AUT_NS_ASSUME_NONNULL_BEGIN
  
  @return The class for the specified name, or if there is none, `nil`.
  */
-- (AUTThemeClass *)classForName:(NSString *)name;
+- (aut_nullable AUTThemeClass *)classForName:(NSString *)name;
 
 /**
  Applies a theme class with the specified name to an object.

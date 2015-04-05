@@ -15,7 +15,7 @@ AUT_NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a new instance of an AUTThemeConstant.
  */
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(aut_nullable id)mappedValue;
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(aut_nullable id)mappedValue;
 
 /**
  The raw value of the constant, directly deserialized from the JSON file.

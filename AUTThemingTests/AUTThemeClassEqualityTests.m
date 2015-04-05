@@ -23,11 +23,11 @@
     NSString *rawValue = @"rawValue";
     NSString *mappedValue = @"mappedValue";
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue];
     
@@ -63,11 +63,11 @@
     NSString *mappedValue1 = @"mappedValue1";
     NSString *mappedValue2 = @"mappedValue2";
     AUTThemeConstant *constant1 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue1];
     AUTThemeConstant *constant2 = [[AUTThemeConstant alloc]
-        initWithKey:key
+        initWithName:key
         rawValue:rawValue
         mappedValue:mappedValue2];
     

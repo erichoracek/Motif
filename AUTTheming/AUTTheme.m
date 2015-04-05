@@ -186,10 +186,10 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
     return JSONObject;
 }
 
-- (id)constantValueForKey:(NSString *)key {
-    NSParameterAssert(key);
+- (id)constantValueForName:(NSString *)name {
+    NSParameterAssert(name);
     
-    return [self constantForKey:key].value;
+    return [self constantForName:name].value;
 }
 
 - (AUTThemeClass *)classForName:(NSString *)name {
@@ -248,8 +248,8 @@ NSString * const AUTThemingErrorDomain = @"com.automatic.AUTTheming";
 
 #pragma mark Constants
 
-- (AUTThemeConstant *)constantForKey:(NSString *)key {
-    return self.constants[key];
+- (AUTThemeConstant *)constantForName:(NSString *)name {
+    return self.constants[name];
 }
 
 - (NSDictionary *)constants {

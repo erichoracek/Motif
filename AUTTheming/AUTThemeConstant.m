@@ -24,14 +24,14 @@
 }
 
 - (NSUInteger)hash {
-    return (self.key.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
+    return (self.name.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
 }
 
 - (NSString *)description {
     return [NSString stringWithFormat:
         @"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
         NSStringFromClass(self.class),
-        NSStringFromSelector(@selector(key)), self.key,
+        NSStringFromSelector(@selector(name)), self.name,
         NSStringFromSelector(@selector(rawValue)), self.rawValue,
         NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
         NSStringFromSelector(@selector(value)), self.value];
@@ -57,12 +57,12 @@
 
 #pragma mark Private
 
-- (instancetype)initWithKey:(NSString *)key rawValue:(id)rawValue mappedValue:(id)mappedValue {
-    NSParameterAssert(key);
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(aut_nullable id)mappedValue {
+    NSParameterAssert(name);
     NSParameterAssert(rawValue);
     self = [super init];
     if (self) {
-        _key = key;
+        _name = name;
         _rawValue = rawValue;
         _mappedValue = mappedValue;
     }
@@ -104,9 +104,9 @@
     if (!themeConstant) {
         return NO;
     }
-    BOOL haveEqualKeys = (
-        (!self.key && !themeConstant.key)
-        || [self.key isEqualToString:themeConstant.key]
+    BOOL haveEqualNames = (
+        (!self.name && !themeConstant.name)
+        || [self.name isEqualToString:themeConstant.name]
     );
     BOOL haveEqualRawValues = (
         (!self.rawValue && !themeConstant.rawValue)
@@ -117,7 +117,7 @@
         || [self.mappedValue isEqual:themeConstant.mappedValue]
     );
     return (
-        haveEqualKeys
+        haveEqualNames
         && haveEqualRawValues
         && haveEqualMappedValues
     );
