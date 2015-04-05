@@ -18,6 +18,10 @@ AUT_NS_ASSUME_NONNULL_BEGIN
  themed to have a new theme reapplied to them by simply changing the theme
  property on the dynamic theme applier that initially applied their theme class.
  
+ When using a AUTDynamicThemeApplier, you should not use the 
+ applyClassWithName:toObject: method on AUTTheme to apply theme classes to
+ objects. Instead, use the method on AUTDynamicThemeApplier.
+ 
  If the `theme` property is changed on an `AUTDynamicThemeApplier`, it reapplies
  the theme classes that were previously applied by it with classes from the new
  theme. If some classes are unavailable in the new theme, they are ignored, and
