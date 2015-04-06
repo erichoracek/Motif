@@ -44,7 +44,6 @@ To create the above styled buttons, we've written the following theme file:
 {
     "$RedColor": "#f93d38",
     "$BlueColor": "#50b5ed",
-    "$WhiteColor": "#f1efeb",
     "$H5FontSize": 16,
     "$RegularFontName": "AvenirNext-Regular",
     ".Button": {
@@ -60,10 +59,7 @@ To create the above styled buttons, we've written the following theme file:
         "_superclass": ".Button",
         "textColor": "$RedColor",
         "borderColor": "$RedColor"
-    },
-    ".ContentBackground": {
-        "backgroundColor": "$WhiteColor"
-    },
+    }
 }
 ```
 
@@ -76,7 +72,6 @@ NSAssert(error != nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:@"Button" toObject:saveButton];
 [theme applyClassWithName:@"DestructiveButton" toObject:deleteButton];
-[theme applyClassWithName:@"ContentBackground" toObject:backgroundView];
 ```
 
 ## Where the magic happens:
@@ -97,13 +92,6 @@ NSAssert(error != nil, @"Error loading theme %@", error);
         valueTransformerName:MTFColorFromStringTransformerName
         applier:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
-        }];
-    
-    [self
-        mtf_registerThemeProperty:@"backgroundColor"
-        valueTransformerName:MTFColorFromStringTransformerName
-        applier:^(UIColor *color, UIView *view) {
-            view.backgroundColor = color;
         }];
 }
 ```
