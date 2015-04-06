@@ -67,7 +67,7 @@ To create the above styled buttons, we've written the following theme file:
 
 ```objective-c
 NSError *error;
-MTFTheme *theme = [MTFTheme themeWithThemeNamed:@"Theme" error:&error];
+MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:@"Theme" error:&error];
 NSAssert(error != nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:@"Button" toObject:saveButton];
