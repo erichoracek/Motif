@@ -6,8 +6,8 @@ _A lightweight and customizable CSS-style framework for iOS._
 
 ## What can it do?
 
-<!-- <img src="README/brightness.gif" alt="Brightness Theming" height="667" width="375" /> -->
-<img src="https://github.com/erichoracek/Motif/blob/master/README/brightness.gif?raw=true" alt="Brightness Theming" height="667" width="375" />
+<!-- ![Brightness Theming](README/brightness.gif) -->
+![Brightness Theming](https://github.com/erichoracek/Motif/blob/master/README/brightness.gif?raw=true)
 
 Dynamically change your app's appearance from a user setting, as an premium feature, or even from the screen's brightness like Tweetbot or Apple Maps (pictured).
 
