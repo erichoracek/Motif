@@ -4,33 +4,52 @@
 
 _A lightweight and customizable CSS-style framework for iOS._
 
+## What can it do?
+
+<!-- <img src="README/brightness.gif" alt="Brightness Theming" height="667" width="375" /> -->
+<img src="https://github.com/erichoracek/Motif/blob/master/README/brightness.gif?raw=true" alt="Brightness Theming" height="667" width="375" />
+
+Dynamically change your app's appearance from a user setting, as an premium feature, or even from the screen's brightness like Tweetbot or Apple Maps (pictured).
+
 ## Why should I use it?
 
-You have an app. Maybe even a family of apps. You know about CSS, which enables web developers to write a set of declarative rules that style elements throughout their site, creating reusable interface components that are entirely divorced from content or layout. You'll admit that you're a little jealous that things aren't quite the same on iOS.
+You have an app. Maybe even a family of apps. You know about CSS, which enables web developers to write a set of declarative classes to style elements throughout their site, creating composable interface definitions that are entirely divorced from content or layout. You'll admit that you're a little jealous that things aren't quite the same on iOS.
 
-Maybe you have a `MyAppStyle` singleton that vends styled objects, which is a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a subset of supported APIs, and declare them in a really long method in a `Style` singleton which defines a convoluted set of rules for your entire app. Maybe you've even started to subclass UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
+To style your app, maybe you have a `MyAppStyle` singleton that vends styled interface components that's a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a frustratingly small subset of the appearance APIs. Maybe you've started to subclass some UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
 
 Well, things about about to change. Take a look at the example below to see what `Motif` can do for you:
 
-## Example
+## An example
 
-Alternatively, you can clone this repo and follow along to a similar example in the `ButtonsExample` target within `Motif.xcworkspace`.
+Here's a simple example of how you'd create a pair of styled buttons with Motif. To follow along, you can either continue reading below or clone this repo and run the `Buttons Example` target within `Motif.xcworkspace`.
 
 ### The output:
 
 <!-- <img src="README/buttons.png" alt="Horizontal Layout" height="91" width="339" /> -->
 <img src="https://github.com/erichoracek/Motif/blob/master/README/Buttons.png?raw=true" alt="Horizontal Layout" height="91" width="339" />
 
+Your designer just sent over a spec outlining the style of a couple buttons in your app. Since you'll be using Motif to create these components, that means it's time to create a theme file.
+
+A theme file in Motif is just a simple JSON dictionary. It can have two types of key/value pairs: _classes_ or _constants_:
+
+- Classes: Denoted by a leading period (e.g. `.Button`), a class is a collection of named properties that correspond to values. Property values can be anything that can be represented in JSON, or alternatively references to other classes or constants.
+
+- Constants: Denoted by a leading dollar sign (e.g. `$RedColor`), a constant is a named reference to a value. Its value can be anything that can be represented in JSON, or alternatively a reference to a class or constant.
+
+To create the above styled buttons, we've written the following theme file:
+
 ### `Theme.json`:
 
 ```javascript
 {
-    "$WhiteColor": "#f1efeb",
     "$RedColor": "#f93d38",
     "$BlueColor": "#50b5ed",
+    "$WhiteColor": "#f1efeb",
     "$H5FontSize": 16,
     "$RegularFontName": "AvenirNext-Regular",
     ".Button": {
+        "textColor": "$BlueColor",
+        "borderColor": "$BlueColor",
         "fontName": "$RegularFontName",
         "fontSize": "$H5FontSize",
         "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
@@ -42,11 +61,6 @@ Alternatively, you can clone this repo and follow along to a similar example in 
         "textColor": "$RedColor",
         "borderColor": "$RedColor"
     },
-    ".PrimaryButton": {
-        "_superclass": ".Button",
-        "textColor": "$BlueColor",
-        "borderColor": "$BlueColor"
-    },
     ".ContentBackground": {
         "backgroundColor": "$WhiteColor"
     },
@@ -56,18 +70,13 @@ Alternatively, you can clone this repo and follow along to a similar example in 
 ### `ButtonsViewController.m`:
 
 ```objective-c
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+NSError *error;
+MTFTheme *theme = [MTFTheme themeWithThemeNamed:@"Theme" error:&error];
+NSAssert(error != nil, @"Error loading theme %@", error);
 
-    NSError *error;
-    MTFTheme *theme = [MTFTheme themeWithThemeNamed:@"Theme" error:&error];
-    NSAssert(!error, @"Error loading theme %@", error);
-    
-    [theme applyClassWithName:@"PrimaryButton" toObject:self.saveButton];
-    [theme applyClassWithName:@"DestructiveButton" toObject:self.deleteButton];
-    [theme applyClassWithName:@"ContentBackground" toObject:self.view];
-}
+[theme applyClassWithName:@"Button" toObject:saveButton];
+[theme applyClassWithName:@"DestructiveButton" toObject:deleteButton];
+[theme applyClassWithName:@"ContentBackground" toObject:backgroundView];
 ```
 
 ## Where the magic happens:
