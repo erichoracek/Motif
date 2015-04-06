@@ -3,11 +3,11 @@
 //  SwiftButtonsExample
 //
 //  Created by Eric Horacek on 3/14/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 import UIKit
-import AUTTheming
+import Motif
 
 class ViewController: UIViewController {
     
@@ -38,9 +38,9 @@ class ViewController: UIViewController {
     
     // MARK: ViewController
     
-    let theme: AUTTheme
+    let theme: MTFTheme
     
-    init(theme: AUTTheme) {
+    init(theme: MTFTheme) {
         self.theme = theme
         super.init(nibName: nil, bundle: nil)
     }

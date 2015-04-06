@@ -3,11 +3,11 @@
 //  SwiftButtonsExample
 //
 //  Created by Eric Horacek on 3/14/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 import UIKit
-import AUTTheming
+import Motif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: AppDelegate
     
-    let theme = AUTTheme(fromJSONThemeNamed: ThemeName, error: nil)
+    let theme = MTFTheme(fromJSONThemeNamed: ThemeName, error: nil)
     
 }

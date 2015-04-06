@@ -1,0 +1,1029 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C84A1AD206FF00C420F2 /* MTFDynamicThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */; };
+		3A02C84C1AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C84D1AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C84E1AD206FF00C420F2 /* MTFReverseTransformedValueClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C84F1AD206FF00C420F2 /* MTFTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8161AD206FF00C420F2 /* MTFTheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8171AD206FF00C420F2 /* MTFTheme.m */; };
+		3A02C8511AD206FF00C420F2 /* MTFTheme_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8181AD206FF00C420F2 /* MTFTheme_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8191AD206FF00C420F2 /* MTFThemeClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8531AD206FF00C420F2 /* MTFThemeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81A1AD206FF00C420F2 /* MTFThemeClass.m */; };
+		3A02C8541AD206FF00C420F2 /* MTFThemeClass_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81B1AD206FF00C420F2 /* MTFThemeClass_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8551AD206FF00C420F2 /* MTFThemeClassApplicable.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81C1AD206FF00C420F2 /* MTFThemeClassApplicable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81D1AD206FF00C420F2 /* MTFThemeClassApplicable.m */; };
+		3A02C8571AD206FF00C420F2 /* MTFThemeConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8581AD206FF00C420F2 /* MTFThemeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */; };
+		3A02C8591AD206FF00C420F2 /* MTFThemeConstant_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C85A1AD206FF00C420F2 /* MTFThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C85C1AD206FF00C420F2 /* MTFThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */; };
+		3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C85E1AD206FF00C420F2 /* MTFThemeSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8251AD206FF00C420F2 /* MTFThemeSymbolReference.m */; };
+		3A02C85F1AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8261AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8601AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8271AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m */; };
+		3A02C8611AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8281AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8621AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8291AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m */; };
+		3A02C8631AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */; };
+		3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8671AD206FF00C420F2 /* NSObject+ThemeClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */; };
+		3A02C8681AD206FF00C420F2 /* NSString+ThemeSymbols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8691AD206FF00C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
+		3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C86B1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */; };
+		3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C86D1AD206FF00C420F2 /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */; };
+		3A02C86E1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */; };
+		3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8711AD206FF00C420F2 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
+		3A02C8721AD206FF00C420F2 /* MTFColorFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8731AD206FF00C420F2 /* MTFColorFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */; };
+		3A02C8741AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8751AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */; };
+		3A02C8761AD206FF00C420F2 /* MTFPointFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8771AD206FF00C420F2 /* MTFPointFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */; };
+		3A02C8781AD206FF00C420F2 /* MTFRectFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8791AD206FF00C420F2 /* MTFRectFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */; };
+		3A02C87A1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C87B1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */; };
+		3A02C87C1AD206FF00C420F2 /* MTFSizeFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C87D1AD206FF00C420F2 /* MTFSizeFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */; };
+		3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C87F1AD206FF00C420F2 /* UIColor+HTMLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */; };
+		3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8811AD2072500C420F2 /* MTFDynamicThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */; };
+		3A02C8831AD2072500C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8841AD2072500C420F2 /* MTFObjCTypeValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8851AD2072500C420F2 /* MTFReverseTransformedValueClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8861AD2072500C420F2 /* MTFTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8161AD206FF00C420F2 /* MTFTheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8871AD2072500C420F2 /* MTFTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8171AD206FF00C420F2 /* MTFTheme.m */; };
+		3A02C8881AD2072500C420F2 /* MTFTheme_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8181AD206FF00C420F2 /* MTFTheme_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8191AD206FF00C420F2 /* MTFThemeClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C88A1AD2072500C420F2 /* MTFThemeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81A1AD206FF00C420F2 /* MTFThemeClass.m */; };
+		3A02C88B1AD2072500C420F2 /* MTFThemeClass_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81B1AD206FF00C420F2 /* MTFThemeClass_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C88C1AD2072500C420F2 /* MTFThemeClassApplicable.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81C1AD206FF00C420F2 /* MTFThemeClassApplicable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C88D1AD2072500C420F2 /* MTFThemeClassApplicable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81D1AD206FF00C420F2 /* MTFThemeClassApplicable.m */; };
+		3A02C88E1AD2072500C420F2 /* MTFThemeConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C88F1AD2072500C420F2 /* MTFThemeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */; };
+		3A02C8901AD2072500C420F2 /* MTFThemeConstant_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8911AD2072500C420F2 /* MTFThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8921AD2072500C420F2 /* MTFThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8931AD2072500C420F2 /* MTFThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */; };
+		3A02C8941AD2072500C420F2 /* MTFThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8951AD2072600C420F2 /* MTFThemeSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8251AD206FF00C420F2 /* MTFThemeSymbolReference.m */; };
+		3A02C8961AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8261AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8971AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8271AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m */; };
+		3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8281AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8991AD2072600C420F2 /* NSDictionary+IntersectingKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8291AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m */; };
+		3A02C89A1AD2072600C420F2 /* NSObject+ThemeClassAppliers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C89B1AD2072600C420F2 /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */; };
+		3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C89D1AD2072600C420F2 /* NSObject+ThemeClassName.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C89E1AD2072600C420F2 /* NSObject+ThemeClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */; };
+		3A02C89F1AD2072600C420F2 /* NSString+ThemeSymbols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8A01AD2072600C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
+		3A02C8A11AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; };
+		3A02C8A21AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */; };
+		3A02C8A31AD2072600C420F2 /* NSURL+ThemeNaming.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8A41AD2072600C420F2 /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */; };
+		3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */; };
+		3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A179DA71AC9483900BD598C /* Motif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* Motif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */; };
+		3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */; };
+		3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
+		3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
+		3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */; };
+		3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
+		3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */; };
+		3A406CCB1AC9B87600615428 /* MTFThemeClassEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m */; };
+		3A406CCC1AC9B87600615428 /* MTFThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */; };
+		3A406CCD1AC9B87600615428 /* MTFThemeLoadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */; };
+		3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
+		3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+		3A406CDE1AC9B87600615428 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
+		3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
+		3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
+		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
+		3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A79EC601AC9147E000CCC01 /* Motif.framework */; };
+		3AA796641AC919FB00FD4320 /* Motif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* Motif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */; };
+		3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */; };
+		3AA7968E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m */; };
+		3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */; };
+		3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */; };
+		3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
+		3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
+		3AA796931AC91D8400FD4320 /* MTFThemeLoadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */; };
+		3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
+		3AA796951AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */; };
+		3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */; };
+		3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */; };
+		3AA796981AC91D8400FD4320 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
+		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
+		3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
+		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A406CEB1AC9B9B000615428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A79EC571AC9147E000CCC01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A179D8D1AC9483900BD598C;
+			remoteInfo = "Motif-OSX";
+		};
+		3A79EC6D1AC9147E000CCC01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A79EC571AC9147E000CCC01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A79EC5F1AC9147E000CCC01;
+			remoteInfo = Motif-iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFBackwardsCompatableNullability.h; sourceTree = "<group>"; };
+		3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFDynamicThemeApplier.h; sourceTree = "<group>"; };
+		3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicThemeApplier.m; sourceTree = "<group>"; };
+		3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFDynamicThemeApplier_Private.h; sourceTree = "<group>"; };
+		3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFObjCTypeValueTransformer.h; sourceTree = "<group>"; };
+		3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFReverseTransformedValueClass.h; sourceTree = "<group>"; };
+		3A02C8161AD206FF00C420F2 /* MTFTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFTheme.h; sourceTree = "<group>"; };
+		3A02C8171AD206FF00C420F2 /* MTFTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFTheme.m; sourceTree = "<group>"; };
+		3A02C8181AD206FF00C420F2 /* MTFTheme_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFTheme_Private.h; sourceTree = "<group>"; };
+		3A02C8191AD206FF00C420F2 /* MTFThemeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClass.h; sourceTree = "<group>"; };
+		3A02C81A1AD206FF00C420F2 /* MTFThemeClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClass.m; sourceTree = "<group>"; };
+		3A02C81B1AD206FF00C420F2 /* MTFThemeClass_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClass_Private.h; sourceTree = "<group>"; };
+		3A02C81C1AD206FF00C420F2 /* MTFThemeClassApplicable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClassApplicable.h; sourceTree = "<group>"; };
+		3A02C81D1AD206FF00C420F2 /* MTFThemeClassApplicable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassApplicable.m; sourceTree = "<group>"; };
+		3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeConstant.h; sourceTree = "<group>"; };
+		3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeConstant.m; sourceTree = "<group>"; };
+		3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeConstant_Private.h; sourceTree = "<group>"; };
+		3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeHierarchy.h; sourceTree = "<group>"; };
+		3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeParser.h; sourceTree = "<group>"; };
+		3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeParser.m; sourceTree = "<group>"; };
+		3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeSymbolReference.h; sourceTree = "<group>"; };
+		3A02C8251AD206FF00C420F2 /* MTFThemeSymbolReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeSymbolReference.m; sourceTree = "<group>"; };
+		3A02C8261AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryValueValidation.h"; sourceTree = "<group>"; };
+		3A02C8271AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryValueValidation.m"; sourceTree = "<group>"; };
+		3A02C8281AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+IntersectingKeys.h"; sourceTree = "<group>"; };
+		3A02C8291AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+IntersectingKeys.m"; sourceTree = "<group>"; };
+		3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliers.h"; sourceTree = "<group>"; };
+		3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClassAppliers.m"; sourceTree = "<group>"; };
+		3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliersPrivate.h"; sourceTree = "<group>"; };
+		3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassName.h"; sourceTree = "<group>"; };
+		3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClassName.m"; sourceTree = "<group>"; };
+		3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ThemeSymbols.h"; sourceTree = "<group>"; };
+		3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ThemeSymbols.m"; sourceTree = "<group>"; };
+		3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+LastPathComponentWithoutExtension.h"; sourceTree = "<group>"; };
+		3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+LastPathComponentWithoutExtension.m"; sourceTree = "<group>"; };
+		3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ThemeNaming.h"; sourceTree = "<group>"; };
+		3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ThemeNaming.m"; sourceTree = "<group>"; };
+		3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+TypeFiltering.h"; sourceTree = "<group>"; };
+		3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+TypeFiltering.m"; sourceTree = "<group>"; };
+		3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFRuntimeExtensions.h; sourceTree = "<group>"; };
+		3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFRuntimeExtensions.m; sourceTree = "<group>"; };
+		3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFColorFromStringTransformer.h; sourceTree = "<group>"; };
+		3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFColorFromStringTransformer.m; sourceTree = "<group>"; };
+		3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFEdgeInsetsFromStringTransformer.h; sourceTree = "<group>"; };
+		3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFEdgeInsetsFromStringTransformer.m; sourceTree = "<group>"; };
+		3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFPointFromStringTransformer.h; sourceTree = "<group>"; };
+		3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFPointFromStringTransformer.m; sourceTree = "<group>"; };
+		3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFRectFromStringTransformer.h; sourceTree = "<group>"; };
+		3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFRectFromStringTransformer.m; sourceTree = "<group>"; };
+		3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFScreenBrightnessThemeApplier.h; sourceTree = "<group>"; };
+		3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFScreenBrightnessThemeApplier.m; sourceTree = "<group>"; };
+		3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFSizeFromStringTransformer.h; sourceTree = "<group>"; };
+		3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFSizeFromStringTransformer.m; sourceTree = "<group>"; };
+		3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HTMLColors.h"; sourceTree = "<group>"; };
+		3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HTMLColors.m"; sourceTree = "<group>"; };
+		3A179DC71AC9483900BD598C /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A179E221AC9AE6000BD598C /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		3A179E241AC9AE6000BD598C /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		3A179E251AC9AE6000BD598C /* Profile.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Profile.xcconfig; sourceTree = "<group>"; };
+		3A179E261AC9AE6000BD598C /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		3A179E271AC9AE6000BD598C /* Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
+		3A179E291AC9AE6000BD598C /* Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Application.xcconfig; sourceTree = "<group>"; };
+		3A179E2A1AC9AE6000BD598C /* Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
+		3A179E2B1AC9AE6000BD598C /* StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = StaticLibrary.xcconfig; sourceTree = "<group>"; };
+		3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS-Application.xcconfig"; sourceTree = "<group>"; };
+		3A179E2E1AC9AE6000BD598C /* iOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
+		3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		3A179E301AC9AE6000BD598C /* iOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Mac-Application.xcconfig"; sourceTree = "<group>"; };
+		3A179E331AC9AE6000BD598C /* Mac-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Mac-Base.xcconfig"; sourceTree = "<group>"; };
+		3A179E341AC9AE6000BD598C /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
+		3A179E351AC9AE6000BD598C /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
+		3A179E361AC9AE6000BD598C /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A79EC601AC9147E000CCC01 /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A79EC641AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A79EC711AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AA7964F1AC919FB00FD4320 /* Motif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motif.h; sourceTree = "<group>"; };
+		3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFDynamicThemeApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeClassApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA7967E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeClassEqualityTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeClassInheritanceTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeClassTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeConstantEqualityTests.m; sourceTree = "<group>"; };
+		3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeConstantTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeLoadingTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeNameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertiesApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertyApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
+		3AA796881AC91D8400FD4320 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
+		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
+		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
+		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A179DA31AC9483900BD598C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A406CCE1AC9B87600615428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC5C1AC9147E000CCC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC681AC9147E000CCC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A02C80F1AD206FF00C420F2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */,
+				3A02C8161AD206FF00C420F2 /* MTFTheme.h */,
+				3A02C8181AD206FF00C420F2 /* MTFTheme_Private.h */,
+				3A02C8171AD206FF00C420F2 /* MTFTheme.m */,
+				3A02C8191AD206FF00C420F2 /* MTFThemeClass.h */,
+				3A02C81B1AD206FF00C420F2 /* MTFThemeClass_Private.h */,
+				3A02C81A1AD206FF00C420F2 /* MTFThemeClass.m */,
+				3A02C81C1AD206FF00C420F2 /* MTFThemeClassApplicable.h */,
+				3A02C81D1AD206FF00C420F2 /* MTFThemeClassApplicable.m */,
+				3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */,
+				3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */,
+				3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */,
+				3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */,
+				3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */,
+				3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */,
+				3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */,
+				3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */,
+				3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */,
+				3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */,
+				3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */,
+				3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */,
+				3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */,
+				3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */,
+				3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */,
+				3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */,
+				3A02C8251AD206FF00C420F2 /* MTFThemeSymbolReference.m */,
+				3A02C8261AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h */,
+				3A02C8271AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m */,
+				3A02C8281AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h */,
+				3A02C8291AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m */,
+				3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */,
+				3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */,
+				3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */,
+				3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */,
+				3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */,
+				3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */,
+				3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */,
+				3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */,
+				3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3A02C8371AD206FF00C420F2 /* Objective-C Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */,
+				3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */,
+			);
+			path = "Objective-C Runtime";
+			sourceTree = "<group>";
+		};
+		3A02C83A1AD206FF00C420F2 /* iOS Support */ = {
+			isa = PBXGroup;
+			children = (
+				3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */,
+				3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */,
+				3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */,
+				3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */,
+				3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */,
+				3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */,
+				3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */,
+				3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */,
+				3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */,
+				3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */,
+				3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */,
+				3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */,
+				3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */,
+				3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */,
+			);
+			path = "iOS Support";
+			sourceTree = "<group>";
+		};
+		3A179E201AC9AE6000BD598C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E211AC9AE6000BD598C /* Base */,
+				3A179E2C1AC9AE6000BD598C /* iOS */,
+				3A179E311AC9AE6000BD598C /* Mac OS X */,
+			);
+			name = Configuration;
+			path = Carthage/Checkouts/xcconfigs;
+			sourceTree = "<group>";
+		};
+		3A179E211AC9AE6000BD598C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E221AC9AE6000BD598C /* Common.xcconfig */,
+				3A179E231AC9AE6000BD598C /* Configurations */,
+				3A179E281AC9AE6000BD598C /* Targets */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3A179E231AC9AE6000BD598C /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E241AC9AE6000BD598C /* Debug.xcconfig */,
+				3A179E251AC9AE6000BD598C /* Profile.xcconfig */,
+				3A179E261AC9AE6000BD598C /* Release.xcconfig */,
+				3A179E271AC9AE6000BD598C /* Test.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		3A179E281AC9AE6000BD598C /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E291AC9AE6000BD598C /* Application.xcconfig */,
+				3A179E2A1AC9AE6000BD598C /* Framework.xcconfig */,
+				3A179E2B1AC9AE6000BD598C /* StaticLibrary.xcconfig */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		3A179E2C1AC9AE6000BD598C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */,
+				3A179E2E1AC9AE6000BD598C /* iOS-Base.xcconfig */,
+				3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */,
+				3A179E301AC9AE6000BD598C /* iOS-StaticLibrary.xcconfig */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		3A179E311AC9AE6000BD598C /* Mac OS X */ = {
+			isa = PBXGroup;
+			children = (
+				3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */,
+				3A179E331AC9AE6000BD598C /* Mac-Base.xcconfig */,
+				3A179E341AC9AE6000BD598C /* Mac-DynamicLibrary.xcconfig */,
+				3A179E351AC9AE6000BD598C /* Mac-Framework.xcconfig */,
+				3A179E361AC9AE6000BD598C /* Mac-StaticLibrary.xcconfig */,
+			);
+			path = "Mac OS X";
+			sourceTree = "<group>";
+		};
+		3A79EC561AC9147E000CCC01 = {
+			isa = PBXGroup;
+			children = (
+				3A79EC621AC9147E000CCC01 /* Motif */,
+				3A79EC6F1AC9147E000CCC01 /* MotifTests */,
+				3A179E201AC9AE6000BD598C /* Configuration */,
+				3A79EC611AC9147E000CCC01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A79EC611AC9147E000CCC01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A79EC601AC9147E000CCC01 /* Motif.framework */,
+				3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */,
+				3A179DC71AC9483900BD598C /* Motif.framework */,
+				3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A79EC621AC9147E000CCC01 /* Motif */ = {
+			isa = PBXGroup;
+			children = (
+				3AA7964F1AC919FB00FD4320 /* Motif.h */,
+				3A02C80F1AD206FF00C420F2 /* Core */,
+				3A02C8371AD206FF00C420F2 /* Objective-C Runtime */,
+				3A02C83A1AD206FF00C420F2 /* iOS Support */,
+				3A79EC631AC9147E000CCC01 /* Supporting Files */,
+			);
+			path = Motif;
+			sourceTree = SOURCE_ROOT;
+		};
+		3A79EC631AC9147E000CCC01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A79EC641AC9147E000CCC01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A79EC6F1AC9147E000CCC01 /* MotifTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */,
+				3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */,
+				3AA7967E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m */,
+				3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */,
+				3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */,
+				3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */,
+				3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */,
+				3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */,
+				3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */,
+				3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */,
+				3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */,
+				3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */,
+				3AA796881AC91D8400FD4320 /* Basic.json */,
+				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
+				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
+				3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */,
+				3A79EC701AC9147E000CCC01 /* Supporting Files */,
+			);
+			path = MotifTests;
+			sourceTree = "<group>";
+		};
+		3A79EC701AC9147E000CCC01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A79EC711AC9147E000CCC01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3A179DA41AC9483900BD598C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A02C8911AD2072500C420F2 /* MTFThemeHierarchy.h in Headers */,
+				3A02C88E1AD2072500C420F2 /* MTFThemeConstant.h in Headers */,
+				3A02C89F1AD2072600C420F2 /* NSString+ThemeSymbols.h in Headers */,
+				3A02C8831AD2072500C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
+				3A179DA71AC9483900BD598C /* Motif.h in Headers */,
+				3A02C8851AD2072500C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
+				3A02C89D1AD2072600C420F2 /* NSObject+ThemeClassName.h in Headers */,
+				3A02C8961AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */,
+				3A02C88B1AD2072500C420F2 /* MTFThemeClass_Private.h in Headers */,
+				3A02C89A1AD2072600C420F2 /* NSObject+ThemeClassAppliers.h in Headers */,
+				3A02C8A11AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */,
+				3A02C8861AD2072500C420F2 /* MTFTheme.h in Headers */,
+				3A02C8901AD2072500C420F2 /* MTFThemeConstant_Private.h in Headers */,
+				3A02C8881AD2072500C420F2 /* MTFTheme_Private.h in Headers */,
+				3A02C88C1AD2072500C420F2 /* MTFThemeClassApplicable.h in Headers */,
+				3A02C8841AD2072500C420F2 /* MTFObjCTypeValueTransformer.h in Headers */,
+				3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
+				3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
+				3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
+				3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */,
+				3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */,
+				3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
+				3A02C8921AD2072500C420F2 /* MTFThemeParser.h in Headers */,
+				3A02C8A31AD2072600C420F2 /* NSURL+ThemeNaming.h in Headers */,
+				3A02C8941AD2072500C420F2 /* MTFThemeSymbolReference.h in Headers */,
+				3A02C8811AD2072500C420F2 /* MTFDynamicThemeApplier.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC5D1AC9147E000CCC01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A02C85A1AD206FF00C420F2 /* MTFThemeHierarchy.h in Headers */,
+				3A02C8761AD206FF00C420F2 /* MTFPointFromStringTransformer.h in Headers */,
+				3A02C8571AD206FF00C420F2 /* MTFThemeConstant.h in Headers */,
+				3A02C8741AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h in Headers */,
+				3A02C87A1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h in Headers */,
+				3A02C8681AD206FF00C420F2 /* NSString+ThemeSymbols.h in Headers */,
+				3A02C84C1AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
+				3AA796641AC919FB00FD4320 /* Motif.h in Headers */,
+				3A02C8781AD206FF00C420F2 /* MTFRectFromStringTransformer.h in Headers */,
+				3A02C84E1AD206FF00C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
+				3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */,
+				3A02C85F1AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */,
+				3A02C8541AD206FF00C420F2 /* MTFThemeClass_Private.h in Headers */,
+				3A02C8631AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h in Headers */,
+				3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */,
+				3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */,
+				3A02C84F1AD206FF00C420F2 /* MTFTheme.h in Headers */,
+				3A02C8591AD206FF00C420F2 /* MTFThemeConstant_Private.h in Headers */,
+				3A02C8511AD206FF00C420F2 /* MTFTheme_Private.h in Headers */,
+				3A02C8551AD206FF00C420F2 /* MTFThemeClassApplicable.h in Headers */,
+				3A02C84D1AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h in Headers */,
+				3A02C87C1AD206FF00C420F2 /* MTFSizeFromStringTransformer.h in Headers */,
+				3A02C86E1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
+				3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
+				3A02C8611AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
+				3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */,
+				3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */,
+				3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
+				3A02C8721AD206FF00C420F2 /* MTFColorFromStringTransformer.h in Headers */,
+				3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */,
+				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */,
+				3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */,
+				3A02C84A1AD206FF00C420F2 /* MTFDynamicThemeApplier.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3A179D8D1AC9483900BD598C /* Motif-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A179DC41AC9483900BD598C /* Build configuration list for PBXNativeTarget "Motif-OSX" */;
+			buildPhases = (
+				3A179D8E1AC9483900BD598C /* Sources */,
+				3A179DA31AC9483900BD598C /* Frameworks */,
+				3A179DA41AC9483900BD598C /* Headers */,
+				3A179DC31AC9483900BD598C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Motif-OSX";
+			productName = Motif-OSX;
+			productReference = 3A179DC71AC9483900BD598C /* Motif.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3A406CBE1AC9B87600615428 /* Motif-OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A406CE61AC9B87600615428 /* Build configuration list for PBXNativeTarget "Motif-OSXTests" */;
+			buildPhases = (
+				3A406CC11AC9B87600615428 /* Sources */,
+				3A406CCE1AC9B87600615428 /* Frameworks */,
+				3A406CD01AC9B87600615428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A406CEC1AC9B9B000615428 /* PBXTargetDependency */,
+			);
+			name = "Motif-OSXTests";
+			productName = Motif-OSXTests;
+			productReference = 3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3A79EC5F1AC9147E000CCC01 /* Motif-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A79EC761AC9147E000CCC01 /* Build configuration list for PBXNativeTarget "Motif-iOS" */;
+			buildPhases = (
+				3A79EC5B1AC9147E000CCC01 /* Sources */,
+				3A79EC5C1AC9147E000CCC01 /* Frameworks */,
+				3A79EC5D1AC9147E000CCC01 /* Headers */,
+				3A79EC5E1AC9147E000CCC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Motif-iOS";
+			productName = Motif-iOS;
+			productReference = 3A79EC601AC9147E000CCC01 /* Motif.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3A79EC6A1AC9147E000CCC01 /* Motif-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A79EC791AC9147E000CCC01 /* Build configuration list for PBXNativeTarget "Motif-iOSTests" */;
+			buildPhases = (
+				3A79EC671AC9147E000CCC01 /* Sources */,
+				3A79EC681AC9147E000CCC01 /* Frameworks */,
+				3A79EC691AC9147E000CCC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A79EC6E1AC9147E000CCC01 /* PBXTargetDependency */,
+			);
+			name = "Motif-iOSTests";
+			productName = Motif-iOSTests;
+			productReference = 3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A79EC571AC9147E000CCC01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MTF;
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Eric Horacek";
+				TargetAttributes = {
+					3A79EC5F1AC9147E000CCC01 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					3A79EC6A1AC9147E000CCC01 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+				};
+			};
+			buildConfigurationList = 3A79EC5A1AC9147E000CCC01 /* Build configuration list for PBXProject "Motif" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3A79EC561AC9147E000CCC01;
+			productRefGroup = 3A79EC611AC9147E000CCC01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A79EC5F1AC9147E000CCC01 /* Motif-iOS */,
+				3A79EC6A1AC9147E000CCC01 /* Motif-iOSTests */,
+				3A179D8D1AC9483900BD598C /* Motif-OSX */,
+				3A406CBE1AC9B87600615428 /* Motif-OSXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A179DC31AC9483900BD598C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A406CD01AC9B87600615428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */,
+				3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */,
+				3A406CDE1AC9B87600615428 /* Basic.json in Resources */,
+				3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC5E1AC9147E000CCC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC691AC9147E000CCC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */,
+				3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */,
+				3AA796981AC91D8400FD4320 /* Basic.json in Resources */,
+				3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A179D8E1AC9483900BD598C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A02C8A21AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */,
+				3A02C8991AD2072600C420F2 /* NSDictionary+IntersectingKeys.m in Sources */,
+				3A02C8A01AD2072600C420F2 /* NSString+ThemeSymbols.m in Sources */,
+				3A02C88A1AD2072500C420F2 /* MTFThemeClass.m in Sources */,
+				3A02C8951AD2072600C420F2 /* MTFThemeSymbolReference.m in Sources */,
+				3A02C88F1AD2072500C420F2 /* MTFThemeConstant.m in Sources */,
+				3A02C89E1AD2072600C420F2 /* NSObject+ThemeClassName.m in Sources */,
+				3A02C8971AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */,
+				3A02C8931AD2072500C420F2 /* MTFThemeParser.m in Sources */,
+				3A02C89B1AD2072600C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,
+				3A02C8A41AD2072600C420F2 /* NSURL+ThemeNaming.m in Sources */,
+				3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
+				3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */,
+				3A02C88D1AD2072500C420F2 /* MTFThemeClassApplicable.m in Sources */,
+				3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */,
+				3A02C8871AD2072500C420F2 /* MTFTheme.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A406CC11AC9B87600615428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */,
+				3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */,
+				3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */,
+				3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */,
+				3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */,
+				3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */,
+				3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */,
+				3A406CCB1AC9B87600615428 /* MTFThemeClassEqualityTests.m in Sources */,
+				3A406CCC1AC9B87600615428 /* MTFThemePropertiesApplierTests.m in Sources */,
+				3A406CCD1AC9B87600615428 /* MTFThemeLoadingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC5B1AC9147E000CCC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A02C86B1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */,
+				3A02C87B1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m in Sources */,
+				3A02C8621AD206FF00C420F2 /* NSDictionary+IntersectingKeys.m in Sources */,
+				3A02C8691AD206FF00C420F2 /* NSString+ThemeSymbols.m in Sources */,
+				3A02C8531AD206FF00C420F2 /* MTFThemeClass.m in Sources */,
+				3A02C87F1AD206FF00C420F2 /* UIColor+HTMLColors.m in Sources */,
+				3A02C85E1AD206FF00C420F2 /* MTFThemeSymbolReference.m in Sources */,
+				3A02C8771AD206FF00C420F2 /* MTFPointFromStringTransformer.m in Sources */,
+				3A02C8581AD206FF00C420F2 /* MTFThemeConstant.m in Sources */,
+				3A02C8671AD206FF00C420F2 /* NSObject+ThemeClassName.m in Sources */,
+				3A02C8601AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */,
+				3A02C85C1AD206FF00C420F2 /* MTFThemeParser.m in Sources */,
+				3A02C87D1AD206FF00C420F2 /* MTFSizeFromStringTransformer.m in Sources */,
+				3A02C8731AD206FF00C420F2 /* MTFColorFromStringTransformer.m in Sources */,
+				3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,
+				3A02C8791AD206FF00C420F2 /* MTFRectFromStringTransformer.m in Sources */,
+				3A02C86D1AD206FF00C420F2 /* NSURL+ThemeNaming.m in Sources */,
+				3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
+				3A02C8711AD206FF00C420F2 /* MTFRuntimeExtensions.m in Sources */,
+				3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */,
+				3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */,
+				3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */,
+				3A02C8751AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A79EC671AC9147E000CCC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
+				3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */,
+				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
+				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
+				3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */,
+				3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */,
+				3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */,
+				3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */,
+				3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */,
+				3AA7968E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m in Sources */,
+				3AA796951AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m in Sources */,
+				3AA796931AC91D8400FD4320 /* MTFThemeLoadingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A406CEC1AC9B9B000615428 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A179D8D1AC9483900BD598C /* Motif-OSX */;
+			targetProxy = 3A406CEB1AC9B9B000615428 /* PBXContainerItemProxy */;
+		};
+		3A79EC6E1AC9147E000CCC01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A79EC5F1AC9147E000CCC01 /* Motif-iOS */;
+			targetProxy = 3A79EC6D1AC9147E000CCC01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3A179DC51AC9483900BD598C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E351AC9AE6000BD598C /* Mac-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_NAME = Motif;
+			};
+			name = Debug;
+		};
+		3A179DC61AC9483900BD598C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E351AC9AE6000BD598C /* Mac-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_NAME = Motif;
+			};
+			name = Release;
+		};
+		3A406CE71AC9B87600615428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = MotifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Motif-OSXTests";
+			};
+			name = Debug;
+		};
+		3A406CE81AC9B87600615428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = MotifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Motif-OSXTests";
+			};
+			name = Release;
+		};
+		3A79EC741AC9147E000CCC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E241AC9AE6000BD598C /* Debug.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3A79EC751AC9147E000CCC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E261AC9AE6000BD598C /* Release.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3A79EC771AC9147E000CCC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Motif/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				PRODUCT_NAME = Motif;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3A79EC781AC9147E000CCC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Motif/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				PRODUCT_NAME = Motif;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3A79EC7A1AC9147E000CCC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MotifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Motif-iOSTests";
+			};
+			name = Debug;
+		};
+		3A79EC7B1AC9147E000CCC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MotifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "Motif-iOSTests";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A179DC41AC9483900BD598C /* Build configuration list for PBXNativeTarget "Motif-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A179DC51AC9483900BD598C /* Debug */,
+				3A179DC61AC9483900BD598C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A406CE61AC9B87600615428 /* Build configuration list for PBXNativeTarget "Motif-OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A406CE71AC9B87600615428 /* Debug */,
+				3A406CE81AC9B87600615428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A79EC5A1AC9147E000CCC01 /* Build configuration list for PBXProject "Motif" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A79EC741AC9147E000CCC01 /* Debug */,
+				3A79EC751AC9147E000CCC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A79EC761AC9147E000CCC01 /* Build configuration list for PBXNativeTarget "Motif-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A79EC771AC9147E000CCC01 /* Debug */,
+				3A79EC781AC9147E000CCC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A79EC791AC9147E000CCC01 /* Build configuration list for PBXNativeTarget "Motif-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A79EC7A1AC9147E000CCC01 /* Debug */,
+				3A79EC7B1AC9147E000CCC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A79EC571AC9147E000CCC01 /* Project object */;
+}

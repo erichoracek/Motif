@@ -3,17 +3,17 @@
 //  SwiftButtonsExample
 //
 //  Created by Eric Horacek on 3/15/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 import UIKit
-import AUTTheming
+import Motif
 
 extension UIButton {
     
     public override class func initialize() {
         
-        self.aut_registerThemeProperties([
+        self.mtf_registerThemeProperties([
                 ThemeProperties.fontName.rawValue,
                 ThemeProperties.fontSize.rawValue
             ], valueTransformerNamesOrRequiredClasses: [

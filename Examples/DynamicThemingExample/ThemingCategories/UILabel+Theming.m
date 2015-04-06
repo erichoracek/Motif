@@ -3,10 +3,10 @@
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 3/11/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "ThemeSymbols.h"
 #import "UILabel+Theming.h"
 
@@ -14,7 +14,7 @@
 
 + (void)load {
     [self
-        aut_registerThemeProperties:@[
+        mtf_registerThemeProperties:@[
             TypographyThemeProperties.fontSize,
             TypographyThemeProperties.fontName,
         ] valueTransformerNamesOrRequiredClasses:@[
@@ -27,14 +27,14 @@
         }];
     
     [self
-        aut_registerThemeProperty:TypographyThemeProperties.color
-        valueTransformerName:AUTColorFromStringTransformerName
+        mtf_registerThemeProperty:TypographyThemeProperties.color
+        valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UILabel *label) {
             label.textColor = color;
     }];
 }
 
-+ (NSDictionary *)aut_textAttributesForThemeClass:(AUTThemeClass *)themeClass {
++ (NSDictionary *)mtf_textAttributesForThemeClass:(MTFThemeClass *)themeClass {
     NSMutableDictionary *attributes = [NSMutableDictionary new];
     
     NSString *name = themeClass.properties[TypographyThemeProperties.fontName];
@@ -43,7 +43,7 @@
     attributes[NSFontAttributeName] = font;
     
     NSString *colorString = themeClass.properties[TypographyThemeProperties.color];
-    UIColor *color = [[NSValueTransformer valueTransformerForName:AUTColorFromStringTransformerName] transformedValue:colorString];
+    UIColor *color = [[NSValueTransformer valueTransformerForName:MTFColorFromStringTransformerName] transformedValue:colorString];
     attributes[NSForegroundColorAttributeName] = color;
     
     return [attributes copy];

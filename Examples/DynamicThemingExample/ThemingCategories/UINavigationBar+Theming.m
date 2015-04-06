@@ -3,10 +3,10 @@
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 1/2/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "ThemeSymbols.h"
 #import "UINavigationBar+Theming.h"
 #import "UIColor+LightnessType.h"
@@ -16,41 +16,41 @@
 
 + (void)load {
     [self
-        aut_registerThemeProperty:NavigationThemeProperties.backgroundColor
-        valueTransformerName:AUTColorFromStringTransformerName
+        mtf_registerThemeProperty:NavigationThemeProperties.backgroundColor
+        valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
             navigationBar.barTintColor = color;
-            navigationBar.barStyle = [navigationBar aut_barStyleForColor:color];
+            navigationBar.barStyle = [navigationBar mtf_barStyleForColor:color];
             // Translucency must be set to NO for an opaque background color to appear correctly
             navigationBar.translucent = NO;
     }];
     
     [self
-        aut_registerThemeProperty:NavigationThemeProperties.text
-        requiringValueOfClass:AUTThemeClass.class
-        applierBlock:^(AUTThemeClass *themeClass, UINavigationBar *navigationBar) {
-            navigationBar.titleTextAttributes = [UILabel aut_textAttributesForThemeClass:themeClass];
+        mtf_registerThemeProperty:NavigationThemeProperties.text
+        requiringValueOfClass:MTFThemeClass.class
+        applierBlock:^(MTFThemeClass *themeClass, UINavigationBar *navigationBar) {
+            navigationBar.titleTextAttributes = [UILabel mtf_textAttributesForThemeClass:themeClass];
     }];
     
     [self
-        aut_registerThemeProperty:NavigationThemeProperties.separatorColor
-        valueTransformerName:AUTColorFromStringTransformerName
+        mtf_registerThemeProperty:NavigationThemeProperties.separatorColor
+        valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
-            [navigationBar aut_setShadowColor:color];
+            [navigationBar mtf_setShadowColor:color];
     }];
 }
 
-- (UIBarStyle)aut_barStyleForColor:(UIColor *)color {
-    switch (color.aut_lightnessType) {
-    case AUTLightnessTypeDark:
+- (UIBarStyle)mtf_barStyleForColor:(UIColor *)color {
+    switch (color.mtf_lightnessType) {
+    case MTFLightnessTypeDark:
         return UIBarStyleBlack;
-    case AUTLightnessTypeLight:
+    case MTFLightnessTypeLight:
     default:
         return UIBarStyleDefault;
     }
 }
 
-- (void)aut_setShadowColor:(UIColor *)color {
+- (void)mtf_setShadowColor:(UIColor *)color {
     // Create an image of the specified color and set it as the shadow image
     CGRect shadowImageRect = (CGRect){CGPointZero, {1.0, 0.5}};
     UIGraphicsBeginImageContextWithOptions(shadowImageRect.size, NO, 0.0);

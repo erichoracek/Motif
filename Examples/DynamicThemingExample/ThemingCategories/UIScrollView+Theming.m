@@ -3,10 +3,10 @@
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 4/5/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "UIScrollView+Theming.h"
 #import "ThemeSymbols.h"
 
@@ -14,14 +14,14 @@
 
 + (void)load {
     [self
-        aut_registerThemeProperty:ContentThemeProperties.scrollIndicatorStyle
+        mtf_registerThemeProperty:ContentThemeProperties.scrollIndicatorStyle
         requiringValueOfClass:NSString.class
         applierBlock:^(NSString *scrollIndicatorStyle, UIScrollView *scrollView) {
-            [scrollView aut_setScrollIndicatorStyle:scrollIndicatorStyle];
+            [scrollView mtf_setScrollIndicatorStyle:scrollIndicatorStyle];
         }];
 }
 
-- (void)aut_setScrollIndicatorStyle:(NSString *)scrollIndicatorStyle
+- (void)mtf_setScrollIndicatorStyle:(NSString *)scrollIndicatorStyle
 {
     if ([scrollIndicatorStyle isEqualToString:@"light"]) {
         self.indicatorStyle = UIScrollViewIndicatorStyleWhite;

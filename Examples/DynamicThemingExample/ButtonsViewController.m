@@ -3,10 +3,10 @@
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 1/1/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "ButtonsViewController.h"
 #import "ButtonsView.h"
 #import "ThemeSymbols.h"
@@ -31,7 +31,7 @@
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithThemeApplier:(AUTDynamicThemeApplier *)themeApplier {
+- (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier {
     NSParameterAssert(themeApplier);
     
     self = [super init];

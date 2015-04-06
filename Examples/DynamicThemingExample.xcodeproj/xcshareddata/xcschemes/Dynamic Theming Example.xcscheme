@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3ADB35E31A5645B30059796A"
-               BuildableName = "DynamicThemingExample.app"
+               BuildableName = "Dynamic Theming Example.app"
                BlueprintName = "Dynamic Theming Example"
                ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3ADB35E31A5645B30059796A"
-            BuildableName = "DynamicThemingExample.app"
+            BuildableName = "Dynamic Theming Example.app"
             BlueprintName = "Dynamic Theming Example"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3ADB35E31A5645B30059796A"
-            BuildableName = "DynamicThemingExample.app"
+            BuildableName = "Dynamic Theming Example.app"
             BlueprintName = "Dynamic Theming Example"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3ADB35E31A5645B30059796A"
-            BuildableName = "DynamicThemingExample.app"
+            BuildableName = "Dynamic Theming Example.app"
             BlueprintName = "Dynamic Theming Example"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>

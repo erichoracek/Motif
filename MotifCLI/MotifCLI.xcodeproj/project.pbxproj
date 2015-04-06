@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */; };
+		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
+		3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */; };
+		3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */; };
+		3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */; };
+		3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */; };
+		3ACAF1811AD1ED0C00383DA2 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAF1801AD1ED0C00383DA2 /* Motif.framework */; };
+		3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB6F8F1A50A8B7004EDEF3 /* main.m */; };
+		9E23F8B4DB584962C25AAD87 /* libPods-MotifCLI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3ADB6F8A1A50A8B7004EDEF3 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotifCLI.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI.release.xcconfig"; sourceTree = "<group>"; };
+		2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MotifCLI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+StringWriting.h"; sourceTree = "<group>"; };
+		3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+StringWriting.m"; sourceTree = "<group>"; };
+		3A57FB2B1AD2150C003E7670 /* MTFTheme_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFTheme_Private.h; path = ../../Motif/Core/MTFTheme_Private.h; sourceTree = "<group>"; };
+		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
+		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
+		3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemingSymbolsGenerator.h; sourceTree = "<group>"; };
+		3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemingSymbolsGenerator.m; sourceTree = "<group>"; };
+		3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+SymbolsGeneration.h"; sourceTree = "<group>"; };
+		3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MTFTheme+SymbolsGeneration.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBOptionsHelper+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
+		3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBOptionsHelper+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
+		3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CLIHelpers.h"; sourceTree = "<group>"; };
+		3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CLIHelpers.m"; sourceTree = "<group>"; };
+		3ACAF1801AD1ED0C00383DA2 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB6F8C1A50A8B7004EDEF3 /* motif */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = motif; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB6F8F1A50A8B7004EDEF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotifCLI.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3ADB6F891A50A8B7004EDEF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ACAF1811AD1ED0C00383DA2 /* Motif.framework in Frameworks */,
+				9E23F8B4DB584962C25AAD87 /* libPods-MotifCLI.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A3DD93F1A88B52F00DBA831 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8F1A50A8B7004EDEF3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3ADB6F831A50A8B7004EDEF3 = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8E1A50A8B7004EDEF3 /* MotifCLI */,
+				3ADB6F8D1A50A8B7004EDEF3 /* Products */,
+				62694A310AC109295AD8C761 /* Frameworks */,
+				FD2F367AA7A560B19DACC6CF /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		3ADB6F8D1A50A8B7004EDEF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3ADB6F8C1A50A8B7004EDEF3 /* motif */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3ADB6F8E1A50A8B7004EDEF3 /* MotifCLI */ = {
+			isa = PBXGroup;
+			children = (
+				3A57FB2B1AD2150C003E7670 /* MTFTheme_Private.h */,
+				3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */,
+				3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */,
+				3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.h */,
+				3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */,
+				3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */,
+				3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */,
+				3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */,
+				3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */,
+				3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */,
+				3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */,
+				3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */,
+				3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */,
+				3A3DD93F1A88B52F00DBA831 /* Supporting Files */,
+			);
+			path = MotifCLI;
+			sourceTree = "<group>";
+		};
+		62694A310AC109295AD8C761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3ACAF1801AD1ED0C00383DA2 /* Motif.framework */,
+				2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD2F367AA7A560B19DACC6CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */,
+				076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3ADB6F8B1A50A8B7004EDEF3 /* MotifCLI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "MotifCLI" */;
+			buildPhases = (
+				9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */,
+				3ADB6F881A50A8B7004EDEF3 /* Sources */,
+				3ADB6F891A50A8B7004EDEF3 /* Frameworks */,
+				3ADB6F8A1A50A8B7004EDEF3 /* Copy Files */,
+				E1073F23AE98EF2180E7B39A /* Copy Pods Resources */,
+				3ABF07421A51453500E6A83C /* Install in /usr/local/bin/ */,
+				3A555A281ACCFE7600726EC9 /* Install Frameworks to /usr/local/Frameworks/ */,
+				3A555A2B1ACD00F800726EC9 /* Link Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MotifCLI;
+			productName = MotifCLI;
+			productReference = 3ADB6F8C1A50A8B7004EDEF3 /* motif */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3ADB6F841A50A8B7004EDEF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Eric Horacek";
+				TargetAttributes = {
+					3ADB6F8B1A50A8B7004EDEF3 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 3ADB6F871A50A8B7004EDEF3 /* Build configuration list for PBXProject "MotifCLI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3ADB6F831A50A8B7004EDEF3;
+			productRefGroup = 3ADB6F8D1A50A8B7004EDEF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3ADB6F8B1A50A8B7004EDEF3 /* MotifCLI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A555A281ACCFE7600726EC9 /* Install Frameworks to /usr/local/Frameworks/ */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install Frameworks to /usr/local/Frameworks/";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -rf ${BUILT_PRODUCTS_DIR}/Motif.framework /usr/local/Frameworks/";
+		};
+		3A555A2B1ACD00F800726EC9 /* Link Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Link Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -add_rpath \"@executable_path/../Frameworks\" \"/usr/local/bin/$PRODUCT_NAME\"\ninstall_name_tool -add_rpath \"@executable_path/../Frameworks/Motif.framework/Versions/Current/Frameworks/\" \"/usr/local/bin/$PRODUCT_NAME\"";
+		};
+		3ABF07421A51453500E6A83C /* Install in /usr/local/bin/ */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install in /usr/local/bin/";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME} /usr/local/bin/${PRODUCT_NAME}";
+			showEnvVarsInLog = 0;
+		};
+		9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1073F23AE98EF2180E7B39A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3ADB6F881A50A8B7004EDEF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m in Sources */,
+				3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */,
+				3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */,
+				3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */,
+				3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */,
+				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
+				3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3ADB6F911A50A8B7004EDEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3ADB6F921A50A8B7004EDEF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3ADB6F941A50A8B7004EDEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */;
+			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/. @executable_path/Motif.framework/Versions/Current/Frameworks /Library/Frameworks /Library/Frameworks/Motif.framework/Versions/Current/Frameworks";
+				PRODUCT_NAME = motif;
+			};
+			name = Debug;
+		};
+		3ADB6F951A50A8B7004EDEF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */;
+			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/. @executable_path/Motif.framework/Versions/Current/Frameworks /Library/Frameworks /Library/Frameworks/Motif.framework/Versions/Current/Frameworks";
+				PRODUCT_NAME = motif;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3ADB6F871A50A8B7004EDEF3 /* Build configuration list for PBXProject "MotifCLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB6F911A50A8B7004EDEF3 /* Debug */,
+				3ADB6F921A50A8B7004EDEF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "MotifCLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADB6F941A50A8B7004EDEF3 /* Debug */,
+				3ADB6F951A50A8B7004EDEF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3ADB6F841A50A8B7004EDEF3 /* Project object */;
+}

@@ -3,19 +3,19 @@
 //  SwiftButtonsExample
 //
 //  Created by Eric Horacek on 3/14/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 import UIKit
-import AUTTheming
+import Motif
 
 extension UIView {
     
     public override class func initialize() {
         
-        self.aut_registerThemeProperty(
+        self.mtf_registerThemeProperty(
             ThemeProperties.backgroundColor.rawValue,
-            valueTransformerName: AUTColorFromStringTransformerName,
+            valueTransformerName: MTFColorFromStringTransformerName,
             applierBlock: { (color, view) -> Void in
                 if
                     let view = view as? UIView,
@@ -25,9 +25,9 @@ extension UIView {
             }
         )
         
-        self.aut_registerThemeProperty(
+        self.mtf_registerThemeProperty(
             ThemeProperties.borderColor.rawValue,
-            valueTransformerName: AUTColorFromStringTransformerName,
+            valueTransformerName: MTFColorFromStringTransformerName,
             applierBlock: { (color, view) -> Void in
                 if
                     let view = view as? UIView,
@@ -37,7 +37,7 @@ extension UIView {
             }
         )
         
-        self.aut_registerThemeProperty(
+        self.mtf_registerThemeProperty(
             ThemeProperties.cornerRadius.rawValue,
             requiringValueOfClass: NSNumber.self,
             applierBlock: { (cornerRadius, view) -> Void in
@@ -49,7 +49,7 @@ extension UIView {
             }
         )
         
-        self.aut_registerThemeProperty(
+        self.mtf_registerThemeProperty(
             ThemeProperties.borderWidth.rawValue,
             requiringValueOfClass: NSNumber.self,
             applierBlock: { (borderWidth, view) -> Void in

@@ -3,10 +3,10 @@
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.
-//  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "UIButton+Theming.h"
 #import "ThemeSymbols.h"
 
@@ -14,7 +14,7 @@
 
 + (void)load {
     [self
-        aut_registerThemeProperties:@[
+        mtf_registerThemeProperties:@[
             ThemeProperties.fontName,
             ThemeProperties.fontSize
         ] valueTransformerNamesOrRequiredClasses:@[

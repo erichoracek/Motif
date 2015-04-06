@@ -3,19 +3,19 @@
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 1/1/15.
-//  Copyright (c) 2015 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "ButtonsViewController.h"
 #import "AppDelegate.h"
 #import "ThemeSymbols.h"
 
 @interface AppDelegate ()
 
-@property (nonatomic) AUTTheme *lightTheme;
-@property (nonatomic) AUTTheme *darkTheme;
-@property (nonatomic) AUTDynamicThemeApplier *themeApplier;
+@property (nonatomic) MTFTheme *lightTheme;
+@property (nonatomic) MTFTheme *darkTheme;
+@property (nonatomic) MTFDynamicThemeApplier *themeApplier;
 
 @end
 
@@ -28,7 +28,7 @@
     
 #if defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
 
-    self.themeApplier = [[AUTScreenBrightnessThemeApplier alloc]
+    self.themeApplier = [[MTFScreenBrightnessThemeApplier alloc]
         initWithScreen:[UIScreen mainScreen]
         lightTheme:self.lightTheme
         darkTheme:self.darkTheme];
@@ -42,7 +42,7 @@
     
 #else
     
-    self.themeApplier = [[AUTDynamicThemeApplier alloc]
+    self.themeApplier = [[MTFDynamicThemeApplier alloc]
         initWithTheme:self.lightTheme];
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc]
@@ -75,10 +75,10 @@
 
 #pragma mark - AppDelegate
 
-- (AUTTheme *)lightTheme {
+- (MTFTheme *)lightTheme {
     if (!_lightTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme
+        MTFTheme *theme = [MTFTheme
             themeFromJSONThemesNamed:@[
                 ColorsThemeName,
                 LightMappingsThemeName,
@@ -94,10 +94,10 @@
     return _lightTheme;
 }
 
-- (AUTTheme *)darkTheme {
+- (MTFTheme *)darkTheme {
     if (!_darkTheme) {
         NSError *error;
-        AUTTheme *theme = [AUTTheme
+        MTFTheme *theme = [MTFTheme
             themeFromJSONThemesNamed:@[
                 ColorsThemeName,
                 DarkMappingsThemeName,
@@ -117,7 +117,7 @@
 
 - (void)toggleTheme {
     BOOL onLightTheme = (self.themeApplier.theme == self.lightTheme);
-    // Changing an AUTDynamicThemeApplier's theme property reapplies it to all
+    // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
     // previously applied themes
     self.themeApplier.theme = (onLightTheme ? self.darkTheme : self.lightTheme);
 }

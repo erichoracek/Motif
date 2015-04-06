@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0D6BDD1ACBB37B00F8FB14 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; };
-		3A179D881AC93D3F00BD598C /* AUTTheming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179D841AC93D2700BD598C /* AUTTheming.framework */; };
+		3A179D881AC93D3F00BD598C /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179D841AC93D2700BD598C /* Motif.framework */; };
 		3A5B95671ACBB45100AF677C /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; };
 		3A5B95681ACBB45100AF677C /* Cartography.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A7EC5E71AB51D5C00FD37F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */; };
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
-		3A179D841AC93D2700BD598C /* AUTTheming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AUTTheming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A179D841AC93D2700BD598C /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EC5E11AB51D5C00FD37F3 /* SwiftButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EC5E51AB51D5C00FD37F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A179D881AC93D3F00BD598C /* AUTTheming.framework in Frameworks */,
+				3A179D881AC93D3F00BD598C /* Motif.framework in Frameworks */,
 				3A0D6BDD1ACBB37B00F8FB14 /* Cartography.framework in Frameworks */,
 				3A5B95671ACBB45100AF677C /* Cartography.framework in Frameworks */,
 			);
@@ -67,7 +67,7 @@
 		2A6D4EACD2B9159DEB73C54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A179D841AC93D2700BD598C /* AUTTheming.framework */,
+				3A179D841AC93D2700BD598C /* Motif.framework */,
 				3A0D6BDC1ACBB37B00F8FB14 /* Cartography.framework */,
 			);
 			name = Frameworks;
@@ -142,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = "Automatic Labs, Inc";
+				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A7EC5E01AB51D5C00FD37F3 = {
 						CreatedOnToolsVersion = 6.3;

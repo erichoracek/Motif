@@ -3,10 +3,10 @@
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.
-//  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "AppDelegate.h"
 #import "ButtonsViewController.h"
 #import "ThemeSymbols.h"
@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError *error;
-    AUTTheme *theme = [AUTTheme themeFromJSONThemeNamed:ThemeName error:&error];
+    MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:ThemeName error:&error];
     NSAssert(!error, @"Error loading theme: %@", error);
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithTheme:theme];

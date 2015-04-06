@@ -3,10 +3,10 @@
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.
-//  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "UIView+Theming.h"
 #import "ThemeSymbols.h"
 
@@ -14,29 +14,29 @@
 
 + (void)load {
     [self
-        aut_registerThemeProperty:ThemeProperties.borderWidth
+        mtf_registerThemeProperty:ThemeProperties.borderWidth
         requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *width, UIView *view) {
             view.layer.borderWidth = width.floatValue;
     }];
 
     [self
-        aut_registerThemeProperty:ThemeProperties.borderColor
-        valueTransformerName:AUTColorFromStringTransformerName
+        mtf_registerThemeProperty:ThemeProperties.borderColor
+        valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
     }];
     
     [self
-        aut_registerThemeProperty:ThemeProperties.cornerRadius
+        mtf_registerThemeProperty:ThemeProperties.cornerRadius
         requiringValueOfClass:NSNumber.class
         applierBlock:^(NSNumber *cornerRadius, UIView *view) {
             view.layer.cornerRadius = cornerRadius.floatValue;
     }];
     
     [self
-        aut_registerThemeProperty:ThemeProperties.backgroundColor
-        valueTransformerName:AUTColorFromStringTransformerName
+        mtf_registerThemeProperty:ThemeProperties.backgroundColor
+        valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UIView *view) {
             view.backgroundColor = color;
     }];

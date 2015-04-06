@@ -3,10 +3,10 @@
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.
-//  Copyright (c) 2014 Automatic Labs, Inc. All rights reserved.
+//  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <AUTTheming/AUTTheming.h>
+#import <Motif/Motif.h>
 #import "ButtonsViewController.h"
 #import "ButtonsView.h"
 #import "ThemeSymbols.h"
@@ -44,7 +44,7 @@
 
 #pragma mark - ButtonsViewController
 
-- (instancetype)initWithTheme:(AUTTheme *)theme {
+- (instancetype)initWithTheme:(MTFTheme *)theme {
     NSParameterAssert(theme);
     
     self = [super init];
