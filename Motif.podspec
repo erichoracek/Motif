@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.ios.frameworks = 'UIKit'
   
   s.source_files = [
+    "#{s.name}/Motif.h",
     "#{s.name}/Core/*.{h,m}",
     "#{s.name}/Objective-C Runtime/*.{h,m}"
   ]
