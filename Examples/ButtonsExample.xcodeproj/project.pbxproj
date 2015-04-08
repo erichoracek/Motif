@@ -10,11 +10,12 @@
 		3A73B87E1ACD15B000A6A2E0 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* Motif.framework */; };
 		3A73B8801ACD15C500A6A2E0 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
+		3ACE598C1AD4B61600F308EF /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */; };
+		3ACE598F1AD4B67600F308EF /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE598E1AD4B67600F308EF /* UIButton+Theming.m */; };
 		3AD69A501A4F750B0002FA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A4F1A4F750B0002FA8F /* main.m */; };
 		3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A521A4F750B0002FA8F /* AppDelegate.m */; };
 		3AD69A561A4F750B0002FA8F /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */; };
 		3AD69A751A4F788E0002FA8F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A741A4F788E0002FA8F /* UIView+Theming.m */; };
-		3AD69A781A4F78980002FA8F /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A771A4F78980002FA8F /* UIButton+Theming.m */; };
 		3AD69A7A1A4F7A0D0002FA8F /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A791A4F7A0D0002FA8F /* Theme.json */; };
 		3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */; };
 		3AD69A821A4FB2BC0002FA8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A811A4FB2BC0002FA8F /* Images.xcassets */; };
@@ -39,6 +40,10 @@
 		3A73B87D1ACD15B000A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
 		3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSymbols.m; sourceTree = "<group>"; };
+		3ACE598A1AD4B61600F308EF /* UILabel+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Theming.h"; sourceTree = "<group>"; };
+		3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Theming.m"; sourceTree = "<group>"; };
+		3ACE598D1AD4B67600F308EF /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
+		3ACE598E1AD4B67600F308EF /* UIButton+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Theming.m"; sourceTree = "<group>"; };
 		3AD69A4A1A4F750B0002FA8F /* ButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD69A4E1A4F750B0002FA8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AD69A4F1A4F750B0002FA8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -48,8 +53,6 @@
 		3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
 		3AD69A731A4F788E0002FA8F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3AD69A741A4F788E0002FA8F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+Theming.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3AD69A761A4F78980002FA8F /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
-		3AD69A771A4F78980002FA8F /* UIButton+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIButton+Theming.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AD69A791A4F7A0D0002FA8F /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
 		3AD69A7E1A4FA1480002FA8F /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
 		3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
@@ -104,8 +107,10 @@
 				3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */,
 				3AD69A731A4F788E0002FA8F /* UIView+Theming.h */,
 				3AD69A741A4F788E0002FA8F /* UIView+Theming.m */,
-				3AD69A761A4F78980002FA8F /* UIButton+Theming.h */,
-				3AD69A771A4F78980002FA8F /* UIButton+Theming.m */,
+				3ACE598A1AD4B61600F308EF /* UILabel+Theming.h */,
+				3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */,
+				3ACE598D1AD4B67600F308EF /* UIButton+Theming.h */,
+				3ACE598E1AD4B67600F308EF /* UIButton+Theming.m */,
 				3AD69A811A4FB2BC0002FA8F /* Images.xcassets */,
 				3AD69A4D1A4F750B0002FA8F /* Supporting Files */,
 			);
@@ -261,11 +266,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD69A561A4F750B0002FA8F /* ButtonsViewController.m in Sources */,
+				3ACE598C1AD4B61600F308EF /* UILabel+Theming.m in Sources */,
 				3AD69A531A4F750B0002FA8F /* AppDelegate.m in Sources */,
 				3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */,
 				3AD69A501A4F750B0002FA8F /* main.m in Sources */,
 				3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */,
-				3AD69A781A4F78980002FA8F /* UIButton+Theming.m in Sources */,
+				3ACE598F1AD4B67600F308EF /* UIButton+Theming.m in Sources */,
 				3AD69A751A4F788E0002FA8F /* UIView+Theming.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

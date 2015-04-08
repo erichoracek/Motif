@@ -2,31 +2,30 @@
     "$RedColor": "#f93d38",
     "$BlueColor": "#50b5ed",
     "$WhiteColor": "#f1efeb",
-    "$RegularFontName": "AvenirNext-Regular",
-    "$H5FontSize": 16,
-    ".ContentBackground": {
-        "backgroundColor": "$WhiteColor"
+    "$FontName": "AvenirNext-Regular",
+    ".ButtonText": {
+        "fontName": "$FontName",
+        "fontSize": 16
     },
     ".Button": {
-        "fontName": "$RegularFontName",
-        "fontSize": "$H5FontSize",
-        "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
-        "borderWidth": 1.0,
-        "cornerRadius": 5.0
+        "borderWidth": 1,
+        "cornerRadius": 5,
+        "contentEdgeInsets": "{10, 20, 10, 20}",
+        "tintColor": "$BlueColor",
+        "borderColor": "$BlueColor",
+        "titleText": ".ButtonText"
     },
     ".DestructiveButton": {
         "_superclass": ".Button",
         "tintColor": "$RedColor",
         "borderColor": "$RedColor"
     },
-    ".PrimaryButton": {
-        "_superclass": ".Button",
-        "tintColor": "$BlueColor",
-        "borderColor": "$BlueColor"
+    ".ContentBackground": {
+        "backgroundColor": "$WhiteColor"
     },
     ".ButtonsView": {
         "_superclass": ".ContentBackground",
-        "saveButton": ".PrimaryButton",
+        "saveButton": ".Button",
         "deleteButton": ".DestructiveButton"
     }
 }

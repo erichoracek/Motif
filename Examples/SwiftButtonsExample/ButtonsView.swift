@@ -15,8 +15,19 @@ class ButtonsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(saveButton)
         addSubview(deleteButton)
+        
+        saveButton.setTitle("Save", forState: UIControlState.Normal)
+        deleteButton.setTitle("Delete", forState: UIControlState.Normal)
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        // Workaround for a strange UIKit bug causing UIButton to not update its
+        // intrinsic size and autolayout deciding it has a height of 0.0
+        self.layoutIfNeeded()
     }
     
     override class func requiresConstraintBasedLayout() -> Bool {

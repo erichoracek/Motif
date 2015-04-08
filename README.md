@@ -47,17 +47,17 @@ To create the buttons from the design spec, we've written the following theme fi
     "$RedColor": "#f93d38",
     "$BlueColor": "#50b5ed",
     "$FontName": "AvenirNext-Regular",
-    ".ButtonText" {
+    ".ButtonText": {
         "fontName": "$FontName",
         "fontSize": 16
     },
     ".Button": {
         "borderWidth": 1,
         "cornerRadius": 5,
-        "contentEdgeInsets": "{10, 20, 10, 20}"
+        "contentEdgeInsets": "{10, 20, 10, 20}",
         "tintColor": "$BlueColor",
         "borderColor": "$BlueColor",
-        "titleText": ".ButtonText",
+        "titleText": ".ButtonText"
     },
     ".DestructiveButton": {
         "_superclass": ".Button",

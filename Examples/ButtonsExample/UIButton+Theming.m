@@ -2,8 +2,8 @@
 //  UIButton+Theming.m
 //  ButtonsExample
 //
-//  Created by Eric Horacek on 12/27/14.
-//  Copyright (c) 2014 Eric Horacek. All rights reserved.
+//  Created by Eric Horacek on 4/7/15.
+//  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 #import <Motif/Motif.h>
@@ -12,18 +12,12 @@
 
 @implementation UIButton (Theming)
 
-+ (void)load {
++ (void)initialize {
     [self
-        mtf_registerThemeProperties:@[
-            ThemeProperties.fontName,
-            ThemeProperties.fontSize
-        ] valueTransformerNamesOrRequiredClasses:@[
-            NSString.class,
-            NSNumber.class
-        ] applierBlock:^(NSDictionary *properties, UIButton *button) {
-            NSString *name = properties[ThemeProperties.fontName];
-            CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
-            button.titleLabel.font = [UIFont fontWithName:name size:size];
+        mtf_registerThemeProperty:ThemeProperties.titleText
+        requiringValueOfClass:MTFThemeClass.class
+        applierBlock:^(MTFThemeClass *themeClass, UIButton *button) {
+            [themeClass applyToObject:button.titleLabel];
         }];
 }
 

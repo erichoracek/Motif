@@ -10,25 +10,17 @@ import UIKit
 import Motif
 
 extension UIButton {
-    
     public override class func initialize() {
-        
-        self.mtf_registerThemeProperties([
-                ThemeProperties.fontName.rawValue,
-                ThemeProperties.fontSize.rawValue
-            ], valueTransformerNamesOrRequiredClasses: [
-                NSString.self,
-                NSNumber.self
-            ], applierBlock: { (properties, button: AnyObject) -> Void in
+        self.mtf_registerThemeProperty(
+            ThemeProperties.titleText.rawValue,
+            requiringValueOfClass: MTFThemeClass.self,
+            applierBlock: { (themeClass, button) -> Void in
                 if
-                    let name = properties[ThemeProperties.fontName.rawValue] as? String,
-                    let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber,
-                    let button = button as? UIButton {
-                        button.titleLabel!.font = UIFont(name: name, size: CGFloat(size.floatValue))
+                    let button = button as? UIButton,
+                    let themeClass = themeClass as? MTFThemeClass {
+                        themeClass.applyToObject(button.titleLabel!)
                 }
             }
         )
-        
     }
-    
 }

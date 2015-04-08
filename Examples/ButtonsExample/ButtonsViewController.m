@@ -33,13 +33,6 @@
     [self.theme
         applyClassWithName:ThemeClassNames.ButtonsView
         toObject:self.view];
-    
-    [self.view.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
-    [self.view.saveButton setTitle:@"Save" forState:UIControlStateNormal];
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return YES;
 }
 
 #pragma mark - ButtonsViewController

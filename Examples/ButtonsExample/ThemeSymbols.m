@@ -6,28 +6,28 @@ NSString * const ThemeName = @"Theme";
 
 const struct ThemeConstantKeys ThemeConstantKeys = {
     .WhiteColor = @"WhiteColor",
-    .RegularFontName = @"RegularFontName",
-    .H5FontSize = @"H5FontSize",
-    .BlueColor = @"BlueColor",
     .RedColor = @"RedColor",
+    .BlueColor = @"BlueColor",
+    .FontName = @"FontName",
 };
 
 const struct ThemeClassNames ThemeClassNames = {
     .Button = @"Button",
-    .PrimaryButton = @"PrimaryButton",
-    .DestructiveButton = @"DestructiveButton",
     .ContentBackground = @"ContentBackground",
+    .DestructiveButton = @"DestructiveButton",
+    .ButtonText = @"ButtonText",
     .ButtonsView = @"ButtonsView",
 };
 
 const struct ThemeProperties ThemeProperties = {
     .fontSize = @"fontSize",
-    .deleteButton = @"deleteButton",
+    .titleText = @"titleText",
     .tintColor = @"tintColor",
-    .fontName = @"fontName",
-    .borderColor = @"borderColor",
+    .deleteButton = @"deleteButton",
     .borderWidth = @"borderWidth",
+    .borderColor = @"borderColor",
     .cornerRadius = @"cornerRadius",
+    .fontName = @"fontName",
     .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
     .saveButton = @"saveButton",

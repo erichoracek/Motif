@@ -21,13 +21,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         theme.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, toObject:buttonsView)
-
-        buttonsView.saveButton.setTitle("Save", forState: UIControlState.Normal)
-        buttonsView.deleteButton.setTitle("Delete", forState: UIControlState.Normal)
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
     }
     
     // MARK: - UIViewController: NSCoding
@@ -42,6 +35,7 @@ class ViewController: UIViewController {
     
     init(theme: MTFTheme) {
         self.theme = theme
+        
         super.init(nibName: nil, bundle: nil)
     }
     

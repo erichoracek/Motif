@@ -1,5 +1,5 @@
 //
-//  UIButton+Theming.h
+//  UILabel+Theming.h
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 4/7/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButton (Theming)
+@interface UILabel (Theming)
 
 @end

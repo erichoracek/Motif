@@ -18,7 +18,7 @@
         requiringValueOfClass:MTFThemeClass.class
         applierBlock:^(MTFThemeClass *themeClass, UIButton *button) {
             [themeClass applyToObject:button.titleLabel];
-    }];
+        }];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation UIView (Theming)
 
-+ (void)load {
++ (void)initialize {
     [self
         mtf_registerThemeProperty:ThemeProperties.borderWidth
         requiringValueOfClass:NSNumber.class
