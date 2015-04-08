@@ -38,15 +38,15 @@ class ButtonsView: UIView {
         super.updateConstraints()
         
         constrain(saveButton) { view in
-            view.right == view.superview!.centerX - (self.ButtonPadding / 2)
+            view.right == view.superview!.centerX - (self.buttonPadding)
             view.centerY == view.superview!.centerY
-            view.width == self.ButtonWidth
+            view.width == self.buttonWidth
         }
         
         constrain(deleteButton) { view in
-            view.left == view.superview!.centerX + (self.ButtonPadding / 2)
+            view.left == view.superview!.centerX + (self.buttonPadding)
             view.centerY == view.superview!.centerY
-            view.width == self.ButtonWidth
+            view.width == self.buttonWidth
         }
     }
     
@@ -58,10 +58,10 @@ class ButtonsView: UIView {
     
     // MARK: - ButtonsView
     
-    let saveButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-    let deleteButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    let saveButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    let deleteButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     
-    let ButtonWidth = 145.0;
-    let ButtonPadding = 10.0;
+    let buttonWidth = 145.0;
+    let buttonPadding = 5.0;
     
 }
