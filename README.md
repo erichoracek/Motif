@@ -81,7 +81,7 @@ Last of all, we declare our `.DestructiveButton` class. This class is exactly li
 
 ### Property appliers
 
-Next, we'll create the _property appliers_ needed to "apply" this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme properties automatically by matching Motif property names to Objective-C class property names. However, in the case of some properties, you'll have to declare how you'd like a property to be applied yourself. To do this, you register a theme property applier in the `initialize` method of a category.
+Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply the theme properties automatically by matching Motif property names to Objective-C class property names. However, in the case of some properties, we have to declare how we'd like a property to be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
 
 The first set of property appliers we've created is on `UIView`:
 
@@ -104,11 +104,15 @@ The first set of property appliers we've created is on `UIView`:
 }
 ```
 
-Here we've added two property appliers to `UIView` for both `borderWidth` and `borderColor`. Since these properties are defined on `CALayer` rather than `UIView`, we need to create property appliers to enable these same properties from the `.Button` class to be applied.
+Here we've added two property appliers to `UIView` for both `borderWidth` and `borderColor`. Since these properties are defined on `CALayer` rather than `UIView`, we need to create property appliers to enable the properties from the `.Button` class to be applied.
+
+#### Applier type safety
 
 If we want to ensure that we always apply property values a specific type, we can specify that an applier requires a value of a certain class by using `requiringValueOfClass:` when registering an applier. In the case of the `borderWidth` property, we require that its value is of class `NSNumber`. This way, if we every accidentally provide a non-number value for a `borderWidth` property, a runtime exception will be thrown so that we can easily identify and fix our mistake.
 
-In the case of `borderColor`, the value specified in the JSON theme is not a color, but instead a color written as a string (e.g. `#f93d38`). To ensure that the applied property value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName:` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is only one line.
+#### Applier value transformers
+
+In the case of `borderColor`, the value specified in the JSON theme is not a color, but instead a color written as a string (e.g. `#f93d38`). To ensure that the applied property value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName:` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
 
 This is the beginning of our custom set of _rules_ for Motif. Now that we've defined these two properties, whenever we have another need to that apply a `borderColor` or `borderWidth` to a `UIView`, these appliers can be reused.
 
@@ -132,6 +136,8 @@ This is the beginning of our custom set of _rules_ for Motif. Now that we've def
 }
 ```
 
+#### Compound property appliers
+
 ### `UIButton+Theming.m`
 
 ```objective-c
@@ -144,6 +150,10 @@ This is the beginning of our custom set of _rules_ for Motif. Now that we've def
         }];
 }
 ```
+
+#### Properties with `MTFClass` values
+
+### Putting it all together
 
 ### `MyViewController.m`
 
