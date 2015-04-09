@@ -44,8 +44,8 @@ LIBRARY_NAME = 'Motif'
 WORKSPACE_PATH = "#{LIBRARY_NAME}.xcworkspace"
 PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
 SCHEME_BUTTONS_EXAMPLE = 'ButtonsExample'
-SCHEME_DYNAMIC_THEMING_EXAMPLE = 'Dynamic Theming Example'
-SCHEME_SCREEN_BRIGHTNESS_THEMING_EXAMPLE = 'Screen Brightness Theming Example'
+SCHEME_DYNAMIC_THEMING_EXAMPLE = 'DynamicThemingExample'
+SCHEME_SCREEN_BRIGHTNESS_THEMING_EXAMPLE = 'ScreenBrightnessThemingExample'
 DESTINATION = 'platform=iOS Simulator,name=iPhone 4s,OS=latest'
 DERIVED_DATA_PATH = "/tmp/#{LIBRARY_NAME}"
 
