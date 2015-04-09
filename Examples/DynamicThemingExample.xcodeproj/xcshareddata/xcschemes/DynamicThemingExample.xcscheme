@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0620"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A01C5B91AD07E9900AA479F"
-               BuildableName = "Screen Brightness Theming Example.app"
-               BlueprintName = "Screen Brightness Theming Example"
+               BlueprintIdentifier = "3ADB35E31A5645B30059796A"
+               BuildableName = "DynamicThemingExample.app"
+               BlueprintName = "DynamicThemingExample"
                ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A01C5B91AD07E9900AA479F"
-            BuildableName = "Screen Brightness Theming Example.app"
-            BlueprintName = "Screen Brightness Theming Example"
+            BlueprintIdentifier = "3ADB35E31A5645B30059796A"
+            BuildableName = "DynamicThemingExample.app"
+            BlueprintName = "DynamicThemingExample"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,9 +52,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A01C5B91AD07E9900AA479F"
-            BuildableName = "Screen Brightness Theming Example.app"
-            BlueprintName = "Screen Brightness Theming Example"
+            BlueprintIdentifier = "3ADB35E31A5645B30059796A"
+            BuildableName = "DynamicThemingExample.app"
+            BlueprintName = "DynamicThemingExample"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,9 +71,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A01C5B91AD07E9900AA479F"
-            BuildableName = "Screen Brightness Theming Example.app"
-            BlueprintName = "Screen Brightness Theming Example"
+            BlueprintIdentifier = "3ADB35E31A5645B30059796A"
+            BuildableName = "DynamicThemingExample.app"
+            BlueprintName = "DynamicThemingExample"
             ReferencedContainer = "container:DynamicThemingExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

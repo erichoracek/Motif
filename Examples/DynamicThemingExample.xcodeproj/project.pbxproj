@@ -99,7 +99,7 @@
 /* Begin PBXFileReference section */
 		0664066B63542EE6704864E0 /* Pods-Dynamic Theming Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dynamic Theming Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Dynamic Theming Example/Pods-Dynamic Theming Example.release.xcconfig"; sourceTree = "<group>"; };
 		086E31FC0822298482B58478 /* Pods-Screen Brightness Theming Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screen Brightness Theming Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Screen Brightness Theming Example/Pods-Screen Brightness Theming Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Screen Brightness Theming Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A01C5E21AD07E9900AA479F /* ScreenBrightnessThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenBrightnessThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A01C5E81AD1C57800AA479F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ColorsTheme.json; sourceTree = "<group>"; };
 		3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContentTheme.json; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		3A01C6301AD1CCAC00AA479F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
 		3A73B8791ACD157600A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dynamic Theming Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADB35E41A5645B30059796A /* DynamicThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3ADB35EC1A5645B30059796A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -259,8 +259,8 @@
 		3ADB35E51A5645B30059796A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */,
-				3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */,
+				3ADB35E41A5645B30059796A /* DynamicThemingExample.app */,
+				3A01C5E21AD07E9900AA479F /* ScreenBrightnessThemingExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,9 +308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A01C5B91AD07E9900AA479F /* Screen Brightness Theming Example */ = {
+		3A01C5B91AD07E9900AA479F /* ScreenBrightnessThemingExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "Screen Brightness Theming Example" */;
+			buildConfigurationList = 3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "ScreenBrightnessThemingExample" */;
 			buildPhases = (
 				3A01C5BA1AD07E9900AA479F /* Generate Theme Symbols */,
 				3A01C5BB1AD07E9900AA479F /* Check Pods Manifest.lock */,
@@ -324,14 +324,14 @@
 			);
 			dependencies = (
 			);
-			name = "Screen Brightness Theming Example";
+			name = ScreenBrightnessThemingExample;
 			productName = VariableThemesExample;
-			productReference = 3A01C5E21AD07E9900AA479F /* Screen Brightness Theming Example.app */;
+			productReference = 3A01C5E21AD07E9900AA479F /* ScreenBrightnessThemingExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3ADB35E31A5645B30059796A /* Dynamic Theming Example */ = {
+		3ADB35E31A5645B30059796A /* DynamicThemingExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "Dynamic Theming Example" */;
+			buildConfigurationList = 3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "DynamicThemingExample" */;
 			buildPhases = (
 				3AC874801ACE679D009E0D82 /* Generate Theme Symbols */,
 				4C45BAE8C74767A37A925E3E /* Check Pods Manifest.lock */,
@@ -345,9 +345,9 @@
 			);
 			dependencies = (
 			);
-			name = "Dynamic Theming Example";
+			name = DynamicThemingExample;
 			productName = VariableThemesExample;
-			productReference = 3ADB35E41A5645B30059796A /* Dynamic Theming Example.app */;
+			productReference = 3ADB35E41A5645B30059796A /* DynamicThemingExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -377,8 +377,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3ADB35E31A5645B30059796A /* Dynamic Theming Example */,
-				3A01C5B91AD07E9900AA479F /* Screen Brightness Theming Example */,
+				3ADB35E31A5645B30059796A /* DynamicThemingExample */,
+				3A01C5B91AD07E9900AA479F /* ScreenBrightnessThemingExample */,
 			);
 		};
 /* End PBXProject section */
@@ -580,7 +580,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Screen Brightness Theming Example";
+				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Debug;
 		};
@@ -597,7 +597,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Screen Brightness Theming Example";
+				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Release;
 		};
@@ -688,7 +688,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Dynamic Theming Example";
+				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Debug;
 		};
@@ -701,14 +701,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Dynamic Theming Example";
+				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "Screen Brightness Theming Example" */ = {
+		3A01C5DF1AD07E9900AA479F /* Build configuration list for PBXNativeTarget "ScreenBrightnessThemingExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A01C5E01AD07E9900AA479F /* Debug */,
@@ -726,7 +726,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "Dynamic Theming Example" */ = {
+		3ADB36071A5645B30059796A /* Build configuration list for PBXNativeTarget "DynamicThemingExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3ADB36081A5645B30059796A /* Debug */,
