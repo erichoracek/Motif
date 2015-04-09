@@ -67,17 +67,17 @@ To create the buttons from the design spec, we've written the following theme fi
 }
 ```
 
-We've started by defining three constants: our button colors as `$RedColor` and `$BlueColor`, and our font name as `$FontName`. We choose to define these values as constants because we want to be able to reference these constants anywhere else in the theme file by their names—just like variables in [less](http://lesscss.org) or [Sass](http://sass-lang.com).
+We've started by defining three constants: our button colors as `$RedColor` and `$BlueColor`, and our font name as `$FontName`. We choose to define these values as constants because we want to be able to reference them later in our theme file by their names—just like variables in [less](http://lesscss.org) or [Sass](http://sass-lang.com).
 
 We now declare our first class: `.ButtonText`. This class describes the attributes of the text within the button—both its font and size. From now on, we'll use this class to declare that we want text to have this specific style.
 
 You'll notice that the value of the `fontName` property on the `.ButtonText` class is a *reference* to the `$FontName` constant we declared above. As you can probably guess, when we use this class, its font name will have the same value as the `$FontName` constant. This way, we're able to have one definitive place that our font name exists so we don't end up repeating ourselves.
 
-The last class we declare is our `.WarningButton` class. This class is exactly like our previous classes except for one key difference: it inherits its properties from the `.Button` class via the `_superclass` directive. As such, when the `.WarningButton` class is applied to an interface component, it will have identical styling to that of `.Button`, except for its `tintColor` and `borderColor`, which it overrides the values of to be `$RedColor` instead.
+The last class we declare is our `.WarningButton` class. This class is exactly like our previous classes except for one key difference: it inherits its properties from the `.Button` class via the `_superclass` directive. As such, when the `.WarningButton` class is applied to an interface component, it will have identical styling to that of `.Button` for all attributes except `tintColor` and `borderColor`, which it overrides to be `$RedColor` instead.
 
 ### Property appliers
 
-Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by magically matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how we'd like a property to be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
+Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how we'd it to be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
 
 The first set of property appliers we've created is on `UIView`:
 
@@ -100,19 +100,19 @@ The first set of property appliers we've created is on `UIView`:
 }
 ```
 
-Here we've added two property appliers to `UIView`: for the `borderWidth` and `borderColor` properties. Since `UIView` doesn't have properties for these attributes, we need property appliers to teach Motif how to apply them to the underlying `CALayer`.
+Here we've added two property appliers to `UIView`: one for `borderWidth` and another for `borderColor`. Since `UIView` doesn't have properties for these attributes, we need property appliers to teach Motif how to apply them to the underlying `CALayer`.
 
 #### Applier type safety
 
-If we want to ensure that we always apply property values a specific type, we can specify that an applier requires a value of a certain class by using `requiringValueOfClass:` when registering an applier. In the case of the `borderWidth` property above, we require that its value is of class `NSNumber`. This way, if we ever accidentally provide a non-number value for a `borderWidth` property, a runtime exception will be thrown so that we can easily identify and fix our mistake.
+If we want to ensure that we always apply property values a of specific type, we can specify that an applier requires a value of a certain class by using `requiringValueOfClass:` when registering an applier. In the case of the `borderWidth` property above, we require that its value is of class `NSNumber`. This way, if we ever accidentally provide a non-number value for a `borderWidth` property, a runtime exception will be thrown so that we can easily identify and fix our mistake.
 
 #### Applier value transformers
 
-In the case of `borderColor`, the value specified in the JSON theme is not a color, but instead a color written as a string (e.g. `#f93d38`). To ensure that this value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName:` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
+In the case of `borderColor`, the value specified in the JSON theme is not a color, but instead a color encoded as the string: `"#f93d38"`. To ensure that this value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
 
-Now that we've defined these two properties on `UIView`, whenever we have another class wants to specify a `borderColor` or `borderWidth`, these appliers will be able to apply those values as well.
+Now that we've defined these two properties on `UIView`, they will be available to apply any other themes with the same properties in the future. As such, whenever we have another class wants to specify a `borderColor` or `borderWidth` to a `UIView` or any of its descendants, these appliers will be able to apply those values as well.
 
-Next up, we're going to get `UILabel` appliers working:
+Next up, we're going to add an applier to `UILabel` to style our text:
 
 ### `UILabel+Theming.m`
 
@@ -137,6 +137,8 @@ Next up, we're going to get `UILabel` appliers working:
 
 The above applier is a _compound property applier_. This means that it's a property applier that requires multiple property values from the theme class for it to be applied. In this case, we need this because we can not create a `UIFont` object without having both the size and name of the font beforehand.
 
+The final applier that we'll need is on `UIButton` to style its `titleLabel`:
+
 ### `UIButton+Theming.m`
 
 ```objective-c
@@ -150,11 +152,9 @@ The above applier is a _compound property applier_. This means that it's a prope
 }
 ```
 
-The final applier that we'll need is on `UIButton` to style its `titleLabel`.
-
 #### Properties with `MTFClass` values
 
-We've just created a style applier on `UILabel` that allows us to give it a custom font from a theme class. Thankfully, this is all we need to style our `UIButton`'s `titleTabel`. Since the `titleText` property on the `.Button` class is a reference to the `.ButtonText` class, the value that comes through the applier will be of class `MTFClass`. `MTFClass` objects are used to represent classes like `.TitleText` from theme files, and are able to apply their properties to an object. As such, to apply the font from the `.TitleText` class to our button's label, we simply invoke `applyToObject:` on `titleLabel` with the passed `MTFTheme`.
+Previously, we created a style applier on `UILabel` that allows us specify a custom font from a theme class. Thankfully, we're able to use this applier to style our `UIButton`'s `titleTabel` as well. Since the `titleText` property on the `.Button` class is a reference to the `.ButtonText` class, we know that the value that comes through this applier will be of class `MTFClass`. `MTFClass` objects are used to represent classes like `.TitleText` from theme files, and are able to apply their properties to an object directly. As such, to apply the `fontName` and `fontSize` from the `.TitleText` class to our button's label, we simply invoke `applyToObject:` on `titleLabel` with the passed `MTFClass`.
 
 ### Putting it all together
 
@@ -167,11 +167,11 @@ NSAssert(error != nil, @"Error loading theme %@", error);
 [theme applyClassWithName:@"WarningButton" toObject:deleteButton];
 ```
 
-We now have everything we need able to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
+We now have everything we need able to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
 
-When we have our `MTFTheme`, we want to make sure there were no errors parsing it. We do so by asserting that the pass-by-reference error pointer is still non-nil. By using `NSAssert` we'll get a runtime crash when debugging informing us our errors
+When we have our `MTFTheme`, we want to make sure that there were no errors parsing it. We can do so by asserting that our pass-by-reference `error` is still non-nil. By using `NSAssert`, we'll get a runtime crash when debugging informing us our errors (if there were any).
 
-To apply the classes from `Theme.json` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on theme. When we do so, all of the properties are applied from the class to the button in just one simple method class. This is the power of Motif.
+To apply the classes from `Theme.json` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on our buttons. When we do so, all of the properties from the theme classes are applied to our buttons in just one simple method invocation. This is the power of Motif.
 
 ## Using Motif in your project
 
