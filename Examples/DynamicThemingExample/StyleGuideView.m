@@ -150,7 +150,9 @@ static CGFloat const SegmentedControlHeight = 32.0;
         self.headlineTextLabel.text = @"Headline";
         self.titleTextLabel.text = @"Title";
         self.subheadTextLabel.text = @"Subhead";
-        self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.";
+        self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus "
+            "auctor fringilla. Cum sociis natoque penatibus et magnis dis "
+            "parturient montes, nascetur ridiculus mus.";
         self.captionTextLabel.text = @"Caption";
         
         self.toggle.on = YES;
