@@ -21,7 +21,7 @@ Well, things about about to change. Take a look at the example below to see what
 
 ## An example
 
-The following is a simple example of how you'd create a pair of styled buttons with Motif. To follow along, you can either continue reading below or clone this repo and run the `Buttons Example` target within `Motif.xcworkspace`.
+The following is a simple example of how you'd create a pair of styled buttons with Motif. To follow along, you can either continue reading below or clone this repo and run the `ButtonsExample` target within `Motif.xcworkspace`.
 
 ### The design
 
