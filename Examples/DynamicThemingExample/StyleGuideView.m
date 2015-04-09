@@ -1,21 +1,21 @@
 //
-//  ButtonsView.m
-//  ButtonsExample
+//  StyleGuideView.m
+//  DynamicThemesExample
 //
 //  Created by Eric Horacek on 12/27/14.
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
 #import <Masonry/Masonry.h>
-#import "ButtonsView.h"
+#import "StyleGuideView.h"
 
-@interface ButtonsView ()
+@interface StyleGuideView ()
 
 @property (nonatomic, readonly) NSArray *textLabels;
 
 @end
 
-@implementation ButtonsView
+@implementation StyleGuideView
 
 #pragma mark - UIView
 
@@ -30,36 +30,36 @@ static CGFloat const SegmentedControlHeight = 32.0;
 - (void)updateConstraints {
     [super updateConstraints];
         
-    [self.saveButton
+    [self.button
         mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).offset(SectionPadding);
             make.left.equalTo(@(ElementPadding));
             make.right.equalTo(self.mas_centerX).offset(-(ElementPadding / 2.0));
-            make.width.equalTo(self.deleteButton);
+            make.width.equalTo(self.warningButton);
         }];
     
-    [self.deleteButton
+    [self.warningButton
         mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_centerX).offset(ElementPadding / 2.0);
-            make.centerY.equalTo(self.saveButton);
-            make.width.equalTo(self.saveButton);
+            make.centerY.equalTo(self.button);
+            make.width.equalTo(self.button);
         }];
     
-    [self.secondarySaveButton
+    [self.secondaryButton
         mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.saveButton.mas_bottom).offset(ElementPadding);
-            make.left.equalTo(self.saveButton);
-            make.width.equalTo(self.saveButton);
+            make.top.equalTo(self.button.mas_bottom).offset(ElementPadding);
+            make.left.equalTo(self.button);
+            make.width.equalTo(self.button);
         }];
     
-    [self.secondaryDeleteButton
+    [self.warningSecondaryButton
         mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.deleteButton);
-            make.centerY.equalTo(self.secondarySaveButton);
-            make.width.equalTo(self.secondarySaveButton);
+            make.left.equalTo(self.warningButton);
+            make.centerY.equalTo(self.secondaryButton);
+            make.width.equalTo(self.secondaryButton);
         }];
     
-    __block UIView *topView = self.secondarySaveButton;
+    __block UIView *topView = self.secondaryButton;
     [self.textLabels enumerateObjectsUsingBlock:^(UILabel *textLabel, NSUInteger textLabelIndex, BOOL *stop) {
         [textLabel
             mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -102,10 +102,10 @@ static CGFloat const SegmentedControlHeight = 32.0;
     if (self) {
         self.alwaysBounceVertical = YES;
         
-        _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
-        _deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _secondarySaveButton = [UIButton buttonWithType:UIButtonTypeSystem];;
-        _secondaryDeleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _button = [UIButton buttonWithType:UIButtonTypeSystem];;
+        _warningButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _secondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];;
+        _warningSecondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];
         
         _displayTextLabel = [UILabel new];
         _headlineTextLabel = [UILabel new];
@@ -123,10 +123,10 @@ static CGFloat const SegmentedControlHeight = 32.0;
                 @"Three"
             ]];
         
-        [self addSubview:self.saveButton];
-        [self addSubview:self.deleteButton];
-        [self addSubview:self.secondarySaveButton];
-        [self addSubview:self.secondaryDeleteButton];
+        [self addSubview:self.button];
+        [self addSubview:self.warningButton];
+        [self addSubview:self.secondaryButton];
+        [self addSubview:self.warningSecondaryButton];
         
         [self addSubview:self.displayTextLabel];
         [self addSubview:self.headlineTextLabel];
@@ -141,10 +141,10 @@ static CGFloat const SegmentedControlHeight = 32.0;
         
         self.bodyTextLabel.numberOfLines = 0;
         
-        [self.deleteButton setTitle:@"Delete Button" forState:UIControlStateNormal];
-        [self.saveButton setTitle:@"Save Button" forState:UIControlStateNormal];
-        [self.secondaryDeleteButton setTitle:@"Delete Button" forState:UIControlStateNormal];
-        [self.secondarySaveButton setTitle:@"Save Button" forState:UIControlStateNormal];
+        [self.button setTitle:@"Button" forState:UIControlStateNormal];
+        [self.warningButton setTitle:@"Warning Button" forState:UIControlStateNormal];
+        [self.secondaryButton setTitle:@"Button" forState:UIControlStateNormal];
+        [self.warningSecondaryButton setTitle:@"Warning Button" forState:UIControlStateNormal];
         
         self.displayTextLabel.text = @"Display";
         self.headlineTextLabel.text = @"Headline";

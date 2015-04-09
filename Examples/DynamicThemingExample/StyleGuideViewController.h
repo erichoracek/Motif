@@ -1,5 +1,5 @@
 //
-//  ButtonsViewController.h
+//  StyleGuideViewController.h
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 1/1/15.
@@ -10,7 +10,7 @@
 
 @class MTFDynamicThemeApplier;
 
-@interface ButtonsViewController : UIViewController
+@interface StyleGuideViewController : UIViewController
 
 - (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier;
 

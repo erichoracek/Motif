@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A01C5C11AD07E9900AA479F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* ButtonsView.m */; };
-		3A01C5C31AD07E9900AA479F /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
+		3A01C5C11AD07E9900AA479F /* StyleGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* StyleGuideView.m */; };
+		3A01C5C31AD07E9900AA479F /* StyleGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* StyleGuideViewController.m */; };
 		3A01C5C61AD07E9900AA479F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
 		3A01C5CB1AD07E9900AA479F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
 		3A01C5CD1AD07E9900AA479F /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
@@ -27,8 +27,8 @@
 		3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */; };
 		3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
 		3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
-		3A01C5FF1AD1CC7E00AA479F /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */; };
-		3A01C6001AD1CC7E00AA479F /* SpecTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */; };
+		3A01C5FF1AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */; };
+		3A01C6001AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */; };
 		3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
 		3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
 		3A01C6151AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */; };
@@ -43,8 +43,6 @@
 		3A01C61E1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */; };
 		3A01C61F1AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */; };
 		3A01C6201AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */; };
-		3A01C6211AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */; };
-		3A01C6221AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */; };
 		3A01C6231AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */; };
 		3A01C6241AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */; };
 		3A01C6321AD1CCAC00AA479F /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6271AD1CCAC00AA479F /* UIButton+Theming.m */; };
@@ -59,13 +57,15 @@
 		3A01C63B1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */; };
 		3A01C63C1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
 		3A01C63D1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
+		3A5D20EA1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */; };
+		3A5D20EB1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */; };
 		3A73B87B1ACD158100A6A2E0 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; };
 		3A73B87C1ACD158100A6A2E0 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ADB35EA1A5645B30059796A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35E91A5645B30059796A /* main.m */; };
 		3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EC1A5645B30059796A /* AppDelegate.m */; };
-		3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* ButtonsViewController.m */; };
+		3ADB35F01A5645B30059796A /* StyleGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB35EF1A5645B30059796A /* StyleGuideViewController.m */; };
 		3ADB36181A567D8B0059796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
-		3ADB36331A56820D0059796A /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* ButtonsView.m */; };
+		3ADB36331A56820D0059796A /* StyleGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* StyleGuideView.m */; };
 		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
 		3D4E8E2DFB613476649EE660 /* libPods-Dynamic Theming Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE635A613B60EE73ABC1EC12 /* libPods-Dynamic Theming Example.a */; };
 		D308A1E0279F85B8BFDF5932 /* libPods-Screen Brightness Theming Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C53E16B670B1E488417ADF9 /* libPods-Screen Brightness Theming Example.a */; };
@@ -107,7 +107,7 @@
 		3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkMappingsTheme.json; sourceTree = "<group>"; };
 		3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LightMappingsTheme.json; sourceTree = "<group>"; };
 		3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NavigationTheme.json; sourceTree = "<group>"; };
-		3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SpecTheme.json; sourceTree = "<group>"; };
+		3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StyleGuideTheme.json; sourceTree = "<group>"; };
 		3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TypographyTheme.json; sourceTree = "<group>"; };
 		3A01C6041AD1CC9400AA479F /* ColorsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsThemeSymbols.h; sourceTree = "<group>"; };
 		3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorsThemeSymbols.m; sourceTree = "<group>"; };
@@ -121,8 +121,6 @@
 		3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightMappingsThemeSymbols.m; sourceTree = "<group>"; };
 		3A01C60E1AD1CC9400AA479F /* NavigationThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationThemeSymbols.h; sourceTree = "<group>"; };
 		3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationThemeSymbols.m; sourceTree = "<group>"; };
-		3A01C6101AD1CC9400AA479F /* SpecThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecThemeSymbols.h; sourceTree = "<group>"; };
-		3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecThemeSymbols.m; sourceTree = "<group>"; };
 		3A01C6121AD1CC9400AA479F /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
 		3A01C6131AD1CC9400AA479F /* TypographyThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypographyThemeSymbols.h; sourceTree = "<group>"; };
 		3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypographyThemeSymbols.m; sourceTree = "<group>"; };
@@ -138,16 +136,18 @@
 		3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Theming.m"; sourceTree = "<group>"; };
 		3A01C6301AD1CCAC00AA479F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
+		3A5D20E81AD654E70020C6B9 /* StyleGuideThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleGuideThemeSymbols.h; sourceTree = "<group>"; };
+		3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleGuideThemeSymbols.m; sourceTree = "<group>"; };
 		3A73B8791ACD157600A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E41A5645B30059796A /* DynamicThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3ADB35EC1A5645B30059796A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3ADB35EE1A5645B30059796A /* ButtonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
-		3ADB35EF1A5645B30059796A /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
+		3ADB35EE1A5645B30059796A /* StyleGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleGuideViewController.h; sourceTree = "<group>"; };
+		3ADB35EF1A5645B30059796A /* StyleGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleGuideViewController.m; sourceTree = "<group>"; };
 		3ADB36171A567D8B0059796A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3ADB362D1A56820D0059796A /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
-		3ADB362E1A56820D0059796A /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
+		3ADB362D1A56820D0059796A /* StyleGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleGuideView.h; sourceTree = "<group>"; };
+		3ADB362E1A56820D0059796A /* StyleGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleGuideView.m; sourceTree = "<group>"; };
 		3ADB363E1A5692220059796A /* UIColor+LightnessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LightnessType.h"; sourceTree = "<group>"; };
 		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
 		85A213288BF8A5C13305DCDA /* Pods-Dynamic Theming Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dynamic Theming Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Dynamic Theming Example/Pods-Dynamic Theming Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,13 +192,13 @@
 			isa = PBXGroup;
 			children = (
 				3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */,
-				3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */,
-				3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */,
 				3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */,
 				3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */,
-				3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */,
-				3A01C5F11AD1CC7E00AA479F /* SpecTheme.json */,
 				3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */,
+				3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */,
+				3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */,
+				3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */,
+				3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -206,23 +206,23 @@
 		3A01C6031AD1CC9400AA479F /* ThemeSymbols */ = {
 			isa = PBXGroup;
 			children = (
+				3A01C6121AD1CC9400AA479F /* ThemeSymbols.h */,
 				3A01C6041AD1CC9400AA479F /* ColorsThemeSymbols.h */,
 				3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */,
-				3A01C6061AD1CC9400AA479F /* ContentThemeSymbols.h */,
-				3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */,
-				3A01C6081AD1CC9400AA479F /* ControlsThemeSymbols.h */,
-				3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */,
 				3A01C60A1AD1CC9400AA479F /* DarkMappingsThemeSymbols.h */,
 				3A01C60B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m */,
 				3A01C60C1AD1CC9400AA479F /* LightMappingsThemeSymbols.h */,
 				3A01C60D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m */,
-				3A01C60E1AD1CC9400AA479F /* NavigationThemeSymbols.h */,
-				3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */,
-				3A01C6101AD1CC9400AA479F /* SpecThemeSymbols.h */,
-				3A01C6111AD1CC9400AA479F /* SpecThemeSymbols.m */,
-				3A01C6121AD1CC9400AA479F /* ThemeSymbols.h */,
 				3A01C6131AD1CC9400AA479F /* TypographyThemeSymbols.h */,
 				3A01C6141AD1CC9400AA479F /* TypographyThemeSymbols.m */,
+				3A01C6081AD1CC9400AA479F /* ControlsThemeSymbols.h */,
+				3A01C6091AD1CC9400AA479F /* ControlsThemeSymbols.m */,
+				3A01C60E1AD1CC9400AA479F /* NavigationThemeSymbols.h */,
+				3A01C60F1AD1CC9400AA479F /* NavigationThemeSymbols.m */,
+				3A01C6061AD1CC9400AA479F /* ContentThemeSymbols.h */,
+				3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */,
+				3A5D20E81AD654E70020C6B9 /* StyleGuideThemeSymbols.h */,
+				3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */,
 			);
 			path = ThemeSymbols;
 			sourceTree = "<group>";
@@ -273,10 +273,10 @@
 				3A01C6251AD1CCAC00AA479F /* ThemingCategories */,
 				3ADB35EB1A5645B30059796A /* AppDelegate.h */,
 				3ADB35EC1A5645B30059796A /* AppDelegate.m */,
-				3ADB35EE1A5645B30059796A /* ButtonsViewController.h */,
-				3ADB35EF1A5645B30059796A /* ButtonsViewController.m */,
-				3ADB362D1A56820D0059796A /* ButtonsView.h */,
-				3ADB362E1A56820D0059796A /* ButtonsView.m */,
+				3ADB35EE1A5645B30059796A /* StyleGuideViewController.h */,
+				3ADB35EF1A5645B30059796A /* StyleGuideViewController.m */,
+				3ADB362D1A56820D0059796A /* StyleGuideView.h */,
+				3ADB362E1A56820D0059796A /* StyleGuideView.m */,
 				3ADB363E1A5692220059796A /* UIColor+LightnessType.h */,
 				3ADB363F1A5692220059796A /* UIColor+LightnessType.m */,
 				3ADB36171A567D8B0059796A /* Images.xcassets */,
@@ -393,7 +393,7 @@
 				3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
 				3A01C5F81AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
 				3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
-				3A01C6001AD1CC7E00AA479F /* SpecTheme.json in Resources */,
+				3A01C6001AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */,
 				3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
 				3A01C5F61AD1CC7E00AA479F /* ContentTheme.json in Resources */,
 				3A01C5F41AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
@@ -409,7 +409,7 @@
 				3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
 				3A01C5F71AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
 				3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
-				3A01C5FF1AD1CC7E00AA479F /* SpecTheme.json in Resources */,
+				3A01C5FF1AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */,
 				3A01C5FB1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
 				3A01C5F51AD1CC7E00AA479F /* ContentTheme.json in Resources */,
 				3A01C5F31AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
@@ -521,10 +521,11 @@
 				3A01C6331AD1CCAC00AA479F /* UIButton+Theming.m in Sources */,
 				3A01C63B1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */,
 				3A01C6241AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */,
-				3A01C5C11AD07E9900AA479F /* ButtonsView.m in Sources */,
+				3A01C5C11AD07E9900AA479F /* StyleGuideView.m in Sources */,
 				3A01C6201AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */,
-				3A01C5C31AD07E9900AA479F /* ButtonsViewController.m in Sources */,
+				3A01C5C31AD07E9900AA479F /* StyleGuideViewController.m in Sources */,
 				3A01C5C61AD07E9900AA479F /* AppDelegate.m in Sources */,
+				3A5D20EB1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */,
 				3A01C61E1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */,
 				3A01C5CB1AD07E9900AA479F /* main.m in Sources */,
 				3A01C61A1AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */,
@@ -532,7 +533,6 @@
 				3A01C6351AD1CCAC00AA479F /* UILabel+Theming.m in Sources */,
 				3A01C6391AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */,
 				3A01C61C1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */,
-				3A01C6221AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */,
 				3A01C6371AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */,
 				3A01C5CD1AD07E9900AA479F /* UIColor+LightnessType.m in Sources */,
 			);
@@ -547,10 +547,11 @@
 				3A01C6321AD1CCAC00AA479F /* UIButton+Theming.m in Sources */,
 				3A01C63A1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */,
 				3A01C6231AD1CC9400AA479F /* TypographyThemeSymbols.m in Sources */,
-				3ADB36331A56820D0059796A /* ButtonsView.m in Sources */,
+				3ADB36331A56820D0059796A /* StyleGuideView.m in Sources */,
 				3A01C61F1AD1CC9400AA479F /* NavigationThemeSymbols.m in Sources */,
-				3ADB35F01A5645B30059796A /* ButtonsViewController.m in Sources */,
+				3ADB35F01A5645B30059796A /* StyleGuideViewController.m in Sources */,
 				3ADB35ED1A5645B30059796A /* AppDelegate.m in Sources */,
+				3A5D20EA1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */,
 				3A01C61D1AD1CC9400AA479F /* LightMappingsThemeSymbols.m in Sources */,
 				3ADB35EA1A5645B30059796A /* main.m in Sources */,
 				3A01C6191AD1CC9400AA479F /* ControlsThemeSymbols.m in Sources */,
@@ -558,7 +559,6 @@
 				3A01C6341AD1CCAC00AA479F /* UILabel+Theming.m in Sources */,
 				3A01C6381AD1CCAC00AA479F /* UIScrollView+Theming.m in Sources */,
 				3A01C61B1AD1CC9400AA479F /* DarkMappingsThemeSymbols.m in Sources */,
-				3A01C6211AD1CC9400AA479F /* SpecThemeSymbols.m in Sources */,
 				3A01C6361AD1CCAC00AA479F /* UINavigationBar+Theming.m in Sources */,
 				3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */,
 			);

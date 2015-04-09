@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  ButtonsViewController.m
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.

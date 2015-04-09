@@ -5,5 +5,5 @@
 #import "DarkMappingsThemeSymbols.h"
 #import "LightMappingsThemeSymbols.h"
 #import "NavigationThemeSymbols.h"
-#import "SpecThemeSymbols.h"
+#import "StyleGuideThemeSymbols.h"
 #import "TypographyThemeSymbols.h"

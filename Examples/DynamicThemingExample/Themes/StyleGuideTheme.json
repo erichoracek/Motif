@@ -1,17 +1,17 @@
 {
-    ".Spec": {
+    ".StyleGuide": {
         "_superclass": ".ScrollableContentBackground",
-        "saveButton": ".CreativeButton",
-        "deleteButton": ".DestructiveButton",
-        "secondarySaveButton": ".CreativeSecondaryButton",
-        "secondaryDeleteButton": ".DestructiveSecondaryButton",
+        "button": ".Button",
+        "warningButton": ".WarningButton",
+        "secondaryButton": ".SecondaryButton",
+        "warningSecondaryButton": ".WarningSecondaryButton",
         "displayTextLabel": ".DisplayText",
         "headlineTextLabel": ".HeadlineText",
         "titleTextLabel": ".TitleText",
         "subheadTextLabel": ".SubheadText",
         "bodyTextLabel": ".BodyText",
         "captionTextLabel": ".CaptionText",
-        "toggle": ".Toggle",
+        "toggle": ".Switch",
         "slider": ".Slider",
         "segmentedControl": ".SegmentedControl"
     }

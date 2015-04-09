@@ -1,36 +1,33 @@
 {
+    "$ButtonInsets": "{10, 20, 10, 20}",
+    "$ButtonCornerRadius": 5,
     ".Button": {
         "text": ".SubheadText",
-        "contentEdgeInsets": "{10.0, 20.0, 10.0, 20.0}",
-        "cornerRadius": 5.0
-    },
-    ".DestructiveButton": {
-        "_superclass": ".Button",
-        "backgroundColor": "$DestructiveColor",
-        "tintColor": "$PrimaryButtonTextColor"
-    },
-    ".CreativeButton": {
-        "_superclass": ".Button",
+        "contentEdgeInsets": "$ButtonInsets",
         "backgroundColor": "$PrimaryColor",
-        "tintColor": "$PrimaryButtonTextColor"
+        "tintColor": "$ButtonTextColor",
+        "cornerRadius": "$ButtonCornerRadius"
+    },
+    ".WarningButton": {
+        "_superclass": ".Button",
+        "backgroundColor": "$WarningColor"
     },
     ".SecondaryButton": {
-        "_superclass": ".Button",
-        "borderWidth": 1.0
-    },
-    ".DestructiveSecondaryButton": {
-        "_superclass": ".SecondaryButton",
-        "tintColor": "$DestructiveColor",
-        "borderColor": "$DestructiveColor"
-    },
-    ".CreativeSecondaryButton": {
-        "_superclass": ".SecondaryButton",
+        "text": ".SubheadText",
+        "contentEdgeInsets": "$ButtonInsets",
+        "cornerRadius": "$ButtonCornerRadius",
         "tintColor": "$PrimaryColor",
-        "borderColor": "$PrimaryColor"
+        "borderColor": "$PrimaryColor",
+        "borderWidth": 1
     },
-    ".Toggle": {
+    ".WarningSecondaryButton": {
+        "_superclass": ".SecondaryButton",
+        "tintColor": "$WarningColor",
+        "borderColor": "$WarningColor"
+    },
+    ".Switch": {
         "onTintColor": "$PrimaryColor",
-        "tintColor": "$SeparatorColor",
+        "tintColor": "$SeparatorColor"
     },
     ".Slider": {
         "minimumTrackTintColor": "$PrimaryColor",

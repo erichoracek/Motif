@@ -5,14 +5,14 @@
 extern NSString * const DarkMappingsThemeName;
 
 extern const struct DarkMappingsThemeConstantKeys {
+    __unsafe_unretained NSString *WarningColor;
     __unsafe_unretained NSString *ContentBackgroundColor;
-    __unsafe_unretained NSString *DestructiveColor;
     __unsafe_unretained NSString *ContentForegroundColor;
     __unsafe_unretained NSString *ScrollIndicatorStyle;
     __unsafe_unretained NSString *SeparatorColor;
     __unsafe_unretained NSString *PrimaryColor;
+    __unsafe_unretained NSString *ButtonTextColor;
     __unsafe_unretained NSString *BodyTextColor;
-    __unsafe_unretained NSString *PrimaryButtonTextColor;
     __unsafe_unretained NSString *HeadingTextColor;
     __unsafe_unretained NSString *CaptionTextColor;
 } DarkMappingsThemeConstantKeys;

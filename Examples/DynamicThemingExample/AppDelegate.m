@@ -7,7 +7,7 @@
 //
 
 #import <Motif/Motif.h>
-#import "ButtonsViewController.h"
+#import "StyleGuideViewController.h"
 #import "AppDelegate.h"
 #import "ThemeSymbols.h"
 
@@ -33,7 +33,7 @@
         lightTheme:self.lightTheme
         darkTheme:self.darkTheme];
     
-    ButtonsViewController *viewController = [[ButtonsViewController alloc]
+    StyleGuideViewController *viewController = [[StyleGuideViewController alloc]
         initWithThemeApplier:self.themeApplier];
     
     viewController.navigationItem.title = @"Screen Brightness Theming";
@@ -45,7 +45,7 @@
     self.themeApplier = [[MTFDynamicThemeApplier alloc]
         initWithTheme:self.lightTheme];
     
-    ButtonsViewController *viewController = [[ButtonsViewController alloc]
+    StyleGuideViewController *viewController = [[StyleGuideViewController alloc]
         initWithThemeApplier:self.themeApplier];
     
     viewController.navigationItem.title = @"Dynamic Theming";
@@ -86,7 +86,7 @@
                 ControlsThemeName,
                 NavigationThemeName,
                 ContentThemeName,
-                SpecThemeName
+                StyleGuideThemeName
             ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.lightTheme = theme;
@@ -105,7 +105,7 @@
                 ControlsThemeName,
                 NavigationThemeName,
                 ContentThemeName,
-                SpecThemeName
+                StyleGuideThemeName
             ] error:&error];
         NSAssert(!error, @"Error loading theme: %@", error);
         self.darkTheme = theme;

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ButtonsViewController.h
 //  ButtonsExample
 //
 //  Created by Eric Horacek on 12/27/14.

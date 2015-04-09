@@ -5,14 +5,14 @@
 NSString * const LightMappingsThemeName = @"LightMappingsTheme";
 
 const struct LightMappingsThemeConstantKeys LightMappingsThemeConstantKeys = {
+    .WarningColor = @"WarningColor",
     .ContentBackgroundColor = @"ContentBackgroundColor",
-    .DestructiveColor = @"DestructiveColor",
     .ContentForegroundColor = @"ContentForegroundColor",
     .ScrollIndicatorStyle = @"ScrollIndicatorStyle",
     .SeparatorColor = @"SeparatorColor",
     .PrimaryColor = @"PrimaryColor",
+    .ButtonTextColor = @"ButtonTextColor",
     .BodyTextColor = @"BodyTextColor",
-    .PrimaryButtonTextColor = @"PrimaryButtonTextColor",
     .HeadingTextColor = @"HeadingTextColor",
     .CaptionTextColor = @"CaptionTextColor",
 };

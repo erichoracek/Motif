@@ -1,12 +1,12 @@
 {
     "$ContentBackgroundColor": "$WhiteColor",
     "$ContentForegroundColor": "$WhiteLightColor",
-    "$DestructiveColor": "$RedDarkColor",
+    "$WarningColor": "$RedDarkColor",
     "$PrimaryColor": "$BlueDarkColor",
     "$SeparatorColor": "$WhiteDarkColor",
     "$HeadingTextColor": "$GrayColor",
     "$BodyTextColor": "$GrayDarkColor",
     "$CaptionTextColor": "$GrayLightColor",
-    "$PrimaryButtonTextColor": "$WhiteColor",
+    "$ButtonTextColor": "$WhiteColor",
     "$ScrollIndicatorStyle": "dark"
 }

@@ -1,6 +1,6 @@
 //
-//  ButtonsView.h
-//  ButtonsExample
+//  StyleGuideView.h
+//  DynamicThemesExample
 //
 //  Created by Eric Horacek on 12/27/14.
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ButtonsView : UIScrollView
+@interface StyleGuideView : UIScrollView
 
-@property (nonatomic, readonly) UIButton *saveButton;
-@property (nonatomic, readonly) UIButton *deleteButton;
+@property (nonatomic, readonly) UIButton *button;
+@property (nonatomic, readonly) UIButton *warningButton;
 
-@property (nonatomic, readonly) UIButton *secondarySaveButton;
-@property (nonatomic, readonly) UIButton *secondaryDeleteButton;
+@property (nonatomic, readonly) UIButton *secondaryButton;
+@property (nonatomic, readonly) UIButton *warningSecondaryButton;
 
 @property (nonatomic, readonly) UILabel *displayTextLabel;
 @property (nonatomic, readonly) UILabel *headlineTextLabel;

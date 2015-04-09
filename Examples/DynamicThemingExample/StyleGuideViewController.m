@@ -1,5 +1,5 @@
 //
-//  ButtonsViewController.m
+//  StyleGuideViewController.m
 //  DynamicThemesExample
 //
 //  Created by Eric Horacek on 1/1/15.
@@ -7,29 +7,29 @@
 //
 
 #import <Motif/Motif.h>
-#import "ButtonsViewController.h"
-#import "ButtonsView.h"
+#import "StyleGuideViewController.h"
+#import "StyleGuideView.h"
 #import "ThemeSymbols.h"
 
-@implementation ButtonsViewController
+@implementation StyleGuideViewController
 
 #pragma mark - UIViewController
 
 @dynamic view;
 
 - (void)loadView {
-    self.view = [ButtonsView new];
+    self.view = [StyleGuideView new];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.themeApplier
-        applyClassWithName:SpecThemeClassNames.Spec
+        applyClassWithName:StyleGuideThemeClassNames.StyleGuide
         toObject:self.view];
 }
 
-#pragma mark - ButtonsViewController
+#pragma mark - StyleGuideViewController
 
 - (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier {
     NSParameterAssert(themeApplier);
