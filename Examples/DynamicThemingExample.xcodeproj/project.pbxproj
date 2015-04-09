@@ -67,8 +67,8 @@
 		3ADB36181A567D8B0059796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
 		3ADB36331A56820D0059796A /* StyleGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB362E1A56820D0059796A /* StyleGuideView.m */; };
 		3ADB36401A5692220059796A /* UIColor+LightnessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB363F1A5692220059796A /* UIColor+LightnessType.m */; };
-		3D4E8E2DFB613476649EE660 /* libPods-Dynamic Theming Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE635A613B60EE73ABC1EC12 /* libPods-Dynamic Theming Example.a */; };
-		D308A1E0279F85B8BFDF5932 /* libPods-Screen Brightness Theming Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C53E16B670B1E488417ADF9 /* libPods-Screen Brightness Theming Example.a */; };
+		BA6AAC1D47D2E8FC52ADADD8 /* libPods-DynamicThemingExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FF0D15E308D9EBBB8A0FF8 /* libPods-DynamicThemingExample.a */; };
+		CEFC6C45F59234AEBF1E5C1D /* libPods-ScreenBrightnessThemingExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E81C24ED8ECEACFBC8A2CB /* libPods-ScreenBrightnessThemingExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +99,7 @@
 /* Begin PBXFileReference section */
 		0664066B63542EE6704864E0 /* Pods-Dynamic Theming Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dynamic Theming Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Dynamic Theming Example/Pods-Dynamic Theming Example.release.xcconfig"; sourceTree = "<group>"; };
 		086E31FC0822298482B58478 /* Pods-Screen Brightness Theming Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screen Brightness Theming Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Screen Brightness Theming Example/Pods-Screen Brightness Theming Example.debug.xcconfig"; sourceTree = "<group>"; };
+		119FDE51BC377A5FDEA1FA68 /* Pods-ScreenBrightnessThemingExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenBrightnessThemingExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ScreenBrightnessThemingExample/Pods-ScreenBrightnessThemingExample.debug.xcconfig"; sourceTree = "<group>"; };
 		3A01C5E21AD07E9900AA479F /* ScreenBrightnessThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenBrightnessThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A01C5E81AD1C57800AA479F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ColorsTheme.json; sourceTree = "<group>"; };
@@ -150,9 +151,14 @@
 		3ADB362E1A56820D0059796A /* StyleGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleGuideView.m; sourceTree = "<group>"; };
 		3ADB363E1A5692220059796A /* UIColor+LightnessType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LightnessType.h"; sourceTree = "<group>"; };
 		3ADB363F1A5692220059796A /* UIColor+LightnessType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LightnessType.m"; sourceTree = "<group>"; };
+		57E81C24ED8ECEACFBC8A2CB /* libPods-ScreenBrightnessThemingExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScreenBrightnessThemingExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A213288BF8A5C13305DCDA /* Pods-Dynamic Theming Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dynamic Theming Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Dynamic Theming Example/Pods-Dynamic Theming Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9C53E16B670B1E488417ADF9 /* libPods-Screen Brightness Theming Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Screen Brightness Theming Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B791FCD63D0EE8CAA67365E1 /* Pods-DynamicThemingExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemingExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemingExample/Pods-DynamicThemingExample.release.xcconfig"; sourceTree = "<group>"; };
 		BE635A613B60EE73ABC1EC12 /* libPods-Dynamic Theming Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dynamic Theming Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD05494A152CCBC59AA126C /* Pods-ScreenBrightnessThemingExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenBrightnessThemingExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ScreenBrightnessThemingExample/Pods-ScreenBrightnessThemingExample.release.xcconfig"; sourceTree = "<group>"; };
+		D2FF0D15E308D9EBBB8A0FF8 /* libPods-DynamicThemingExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicThemingExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9279065B7A22D1AD311E8D /* Pods-DynamicThemingExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicThemingExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DynamicThemingExample/Pods-DynamicThemingExample.debug.xcconfig"; sourceTree = "<group>"; };
 		E196ED504880A5A2B7C70B3F /* Pods-Screen Brightness Theming Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Screen Brightness Theming Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Screen Brightness Theming Example/Pods-Screen Brightness Theming Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A01C5D01AD07E9900AA479F /* Motif.framework in Frameworks */,
-				D308A1E0279F85B8BFDF5932 /* libPods-Screen Brightness Theming Example.a in Frameworks */,
+				CEFC6C45F59234AEBF1E5C1D /* libPods-ScreenBrightnessThemingExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A73B87B1ACD158100A6A2E0 /* Motif.framework in Frameworks */,
-				3D4E8E2DFB613476649EE660 /* libPods-Dynamic Theming Example.a in Frameworks */,
+				BA6AAC1D47D2E8FC52ADADD8 /* libPods-DynamicThemingExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +190,8 @@
 				3A73B8791ACD157600A6A2E0 /* Motif.framework */,
 				BE635A613B60EE73ABC1EC12 /* libPods-Dynamic Theming Example.a */,
 				9C53E16B670B1E488417ADF9 /* libPods-Screen Brightness Theming Example.a */,
+				D2FF0D15E308D9EBBB8A0FF8 /* libPods-DynamicThemingExample.a */,
+				57E81C24ED8ECEACFBC8A2CB /* libPods-ScreenBrightnessThemingExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,6 +309,10 @@
 				0664066B63542EE6704864E0 /* Pods-Dynamic Theming Example.release.xcconfig */,
 				086E31FC0822298482B58478 /* Pods-Screen Brightness Theming Example.debug.xcconfig */,
 				E196ED504880A5A2B7C70B3F /* Pods-Screen Brightness Theming Example.release.xcconfig */,
+				DA9279065B7A22D1AD311E8D /* Pods-DynamicThemingExample.debug.xcconfig */,
+				B791FCD63D0EE8CAA67365E1 /* Pods-DynamicThemingExample.release.xcconfig */,
+				119FDE51BC377A5FDEA1FA68 /* Pods-ScreenBrightnessThemingExample.debug.xcconfig */,
+				CAD05494A152CCBC59AA126C /* Pods-ScreenBrightnessThemingExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -431,7 +443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Dynamic Theming Example/Pods-Dynamic Theming Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DynamicThemingExample/Pods-DynamicThemingExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3A01C5BA1AD07E9900AA479F /* Generate Theme Symbols */ = {
@@ -476,7 +488,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Screen Brightness Theming Example/Pods-Screen Brightness Theming Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ScreenBrightnessThemingExample/Pods-ScreenBrightnessThemingExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3AC874801ACE679D009E0D82 /* Generate Theme Symbols */ = {
@@ -569,7 +581,7 @@
 /* Begin XCBuildConfiguration section */
 		3A01C5E01AD07E9900AA479F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 086E31FC0822298482B58478 /* Pods-Screen Brightness Theming Example.debug.xcconfig */;
+			baseConfigurationReference = 119FDE51BC377A5FDEA1FA68 /* Pods-ScreenBrightnessThemingExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -586,7 +598,7 @@
 		};
 		3A01C5E11AD07E9900AA479F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E196ED504880A5A2B7C70B3F /* Pods-Screen Brightness Theming Example.release.xcconfig */;
+			baseConfigurationReference = CAD05494A152CCBC59AA126C /* Pods-ScreenBrightnessThemingExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -681,7 +693,7 @@
 		};
 		3ADB36081A5645B30059796A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85A213288BF8A5C13305DCDA /* Pods-Dynamic Theming Example.debug.xcconfig */;
+			baseConfigurationReference = DA9279065B7A22D1AD311E8D /* Pods-DynamicThemingExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -694,7 +706,7 @@
 		};
 		3ADB36091A5645B30059796A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0664066B63542EE6704864E0 /* Pods-Dynamic Theming Example.release.xcconfig */;
+			baseConfigurationReference = B791FCD63D0EE8CAA67365E1 /* Pods-DynamicThemingExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

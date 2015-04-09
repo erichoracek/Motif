@@ -1,1 +1,0 @@
-PODS_DYNAMIC_THEMING_EXAMPLE_MASONRY_OTHER_LDFLAGS = -framework "Foundation" -framework "UIKit"
