@@ -14,22 +14,22 @@ FOUNDATION_EXPORT double MotifVersionNumber;
 //! Project version string for Motif.
 FOUNDATION_EXPORT const unsigned char MotifVersionString[];
 
-#import "MTFBackwardsCompatableNullability.h"
-#import "MTFTheme.h"
-#import "MTFThemeClass.h"
-#import "MTFThemeClassApplicable.h"
-#import "MTFDynamicThemeApplier.h"
-#import "MTFThemeParser.h"
-#import "NSObject+ThemeClassAppliers.h"
-#import "NSObject+ThemeClassName.h"
-#import "MTFReverseTransformedValueClass.h"
-#import "MTFObjCTypeValueTransformer.h"
+#import <Motif/MTFBackwardsCompatableNullability.h>
+#import <Motif/MTFTheme.h>
+#import <Motif/MTFThemeClass.h>
+#import <Motif/MTFThemeClassApplicable.h>
+#import <Motif/MTFDynamicThemeApplier.h>
+#import <Motif/MTFThemeParser.h>
+#import <Motif/NSObject+ThemeClassAppliers.h>
+#import <Motif/NSObject+ThemeClassName.h>
+#import <Motif/MTFReverseTransformedValueClass.h>
+#import <Motif/MTFObjCTypeValueTransformer.h>
 
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
-    #import "MTFScreenBrightnessThemeApplier.h"
-    #import "MTFColorFromStringTransformer.h"
-    #import "MTFEdgeInsetsFromStringTransformer.h"
-    #import "MTFPointFromStringTransformer.h"
-    #import "MTFRectFromStringTransformer.h"
-    #import "MTFSizeFromStringTransformer.h"
+    #import <Motif/MTFScreenBrightnessThemeApplier.h>
+    #import <Motif/MTFColorFromStringTransformer.h>
+    #import <Motif/MTFEdgeInsetsFromStringTransformer.h>
+    #import <Motif/MTFPointFromStringTransformer.h>
+    #import <Motif/MTFRectFromStringTransformer.h>
+    #import <Motif/MTFSizeFromStringTransformer.h>
 #endif
