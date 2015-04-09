@@ -14,11 +14,11 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @class MTFThemeClass;
 @protocol MTFThemeClassApplicable;
 
-typedef void (^MTFThemeClassApplierBlock)(__mtf_nonnull MTFThemeClass * class, __mtf_nonnull id objectToTheme);
+typedef void (^MTFThemeClassApplierBlock)(MTFThemeClass * __mtf_nonnull class, id __mtf_nonnull objectToTheme);
 
-typedef void (^MTFThemePropertyApplierBlock)(__mtf_nonnull id propertyValue, __mtf_nonnull id objectToTheme);
+typedef void (^MTFThemePropertyApplierBlock)(id __mtf_nonnull propertyValue, id __mtf_nonnull objectToTheme);
 
-typedef void (^MTFThemePropertiesApplierBlock)(__mtf_nonnull NSDictionary * valuesForProperties, __mtf_nonnull id objectToTheme);
+typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary * __mtf_nonnull  valuesForProperties, id __mtf_nonnull objectToTheme);
 
 @interface NSObject (ThemeAppliers)
 
