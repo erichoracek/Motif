@@ -152,7 +152,7 @@
 			containerPortal = 3A79EC571AC9147E000CCC01 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A79EC5F1AC9147E000CCC01;
-			remoteInfo = Motif-iOS;
+			remoteInfo = "Motif-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -595,7 +595,7 @@
 			dependencies = (
 			);
 			name = "Motif-OSX";
-			productName = Motif-OSX;
+			productName = "Motif-OSX";
 			productReference = 3A179DC71AC9483900BD598C /* Motif.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -613,7 +613,7 @@
 				3A406CEC1AC9B9B000615428 /* PBXTargetDependency */,
 			);
 			name = "Motif-OSXTests";
-			productName = Motif-OSXTests;
+			productName = "Motif-OSXTests";
 			productReference = 3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -631,7 +631,7 @@
 			dependencies = (
 			);
 			name = "Motif-iOS";
-			productName = Motif-iOS;
+			productName = "Motif-iOS";
 			productReference = 3A79EC601AC9147E000CCC01 /* Motif.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -649,7 +649,7 @@
 				3A79EC6E1AC9147E000CCC01 /* PBXTargetDependency */,
 			);
 			name = "Motif-iOSTests";
-			productName = Motif-iOSTests;
+			productName = "Motif-iOSTests";
 			productReference = 3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
