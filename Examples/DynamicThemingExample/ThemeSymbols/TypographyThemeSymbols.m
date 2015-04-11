@@ -5,28 +5,28 @@
 NSString * const TypographyThemeName = @"TypographyTheme";
 
 const struct TypographyThemeConstantKeys TypographyThemeConstantKeys = {
-    .MediumFontName = @"MediumFontName",
-    .TitleFontSize = @"TitleFontSize",
-    .CaptionFontSize = @"CaptionFontSize",
-    .SubheadFontSize = @"SubheadFontSize",
-    .LightFontName = @"LightFontName",
-    .RegularFontName = @"RegularFontName",
-    .HeadlineFontSize = @"HeadlineFontSize",
     .BodyFontSize = @"BodyFontSize",
+    .CaptionFontSize = @"CaptionFontSize",
     .DisplayFontSize = @"DisplayFontSize",
+    .HeadlineFontSize = @"HeadlineFontSize",
+    .LightFontName = @"LightFontName",
+    .MediumFontName = @"MediumFontName",
+    .RegularFontName = @"RegularFontName",
+    .SubheadFontSize = @"SubheadFontSize",
+    .TitleFontSize = @"TitleFontSize",
 };
 
 const struct TypographyThemeClassNames TypographyThemeClassNames = {
-    .HeadlineText = @"HeadlineText",
-    .DisplayText = @"DisplayText",
-    .TitleText = @"TitleText",
-    .SubheadText = @"SubheadText",
     .BodyText = @"BodyText",
     .CaptionText = @"CaptionText",
+    .DisplayText = @"DisplayText",
+    .HeadlineText = @"HeadlineText",
+    .SubheadText = @"SubheadText",
+    .TitleText = @"TitleText",
 };
 
 const struct TypographyThemeProperties TypographyThemeProperties = {
-    .fontSize = @"fontSize",
     .color = @"color",
     .fontName = @"fontName",
+    .fontSize = @"fontSize",
 };

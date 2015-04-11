@@ -5,14 +5,14 @@
 NSString * const DarkMappingsThemeName = @"DarkMappingsTheme";
 
 const struct DarkMappingsThemeConstantKeys DarkMappingsThemeConstantKeys = {
-    .WarningColor = @"WarningColor",
+    .BodyTextColor = @"BodyTextColor",
+    .ButtonTextColor = @"ButtonTextColor",
+    .CaptionTextColor = @"CaptionTextColor",
     .ContentBackgroundColor = @"ContentBackgroundColor",
     .ContentForegroundColor = @"ContentForegroundColor",
+    .HeadingTextColor = @"HeadingTextColor",
+    .PrimaryColor = @"PrimaryColor",
     .ScrollIndicatorStyle = @"ScrollIndicatorStyle",
     .SeparatorColor = @"SeparatorColor",
-    .PrimaryColor = @"PrimaryColor",
-    .ButtonTextColor = @"ButtonTextColor",
-    .BodyTextColor = @"BodyTextColor",
-    .HeadingTextColor = @"HeadingTextColor",
-    .CaptionTextColor = @"CaptionTextColor",
+    .WarningColor = @"WarningColor",
 };

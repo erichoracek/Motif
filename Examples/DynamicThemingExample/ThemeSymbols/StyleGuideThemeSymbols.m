@@ -9,17 +9,17 @@ const struct StyleGuideThemeClassNames StyleGuideThemeClassNames = {
 };
 
 const struct StyleGuideThemeProperties StyleGuideThemeProperties = {
-    .secondaryButton = @"secondaryButton",
-    .headlineTextLabel = @"headlineTextLabel",
-    .displayTextLabel = @"displayTextLabel",
-    .captionTextLabel = @"captionTextLabel",
+    .bodyTextLabel = @"bodyTextLabel",
     .button = @"button",
-    .toggle = @"toggle",
+    .captionTextLabel = @"captionTextLabel",
+    .displayTextLabel = @"displayTextLabel",
+    .headlineTextLabel = @"headlineTextLabel",
+    .secondaryButton = @"secondaryButton",
+    .segmentedControl = @"segmentedControl",
+    .slider = @"slider",
+    .subheadTextLabel = @"subheadTextLabel",
     .titleTextLabel = @"titleTextLabel",
+    .toggle = @"toggle",
     .warningButton = @"warningButton",
     .warningSecondaryButton = @"warningSecondaryButton",
-    .subheadTextLabel = @"subheadTextLabel",
-    .bodyTextLabel = @"bodyTextLabel",
-    .slider = @"slider",
-    .segmentedControl = @"segmentedControl",
 };

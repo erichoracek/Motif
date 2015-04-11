@@ -5,30 +5,30 @@
 NSString * const ThemeName = @"Theme";
 
 const struct ThemeConstantKeys ThemeConstantKeys = {
-    .WhiteColor = @"WhiteColor",
-    .RedColor = @"RedColor",
     .BlueColor = @"BlueColor",
     .FontName = @"FontName",
+    .RedColor = @"RedColor",
+    .WhiteColor = @"WhiteColor",
 };
 
 const struct ThemeClassNames ThemeClassNames = {
     .Button = @"Button",
-    .ContentBackground = @"ContentBackground",
-    .DestructiveButton = @"DestructiveButton",
     .ButtonText = @"ButtonText",
     .ButtonsView = @"ButtonsView",
+    .ContentBackground = @"ContentBackground",
+    .DestructiveButton = @"DestructiveButton",
 };
 
 const struct ThemeProperties ThemeProperties = {
-    .fontSize = @"fontSize",
-    .titleText = @"titleText",
-    .tintColor = @"tintColor",
-    .deleteButton = @"deleteButton",
-    .borderWidth = @"borderWidth",
-    .borderColor = @"borderColor",
-    .cornerRadius = @"cornerRadius",
-    .fontName = @"fontName",
-    .contentEdgeInsets = @"contentEdgeInsets",
     .backgroundColor = @"backgroundColor",
+    .borderColor = @"borderColor",
+    .borderWidth = @"borderWidth",
+    .contentEdgeInsets = @"contentEdgeInsets",
+    .cornerRadius = @"cornerRadius",
+    .deleteButton = @"deleteButton",
+    .fontName = @"fontName",
+    .fontSize = @"fontSize",
     .saveButton = @"saveButton",
+    .tintColor = @"tintColor",
+    .titleText = @"titleText",
 };

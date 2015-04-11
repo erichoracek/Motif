@@ -5,31 +5,31 @@
 NSString * const ControlsThemeName = @"ControlsTheme";
 
 const struct ControlsThemeConstantKeys ControlsThemeConstantKeys = {
-    .ButtonInsets = @"ButtonInsets",
     .ButtonCornerRadius = @"ButtonCornerRadius",
+    .ButtonInsets = @"ButtonInsets",
 };
 
 const struct ControlsThemeClassNames ControlsThemeClassNames = {
+    .Button = @"Button",
+    .SecondaryButton = @"SecondaryButton",
+    .SegmentedControl = @"SegmentedControl",
     .SegmentedControlText = @"SegmentedControlText",
     .Slider = @"Slider",
-    .SegmentedControl = @"SegmentedControl",
-    .WarningSecondaryButton = @"WarningSecondaryButton",
-    .Button = @"Button",
     .Switch = @"Switch",
-    .SecondaryButton = @"SecondaryButton",
     .WarningButton = @"WarningButton",
+    .WarningSecondaryButton = @"WarningSecondaryButton",
 };
 
 const struct ControlsThemeProperties ControlsThemeProperties = {
-    .color = @"color",
-    .tintColor = @"tintColor",
-    .maximumTrackTintColor = @"maximumTrackTintColor",
-    .onTintColor = @"onTintColor",
-    .borderWidth = @"borderWidth",
-    .text = @"text",
-    .borderColor = @"borderColor",
-    .cornerRadius = @"cornerRadius",
-    .contentEdgeInsets = @"contentEdgeInsets",
-    .minimumTrackTintColor = @"minimumTrackTintColor",
     .backgroundColor = @"backgroundColor",
+    .borderColor = @"borderColor",
+    .borderWidth = @"borderWidth",
+    .color = @"color",
+    .contentEdgeInsets = @"contentEdgeInsets",
+    .cornerRadius = @"cornerRadius",
+    .maximumTrackTintColor = @"maximumTrackTintColor",
+    .minimumTrackTintColor = @"minimumTrackTintColor",
+    .onTintColor = @"onTintColor",
+    .text = @"text",
+    .tintColor = @"tintColor",
 };

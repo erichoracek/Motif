@@ -5,14 +5,14 @@
 NSString * const ColorsThemeName = @"ColorsTheme";
 
 const struct ColorsThemeConstantKeys ColorsThemeConstantKeys = {
-    .RedDarkColor = @"RedDarkColor",
     .BlueDarkColor = @"BlueDarkColor",
-    .WhiteDarkColor = @"WhiteDarkColor",
-    .GrayLightColor = @"GrayLightColor",
-    .GrayColor = @"GrayColor",
     .BlueLightColor = @"BlueLightColor",
+    .GrayColor = @"GrayColor",
     .GrayDarkColor = @"GrayDarkColor",
+    .GrayLightColor = @"GrayLightColor",
+    .RedDarkColor = @"RedDarkColor",
     .RedLightColor = @"RedLightColor",
-    .WhiteLightColor = @"WhiteLightColor",
     .WhiteColor = @"WhiteColor",
+    .WhiteDarkColor = @"WhiteDarkColor",
+    .WhiteLightColor = @"WhiteLightColor",
 };

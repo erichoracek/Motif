@@ -9,8 +9,8 @@ const struct NavigationThemeClassNames NavigationThemeClassNames = {
 };
 
 const struct NavigationThemeProperties NavigationThemeProperties = {
-    .tintColor = @"tintColor",
     .backgroundColor = @"backgroundColor",
     .separatorColor = @"separatorColor",
     .text = @"text",
+    .tintColor = @"tintColor",
 };
