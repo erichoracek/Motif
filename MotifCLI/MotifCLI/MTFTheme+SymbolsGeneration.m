@@ -274,6 +274,7 @@ static NSString * const WarningCommentFormat = @"\
     if (!symbols || !symbols.count) {
         return nil;
     }
+    symbols = [symbols sortedArrayUsingSelector:@selector(compare:)];
     
     NSMutableArray *lines = [NSMutableArray new];
  
