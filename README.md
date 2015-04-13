@@ -228,7 +228,7 @@ applier.theme = darkTheme;
 
 ### "Mapping" themes
 
-While you could write multiple entirely different sets of theme files to create themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
+While you could write multiple sets of entirely different theme files to create themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
 
 #### `Colors.json`
 ```javascript
