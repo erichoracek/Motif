@@ -167,7 +167,7 @@ NSAssert(error != nil, @"Error loading theme %@", error);
 [theme applyClassWithName:@"WarningButton" toObject:deleteButton];
 ```
 
-We now have everything we need able to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
+We now have everything we need to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
 
 When we have our `MTFTheme`, we want to make sure that there were no errors parsing it. We can do so by asserting that our pass-by-reference `error` is still non-nil. By using `NSAssert`, we'll get a runtime crash when debugging informing us our errors (if there were any).
 
