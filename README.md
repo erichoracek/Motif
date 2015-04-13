@@ -200,7 +200,7 @@ For an example of dynamic theming in practice, clone this repo and run the `Dyna
 
 ### Dynamic theme appliers
 
-To enable dynamic theming, where you would normally use the theme class application methods on `MTFTheme` for a single theme, you should instead use the identically-named methods on `MTFDynamicThemeApplier` when you wish to have more than one theme. This enables you to easily re-apply a new theme to your entire interface just by changing the `theme` property on your `MTFThemeApplier`.
+To enable dynamic theming, where you would normally use the theme class application methods on `MTFTheme` for a single theme, you should instead use the identically-named methods on `MTFDynamicThemeApplier` when you wish to have more than one theme. This enables you to easily re-apply a new theme to your entire interface just by changing the `theme` property on your `MTFDynamicThemeApplier`.
 
 ```objective-c
 // We're going to default to the light theme
