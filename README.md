@@ -228,7 +228,7 @@ applier.theme = darkTheme;
 
 ### "Mapping" themes
 
-While you could write multiple sets of entirely different theme files to create themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
+While you could maintain multiple sets of divergent theme files to create different themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
 
 #### `Colors.json`
 ```javascript
@@ -261,9 +261,9 @@ While you could write multiple sets of entirely different theme files to create
 }
 ```
 
-We've created a single constant, `$WarningColor`, that will change depending on the mapping file that we choose to create our themes with. As discussed above, the constant name `$WarningColor` describes the _function_ of the color, rather than the appearance (`$RedColor`). This re-definition of the same constant allows us to us to conditionally re-define what `$WarningColor` means, depending on which mapping theme we use to create our `MTFTheme` instance.
+We've created a single constant, `$WarningColor`, that will change its value depending on the mapping theme file that we create our `MTFTheme` instances with. As discussed above, the constant name `$WarningColor` describes the _function_ of the color, rather than the appearance (e.g. `$RedColor`). This redefinition of the same constant allows us to us to conditionally redefine what `$WarningColor` means depending on the theme we're using. As such, we don't have to worry about maintaining multiple definitions of the same `.Button` class, ensuring that we don't repeat ourselves and keep things clean.
 
-As such, to create our light and dark themes, we just have to do the following:
+With this pattern, creating our light and dark themes is as simple as:
 
 ```objective-c
 MTFTheme *lightTheme = *theme = [MTFTheme
@@ -281,7 +281,7 @@ MTFTheme *darkTheme = *theme = [MTFTheme
     ] error:nil];
 ```
 
-This way, we only have to create our theme classes once, rather than for every theme that we want to create for our app. For a more in-depth look at this pattern, clone this repo and read source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
+This way, we only have to create our theme classes one time, rather than once for each theme that we want to add to our app. For a more in-depth look at this pattern, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
 
 
 ## Generating theme symbols
