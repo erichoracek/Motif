@@ -77,7 +77,7 @@ The last class we declare is our `.WarningButton` class. This class is exactly l
 
 ### Property appliers
 
-Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how we'd it to be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
+Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how its value should be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
 
 The first set of property appliers we've created is on `UIView`:
 
@@ -174,6 +174,23 @@ When we have our `MTFTheme`, we want to make sure that there were no errors pars
 To apply the classes from `Theme.json` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on our buttons. When we do so, all of the properties from the theme classes are applied to our buttons in just one simple method invocation. This is the power of Motif.
 
 ## Using Motif in your project
+
+The best way to use Motif in your project is with either [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://github.com/CocoaPods/CocoaPods).
+
+### Carthage
+
+Add the following to your `Cartfile`:
+```
+github "EricHoracek/Motif"
+```
+
+### CocoaPods
+
+Add the following to your `Podfile`:
+
+```
+pod 'Motif'
+```
 
 ## Dynamic theming
 
