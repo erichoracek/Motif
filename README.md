@@ -194,6 +194,94 @@ pod 'Motif'
 
 ## Dynamic theming
 
-## Generating theme symbols
+One of Motif's most powerful features is its ability to dynamically theme your application's interface at runtime. While adopting dynamic theming is simple, it does require you to use Motif in a slightly different way from the above example.
 
-## Contributing
+For an example of dynamic theming in practice, clone this repo and run the `DynamicThemingExample` target within `Motif.xcworkspace`.
+
+### Dynamic theme appliers
+
+To enable dynamic theming, where you would normally use the theme class application methods on `MTFTheme` for a single theme, you should instead use the identically-named methods on `MTFDynamicThemeApplier` when you wish to have more than one theme. This enables you to easily re-apply a new theme to your entire interface just by changing the `theme` property on your `MTFThemeApplier`.
+
+```objective-c
+// We're going to default to the light theme
+MTFTheme *lightTheme = [MTFTheme themeFromJSONThemeNamed:@"LightTheme" error:nil];
+
+// Create a dynamic theme applier, which we will use to style all of our
+// interface elements
+MTFDynamicThemeApplier *applier = [[MTFDynamicThemeApplier alloc] initWithTheme:lightTheme];
+
+// Style objects the same way as we did with an MTFTheme instance
+[applier applyClassWithName:@"InterfaceElement" toObject:anInterfaceElement];
+```
+
+Later on...
+
+```
+// It's time to switch to the dark theme
+MTFTheme *darkTheme = [MTFTheme themeFromJSONThemeNamed:@"DarkTheme" error:nil];
+
+// We now change the applier's theme to the dark theme, which will automatically
+// re-apply this new theme to all interface elements that previously had the
+// light theme applied to them
+applier.theme = darkTheme;
+```
+
+### "Mapping" themes
+
+While you could write multiple entirely different sets of theme files to create themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
+
+#### `Colors.json`
+```javascript
+{
+    "$RedDarkColor": "#fc3b2f",
+    "$RedLightColor": "#fc8078"
+}
+```
+
+#### `DarkMappings.json`
+```javascript
+{
+    "$WarningColor": "$RedLightColor"
+}
+```
+
+#### `LightMappings.json`
+```javascript
+{
+    "$WarningColor": "$RedDarkColor"
+}
+```
+
+#### `Buttons.json`
+```javascript
+{
+    ".Button": {
+        "tintColor": "$WarningColor"
+    }
+}
+```
+
+We've created a single constant, `$WarningColor`, that will change depending on the mapping file that we choose to create our themes with. As discussed above, the constant name `$WarningColor` describes the _function_ of the color, rather than the appearance (`$RedColor`). This re-definition of the same constant allows us to us to conditionally re-define what `$WarningColor` means, depending on which mapping theme we use to create our `MTFTheme` instance.
+
+As such, to create our light and dark themes, we just have to do the following:
+
+```objective-c
+MTFTheme *lightTheme = *theme = [MTFTheme
+    themeFromJSONThemesNamed:@[
+        @"Colors",
+        @"LightMappings",
+        @"Buttons"
+    ] error:nil];
+    
+MTFTheme *darkTheme = *theme = [MTFTheme
+    themeFromJSONThemesNamed:@[
+        @"Colors",
+        @"DarkMappings",
+        @"Buttons"
+    ] error:nil];
+```
+
+This way, we only have to create our theme classes once, rather than for every theme that we want to create for our app. For a more in-depth look at this pattern, clone this repo and read source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
+
+
+## Generating theme symbols
