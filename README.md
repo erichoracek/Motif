@@ -216,7 +216,7 @@ MTFDynamicThemeApplier *applier = [[MTFDynamicThemeApplier alloc] initWithTheme:
 
 Later on...
 
-```
+```objective-c
 // It's time to switch to the dark theme
 MTFTheme *darkTheme = [MTFTheme themeFromJSONThemeNamed:@"DarkTheme" error:nil];
 
