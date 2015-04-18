@@ -228,7 +228,7 @@ applier.theme = darkTheme;
 
 ### "Mapping" themes
 
-While you could maintain multiple sets of divergent theme files to create different themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to just this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
+While you could maintain multiple sets of divergent theme files to create different themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to do this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
 
 #### `Colors.json`
 ```javascript
@@ -283,5 +283,111 @@ MTFTheme *darkTheme = *theme = [MTFTheme
 
 This way, we only have to create our theme classes one time, rather than once for each theme that we want to add to our app. For a more in-depth look at this pattern, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
 
-
 ## Generating theme symbols
+
+In the above examples, you might have noticed that Motif uses a lot of [stringly types](http://blog.codinghorror.com/new-programming-jargon/) to bridge class and constant names from your JSON theme files into your application code. If you've dealt with a system like this before (Core Data's entity and attribute names come to mind as an example), you know that over time, stringly-typed interfaces can become tedious to maintain. Thankfully, just as there exists [Mogenerator](https://github.com/rentzsch/mogenerator) to alleviate this problem when using Core Data, there also exists a similar solution for Motif to address this same problem: the Motif CLI.
+
+### Motif CLI
+
+Motif ships with a command line interface that makes it easy to ensure that your code is always in sync with your JSON theme files. Let's look at an example of how to use it in your app:
+
+You have a simple JSON theme file, named `Buttons.json`:
+
+```javascript
+{
+    "$RedColor": "#f93d38",
+    "$BlueColor": "#50b5ed",
+    "$FontName": "AvenirNext-Regular",
+    ".ButtonText": {
+        "fontName": "$FontName",
+        "fontSize": 16
+    },
+    ".Button": {
+        "borderWidth": 1,
+        "cornerRadius": 5,
+        "contentEdgeInsets": "{10, 20, 10, 20}",
+        "tintColor": "$BlueColor",
+        "borderColor": "$BlueColor",
+        "titleText": ".ButtonText"
+    },
+    ".WarningButton": {
+        "_superclass": ".Button",
+        "tintColor": "$RedColor",
+        "borderColor": "$RedColor"
+    }
+}
+```
+
+To generate theme symbols from this theme file, just run:
+
+```
+motif --theme Buttons.json
+```
+
+This will generate the following a pair of files named `ButtonSymbols.{h,m}`. `ButtonSymbols.h` looks like this:
+
+```objective-c
+extern NSString * const ButtonsThemeName;
+
+extern const struct ButtonsThemeConstantKeys {
+    __unsafe_unretained NSString *BlueColor;
+    __unsafe_unretained NSString *FontName;
+    __unsafe_unretained NSString *RedColor;
+} ButtonsThemeConstantKeys;
+
+extern const struct ButtonsThemeClassNames {
+    __unsafe_unretained NSString *Button;
+    __unsafe_unretained NSString *ButtonText;
+    __unsafe_unretained NSString *WarningButton;
+} ButtonsThemeClassNames;
+
+extern const struct ButtonsThemeProperties {
+    __unsafe_unretained NSString *borderColor;
+    __unsafe_unretained NSString *borderWidth;
+    __unsafe_unretained NSString *contentEdgeInsets;
+    __unsafe_unretained NSString *cornerRadius;
+    __unsafe_unretained NSString *fontName;
+    __unsafe_unretained NSString *fontSize;
+    __unsafe_unretained NSString *tintColor;
+    __unsafe_unretained NSString *titleText;
+} ButtonsThemeProperties;
+```
+
+Now, when you add the above pair of files to your project, you can create and apply themes using these symbols instead:
+
+```objective-c
+#import "ButtonSymbols.h"
+
+NSError *error;
+MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:ButtonsThemeName error:&error];
+NSAssert(error != nil, @"Error loading theme %@", error);
+
+[theme applyClassWithName:ButtonsThemeClassNames.Button toObject:saveButton];
+[theme applyClassWithName:ButtonsThemeClassNames.WarningButton toObject:deleteButton];
+```
+
+As you can see, there's now no more stringly-typing in your application code. To delve further into an example of how to use the Motif CLI, check out any of the examples in `Motif.xcworkspace`.
+
+### Installation
+
+To install the Motif CLI, simply build and run the `MotifCLI` target within `Motif.xcworkspace`. This will install the `motif` CLI to your `/usr/local/bin` directory.
+
+### As a "Run Script" build phase
+
+To automate the symbols generation, just add the following to a run script build phase to your application. This script assumes that all of your theme files end in `Theme.json`, but you can modify this to your liking.
+
+```bash
+export PATH="$PATH:/usr/local/bin/"
+export CLI_TOOL='motif'
+
+which "${CLI_TOOL}"
+
+if [ $? -ne 0  ]; then exit 0; fi
+
+export THEMES_DIR="${SRCROOT}/DynamicThemingExample/Themes"
+export OUTPUT_DIR="${SRCROOT}/DynamicThemingExample/ThemeSymbols"
+
+find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${OUTPUT_DIR}"
+```
+
+This will ensure that your symbols files are always up to date with your JSON theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
