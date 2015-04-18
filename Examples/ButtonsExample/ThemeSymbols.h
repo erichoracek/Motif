@@ -16,7 +16,7 @@ extern const struct ThemeClassNames {
     __unsafe_unretained NSString *ButtonText;
     __unsafe_unretained NSString *ButtonsView;
     __unsafe_unretained NSString *ContentBackground;
-    __unsafe_unretained NSString *DestructiveButton;
+    __unsafe_unretained NSString *WarningButton;
 } ThemeClassNames;
 
 extern const struct ThemeProperties {

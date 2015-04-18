@@ -15,7 +15,7 @@
         "borderColor": "$BlueColor",
         "titleText": ".ButtonText"
     },
-    ".DestructiveButton": {
+    ".WarningButton": {
         "_superclass": ".Button",
         "tintColor": "$RedColor",
         "borderColor": "$RedColor"

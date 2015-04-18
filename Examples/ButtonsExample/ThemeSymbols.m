@@ -16,7 +16,7 @@ const struct ThemeClassNames ThemeClassNames = {
     .ButtonText = @"ButtonText",
     .ButtonsView = @"ButtonsView",
     .ContentBackground = @"ContentBackground",
-    .DestructiveButton = @"DestructiveButton",
+    .WarningButton = @"WarningButton",
 };
 
 const struct ThemeProperties ThemeProperties = {
