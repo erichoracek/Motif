@@ -4,12 +4,12 @@
 
 extern NSString * const ThemeName;
 
-extern const struct ThemeConstantKeys {
+extern const struct ThemeConstantNames {
     __unsafe_unretained NSString *BlueColor;
     __unsafe_unretained NSString *FontName;
     __unsafe_unretained NSString *RedColor;
     __unsafe_unretained NSString *WhiteColor;
-} ThemeConstantKeys;
+} ThemeConstantNames;
 
 extern const struct ThemeClassNames {
     __unsafe_unretained NSString *Button;

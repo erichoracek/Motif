@@ -4,7 +4,7 @@
 
 extern NSString * const ColorsThemeName;
 
-extern const struct ColorsThemeConstantKeys {
+extern const struct ColorsThemeConstantNames {
     __unsafe_unretained NSString *BlueDarkColor;
     __unsafe_unretained NSString *BlueLightColor;
     __unsafe_unretained NSString *GrayColor;
@@ -15,4 +15,4 @@ extern const struct ColorsThemeConstantKeys {
     __unsafe_unretained NSString *WhiteColor;
     __unsafe_unretained NSString *WhiteDarkColor;
     __unsafe_unretained NSString *WhiteLightColor;
-} ColorsThemeConstantKeys;
+} ColorsThemeConstantNames;

@@ -4,10 +4,10 @@
 
 extern NSString * const ControlsThemeName;
 
-extern const struct ControlsThemeConstantKeys {
+extern const struct ControlsThemeConstantNames {
     __unsafe_unretained NSString *ButtonCornerRadius;
     __unsafe_unretained NSString *ButtonInsets;
-} ControlsThemeConstantKeys;
+} ControlsThemeConstantNames;
 
 extern const struct ControlsThemeClassNames {
     __unsafe_unretained NSString *Button;

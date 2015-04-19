@@ -4,7 +4,7 @@
 
 NSString * const TypographyThemeName = @"TypographyTheme";
 
-const struct TypographyThemeConstantKeys TypographyThemeConstantKeys = {
+const struct TypographyThemeConstantNames TypographyThemeConstantNames = {
     .BodyFontSize = @"BodyFontSize",
     .CaptionFontSize = @"CaptionFontSize",
     .DisplayFontSize = @"DisplayFontSize",

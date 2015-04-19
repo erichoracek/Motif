@@ -4,7 +4,7 @@
 
 NSString * const ControlsThemeName = @"ControlsTheme";
 
-const struct ControlsThemeConstantKeys ControlsThemeConstantKeys = {
+const struct ControlsThemeConstantNames ControlsThemeConstantNames = {
     .ButtonCornerRadius = @"ButtonCornerRadius",
     .ButtonInsets = @"ButtonInsets",
 };

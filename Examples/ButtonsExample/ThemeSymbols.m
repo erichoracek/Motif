@@ -4,7 +4,7 @@
 
 NSString * const ThemeName = @"Theme";
 
-const struct ThemeConstantKeys ThemeConstantKeys = {
+const struct ThemeConstantNames ThemeConstantNames = {
     .BlueColor = @"BlueColor",
     .FontName = @"FontName",
     .RedColor = @"RedColor",

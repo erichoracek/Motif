@@ -4,7 +4,7 @@
 
 NSString * const LightMappingsThemeName = @"LightMappingsTheme";
 
-const struct LightMappingsThemeConstantKeys LightMappingsThemeConstantKeys = {
+const struct LightMappingsThemeConstantNames LightMappingsThemeConstantNames = {
     .BodyTextColor = @"BodyTextColor",
     .ButtonTextColor = @"ButtonTextColor",
     .CaptionTextColor = @"CaptionTextColor",

@@ -4,7 +4,7 @@
 
 extern NSString * const LightMappingsThemeName;
 
-extern const struct LightMappingsThemeConstantKeys {
+extern const struct LightMappingsThemeConstantNames {
     __unsafe_unretained NSString *BodyTextColor;
     __unsafe_unretained NSString *ButtonTextColor;
     __unsafe_unretained NSString *CaptionTextColor;
@@ -15,4 +15,4 @@ extern const struct LightMappingsThemeConstantKeys {
     __unsafe_unretained NSString *ScrollIndicatorStyle;
     __unsafe_unretained NSString *SeparatorColor;
     __unsafe_unretained NSString *WarningColor;
-} LightMappingsThemeConstantKeys;
+} LightMappingsThemeConstantNames;

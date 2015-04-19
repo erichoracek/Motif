@@ -4,7 +4,7 @@
 
 extern NSString * const TypographyThemeName;
 
-extern const struct TypographyThemeConstantKeys {
+extern const struct TypographyThemeConstantNames {
     __unsafe_unretained NSString *BodyFontSize;
     __unsafe_unretained NSString *CaptionFontSize;
     __unsafe_unretained NSString *DisplayFontSize;
@@ -14,7 +14,7 @@ extern const struct TypographyThemeConstantKeys {
     __unsafe_unretained NSString *RegularFontName;
     __unsafe_unretained NSString *SubheadFontSize;
     __unsafe_unretained NSString *TitleFontSize;
-} TypographyThemeConstantKeys;
+} TypographyThemeConstantNames;
 
 extern const struct TypographyThemeClassNames {
     __unsafe_unretained NSString *BodyText;

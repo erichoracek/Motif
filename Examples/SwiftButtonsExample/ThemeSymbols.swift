@@ -10,7 +10,7 @@ import Foundation
 
 let ThemeName = "Theme"
 
-enum ThemeConstantKeys: String {
+enum ThemeConstantNames: String {
     case WhiteColor = "WhiteColor"
     case RedColor = "RedColor"
     case BlueColor = "BlueColor"

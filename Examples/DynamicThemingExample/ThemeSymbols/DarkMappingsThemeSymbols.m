@@ -4,7 +4,7 @@
 
 NSString * const DarkMappingsThemeName = @"DarkMappingsTheme";
 
-const struct DarkMappingsThemeConstantKeys DarkMappingsThemeConstantKeys = {
+const struct DarkMappingsThemeConstantNames DarkMappingsThemeConstantNames = {
     .BodyTextColor = @"BodyTextColor",
     .ButtonTextColor = @"ButtonTextColor",
     .CaptionTextColor = @"CaptionTextColor",
