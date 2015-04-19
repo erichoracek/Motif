@@ -1,21 +1,22 @@
 # Motif
 
-[![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif)
+[![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 _A lightweight and customizable JSON stylesheet framework for iOS_
 
 ## What can it do?
 
+- Declare rules defining your app's visual appearance separately from your UI component implementations to promote separation of concerns in your codebase
+- Dynamically change your app's appearance at runtime from a user setting, as an premium feature, or even from the screen's brightness like [Tweetbot](http://www.cnet.com/how-to/how-to-adjust-tweetbots-new-night-theme-for-ios/):
+
 <!-- ![Brightness Theming](README/brightness.gif) -->
 ![Brightness Theming](https://github.com/erichoracek/Motif/blob/master/README/brightness.gif?raw=true)
 
-Dynamically change your app's appearance from a user setting, as an premium feature, or even from the screen's brightness like Tweetbot (pictured) or based on the time of day like Apple Maps.
-
 ## Why should I use it?
 
-You have an app. Maybe even a family of apps. You know about CSS, which enables web developers to write a set of declarative classes to style elements throughout their site, creating composable interface definitions that are entirely divorced from content or layout. You'll admit that you're a little jealous that things aren't quite the same on iOS.
+You have an app. Maybe even a family of apps. You know about CSS, which enables web developers to write a set of declarative classes to style elements throughout their site, creating composable interface definitions that are entirely divorced from the page content or layout. You'll admit that you're a little jealous that things aren't quite the same on iOS.
 
-To style your app, maybe you have a `MyAppStyle` singleton that vends styled interface components that's a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a frustratingly small subset of the appearance APIs. Maybe you've started to subclass some UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
+To style your app today, maybe you have a `MyAppStyle` singleton that vends styled interface components that's a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a frustratingly small subset of the appearance APIs. Maybe you've started to subclass some UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
 
 Well, things about about to change. Take a look at the example below to see what `Motif` can do for you:
 
@@ -384,10 +385,9 @@ which "${CLI_TOOL}"
 
 if [ $? -ne 0  ]; then exit 0; fi
 
-export THEMES_DIR="${SRCROOT}/DynamicThemingExample/Themes"
-export OUTPUT_DIR="${SRCROOT}/DynamicThemingExample/ThemeSymbols"
+export THEMES_DIR="${SRCROOT}/${PRODUCT_NAME}"
 
-find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${OUTPUT_DIR}"
+find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${THEMES_DIR}"
 ```
 
 This will ensure that your symbols files are always up to date with your JSON theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
