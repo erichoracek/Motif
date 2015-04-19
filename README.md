@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif)
 
-_A lightweight and customizable CSS-style framework for iOS._
+_A lightweight and customizable JSON stylesheet framework for iOS_
 
 ## What can it do?
 

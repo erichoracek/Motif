@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   }
   s.osx.deployment_target = '10.8'
   s.ios.deployment_target  = '7.0'
-  s.summary = 'A lightweight and customizable CSS-style framework for iOS'
+  s.summary = 'A lightweight and customizable JSON stylesheet framework for iOS'
   s.homepage = 'https://github.com/erichoracek/Motif'
   s.author = { 'Eric Horacek' => 'eric@automatic.com' }
   s.source = {
