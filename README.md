@@ -324,16 +324,16 @@ To generate theme symbols from this theme file, just run:
 motif --theme Buttons.json
 ```
 
-This will generate the following a pair of files named `ButtonSymbols.{h,m}`. `ButtonSymbols.h` looks like this:
+This will generate the a pair of files named `ButtonSymbols.{h,m}`. `ButtonSymbols.h` looks like this:
 
 ```objective-c
 extern NSString * const ButtonsThemeName;
 
-extern const struct ButtonsThemeConstantKeys {
+extern const struct ButtonsThemeConstantNames {
     __unsafe_unretained NSString *BlueColor;
     __unsafe_unretained NSString *FontName;
     __unsafe_unretained NSString *RedColor;
-} ButtonsThemeConstantKeys;
+} ButtonsThemeConstantNames;
 
 extern const struct ButtonsThemeClassNames {
     __unsafe_unretained NSString *Button;
