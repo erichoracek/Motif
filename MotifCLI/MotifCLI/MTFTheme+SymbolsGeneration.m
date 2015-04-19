@@ -358,7 +358,7 @@ static NSString * const WarningCommentFormat = @"\
     case SymbolTypeClassNames:
         return [enumName stringByAppendingString:@"ClassNames"];
     case SymbolTypeConstantKeys:
-        return [enumName stringByAppendingString:@"ConstantKeys"];
+        return [enumName stringByAppendingString:@"ConstantNames"];
     case SymbolTypeProperties:
         return [enumName stringByAppendingString:@"Properties"];
     default:
