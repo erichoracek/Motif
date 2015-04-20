@@ -42,8 +42,8 @@ PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
 SCHEME_BUTTONS_EXAMPLE = 'ButtonsExample'
 SCHEME_DYNAMIC_THEMING_EXAMPLE = 'DynamicThemingExample'
 SCHEME_SCREEN_BRIGHTNESS_THEMING_EXAMPLE = 'ScreenBrightnessThemingExample'
-DESTINATION = 'platform=iOS Simulator,name=iPhone 4s,OS=latest'
 DERIVED_DATA_PATH = "/tmp/#{LIBRARY_NAME}"
+TEST_SDK = 'iphonesimulator'
 
 LINT_TOOL = 'bundle exec pod lib lint'
 BUILD_TOOL = 'xcodebuild'
@@ -54,7 +54,7 @@ BUILD_FLAGS =
   "-workspace '#{WORKSPACE_PATH}' "\
   "-derivedDataPath '#{DERIVED_DATA_PATH}'"
   
-BUILD_FLAGS_IOS = BUILD_FLAGS + " -destination '#{DESTINATION}'"
+BUILD_FLAGS_IOS = BUILD_FLAGS + " -sdk #{TEST_SDK}"
 
 BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' " + BUILD_FLAGS_IOS
 BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
