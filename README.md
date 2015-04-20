@@ -1,6 +1,6 @@
 # Motif
 
-[![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Coverage Status](https://coveralls.io/repos/erichoracek/Motif/badge.svg)](https://coveralls.io/r/erichoracek/Motif)
+[![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Coverage Status](https://coveralls.io/repos/erichoracek/Motif/badge.svg?branch=master)](https://coveralls.io/r/erichoracek/Motif?branch=master)
 
 _A lightweight and customizable JSON stylesheet framework for iOS_
 
