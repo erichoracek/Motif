@@ -26,6 +26,6 @@
     ".ButtonsView": {
         "_superclass": ".ContentBackground",
         "saveButton": ".Button",
-        "deleteButton": ".DestructiveButton"
+        "deleteButton": ".WarningButton"
     }
 }
