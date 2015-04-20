@@ -20,7 +20,7 @@ enum ThemeConstantNames: String {
 enum ThemeClassNames: String {
     case Button = "Button"
     case ContentBackground = "ContentBackground"
-    case DestructiveButton = "DestructiveButton"
+    case DestructiveButton = "WarningButton"
     case ButtonsText = "ButtonsText"
     case ButtonsView = "ButtonsView"
 }

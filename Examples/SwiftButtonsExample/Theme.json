@@ -15,7 +15,7 @@
         "borderColor": "$BlueColor",
         "titleText": ".ButtonText"
     },
-    ".DestructiveButton": {
+    ".WarningButton": {
         "_superclass": ".Button",
         "tintColor": "$RedColor",
         "borderColor": "$RedColor"
@@ -26,6 +26,6 @@
     ".ButtonsView": {
         "_superclass": ".ContentBackground",
         "saveButton": ".Button",
-        "deleteButton": ".DestructiveButton"
+        "deleteButton": ".WarningButton"
     }
 }
