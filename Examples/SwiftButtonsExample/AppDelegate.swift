@@ -17,15 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds);
+        var error: NSError?
+        let theme = MTFTheme(fromJSONThemeNamed: ThemeName, error: &error)
+        assert(error == nil, "Error loading theme: \(error)")
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = ViewController(theme: theme)
         window!.makeKeyAndVisible()
         
         return true
     }
-    
-    // MARK: AppDelegate
-    
-    let theme = MTFTheme(fromJSONThemeNamed: ThemeName, error: nil)
-    
 }
