@@ -1,5 +1,5 @@
 {
-    "$ButtonInsets": "{10, 20, 10, 20}",
+    "$ButtonInsets": "{10, 15, 10, 15}",
     "$ButtonCornerRadius": 5,
     ".Button": {
         "text": ".SubheadText",
