@@ -15,8 +15,8 @@
     // http://robots.thoughtbot.com/closer-look-color-lightness
     CGFloat red, blue, green;
     [self getRed:&red green:&green blue:&blue alpha:NULL];
-    CGFloat luma = ((0.2126 * red) + (0.7152 * green) + (0.0722 * blue));
-    return ((luma > 0.6) ? MTFLightnessTypeLight : MTFLightnessTypeDark);
+    CGFloat luma = ((0.2126f * red) + (0.7152f * green) + (0.0722f * blue));
+    return ((luma > 0.6f) ? MTFLightnessTypeLight : MTFLightnessTypeDark);
 }
 
 @end

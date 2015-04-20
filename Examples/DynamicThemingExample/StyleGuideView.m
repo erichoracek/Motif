@@ -23,9 +23,9 @@
     return YES;
 }
 
-static CGFloat const SectionPadding = 40.0;
-static CGFloat const ElementPadding = 10.0;
-static CGFloat const SegmentedControlHeight = 32.0;
+static CGFloat const SectionPadding = 40.0f;
+static CGFloat const ElementPadding = 10.0f;
+static CGFloat const SegmentedControlHeight = 32.0f;
 
 - (void)updateConstraints {
     [super updateConstraints];
@@ -156,7 +156,7 @@ static CGFloat const SegmentedControlHeight = 32.0;
         self.captionTextLabel.text = @"Caption";
         
         self.toggle.on = YES;
-        self.slider.value = 0.5;
+        self.slider.value = 0.5f;
         self.segmentedControl.selectedSegmentIndex = 0;
     }
     return self;
