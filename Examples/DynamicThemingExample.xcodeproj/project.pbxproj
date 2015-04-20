@@ -620,17 +620,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS,
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac,
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Debug;
@@ -641,17 +635,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS,
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac,
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Release;
@@ -680,13 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS,
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac,
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Debug;
@@ -697,13 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS,
-					/Users/erh/Development/Automatic/Motif/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac,
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Release;
