@@ -1,13 +1,10 @@
 PODS:
   - GBCli (1.1)
-  - Masonry (0.6.1)
 
 DEPENDENCIES:
   - GBCli
-  - Masonry
 
 SPEC CHECKSUMS:
   GBCli: e5f988fadb68e1e3c01919f134009fed9796fde0
-  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
 
 COCOAPODS: 0.36.3

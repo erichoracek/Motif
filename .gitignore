@@ -27,3 +27,6 @@ DerivedData
 
 # Bundler
 ruby/
+
+# Carthage
+Carthage/Build
