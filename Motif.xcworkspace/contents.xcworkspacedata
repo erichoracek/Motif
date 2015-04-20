@@ -17,6 +17,12 @@
       location = "group:Examples/SwiftButtonsExample.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Carthage/Checkouts/cartography/Cartography.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/masonry/Masonry.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
