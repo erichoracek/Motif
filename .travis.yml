@@ -10,3 +10,5 @@ script:
 - rake run_tests
 - rake build_examples
 - rake lint_podspec
+after_success:
+- bundle exec slather
