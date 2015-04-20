@@ -1,2 +1,3 @@
-github "jspahrsummers/xcconfigs" >= 0.7.1
-github "robb/cartography" "xcode6-3"
+github "jspahrsummers/xcconfigs" == 0.8
+github "robb/cartography" == 0.5
+github "snapkit/masonry" "master"
