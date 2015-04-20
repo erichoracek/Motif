@@ -182,8 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A01C5D01AD07E9900AA479F /* Motif.framework in Frameworks */,
 				3ACE0E081AE461BC00B79147 /* Masonry.framework in Frameworks */,
+				3A01C5D01AD07E9900AA479F /* Motif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
