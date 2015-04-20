@@ -1,8 +1,8 @@
-task :run_tests_ios do
+task :run_tests_ios => [:clean] do
     sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_IOS} | #{PRETTIFY}")
 end
 
-task :run_tests_osx do
+task :run_tests_osx => [:clean] do
     sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_OSX} | #{PRETTIFY}")
 end
 
@@ -11,15 +11,15 @@ task :run_tests => [
     :run_tests_osx
 ]
 
-task :build_buttons_example do
+task :build_buttons_example => [:clean] do
     sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUTTONS_EXAMPLE} | #{PRETTIFY}")
 end
 
-task :build_dynamic_themes_example do
+task :build_dynamic_themes_example => [:clean] do
     sh("#{BUILD_TOOL} #{BUILD_FLAGS_DYNAMIC_THEMES_EXAMPLE} | #{PRETTIFY}")
 end
 
-task :build_screen_brightness_example do
+task :build_screen_brightness_example => [:clean] do
     sh("#{BUILD_TOOL} #{BUILD_FLAGS_SCREEN_BRIGHTNESS_EXAMPLE} | #{PRETTIFY}")
 end
 
@@ -33,6 +33,10 @@ task :lint_podspec do
     sh("#{LINT_TOOL} #{LINT_FLAGS}")
 end
 
+task :clean do
+    sh("rm -rf '#{DERIVED_DATA_PATH}'")
+end
+
 private
 
 LIBRARY_NAME = 'Motif'
@@ -41,6 +45,7 @@ PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
 SCHEME_BUTTONS_EXAMPLE = 'ButtonsExample'
 SCHEME_DYNAMIC_THEMING_EXAMPLE = 'DynamicThemingExample'
 SCHEME_SCREEN_BRIGHTNESS_THEMING_EXAMPLE = 'ScreenBrightnessThemingExample'
+DERIVED_DATA_PATH = "/tmp/#{LIBRARY_NAME}"
 TEST_SDK = 'iphonesimulator'
 
 LINT_TOOL = 'bundle exec pod lib lint'
@@ -48,7 +53,9 @@ BUILD_TOOL = 'xcodebuild'
 
 LINT_FLAGS = "#{PODSPEC_PATH}"
 
-BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}'"
+BUILD_FLAGS =
+  "-workspace '#{WORKSPACE_PATH}' "\
+  "-derivedDataPath '#{DERIVED_DATA_PATH}'"
   
 BUILD_FLAGS_IOS = BUILD_FLAGS + " -sdk #{TEST_SDK}"
 
