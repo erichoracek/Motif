@@ -153,9 +153,9 @@ The final applier that we'll need is on `UIButton` to style its `titleLabel`:
 }
 ```
 
-#### Properties with `MTFClass` values
+#### Properties with `MTFThemeClass` values
 
-Previously, we created a style applier on `UILabel` that allows us specify a custom font from a theme class. Thankfully, we're able to use this applier to style our `UIButton`'s `titleTabel` as well. Since the `titleText` property on the `.Button` class is a reference to the `.ButtonText` class, we know that the value that comes through this applier will be of class `MTFClass`. `MTFClass` objects are used to represent classes like `.TitleText` from theme files, and are able to apply their properties to an object directly. As such, to apply the `fontName` and `fontSize` from the `.TitleText` class to our button's label, we simply invoke `applyToObject:` on `titleLabel` with the passed `MTFClass`.
+Previously, we created a style applier on `UILabel` that allows us specify a custom font from a theme class. Thankfully, we're able to use this applier to style our `UIButton`'s `titleTabel` as well. Since the `titleText` property on the `.Button` class is a reference to the `.ButtonText` class, we know that the value that comes through this applier will be of class `MTFThemeClass`. `MTFThemeClass` objects are used to represent classes like `.TitleText` from theme files, and are able to apply their properties to an object directly. As such, to apply the `fontName` and `fontSize` from the `.TitleText` class to our button's label, we simply invoke `applyToObject:` on `titleLabel` with the passed `MTFThemeClass`.
 
 ### Putting it all together
 
