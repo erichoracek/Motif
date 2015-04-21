@@ -170,7 +170,7 @@ NSAssert(error != nil, @"Error loading theme %@", error);
 
 We now have everything we need to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
 
-When we have our `MTFTheme`, we want to make sure that there were no errors parsing it. We can do so by asserting that our pass-by-reference `error` is still non-nil. By using `NSAssert`, we'll get a runtime crash when debugging informing us our errors (if there were any).
+When we have our `MTFTheme`, we want to make sure that there were no errors parsing it. We can do so by asserting that our pass-by-reference `error` is still non-nil. By using `NSAssert`, we'll get a runtime crash when debugging informing us of our errors (if there were any).
 
 To apply the classes from `Theme.json` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on our buttons. When we do so, all of the properties from the theme classes are applied to our buttons in just one simple method invocation. This is the power of Motif.
 
