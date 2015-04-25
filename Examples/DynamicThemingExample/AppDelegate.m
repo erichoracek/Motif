@@ -37,8 +37,14 @@
         initWithThemeApplier:self.themeApplier];
     
     viewController.navigationItem.title = @"Screen Brightness Theming";
+    
+#if TARGET_IPHONE_SIMULATOR
+    viewController.navigationItem.prompt = @"The theme will only change on-"
+        "device.";
+#else
     viewController.navigationItem.prompt = @"Adjust the brightness to toggle "
-        "the theme.";
+    "the theme.";
+#endif
     
 #else
     
