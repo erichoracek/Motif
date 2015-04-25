@@ -43,7 +43,7 @@
         "device.";
 #else
     viewController.navigationItem.prompt = @"Adjust the brightness to toggle "
-    "the theme.";
+        "the theme.";
 #endif
     
 #else
