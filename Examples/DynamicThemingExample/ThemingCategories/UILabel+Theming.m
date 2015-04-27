@@ -27,7 +27,7 @@
         }];
     
     [self
-        mtf_registerThemeProperty:TypographyThemeProperties.color
+        mtf_registerThemeProperty:ContentThemeProperties.color
         valueTransformerName:MTFColorFromStringTransformerName
         applierBlock:^(UIColor *color, UILabel *label) {
             label.textColor = color;
@@ -39,12 +39,20 @@
     
     NSString *name = themeClass.properties[TypographyThemeProperties.fontName];
     CGFloat size = [themeClass.properties[TypographyThemeProperties.fontSize] floatValue];
-    UIFont *font = [UIFont fontWithName:name size:size];
-    attributes[NSFontAttributeName] = font;
     
-    NSString *colorString = themeClass.properties[TypographyThemeProperties.color];
-    UIColor *color = [[NSValueTransformer valueTransformerForName:MTFColorFromStringTransformerName] transformedValue:colorString];
-    attributes[NSForegroundColorAttributeName] = color;
+    UIFont *font = [UIFont fontWithName:name size:size];
+    if (font != nil) {
+        attributes[NSFontAttributeName] = font;
+    }
+    
+    NSString *colorString = themeClass.properties[ContentThemeProperties.color];
+    UIColor *color;
+    if (colorString != nil) {
+        color = [[NSValueTransformer valueTransformerForName:MTFColorFromStringTransformerName] transformedValue:colorString];
+    }
+    if (color != nil) {
+        attributes[NSForegroundColorAttributeName] = color;
+    }
     
     return [attributes copy];
 }
