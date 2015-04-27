@@ -91,13 +91,11 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     super.theme = theme;
 }
 
-- (NSString *)pathForSourceDirectoryFromSourceFilePath:(NSString *)sourceFilePath {
+- (mtf_nullable NSString *)pathForSourceDirectoryFromSourceFilePath:(NSString *)sourceFilePath {
     NSParameterAssert(sourceFilePath);
     
-    BOOL fileExists = [NSFileManager.defaultManager fileExistsAtPath:sourceFilePath];
-    
     NSAssert(
-        fileExists,
+        [NSFileManager.defaultManager fileExistsAtPath:sourceFilePath],
         @"File at path %@ does not exist. Perhaps you used a live reload theme "
             "applier on device rather than on the iOS Simulator?",
         sourceFilePath);
@@ -105,7 +103,9 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     NSString *sourceFileDirectoryPath = sourceFilePath.stringByDeletingLastPathComponent;
     
     BOOL isDirectory = NO;
-    BOOL directoryExists = [NSFileManager.defaultManager fileExistsAtPath:sourceFileDirectoryPath isDirectory:&isDirectory];
+    __unused BOOL directoryExists = [NSFileManager.defaultManager
+        fileExistsAtPath:sourceFileDirectoryPath
+        isDirectory:&isDirectory];
     
     NSAssert(
         isDirectory && directoryExists,
