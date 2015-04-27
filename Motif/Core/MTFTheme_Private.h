@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
+#import "MTFTheme.h"
+
 MTF_NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFTheme ()
