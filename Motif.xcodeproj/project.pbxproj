@@ -149,6 +149,8 @@
 		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
+		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +272,7 @@
 		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
 		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
+		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +512,7 @@
 				3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */,
 				3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */,
 				3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */,
+				3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
 				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
@@ -799,6 +803,7 @@
 				3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */,
 				3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */,
 				3A406CCB1AC9B87600615428 /* MTFThemeClassEqualityTests.m in Sources */,
+				3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A406CCC1AC9B87600615428 /* MTFThemePropertiesApplierTests.m in Sources */,
 				3A406CCD1AC9B87600615428 /* MTFThemeLoadingTests.m in Sources */,
 			);
@@ -846,6 +851,7 @@
 				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
 				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
 				3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */,
+				3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */,
 				3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */,
