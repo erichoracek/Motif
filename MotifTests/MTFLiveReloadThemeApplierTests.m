@@ -51,7 +51,7 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     
     MTFLiveReloadThemeApplier *applier = [[MTFLiveReloadThemeApplier alloc]
         initWithTheme:theme
-        sourceDirectoryPath:self.themeDirectoryURL.path];
+        sourceDirectoryURL:self.themeDirectoryURL];
     XCTAssertNotNil(applier, @"Unable to create theme applier");
     
     TestLiveReloadObject *testObject = [TestLiveReloadObject new];
