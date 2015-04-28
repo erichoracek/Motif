@@ -149,7 +149,14 @@
             }
             
             id propertyValue = [object valueForKey:property];
-            if (propertyValue && [value isKindOfClass:MTFThemeClass.class]) {
+            BOOL isPropertyTypeThemeClass = (propertyClass == MTFThemeClass.class);
+            BOOL isValueThemeClass = [value isKindOfClass:MTFThemeClass.class];
+
+            // If the property currently set to a value and the property being
+            // applied is a theme class reference, directly apply the theme
+            // class to the property value, unless the property type is a theme
+            // class
+            if (propertyValue && isValueThemeClass && !isPropertyTypeThemeClass) {
                 MTFThemeClass *themeClass = (MTFThemeClass *)value;
                 [themeClass applyToObject:propertyValue];
                 [unappliedProperties minusSet:[NSSet setWithObject:property]];
