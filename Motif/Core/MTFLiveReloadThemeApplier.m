@@ -68,7 +68,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     
     NSError *error;
     NSNumber *isDirectory;
-    BOOL resourceValueQuerySuccess = [sourceDirectoryURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error];
+    __unused BOOL resourceValueQuerySuccess = [sourceDirectoryURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error];
     
     NSAssert(
         resourceValueQuerySuccess && isDirectory.boolValue,
@@ -106,7 +106,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(sourceFileURL);
     
     NSError *error;
-    BOOL isReachable = [sourceFileURL checkResourceIsReachableAndReturnError:&error];
+    __unused BOOL isReachable = [sourceFileURL checkResourceIsReachableAndReturnError:&error];
     
     NSAssert(
         isReachable,
