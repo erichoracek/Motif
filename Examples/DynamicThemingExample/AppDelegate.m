@@ -16,7 +16,7 @@
 @property (nonatomic) MTFTheme *lightTheme;
 @property (nonatomic) MTFTheme *darkTheme;
 @property (nonatomic) MTFDynamicThemeApplier *themeApplier;
-@property (nonatomic) BOOL isDisplayingLightTheme;
+@property (nonatomic) BOOL isDisplayingDarkTheme;
 
 @end
 
@@ -131,9 +131,9 @@
 - (void)toggleTheme {
     // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
     // previously applied themes
-    self.themeApplier.theme = (self.isDisplayingLightTheme ? self.darkTheme : self.lightTheme);
+    self.themeApplier.theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
     
-    self.isDisplayingLightTheme = !self.isDisplayingLightTheme;
+    self.isDisplayingDarkTheme = !self.isDisplayingDarkTheme;
 }
 
 #endif
