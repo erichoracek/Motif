@@ -40,16 +40,16 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 /// @param theme The theme that the dynamic theme applier instance should be
 ///              responsible for applying. Must not be nil.
 ///
-/// @param sourceDirectoryPath The source directory that should be searched for
-///                            identically-named files to those that were used
-///                            to create the theme.
+/// @param sourceDirectoryURL The source directory that should be searched for
+///                           identically-named files to those that were used to
+///                           create the theme.
 ///
 /// @return An initialized theme applier.
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryPath:(NSString *)sourceDirectoryPath NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL NS_DESIGNATED_INITIALIZER;
 
 /// The directory path that is recursively searched within to the locate the
 /// source files for the theme.
-@property (nonatomic, copy, readonly) NSString *sourceDirectoryPath;
+@property (nonatomic, copy, readonly) NSURL *sourceDirectoryURL;
 
 @end
 

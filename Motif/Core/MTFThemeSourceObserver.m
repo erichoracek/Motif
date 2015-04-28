@@ -30,7 +30,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    return [self initWithTheme:nil sourceDirectoryPath:nil didUpdate:nil];
+    return [self initWithTheme:nil sourceDirectoryURL:nil didUpdate:nil];
 #pragma clang diagnostic pop
 }
 
@@ -42,9 +42,12 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemeSourceObserver
 
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryPath:(NSString *)sourceDirectoryPath didUpdate:(MTFThemeDidUpdate)didUpdate {
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL didUpdate:(MTFThemeDidUpdate)didUpdate {
     NSParameterAssert(theme);
+    NSParameterAssert(sourceDirectoryURL);
     NSParameterAssert(didUpdate);
+    
+    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be file URL");
     
     self = [super init];
     if (self == nil) return nil;
@@ -53,7 +56,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         "com.erichoracek.auttheming.themesourceobservation",
         DISPATCH_QUEUE_CONCURRENT);
     
-    _sourceDirectoryPath = [sourceDirectoryPath copy];
+    _sourceDirectoryURL = sourceDirectoryURL;
     
     _fileObservationContexts = [self
         observeSourceFilesOfTheme:theme
@@ -62,7 +65,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     
     NSArray *sourceFilePaths = [self
         sourceFilePathsForTheme:theme
-        inSourceDirectory:self.sourceDirectoryPath];
+        inSourceDirectoryURL:self.sourceDirectoryURL];
     
     NSError *error;
     _updatedTheme = [self themeFromSourceFilePaths:sourceFilePaths error:&error];
@@ -71,33 +74,33 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-- (NSArray *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectory:(NSString *)sourceDirectory {
+- (NSArray *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme);
-    NSParameterAssert(sourceDirectory);
+    NSParameterAssert(sourceDirectoryURL);
     
     NSMutableArray *sourceFilePaths = [NSMutableArray new];
     
     for (NSString *filename in theme.filenames) {
-        NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectory:sourceDirectory];
+        NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectoryURL:sourceDirectoryURL];
         
-        NSString *sourceFilePath = [sourceDirectory stringByAppendingFormat:@"/%@", sourceFileRelativePath];
+        NSString *sourceFilePath = [sourceDirectoryURL URLByAppendingPathComponent:sourceFileRelativePath].path;
         [sourceFilePaths addObject:sourceFilePath];
     }
     
     return [sourceFilePaths copy];
 }
 
-- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectory:(NSString *)sourceDirectory {
+- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(themeFilename);
-    NSParameterAssert(sourceDirectory);
+    NSParameterAssert(sourceDirectoryURL);
     
     NSError *error;
-    NSArray *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectory error:&error];
+    NSArray *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
     
     NSAssert(
         error == nil,
         @"Error traversing directory at path %@: %@",
-        sourceDirectory,
+        sourceDirectoryURL,
         error);
     
     NSMutableArray *filenames = [NSMutableArray new];
@@ -127,7 +130,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         @"No theme file with the filename %@ found. Are your theme files a "
             "subdirectory of %@?",
         themeFilename,
-        sourceDirectory);
+        sourceDirectoryURL);
     
     return [subpaths objectAtIndex:matchingIndices.firstIndex];
 }
@@ -242,7 +245,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
     NSArray *sourceFilePaths = [self
         sourceFilePathsForTheme:theme
-        inSourceDirectory:self.sourceDirectoryPath];
+        inSourceDirectoryURL:self.sourceDirectoryURL];
 
     __weak typeof(self) __weak_self = self;
 

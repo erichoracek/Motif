@@ -17,9 +17,9 @@ typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * mtf_null_resettable);
 
 @interface MTFThemeSourceObserver : NSObject
 
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryPath:(NSString *)sourceDirectoryPath didUpdate:(MTFThemeDidUpdate)didUpdate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL didUpdate:(MTFThemeDidUpdate)didUpdate NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, copy, readonly) NSString *sourceDirectoryPath;
+@property (nonatomic, readonly) NSURL *sourceDirectoryURL;
 
 /// The latest version from source of the theme that this observer was
 /// initialized with.

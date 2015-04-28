@@ -25,7 +25,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `initWithTheme:` is called.
-    return [self initWithTheme:theme sourceDirectoryPath:nil];
+    return [self initWithTheme:theme sourceDirectoryURL:nil];
 #pragma clang diagnostic pop
 }
 
@@ -36,7 +36,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     
     self.themeSourceObserver = [[MTFThemeSourceObserver alloc]
         initWithTheme:theme
-        sourceDirectoryPath:self.sourceDirectoryPath
+        sourceDirectoryURL:self.sourceDirectoryURL
         didUpdate:^(MTFTheme *theme, NSError *error) {
             __weak typeof(self) self = __weak_self;
             
@@ -54,21 +54,33 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(theme);
     NSParameterAssert(sourceFile);
     
-    NSString *sourceFilePath = [NSString stringWithUTF8String:sourceFile];
-    NSString *sourceDirectoryPath = [self pathForSourceDirectoryFromSourceFilePath:sourceFilePath];
+    NSURL *sourceFileURL = [NSURL fileURLWithFileSystemRepresentation:sourceFile isDirectory:NO relativeToURL:nil];
+    NSURL *sourceDirectoryURL = [self URLForSourceDirectoryFromSourceFileURL:sourceFileURL];
     
-    return [self initWithTheme:theme sourceDirectoryPath:sourceDirectoryPath];
+    return [self initWithTheme:theme sourceDirectoryURL:sourceDirectoryURL];
 }
 
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryPath:(NSString *)sourceDirectoryPath {
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme);
-    NSParameterAssert(sourceDirectoryPath);
+    NSParameterAssert(sourceDirectoryURL);
+    
+    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be file URL");
+    
+    NSError *error;
+    NSNumber *isDirectory;
+    BOOL resourceValueQuerySuccess = [sourceDirectoryURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error];
+    
+    NSAssert(
+        resourceValueQuerySuccess && isDirectory.boolValue,
+        @"Source directory (%@) is not a valid directory. Error: %@",
+        sourceDirectoryURL,
+        error);
     
     __weak typeof(self) __weak_self = self;
     
     MTFThemeSourceObserver *themeSourceObserver = [[MTFThemeSourceObserver alloc]
         initWithTheme:theme
-        sourceDirectoryPath:sourceDirectoryPath
+        sourceDirectoryURL:sourceDirectoryURL
         didUpdate:^(MTFTheme *theme, NSError *error) {
             __weak typeof(self) self = __weak_self;
             
@@ -78,8 +90,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     self = [super initWithTheme:themeSourceObserver.updatedTheme];
     if (self == nil) return nil;
     
-    _sourceDirectoryPath = [sourceDirectoryPath copy];
-    
+    _sourceDirectoryURL = sourceDirectoryURL;
     _themeSourceObserver = themeSourceObserver;
 
     return self;
@@ -91,27 +102,20 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     super.theme = theme;
 }
 
-- (mtf_nullable NSString *)pathForSourceDirectoryFromSourceFilePath:(NSString *)sourceFilePath {
-    NSParameterAssert(sourceFilePath);
+- (mtf_nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {
+    NSParameterAssert(sourceFileURL);
+    
+    NSError *error;
+    BOOL isReachable = [sourceFileURL checkResourceIsReachableAndReturnError:&error];
     
     NSAssert(
-        [NSFileManager.defaultManager fileExistsAtPath:sourceFilePath],
+        isReachable,
         @"File at path %@ does not exist. Perhaps you used a live reload theme "
-            "applier on device rather than on the iOS Simulator?",
-        sourceFilePath);
+            "applier on device rather than on the iOS Simulator? Error %@",
+        sourceFileURL,
+        error);
     
-    NSString *sourceFileDirectoryPath = sourceFilePath.stringByDeletingLastPathComponent;
-    
-    BOOL isDirectory = NO;
-    __unused BOOL directoryExists = [NSFileManager.defaultManager
-        fileExistsAtPath:sourceFileDirectoryPath
-        isDirectory:&isDirectory];
-    
-    NSAssert(
-        isDirectory && directoryExists,
-        @"Source file path must be contained in a valid directory");
-    
-    return sourceFileDirectoryPath;
+    return sourceFileURL.URLByDeletingLastPathComponent;
 }
 
 @end
