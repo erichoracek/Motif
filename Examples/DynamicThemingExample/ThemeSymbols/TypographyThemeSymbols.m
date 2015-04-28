@@ -26,7 +26,6 @@ const struct TypographyThemeClassNames TypographyThemeClassNames = {
 };
 
 const struct TypographyThemeProperties TypographyThemeProperties = {
-    .color = @"color",
     .fontName = @"fontName",
     .fontSize = @"fontSize",
 };

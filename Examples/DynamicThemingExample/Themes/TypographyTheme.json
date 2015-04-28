@@ -10,32 +10,26 @@
     "$CaptionFontSize": 11,
     ".DisplayText": {
         "fontSize": "$DisplayFontSize",
-        "fontName": "$RegularFontName",
-        "color": "$HeadingTextColor"
+        "fontName": "$RegularFontName"
     },
     ".HeadlineText": {
         "fontSize": "$HeadlineFontSize",
-        "fontName": "$MediumFontName",
-        "color": "$HeadingTextColor"
+        "fontName": "$MediumFontName"
     },
     ".TitleText": {
         "fontSize": "$TitleFontSize",
-        "fontName": "$MediumFontName",
-        "color": "$HeadingTextColor"
+        "fontName": "$MediumFontName"
     },
     ".SubheadText": {
         "fontSize": "$SubheadFontSize",
-        "fontName": "$RegularFontName",
-        "color": "$HeadingTextColor"
+        "fontName": "$RegularFontName"
     },
     ".BodyText": {
         "fontSize": "$BodyFontSize",
-        "fontName": "$MediumFontName",
-        "color": "$BodyTextColor"
+        "fontName": "$MediumFontName"
     },
     ".CaptionText": {
         "fontSize": "$CaptionFontSize",
-        "fontName": "$MediumFontName",
-        "color": "$CaptionTextColor"
+        "fontName": "$MediumFontName"
     }
 }

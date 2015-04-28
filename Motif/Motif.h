@@ -19,6 +19,7 @@ FOUNDATION_EXPORT const unsigned char MotifVersionString[];
 #import <Motif/MTFThemeClass.h>
 #import <Motif/MTFThemeClassApplicable.h>
 #import <Motif/MTFDynamicThemeApplier.h>
+#import <Motif/MTFLiveReloadThemeApplier.h>
 #import <Motif/MTFThemeParser.h>
 #import <Motif/NSObject+ThemeClassAppliers.h>
 #import <Motif/NSObject+ThemeClassName.h>

@@ -26,7 +26,6 @@ extern const struct TypographyThemeClassNames {
 } TypographyThemeClassNames;
 
 extern const struct TypographyThemeProperties {
-    __unsafe_unretained NSString *color;
     __unsafe_unretained NSString *fontName;
     __unsafe_unretained NSString *fontSize;
 } TypographyThemeProperties;

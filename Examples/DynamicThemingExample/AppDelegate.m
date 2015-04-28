@@ -16,6 +16,7 @@
 @property (nonatomic) MTFTheme *lightTheme;
 @property (nonatomic) MTFTheme *darkTheme;
 @property (nonatomic) MTFDynamicThemeApplier *themeApplier;
+@property (nonatomic) BOOL isDisplayingDarkTheme;
 
 @end
 
@@ -27,7 +28,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     
 #if defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
-
+    
     self.themeApplier = [[MTFScreenBrightnessThemeApplier alloc]
         initWithScreen:[UIScreen mainScreen]
         lightTheme:self.lightTheme
@@ -47,9 +48,15 @@
 #endif
     
 #else
-    
+
+#if TARGET_IPHONE_SIMULATOR
+    self.themeApplier = [[MTFLiveReloadThemeApplier alloc]
+        initWithTheme:self.lightTheme
+        sourceFile:__FILE__];
+#else
     self.themeApplier = [[MTFDynamicThemeApplier alloc]
         initWithTheme:self.lightTheme];
+#endif
     
     StyleGuideViewController *viewController = [[StyleGuideViewController alloc]
         initWithThemeApplier:self.themeApplier];
@@ -122,10 +129,11 @@
 #if !defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
 
 - (void)toggleTheme {
-    BOOL onLightTheme = (self.themeApplier.theme == self.lightTheme);
     // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
     // previously applied themes
-    self.themeApplier.theme = (onLightTheme ? self.darkTheme : self.lightTheme);
+    self.themeApplier.theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
+    
+    self.isDisplayingDarkTheme = !self.isDisplayingDarkTheme;
 }
 
 #endif
