@@ -43,7 +43,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return Whether the receiving applier should apply the specified theme class.
  */
-- (BOOL)shouldApplyClass:(MTFThemeClass *)class;
+- (BOOL)shouldApplyClass:(MTFThemeClass *)themeClass;
 
 /**
  Applies an MTFThemeClass from an MTFTheme to an object.
@@ -52,7 +52,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  @param theme  The theme that should be applied to the specified class.
  @param object The object that should have the class applied to it.
  */
-- (void)applyClass:(MTFThemeClass *)class toObject:(id)object;
+- (void)applyClass:(MTFThemeClass *)themeClass toObject:(id)object;
 
 @end
 
@@ -66,7 +66,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFThemeClassPropertyApplier : NSObject <MTFThemeClassApplicable>
 
-- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(mtf_nullable NSString *)name requiredClass:(mtf_nullable Class)class applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(mtf_nullable NSString *)name requiredClass:(mtf_nullable Class)requiredClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy, readonly) NSString *property;
 

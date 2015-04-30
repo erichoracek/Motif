@@ -14,7 +14,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @class MTFThemeClass;
 @protocol MTFThemeClassApplicable;
 
-typedef void (^MTFThemeClassApplierBlock)(MTFThemeClass *class, id objectToTheme);
+typedef void (^MTFThemeClassApplierBlock)(MTFThemeClass *themeClass, id objectToTheme);
 
 typedef void (^MTFThemePropertyApplierBlock)(id propertyValue, id objectToTheme);
 
