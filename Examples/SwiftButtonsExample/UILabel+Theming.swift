@@ -30,7 +30,5 @@ extension UILabel {
                 }
             }
         )
-        
     }
-    
 }
