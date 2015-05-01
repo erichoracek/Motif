@@ -78,24 +78,24 @@ The last class we declare is our `.WarningButton` class. This class is exactly l
 
 ### Property appliers
 
-Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how its value should be applied ourselves. To do this, we'll register our necessary theme property appliers in the `initialize` method of a few categories.
+Next, we'll create the _property appliers_ necessary to apply this theme to our interface elements. Most of the time, Motif is able to figure out how to apply your theme automatically by matching Motif property names to Objective-C property names. However, in the case of some properties, we have to declare how its value should be applied ourselves. To do this, we'll register our necessary theme property appliers in the `load` method of a few categories.
 
 The first set of property appliers we've created is on `UIView`:
 
 #### `UIView+Theming.m`
 ```objective-c
-+ (void)initialize {
++ (void)load {
     [self
         mtf_registerThemeProperty:@"borderWidth"
         requiringValueOfClass:NSNumber.class
-        applier:^(NSNumber *width, UIView *view) {
+        applierBlock:^(NSNumber *width, UIView *view) {
             view.layer.borderWidth = width.floatValue;
         }];
 
     [self
         mtf_registerThemeProperty:@"borderColor"
         valueTransformerName:MTFColorFromStringTransformerName
-        applier:^(UIColor *color, UIView *view) {
+        applierBlock:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
         }];
 }
@@ -118,7 +118,7 @@ Next up, we're going to add an applier to `UILabel` to style our text:
 ### `UILabel+Theming.m`
 
 ```objective-c
-+ (void)initialize {
++ (void)load {
     [self
         mtf_registerThemeProperties:@[
             @"fontName",
@@ -126,10 +126,10 @@ Next up, we're going to add an applier to `UILabel` to style our text:
         ] valueTransformerNamesOrRequiredClasses:@[
             NSString.class,
             NSNumber.class
-        ] applierBlock:^(NSDictionary *properties, UIButton *button) {
-            NSString *name = properties[@"fontName"];
-            CGFloat size = [properties[@"fontSize"] floatValue];
-            button.titleLabel.font = [UIFont fontWithName:name size:size];
+        ] applierBlock:^(NSDictionary *properties, UILabel *label) {
+            NSString *name = properties[ThemeProperties.fontName];
+            CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
+            label.font = [UIFont fontWithName:name size:size];
         }];
 }
 ```
@@ -143,7 +143,7 @@ The final applier that we'll need is on `UIButton` to style its `titleLabel`:
 ### `UIButton+Theming.m`
 
 ```objective-c
-+ (void)initialize {
++ (void)load {
     [self
         mtf_registerThemeProperty:"titleText"
         requiringValueOfClass:MTFThemeClass.class
