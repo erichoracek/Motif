@@ -11,6 +11,10 @@ import Motif
 
 extension UIView {
     public override class func initialize() {
+        if self !== UIView.self {
+            return
+        }
+        
         self.mtf_registerThemeProperty(
             ThemeProperties.backgroundColor.rawValue,
             valueTransformerName: MTFColorFromStringTransformerName,
