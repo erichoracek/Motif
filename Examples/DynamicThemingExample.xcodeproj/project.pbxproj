@@ -150,10 +150,6 @@
 		3ACE0E611AE462D000B79147 /* Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Application.xcconfig; sourceTree = "<group>"; };
 		3ACE0E621AE462D000B79147 /* Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
 		3ACE0E631AE462D000B79147 /* StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLibrary.xcconfig; sourceTree = "<group>"; };
-		3ACE0E671AE462D000B79147 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cartography.framework; sourceTree = "<group>"; };
-		3ACE0E681AE462D000B79147 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = "<group>"; };
-		3ACE0E6A1AE462D000B79147 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cartography.framework; sourceTree = "<group>"; };
-		3ACE0E6B1AE462D000B79147 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = "<group>"; };
 		3ACE0E6D1AE462D000B79147 /* iOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Application.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E6E1AE462D000B79147 /* iOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E6F1AE462D000B79147 /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
@@ -163,7 +159,6 @@
 		3ACE0E741AE462D000B79147 /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E751AE462D000B79147 /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E761AE462D000B79147 /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E771AE462D000B79147 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3ADB35E41A5645B30059796A /* DynamicThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -270,10 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				3ACE0E591AE462D000B79147 /* Base */,
-				3ACE0E641AE462D000B79147 /* Carthage */,
 				3ACE0E6C1AE462D000B79147 /* iOS */,
 				3ACE0E711AE462D000B79147 /* Mac OS X */,
-				3ACE0E771AE462D000B79147 /* README.md */,
 			);
 			name = Configuration;
 			path = ../Carthage/Checkouts/xcconfigs;
@@ -308,41 +301,6 @@
 				3ACE0E631AE462D000B79147 /* StaticLibrary.xcconfig */,
 			);
 			path = Targets;
-			sourceTree = "<group>";
-		};
-		3ACE0E641AE462D000B79147 /* Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				3ACE0E651AE462D000B79147 /* Build */,
-			);
-			path = Carthage;
-			sourceTree = "<group>";
-		};
-		3ACE0E651AE462D000B79147 /* Build */ = {
-			isa = PBXGroup;
-			children = (
-				3ACE0E661AE462D000B79147 /* iOS */,
-				3ACE0E691AE462D000B79147 /* Mac */,
-			);
-			path = Build;
-			sourceTree = "<group>";
-		};
-		3ACE0E661AE462D000B79147 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3ACE0E671AE462D000B79147 /* Cartography.framework */,
-				3ACE0E681AE462D000B79147 /* Masonry.framework */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		3ACE0E691AE462D000B79147 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				3ACE0E6A1AE462D000B79147 /* Cartography.framework */,
-				3ACE0E6B1AE462D000B79147 /* Motif.framework */,
-			);
-			path = Mac;
 			sourceTree = "<group>";
 		};
 		3ACE0E6C1AE462D000B79147 /* iOS */ = {
