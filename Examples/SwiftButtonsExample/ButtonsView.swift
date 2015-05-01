@@ -35,8 +35,6 @@ class ButtonsView: UIView {
     }
     
     override func updateConstraints() {
-        super.updateConstraints()
-        
         constrain(saveButton) { view in
             view.right == view.superview!.centerX - (self.buttonPadding)
             view.centerY == view.superview!.centerY
@@ -48,6 +46,8 @@ class ButtonsView: UIView {
             view.centerY == view.superview!.centerY
             view.width == self.buttonWidth
         }
+        
+        super.updateConstraints()
     }
     
     // MARK: - UIView: NSCoding

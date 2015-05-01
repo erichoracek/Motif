@@ -28,8 +28,6 @@ static CGFloat const ButtonWidth = 145.0;
 static CGFloat const ButtonPadding = 5.0;
 
 - (void)updateConstraints {
-    [super updateConstraints];
-
     [self.saveButton
         mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
@@ -43,6 +41,8 @@ static CGFloat const ButtonPadding = 5.0;
             make.centerY.equalTo(self.saveButton);
             make.width.equalTo(@(ButtonWidth));
         }];
+
+    [super updateConstraints];
 }
 
 - (void)didMoveToSuperview

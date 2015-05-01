@@ -28,8 +28,6 @@ static CGFloat const ElementPadding = 10.0f;
 static CGFloat const SegmentedControlHeight = 32.0f;
 
 - (void)updateConstraints {
-    [super updateConstraints];
-        
     [self.button
         mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self).offset(SectionPadding);
@@ -93,6 +91,8 @@ static CGFloat const SegmentedControlHeight = 32.0f;
             make.height.equalTo(@(SegmentedControlHeight));
             make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
         }];
+    
+    [super updateConstraints];
 }
 
 #pragma mark - ButtonsView
