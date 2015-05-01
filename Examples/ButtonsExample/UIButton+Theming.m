@@ -12,7 +12,7 @@
 
 @implementation UIButton (Theming)
 
-+ (void)initialize {
++ (void)load {
     [self
         mtf_registerThemeProperty:ThemeProperties.titleText
         requiringValueOfClass:MTFThemeClass.class

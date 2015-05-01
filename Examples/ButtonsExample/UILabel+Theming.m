@@ -12,7 +12,7 @@
 
 @implementation UILabel (Theming)
 
-+ (void)initialize {
++ (void)load {
     [self
         mtf_registerThemeProperties:@[
             ThemeProperties.fontName,
