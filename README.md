@@ -394,3 +394,25 @@ find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}"
 ```
 
 This will ensure that your symbols files are always up to date with your JSON theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
+
+## Live Reload
+
+To enable live reloading, simply replace your `MTFDynamicThemeApplier` with an `MTFLiveReloadThemeApplier`:
+
+```objective-c
+
+#if TARGET_IPHONE_SIMULATOR
+
+self.themeApplier = [[MTFLiveReloadThemeApplier alloc]
+    initWithTheme:theme
+    sourceFile:__FILE__];
+
+#else
+
+self.themeApplier = [[MTFDynamicThemeApplier alloc]
+    initWithTheme:theme];
+
+#endif
+```
+
+Live reloading will only work on the iOS Simulator. For a more in-depth look at live reloading, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
