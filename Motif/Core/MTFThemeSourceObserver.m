@@ -221,7 +221,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         path:path];
 }
 
-- (MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
+- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
     NSParameterAssert(sourceFilePaths);
     
     // Transform the paths into URLs
@@ -231,11 +231,9 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         [sourceFileURLs addObject:sourceFileURL];
     }
     
-    MTFTheme *theme = [[MTFTheme alloc]
+    return [[MTFTheme alloc]
         initWithJSONFiles:sourceFileURLs
         error:error];
-    
-    return theme;
 }
 
 - (NSArray *)observeSourceFilesOfTheme:(MTFTheme *)theme onQueue:(dispatch_queue_t)queue didUpdate:(MTFThemeDidUpdate)didUpdate {
@@ -256,14 +254,27 @@ MTF_NS_ASSUME_NONNULL_BEGIN
             typeof(__weak_self) self = __weak_self;
 
             NSError *error;
-            MTFTheme *theme = [self
-                themeFromSourceFilePaths:sourceFilePaths
-                error:&error];
-
-            self.updatedTheme = theme;
-            self.updatedThemeError = error;
+            MTFTheme *theme;
             
-            didUpdate(theme, error);
+            // If a MTFTheme is unable to be created from any of the provided
+            // URLs, an exception will be thrown. In this case, catch the
+            // exception and log it, since we already have a valid theme.
+            @try {
+                theme = [self
+                    themeFromSourceFilePaths:sourceFilePaths
+                    error:&error];
+            }
+            @catch (NSException *exception) {
+#ifdef DEBUG
+                NSLog(@"Exception raised when attempting to reload theme: %@", exception);
+#endif
+            }
+            
+            if (theme) {
+                self.updatedTheme = theme;
+                self.updatedThemeError = error;
+                didUpdate(theme, error);
+            }
         }];
 }
 
