@@ -35,6 +35,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)dealloc {
+    // Close all open files when deallocated
     for (MTFFileObservationContext *fileObservationContext in self.fileObservationContexts) {
         close(fileObservationContext.fileDescriptor);
     }
@@ -47,7 +48,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(sourceDirectoryURL);
     NSParameterAssert(didUpdate);
     
-    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be file URL");
+    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be a file URL");
     
     self = [super init];
     if (self == nil) return nil;

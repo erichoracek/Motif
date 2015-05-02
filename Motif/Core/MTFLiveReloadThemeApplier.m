@@ -110,8 +110,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     
     NSAssert(
         isReachable,
-        @"File at path %@ does not exist. Perhaps you used a live reload theme "
-            "applier on device rather than on the iOS Simulator? Error %@",
+        @"File at URL %@ does not exist. Perhaps you used a live reload theme "
+            "applier on device rather than on the iOS Simulator? Error: %@",
         sourceFileURL,
         error);
     
