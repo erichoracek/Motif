@@ -222,7 +222,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         path:path];
 }
 
-- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
+- (mtf_nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
     NSParameterAssert(sourceFilePaths);
     
     // Transform the paths into URLs
