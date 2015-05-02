@@ -9,8 +9,11 @@ _A lightweight and customizable JSON stylesheet framework for iOS_
 - Declare rules defining your app's visual appearance separately from your UI component implementations to promote separation of concerns in your codebase
 - Dynamically change your app's appearance at runtime from a user setting, as an premium feature, or even from the screen's brightness like [Tweetbot](http://www.cnet.com/how-to/how-to-adjust-tweetbots-new-night-theme-for-ios/):
 
-<!-- ![Brightness Theming](README/brightness.gif) -->
 ![Brightness Theming](https://github.com/erichoracek/Motif/blob/master/README/brightness.gif?raw=true)
+
+- Reload your app's appearance when you edit your theme files **(without rebuilding)**, saving loads of time when styling your interface:
+
+![Live Reloading](https://github.com/erichoracek/Motif/blob/master/README/livereload.gif?raw=true)
 
 ## Why should I use it?
 
