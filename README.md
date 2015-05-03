@@ -21,7 +21,7 @@ You have an app. Maybe even a family of apps. You know about CSS, which enables 
 
 To style your app today, maybe you have a `MyAppStyle` singleton that vends styled interface components that's a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a frustratingly small subset of the appearance APIs. Maybe you've started to subclass some UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
 
-Well, things about about to change. Take a look at the example below to see what `Motif` can do for you:
+Well, things are about to change. Take a look at the example below to see what `Motif` can do for you:
 
 ## An example
 
