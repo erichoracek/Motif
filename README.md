@@ -396,11 +396,11 @@ This will ensure that your symbols files are always up to date with your JSON th
 
 ## Live Reload
 
-To enable live reloading, simply replace your `MTFDynamicThemeApplier` with an `MTFLiveReloadThemeApplier`:
+To enable live reloading, simply replace your `MTFDynamicThemeApplier` with an `MTFLiveReloadThemeApplier` when debugging on the iOS Simulator:
 
 ```objective-c
 
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR && defined(DEBUG)
 
 self.themeApplier = [[MTFLiveReloadThemeApplier alloc]
     initWithTheme:theme
@@ -414,4 +414,4 @@ self.themeApplier = [[MTFDynamicThemeApplier alloc]
 #endif
 ```
 
-Live reloading will only work on the iOS Simulator. For a more in-depth look at live reloading, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
+Live reloading will only work on the iOS Simulator, as editable theme source files do not exist on your iOS Device. For a more in-depth look at how to implement live reloading, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.

@@ -49,7 +49,7 @@
     
 #else
 
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR && defined(DEBUG)
     self.themeApplier = [[MTFLiveReloadThemeApplier alloc]
         initWithTheme:self.lightTheme
         sourceFile:__FILE__];
