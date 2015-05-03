@@ -29,7 +29,6 @@ The following is a simple example of how you'd create a pair of styled buttons w
 
 ### The design
 
-<!-- <img src="README/buttons.png" alt="Horizontal Layout" height="91" width="339" /> -->
 <img src="https://github.com/erichoracek/Motif/blob/master/README/Buttons.png?raw=true" alt="Horizontal Layout" height="91" width="339" />
 
 Your designer just sent over a spec outlining the style of a couple buttons in your app. Since you'll be using Motif to create these components, that means it's time to create a theme file.
