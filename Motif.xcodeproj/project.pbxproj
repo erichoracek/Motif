@@ -24,7 +24,6 @@
 		3A02C8571AD206FF00C420F2 /* MTFThemeConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8581AD206FF00C420F2 /* MTFThemeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */; };
 		3A02C8591AD206FF00C420F2 /* MTFThemeConstant_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C85A1AD206FF00C420F2 /* MTFThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C85C1AD206FF00C420F2 /* MTFThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */; };
 		3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -79,7 +78,6 @@
 		3A02C88E1AD2072500C420F2 /* MTFThemeConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C88F1AD2072500C420F2 /* MTFThemeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */; };
 		3A02C8901AD2072500C420F2 /* MTFThemeConstant_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C8911AD2072500C420F2 /* MTFThemeHierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8921AD2072500C420F2 /* MTFThemeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C8931AD2072500C420F2 /* MTFThemeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */; };
 		3A02C8941AD2072500C420F2 /* MTFThemeSymbolReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -188,7 +186,6 @@
 		3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeConstant.h; sourceTree = "<group>"; };
 		3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeConstant.m; sourceTree = "<group>"; };
 		3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeConstant_Private.h; sourceTree = "<group>"; };
-		3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeHierarchy.h; sourceTree = "<group>"; };
 		3A02C8221AD206FF00C420F2 /* MTFThemeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeParser.h; sourceTree = "<group>"; };
 		3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeParser.m; sourceTree = "<group>"; };
 		3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeSymbolReference.h; sourceTree = "<group>"; };
@@ -341,7 +338,6 @@
 				3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */,
 				3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */,
 				3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */,
-				3A02C8211AD206FF00C420F2 /* MTFThemeHierarchy.h */,
 				3A02C8241AD206FF00C420F2 /* MTFThemeSymbolReference.h */,
 				3A02C8251AD206FF00C420F2 /* MTFThemeSymbolReference.m */,
 				3A02C8261AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h */,
@@ -537,7 +533,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A02C8911AD2072500C420F2 /* MTFThemeHierarchy.h in Headers */,
 				3A02C88E1AD2072500C420F2 /* MTFThemeConstant.h in Headers */,
 				3A02C89F1AD2072600C420F2 /* NSString+ThemeSymbols.h in Headers */,
 				3A1C4F5A1AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
@@ -573,7 +568,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A02C85A1AD206FF00C420F2 /* MTFThemeHierarchy.h in Headers */,
 				3A02C8761AD206FF00C420F2 /* MTFPointFromStringTransformer.h in Headers */,
 				3A02C8571AD206FF00C420F2 /* MTFThemeConstant.h in Headers */,
 				3A1C4F4D1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.h in Headers */,
