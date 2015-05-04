@@ -56,38 +56,124 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/**
+ An applier that is invoked when a theme class is applied to an object.
+ */
 @interface MTFThemeClassApplier : NSObject <MTFThemeClassApplicable>
 
+/**
+ Initializes an theme class applier.
+ 
+ @param applierBlock A block that is invoked when a class is applied to the
+                     object that this applier is registered with.
+ 
+ @return An initialized theme class applier.
+ */
 - (instancetype)initWithClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
+
+/**
+ The block that is invoked when a theme class is applied to an instance of the
+ class that this applier is registered with.
+ */
 @property (nonatomic, copy, readonly) MTFThemeClassApplierBlock applierBlock;
 
 @end
 
+/**
+ An applier that is invoked when a specific property is applied to an object.
+ */
 @interface MTFThemeClassPropertyApplier : NSObject <MTFThemeClassApplicable>
 
+/**
+ Initializes a theme class property applier.
+ 
+ @param property             The name of the property that this applier is 
+                             responsible for applying.
+ @param valueTransformerName The name of the value transformer used to transform
+                             this value from the raw theme file to the value
+                             that is a parameter to the applier block, or nil
+                             if the value needs no transformation.
+ @param requiredClass        The class that the property value is required to be
+                             a kind of, or nil if the type of the value should 
+                             not be checked.
+ @param applierBlock         The block that is invoked to apply the property
+                             value to the class that this applier is registered
+                             with.
+ 
+ @return An initialized theme class property applier.
+ */
 - (instancetype)initWithProperty:(NSString *)property valueTransformerName:(mtf_nullable NSString *)name requiredClass:(mtf_nullable Class)requiredClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
+/**
+ The name of the property that this theme property applier is responsible for
+ applying.
+ */
 @property (nonatomic, copy, readonly) NSString *property;
 
+/**
+ The name of the value transformer used to transform this value from the raw
+ theme file to the value that is a parameter to the applier block, or nil if the
+ value needs no transformation.
+ */
 @property (nonatomic, copy, readonly, mtf_nullable) NSString *valueTransformerName;
 
+/**
+ The class that the property value is required to be a kind of, or nil if the
+ type of the value should not be checked.
+ */
 @property (nonatomic, readonly, mtf_nullable) Class requiredClass;
 
+/**
+ The block that is invoked to apply the property value to an instance of the
+ class that this applier is registered with.
+ */
 @property (nonatomic, copy, readonly) MTFThemePropertyApplierBlock applierBlock;
 
 @end
 
+/**
+ An applier that is invoked when a set of properties are applied to an object.
+ */
 @interface MTFThemeClassPropertiesApplier : NSObject <MTFThemeClassApplicable>
 
+/**
+ Initializes a theme class properties applier.
+ 
+ @param properties                         The names of the properties that this
+                                           applier is responsible for applying.
+ @param valueTransformersOrRequiredClasses An array of value transformer names
+                                           or required classes in the same order
+                                           as the property names.
+ @param applierBlock                       The block that is invoked when all of
+                                           the specified properties are 
+                                           contained within a theme class that
+                                           is being applied to the object that 
+                                           this applier is registered with.
+ 
+ @return An initialized theme class properties applier.
+ */
 - (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(mtf_nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
- If nil, there are no value transfomer or required classes for this theme applier.
+ An array specifying either of the following, in the same order as the
+ properties that this applier is responsible for applying:
+ 
+ - The name of the value transformer used to transform this value from the raw
+ theme file to the value that is a parameter to the applier block, or nil if the
+ value needs no transformation.
+ - The class that the property value is required to be a kind of, or nil if the
+ type of the value should not be checked.
+ 
+ If nil, there are no value transfomer or required classes for this theme
+ applier.
  */
 @property (nonatomic, readonly, mtf_nullable) NSArray *valueTransformersOrRequiredClasses;
 
-
+/**
+ The block that is invoked to apply the property values to an instance of the
+ class that this applier is registered with.
+ */
 @property (nonatomic, copy, readonly) MTFThemePropertiesApplierBlock applierBlock;
 
 @end

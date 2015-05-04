@@ -11,6 +11,9 @@
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
+/**
+ A named constant value from an MTFTheme.
+ */
 @interface MTFThemeConstant : NSObject
 
 /**

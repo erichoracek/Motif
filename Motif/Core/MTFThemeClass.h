@@ -12,7 +12,8 @@
 MTF_NS_ASSUME_NONNULL_BEGIN
 
 /**
- An MTFThemeClass represents a class from a JSON theme file.
+ A named class from an MTFTheme containing a set of named properties with
+ corresponding values.
  */
 @interface MTFThemeClass : NSObject
 
@@ -31,6 +32,23 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 /**
  Applies this theme class to an object.
+ 
+ When a theme class is applied to an object:
+ 
+ 1. A list of all of the properties on the class is generated using
+    property_getAttributes from objc/runtime.h.
+ 2. This list of properties is compared to the class properties defined in the
+    theme file.
+ 3. If any of the properties from the theme file have the same type as the
+    properties on the class, the value from the JSON theme file is set using
+    key-value coding.
+ 4. If any of the matched properties have different types, an NSValueTransformer
+    subclass if located transform the JSON value to the type of the
+    property, e.g. NSString → UIEdgeInsets.
+ 5. The value from the above steps is set on the object using key-value coding.
+ 6. If there are no properties available for the theme property, its value is
+    set on the object via key-value coding, which may throw an exception if the
+    keypath is not implemented on the object.
  
  @param object The object that this theme class should be applied to.
  

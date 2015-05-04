@@ -13,14 +13,38 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @class MTFTheme;
 
+/**
+ Parsing a raw theme into its classes and constants, optionally inheriting from
+ another theme.
+ */
 @interface MTFThemeParser : NSObject
 
+/**
+ Initializes a theme parser with a raw theme and parses it, populating the
+ parsedConstants and parsedClasses properties synchronously.
+ 
+ @param rawTheme The raw theme that should be parsed by this parser.
+ @param theme    The theme that this parsed theme should inherit its classes
+                 and properties from.
+ @param error    A pass-by-reference error, populated if a parsing error
+                 occurred.
+ 
+ @return An initialized theme parser.
+ */
 - (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(mtf_nullable MTFTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, readonly) NSDictionary *rawTheme;
-
+/**
+ The theme constants parsed from the raw theme.
+ 
+ A dictionary keyed by theme constant names with values of MTFThemeConstant.
+ */
 @property (nonatomic, readonly) NSDictionary *parsedConstants;
 
+/**
+ The theme classes parsed from the raw theme.
+ 
+ A dictionary keyed by theme class names with values of MTFThemeClass.
+ */
 @property (nonatomic, readonly) NSDictionary *parsedClasses;
 
 /**

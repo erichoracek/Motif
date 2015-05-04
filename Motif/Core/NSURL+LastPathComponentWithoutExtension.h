@@ -13,6 +13,14 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (LastPathComponentWithoutExtension)
 
+/**
+ The last path component of the URL without the extension. For example, when 
+ invoked on a URL referencing a file named "Theme.json" this method will return
+ "Theme".
+ 
+ First reads the lastPathComponent of the URL, and then takes its pathExtension
+ and trims it from the lastPathComponent.
+ */
 @property (nonatomic, readonly, mtf_nullable) NSString *mtf_lastPathComponentWithoutExtension;
 
 @end

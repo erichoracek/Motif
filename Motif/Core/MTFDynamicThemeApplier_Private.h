@@ -13,8 +13,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @interface MTFDynamicThemeApplier ()
 
 /**
- The applicants of the theme classes, keyed by the the theme class names that
- they had applied to them.
+ The applicants of the theme classes that were applied with this dynamic theme
+ applier.
  
  An NSHashTable, containing weak references to all of the objects that have had
  a class applied to it. When the theme property is changed, this enables an

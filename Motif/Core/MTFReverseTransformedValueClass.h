@@ -11,8 +11,16 @@
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
+/**
+ A protocol implemented by NSValueTransformers specifying that they take a 
+ specific type of values.
+ */
 @protocol MTFReverseTransformedValueClass <NSObject>
 
+/**
+ The class of object that should be provided to this value transformer when
+ invoking its transformedValue: method.
+ */
 + (Class)reverseTransformedValueClass;
 
 @end

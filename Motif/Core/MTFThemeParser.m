@@ -27,8 +27,6 @@
     
     self = [super init];
     if (self) {
-        _rawTheme = rawTheme;
-        
         // Filter out the constants and classes from the raw dictionary
         NSDictionary *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
         NSDictionary *rawClasses = [self rawClassesFromRawTheme:rawTheme];

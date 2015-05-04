@@ -15,6 +15,14 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (ThemingPrivate)
 
+/**
+ Deregisters the provided theme class applier from the global list of theme
+ appliers.
+ 
+ Must be invoked from the main thread.
+ 
+ @param applier The applier that should be deregistered.
+ */
 + (void)mtf_deregisterThemeClassApplier:(id <MTFThemeClassApplicable>)applier;
 
 /**

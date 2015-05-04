@@ -21,6 +21,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/**
+ The name of the value transformer responsible for transforming an NSString to
+ an NSValue wrapping a CGSize struct.
+ */
 extern NSString * const MTFSizeFromStringTransformerName;
 
 MTF_NS_ASSUME_NONNULL_END

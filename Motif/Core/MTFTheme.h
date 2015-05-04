@@ -14,7 +14,23 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @class MTFThemeClass;
 
 /**
+ A collection of classes and constants used to style interface objects.
  
+ Themes are immutable. If you want to change the theme that is applied to an
+ object at runtime, use an MTFDynamicThemeApplier or any of its subclasses.
+ 
+ Themes can be created from JSON theme files, which have a syntax to denote
+ classes and constants:
+ 
+ Classes: Denoted by a leading period (e.g. .Button) and encoded as a nested 
+ JSON dictionary, a class is a collection of named properties corresponding to
+ values that together define the style of an element in your interface. Class
+ property values can be any JSON types, or alternatively references to other
+ classes or constants.
+ 
+ Constants: Denoted by a leading dollar sign (e.g. $RedColor) and encoded as 
+ a key-value pair, a constant is a named reference to a value. Constant values 
+ can be any JSON types, or alternatively a reference to a class or constant.
  */
 @interface MTFTheme : NSObject
 

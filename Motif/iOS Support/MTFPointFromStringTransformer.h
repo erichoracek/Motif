@@ -13,7 +13,7 @@
 MTF_NS_ASSUME_NONNULL_BEGIN
 
 /**
- Transforms an NSString to a NSValue wrapping a CGPoint struct.
+ Transforms an NSString to an NSValue wrapping a CGPoint struct.
  
  Allows reverse transformation.
  */
@@ -21,6 +21,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/**
+ The name of the value transformer responsible for transforming an NSString to 
+ an NSValue wrapping a CGPoint struct.
+ */
 extern NSString * const MTFPointFromStringTransformerName;
 
 MTF_NS_ASSUME_NONNULL_END

@@ -14,12 +14,18 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 /**
  Transforms an NSString to a UIColor.
  
+ See UIColor+HTMLColors.h for the accepted values.
+ 
  Does not allow reverse transformation.
  */
 @interface MTFColorFromStringTransformer : NSValueTransformer <MTFReverseTransformedValueClass>
 
 @end
 
+/**
+ The name of the value transformer responsible for transforming an NSString to
+ a UIColor.
+ */
 extern NSString * const MTFColorFromStringTransformerName;
 
 MTF_NS_ASSUME_NONNULL_END
