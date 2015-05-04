@@ -30,7 +30,7 @@
 - (void)setTheme:(MTFTheme *)theme {
     NSAssert(
         NO,
-        @"You should not change the theme on a screen brightness theme applier"
+        @"You should not change the theme on a screen brightness theme applier "
             "manually.");
 }
 
