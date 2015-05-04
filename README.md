@@ -164,7 +164,7 @@ Previously, we created a style applier on `UILabel` that allows us specify a cus
 ```objective-c
 NSError *error;
 MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:@"Theme" error:&error];
-NSAssert(error != nil, @"Error loading theme %@", error);
+NSAssert(error == nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:@"Button" toObject:saveButton];
 [theme applyClassWithName:@"WarningButton" toObject:deleteButton];
@@ -363,7 +363,7 @@ Now, when you add the above pair of files to your project, you can create and ap
 
 NSError *error;
 MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:ButtonsThemeName error:&error];
-NSAssert(error != nil, @"Error loading theme %@", error);
+NSAssert(error == nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:ButtonsThemeClassNames.Button toObject:saveButton];
 [theme applyClassWithName:ButtonsThemeClassNames.WarningButton toObject:deleteButton];

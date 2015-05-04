@@ -101,7 +101,7 @@
                 ContentThemeName,
                 StyleGuideThemeName
             ] error:&error];
-        NSAssert(!error, @"Error loading theme: %@", error);
+        NSAssert(error == nil, @"Error loading theme: %@", error);
         self.lightTheme = theme;
     }
     return _lightTheme;
@@ -120,7 +120,7 @@
                 ContentThemeName,
                 StyleGuideThemeName
             ] error:&error];
-        NSAssert(!error, @"Error loading theme: %@", error);
+        NSAssert(error == nil, @"Error loading theme: %@", error);
         self.darkTheme = theme;
     }
     return _darkTheme;
