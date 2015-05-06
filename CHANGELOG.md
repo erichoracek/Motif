@@ -1,3 +1,12 @@
+# 0.1.1
+
+## Fixes
+
+- Vastly improve documentation throughout Motif
+- Remove unused file MTFThemeHierarchy.h
+- Add tests to screen brightness theme applier
+- Error when a theme class' superclass is self-referential or invalid
+
 # 0.1.0
 
 ## Features
