@@ -150,4 +150,81 @@
     XCTAssertEqual(error.domain, MTFThemingErrorDomain, @"Must have MTFTheming error domain");
 }
 
+- (void)testInvalidSuperclassValue
+{
+    NSString *class = @".Class";
+    NSString *property = @"property";
+    NSString *value = @"value";
+    
+    NSDictionary *rawTheme = @{
+        class: @{
+            MTFThemeSuperclassKey: value,
+            property: value
+        }
+    };
+    
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
+    
+    XCTAssertNotNil(theme);
+    XCTAssertNotNil(error, @"Must have error with invalid superclass value");
+    XCTAssertEqual(error.domain, MTFThemingErrorDomain, @"Must have MTFTheming error domain");
+}
+
+- (void)testSelfReferentialSuperclassValueIsInvalid {
+    NSString *class = @".Class";
+    NSString *property = @"property";
+    NSString *value = @"value";
+    
+    NSDictionary *rawTheme = @{
+        class: @{
+            MTFThemeSuperclassKey: class,
+            property: value
+        }
+    };
+    
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
+    
+    XCTAssertNotNil(theme);
+    XCTAssertNotNil(error, @"Must have error with invalid superclass value");
+    XCTAssertEqual(error.domain, MTFThemingErrorDomain, @"Must have MTFTheming error domain");
+}
+
+- (void)testTransitiveSelfReferentialSuperclassValueIsInvalid {
+    NSString *class1 = @".Class1";
+    NSString *class2 = @".Class2";
+    NSString *class3 = @".Class3";
+    NSString *property = @"property";
+    NSString *value = @"value";
+    
+    NSDictionary *rawTheme = @{
+        class1: @{
+            MTFThemeSuperclassKey: class2,
+            property: value
+        },
+        class2: @{
+            MTFThemeSuperclassKey: class3,
+            property: value
+        },
+        class3: @{
+            MTFThemeSuperclassKey: class1,
+            property: value
+        }
+    };
+    
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc]
+        initWithThemeDictionary:rawTheme
+        error:&error];
+    
+    XCTAssertNotNil(theme);
+    XCTAssertNotNil(error, @"Must have error with invalid superclass value");
+    XCTAssertEqual(error.domain, MTFThemingErrorDomain, @"Must have MTFTheming error domain");
+}
+
 @end

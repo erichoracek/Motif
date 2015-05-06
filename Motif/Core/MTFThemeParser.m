@@ -67,7 +67,7 @@
                 error:error];
             
             parsedConstants = [self
-                resolveReferenceInParsedConstants:parsedConstants
+                resolveReferencesInParsedConstants:parsedConstants
                 fromConstants:mergedConstants
                 classes:mergedClasses
                 error:error];
@@ -168,48 +168,40 @@
 - (NSDictionary *)resolveReferencesInParsedClasses:(NSDictionary *)parsedClasses fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
     NSArray *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
+    
     for (MTFThemeClass *parsedClass in parsedClassObjects) {
-        
         // Resolve the references within this class
-        parsedClass.propertiesConstants = [self
-            resolveReferenceInParsedConstants:parsedClass.propertiesConstants
+        NSDictionary *propertiesConstants = [self
+            resolveReferencesInParsedConstants:parsedClass.propertiesConstants
             fromConstants:constants
             classes:classes
             error:error];
         
-        // If there is a superclass reference and it is to invalid property
-        id superclass = [parsedClass.propertiesConstants[MTFThemeSuperclassKey]
-            mappedValue];
-        if (superclass && ![superclass isKindOfClass:MTFThemeClass.class]) {
-            // Do not resolve this class
-            [resolvedClasses removeObjectForKey:parsedClass.name];
-            // Populate the error
-            if (error) {
-                NSString *localizedDescription = [NSString stringWithFormat:
-                    @"The value for the 'superclass' property in '%@' must "
-                        "reference a valid theme class. It is currently '%@'",
-                    parsedClass.name,
-                    superclass];
-                *error = [NSError
-                    errorWithDomain:MTFThemingErrorDomain
-                    code:1
-                    userInfo:@{
-                        NSLocalizedDescriptionKey: localizedDescription
-                    }];
-            }
-        }
+        parsedClass.propertiesConstants = propertiesConstants;
+    }
+    
+    // Once all references have been resolved, filter invalid references
+    for (MTFThemeClass *resolvedClass in [resolvedClasses objectEnumerator].allObjects) {
+        NSDictionary *propertiesConstants = resolvedClass.propertiesConstants;
+        
+        // Filter invalid references from class properties
+        NSDictionary *filteredPropertiesConstants = [self
+            filterInvalidReferencesInParsedConstants:propertiesConstants
+            forClass:resolvedClass
+            error:error];
+        
+        resolvedClass.propertiesConstants = filteredPropertiesConstants;
     }
     
     return [resolvedClasses copy];
 }
 
-- (NSDictionary *)resolveReferenceInParsedConstants:(NSDictionary *)parsedConstants fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
+- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary *)parsedConstants fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
-    
     NSArray *parsedConstantObjects = [parsedConstants
         objectEnumerator].allObjects;
+    
     for (MTFThemeConstant *parsedConstant in parsedConstantObjects) {
-        
         id mappedValue = parsedConstant.mappedValue;
         
         // If the constant does not have a reference as its value, continue
@@ -285,28 +277,76 @@
     return [resolvedConstants copy];
 }
 
+- (NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError *__autoreleasing *)error {
+    // Don't continue if there's no superclass, as it's the only reason why a
+    // reference would be invalid
+    MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] mappedValue];
+    if (classSuperclass == nil) {
+        return parsedConstants;
+    }
+    
+    NSMutableDictionary *filteredParsedConstants = [parsedConstants mutableCopy];
+    
+    // Ensure that no superclass all the way up the inheritance hierarchy
+    // causes a circular reference.
+    MTFThemeClass *superclass = classSuperclass;
+    do {
+        if (superclass == class) {
+            // Filter the superclass from the parsed constants if it
+            // transitively references itself
+            [filteredParsedConstants removeObjectForKey:MTFThemeSuperclassKey];
+            
+            if (error) {
+                NSString *localizedDescription = [NSString stringWithFormat:
+                    @"The superclass of '%@' causes it to inherit from itself. "
+                        "It is currently '%@'.",
+                    class.name,
+                    classSuperclass.name];
+                
+                *error = [NSError
+                    errorWithDomain:MTFThemingErrorDomain
+                    code:1
+                    userInfo:@{
+                        NSLocalizedDescriptionKey: localizedDescription
+                    }];
+                
+            }
+            
+            break;
+        }
+        
+    } while ((superclass = [superclass.propertiesConstants[MTFThemeSuperclassKey] mappedValue]));
+    
+    return [filteredParsedConstants copy];
+}
+
 #pragma mark Classes
 
 - (NSDictionary *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error {
     // Create MTFThemeClass objects from the raw classes
     NSMutableDictionary *parsedClasses = [NSMutableDictionary new];
+    
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
         NSDictionary *rawProperties = [rawClasses
             mtf_dictionaryValueForKey:rawClassName
             error:error];
+        
         if (!rawProperties) {
             break;
         }
+        
         // Create a theme class from this properties dictionary
         MTFThemeClass *class = [self
             classParsedFromRawProperties:rawProperties
             rawName:rawClassName
             error:error];
+        
         if (class) {
             parsedClasses[class.name] = class;
         }
     }
+    
     return [parsedClasses copy];
 }
 
@@ -320,11 +360,57 @@
         constantsParsedFromRawConstants:rawProperties
         error:error];
     
+    NSDictionary *filteredProperties = [self
+        filteredPropertiesFromMappedClassProperties:mappedProperties
+        className:name
+        error:error];
+    
     MTFThemeClass *class = [[MTFThemeClass alloc]
         initWithName:name
-        propertiesConstants:mappedProperties];
+        propertiesConstants:filteredProperties];
     
     return class;
+}
+
+- (NSDictionary *)filteredPropertiesFromMappedClassProperties:(NSDictionary *)mappedClassProperties className:(NSString *)className error:(NSError *__autoreleasing *)error {
+    NSMutableDictionary *filteredClassProperties = [mappedClassProperties mutableCopy];
+    
+    // If there is a superclass property, filter it out if it doesn't contain a
+    // reference and populate the error
+    MTFThemeConstant *superclass = filteredClassProperties[MTFThemeSuperclassKey];
+    if (superclass) {
+        BOOL isSymbolReference = [superclass.mappedValue isKindOfClass:MTFThemeSymbolReference.class];
+        BOOL isSuperclassClassReference = NO;
+        
+        if (isSymbolReference) {
+            MTFThemeSymbolReference *reference = superclass.mappedValue;
+            isSuperclassClassReference = (reference.type == MTFThemeSymbolTypeClass);
+        }
+        
+        // If superclass property doesn't refer to a class, populate the error
+        if (!isSuperclassClassReference || !isSymbolReference) {
+            // Filter this property out from this class' properties
+            [filteredClassProperties removeObjectForKey:MTFThemeSuperclassKey];
+            
+            // Populate an error with the failure reason
+            if (error) {
+                NSString *localizedDescription = [NSString stringWithFormat:
+                    @"The value for the 'superclass' property in '%@' must "
+                        "reference a valid theme class. It is currently '%@'.",
+                    className,
+                    superclass.rawValue];
+                
+                *error = [NSError
+                    errorWithDomain:MTFThemingErrorDomain
+                    code:1
+                    userInfo:@{
+                        NSLocalizedDescriptionKey: localizedDescription
+                    }];
+            }
+        }
+    }
+    
+    return [filteredClassProperties copy];
 }
 
 #pragma mark Merging
