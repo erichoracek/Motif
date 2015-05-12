@@ -130,7 +130,7 @@
 
 - (void)toggleTheme {
     // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
-    // previously applied themes
+    // objects that had a theme class previously applied with it
     self.themeApplier.theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
     
     self.isDisplayingDarkTheme = !self.isDisplayingDarkTheme;
