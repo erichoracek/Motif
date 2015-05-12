@@ -40,7 +40,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         didUpdate:^(MTFTheme *theme, NSError *error) {
             __weak typeof(self) self = __weak_self;
             
-            [self setSuperTheme:theme];
+            [self safelySetTheme:theme];
         }];
     
     super.theme = self.themeSourceObserver.updatedTheme;
@@ -84,7 +84,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         didUpdate:^(MTFTheme *theme, NSError *error) {
             __weak typeof(self) self = __weak_self;
             
-            [self setSuperTheme:theme];
+            [self safelySetTheme:theme];
         }];
     
     self = [super initWithTheme:themeSourceObserver.updatedTheme];
@@ -98,8 +98,22 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Private
 
-- (void)setSuperTheme:(MTFTheme *)theme {
-    super.theme = theme;
+- (void)safelySetTheme:(MTFTheme *)theme {
+    // Catch runtime exceptions when reloading a theme due to live reload. This
+    // prevents the consumer from having to re-build and re-run if they mistype
+    // a property name during live reload.
+    @try {
+        super.theme = theme;
+    }
+    @catch (NSException *exception) {
+#ifdef DEBUG
+        NSLog(
+            @"Exception raised while attempting to reapply the reloaded theme: "
+                "'%@'. This exception will not be caught outside the context "
+                "of live reloading.",
+            exception);
+#endif
+    }
 }
 
 - (mtf_nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {
