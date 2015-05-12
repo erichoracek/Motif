@@ -54,7 +54,11 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(theme);
     NSParameterAssert(sourceFile);
     
-    NSURL *sourceFileURL = [NSURL fileURLWithFileSystemRepresentation:sourceFile isDirectory:NO relativeToURL:nil];
+    NSURL *sourceFileURL = [NSURL
+        fileURLWithFileSystemRepresentation:sourceFile
+        isDirectory:NO
+        relativeToURL:nil];
+
     NSURL *sourceDirectoryURL = [self URLForSourceDirectoryFromSourceFileURL:sourceFileURL];
     
     return [self initWithTheme:theme sourceDirectoryURL:sourceDirectoryURL];
@@ -68,8 +72,11 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     
     NSError *error;
     NSNumber *isDirectory;
-    __unused BOOL resourceValueQuerySuccess = [sourceDirectoryURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error];
-    
+    __unused BOOL resourceValueQuerySuccess = [sourceDirectoryURL
+        getResourceValue:&isDirectory
+        forKey:NSURLIsDirectoryKey
+        error:&error];
+
     NSAssert(
         resourceValueQuerySuccess && isDirectory.boolValue,
         @"Source directory (%@) is not a valid directory. Error: %@",

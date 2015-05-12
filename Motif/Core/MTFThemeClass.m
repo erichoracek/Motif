@@ -60,12 +60,14 @@
 
 - (NSDictionary *)properties {
     NSMutableDictionary *properties = [NSMutableDictionary new];
+
     [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(
         NSString *name,
         MTFThemeConstant *constant,
         BOOL *_) {
             properties[name] = constant.value;
         }];
+
     return [properties copy];
 }
 
@@ -77,8 +79,7 @@
     }
     
     NSDictionary *properties = self.properties;
-    NSMutableSet *unappliedProperties = [NSMutableSet
-        setWithArray:properties.allKeys];
+    NSMutableSet *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
     
     // Apply each of the class appliers registered on the applicant's class
     NSArray *classAppliers = [[object class] mtf_themeClassAppliers];
