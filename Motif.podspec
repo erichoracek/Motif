@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Motif'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   }
   s.frameworks = 'Foundation'
   s.ios.frameworks = 'UIKit'
-  
+
   s.source_files = [
     "#{s.name}/#{s.name}.h",
     "#{s.name}/Core/*.{h,m}",

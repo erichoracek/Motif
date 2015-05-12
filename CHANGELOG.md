@@ -1,3 +1,10 @@
+# 0.1.2
+
+## Fixes
+
+- Catch theme class application exceptions when live reloading themes
+- Improve theme class application exception copy to better communicate ways to resolve issue
+
 # 0.1.1
 
 ## Fixes
