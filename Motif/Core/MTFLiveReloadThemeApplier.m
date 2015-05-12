@@ -108,9 +108,9 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     @catch (NSException *exception) {
 #ifdef DEBUG
         NSLog(
-            @"Exception raised while attempting to reapply the reloaded theme: "
-                "'%@'. This exception will not be caught outside the context "
-                "of live reloading.",
+            @"Exception raised while attempting to reapply the reloaded theme. "
+                "This exception will not be caught outside the context "
+                "of live reloading. Exception:\n%@",
             exception);
 #endif
     }

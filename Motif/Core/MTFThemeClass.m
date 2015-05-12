@@ -177,12 +177,17 @@
         }
         @catch (NSException *exception) {
             __unused NSString *className = NSStringFromClass([object class]);
-            NSAssert3(
+            NSAssert(
                 NO,
-                @"'%@' doesn't have a theme applier for the property '%@' or "
-                      "doesn't implement the keypath '%@'. You must support "
-                      "one of them.",
+                @"Failed to apply the theme class named '%@' to an instance of "
+                    "'%@'. '%@' or any of its ancestors must either:\n"
+                    "- Have a readwrite property named '%@'\n"
+                    "- Have an applier block registered for the '%@' property\n"
+                    "- Be key-value coding compliant for setting the key '%@'",
+                self.name,
                 className,
+                className,
+                property,
                 property,
                 property);
         }
