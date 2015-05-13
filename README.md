@@ -17,7 +17,7 @@ _A lightweight and customizable JSON stylesheet framework for iOS_
 
 ## Why should I use it?
 
-You have an app. Maybe even a family of apps. You know about CSS, which enables web developers to write a set of declarative classes to style elements throughout their site, creating composable interface definitions that are entirely divorced from the page content or layout. You'll admit that you're a little jealous that things aren't quite the same on iOS.
+You have an app. Maybe even a family of apps. You know about CSS, and how it enables web developers to write a set of declarative classes to style elements throughout their site, creating composable interface definitions that are entirely divorced from page content. You'll admit that you're a little jealous that things aren't quite the same on iOS.
 
 To style your app today, maybe you have a `MyAppStyle` singleton that vends styled interface components that's a dependency of nearly every view controller in your app. Maybe you use Apple's `UIAppearance` APIs, but you're limited to a frustratingly small subset of the appearance APIs. Maybe you've started to subclass some UIKit classes just to set a few defaults to create some styled components. You know this sucks, but there just isn't a better way to do things in iOS.
 
