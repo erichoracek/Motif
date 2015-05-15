@@ -47,18 +47,8 @@
 		3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */; };
 		3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8711AD206FF00C420F2 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
-		3A02C8721AD206FF00C420F2 /* MTFColorFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C8731AD206FF00C420F2 /* MTFColorFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */; };
-		3A02C8741AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C8751AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */; };
-		3A02C8761AD206FF00C420F2 /* MTFPointFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C8771AD206FF00C420F2 /* MTFPointFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */; };
-		3A02C8781AD206FF00C420F2 /* MTFRectFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C8791AD206FF00C420F2 /* MTFRectFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */; };
 		3A02C87A1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C87B1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */; };
-		3A02C87C1AD206FF00C420F2 /* MTFSizeFromStringTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C87D1AD206FF00C420F2 /* MTFSizeFromStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */; };
 		3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C87F1AD206FF00C420F2 /* UIColor+HTMLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */; };
 		3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -130,7 +120,13 @@
 		3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
 		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
 		3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A79EC601AC9147E000CCC01 /* Motif.framework */; };
+		3A9082771B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A9082791B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
+		3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
 		3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */; };
+		3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AA5A77D1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */; };
 		3AA796641AC919FB00FD4320 /* Motif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* Motif.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */; };
 		3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */; };
@@ -150,6 +146,8 @@
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
+		3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
+		3AF172A11B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,18 +208,8 @@
 		3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+TypeFiltering.m"; sourceTree = "<group>"; };
 		3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFRuntimeExtensions.h; sourceTree = "<group>"; };
 		3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFRuntimeExtensions.m; sourceTree = "<group>"; };
-		3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFColorFromStringTransformer.h; sourceTree = "<group>"; };
-		3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFColorFromStringTransformer.m; sourceTree = "<group>"; };
-		3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFEdgeInsetsFromStringTransformer.h; sourceTree = "<group>"; };
-		3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFEdgeInsetsFromStringTransformer.m; sourceTree = "<group>"; };
-		3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFPointFromStringTransformer.h; sourceTree = "<group>"; };
-		3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFPointFromStringTransformer.m; sourceTree = "<group>"; };
-		3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFRectFromStringTransformer.h; sourceTree = "<group>"; };
-		3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFRectFromStringTransformer.m; sourceTree = "<group>"; };
 		3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFScreenBrightnessThemeApplier.h; sourceTree = "<group>"; };
 		3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFScreenBrightnessThemeApplier.m; sourceTree = "<group>"; };
-		3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFSizeFromStringTransformer.h; sourceTree = "<group>"; };
-		3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFSizeFromStringTransformer.m; sourceTree = "<group>"; };
 		3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HTMLColors.h"; sourceTree = "<group>"; };
 		3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HTMLColors.m"; sourceTree = "<group>"; };
 		3A179DC71AC9483900BD598C /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,7 +241,11 @@
 		3A79EC641AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A79EC711AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+ValueTransformerRegistration.h"; sourceTree = "<group>"; };
+		3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+ValueTransformerRegistration.m"; sourceTree = "<group>"; };
 		3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFScreenBrightnessThemeApplierTests.m; sourceTree = "<group>"; };
+		3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTFiOSValueTransformers.h"; sourceTree = "<group>"; };
+		3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTFiOSValueTransformers.m"; sourceTree = "<group>"; };
 		3AA7964F1AC919FB00FD4320 /* Motif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motif.h; sourceTree = "<group>"; };
 		3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFDynamicThemeApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeClassApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -272,6 +264,7 @@
 		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
+		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,8 +328,6 @@
 				3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */,
 				3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */,
 				3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */,
-				3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */,
-				3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */,
 				3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */,
 				3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */,
 				3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */,
@@ -351,10 +342,14 @@
 				3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */,
 				3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */,
 				3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */,
+				3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */,
+				3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */,
 				3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */,
 				3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */,
 				3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */,
 				3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */,
+				3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */,
+				3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -371,18 +366,10 @@
 		3A02C83A1AD206FF00C420F2 /* iOS Support */ = {
 			isa = PBXGroup;
 			children = (
-				3A02C83B1AD206FF00C420F2 /* MTFColorFromStringTransformer.h */,
-				3A02C83C1AD206FF00C420F2 /* MTFColorFromStringTransformer.m */,
-				3A02C83D1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h */,
-				3A02C83E1AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m */,
-				3A02C83F1AD206FF00C420F2 /* MTFPointFromStringTransformer.h */,
-				3A02C8401AD206FF00C420F2 /* MTFPointFromStringTransformer.m */,
-				3A02C8411AD206FF00C420F2 /* MTFRectFromStringTransformer.h */,
-				3A02C8421AD206FF00C420F2 /* MTFRectFromStringTransformer.m */,
+				3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */,
+				3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */,
 				3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */,
 				3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */,
-				3A02C8451AD206FF00C420F2 /* MTFSizeFromStringTransformer.h */,
-				3A02C8461AD206FF00C420F2 /* MTFSizeFromStringTransformer.m */,
 				3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */,
 				3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */,
 			);
@@ -512,6 +499,7 @@
 				3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */,
 				3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */,
 				3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */,
+				3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
 				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
@@ -555,6 +543,7 @@
 				3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F4E1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.h in Headers */,
+				3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */,
 				3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */,
@@ -571,15 +560,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A02C8761AD206FF00C420F2 /* MTFPointFromStringTransformer.h in Headers */,
 				3A02C8571AD206FF00C420F2 /* MTFThemeConstant.h in Headers */,
 				3A1C4F4D1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.h in Headers */,
-				3A02C8741AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.h in Headers */,
 				3A02C87A1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h in Headers */,
 				3A02C8681AD206FF00C420F2 /* NSString+ThemeSymbols.h in Headers */,
 				3A02C84C1AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
 				3AA796641AC919FB00FD4320 /* Motif.h in Headers */,
-				3A02C8781AD206FF00C420F2 /* MTFRectFromStringTransformer.h in Headers */,
 				3A02C84E1AD206FF00C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
 				3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */,
 				3A02C85F1AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */,
@@ -592,16 +578,16 @@
 				3A02C8511AD206FF00C420F2 /* MTFTheme_Private.h in Headers */,
 				3A02C8551AD206FF00C420F2 /* MTFThemeClassApplicable.h in Headers */,
 				3A02C84D1AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h in Headers */,
-				3A02C87C1AD206FF00C420F2 /* MTFSizeFromStringTransformer.h in Headers */,
+				3A9082771B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */,
 				3A02C86E1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F531AEDC9730048F84C /* MTFThemeSourceObserver.h in Headers */,
+				3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */,
 				3A02C8611AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */,
 				3A1C4F591AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
 				3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
-				3A02C8721AD206FF00C420F2 /* MTFColorFromStringTransformer.h in Headers */,
 				3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */,
 				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */,
 				3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */,
@@ -781,6 +767,7 @@
 				3A1C4F5C1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */,
 				3A1C4F501AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.m in Sources */,
 				3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
+				3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */,
 				3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */,
 				3A02C88D1AD2072500C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */,
@@ -799,6 +786,7 @@
 				3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */,
 				3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */,
+				3AF172A11B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
 				3A406CCB1AC9B87600615428 /* MTFThemeClassEqualityTests.m in Sources */,
 				3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A406CCC1AC9B87600615428 /* MTFThemePropertiesApplierTests.m in Sources */,
@@ -817,25 +805,22 @@
 				3A02C8531AD206FF00C420F2 /* MTFThemeClass.m in Sources */,
 				3A1C4F551AEDC9730048F84C /* MTFThemeSourceObserver.m in Sources */,
 				3A02C87F1AD206FF00C420F2 /* UIColor+HTMLColors.m in Sources */,
+				3A9082791B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */,
 				3A02C85E1AD206FF00C420F2 /* MTFThemeSymbolReference.m in Sources */,
 				3A1C4F5B1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */,
-				3A02C8771AD206FF00C420F2 /* MTFPointFromStringTransformer.m in Sources */,
 				3A02C8581AD206FF00C420F2 /* MTFThemeConstant.m in Sources */,
 				3A02C8671AD206FF00C420F2 /* NSObject+ThemeClassName.m in Sources */,
 				3A02C8601AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */,
 				3A02C85C1AD206FF00C420F2 /* MTFThemeParser.m in Sources */,
-				3A02C87D1AD206FF00C420F2 /* MTFSizeFromStringTransformer.m in Sources */,
-				3A02C8731AD206FF00C420F2 /* MTFColorFromStringTransformer.m in Sources */,
 				3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,
-				3A02C8791AD206FF00C420F2 /* MTFRectFromStringTransformer.m in Sources */,
 				3A1C4F4F1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.m in Sources */,
+				3AA5A77D1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m in Sources */,
 				3A02C86D1AD206FF00C420F2 /* NSURL+ThemeNaming.m in Sources */,
 				3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
 				3A02C8711AD206FF00C420F2 /* MTFRuntimeExtensions.m in Sources */,
 				3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */,
 				3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */,
-				3A02C8751AD206FF00C420F2 /* MTFEdgeInsetsFromStringTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
+				3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
 				3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */,
 				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
 				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
