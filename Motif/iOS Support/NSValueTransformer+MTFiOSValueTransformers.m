@@ -57,6 +57,30 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         returningTransformedValueWithBlock:^NSValue *(NSString *value) {
             return [NSValue valueWithCGSize:CGSizeFromString(value)];
         }];
+
+    [self
+        mtf_registerValueTransformerWithName:MTFAffineTranformFromStringTransformerName
+        transformedValueObjCType:@encode(CGAffineTransform)
+        reverseTransformedValueClass:NSString.class
+        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
+            return [NSValue valueWithCGAffineTransform:CGAffineTransformFromString(value)];
+        }];
+
+    [self
+        mtf_registerValueTransformerWithName:MTFVectorFromStringTransformerName
+        transformedValueObjCType:@encode(CGVector)
+        reverseTransformedValueClass:NSString.class
+        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
+            return [NSValue valueWithCGVector:CGVectorFromString(value)];
+        }];
+
+    [self
+        mtf_registerValueTransformerWithName:MTFOffsetFromStringTransformerName
+        transformedValueObjCType:@encode(UIOffset)
+        reverseTransformedValueClass:NSString.class
+        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
+            return [NSValue valueWithUIOffset:UIOffsetFromString(value)];
+        }];
 }
 
 @end
@@ -70,5 +94,11 @@ NSString * const MTFPointFromStringTransformerName = @"MTFPointFromStringTransfo
 NSString * const MTFRectFromStringTransformerName = @"MTFRectFromStringTransformer";
 
 NSString * const MTFSizeFromStringTransformerName = @"MTFSizeFromStringTransformer";
+
+NSString * const MTFAffineTranformFromStringTransformerName = @"MTFAffineTranformFromStringTransformerName";
+
+NSString * const MTFVectorFromStringTransformerName = @"MTFVectorFromStringTransformerName";
+
+NSString * const MTFOffsetFromStringTransformerName = @"MTFOffsetFromStringTransformerName";
 
 MTF_NS_ASSUME_NONNULL_END

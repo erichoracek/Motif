@@ -49,4 +49,22 @@ extern NSString * const MTFRectFromStringTransformerName;
  */
 extern NSString * const MTFSizeFromStringTransformerName;
 
+/**
+ The name of the value transformer responsible for transforming an NSString to
+ an NSValue wrapping a CGAffineTransform struct.
+ */
+extern NSString * const MTFAffineTranformFromStringTransformerName;
+
+/**
+ The name of the value transformer responsible for transforming an NSString to
+ an NSValue wrapping a CGVector struct.
+ */
+extern NSString * const MTFVectorFromStringTransformerName;
+
+/**
+ The name of the value transformer responsible for transforming an NSString to
+ an NSValue wrapping a UIOffset struct.
+ */
+extern NSString * const MTFOffsetFromStringTransformerName;
+
 MTF_NS_ASSUME_NONNULL_END
