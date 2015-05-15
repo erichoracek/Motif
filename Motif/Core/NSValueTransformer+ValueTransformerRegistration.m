@@ -29,8 +29,6 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 }
 
 + (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
-    NSParameterAssert(reverseTransformedValueClass != NULL);
-
     return [self
         mtf_registerValueTransformerWithName:name
         transformedValueClass:transformedValueClass
@@ -40,10 +38,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 }
 
 + (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(mtf_nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
-    NSParameterAssert(name);
-    NSParameterAssert(transformedValueClass);
-    NSParameterAssert(reverseTransformedValueClass);
-    NSParameterAssert(transformedValueBlock);
+    NSParameterAssert(name != nil);
+    NSParameterAssert(transformedValueClass != nil);
+    NSParameterAssert(reverseTransformedValueClass != nil);
+    NSParameterAssert(transformedValueBlock != nil);
 
     // Do not allow names that are identical to an existing Objective-C class
     if (objc_lookUpClass(name.UTF8String) != Nil) return NO;
