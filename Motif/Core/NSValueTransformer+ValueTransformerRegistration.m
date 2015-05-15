@@ -116,7 +116,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         transformedValueClassImplementation,
         method_getTypeEncoding(transformedValueClassMethod));
 
-    BOOL addReverseTransformedValueClassSuccess = class_addProtocol(
+    __unused BOOL addReverseTransformedValueClassSuccess = class_addProtocol(
         class,
         @protocol(MTFReverseTransformedValueClass));
 
@@ -135,21 +135,21 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
     NSString *type = [NSString stringWithFormat:@"%s@:", @encode(Class)];
 
-    BOOL reverseTransformedValueClassSuccessful = class_addMethod(
+    __unused BOOL reverseTransformedValueClassSuccess = class_addMethod(
         metaClass,
         reverseTransformedValueClassSelector,
         reverseTransformedValueClassImplementation,
         type.UTF8String);
 
     NSAssert(
-        reverseTransformedValueClassSuccessful,
+        reverseTransformedValueClassSuccess,
         @"Failed to add method %@",
         NSStringFromSelector(reverseTransformedValueClassSelector));
 
     // If there is an ObjC type specified, add that it is the output value
     // as per MTFObjCTypeValueTransformer
     if (transformedValueObjCType != NULL) {
-        BOOL addObjCTypeValueTransformerSuccess = class_addProtocol(
+        __unused BOOL addObjCTypeValueTransformerSuccess = class_addProtocol(
             class,
             @protocol(MTFObjCTypeValueTransformer));
 
@@ -166,7 +166,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
         NSString *type = [NSString stringWithFormat:@"%s@:", @encode(const char *)];
 
-        BOOL transformedValueObjCTypeSuccessful = class_addMethod(
+        __unused BOOL transformedValueObjCTypeSuccessful = class_addMethod(
             metaClass,
             transformedValueObjCTypeSelector,
             transformedValueObjCTypeImplementation,
