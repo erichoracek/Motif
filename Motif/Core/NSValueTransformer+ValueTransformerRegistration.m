@@ -39,7 +39,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         returningTransformedValueWithBlock:transformedValueBlock];
 }
 
-+ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
++ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(mtf_nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
     NSParameterAssert(name);
     NSParameterAssert(transformedValueClass);
     NSParameterAssert(reverseTransformedValueClass);
