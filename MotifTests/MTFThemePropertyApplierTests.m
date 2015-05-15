@@ -117,11 +117,10 @@
     NSString *property = @"property";
     
     NSString *valueTransfomerName = MTFPointFromStringTransformerName;
-    NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForName:valueTransfomerName];
     
     CGPoint point = CGPointMake(10.0, 10.0);
     NSValue *pointValue = [NSValue valueWithCGPoint:point];
-    NSString *pointThemeValue = [valueTransformer reverseTransformedValue:pointValue];
+    NSString *pointThemeValue = NSStringFromCGPoint(point);
     
     MTFTheme *theme = [self themeWithClass:class property:property value:pointThemeValue];
     

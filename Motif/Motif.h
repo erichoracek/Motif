@@ -25,12 +25,9 @@ FOUNDATION_EXPORT const unsigned char MotifVersionString[];
 #import <Motif/NSObject+ThemeClassName.h>
 #import <Motif/MTFReverseTransformedValueClass.h>
 #import <Motif/MTFObjCTypeValueTransformer.h>
+#import <Motif/NSValueTransformer+ValueTransformerRegistration.h>
 
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
     #import <Motif/MTFScreenBrightnessThemeApplier.h>
-    #import <Motif/MTFColorFromStringTransformer.h>
-    #import <Motif/MTFEdgeInsetsFromStringTransformer.h>
-    #import <Motif/MTFPointFromStringTransformer.h>
-    #import <Motif/MTFRectFromStringTransformer.h>
-    #import <Motif/MTFSizeFromStringTransformer.h>
+    #import <Motif/NSValueTransformer+MTFiOSValueTransformers.h>
 #endif
