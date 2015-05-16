@@ -18,7 +18,11 @@
 
 @end
 
-@interface MTFTestSubclass : NSObject
+@interface MTFThemePropertyApplierTestClass : NSObject
+
+@end
+
+@interface MTFThemePropertyApplierTestSubclass : MTFThemePropertyApplierTestClass
 
 @end
 
@@ -31,7 +35,7 @@
     NSString *value = @"value";
     MTFTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertyApplierTestClass.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self
@@ -61,7 +65,7 @@
     NSNumber *value = @0;
     MTFTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertyApplierTestClass.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
@@ -86,26 +90,54 @@
 {
     NSString *class = @".Class";
     NSString *property = @"property";
-    NSString *value = @"supposedToBeNumber";
+    NSString *value = @"notANumber";
     MTFTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertyApplierTestClass.class;
     id object = [objectClass new];
     
     id <MTFThemeClassApplicable> propertyApplier = [objectClass
-        mtf_registerThemeProperty:property requiringValueOfClass:NSNumber.class applierBlock:^(id propertyValue, id objectToTheme) {}];
-    
+        mtf_registerThemeProperty:property
+        requiringValueOfClass:NSNumber.class
+        applierBlock:^(id propertyValue, id objectToTheme) {}];
+
+    MTFDynamicThemeApplier *themeApplier = [[MTFDynamicThemeApplier alloc] initWithTheme:theme];
+    XCTAssertThrows([themeApplier applyClassWithName:class.mtf_symbol toObject:object]);
+
+    [objectClass mtf_deregisterThemeClassApplier:propertyApplier];
+}
+
+- (void)testMultiplePropertyAppliersWithDifferentRequiredClasses {
+    NSString *class = @".Class";
+    NSString *property = @"property";
+    NSString *value = @"string";
+    MTFTheme *theme = [self themeWithClass:class property:property value:value];
+
+    Class objectClass = MTFThemePropertyApplierTestClass.class;
+    id object = [objectClass new];
+
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
-    @try {
-        MTFDynamicThemeApplier *themeApplier = [[MTFDynamicThemeApplier alloc] initWithTheme:theme];
-        [themeApplier applyClassWithName:class.mtf_symbol toObject:object];
-    }
-    @catch (NSException *exception) {
-        [exceptionExpectation fulfill];
-    }
-    
+
+    id <MTFThemeClassApplicable> numberPropertyApplier = [objectClass
+        mtf_registerThemeProperty:property
+        requiringValueOfClass:NSNumber.class
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTFail(@"Number applier should not be invoked");
+        }];
+
+    id <MTFThemeClassApplicable> stringPropertyApplier = [objectClass
+        mtf_registerThemeProperty:property
+        requiringValueOfClass:NSString.class
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            [exceptionExpectation fulfill];
+        }];
+
+    MTFDynamicThemeApplier *themeApplier = [[MTFDynamicThemeApplier alloc] initWithTheme:theme];
+    [themeApplier applyClassWithName:class.mtf_symbol toObject:object];
+
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass mtf_deregisterThemeClassApplier:propertyApplier];
+        [objectClass mtf_deregisterThemeClassApplier:stringPropertyApplier];
+        [objectClass mtf_deregisterThemeClassApplier:numberPropertyApplier];
     }];
 }
 
@@ -124,7 +156,7 @@
     
     MTFTheme *theme = [self themeWithClass:class property:property value:pointThemeValue];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertyApplierTestClass.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
@@ -151,7 +183,7 @@
     NSString *value = @"value";
     MTFTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = MTFTestSubclass.class;
+    Class objectClass = MTFThemePropertyApplierTestSubclass.class;
     Class objectSuperclass = [objectClass superclass];
     
     id object = [objectClass new];
@@ -166,9 +198,11 @@
     
     [theme applyClassWithName:class.mtf_symbol toObject:object];
     
-    [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectSuperclass mtf_deregisterThemeClassApplier:propertyApplier];
-    }];
+    [self
+        waitForExpectationsWithTimeout:0.0
+        handler:^(NSError *error) {
+            [objectSuperclass mtf_deregisterThemeClassApplier:propertyApplier];
+        }];
 }
 
 #pragma mark - Multiple Appliers
@@ -181,26 +215,37 @@
     NSString *value = @"value";
     MTFTheme *theme = [self themeWithClass:class property:property value:value];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertyApplierTestSubclass.class;
     id object = [objectClass new];
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
-        XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
-        [applierExpectation fulfill];
-    }];
+    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+        mtf_registerThemeProperty:property
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTAssertEqual(
+                object,
+                objectToTheme,
+                @"The object in the applier must the same object that has a "
+                    "theme applied to it");
+
+            [applierExpectation fulfill];
+        }];
     
-    id <MTFThemeClassApplicable> propertyNotInClassApplier = [objectClass mtf_registerThemeProperty:propertyNotInClass applierBlock:^(id propertyValue, id objectToTheme) {
-        XCTFail(@"This applier must not be invoked");
-    }];
+    id <MTFThemeClassApplicable> propertyNotInClassApplier = [objectClass
+        mtf_registerThemeProperty:propertyNotInClass
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTFail(@"This applier must not be invoked");
+        }];
     
     [theme applyClassWithName:class.mtf_symbol toObject:object];
     
-    [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [objectClass mtf_deregisterThemeClassApplier:propertyApplier];
-        [objectClass mtf_deregisterThemeClassApplier:propertyNotInClassApplier];
-    }];
+    [self
+        waitForExpectationsWithTimeout:0.0
+        handler:^(NSError *error) {
+            [objectClass mtf_deregisterThemeClassApplier:propertyApplier];
+            [objectClass mtf_deregisterThemeClassApplier:propertyNotInClassApplier];
+        }];
 }
 
 #pragma mark - Helpers
@@ -222,6 +267,10 @@
 
 @end
 
-@implementation MTFTestSubclass
+@implementation MTFThemePropertyApplierTestClass
+
+@end
+
+@implementation MTFThemePropertyApplierTestSubclass
 
 @end

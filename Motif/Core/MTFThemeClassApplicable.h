@@ -36,7 +36,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSArray *properties;
 
 /**
- Returns whether the receiving applier should be used apply the properties in
+ Returns whether the receiving applier should be used to apply the properties in
  the specified class to an object.
  
  @param class The theme class that is being querying for application.

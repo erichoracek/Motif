@@ -16,26 +16,26 @@
 
 @end
 
-@interface MTFDeallocatingObject : NSObject
+@interface MTFThemePropertiesApplierTestObject : NSObject
 
 @end
 
 @implementation MTFThemePropertiesApplierTests
 
-- (void)testPropertiesApplier
-{
+- (void)testPropertiesApplier {
     NSString *class = @".Class";
     NSSet *properties = [NSSet setWithArray:@[@"property1", @"property2"]];
     NSSet *values = [NSSet setWithArray:@[@"value1", @"value2"]];
+
     MTFTheme *theme = [self
-        themeWithClass:class properties:properties.allObjects
+        themeWithClass:class
+        properties:properties.allObjects
         values:values.allObjects];
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFThemePropertiesApplierTestObject.class;
     id object = [objectClass new];
     
-    XCTestExpectation *applierExpectation = [self
-        expectationWithDescription:@"Theme property applier expectation"];
+    XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
     id <MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperties:properties.allObjects
@@ -56,16 +56,48 @@
     }];
 }
 
-- (void)testPropertiesRequiredClassApplier
-{
+- (void)testPropertiesApplierAppliesOnlyWhenAllPropertiesArePresent {
+    NSString *class = @".Class";
+    NSArray *properties = @[@"property1", @"property2", @"property3"];
+    NSArray *values = @[@"value1", @"value2", @"value3"];
+
+    NSArray *propertiesMinusOne = [properties subarrayWithRange:(NSRange){.location = 0, .length = 2}];
+    NSArray *valuesMinusOne = [values subarrayWithRange:(NSRange){.location = 0, .length = 2}];
+
+    MTFTheme *theme = [self
+        themeWithClass:class
+        properties:propertiesMinusOne
+        values:valuesMinusOne];
+
+    Class objectClass = MTFThemePropertiesApplierTestObject.class;
+    id object = [objectClass new];
+
+    id <MTFThemeClassApplicable> propertiesApplier = [objectClass
+        mtf_registerThemeProperties:properties
+        applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
+            XCTFail(@"Must not invoke applier");
+        }];
+
+    XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
+
+    id <MTFThemeClassApplicable> propertiesMinusOneApplier = [objectClass
+        mtf_registerThemeProperties:propertiesMinusOne
+        applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
+            [applierExpectation fulfill];
+        }];
     
+    [theme applyClassWithName:class.mtf_symbol toObject:object];
+
+    [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
+        [objectClass mtf_deregisterThemeClassApplier:propertiesApplier];
+        [objectClass mtf_deregisterThemeClassApplier:propertiesMinusOneApplier];
+    }];
 }
 
 #pragma mark - Helpers
 
 - (MTFTheme *)themeWithClass:(NSString *)class properties:(NSArray *)properties values:(NSArray *)values
 {
-    
     NSMutableDictionary *rawClassDictionary = [NSMutableDictionary new];
     NSEnumerator *propertiesEnumerator = [properties objectEnumerator];
     NSEnumerator *valuesEnumerator = [values objectEnumerator];
@@ -89,6 +121,6 @@
 
 @end
 
-@implementation MTFDeallocatingObject
+@implementation MTFThemePropertiesApplierTestObject
 
 @end
