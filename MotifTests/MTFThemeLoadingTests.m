@@ -18,21 +18,13 @@
 
 #pragma mark - File Tests
 
-- (void)testNonFileURLIsInvalid
-{
-    XCTestExpectation *exceptionExpectation = [self
-        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
-    
-    @try {
-        NSURL *URL = [NSURL URLWithString:@"http://www.google.com"];
-        __unused MTFTheme *theme = [[MTFTheme alloc]
-            initWithJSONFile:URL error:nil];
-    }
-    @catch (NSException *exception) {
-        [exceptionExpectation fulfill];
-    }
-    
-    [self waitForExpectationsWithTimeout:0.0 handler:nil];
+- (void)testNonFileURLIsInvalid {
+    NSURL *URL = [NSURL URLWithString:@"http://www.google.com"];
+
+    MTFTheme *theme;
+    XCTAssertThrows(
+        theme = [[MTFTheme alloc] initWithJSONFile:URL error:nil],
+        @"Exception should be thrown when JSON file URL is invalid");
 }
 
 - (void)testNonExistentFileURLIsInvalid
@@ -44,48 +36,27 @@
     
     NSUUID *UUID = [NSUUID new];
     
-    NSURL *fileURL = [documentsDirectory
-        URLByAppendingPathComponent:UUID.UUIDString];
-    
-    XCTestExpectation *exceptionExpectation = [self
-        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
-    
-    @try {
-        __unused MTFTheme *theme = [[MTFTheme alloc]
-            initWithJSONFile:fileURL
-            error:nil];
-    }
-    @catch (NSException *exception) {
-        [exceptionExpectation fulfill];
-    }
-    
-    [self waitForExpectationsWithTimeout:0.0 handler:nil];
+    NSURL *fileURL = [documentsDirectory URLByAppendingPathComponent:UUID.UUIDString];
+
+    MTFTheme *theme;
+    XCTAssertThrows(
+        theme = [[MTFTheme alloc] initWithJSONFile:fileURL error:nil],
+        @"Exception should be thrown when JSON file URL is invalid");
 }
 
-- (void)testInvalidJSONFileIsInvalid
-{
+- (void)testInvalidJSONFileIsInvalid {
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     NSURL *fileURL = [bundle
         URLForResource:@"InvalidJSONTheme"
         withExtension:@"json"];
-    
-    XCTestExpectation *exceptionExpectation = [self
-        expectationWithDescription:@"Exception should be thrown when JSON file URL is invalid"];
-    
-    @try {
-        __unused MTFTheme *theme = [[MTFTheme alloc]
-            initWithJSONFile:fileURL
-            error:nil];
-    }
-    @catch (NSException *exception) {
-        [exceptionExpectation fulfill];
-    }
-    
-    [self waitForExpectationsWithTimeout:0.0 handler:nil];
+
+    MTFTheme *theme;
+    XCTAssertThrows(
+        theme = [[MTFTheme alloc] initWithJSONFile:fileURL error:nil],
+        @"Exception should be thrown when JSON file URL is invalid");
 }
 
-- (void)testJSONFileIsAdded
-{
+- (void)testJSONFileIsAdded {
     NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:@"BasicTheme" withExtension:@"json"];
     
     NSError *error;
@@ -97,8 +68,7 @@
 
 #pragma mark - Theme Names
 
-- (void)testThemeNameMatchesFilename
-{
+- (void)testThemeNameMatchesFilename {
     NSString *themeName = @"Basic";
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     NSURL *fileURL = [bundle URLForResource:themeName withExtension:@"json"];
@@ -111,8 +81,7 @@
     XCTAssertEqualObjects(theme.names.firstObject, themeName, @"Theme must contain filename without extension");
 }
 
-- (void)testThemeNameMatchesFilenameAndTrimsTheme
-{
+- (void)testThemeNameMatchesFilenameAndTrimsTheme {
     NSString *themeName = @"Basic";
     NSString *themeFilename = [NSString stringWithFormat:@"%@Theme", themeName];
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
@@ -126,8 +95,7 @@
     XCTAssertEqualObjects(theme.names.firstObject, themeName, @"Theme must contain filename without extension");
 }
 
-- (void)testThemeNameMatchesFilenameWithoutExtension
-{
+- (void)testThemeNameMatchesFilenameWithoutExtension {
     NSString *themeName = @"BasicThemeWithNoExtension";
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     NSURL *fileURL = [bundle URLForResource:themeName withExtension:nil];

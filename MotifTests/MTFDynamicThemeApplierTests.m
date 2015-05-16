@@ -11,9 +11,14 @@
 #import "Motif.h"
 #import "MTFTheme_Private.h"
 #import "MTFDynamicThemeApplier_Private.h"
+#import "NSObject+ThemeClassAppliersPrivate.h"
 #import "NSString+ThemeSymbols.h"
 
 @interface MTFDynamicThemeApplierTests : XCTestCase
+
+@end
+
+@interface MTFDynamicThemeApplierTestObject : NSObject
 
 @end
 
@@ -37,13 +42,13 @@
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
     
-    Class objectClass = NSObject.class;
+    Class objectClass = MTFDynamicThemeApplierTestObject.class;
     id object = [objectClass new];
     
     XCTestExpectation *theme1ApplicationExpectation = [self expectationWithDescription:@"theme 1 application"];
     XCTestExpectation *theme2ApplicationExpectation = [self expectationWithDescription:@"theme 2 application"];
     
-    [objectClass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
+    id <MTFThemeClassApplicable> classApplier = [objectClass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
         if (propertyValue == value1) {
             [theme1ApplicationExpectation fulfill];
         }
@@ -57,7 +62,9 @@
     [applier applyClassWithName:class.mtf_symbol toObject:object];
     applier.theme = theme2;
     
-    [self waitForExpectationsWithTimeout:1.0 handler:nil];
+    [self waitForExpectationsWithTimeout:1.0 handler:^(NSError *error) {
+        [objectClass mtf_deregisterThemeClassApplier:classApplier];
+    }];
 }
 
 - (void)testApplicantMemoryManagement
@@ -94,5 +101,9 @@
     // Must query `-[NSHashTable allObjects].count` because the hash table contains a nil reference at this point and has yet to clean it up and reconcile its count
     XCTAssertEqual(applicants.allObjects.count, (NSUInteger)0, @"After object is deallocated, applicants must no longer contain it");
 }
+
+@end
+
+@implementation MTFDynamicThemeApplierTestObject
 
 @end

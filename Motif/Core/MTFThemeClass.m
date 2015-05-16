@@ -31,12 +31,10 @@
 }
 
 - (BOOL)isEqual:(id)object {
-    if (self == object) {
-        return YES;
-    }
-    if (![object isKindOfClass:self.class]) {
-        return NO;
-    }
+    if (self == object) return YES;
+
+    if (![object isKindOfClass:self.class]) return NO;
+
     return [self isEqualToThemeClass:object];
 }
 
@@ -61,12 +59,9 @@
 - (NSDictionary *)properties {
     NSMutableDictionary *properties = [NSMutableDictionary new];
 
-    [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(
-        NSString *name,
-        MTFThemeConstant *constant,
-        BOOL *_) {
-            properties[name] = constant.value;
-        }];
+    [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *name, MTFThemeConstant *constant, BOOL *_) {
+        properties[name] = constant.value;
+    }];
 
     return [properties copy];
 }
@@ -74,27 +69,27 @@
 - (BOOL)applyToObject:(id)object {
     NSParameterAssert(object);
     
-    if (!object) {
-        return NO;
-    }
+    if (object == nil) return NO;
     
     NSDictionary *properties = self.properties;
     NSMutableSet *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
     
     // Apply each of the class appliers registered on the applicant's class
     NSArray *classAppliers = [[object class] mtf_themeClassAppliers];
+
     for (id <MTFThemeClassApplicable> classApplier in classAppliers) {
         if ([classApplier shouldApplyClass:self]) {
             [classApplier applyClass:self toObject:object];
-            NSSet *appliedProperties = [NSSet
-                setWithArray:classApplier.properties];
+
+            NSSet *appliedProperties = [NSSet setWithArray:classApplier.properties];
+
             [unappliedProperties minusSet:appliedProperties];
         }
     }
     
     // If no theme class appliers were found, attempt to locate a property on
     // the applicant's class with the same name as the theme class property. If
-    // one is found, us KVC to set its value.
+    // one is found, use KVC to set its value.
     for (NSString *property in [unappliedProperties copy]) {
         
         // Traverse the class hierarchy from the applicant's class up by
@@ -107,9 +102,7 @@
                 applicantClass,
                 property.UTF8String);
             
-            if (objc_property == NULL) {
-                continue;
-            }
+            if (objc_property == NULL) continue;
             
             // Create a property attributes struct to figure out attributes of
             // the properties
@@ -127,11 +120,14 @@
             // theme class property value to the type of the property that was
             // located
             NSValueTransformer *valueTransformer;
-            if (propertyClass) {
+            if (propertyClass != Nil) {
                 valueTransformer = [NSValueTransformer
                     mtf_valueTransformerForTransformingObject:value
                     toClass:propertyClass];
-            } else if (propertyObjCType) {
+            }
+            // Otherwise, if it's an ObjC type, attempt to locate a value
+            // transformer for transforming the value
+            else if (propertyObjCType != NULL) {
                 valueTransformer = [NSValueTransformer
                     mtf_valueTransformerForTransformingObject:value
                     toObjCType:propertyObjCType];
@@ -145,6 +141,7 @@
             if (valueTransformer) {
                 id transformedValue = [valueTransformer transformedValue:value];
                 [object setValue:transformedValue forKey:property];
+
                 [unappliedProperties minusSet:[NSSet setWithObject:property]];
                 break;
             }
@@ -170,27 +167,34 @@
     // If no appliers are found for properties specified in the class, attempt
     // to set the property value via setValue:forKeyPath:
     for (NSString *property in [unappliedProperties copy]) {
+        id value = properties[property];
+
         // Must be wrapped in try-catch, since setValue:forKeyPath: throws
         // exceptions when keyPath doesn't exist
         @try {
-            id value = properties[property];
             [object setValue:value forKeyPath:property];
         }
         @catch (NSException *exception) {
             __unused NSString *className = NSStringFromClass([object class]);
+
             NSAssert(
                 NO,
-                @"Failed to apply the theme class named '%@' to an instance of "
-                    "'%@'. '%@' or any of its ancestors must either:\n"
+                @"Failed to apply the property '%@' with value '%@' from the "
+                    "theme class named '%@' to an instance of '%@'. '%@' or "
+                    "any of its ancestors must either:\n"
                     "- Have a readwrite property named '%@'\n"
                     "- Have an applier block registered for the '%@' property\n"
                     "- Be key-value coding compliant for setting the key '%@'",
+                property,
+                value,
                 self.name,
                 className,
                 className,
                 property,
                 property,
                 property);
+
+            return NO;
         }
     }
     

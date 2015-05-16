@@ -16,6 +16,10 @@
 
 @end
 
+@interface MTFThemeClassApplierTestObject : NSObject
+
+@end
+
 @implementation MTFThemeClassApplierTests
 
 - (void)testClassApplier
@@ -30,13 +34,14 @@
         initWithThemeDictionary:rawTheme
         error:&error];
     XCTAssertNil(error, @"Error must be nil");
-    
-    NSObject *object = [NSObject new];
+
+    Class objectClass = MTFThemeClassApplierTestObject.class;
+    NSObject *object = [objectClass new];
     
     XCTestExpectation *expectation = [self
         expectationWithDescription:@"Theme class applier expectation"];
     
-    id <MTFThemeClassApplicable> classApplier = [NSObject
+    id <MTFThemeClassApplicable> classApplier = [objectClass
         mtf_registerThemeClassApplierBlock:^(MTFThemeClass *class, id objectToTheme) {
             XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
             [expectation fulfill];
@@ -45,8 +50,12 @@
     [theme applyClassWithName:class.mtf_symbol toObject:object];
     
     [self waitForExpectationsWithTimeout:0.0 handler:^(NSError *error) {
-        [NSObject mtf_deregisterThemeClassApplier:classApplier];
+        [objectClass mtf_deregisterThemeClassApplier:classApplier];
     }];
 }
+
+@end
+
+@implementation MTFThemeClassApplierTestObject
 
 @end
