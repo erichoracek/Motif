@@ -20,6 +20,8 @@
 
 @implementation MTFThemeClass
 
+NSString * const MTFThemeClassUnappliedPropertyException = @"MTFThemeClassUnappliedPropertyException";
+
 #pragma mark - NSObject
 
 - (instancetype)init {
@@ -175,15 +177,23 @@
             [object setValue:value forKeyPath:property];
         }
         @catch (NSException *exception) {
+            // If the exception is not an NSUndefinedKeyException, rethrow it
+            // as-is to prevent an incorrect exception from being propagated
+            if (![exception.name isEqual:NSUndefinedKeyException]) {
+                @throw (exception);
+
+                return NO;
+            }
+
             __unused NSString *className = NSStringFromClass([object class]);
 
-            NSAssert(
-                NO,
-                @"Failed to apply the property '%@' with value '%@' from the "
-                    "theme class named '%@' to an instance of '%@'. '%@' or "
-                    "any of its ancestors must either:\n"
+            [NSException
+                raise:MTFThemeClassUnappliedPropertyException
+                format:@"Failed to apply the property '%@' with value '%@' "
+                    "from the theme class named '%@' to an instance of '%@'. "
+                    "'%@' or any of its ancestors must either:\n"
                     "- Have a readwrite property named '%@'\n"
-                    "- Have an applier block registered for the '%@' property\n"
+                    "- Have an applier block registered for the property '%@'\n"
                     "- Be key-value coding compliant for setting the key '%@'",
                 property,
                 value,
@@ -192,7 +202,7 @@
                 className,
                 property,
                 property,
-                property);
+                property];
 
             return NO;
         }

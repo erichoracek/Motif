@@ -58,4 +58,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/**
+ The exception that is thrown when a property from a theme class is not able
+ to be applied to an object.
+ */
+extern NSString * const MTFThemeClassUnappliedPropertyException;
+
 MTF_NS_ASSUME_NONNULL_END
