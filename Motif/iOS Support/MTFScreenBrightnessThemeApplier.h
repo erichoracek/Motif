@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MTFDynamicThemeApplier.h"
-#import "MTFBackwardsCompatableNullability.h"
+#import <Motif/MTFDynamicThemeApplier.h>
+#import <Motif/MTFBackwardsCompatableNullability.h>
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 

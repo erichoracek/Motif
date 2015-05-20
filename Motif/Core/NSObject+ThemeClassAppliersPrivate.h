@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSObject+ThemeClassAppliers.h"
+#import <Motif/NSObject+ThemeClassAppliers.h>
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "MTFDynamicThemeApplier.h"
-#import "MTFBackwardsCompatableNullability.h"
+#import <Motif/MTFDynamicThemeApplier.h>
+#import <Motif/MTFBackwardsCompatableNullability.h>
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
