@@ -36,7 +36,6 @@
 		2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MotifCLI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+StringWriting.h"; sourceTree = "<group>"; };
 		3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+StringWriting.m"; sourceTree = "<group>"; };
-		3A57FB2B1AD2150C003E7670 /* MTFTheme_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFTheme_Private.h; path = ../../Motif/Core/MTFTheme_Private.h; sourceTree = "<group>"; };
 		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
 		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
 		3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemingSymbolsGenerator.h; sourceTree = "<group>"; };
@@ -95,7 +94,6 @@
 		3ADB6F8E1A50A8B7004EDEF3 /* MotifCLI */ = {
 			isa = PBXGroup;
 			children = (
-				3A57FB2B1AD2150C003E7670 /* MTFTheme_Private.h */,
 				3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */,
 				3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */,
 				3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.h */,

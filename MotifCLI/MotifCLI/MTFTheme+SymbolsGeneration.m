@@ -8,7 +8,8 @@
 
 #import <GBCli/GBCli.h>
 #import <Motif/Motif.h>
-#import "MTFTheme_Private.h"
+#import <Motif/MTFTheme.h>
+#import <Motif/MTFTheme_Private.h>
 #import "MTFTheme+SymbolsGeneration.h"
 #import "NSOutputStream+StringWriting.h"
 

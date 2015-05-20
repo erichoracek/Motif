@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MTFBackwardsCompatableNullability.h"
-#import "NSObject+ThemeClassAppliers.h"
+#import <Motif/MTFBackwardsCompatableNullability.h>
+#import <Motif/NSObject+ThemeClassAppliers.h>
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 

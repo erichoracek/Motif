@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+ThemeSymbols.h"
+#import <Motif/NSString+ThemeSymbols.h>
 
 /**
  Represents a reference to another theme symbol.

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "MTFThemeClass.h"
+#import <Motif/MTFThemeClass.h>
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
