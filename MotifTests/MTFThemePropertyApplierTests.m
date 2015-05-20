@@ -26,6 +26,12 @@
 
 @end
 
+@interface MTFThemeClassPropertyApplierTestClass : NSObject
+
+@property (readonly, nonatomic, strong) MTFThemeClass *themeClassProperty;
+
+@end
+
 @implementation MTFThemePropertyApplierTests
 
 - (void)testPropertyApplier
@@ -105,6 +111,73 @@
     XCTAssertThrows([themeApplier applyClassWithName:class.mtf_symbol toObject:object]);
 
     [objectClass mtf_deregisterThemeClassApplier:propertyApplier];
+}
+
+- (void)testApplicationOfClassReferenceToProperty {
+    NSString *class = @".Class";
+    NSString *referencedClass = @".ReferencedClass";
+    NSString *themeClassProperty = @"themeClassProperty";
+
+     NSDictionary *rawTheme = @{
+        class: @{
+            themeClassProperty: referencedClass
+        },
+        referencedClass: @{}
+    };
+    
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    XCTAssertNil(error, @"Error must be nil");
+
+    MTFThemeClassPropertyApplierTestClass *object = [[MTFThemeClassPropertyApplierTestClass alloc] init];
+
+    BOOL didApply = [theme applyClassWithName:class.mtf_symbol toObject:object];
+
+    XCTAssertTrue(didApply, @"Must successfully apply class");
+
+    MTFThemeClass *propertyValue = object.themeClassProperty;
+
+    XCTAssertNotNil(propertyValue, @"Must successfully apply theme class property");
+    XCTAssertTrue([propertyValue isKindOfClass:MTFThemeClass.class], @"Must successfully apply theme class property");
+    XCTAssertEqualObjects(propertyValue.name, referencedClass.mtf_symbol, @"Symbol must be correct reference");
+}
+
+- (void)testApplicationOfClassReferenceToPropertyWithInvalidClass {
+    NSString *class = @".Class";
+    NSString *referencedClass = @".ReferencedClass";
+    NSString *themeClassProperty = @"themeClassProperty";
+    NSString *invalidPropertyName = @"invalidProperty";
+
+     NSDictionary *rawTheme = @{
+        class: @{
+            themeClassProperty: referencedClass
+        },
+        referencedClass: @{
+            invalidPropertyName: @"invalidValue"
+        }
+    };
+    
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc] initWithThemeDictionary:rawTheme error:&error];
+    XCTAssertNil(error, @"Error must be nil");
+
+    MTFThemeClassPropertyApplierTestClass *object = [[MTFThemeClassPropertyApplierTestClass alloc] init];
+
+    BOOL didApply = NO;
+    @try {
+        didApply = [theme applyClassWithName:class.mtf_symbol toObject:object];
+    }
+    @catch (NSException *exception) {
+        XCTAssertFalse(didApply, @"Must fail to apply class");
+
+        MTFThemeClass *propertyValue = object.themeClassProperty;
+        XCTAssertNotNil(propertyValue, @"Must successfully apply theme class property");
+        XCTAssertTrue([propertyValue isKindOfClass:MTFThemeClass.class], @"Must successfully apply theme class property");
+        XCTAssertEqualObjects(propertyValue.name, referencedClass.mtf_symbol, @"Symbol must be correct reference");
+
+        XCTAssertEqualObjects(exception.name, MTFThemeClassUnappliedPropertyException, @"Must throw unapplied property exception");
+        XCTAssertEqualObjects(exception.userInfo[MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName], invalidPropertyName, @"Must throw exception for correct property");
+    }
 }
 
 - (void)testMultiplePropertyAppliersWithDifferentRequiredClasses {
@@ -272,5 +345,16 @@
 @end
 
 @implementation MTFThemePropertyApplierTestSubclass
+
+@end
+
+@implementation MTFThemeClassPropertyApplierTestClass
+
+- (void)setThemeClassProperty:(MTFThemeClass *)themeClassProperty {
+    _themeClassProperty = themeClassProperty;
+
+    NSObject *object = [[NSObject alloc] init];
+    [themeClassProperty applyToObject:object];
+}
 
 @end
