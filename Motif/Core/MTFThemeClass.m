@@ -22,6 +22,8 @@
 
 NSString * const MTFThemeClassUnappliedPropertyException = @"MTFThemeClassUnappliedPropertyException";
 
+NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"PropertyName";
+
 #pragma mark - NSObject
 
 - (instancetype)init {
@@ -180,18 +182,20 @@ NSString * const MTFThemeClassUnappliedPropertyException = @"MTFThemeClassUnappl
             // If the exception is not an NSUndefinedKeyException, rethrow it
             // as-is to prevent an incorrect exception from being propagated
             if (![exception.name isEqual:NSUndefinedKeyException]) {
-                @throw (exception);
+                @throw exception;
 
                 return NO;
             }
 
-            __unused NSString *className = NSStringFromClass([object class]);
+            // Only throw unapplied property exception when debugging, as this
+            // is a recoverable error and should not crash the application
+#ifdef DEBUG
+            NSString *className = NSStringFromClass([object class]);
 
-            [NSException
-                raise:MTFThemeClassUnappliedPropertyException
-                format:@"Failed to apply the property '%@' with value '%@' "
-                    "from the theme class named '%@' to an instance of '%@'. "
-                    "'%@' or any of its ancestors must either:\n"
+            NSString *reason = [NSString stringWithFormat:
+                @"Failed to apply the property '%@' with value '%@' from the "
+                    "theme class named '%@' to an instance of '%@'. '%@' or "
+                    "any of its ancestors must either:\n"
                     "- Have a readwrite property named '%@'\n"
                     "- Have an applier block registered for the property '%@'\n"
                     "- Be key-value coding compliant for setting the key '%@'",
@@ -203,6 +207,16 @@ NSString * const MTFThemeClassUnappliedPropertyException = @"MTFThemeClassUnappl
                 property,
                 property,
                 property];
+
+            NSException *applicationFailureException = [NSException
+                exceptionWithName:MTFThemeClassUnappliedPropertyException
+                reason:reason
+                userInfo:@{
+                    MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName: property
+                }];
+
+            @throw applicationFailureException;
+#endif
 
             return NO;
         }

@@ -64,4 +64,11 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  */
 extern NSString * const MTFThemeClassUnappliedPropertyException;
 
+/**
+ The user info key identifying the property name for which the class application
+ failed, as contained within the info of an 
+ MTFThemeClassUnappliedPropertyException
+ */
+extern NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName;
+
 MTF_NS_ASSUME_NONNULL_END
