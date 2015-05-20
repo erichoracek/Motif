@@ -148,6 +148,41 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
 + (id <MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock;
 
 /**
+ Registers a set of keywords that are each mapped to a specific value, such that
+ when the specified propery is applied with one of the keywords as its value,
+ its corresponding value is set for the specified keypath on the object that
+ it was applied to.
+ 
+ If the applied property value doesn't match the any of the keywords, an 
+ exception is thrown.
+ 
+ @param property        The name of the theme class property that this applier
+                        is responsible for applying.
+ @param keyPath         The keypath that the values in the valuesByKeyword
+                        dictionary are set to.
+ @param valuesByKeyword A dictionary that specifies a mapping from keywords in
+                        theme class properties to values that are set for the
+                        specified keypath.
+
+ Examples
+ 
+      // Applies a textAlignment theme property to UILabels
+      [UILabel
+          mtf_registerThemeProperty:@"textAlignment"
+          forKeyPath:NSStringFromSelector(@selector(textAlignment))
+          withValuesByKeyword:@{
+              @"left": @(NSTextAlignmentLeft),
+              @"center": @(NSTextAlignmentCenter),
+              @"right": @(NSTextAlignmentRight),
+              @"justified": @(NSTextAlignmentJustified),
+              @"natural": @(NSTextAlignmentNatural)
+          }];
+
+ @return An opaque theme class applier. You may discard this reference.
+ */
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property forKeyPath:(NSString *)keyPath withValuesByKeyword:(NSDictionary *)valuesByKeyword;
+
+/**
  Registers the specified theme class applier with the receiving class.
  
  @param applier The applier to register.

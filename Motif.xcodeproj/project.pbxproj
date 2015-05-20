@@ -144,6 +144,8 @@
 		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
+		3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
@@ -263,6 +265,7 @@
 		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
 		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
+		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,6 +503,7 @@
 				3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */,
 				3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */,
 				3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */,
+				3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
 				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
@@ -780,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */,
+				3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */,
 				3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */,
 				3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */,
 				3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */,
@@ -842,6 +847,7 @@
 				3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */,
 				3AA7968E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m in Sources */,
 				3AA796951AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m in Sources */,
+				3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */,
 				3AA796931AC91D8400FD4320 /* MTFThemeLoadingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
