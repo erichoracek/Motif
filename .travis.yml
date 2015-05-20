@@ -7,8 +7,6 @@ env:
 install:
 - bundle install --jobs=3
 script:
-- rake lint_podspec
-- rake build_examples
-- rake run_tests
+- rake ci
 after_success:
 - bundle exec slather
