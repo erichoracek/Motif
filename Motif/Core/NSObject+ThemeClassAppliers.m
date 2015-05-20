@@ -85,6 +85,29 @@
     return applier;
 }
 
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property forKeyPath:(NSString *)keyPath withValuesByKeyword:(NSDictionary *)valuesByKeyword {
+    NSParameterAssert(property != nil);
+    NSParameterAssert(keyPath != nil);
+    NSParameterAssert(valuesByKeyword != nil);
+    NSAssert(valuesByKeyword.count > 0, @"Must have at least one value by keyword");
+
+    return [self
+        mtf_registerThemeProperty:property
+        requiringValueOfClass:NSString.class
+        applierBlock:^(NSString *keyword, id applicant){
+            NSNumber *value = valuesByKeyword[keyword];
+
+            NSAssert(
+                value != nil,
+                @"Invalid %@ property value: %@, must be one of: %@.",
+                property,
+                keyword,
+                [valuesByKeyword.allKeys componentsJoinedByString:@", "]);
+
+            [applicant setValue:value forKeyPath:keyPath];
+        }];
+}
+
 + (void)mtf_registerThemeClassApplier:(id <MTFThemeClassApplicable>)applier {
     NSParameterAssert(applier);
     
