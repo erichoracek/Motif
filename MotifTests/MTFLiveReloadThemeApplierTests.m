@@ -67,8 +67,10 @@ static NSString * const PropertyValue2 = @"propertyValue2";
         keyPath:NSStringFromSelector(@selector(testLiveReloadProperty))
         expectedValue:PropertyValue2];
 
-    id JSONObject = [self themeWithPropertyValue:PropertyValue2];
-    [self writeJSONObject:JSONObject toURL:self.themeURL];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        id JSONObject = [self themeWithPropertyValue:PropertyValue2];
+        [self writeJSONObject:JSONObject toURL:self.themeURL];
+    });
 
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
 }
