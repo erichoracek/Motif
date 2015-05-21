@@ -8,5 +8,3 @@ install:
 - bundle install --jobs=3
 script:
 - rake ci
-after_success:
-- bundle exec slather
