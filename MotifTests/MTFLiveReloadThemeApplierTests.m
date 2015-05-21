@@ -20,6 +20,7 @@
 
 @property (nonatomic, readonly) NSURL *themeDirectoryURL;
 @property (nonatomic, readonly) NSURL *themeURL;
+@property (nonatomic, readwrite) NSString *themeName;
 
 @end
 
@@ -31,7 +32,9 @@ static NSString * const PropertyValue2 = @"propertyValue2";
 
 - (void)setUp {
     [super setUp];
-    
+
+    self.themeName = [[NSProcessInfo processInfo] globallyUniqueString];
+
     [self writeJSONObject:[self themeWithPropertyValue:PropertyValue1] toURL:self.themeURL];
 }
 
@@ -94,17 +97,18 @@ static NSString * const PropertyValue2 = @"propertyValue2";
 }
 
 - (NSURL *)themeDirectoryURL {
-    NSArray *URLs = [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    XCTAssertEqual(URLs.count, (NSUInteger)1, @"Unable to locate user documents directory");
-    NSURL *URL = URLs.firstObject;
-    
+    NSURL *URL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+
+    XCTAssert([NSFileManager.defaultManager isWritableFileAtPath:URL.path], @"Temp path must be writable");
+
     return URL;
 }
 
 - (NSURL *)themeURL {
-    return [self.themeDirectoryURL URLByAppendingPathComponent:@"Theme.json"];
-}
+    NSString *pathComponent = [self.themeName stringByAppendingString:@".json"];
 
+    return [self.themeDirectoryURL URLByAppendingPathComponent:pathComponent];
+}
 
 @end
 
