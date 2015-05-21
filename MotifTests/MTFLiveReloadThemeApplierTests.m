@@ -44,7 +44,7 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     XCTAssertTrue(didRemoveFile, @"Unable to remove file at location %@", self.themeURL);
 }
 
-- (void)testExample {
+- (void)testLiveReloadThemePropertyApplied {
     NSError *error;
     MTFTheme *theme = [[MTFTheme alloc] initWithJSONFile:self.themeURL error:&error];
     XCTAssertNil(error, @"Unable to create theme from JSON file %@", self.themeURL);
@@ -58,17 +58,16 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     [applier applyClassWithName:ClassName toObject:testObject];
     
     XCTAssertEqualObjects(testObject.testLiveReloadProperty, PropertyValue1);
-    
-    [self writeJSONObject:[self themeWithPropertyValue:PropertyValue2] toURL:self.themeURL];
-    
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Should write value to file"];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        XCTAssertEqualObjects(testObject.testLiveReloadProperty, PropertyValue2);
-        [expectation fulfill];
-    });
-    
-    [self waitForExpectationsWithTimeout:1.0 handler:nil];
+
+    id JSONObject = [self themeWithPropertyValue:PropertyValue2];
+    [self writeJSONObject:JSONObject toURL:self.themeURL];
+
+    [self
+        keyValueObservingExpectationForObject:testObject
+        keyPath:NSStringFromSelector(@selector(testLiveReloadProperty))
+        expectedValue:PropertyValue2];
+
+    [self waitForExpectationsWithTimeout:5.0 handler:nil];
 }
 
 #pragma mark - Helpers
