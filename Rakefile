@@ -42,8 +42,8 @@ task :clean do
 end
 
 task :ci => [
-    :clean,
     :run_tests,
+    :clean
     :build_examples,
     :build_cli,
     :lint_podspec
@@ -64,9 +64,8 @@ TEST_SDK = 'iphonesimulator'
 
 BUILD_TOOL = 'xcodebuild'
 
-BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}'"
+BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}' -configuration Release"
 BUILD_FLAGS_IOS = BUILD_FLAGS + " -sdk #{TEST_SDK}"
-
 BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' " + BUILD_FLAGS_IOS
 BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
 BUILD_FLAGS_BUILD_CLI = "build -scheme #{SCHEME_CLI} " + BUILD_FLAGS
