@@ -43,7 +43,7 @@ end
 
 task :ci => [
     :run_tests,
-    :clean
+    :clean,
     :build_examples,
     :build_cli,
     :lint_podspec
