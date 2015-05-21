@@ -37,12 +37,17 @@ task :lint_podspec do
     sh("#{POD_LINT_TOOL} #{POD_LINT_FLAGS}")
 end
 
+task :slather do
+    sh('bundle exec slather')
+end
+
 task :clean do
     sh("rm -rf '#{DERIVED_DATA_PATH}'")
 end
 
 task :ci => [
     :run_tests,
+    :slather,
     :clean,
     :build_examples,
     :build_cli,
