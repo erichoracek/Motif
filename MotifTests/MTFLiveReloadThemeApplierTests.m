@@ -62,13 +62,13 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     
     XCTAssertEqualObjects(testObject.testLiveReloadProperty, PropertyValue1);
 
-    id JSONObject = [self themeWithPropertyValue:PropertyValue2];
-    [self writeJSONObject:JSONObject toURL:self.themeURL];
-
     [self
         keyValueObservingExpectationForObject:testObject
         keyPath:NSStringFromSelector(@selector(testLiveReloadProperty))
         expectedValue:PropertyValue2];
+
+    id JSONObject = [self themeWithPropertyValue:PropertyValue2];
+    [self writeJSONObject:JSONObject toURL:self.themeURL];
 
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
 }
