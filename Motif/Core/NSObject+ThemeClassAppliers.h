@@ -58,7 +58,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeClassApplierBlock:(void (^)(MTFThemeClass *themeClass, id objectToTheme))applierBlock;
 
 /**
  Registers a block that is invoked to apply a property value to an instance of
@@ -71,7 +71,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property applierBlock:(void (^)(id propertyValue, id objectToTheme))applierBlock;
 
 /**
  Registers a block that is invoked to apply a property value to an instance of
@@ -90,7 +90,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applierBlock:(MTFThemePropertyApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applierBlock:(void (^)(id propertyValue, id objectToTheme))applierBlock;
 
 /**
  Registers a block that is invoked to apply a property value to an instance of
@@ -108,7 +108,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(void (^)(id propertyValue, id objectToTheme))applierBlock;
 
 /**
  Registers a block that is invoked to apply the property values to an instance
@@ -123,7 +123,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
 
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock;
 
 /**
  Registers a block that is invoked to apply the property values to an instance
@@ -145,7 +145,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id <MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock;
++ (id <MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock;
 
 /**
  Registers a set of keywords that are each mapped to a specific value, such that
