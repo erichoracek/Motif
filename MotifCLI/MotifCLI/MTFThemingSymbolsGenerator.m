@@ -39,7 +39,7 @@
         }
         NSError *error;
         MTFTheme *theme = [[MTFTheme alloc]
-            initWithJSONFile:themeURL
+            initWithFile:themeURL
             error:&error];
         if (error) {
             gbfprintln(stderr, @"[!] Error: Unable to parse theme at URL '%@': %@", themeURL, error);

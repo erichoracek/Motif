@@ -1,0 +1,31 @@
+$RedColor: "#f93d38"
+$BlueColor: "#50b5ed"
+$WhiteColor: "#f1efeb"
+
+$FontName: AvenirNext-Regular
+
+.ButtonText:
+    fontName: $FontName
+    fontSize: 16
+
+# This is a comment!
+.Button:
+    borderWidth: 1
+    cornerRadius: 5
+    contentEdgeInsets: "{10, 20, 10, 20}"
+    tintColor: $BlueColor
+    borderColor: $BlueColor
+    titleText: .ButtonText
+
+.WarningButton:
+    _superclass: .Button
+    tintColor: $RedColor
+    borderColor: $RedColor
+
+.ContentBackground:
+    backgroundColor: $WhiteColor
+
+.ButtonsView:
+    _superclass: .ContentBackground
+    saveButton: .Button
+    deleteButton: .WarningButton

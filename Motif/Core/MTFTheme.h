@@ -45,7 +45,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError **)error;
++ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the
@@ -59,7 +59,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError **)error;
++ (instancetype)themeFromFilesNamed:(NSArray *)themeNames error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the
@@ -74,7 +74,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(mtf_nullable NSBundle *)bundle error:(NSError **)error;
++ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(mtf_nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -86,7 +86,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error;
+- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -98,7 +98,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError **)error;
+- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error;
 
 /**
  Initializes a theme from a theme dictionary.

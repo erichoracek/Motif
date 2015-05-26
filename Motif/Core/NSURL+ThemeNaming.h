@@ -11,6 +11,12 @@
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, MTFThemeFileType) {
+    MTFThemeFileTypeInvalid,
+    MTFThemeFileTypeJSON,
+    MTFThemeFileTypeYAML
+};
+
 @interface NSURL (ThemeNaming)
 
 /**
@@ -21,7 +27,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 /**
  Returns an array of NSURLs matching the theme names passed in to the method.
  
- If a theme name is not found for one of the specified names, an execption thrown.
+ If a theme name is not found for one of the specified names, an execption
+ is thrown.
  
  @param themeNames The theme names that corresponding NSURLs should be located 
                    for.
@@ -32,6 +39,12 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  */
 + (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(mtf_nullable NSBundle *)bundle;
 
+- (mtf_nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError **)error;
+
+@property (readonly, nonatomic) MTFThemeFileType mtf_themeFileType;
+
 @end
+
+extern NSString * const MTFThemeFileNotFoundException;
 
 MTF_NS_ASSUME_NONNULL_END

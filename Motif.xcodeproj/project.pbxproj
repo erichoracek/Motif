@@ -116,9 +116,34 @@
 		3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3A406CDE1AC9B87600615428 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
-		3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
 		3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
 		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
+		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; };
+		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; };
+		3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
+		3A6C1D441B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
+		3A6C1D4D1B143E840034F5A8 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D451B143E840034F5A8 /* api.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D4E1B143E840034F5A8 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D451B143E840034F5A8 /* api.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D4F1B143E840034F5A8 /* dumper.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D461B143E840034F5A8 /* dumper.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D501B143E840034F5A8 /* dumper.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D461B143E840034F5A8 /* dumper.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D511B143E840034F5A8 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D471B143E840034F5A8 /* emitter.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D521B143E840034F5A8 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D471B143E840034F5A8 /* emitter.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D531B143E840034F5A8 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D481B143E840034F5A8 /* loader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D541B143E840034F5A8 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D481B143E840034F5A8 /* loader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D551B143E840034F5A8 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D491B143E840034F5A8 /* parser.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D561B143E840034F5A8 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D491B143E840034F5A8 /* parser.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D571B143E840034F5A8 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4A1B143E840034F5A8 /* reader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D581B143E840034F5A8 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4A1B143E840034F5A8 /* reader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D591B143E840034F5A8 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4B1B143E840034F5A8 /* scanner.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5A1B143E840034F5A8 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4B1B143E840034F5A8 /* scanner.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5B1B143E840034F5A8 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4C1B143E840034F5A8 /* writer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5C1B143E840034F5A8 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4C1B143E840034F5A8 /* writer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5E1B143ECA0034F5A8 /* yaml.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D5D1B143ECA0034F5A8 /* yaml.h */; };
+		3A6C1D5F1B143ECA0034F5A8 /* yaml.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D5D1B143ECA0034F5A8 /* yaml.h */; };
+		3A6C1D611B14426E0034F5A8 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D601B14426E0034F5A8 /* config.h */; };
+		3A6C1D621B14426E0034F5A8 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D601B14426E0034F5A8 /* config.h */; };
+		3A6C1D641B1443CA0034F5A8 /* yaml_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D631B1443CA0034F5A8 /* yaml_private.h */; };
+		3A6C1D651B1443CA0034F5A8 /* yaml_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D631B1443CA0034F5A8 /* yaml_private.h */; };
 		3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A79EC601AC9147E000CCC01 /* Motif.framework */; };
 		3A9082771B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -142,7 +167,6 @@
 		3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */; };
 		3AA796981AC91D8400FD4320 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
 		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
-		3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
@@ -239,6 +263,19 @@
 		3A1C4F571AEDD49C0048F84C /* MTFFileObservationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFFileObservationContext.h; sourceTree = "<group>"; };
 		3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFFileObservationContext.m; sourceTree = "<group>"; };
 		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFYAMLSerialization.h; path = "YAML Serialization/MTFYAMLSerialization.h"; sourceTree = "<group>"; };
+		3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFYAMLSerialization.m; path = "YAML Serialization/MTFYAMLSerialization.m"; sourceTree = "<group>"; };
+		3A6C1D451B143E840034F5A8 /* api.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = api.c; path = Carthage/Checkouts/libyaml/src/api.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D461B143E840034F5A8 /* dumper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dumper.c; path = Carthage/Checkouts/libyaml/src/dumper.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D471B143E840034F5A8 /* emitter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = emitter.c; path = Carthage/Checkouts/libyaml/src/emitter.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D481B143E840034F5A8 /* loader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loader.c; path = Carthage/Checkouts/libyaml/src/loader.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D491B143E840034F5A8 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parser.c; path = Carthage/Checkouts/libyaml/src/parser.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4A1B143E840034F5A8 /* reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = reader.c; path = Carthage/Checkouts/libyaml/src/reader.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4B1B143E840034F5A8 /* scanner.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = scanner.c; path = Carthage/Checkouts/libyaml/src/scanner.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4C1B143E840034F5A8 /* writer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = writer.c; path = Carthage/Checkouts/libyaml/src/writer.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D5D1B143ECA0034F5A8 /* yaml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yaml.h; path = Carthage/Checkouts/libyaml/include/yaml.h; sourceTree = SOURCE_ROOT; };
+		3A6C1D601B14426E0034F5A8 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = Carthage/Checkouts/libyaml/config.h; sourceTree = SOURCE_ROOT; };
+		3A6C1D631B1443CA0034F5A8 /* yaml_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yaml_private.h; path = Carthage/Checkouts/libyaml/src/yaml_private.h; sourceTree = SOURCE_ROOT; };
 		3A79EC601AC9147E000CCC01 /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A79EC641AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,7 +300,6 @@
 		3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
 		3AA796881AC91D8400FD4320 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
 		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
-		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
@@ -444,6 +480,34 @@
 			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
+		3A6C1D3E1B14353A0034F5A8 /* YAML Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */,
+				3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */,
+				3A6C1D661B1446740034F5A8 /* libyaml */,
+			);
+			name = "YAML Serialization";
+			sourceTree = "<group>";
+		};
+		3A6C1D661B1446740034F5A8 /* libyaml */ = {
+			isa = PBXGroup;
+			children = (
+				3A6C1D631B1443CA0034F5A8 /* yaml_private.h */,
+				3A6C1D601B14426E0034F5A8 /* config.h */,
+				3A6C1D5D1B143ECA0034F5A8 /* yaml.h */,
+				3A6C1D451B143E840034F5A8 /* api.c */,
+				3A6C1D461B143E840034F5A8 /* dumper.c */,
+				3A6C1D471B143E840034F5A8 /* emitter.c */,
+				3A6C1D481B143E840034F5A8 /* loader.c */,
+				3A6C1D491B143E840034F5A8 /* parser.c */,
+				3A6C1D4A1B143E840034F5A8 /* reader.c */,
+				3A6C1D4B1B143E840034F5A8 /* scanner.c */,
+				3A6C1D4C1B143E840034F5A8 /* writer.c */,
+			);
+			name = libyaml;
+			sourceTree = "<group>";
+		};
 		3A79EC561AC9147E000CCC01 = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +534,7 @@
 			children = (
 				3AA7964F1AC919FB00FD4320 /* Motif.h */,
 				3A02C80F1AD206FF00C420F2 /* Core */,
+				3A6C1D3E1B14353A0034F5A8 /* YAML Serialization */,
 				3A02C8371AD206FF00C420F2 /* Objective-C Runtime */,
 				3A02C83A1AD206FF00C420F2 /* iOS Support */,
 				3A79EC631AC9147E000CCC01 /* Supporting Files */,
@@ -506,7 +571,6 @@
 				3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
-				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
 				3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */,
 				3A79EC701AC9147E000CCC01 /* Supporting Files */,
 			);
@@ -543,11 +607,15 @@
 				3A02C8901AD2072500C420F2 /* MTFThemeConstant_Private.h in Headers */,
 				3A02C8881AD2072500C420F2 /* MTFTheme_Private.h in Headers */,
 				3A02C88C1AD2072500C420F2 /* MTFThemeClassApplicable.h in Headers */,
+				3A6C1D5F1B143ECA0034F5A8 /* yaml.h in Headers */,
 				3A02C8841AD2072500C420F2 /* MTFObjCTypeValueTransformer.h in Headers */,
 				3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F4E1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.h in Headers */,
+				3A6C1D621B14426E0034F5A8 /* config.h in Headers */,
 				3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */,
+				3A6C1D651B1443CA0034F5A8 /* yaml_private.h in Headers */,
+				3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */,
 				3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */,
@@ -577,6 +645,7 @@
 				3A02C8631AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h in Headers */,
 				3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */,
 				3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */,
+				3A6C1D641B1443CA0034F5A8 /* yaml_private.h in Headers */,
 				3A02C84F1AD206FF00C420F2 /* MTFTheme.h in Headers */,
 				3A02C8591AD206FF00C420F2 /* MTFThemeConstant_Private.h in Headers */,
 				3A02C8511AD206FF00C420F2 /* MTFTheme_Private.h in Headers */,
@@ -587,15 +656,18 @@
 				3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F531AEDC9730048F84C /* MTFThemeSourceObserver.h in Headers */,
 				3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */,
+				3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */,
 				3A02C8611AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */,
+				3A6C1D5E1B143ECA0034F5A8 /* yaml.h in Headers */,
 				3A1C4F591AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
 				3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
 				3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */,
 				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */,
 				3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */,
 				3A02C84A1AD206FF00C420F2 /* MTFDynamicThemeApplier.h in Headers */,
+				3A6C1D611B14426E0034F5A8 /* config.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,7 +799,6 @@
 				3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */,
 				3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */,
 				3A406CDE1AC9B87600615428 /* Basic.json in Resources */,
-				3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,7 +816,6 @@
 				3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */,
 				3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */,
 				3AA796981AC91D8400FD4320 /* Basic.json in Resources */,
-				3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,11 +841,20 @@
 				3A1C4F5C1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */,
 				3A1C4F501AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.m in Sources */,
 				3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
+				3A6C1D441B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */,
 				3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */,
 				3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */,
 				3A02C88D1AD2072500C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */,
 				3A02C8871AD2072500C420F2 /* MTFTheme.m in Sources */,
+				3A6C1D561B143E840034F5A8 /* parser.c in Sources */,
+				3A6C1D4E1B143E840034F5A8 /* api.c in Sources */,
+				3A6C1D5C1B143E840034F5A8 /* writer.c in Sources */,
+				3A6C1D5A1B143E840034F5A8 /* scanner.c in Sources */,
+				3A6C1D581B143E840034F5A8 /* reader.c in Sources */,
+				3A6C1D541B143E840034F5A8 /* loader.c in Sources */,
+				3A6C1D501B143E840034F5A8 /* dumper.c in Sources */,
+				3A6C1D521B143E840034F5A8 /* emitter.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +905,15 @@
 				3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */,
 				3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */,
+				3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */,
+				3A6C1D4F1B143E840034F5A8 /* dumper.c in Sources */,
+				3A6C1D531B143E840034F5A8 /* loader.c in Sources */,
+				3A6C1D591B143E840034F5A8 /* scanner.c in Sources */,
+				3A6C1D511B143E840034F5A8 /* emitter.c in Sources */,
+				3A6C1D4D1B143E840034F5A8 /* api.c in Sources */,
+				3A6C1D551B143E840034F5A8 /* parser.c in Sources */,
+				3A6C1D5B1B143E840034F5A8 /* writer.c in Sources */,
+				3A6C1D571B143E840034F5A8 /* reader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +962,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -885,6 +977,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -947,6 +1043,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -959,6 +1059,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
