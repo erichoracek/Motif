@@ -95,16 +95,4 @@
     XCTAssertEqualObjects(theme.names.firstObject, themeName, @"Theme must contain filename without extension");
 }
 
-- (void)testThemeNameMatchesFilenameWithoutExtension {
-    NSString *themeName = @"BasicThemeWithNoExtension";
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
-    NSURL *fileURL = [bundle URLForResource:themeName withExtension:nil];
-    
-    NSError *error;
-    MTFTheme *theme = [[MTFTheme alloc] initWithJSONFile:fileURL error:&error];
-    
-    XCTAssertNil(error, @"Error must be nil when loading valid theme");
-    XCTAssertTrue([theme.names containsObject:themeName], @"Theme must contain theme filename after it is added");
-}
-
 @end
