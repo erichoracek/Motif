@@ -12,23 +12,15 @@
 
 MTF_NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, MTFParseMode) {
-    MTFParseModeStream,
-    MTFParseModeDocument,
-    MTFParseModeSequence,
-    MTFParseModeMapping,
-};
-
 @interface MTFYAMLSerialization ()
 
 - (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error NS_DESIGNATED_INITIALIZER;
 
-@property (readonly, nonatomic, strong) NSRegularExpression *integerRegularExpression;
-@property (readonly, nonatomic, strong) NSRegularExpression *floatRegularExpression;
-@property (readonly, nonatomic, strong) NSDictionary *constantTags;
-@property (readonly, nonatomic, strong) NSMutableDictionary *objectsForAnchors;
-@property (readonly, nonatomic, strong) NSMutableDictionary *tagHandlers;
-@property (readonly, nonatomic, strong, mtf_nullable) id object;
+@property (readonly, nonatomic) NSRegularExpression *integerRegularExpression;
+@property (readonly, nonatomic) NSRegularExpression *floatRegularExpression;
+@property (readonly, nonatomic) NSDictionary *constantTags;
+@property (readonly, nonatomic) NSMutableDictionary *tagHandlers;
+@property (readonly, nonatomic, mtf_nullable) id object;
 
 @end
 
@@ -54,7 +46,6 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
     if (self == nil) return nil;
 
     _tagHandlers = [NSMutableDictionary dictionary];
-    _objectsForAnchors = [NSMutableDictionary dictionary];
 
     _integerRegularExpression = [NSRegularExpression
         regularExpressionWithPattern:@"^-?\\d+$"
@@ -125,7 +116,7 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
         }];
 }
 
-- (mtf_nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing*)outError {
+- (mtf_nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing *)error {
     yaml_parser_t *parser = NULL;
     parser = malloc(sizeof(*parser));
     if (parser == NULL) {
@@ -135,7 +126,7 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
     yaml_parser_initialize(parser);
     yaml_parser_set_input_string(parser, data.bytes, data.length);
 
-    NSArray *documents = [self parseDocumentsWithParser:parser error:outError];
+    NSArray *documents = [self parseDocumentsWithParser:parser error:error];
 
     yaml_parser_delete(parser);
     free(parser);
@@ -143,182 +134,129 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
     return documents.firstObject;
 }
 
-- (mtf_nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)outError {
-    NSError *error;
+- (mtf_nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
     NSMutableArray *documents = [NSMutableArray array];
 
-    [self parseDocumentComponent:documents inMode:MTFParseModeStream withParser:parser error:&error];
-
-    if (error != NULL) {
-        if (outError != NULL) *outError = error;
-        return nil;
-    }
+    BOOL didParseDocuments = [self parseDocumentComponent:documents withParser:parser error:error];
+    if (!didParseDocuments) return nil;
 
     return [documents copy];
 }
 
-- (BOOL)parseDocumentComponent:(id)documentComponent inMode:(MTFParseMode)mode withParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)outError {
-    id key;
-    NSError *error;
-    BOOL isDone = NO;
+- (BOOL)parseDocumentComponent:(id)documentComponent withParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+    NSParameterAssert(documentComponent != nil);
+    NSParameterAssert(parser != NULL);
 
-    while (!isDone && error == nil) {
+    __unused BOOL isMutableCollectionType = (
+        [documentComponent isKindOfClass:NSMutableArray.class] ||
+        [documentComponent isKindOfClass:NSMutableDictionary.class]
+    );
+    NSAssert(
+        isMutableCollectionType,
+        @"Document component must be a mutable collection type");
+
+    id parsedKey;
+    BOOL isDoneParsing = NO;
+
+    while (!isDoneParsing) {
         yaml_event_t event;
-        if (!yaml_parser_parse(parser, &event)) {
-            error = [NSError
-                errorWithDomain:@"libyaml"
-                code:parser->error
-                userInfo:@{
-                    NSLocalizedDescriptionKey : @(parser->problem),
-                    @"offset" : @(parser->offset),
-                }];
+        int parseResult = yaml_parser_parse(parser, &event);
 
-            if (outError != NULL) {
-                *outError = error;
-            }
-            return NO;
+        if (parseResult == 0) {
+            return [self populateParseError:error fromParser:parser];
         }
 
-        id object;
-        NSString *anchor;
+        id parsedObject;
 
         switch (event.type) {
-        case YAML_NO_EVENT:
-            [self populateUnexpectedEvent:event fromParser:parser error:&error];
+        case YAML_DOCUMENT_START_EVENT: {
+            BOOL didParseDocument = [self
+                parseDocumentComponent:documentComponent
+                withParser:parser
+                error:error];
 
-        break;
-        case YAML_STREAM_START_EVENT:
-            if (mode != MTFParseModeStream) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            }
-
-        break;
-        case YAML_STREAM_END_EVENT:
-            if (mode != MTFParseModeStream) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            } else {
-                isDone = YES;
-            }
-
-        break;
-        case YAML_DOCUMENT_START_EVENT:
-            if (mode != MTFParseModeStream) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            } else {
-                [self parseDocumentComponent:documentComponent inMode:MTFParseModeDocument withParser:parser error:&error];
-            }
-
-        break;
-        case YAML_DOCUMENT_END_EVENT:
-            if (mode != MTFParseModeDocument) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            } else {
-                isDone = YES;
-            }
-
-        break;
-        case YAML_ALIAS_EVENT: {
-            NSString *aliasAnchor = @((char *)event.data.alias.anchor);
-            object = self.objectsForAnchors[aliasAnchor];
-
-            if (object == NULL) {
-                error = [NSError errorWithDomain:@"CocoaYAML"
-                                               code:-1
-                                           userInfo:@{
-                                               NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Could not find tagged object with anchor %@", aliasAnchor],
-                                               @"offset" : @(parser->offset),
-                                           }];
-            }
-
+            if (!didParseDocument) return NO;
         }
+
         break;
         case YAML_SCALAR_EVENT:
-            object = [self valueForScalarEvent:&event fromParser:parser error:&error];
             if (event.data.scalar.anchor != NULL) {
-                anchor = @((char *)event.data.scalar.anchor);
+                return [self populateInvalidAnchorError:error fromParser:parser];
             }
+
+            parsedObject = [self valueForScalarEvent:&event fromParser:parser error:error];
+            if (parsedObject == nil) return NO;
 
         break;
         case YAML_SEQUENCE_START_EVENT: {
-            NSMutableArray *sequence = [NSMutableArray array];
-            [self parseDocumentComponent:sequence inMode:MTFParseModeSequence withParser:parser error:&error];
-            object = [sequence copy];
-
             if (event.data.sequence_start.anchor != NULL) {
-                anchor = @((char *)event.data.sequence_start.anchor);
+                return [self populateInvalidAnchorError:error fromParser:parser];
             }
-        }
 
-        break;
-        case YAML_SEQUENCE_END_EVENT:
-            if (mode != MTFParseModeSequence) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            } else {
-                isDone = YES;
-            }
+            NSMutableArray *sequence = [NSMutableArray array];
+
+            BOOL didParseSequence = [self
+                parseDocumentComponent:sequence
+                withParser:parser
+                error:error];
+
+            if (!didParseSequence) return NO;
+
+            parsedObject = [sequence copy];
+        }
 
         break;
         case YAML_MAPPING_START_EVENT: {
-            NSMutableDictionary *mapping = [NSMutableDictionary dictionary];
-            [self parseDocumentComponent:mapping inMode:MTFParseModeMapping withParser:parser error:&error];
-            object = [mapping copy];
-
             if (event.data.mapping_start.anchor != NULL) {
-                anchor = @((char *)event.data.mapping_start.anchor);
+                return [self populateInvalidAnchorError:error fromParser:parser];
             }
+
+            NSMutableDictionary *mapping = [NSMutableDictionary dictionary];
+
+            BOOL didParseMapping = [self
+                parseDocumentComponent:mapping
+                withParser:parser
+                error:error];
+
+            if (!didParseMapping) return NO;
+
+            parsedObject = [mapping copy];
         }
 
         break;
+        case YAML_STREAM_END_EVENT:
+        case YAML_DOCUMENT_END_EVENT:
+        case YAML_SEQUENCE_END_EVENT:
         case YAML_MAPPING_END_EVENT:
-            if (mode != MTFParseModeMapping) {
-                [self populateUnexpectedEvent:event fromParser:parser error:&error];
-            }
+            isDoneParsing = YES;
 
-            isDone = YES;
+        break;
+        case YAML_ALIAS_EVENT:
+            return [self populateInvalidAliasError:error fromParser:parser];
 
         break;
         default:
-            [self populateUnexpectedEvent:event fromParser:parser error:&error];
-
         break;
         }
 
         yaml_event_delete(&event);
 
-        if (error) {
-            if (outError) {
-                *outError = error;
-            }
-            return NO;
+        if (parsedObject == nil) {
+            continue;
         }
 
-        if (object) {
-            if (anchor) {
-                self.objectsForAnchors[anchor] = object;
+        if ([documentComponent isKindOfClass:NSMutableArray.class]) {
+            [documentComponent addObject:parsedObject];
+        }
+        else if ([documentComponent isKindOfClass:NSMutableDictionary.class]) {
+            // First, populate the key
+            if (parsedKey == nil) {
+                parsedKey = parsedObject;
             }
-
-            switch (mode) {
-            case MTFParseModeSequence:
-            case MTFParseModeStream:
-            case MTFParseModeDocument:
-                NSCParameterAssert(documentComponent);
-                NSCParameterAssert([documentComponent isKindOfClass:NSMutableArray.class]);
-
-                [documentComponent addObject:object];
-
-            break;
-            case MTFParseModeMapping:
-                NSCParameterAssert(documentComponent);
-                NSCParameterAssert([documentComponent isKindOfClass:NSMutableDictionary.class]);
-
-                if (key == nil) {
-                    key = object;
-                } else {
-                    documentComponent[key] = object;
-                    key = nil;
-                }
-
-            break;
+            // Then, populate the value for the key
+            else {
+                documentComponent[parsedKey] = parsedObject;
+                parsedKey = nil;
             }
         }
     }
@@ -334,9 +272,7 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
     }
 
     if (tag == nil) {
-        const yaml_scalar_style_t style = event->data.scalar.style;
-
-        switch ((int)style) {
+        switch ((int)event->data.scalar.style) {
         case YAML_SINGLE_QUOTED_SCALAR_STYLE:
         case YAML_DOUBLE_QUOTED_SCALAR_STYLE:
         case YAML_LITERAL_SCALAR_STYLE:
@@ -374,47 +310,121 @@ typedef NS_ENUM(NSInteger, MTFParseMode) {
         id (^handler)(NSString*, NSError *__autoreleasing *) = self.tagHandlers[tag];
         if (handler) {
             value = handler(string, error);
-        }
-        else {
-            if (error) {
-                *error = [NSError errorWithDomain:@"TODO"
-                    code:-1
-                    userInfo:@{
+        } else {
+            if (error == NULL) return nil;
+
+            *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain
+                code:-1
+                userInfo:@{
                     NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Unhandled tag type: %@ (value: %@)", tag, string],
-                        @"offset" : @(parser->offset),
-                    }];
-            }
+                    MTFYAMLSerializationOffsetErrorKey : @(parser->offset),
+                }];
+
             return nil;
         }
     }
 
-    if (value == nil) {
-        value = self.constantTags[string.lowercaseString];
-    }
-
-    if (value == nil) {
-        value = string;
-    }
+    if (value == nil) value = self.constantTags[string.lowercaseString];
+    if (value == nil) value = string;
 
     return value;
 }
 
-- (BOOL)populateUnexpectedEvent:(yaml_event_t)event fromParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
-    if (error == NULL) {
-        return NO;
+#pragma mark - Error handling
+
+- (BOOL)populateParseError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+    if (error == NULL) return NO;
+
+    NSMutableDictionary *userInfo = [self
+        errorUserInfoForMark:parser->problem_mark
+        offset:parser->problem_offset
+        fromParser:parser];
+
+    const char *problem = parser->context;
+    if (problem != NULL) {
+        NSString *string = [@(problem) capitalizedString];
+
+        userInfo[NSLocalizedDescriptionKey] = string;
     }
 
-    *error = [NSError
-        errorWithDomain:@"CocoaYAML"
-        code:-1
-        userInfo:@{
-            NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Received unexpected event %@.", @(event.type)],
-            @"offset" : @(parser->offset)
-        }];
+    const char *context = parser->context;
+    if (context != NULL) {
+        NSString *string = [@(context) capitalizedString];
+
+        userInfo[MTFYAMLSerializationContextDescriptionErrorKey] = string;
+    }
+
+    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:parser->error userInfo:[userInfo copy]];
 
     return NO;
 }
 
+- (BOOL)populateInvalidAliasError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+    if (error == NULL) return NO;
+
+    NSMutableDictionary *userInfo = [self
+        errorUserInfoForMark:parser->mark
+        offset:parser->offset
+        fromParser:parser];
+
+    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"YAML aliases (denoted by a leading '*') are not supported in Motif theme files.", nil),
+
+    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+
+    return NO;
+}
+
+- (BOOL)populateInvalidAnchorError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+    if (error == NULL) return NO;
+
+    NSMutableDictionary *userInfo = [self
+        errorUserInfoForMark:parser->mark
+        offset:parser->offset
+        fromParser:parser];
+
+    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"YAML anchors (denoted by a leading '&') are not supported in Motif theme files.", nil);
+
+    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+
+    return NO;
+}
+
+- (NSMutableDictionary *)errorUserInfoForMark:(yaml_mark_t)mark offset:(size_t)offset fromParser:(yaml_parser_t *)parser {
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
+        MTFYAMLSerializationOffsetErrorKey: @(offset),
+        MTFYAMLSerializationLineErrorKey: @(mark.line),
+        MTFYAMLSerializationColumnErrorKey: @(mark.column),
+        MTFYAMLSerializationIndexErrorKey: @(mark.index)
+    }];
+
+    // Add the line contents to the user info if able
+    NSString *input = @((char *)parser->input.string.start);
+    NSArray *inputLines = [input componentsSeparatedByCharactersInSet:NSCharacterSet.newlineCharacterSet];
+
+    size_t problemLineIndex = (mark.line - 1);
+    if (problemLineIndex < inputLines.count) {
+        NSString *string = inputLines[problemLineIndex];
+
+        userInfo[MTFYAMLSerializationLineContentsErrorKey] = string;
+    }
+
+    return userInfo;
+}
+
 @end
+
+NSString * const MTFYAMLSerializationErrorDomain = @"MTFYAMLSerializationErrorDomain";
+
+NSString * const MTFYAMLSerializationOffsetErrorKey = @"MTFYAMLSerializationOffsetErrorKey";
+
+NSString * const MTFYAMLSerializationLineErrorKey = @"MTFYAMLSerializationLineErrorKey";
+
+NSString * const MTFYAMLSerializationColumnErrorKey = @"MTFYAMLSerializationColumnErrorKey";
+
+NSString * const MTFYAMLSerializationIndexErrorKey = @"MTFYAMLSerializationIndexErrorKey";
+
+NSString * const MTFYAMLSerializationContextDescriptionErrorKey = @"MTFYAMLSerializationContextDescriptionErrorKey";
+
+NSString * const MTFYAMLSerializationLineContentsErrorKey = @"MTFYAMLSerializationLineContentsErrorKey";
 
 MTF_NS_ASSUME_NONNULL_END
