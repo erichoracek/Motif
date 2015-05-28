@@ -118,8 +118,8 @@
 		3A406CDE1AC9B87600615428 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
 		3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
 		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
-		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; };
-		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; };
+		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
 		3A6C1D441B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
 		3A6C1D4D1B143E840034F5A8 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D451B143E840034F5A8 /* api.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
