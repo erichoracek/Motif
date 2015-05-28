@@ -15,22 +15,6 @@
 		3A01C5D01AD07E9900AA479F /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; };
 		3A01C5D71AD07E9900AA479F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB36171A567D8B0059796A /* Images.xcassets */; };
 		3A01C5DE1AD07E9900AA479F /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A01C5F31AD1CC7E00AA479F /* ColorsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */; };
-		3A01C5F41AD1CC7E00AA479F /* ColorsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */; };
-		3A01C5F51AD1CC7E00AA479F /* ContentTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */; };
-		3A01C5F61AD1CC7E00AA479F /* ContentTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */; };
-		3A01C5F71AD1CC7E00AA479F /* ControlsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */; };
-		3A01C5F81AD1CC7E00AA479F /* ControlsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */; };
-		3A01C5F91AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */; };
-		3A01C5FA1AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */; };
-		3A01C5FB1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */; };
-		3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */; };
-		3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
-		3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */; };
-		3A01C5FF1AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */; };
-		3A01C6001AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */; };
-		3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
-		3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */; };
 		3A01C6151AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */; };
 		3A01C6161AD1CC9400AA479F /* ColorsThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */; };
 		3A01C6171AD1CC9400AA479F /* ContentThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6071AD1CC9400AA479F /* ContentThemeSymbols.m */; };
@@ -57,6 +41,22 @@
 		3A01C63B1AD1CCAC00AA479F /* UISegmentedControl+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */; };
 		3A01C63C1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
 		3A01C63D1AD1CCAC00AA479F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */; };
+		3A3553121B17027000653137 /* ColorsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530A1B17027000653137 /* ColorsTheme.yaml */; };
+		3A3553131B17027000653137 /* ColorsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530A1B17027000653137 /* ColorsTheme.yaml */; };
+		3A3553141B17027000653137 /* ContentTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530B1B17027000653137 /* ContentTheme.yaml */; };
+		3A3553151B17027000653137 /* ContentTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530B1B17027000653137 /* ContentTheme.yaml */; };
+		3A3553161B17027000653137 /* ControlsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530C1B17027000653137 /* ControlsTheme.yaml */; };
+		3A3553171B17027000653137 /* ControlsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530C1B17027000653137 /* ControlsTheme.yaml */; };
+		3A3553181B17027000653137 /* DarkMappingsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530D1B17027000653137 /* DarkMappingsTheme.yaml */; };
+		3A3553191B17027000653137 /* DarkMappingsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530D1B17027000653137 /* DarkMappingsTheme.yaml */; };
+		3A35531A1B17027000653137 /* LightMappingsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530E1B17027000653137 /* LightMappingsTheme.yaml */; };
+		3A35531B1B17027000653137 /* LightMappingsTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530E1B17027000653137 /* LightMappingsTheme.yaml */; };
+		3A35531C1B17027000653137 /* NavigationTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530F1B17027000653137 /* NavigationTheme.yaml */; };
+		3A35531D1B17027000653137 /* NavigationTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A35530F1B17027000653137 /* NavigationTheme.yaml */; };
+		3A35531E1B17027000653137 /* StyleGuideTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A3553101B17027000653137 /* StyleGuideTheme.yaml */; };
+		3A35531F1B17027000653137 /* StyleGuideTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A3553101B17027000653137 /* StyleGuideTheme.yaml */; };
+		3A3553201B17027000653137 /* TypographyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A3553111B17027000653137 /* TypographyTheme.yaml */; };
+		3A3553211B17027000653137 /* TypographyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A3553111B17027000653137 /* TypographyTheme.yaml */; };
 		3A5D20EA1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */; };
 		3A5D20EB1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */; };
 		3A73B87B1ACD158100A6A2E0 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; };
@@ -138,6 +138,14 @@
 		3A01C62F1AD1CCAC00AA479F /* UISegmentedControl+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Theming.m"; sourceTree = "<group>"; };
 		3A01C6301AD1CCAC00AA479F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3A01C6311AD1CCAC00AA479F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Theming.m"; sourceTree = "<group>"; };
+		3A35530A1B17027000653137 /* ColorsTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColorsTheme.yaml; sourceTree = "<group>"; };
+		3A35530B1B17027000653137 /* ContentTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ContentTheme.yaml; sourceTree = "<group>"; };
+		3A35530C1B17027000653137 /* ControlsTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ControlsTheme.yaml; sourceTree = "<group>"; };
+		3A35530D1B17027000653137 /* DarkMappingsTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DarkMappingsTheme.yaml; sourceTree = "<group>"; };
+		3A35530E1B17027000653137 /* LightMappingsTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LightMappingsTheme.yaml; sourceTree = "<group>"; };
+		3A35530F1B17027000653137 /* NavigationTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NavigationTheme.yaml; sourceTree = "<group>"; };
+		3A3553101B17027000653137 /* StyleGuideTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StyleGuideTheme.yaml; sourceTree = "<group>"; };
+		3A3553111B17027000653137 /* TypographyTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TypographyTheme.yaml; sourceTree = "<group>"; };
 		3A5D20E81AD654E70020C6B9 /* StyleGuideThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleGuideThemeSymbols.h; sourceTree = "<group>"; };
 		3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleGuideThemeSymbols.m; sourceTree = "<group>"; };
 		3A73B8791ACD157600A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +214,14 @@
 		3A01C5EA1AD1CC7E00AA479F /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				3A35530A1B17027000653137 /* ColorsTheme.yaml */,
+				3A35530D1B17027000653137 /* DarkMappingsTheme.yaml */,
+				3A35530E1B17027000653137 /* LightMappingsTheme.yaml */,
+				3A3553111B17027000653137 /* TypographyTheme.yaml */,
+				3A35530C1B17027000653137 /* ControlsTheme.yaml */,
+				3A35530F1B17027000653137 /* NavigationTheme.yaml */,
+				3A35530B1B17027000653137 /* ContentTheme.yaml */,
+				3A3553101B17027000653137 /* StyleGuideTheme.yaml */,
 				3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */,
 				3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */,
 				3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */,
@@ -453,15 +469,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A35531B1B17027000653137 /* LightMappingsTheme.yaml in Resources */,
+				3A3553131B17027000653137 /* ColorsTheme.yaml in Resources */,
+				3A3553191B17027000653137 /* DarkMappingsTheme.yaml in Resources */,
+				3A3553151B17027000653137 /* ContentTheme.yaml in Resources */,
+				3A3553211B17027000653137 /* TypographyTheme.yaml in Resources */,
+				3A35531D1B17027000653137 /* NavigationTheme.yaml in Resources */,
+				3A3553171B17027000653137 /* ControlsTheme.yaml in Resources */,
 				3A01C5D71AD07E9900AA479F /* Images.xcassets in Resources */,
-				3A01C5FA1AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */,
-				3A01C5FE1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
-				3A01C5F81AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
-				3A01C6021AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
-				3A01C6001AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */,
-				3A01C5FC1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
-				3A01C5F61AD1CC7E00AA479F /* ContentTheme.json in Resources */,
-				3A01C5F41AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
+				3A35531F1B17027000653137 /* StyleGuideTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,15 +485,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A35531A1B17027000653137 /* LightMappingsTheme.yaml in Resources */,
+				3A3553121B17027000653137 /* ColorsTheme.yaml in Resources */,
+				3A3553181B17027000653137 /* DarkMappingsTheme.yaml in Resources */,
+				3A3553141B17027000653137 /* ContentTheme.yaml in Resources */,
+				3A3553201B17027000653137 /* TypographyTheme.yaml in Resources */,
+				3A35531C1B17027000653137 /* NavigationTheme.yaml in Resources */,
+				3A3553161B17027000653137 /* ControlsTheme.yaml in Resources */,
 				3ADB36181A567D8B0059796A /* Images.xcassets in Resources */,
-				3A01C5F91AD1CC7E00AA479F /* DarkMappingsTheme.json in Resources */,
-				3A01C5FD1AD1CC7E00AA479F /* NavigationTheme.json in Resources */,
-				3A01C5F71AD1CC7E00AA479F /* ControlsTheme.json in Resources */,
-				3A01C6011AD1CC7E00AA479F /* TypographyTheme.json in Resources */,
-				3A01C5FF1AD1CC7E00AA479F /* StyleGuideTheme.json in Resources */,
-				3A01C5FB1AD1CC7E00AA479F /* LightMappingsTheme.json in Resources */,
-				3A01C5F51AD1CC7E00AA479F /* ContentTheme.json in Resources */,
-				3A01C5F31AD1CC7E00AA479F /* ColorsTheme.json in Resources */,
+				3A35531E1B17027000653137 /* StyleGuideTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

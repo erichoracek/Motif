@@ -1,0 +1,15 @@
+.StyleGuide:
+    _superclass: .ScrollableContentBackground
+    button: .Button
+    warningButton: .WarningButton
+    secondaryButton: .SecondaryButton
+    warningSecondaryButton: .WarningSecondaryButton
+    displayTextLabel: .ContentDisplayText
+    headlineTextLabel: .ContentHeadlineText
+    titleTextLabel: .ContentTitleText
+    subheadTextLabel: .ContentSubheadText
+    bodyTextLabel: .ContentBodyText
+    captionTextLabel: .ContentCaptionText
+    toggle: .Switch
+    slider: .Slider
+    segmentedControl: .SegmentedControl

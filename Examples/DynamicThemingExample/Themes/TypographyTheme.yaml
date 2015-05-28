@@ -1,0 +1,34 @@
+$LightFontName: AvenirNext-UltraLight
+$RegularFontName: AvenirNext-Regular
+$MediumFontName: AvenirNext-Medium
+
+$DisplayFontSize: 30
+$HeadlineFontSize: 24
+$TitleFontSize: 20
+$SubheadFontSize: 16
+$BodyFontSize: 13
+$CaptionFontSize: 11
+
+.DisplayText:
+    fontSize: $DisplayFontSize
+    fontName: $RegularFontName
+
+.HeadlineText:
+    fontSize: $HeadlineFontSize
+    fontName: $MediumFontName
+
+.TitleText:
+    fontSize: $TitleFontSize
+    fontName: $MediumFontName
+
+.SubheadText:
+    fontSize: $SubheadFontSize
+    fontName: $RegularFontName
+
+.BodyText:
+    fontSize: $BodyFontSize
+    fontName: $MediumFontName
+
+.CaptionText:
+    fontSize: $CaptionFontSize
+    fontName: $MediumFontName
