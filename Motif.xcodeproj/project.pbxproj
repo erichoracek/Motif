@@ -120,12 +120,8 @@
 		3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
 		3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
 		3A5E2BE11B19979B00E688F1 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
-		3A5E2BEB1B1999DE00E688F1 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BE91B1999DE00E688F1 /* Expecta.framework */; };
-		3A5E2BEC1B1999DE00E688F1 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEA1B1999DE00E688F1 /* Specta.framework */; };
-		3A5E2BEF1B199A0F00E688F1 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BED1B199A0F00E688F1 /* Expecta.framework */; };
-		3A5E2BF01B199A0F00E688F1 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEE1B199A0F00E688F1 /* Specta.framework */; };
-		3A5E2BF21B199BE600E688F1 /* Expecta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BE91B1999DE00E688F1 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A5E2BF31B199BE600E688F1 /* Specta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEA1B1999DE00E688F1 /* Specta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A5FC9BC1B1A5A260070C876 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45831B1A57F3003473E9 /* Specta.framework */; };
+		3A5FC9BD1B1A5A2E0070C876 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45811B1A57E1003473E9 /* Expecta.framework */; };
 		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
@@ -158,8 +154,6 @@
 		3A9082791B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
 		3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
 		3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */; };
-		3AA4CD691B19AA41008AF13F /* Expecta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BED1B199A0F00E688F1 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3AA4CD6A1B19AA41008AF13F /* Specta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEE1B199A0F00E688F1 /* Specta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA5A77D1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */; };
 		3AA796641AC919FB00FD4320 /* Motif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* Motif.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -178,6 +172,8 @@
 		3AA796981AC91D8400FD4320 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
 		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+		3AAD45851B1A57F5003473E9 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45831B1A57F3003473E9 /* Specta.framework */; };
+		3AAD45861B1A57F8003473E9 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45811B1A57E1003473E9 /* Expecta.framework */; };
 		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
@@ -210,8 +206,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A5E2BF21B199BE600E688F1 /* Expecta.framework in Embed Frameworks */,
-				3A5E2BF31B199BE600E688F1 /* Specta.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,8 +216,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3AA4CD691B19AA41008AF13F /* Expecta.framework in Embed Frameworks */,
-				3AA4CD6A1B19AA41008AF13F /* Specta.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,10 +293,6 @@
 		3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFFileObservationContext.m; sourceTree = "<group>"; };
 		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFYAMLSerializationSpec.m; sourceTree = "<group>"; };
-		3A5E2BE91B1999DE00E688F1 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Expecta.framework; sourceTree = "<group>"; };
-		3A5E2BEA1B1999DE00E688F1 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = "<group>"; };
-		3A5E2BED1B199A0F00E688F1 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Expecta.framework; sourceTree = "<group>"; };
-		3A5E2BEE1B199A0F00E688F1 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = "<group>"; };
 		3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFYAMLSerialization.h; path = "YAML Serialization/MTFYAMLSerialization.h"; sourceTree = "<group>"; };
 		3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFYAMLSerialization.m; path = "YAML Serialization/MTFYAMLSerialization.m"; sourceTree = "<group>"; };
 		3A6C1D451B143E840034F5A8 /* api.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = api.c; path = Carthage/Checkouts/libyaml/src/api.c; sourceTree = SOURCE_ROOT; };
@@ -343,6 +331,8 @@
 		3AA796881AC91D8400FD4320 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
 		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
+		3AAD45811B1A57E1003473E9 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AAD45831B1A57F3003473E9 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
@@ -361,8 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A5E2BE11B19979B00E688F1 /* Motif.framework in Frameworks */,
-				3A5E2BF01B199A0F00E688F1 /* Specta.framework in Frameworks */,
-				3A5E2BEF1B199A0F00E688F1 /* Expecta.framework in Frameworks */,
+				3A5FC9BC1B1A5A260070C876 /* Specta.framework in Frameworks */,
+				3A5FC9BD1B1A5A2E0070C876 /* Expecta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +367,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAD45861B1A57F8003473E9 /* Expecta.framework in Frameworks */,
+				3AAD45851B1A57F5003473E9 /* Specta.framework in Frameworks */,
 				3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */,
-				3A5E2BEC1B1999DE00E688F1 /* Specta.framework in Frameworks */,
-				3A5E2BEB1B1999DE00E688F1 /* Expecta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,15 +516,6 @@
 			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
-		3A5E2BCA1B19964200E688F1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3A5E2BD71B19973D00E688F1 /* iOS */,
-				3A5E2BDC1B19975800E688F1 /* Mac */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3A5E2BCB1B19966200E688F1 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,24 +524,13 @@
 			name = Specs;
 			sourceTree = "<group>";
 		};
-		3A5E2BD71B19973D00E688F1 /* iOS */ = {
+		3A5FC9B61B1A58CA0070C876 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A5E2BE91B1999DE00E688F1 /* Expecta.framework */,
-				3A5E2BEA1B1999DE00E688F1 /* Specta.framework */,
+				3AAD45811B1A57E1003473E9 /* Expecta.framework */,
+				3AAD45831B1A57F3003473E9 /* Specta.framework */,
 			);
-			name = iOS;
-			path = Carthage/Build/iOS;
-			sourceTree = "<group>";
-		};
-		3A5E2BDC1B19975800E688F1 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				3A5E2BED1B199A0F00E688F1 /* Expecta.framework */,
-				3A5E2BEE1B199A0F00E688F1 /* Specta.framework */,
-			);
-			name = Mac;
-			path = Carthage/Build/Mac;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3A6C1D3E1B14353A0034F5A8 /* YAML Serialization */ = {
@@ -597,7 +567,7 @@
 				3A79EC621AC9147E000CCC01 /* Motif */,
 				3A79EC6F1AC9147E000CCC01 /* MotifTests */,
 				3A179E201AC9AE6000BD598C /* Configuration */,
-				3A5E2BCA1B19964200E688F1 /* Frameworks */,
+				3A5FC9B61B1A58CA0070C876 /* Frameworks */,
 				3A79EC611AC9147E000CCC01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1079,10 +1049,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Motif-OSXTests";
@@ -1093,10 +1059,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E321AC9AE6000BD598C /* Mac-Application.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Motif-OSXTests";
@@ -1170,10 +1132,6 @@
 			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Motif-iOSTests";
@@ -1185,10 +1143,6 @@
 			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Motif-iOSTests";
