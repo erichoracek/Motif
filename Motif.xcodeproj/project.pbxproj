@@ -124,6 +124,8 @@
 		3A5E2BEC1B1999DE00E688F1 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEA1B1999DE00E688F1 /* Specta.framework */; };
 		3A5E2BEF1B199A0F00E688F1 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BED1B199A0F00E688F1 /* Expecta.framework */; };
 		3A5E2BF01B199A0F00E688F1 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEE1B199A0F00E688F1 /* Specta.framework */; };
+		3A5E2BF21B199BE600E688F1 /* Expecta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BE91B1999DE00E688F1 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A5E2BF31B199BE600E688F1 /* Specta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEA1B1999DE00E688F1 /* Specta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
@@ -156,6 +158,8 @@
 		3A9082791B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
 		3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9082761B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m */; };
 		3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A916EF91AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m */; };
+		3AA4CD691B19AA41008AF13F /* Expecta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BED1B199A0F00E688F1 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3AA4CD6A1B19AA41008AF13F /* Specta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5E2BEE1B199A0F00E688F1 /* Specta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA5A77D1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */; };
 		3AA796641AC919FB00FD4320 /* Motif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA7964F1AC919FB00FD4320 /* Motif.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -198,6 +202,33 @@
 			remoteInfo = "Motif-iOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3A5E2BF11B199BD700E688F1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A5E2BF21B199BE600E688F1 /* Expecta.framework in Embed Frameworks */,
+				3A5E2BF31B199BE600E688F1 /* Specta.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA4CD681B19AA31008AF13F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3AA4CD691B19AA41008AF13F /* Expecta.framework in Embed Frameworks */,
+				3AA4CD6A1B19AA41008AF13F /* Specta.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFBackwardsCompatableNullability.h; sourceTree = "<group>"; };
@@ -753,6 +784,7 @@
 				3A406CC11AC9B87600615428 /* Sources */,
 				3A406CCE1AC9B87600615428 /* Frameworks */,
 				3A406CD01AC9B87600615428 /* Resources */,
+				3AA4CD681B19AA31008AF13F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -789,6 +821,7 @@
 				3A79EC671AC9147E000CCC01 /* Sources */,
 				3A79EC681AC9147E000CCC01 /* Frameworks */,
 				3A79EC691AC9147E000CCC01 /* Resources */,
+				3A5E2BF11B199BD700E688F1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
