@@ -36,7 +36,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Private
 
 - (instancetype)init {
-    return [self initWithData:[NSData data] error:nil];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    return [self initWithData:nil error:nil];
+#pragma clang diagnostic pop
 }
 
 - (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error {
@@ -117,6 +120,10 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 }
 
 - (mtf_nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing *)error {
+    if (data.length == 0) {
+        return nil;
+    }
+
     yaml_parser_t *parser = NULL;
     parser = malloc(sizeof(*parser));
     if (parser == NULL) {
@@ -340,16 +347,16 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         offset:parser->problem_offset
         fromParser:parser];
 
-    const char *problem = parser->context;
+    const char *problem = parser->problem;
     if (problem != NULL) {
-        NSString *string = [@(problem) capitalizedString];
+        NSString *string = @(problem);
 
         userInfo[NSLocalizedDescriptionKey] = string;
     }
 
     const char *context = parser->context;
     if (context != NULL) {
-        NSString *string = [@(context) capitalizedString];
+        NSString *string = @(context);
 
         userInfo[MTFYAMLSerializationContextDescriptionErrorKey] = string;
     }
