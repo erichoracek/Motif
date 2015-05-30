@@ -43,7 +43,7 @@ describe(@"deserialization from data", ^{
         expect(error).to.beNil();
     });
 
-    it(@"should treat garbage data as a nil object and populate the error", ^{
+    it(@"should treat garbage data as a nil object and populate the error parameter", ^{
         char byte = 0xFF;
         id object = [MTFYAMLSerialization YAMLObjectWithData:[NSData dataWithBytes:&byte length:1] error:&error];
 
@@ -53,38 +53,64 @@ describe(@"deserialization from data", ^{
     });
 
     it(@"should treat a mapping as a dictionary", ^{
-        id object = objectFromYAML(@"hash: value");
+        NSDictionary *mapping = objectFromYAML(@"key1: value\nkey2: value");
 
-        expect(object).notTo.beNil();
-        expect(object).to.beKindOf(NSDictionary.class);
+        expect(mapping).notTo.beNil();
+        expect(mapping).to.beKindOf(NSDictionary.class);
+        expect(mapping.count).to.equal(2);
+        expect(mapping[@"key1"]).to.equal(@"value");
+        expect(mapping[@"key2"]).to.equal(@"value");
+        expect(error).to.beNil();
+    });
+
+    it(@"should treat a braced mapping as a dictionary", ^{
+        NSDictionary *mapping = objectFromYAML(@"{key1: value, key2: value}");
+
+        expect(mapping).notTo.beNil();
+        expect(mapping).to.beKindOf(NSDictionary.class);
+        expect(mapping.count).to.equal(2);
+        expect(mapping[@"key1"]).to.equal(@"value");
+        expect(mapping[@"key2"]).to.equal(@"value");
         expect(error).to.beNil();
     });
 
     it(@"should treat a sequence as an array", ^{
-        id object = objectFromYAML(@""
-        "- 1\n"
-        "- 2");
+        NSArray *sequence = objectFromYAML(@"- 1\n- 2");
 
-        expect(object).notTo.beNil();
-        expect(object).to.beKindOf(NSArray.class);
+        expect(sequence).notTo.beNil();
+        expect(sequence).to.beKindOf(NSArray.class);
+        expect(sequence.count).to.equal(2);
+        expect(sequence.firstObject).to.equal(@1);
+        expect(sequence.lastObject).to.equal(@2);
+        expect(error).to.beNil();
+    });
+
+    it(@"should treat a bracketed sequence as an array", ^{
+        NSArray *sequence = objectFromYAML(@"[1, 2]");
+
+        expect(sequence).notTo.beNil();
+        expect(sequence).to.beKindOf(NSArray.class);
+        expect(sequence.count).to.equal(2);
+        expect(sequence.firstObject).to.equal(@1);
+        expect(sequence.lastObject).to.equal(@2);
         expect(error).to.beNil();
     });
 
     it(@"should treat a float as an number", ^{
-        id object = objectFromYAML(@"1.0");
+        NSNumber *number = objectFromYAML(@"1.0");
 
-        expect(object).notTo.beNil();
-        expect(object).to.beKindOf(NSNumber.class);
-        expect([object floatValue]).to.beCloseTo(1.0);
+        expect(number).notTo.beNil();
+        expect(number).to.beKindOf(NSNumber.class);
+        expect(number.floatValue).to.beCloseTo(1.0);
         expect(error).to.beNil();
     });
 
     it(@"should treat an integer as an number", ^{
-        id object = objectFromYAML(@"1");
+        NSNumber *number = objectFromYAML(@"1");
 
-        expect(object).notTo.beNil();
-        expect(object).to.beKindOf(NSNumber.class);
-        expect([object integerValue]).to.equal(1);
+        expect(number).notTo.beNil();
+        expect(number).to.beKindOf(NSNumber.class);
+        expect(number.integerValue).to.equal(1);
         expect(error).to.beNil();
     });
 
@@ -97,7 +123,7 @@ describe(@"deserialization from data", ^{
     });
 
     it(@"should populate the error parameter on aliases", ^{
-        id object = objectFromYAML(@"*anchor");
+        id object = objectFromYAML(@"*alias");
 
         expect(object).to.beNil();
         expect(error).notTo.beNil();
@@ -105,9 +131,7 @@ describe(@"deserialization from data", ^{
     });
 
     it(@"should populate the error parameter on syntax errors", ^{
-        id object = objectFromYAML(@""
-        "syntax: error\n"
-        " syntax: error");
+        id object = objectFromYAML(@"syntax: error\n syntax: error");
 
         expect(object).to.beNil();
         expect(error).notTo.beNil();
