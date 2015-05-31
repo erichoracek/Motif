@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'TypographyTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'TypographyTheme.yaml'.
 
 #import <Foundation/Foundation.h>
 

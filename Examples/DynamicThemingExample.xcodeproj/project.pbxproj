@@ -103,14 +103,6 @@
 /* Begin PBXFileReference section */
 		3A01C5E21AD07E9900AA479F /* ScreenBrightnessThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenBrightnessThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A01C5E81AD1C57800AA479F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ColorsTheme.json; sourceTree = "<group>"; };
-		3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ContentTheme.json; sourceTree = "<group>"; };
-		3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControlsTheme.json; sourceTree = "<group>"; };
-		3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkMappingsTheme.json; sourceTree = "<group>"; };
-		3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LightMappingsTheme.json; sourceTree = "<group>"; };
-		3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NavigationTheme.json; sourceTree = "<group>"; };
-		3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StyleGuideTheme.json; sourceTree = "<group>"; };
-		3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TypographyTheme.json; sourceTree = "<group>"; };
 		3A01C6041AD1CC9400AA479F /* ColorsThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsThemeSymbols.h; sourceTree = "<group>"; };
 		3A01C6051AD1CC9400AA479F /* ColorsThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorsThemeSymbols.m; sourceTree = "<group>"; };
 		3A01C6061AD1CC9400AA479F /* ContentThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentThemeSymbols.h; sourceTree = "<group>"; };
@@ -222,14 +214,6 @@
 				3A35530F1B17027000653137 /* NavigationTheme.yaml */,
 				3A35530B1B17027000653137 /* ContentTheme.yaml */,
 				3A3553101B17027000653137 /* StyleGuideTheme.yaml */,
-				3A01C5EB1AD1CC7E00AA479F /* ColorsTheme.json */,
-				3A01C5EE1AD1CC7E00AA479F /* DarkMappingsTheme.json */,
-				3A01C5EF1AD1CC7E00AA479F /* LightMappingsTheme.json */,
-				3A01C5F21AD1CC7E00AA479F /* TypographyTheme.json */,
-				3A01C5ED1AD1CC7E00AA479F /* ControlsTheme.json */,
-				3A01C5F01AD1CC7E00AA479F /* NavigationTheme.json */,
-				3A01C5EC1AD1CC7E00AA479F /* ContentTheme.json */,
-				3A01C5F11AD1CC7E00AA479F /* StyleGuideTheme.json */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -512,7 +496,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
+			shellScript = "export PATH=\"$PATH:/usr/local/bin/\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.yaml' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
 			showEnvVarsInLog = 0;
 		};
 		3AC874801ACE679D009E0D82 /* Generate Theme Symbols */ = {
@@ -527,7 +511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/usr/local/bin\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
+			shellScript = "export PATH=\"$PATH:/usr/local/bin\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/DynamicThemingExample/Themes\"\nexport OUTPUT_DIR=\"${SRCROOT}/DynamicThemingExample/ThemeSymbols\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.yaml' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${OUTPUT_DIR}\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

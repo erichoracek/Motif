@@ -73,7 +73,6 @@
 		3AD69A551A4F750B0002FA8F /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
 		3AD69A731A4F788E0002FA8F /* UIView+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Theming.h"; sourceTree = "<group>"; };
 		3AD69A741A4F788E0002FA8F /* UIView+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIView+Theming.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3AD69A791A4F7A0D0002FA8F /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
 		3AD69A7E1A4FA1480002FA8F /* ButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsView.h; sourceTree = "<group>"; };
 		3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsView.m; sourceTree = "<group>"; };
 		3AD69A811A4FB2BC0002FA8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -180,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				3AF12DDD1B1459EE0065AB58 /* Theme.yaml */,
-				3AD69A791A4F7A0D0002FA8F /* Theme.json */,
 				3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */,
 				3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */,
 				3AD69A511A4F750B0002FA8F /* AppDelegate.h */,
@@ -298,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "export PATH=\"$PATH:/usr/local/bin\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/${PRODUCT_NAME}\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.json' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${THEMES_DIR}\"";
+			shellScript = "export PATH=\"$PATH:/usr/local/bin\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/${PRODUCT_NAME}\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.yaml' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -o \"${THEMES_DIR}\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

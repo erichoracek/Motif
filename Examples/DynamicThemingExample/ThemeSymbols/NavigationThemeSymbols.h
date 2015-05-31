@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'NavigationTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'NavigationTheme.yaml'.
 
 #import <Foundation/Foundation.h>
 

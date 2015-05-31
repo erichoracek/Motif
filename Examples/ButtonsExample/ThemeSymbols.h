@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'Theme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'Theme.yaml'.
 
 #import <Foundation/Foundation.h>
 

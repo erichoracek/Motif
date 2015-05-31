@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ContentTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'ContentTheme.yaml'.
 
 #import "ContentThemeSymbols.h"
 

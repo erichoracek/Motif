@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2196361B1B8CC3006159D4 /* Theme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196351B1B8CC3006159D4 /* Theme.yaml */; };
 		3A7EC5E71AB51D5C00FD37F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */; };
 		3A7EC5E91AB51D5C00FD37F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC5E81AB51D5C00FD37F3 /* ViewController.swift */; };
 		3A7EC5EE1AB51D5C00FD37F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7EC5ED1AB51D5C00FD37F3 /* Images.xcassets */; };
-		3A7EC6101AB5246F00FD37F3 /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A7EC60F1AB5246F00FD37F3 /* Theme.json */; };
 		3A7EC6121AB525FA00FD37F3 /* ThemeSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6111AB525FA00FD37F3 /* ThemeSymbols.swift */; };
 		3A7EC6141AB5277200FD37F3 /* UIView+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6131AB5277200FD37F3 /* UIView+Theming.swift */; };
 		3A7EC6161AB5657D00FD37F3 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6151AB5657D00FD37F3 /* ButtonsView.swift */; };
@@ -39,12 +39,12 @@
 
 /* Begin PBXFileReference section */
 		3A179D841AC93D2700BD598C /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A2196351B1B8CC3006159D4 /* Theme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Theme.yaml; sourceTree = "<group>"; };
 		3A7EC5E11AB51D5C00FD37F3 /* SwiftButtonsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftButtonsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EC5E51AB51D5C00FD37F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7EC5E81AB51D5C00FD37F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A7EC5ED1AB51D5C00FD37F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3A7EC60F1AB5246F00FD37F3 /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
 		3A7EC6111AB525FA00FD37F3 /* ThemeSymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSymbols.swift; sourceTree = "<group>"; };
 		3A7EC6131AB5277200FD37F3 /* UIView+Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Theming.swift"; sourceTree = "<group>"; };
 		3A7EC6151AB5657D00FD37F3 /* ButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		3A7EC5E31AB51D5C00FD37F3 /* SwiftButtonsExample */ = {
 			isa = PBXGroup;
 			children = (
-				3A7EC60F1AB5246F00FD37F3 /* Theme.json */,
+				3A2196351B1B8CC3006159D4 /* Theme.yaml */,
 				3A7EC6111AB525FA00FD37F3 /* ThemeSymbols.swift */,
 				3A7EC5E61AB51D5C00FD37F3 /* AppDelegate.swift */,
 				3A7EC5E81AB51D5C00FD37F3 /* ViewController.swift */,
@@ -258,8 +258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2196361B1B8CC3006159D4 /* Theme.yaml in Resources */,
 				3A7EC5EE1AB51D5C00FD37F3 /* Images.xcassets in Resources */,
-				3A7EC6101AB5246F00FD37F3 /* Theme.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
