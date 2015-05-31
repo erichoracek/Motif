@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
-#import "NSURL+ThemeNaming.h"
+#import "NSURL+ThemeFiles.h"
 
 @interface MTFThemeNameTests : XCTestCase
 

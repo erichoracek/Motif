@@ -13,7 +13,7 @@
 #import "MTFThemeConstant.h"
 #import "MTFThemeConstant_Private.h"
 #import "MTFThemeParser.h"
-#import "NSURL+ThemeNaming.h"
+#import "NSURL+ThemeFiles.h"
 #import "MTFYAMLSerialization.h"
 
 NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
