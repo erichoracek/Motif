@@ -15,7 +15,7 @@
 SpecBegin(MTFYAMLSerialization)
 
 describe(@"lifecycle", ^{
-    it(@"should error on direct initalization", ^{
+    it(@"should raise an exception on direct initalization", ^{
         expect(^{
             __unused MTFYAMLSerialization *serialization = [[MTFYAMLSerialization alloc] init];
         }).to.raise(NSInternalInconsistencyException);
@@ -96,22 +96,114 @@ describe(@"deserialization from data", ^{
         expect(error).to.beNil();
     });
 
-    it(@"should treat a float as an number", ^{
-        NSNumber *number = objectFromYAML(@"1.0");
+    describe(@"with scalar values", ^{
+        afterEach(^{
+            expect(error).to.beNil();
+        });
 
-        expect(number).notTo.beNil();
-        expect(number).to.beKindOf(NSNumber.class);
-        expect(number.floatValue).to.beCloseTo(1.0);
-        expect(error).to.beNil();
-    });
+        it(@"should handle floats", ^{
+            NSNumber *number = objectFromYAML(@"1.0");
 
-    it(@"should treat an integer as an number", ^{
-        NSNumber *number = objectFromYAML(@"1");
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.floatValue).to.beCloseTo(1.0);
+        });
 
-        expect(number).notTo.beNil();
-        expect(number).to.beKindOf(NSNumber.class);
-        expect(number.integerValue).to.equal(1);
-        expect(error).to.beNil();
+        it(@"should handle integers", ^{
+            NSNumber *number = objectFromYAML(@"1");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.integerValue).to.equal(1);
+        });
+
+        it(@"should handle 'yes' boolean", ^{
+            NSNumber *number = objectFromYAML(@"yes");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@YES);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle 'no' boolean", ^{
+            NSNumber *number = objectFromYAML(@"no");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@NO);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle 'true' boolean", ^{
+            NSNumber *number = objectFromYAML(@"true");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@YES);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle 'false' boolean", ^{
+            NSNumber *number = objectFromYAML(@"false");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@NO);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle nulls", ^{
+            NSNull *null = objectFromYAML(@"null");
+
+            expect(null).notTo.beNil();
+            expect(null).to.beKindOf(NSNull.class);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle single-quoted strings", ^{
+            NSString *string = objectFromYAML(@"'string'");
+
+            expect(string).notTo.beNil();
+            expect(string).to.beKindOf(NSString.class);
+            expect(string).to.equal(@"string");
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle double-quoted strings", ^{
+            NSString *string = objectFromYAML(@"\"string\"");
+
+            expect(string).notTo.beNil();
+            expect(string).to.beKindOf(NSString.class);
+            expect(string).to.equal(@"string");
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle nulls with the null tag", ^{
+            NSNull *null = objectFromYAML(@"!!null null");
+
+            expect(null).notTo.beNil();
+            expect(null).to.beKindOf(NSNull.class);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle booleans with the bool tag", ^{
+            NSNumber *number = objectFromYAML(@"!!bool false");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@NO);
+            expect(error).to.beNil();
+        });
+
+        it(@"should handle strings with the string tag", ^{
+            NSNull *number = objectFromYAML(@"!!str string");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSString.class);
+            expect(number).to.equal(@"string");
+            expect(error).to.beNil();
+        });
     });
 
     it(@"should populate the error parameter on anchors", ^{
@@ -124,6 +216,14 @@ describe(@"deserialization from data", ^{
 
     it(@"should populate the error parameter on aliases", ^{
         id object = objectFromYAML(@"*alias");
+
+        expect(object).to.beNil();
+        expect(error).notTo.beNil();
+        expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+    });
+
+    it(@"should populate the error parameter on unhandled tags", ^{
+        id object = objectFromYAML(@"!!binary 1234");
 
         expect(object).to.beNil();
         expect(error).notTo.beNil();
