@@ -1,7 +1,6 @@
 coverage_service: coveralls
 xcodeproj: Motif.xcodeproj
+source_directory: Motif
 ignore:
-  - Carthage/*
   - Motif/Objective-C Runtime/*
-  - MotifTests/*
   - Motif/iOS Support/UIColor+HTMLColors.m
