@@ -80,6 +80,7 @@ describe(@"dictionaries from theme URLs", ^{
         __block NSURL *URL;
 
         beforeEach(^{
+            URL = nil;
             bundle = [NSBundle bundleForClass:self.class];
         });
 
@@ -106,42 +107,35 @@ describe(@"dictionaries from theme URLs", ^{
     });
 
     describe(@"with invalid contents", ^{
-        it(@"should produce an error with non-file URL", ^{
-            NSURL *URL = [NSURL URLWithString:@"https://www.google.com"];
+        __block NSURL *URL;
+
+        beforeEach(^{
+            URL = nil;
+        });
+
+        afterEach(^{
             NSError *error;
             NSDictionary *contents = [URL mtf_themeDictionaryWithError:&error];
-
             expect(error).notTo.beNil();
             expect(contents).to.beNil();
         });
 
         it(@"should produce an error with non-file URL", ^{
-            NSURL *URL = [NSURL URLWithString:@"file:///not/a/valid/theme/path"];
-            NSError *error;
-            NSDictionary *contents = [URL mtf_themeDictionaryWithError:&error];
+            URL = [NSURL URLWithString:@"https://www.google.com"];
+        });
 
-            expect(error).notTo.beNil();
-            expect(contents).to.beNil();
+        it(@"should produce an error with non-file URL", ^{
+            URL = [NSURL URLWithString:@"file:///not/a/valid/theme/path"];
         });
 
         it(@"should produce an error with no extension", ^{
             NSBundle *bundle = [NSBundle bundleForClass:self.class];
-            NSURL *URL = [bundle URLForResource:@"NoExtensionTheme" withExtension:nil];
-            NSError *error;
-            NSDictionary *contents = [URL mtf_themeDictionaryWithError:&error];
-
-            expect(error).notTo.beNil();
-            expect(contents).to.beNil();
+            URL = [bundle URLForResource:@"NoExtensionTheme" withExtension:nil];
         });
 
         it(@"should produce an error with no contents", ^{
             NSBundle *bundle = [NSBundle bundleForClass:self.class];
-            NSURL *URL = [bundle URLForResource:@"EmptyTheme" withExtension:@"yaml"];
-            NSError *error;
-            NSDictionary *contents = [URL mtf_themeDictionaryWithError:&error];
-
-            expect(error).notTo.beNil();
-            expect(contents).to.beNil();
+            URL = [bundle URLForResource:@"EmptyTheme" withExtension:@"yaml"];
         });
     });
 });
