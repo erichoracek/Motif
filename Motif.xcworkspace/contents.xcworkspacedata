@@ -23,6 +23,12 @@
       location = "group:Carthage/Checkouts/masonry/Masonry.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Carthage/Checkouts/specta/Specta/Specta.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/expecta/Expecta.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

@@ -13,7 +13,8 @@
 #import "MTFThemeConstant.h"
 #import "MTFThemeConstant_Private.h"
 #import "MTFThemeParser.h"
-#import "NSURL+ThemeNaming.h"
+#import "NSURL+ThemeFiles.h"
+#import "MTFYAMLSerialization.h"
 
 NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
@@ -25,7 +26,7 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    self = [self initWithJSONFile:nil error:NULL];
+    self = [self initWithFile:nil error:NULL];
 #pragma clang diagnostic pop
     return self;
 }
@@ -34,20 +35,20 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Public
 
-+ (instancetype)themeFromJSONThemeNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error {
     NSParameterAssert(themeName);
     
-    return [self themeFromJSONThemesNamed:@[themeName] error:error];
+    return [self themeFromFilesNamed:@[themeName] error:error];
 }
 
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFilesNamed:(NSArray *)themeNames error:(NSError *__autoreleasing *)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
-    return [self themeFromJSONThemesNamed:themeNames bundle:nil error:error];
+    return [self themeFromFilesNamed:themeNames bundle:nil error:error];
 }
 
-+ (instancetype)themeFromJSONThemesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
@@ -56,16 +57,16 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
         mtf_fileURLsFromThemeNames:themeNames
         inBundle:bundle];
     
-    return [[MTFTheme alloc] initWithJSONFiles:fileURLs error:error];
+    return [[MTFTheme alloc] initWithFiles:fileURLs error:error];
 }
 
-- (instancetype)initWithJSONFile:(NSURL *)fileURL error:(NSError **)error; {
+- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error; {
     NSParameterAssert(fileURL);
     
-    return [self initWithJSONFiles:@[fileURL] error:error];
+    return [self initWithFiles:@[fileURL] error:error];
 }
 
-- (instancetype)initWithJSONFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error {
     NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     
@@ -73,8 +74,8 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     NSMutableArray *validFileURLs = [NSMutableArray new];
     
     for (NSURL *fileURL in fileURLs) {
-        NSDictionary *themeDictionary = [self.class
-            themeDictionaryFromJSONFileURL:fileURL error:error];
+        NSDictionary *themeDictionary = [fileURL mtf_themeDictionaryWithError:error];
+
         if (themeDictionary) {
             [themeDictionaries addObject:themeDictionary];
             [validFileURLs addObject:fileURL];
@@ -121,69 +122,6 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
         }
     }
     return self;
-}
-
-+ (NSDictionary *)themeDictionaryFromJSONFileURL:(NSURL *)fileURL error:(NSError *__autoreleasing *)error {
-    NSParameterAssert(fileURL);
-    
-    // If the file is not a file URL, populate the error object
-    if (!fileURL.isFileURL) {
-        if (error) {
-            NSString *localizedDescription = [NSString stringWithFormat:
-                @"The specified file URL is invalid %@",
-                fileURL];
-            *error = [NSError
-                errorWithDomain:MTFThemingErrorDomain
-                code:1
-                userInfo:@{
-                    NSLocalizedDescriptionKey : localizedDescription
-                }];
-        }
-        return nil;
-    }
-    
-    NSData *JSONData = [NSData
-        dataWithContentsOfURL:fileURL
-        options:0
-        error:error];
-    
-    if (!JSONData) {
-        if (error) {
-            NSString *localizedDescription = [NSString stringWithFormat:
-                @"Unable to load contents of file at URL %@",
-                fileURL];
-            *error = [NSError
-                errorWithDomain:MTFThemingErrorDomain
-                code:1
-                userInfo:@{
-                    NSLocalizedDescriptionKey : localizedDescription
-                }];
-        }
-        return nil;
-    }
-    
-    id JSONObject = [NSJSONSerialization
-        JSONObjectWithData:JSONData
-        options:0
-        error:error];
-    
-    if (![JSONObject isKindOfClass:NSDictionary.class]) {
-        if (error && !*error) {
-            NSString *localizedDescription = [NSString stringWithFormat:
-                @"The provided JSON does not have a dictionary as the root "
-                    "object. It is instead %@",
-                JSONObject];
-            *error = [NSError
-                errorWithDomain:MTFThemingErrorDomain
-                code:1
-                userInfo:@{
-                    NSLocalizedDescriptionKey : localizedDescription
-                }];
-        }
-        return nil;
-    }
-    
-    return JSONObject;
 }
 
 - (id)constantValueForName:(NSString *)name {

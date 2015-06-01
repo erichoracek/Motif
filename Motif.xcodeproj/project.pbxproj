@@ -41,8 +41,8 @@
 		3A02C8691AD206FF00C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
 		3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C86B1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */; };
-		3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C86D1AD206FF00C420F2 /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */; };
+		3A02C86C1AD206FF00C420F2 /* NSURL+ThemeFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeFiles.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C86D1AD206FF00C420F2 /* NSURL+ThemeFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeFiles.m */; };
 		3A02C86E1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */; };
 		3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -85,8 +85,8 @@
 		3A02C8A01AD2072600C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
 		3A02C8A11AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; };
 		3A02C8A21AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */; };
-		3A02C8A31AD2072600C420F2 /* NSURL+ThemeNaming.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C8A41AD2072600C420F2 /* NSURL+ThemeNaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */; };
+		3A02C8A31AD2072600C420F2 /* NSURL+ThemeFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8331AD206FF00C420F2 /* NSURL+ThemeFiles.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A02C8A41AD2072600C420F2 /* NSURL+ThemeFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8341AD206FF00C420F2 /* NSURL+ThemeFiles.m */; };
 		3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */; };
 		3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -103,10 +103,23 @@
 		3A1C4F5A1AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A1C4F571AEDD49C0048F84C /* MTFFileObservationContext.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A1C4F5B1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */; };
 		3A1C4F5C1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */; };
+		3A2196391B1B9376006159D4 /* NSBundle+ExtensionURLs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A21963A1B1B9376006159D4 /* NSBundle+ExtensionURLs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A21963B1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */; };
+		3A21963C1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */; };
+		3A21963E1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */; };
+		3A21963F1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */; };
+		3A2196411B1BD436006159D4 /* BundledTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196401B1BD436006159D4 /* BundledTheme.yaml */; };
+		3A2196421B1BD436006159D4 /* BundledTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196401B1BD436006159D4 /* BundledTheme.yaml */; };
+		3A2196441B1BD62C006159D4 /* BasicTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196431B1BD62C006159D4 /* BasicTheme.yaml */; };
+		3A2196451B1BD62C006159D4 /* BasicTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196431B1BD62C006159D4 /* BasicTheme.yaml */; };
+		3A2196471B1BD632006159D4 /* BasicTheme.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196461B1BD632006159D4 /* BasicTheme.yml */; };
+		3A2196481B1BD632006159D4 /* BasicTheme.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196461B1BD632006159D4 /* BasicTheme.yml */; };
+		3A21964A1B1BD929006159D4 /* EmptyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196491B1BD929006159D4 /* EmptyTheme.yaml */; };
+		3A21964B1B1BD929006159D4 /* EmptyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196491B1BD929006159D4 /* EmptyTheme.yaml */; };
 		3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */; };
 		3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */; };
 		3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
-		3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
 		3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */; };
 		3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
 		3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */; };
@@ -116,9 +129,38 @@
 		3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3A406CDE1AC9B87600615428 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
-		3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
-		3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
 		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
+		3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
+		3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
+		3A5E2BE11B19979B00E688F1 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179DC71AC9483900BD598C /* Motif.framework */; };
+		3A5FC9BC1B1A5A260070C876 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45831B1A57F3003473E9 /* Specta.framework */; };
+		3A5FC9BD1B1A5A2E0070C876 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45811B1A57E1003473E9 /* Expecta.framework */; };
+		3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
+		3A6C1D441B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */; };
+		3A6C1D4D1B143E840034F5A8 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D451B143E840034F5A8 /* api.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D4E1B143E840034F5A8 /* api.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D451B143E840034F5A8 /* api.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D4F1B143E840034F5A8 /* dumper.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D461B143E840034F5A8 /* dumper.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D501B143E840034F5A8 /* dumper.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D461B143E840034F5A8 /* dumper.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D511B143E840034F5A8 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D471B143E840034F5A8 /* emitter.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D521B143E840034F5A8 /* emitter.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D471B143E840034F5A8 /* emitter.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D531B143E840034F5A8 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D481B143E840034F5A8 /* loader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D541B143E840034F5A8 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D481B143E840034F5A8 /* loader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D551B143E840034F5A8 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D491B143E840034F5A8 /* parser.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D561B143E840034F5A8 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D491B143E840034F5A8 /* parser.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D571B143E840034F5A8 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4A1B143E840034F5A8 /* reader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D581B143E840034F5A8 /* reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4A1B143E840034F5A8 /* reader.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D591B143E840034F5A8 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4B1B143E840034F5A8 /* scanner.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5A1B143E840034F5A8 /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4B1B143E840034F5A8 /* scanner.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5B1B143E840034F5A8 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4C1B143E840034F5A8 /* writer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5C1B143E840034F5A8 /* writer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C1D4C1B143E840034F5A8 /* writer.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A6C1D5E1B143ECA0034F5A8 /* yaml.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D5D1B143ECA0034F5A8 /* yaml.h */; };
+		3A6C1D5F1B143ECA0034F5A8 /* yaml.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D5D1B143ECA0034F5A8 /* yaml.h */; };
+		3A6C1D611B14426E0034F5A8 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D601B14426E0034F5A8 /* config.h */; };
+		3A6C1D621B14426E0034F5A8 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D601B14426E0034F5A8 /* config.h */; };
+		3A6C1D641B1443CA0034F5A8 /* yaml_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D631B1443CA0034F5A8 /* yaml_private.h */; };
+		3A6C1D651B1443CA0034F5A8 /* yaml_private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C1D631B1443CA0034F5A8 /* yaml_private.h */; };
 		3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A79EC601AC9147E000CCC01 /* Motif.framework */; };
 		3A9082771B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -136,20 +178,22 @@
 		3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
 		3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
 		3AA796931AC91D8400FD4320 /* MTFThemeLoadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */; };
-		3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
 		3AA796951AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */; };
 		3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */; };
 		3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */; };
 		3AA796981AC91D8400FD4320 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
 		3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
-		3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */; };
 		3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
+		3AAD45851B1A57F5003473E9 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45831B1A57F3003473E9 /* Specta.framework */; };
+		3AAD45861B1A57F8003473E9 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45811B1A57E1003473E9 /* Expecta.framework */; };
 		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
 		3AF172A11B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
+		3AF3C61B1B1BDEA100F0D3D4 /* NoExtensionTheme in Resources */ = {isa = PBXBuildFile; fileRef = 3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */; };
+		3AF3C61C1B1BDEA200F0D3D4 /* NoExtensionTheme in Resources */ = {isa = PBXBuildFile; fileRef = 3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +212,29 @@
 			remoteInfo = "Motif-iOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3A5E2BF11B199BD700E688F1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA4CD681B19AA31008AF13F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFBackwardsCompatableNullability.h; sourceTree = "<group>"; };
@@ -204,8 +271,8 @@
 		3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ThemeSymbols.m"; sourceTree = "<group>"; };
 		3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+LastPathComponentWithoutExtension.h"; sourceTree = "<group>"; };
 		3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+LastPathComponentWithoutExtension.m"; sourceTree = "<group>"; };
-		3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ThemeNaming.h"; sourceTree = "<group>"; };
-		3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ThemeNaming.m"; sourceTree = "<group>"; };
+		3A02C8331AD206FF00C420F2 /* NSURL+ThemeFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ThemeFiles.h"; sourceTree = "<group>"; };
+		3A02C8341AD206FF00C420F2 /* NSURL+ThemeFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ThemeFiles.m"; sourceTree = "<group>"; };
 		3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+TypeFiltering.h"; sourceTree = "<group>"; };
 		3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+TypeFiltering.m"; sourceTree = "<group>"; };
 		3A02C8381AD206FF00C420F2 /* MTFRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFRuntimeExtensions.h; sourceTree = "<group>"; };
@@ -238,7 +305,28 @@
 		3A1C4F521AEDC9730048F84C /* MTFThemeSourceObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeSourceObserver.m; sourceTree = "<group>"; };
 		3A1C4F571AEDD49C0048F84C /* MTFFileObservationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFFileObservationContext.h; sourceTree = "<group>"; };
 		3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFFileObservationContext.m; sourceTree = "<group>"; };
+		3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ExtensionURLs.h"; sourceTree = "<group>"; };
+		3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ExtensionURLs.m"; sourceTree = "<group>"; };
+		3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ThemeFilesSpec.m"; sourceTree = "<group>"; };
+		3A2196401B1BD436006159D4 /* BundledTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BundledTheme.yaml; sourceTree = "<group>"; };
+		3A2196431B1BD62C006159D4 /* BasicTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicTheme.yaml; sourceTree = "<group>"; };
+		3A2196461B1BD632006159D4 /* BasicTheme.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicTheme.yml; sourceTree = "<group>"; };
+		3A2196491B1BD929006159D4 /* EmptyTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyTheme.yaml; sourceTree = "<group>"; };
 		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFYAMLSerializationSpec.m; sourceTree = "<group>"; };
+		3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFYAMLSerialization.h; path = "YAML Serialization/MTFYAMLSerialization.h"; sourceTree = "<group>"; };
+		3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFYAMLSerialization.m; path = "YAML Serialization/MTFYAMLSerialization.m"; sourceTree = "<group>"; };
+		3A6C1D451B143E840034F5A8 /* api.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = api.c; path = Carthage/Checkouts/libyaml/src/api.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D461B143E840034F5A8 /* dumper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dumper.c; path = Carthage/Checkouts/libyaml/src/dumper.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D471B143E840034F5A8 /* emitter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = emitter.c; path = Carthage/Checkouts/libyaml/src/emitter.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D481B143E840034F5A8 /* loader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loader.c; path = Carthage/Checkouts/libyaml/src/loader.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D491B143E840034F5A8 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parser.c; path = Carthage/Checkouts/libyaml/src/parser.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4A1B143E840034F5A8 /* reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = reader.c; path = Carthage/Checkouts/libyaml/src/reader.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4B1B143E840034F5A8 /* scanner.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = scanner.c; path = Carthage/Checkouts/libyaml/src/scanner.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D4C1B143E840034F5A8 /* writer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = writer.c; path = Carthage/Checkouts/libyaml/src/writer.c; sourceTree = SOURCE_ROOT; };
+		3A6C1D5D1B143ECA0034F5A8 /* yaml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yaml.h; path = Carthage/Checkouts/libyaml/include/yaml.h; sourceTree = SOURCE_ROOT; };
+		3A6C1D601B14426E0034F5A8 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = Carthage/Checkouts/libyaml/config.h; sourceTree = SOURCE_ROOT; };
+		3A6C1D631B1443CA0034F5A8 /* yaml_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yaml_private.h; path = Carthage/Checkouts/libyaml/src/yaml_private.h; sourceTree = SOURCE_ROOT; };
 		3A79EC601AC9147E000CCC01 /* Motif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A79EC641AC9147E000CCC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A79EC6B1AC9147E000CCC01 /* Motif-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,17 +345,18 @@
 		3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeConstantEqualityTests.m; sourceTree = "<group>"; };
 		3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeConstantTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeLoadingTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeNameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertiesApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertyApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
 		3AA796881AC91D8400FD4320 /* Basic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Basic.json; sourceTree = "<group>"; };
 		3AA796891AC91D8400FD4320 /* BasicTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicTheme.json; sourceTree = "<group>"; };
-		3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicThemeWithNoExtension; sourceTree = "<group>"; };
 		3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidJSONTheme.json; sourceTree = "<group>"; };
+		3AAD45811B1A57E1003473E9 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AAD45831B1A57F3003473E9 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
+		3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NoExtensionTheme; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,7 +371,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A406CED1AC9B9C300615428 /* Motif.framework in Frameworks */,
+				3A5E2BE11B19979B00E688F1 /* Motif.framework in Frameworks */,
+				3A5FC9BC1B1A5A260070C876 /* Specta.framework in Frameworks */,
+				3A5FC9BD1B1A5A2E0070C876 /* Expecta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +388,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAD45861B1A57F8003473E9 /* Expecta.framework in Frameworks */,
+				3AAD45851B1A57F5003473E9 /* Specta.framework in Frameworks */,
 				3A79EC6C1AC9147E000CCC01 /* Motif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,10 +438,12 @@
 				3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */,
 				3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */,
 				3A02C8321AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.m */,
+				3A02C8331AD206FF00C420F2 /* NSURL+ThemeFiles.h */,
+				3A02C8341AD206FF00C420F2 /* NSURL+ThemeFiles.m */,
+				3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */,
+				3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */,
 				3A02C8151AD206FF00C420F2 /* MTFReverseTransformedValueClass.h */,
 				3A02C8141AD206FF00C420F2 /* MTFObjCTypeValueTransformer.h */,
-				3A02C8331AD206FF00C420F2 /* NSURL+ThemeNaming.h */,
-				3A02C8341AD206FF00C420F2 /* NSURL+ThemeNaming.m */,
 				3A02C8351AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.h */,
 				3A02C8361AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m */,
 				3A9082751B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h */,
@@ -444,12 +539,59 @@
 			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
+		3A5E2BCB1B19966200E688F1 /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */,
+				3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */,
+			);
+			name = Specs;
+			sourceTree = "<group>";
+		};
+		3A5FC9B61B1A58CA0070C876 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AAD45811B1A57E1003473E9 /* Expecta.framework */,
+				3AAD45831B1A57F3003473E9 /* Specta.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A6C1D3E1B14353A0034F5A8 /* YAML Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */,
+				3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */,
+				3A6C1D661B1446740034F5A8 /* libyaml */,
+			);
+			name = "YAML Serialization";
+			sourceTree = "<group>";
+		};
+		3A6C1D661B1446740034F5A8 /* libyaml */ = {
+			isa = PBXGroup;
+			children = (
+				3A6C1D631B1443CA0034F5A8 /* yaml_private.h */,
+				3A6C1D601B14426E0034F5A8 /* config.h */,
+				3A6C1D5D1B143ECA0034F5A8 /* yaml.h */,
+				3A6C1D451B143E840034F5A8 /* api.c */,
+				3A6C1D461B143E840034F5A8 /* dumper.c */,
+				3A6C1D471B143E840034F5A8 /* emitter.c */,
+				3A6C1D481B143E840034F5A8 /* loader.c */,
+				3A6C1D491B143E840034F5A8 /* parser.c */,
+				3A6C1D4A1B143E840034F5A8 /* reader.c */,
+				3A6C1D4B1B143E840034F5A8 /* scanner.c */,
+				3A6C1D4C1B143E840034F5A8 /* writer.c */,
+			);
+			name = libyaml;
+			sourceTree = "<group>";
+		};
 		3A79EC561AC9147E000CCC01 = {
 			isa = PBXGroup;
 			children = (
 				3A79EC621AC9147E000CCC01 /* Motif */,
 				3A79EC6F1AC9147E000CCC01 /* MotifTests */,
 				3A179E201AC9AE6000BD598C /* Configuration */,
+				3A5FC9B61B1A58CA0070C876 /* Frameworks */,
 				3A79EC611AC9147E000CCC01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -470,6 +612,7 @@
 			children = (
 				3AA7964F1AC919FB00FD4320 /* Motif.h */,
 				3A02C80F1AD206FF00C420F2 /* Core */,
+				3A6C1D3E1B14353A0034F5A8 /* YAML Serialization */,
 				3A02C8371AD206FF00C420F2 /* Objective-C Runtime */,
 				3A02C83A1AD206FF00C420F2 /* iOS Support */,
 				3A79EC631AC9147E000CCC01 /* Supporting Files */,
@@ -488,6 +631,7 @@
 		3A79EC6F1AC9147E000CCC01 /* MotifTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A5E2BCB1B19966200E688F1 /* Specs */,
 				3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */,
 				3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */,
 				3AA7967E1AC91D8400FD4320 /* MTFThemeClassEqualityTests.m */,
@@ -496,7 +640,6 @@
 				3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */,
 				3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */,
 				3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */,
-				3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */,
 				3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */,
 				3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */,
 				3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */,
@@ -506,8 +649,12 @@
 				3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
-				3AA7968A1AC91D8400FD4320 /* BasicThemeWithNoExtension */,
+				3A2196431B1BD62C006159D4 /* BasicTheme.yaml */,
+				3A2196461B1BD632006159D4 /* BasicTheme.yml */,
 				3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */,
+				3A2196401B1BD436006159D4 /* BundledTheme.yaml */,
+				3A2196491B1BD929006159D4 /* EmptyTheme.yaml */,
+				3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */,
 				3A79EC701AC9147E000CCC01 /* Supporting Files */,
 			);
 			path = MotifTests;
@@ -529,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A02C88E1AD2072500C420F2 /* MTFThemeConstant.h in Headers */,
+				3A21963A1B1B9376006159D4 /* NSBundle+ExtensionURLs.h in Headers */,
 				3A02C89F1AD2072600C420F2 /* NSString+ThemeSymbols.h in Headers */,
 				3A1C4F5A1AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
 				3A02C8831AD2072500C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
@@ -543,17 +691,21 @@
 				3A02C8901AD2072500C420F2 /* MTFThemeConstant_Private.h in Headers */,
 				3A02C8881AD2072500C420F2 /* MTFTheme_Private.h in Headers */,
 				3A02C88C1AD2072500C420F2 /* MTFThemeClassApplicable.h in Headers */,
+				3A6C1D5F1B143ECA0034F5A8 /* yaml.h in Headers */,
 				3A02C8841AD2072500C420F2 /* MTFObjCTypeValueTransformer.h in Headers */,
 				3A02C8A51AD2072600C420F2 /* NSValueTransformer+TypeFiltering.h in Headers */,
 				3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F4E1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.h in Headers */,
+				3A6C1D621B14426E0034F5A8 /* config.h in Headers */,
 				3A9082781B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.h in Headers */,
+				3A6C1D651B1443CA0034F5A8 /* yaml_private.h in Headers */,
+				3A6C1D421B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */,
 				3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */,
 				3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
 				3A02C8921AD2072500C420F2 /* MTFThemeParser.h in Headers */,
-				3A02C8A31AD2072600C420F2 /* NSURL+ThemeNaming.h in Headers */,
+				3A02C8A31AD2072600C420F2 /* NSURL+ThemeFiles.h in Headers */,
 				3A1C4F541AEDC9730048F84C /* MTFThemeSourceObserver.h in Headers */,
 				3A02C8941AD2072500C420F2 /* MTFThemeSymbolReference.h in Headers */,
 				3A02C8811AD2072500C420F2 /* MTFDynamicThemeApplier.h in Headers */,
@@ -576,7 +728,9 @@
 				3A02C8541AD206FF00C420F2 /* MTFThemeClass_Private.h in Headers */,
 				3A02C8631AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h in Headers */,
 				3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */,
+				3A2196391B1B9376006159D4 /* NSBundle+ExtensionURLs.h in Headers */,
 				3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */,
+				3A6C1D641B1443CA0034F5A8 /* yaml_private.h in Headers */,
 				3A02C84F1AD206FF00C420F2 /* MTFTheme.h in Headers */,
 				3A02C8591AD206FF00C420F2 /* MTFThemeConstant_Private.h in Headers */,
 				3A02C8511AD206FF00C420F2 /* MTFTheme_Private.h in Headers */,
@@ -587,15 +741,18 @@
 				3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */,
 				3A1C4F531AEDC9730048F84C /* MTFThemeSourceObserver.h in Headers */,
 				3AA5A77C1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h in Headers */,
+				3A6C1D411B1438740034F5A8 /* MTFYAMLSerialization.h in Headers */,
 				3A02C8611AD206FF00C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8701AD206FF00C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */,
+				3A6C1D5E1B143ECA0034F5A8 /* yaml.h in Headers */,
 				3A1C4F591AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
 				3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
 				3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */,
-				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeNaming.h in Headers */,
+				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeFiles.h in Headers */,
 				3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */,
 				3A02C84A1AD206FF00C420F2 /* MTFDynamicThemeApplier.h in Headers */,
+				3A6C1D611B14426E0034F5A8 /* config.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +784,7 @@
 				3A406CC11AC9B87600615428 /* Sources */,
 				3A406CCE1AC9B87600615428 /* Frameworks */,
 				3A406CD01AC9B87600615428 /* Resources */,
+				3AA4CD681B19AA31008AF13F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -663,6 +821,7 @@
 				3A79EC671AC9147E000CCC01 /* Sources */,
 				3A79EC681AC9147E000CCC01 /* Frameworks */,
 				3A79EC691AC9147E000CCC01 /* Resources */,
+				3A5E2BF11B199BD700E688F1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,9 +884,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */,
+				3A2196481B1BD632006159D4 /* BasicTheme.yml in Resources */,
 				3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */,
+				3A2196451B1BD62C006159D4 /* BasicTheme.yaml in Resources */,
 				3A406CDE1AC9B87600615428 /* Basic.json in Resources */,
-				3A406CE01AC9B87600615428 /* BasicThemeWithNoExtension in Resources */,
+				3AF3C61C1B1BDEA200F0D3D4 /* NoExtensionTheme in Resources */,
+				3A21964B1B1BD929006159D4 /* EmptyTheme.yaml in Resources */,
+				3A2196421B1BD436006159D4 /* BundledTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,9 +906,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */,
+				3A2196471B1BD632006159D4 /* BasicTheme.yml in Resources */,
 				3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */,
+				3A2196441B1BD62C006159D4 /* BasicTheme.yaml in Resources */,
 				3AA796981AC91D8400FD4320 /* Basic.json in Resources */,
-				3AA7969A1AC91D8400FD4320 /* BasicThemeWithNoExtension in Resources */,
+				3AF3C61B1B1BDEA100F0D3D4 /* NoExtensionTheme in Resources */,
+				3A21964A1B1BD929006159D4 /* EmptyTheme.yaml in Resources */,
+				3A2196411B1BD436006159D4 /* BundledTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,15 +934,25 @@
 				3A1C4F561AEDC9730048F84C /* MTFThemeSourceObserver.m in Sources */,
 				3A02C8931AD2072500C420F2 /* MTFThemeParser.m in Sources */,
 				3A02C89B1AD2072600C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,
-				3A02C8A41AD2072600C420F2 /* NSURL+ThemeNaming.m in Sources */,
+				3A02C8A41AD2072600C420F2 /* NSURL+ThemeFiles.m in Sources */,
 				3A1C4F5C1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */,
 				3A1C4F501AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.m in Sources */,
 				3A02C8A61AD2072600C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
+				3A6C1D441B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */,
+				3A21963C1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */,
 				3A90827A1B0562FE00CF07AD /* NSValueTransformer+ValueTransformerRegistration.m in Sources */,
 				3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */,
 				3A02C88D1AD2072500C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */,
 				3A02C8871AD2072500C420F2 /* MTFTheme.m in Sources */,
+				3A6C1D561B143E840034F5A8 /* parser.c in Sources */,
+				3A6C1D4E1B143E840034F5A8 /* api.c in Sources */,
+				3A6C1D5C1B143E840034F5A8 /* writer.c in Sources */,
+				3A6C1D5A1B143E840034F5A8 /* scanner.c in Sources */,
+				3A6C1D581B143E840034F5A8 /* reader.c in Sources */,
+				3A6C1D541B143E840034F5A8 /* loader.c in Sources */,
+				3A6C1D501B143E840034F5A8 /* dumper.c in Sources */,
+				3A6C1D521B143E840034F5A8 /* emitter.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,11 +960,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A21963F1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
+				3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
 				3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */,
 				3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */,
 				3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */,
-				3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */,
 				3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */,
 				3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */,
@@ -820,12 +998,22 @@
 				3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,
 				3A1C4F4F1AEC4F1E0048F84C /* MTFLiveReloadThemeApplier.m in Sources */,
 				3AA5A77D1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m in Sources */,
-				3A02C86D1AD206FF00C420F2 /* NSURL+ThemeNaming.m in Sources */,
+				3A02C86D1AD206FF00C420F2 /* NSURL+ThemeFiles.m in Sources */,
 				3A02C86F1AD206FF00C420F2 /* NSValueTransformer+TypeFiltering.m in Sources */,
 				3A02C8711AD206FF00C420F2 /* MTFRuntimeExtensions.m in Sources */,
 				3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */,
+				3A21963B1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */,
 				3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */,
+				3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */,
+				3A6C1D4F1B143E840034F5A8 /* dumper.c in Sources */,
+				3A6C1D531B143E840034F5A8 /* loader.c in Sources */,
+				3A6C1D591B143E840034F5A8 /* scanner.c in Sources */,
+				3A6C1D511B143E840034F5A8 /* emitter.c in Sources */,
+				3A6C1D4D1B143E840034F5A8 /* api.c in Sources */,
+				3A6C1D551B143E840034F5A8 /* parser.c in Sources */,
+				3A6C1D5B1B143E840034F5A8 /* writer.c in Sources */,
+				3A6C1D571B143E840034F5A8 /* reader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,13 +1023,14 @@
 			files = (
 				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
+				3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
+				3A21963E1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
 				3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */,
 				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
 				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
 				3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */,
 				3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */,
-				3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */,
 				3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */,
 				3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */,
@@ -874,6 +1063,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -885,6 +1078,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -947,6 +1144,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};
@@ -959,6 +1160,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"HAVE_CONFIG_H=1",
+				);
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_NAME = Motif;
 			};

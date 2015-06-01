@@ -1,0 +1,42 @@
+$ButtonInsets: '{10, 15, 10, 15}'
+$ButtonCornerRadius: 5
+
+.Button:
+    text: .SubheadText
+    contentEdgeInsets: $ButtonInsets
+    backgroundColor: $PrimaryColor
+    tintColor: $ButtonTextColor
+    cornerRadius: $ButtonCornerRadius
+
+.WarningButton:
+    _superclass: .Button
+    backgroundColor: $WarningColor
+
+.SecondaryButton:
+    text: .SubheadText
+    contentEdgeInsets: $ButtonInsets
+    cornerRadius: $ButtonCornerRadius
+    tintColor: $PrimaryColor
+    borderColor: $PrimaryColor
+    borderWidth: 1
+
+.WarningSecondaryButton:
+    _superclass: .SecondaryButton
+    tintColor: $WarningColor
+    borderColor: $WarningColor
+
+.Switch:
+    onTintColor: $PrimaryColor
+    tintColor: $SeparatorColor
+
+.Slider:
+    minimumTrackTintColor: $PrimaryColor
+    maximumTrackTintColor: $SeparatorColor
+
+.SegmentedControlText:
+    _superclass: .SubheadText
+    color: $PrimaryColor
+
+.SegmentedControl:
+    tintColor: $PrimaryColor
+    text: .SegmentedControlText

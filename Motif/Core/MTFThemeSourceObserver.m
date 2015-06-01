@@ -233,7 +233,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     }
     
     return [[MTFTheme alloc]
-        initWithJSONFiles:sourceFileURLs
+        initWithFiles:sourceFileURLs
         error:error];
 }
 

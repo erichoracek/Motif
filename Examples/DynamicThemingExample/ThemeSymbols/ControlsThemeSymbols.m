@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ControlsTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'ControlsTheme.yaml'.
 
 #import "ControlsThemeSymbols.h"
 

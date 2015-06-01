@@ -1,0 +1,4 @@
+$Constant: value
+
+.Class:
+    property: $Constant

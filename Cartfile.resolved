@@ -1,3 +1,6 @@
 github "robb/cartography" "0.5.0"
-github "snapkit/masonry" "886f7bb5b20494b592be7e255890a91922dc635d"
+github "specta/expecta" "v1.0.1"
+github "yaml/libyaml" "0.1.4"
+github "snapkit/masonry" "e15b3a65f43152bd7cb6696af87c41670568c8f9"
+github "specta/specta" "v1.0.1"
 github "jspahrsummers/xcconfigs" "0.8"

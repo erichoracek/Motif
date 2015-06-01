@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/erichoracek/Motif.svg?branch=master)](https://travis-ci.org/erichoracek/Motif) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Coverage Status](https://coveralls.io/repos/erichoracek/Motif/badge.svg?branch=master)](https://coveralls.io/r/erichoracek/Motif?branch=master)
 
-_A lightweight and customizable JSON stylesheet framework for iOS_
+_A lightweight and customizable stylesheet framework for iOS_
 
 ## What can it do?
 
@@ -35,42 +35,49 @@ Your designer just sent over a spec outlining the style of a couple buttons in y
 
 ### Theme files
 
-A theme file in Motif is just a simple JSON dictionary. It can have two types of key/value pairs: _classes_ or _constants_:
+A theme file in Motif is just a simple dictionary encoded in a markup file (YAML or JSON). This dictionary can have two types of key/value pairs: _classes_ or _constants_:
 
-- Classes: Denoted by a leading period (e.g. `.Button`) and encoded as a nested JSON dictionary, a class is a collection of named properties corresponding to values that together define the style of an element in your interface. Class property values can be any JSON types, or alternatively references to other classes or constants.
+- Classes: denoted by a leading period (e.g. `.Button`) and encoded as a key with a value of a nested dictionary, a class is a collection of named properties corresponding to values that together define the style of an element in your interface. Class property values can be of any type, or alternatively a reference to another class or constant.
 
-- Constants: Denoted by a leading dollar sign (e.g. `$RedColor`) and encoded as a key-value pair, a constant is a named reference to a value. Constant values can be any JSON types, or alternatively a reference to a class or constant.
+```yaml
+.Class:
+    property: value
+```
+
+- Constants: denoted by a leading dollar sign (e.g. `$RedColor`) and encoded as a key-value pair, a constant is a named reference to a value. Constant values can be of any type, or alternatively a reference to another class or constant.
+
+```yaml
+$Constant: value
+```
 
 To create the buttons from the design spec, we've written the following theme file:
 
-#### `Theme.json`
+#### `Theme.yaml`
 
-```javascript
-{
-    "$RedColor": "#f93d38",
-    "$BlueColor": "#50b5ed",
-    "$FontName": "AvenirNext-Regular",
-    ".ButtonText": {
-        "fontName": "$FontName",
-        "fontSize": 16
-    },
-    ".Button": {
-        "borderWidth": 1,
-        "cornerRadius": 5,
-        "contentEdgeInsets": "{10, 20, 10, 20}",
-        "tintColor": "$BlueColor",
-        "borderColor": "$BlueColor",
-        "titleText": ".ButtonText"
-    },
-    ".WarningButton": {
-        "_superclass": ".Button",
-        "tintColor": "$RedColor",
-        "borderColor": "$RedColor"
-    }
-}
+```yaml
+$RedColor: '#f93d38'
+$BlueColor: '#50b5ed'
+$FontName: AvenirNext-Regular
+
+.ButtonText:
+    fontName: $FontName
+    fontSize: 16
+
+.Button:
+    borderWidth: 1
+    cornerRadius: 5
+    contentEdgeInsets: '{10, 20, 10, 20}'
+    tintColor: $BlueColor
+    borderColor: $BlueColor
+    titleText: .ButtonText
+
+.WarningButton:
+    _superclass: .Button
+    tintColor: $RedColor
+    borderColor: $RedColor
 ```
 
-We've started by defining three constants: our button colors as `$RedColor` and `$BlueColor`, and our font name as `$FontName`. We choose to define these values as constants because we want to be able to reference them later in our theme file by their names—just like variables in [less](http://lesscss.org) or [Sass](http://sass-lang.com).
+We've started by defining three constants: our button colors as `$RedColor` and `$BlueColor`, and our font name as `$FontName`. We choose to define these values as constants because we want to be able to reference them later in our theme file by their names—just like variables in [Less](http://lesscss.org) or [Sass](http://sass-lang.com).
 
 We now declare our first class: `.ButtonText`. This class describes the attributes of the text within the button—both its font and size. From now on, we'll use this class to declare that we want text to have this specific style.
 
@@ -111,7 +118,7 @@ If we want to ensure that we always apply property values a of specific type, we
 
 #### Applier value transformers
 
-In the case of `borderColor`, the value specified in the JSON theme is not a color, but instead a color encoded as the string: `"#f93d38"`. To ensure that this value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
+In the case of `borderColor`, the value specified in the theme file is not a color, but instead a color encoded as the string: `"#f93d38"`. To ensure that this value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
 
 Now that we've defined these two properties on `UIView`, they will be available to apply any other themes with the same properties in the future. As such, whenever we have another class wants to specify a `borderColor` or `borderWidth` to a `UIView` or any of its descendants, these appliers will be able to apply those values as well.
 
@@ -163,18 +170,18 @@ Previously, we created a style applier on `UILabel` that allows us specify a cus
 
 ```objective-c
 NSError *error;
-MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:@"Theme" error:&error];
+MTFTheme *theme = [MTFTheme themeFromFileNamed:@"Theme" error:&error];
 NSAssert(error == nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:@"Button" toObject:saveButton];
 [theme applyClassWithName:@"WarningButton" toObject:deleteButton];
 ```
 
-We now have everything we need to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromJSONThemeNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
+We now have everything we need to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromFileNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
 
 When we have our `MTFTheme`, we want to make sure that there were no errors parsing it. We can do so by asserting that our pass-by-reference `error` is still non-nil. By using `NSAssert`, we'll get a runtime crash when debugging informing us of our errors (if there were any).
 
-To apply the classes from `Theme.json` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on our buttons. When we do so, all of the properties from the theme classes are applied to our buttons in just one simple method invocation. This is the power of Motif.
+To apply the classes from `Theme.yaml` to our buttons, all we have to do is invoke the application methods on `MTFTheme` on our buttons. When we do so, all of the properties from the theme classes are applied to our buttons in just one simple method invocation. This is the power of Motif.
 
 ## Using Motif in your project
 
@@ -207,7 +214,7 @@ To enable dynamic theming, where you would normally use the theme class applica
 
 ```objective-c
 // We're going to default to the light theme
-MTFTheme *lightTheme = [MTFTheme themeFromJSONThemeNamed:@"LightTheme" error:nil];
+MTFTheme *lightTheme = [MTFTheme themeFromFileNamed:@"LightTheme" error:nil];
 
 // Create a dynamic theme applier, which we will use to style all of our
 // interface elements
@@ -221,7 +228,7 @@ Later on...
 
 ```objective-c
 // It's time to switch to the dark theme
-MTFTheme *darkTheme = [MTFTheme themeFromJSONThemeNamed:@"DarkTheme" error:nil];
+MTFTheme *darkTheme = [MTFTheme themeFromFileNamed:@"DarkTheme" error:nil];
 
 // We now change the applier's theme to the dark theme, which will automatically
 // re-apply this new theme to all interface elements that previously had the
@@ -233,35 +240,26 @@ applier.theme = darkTheme;
 
 While you could maintain multiple sets of divergent theme files to create different themes for your app's interface, the preferred (and easiest) way to accomplish dynamic theming is to largely share the same set of theme files across your entire app. An easy way to do this is to create a set of "mapping" theme files that _map_ your root constants from named values describing their _appearance_ to named values describing their _function_. For example:
 
-#### `Colors.json`
-```javascript
-{
-    "$RedDarkColor": "#fc3b2f",
-    "$RedLightColor": "#fc8078"
-}
+#### `Colors.yaml`
+```yaml
+$RedDarkColor: '#fc3b2f'
+$RedLightColor: '#fc8078'
 ```
 
-#### `DarkMappings.json`
-```javascript
-{
-    "$WarningColor": "$RedLightColor"
-}
+#### `DarkMappings.yaml`
+```yaml
+$WarningColor: $RedLightColor
 ```
 
-#### `LightMappings.json`
-```javascript
-{
-    "$WarningColor": "$RedDarkColor"
-}
+#### `LightMappings.yaml`
+```yaml
+$WarningColor: $RedDarkColor
 ```
 
-#### `Buttons.json`
-```javascript
-{
-    ".Button": {
-        "tintColor": "$WarningColor"
-    }
-}
+#### `Buttons.yaml`
+```yaml
+.Button:
+    tintColor: $WarningColor
 ```
 
 We've created a single constant, `$WarningColor`, that will change its value depending on the mapping theme file that we create our `MTFTheme` instances with. As discussed above, the constant name `$WarningColor` describes the _function_ of the color, rather than the appearance (e.g. `$RedColor`). This redefinition of the same constant allows us to us to conditionally redefine what `$WarningColor` means depending on the theme we're using. As such, we don't have to worry about maintaining multiple definitions of the same `.Button` class, ensuring that we don't repeat ourselves and keep things clean.
@@ -270,14 +268,14 @@ With this pattern, creating our light and dark themes is as simple as:
 
 ```objective-c
 MTFTheme *lightTheme = *theme = [MTFTheme
-    themeFromJSONThemesNamed:@[
+    themeFromFileNamed:@[
         @"Colors",
         @"LightMappings",
         @"Buttons"
     ] error:nil];
-    
+
 MTFTheme *darkTheme = *theme = [MTFTheme
-    themeFromJSONThemesNamed:@[
+    themeFromFileNamed:@[
         @"Colors",
         @"DarkMappings",
         @"Buttons"
@@ -288,37 +286,35 @@ This way, we only have to create our theme classes one time, rather than once fo
 
 ## Generating theme symbols
 
-In the above examples, you might have noticed that Motif uses a lot of [stringly types](http://blog.codinghorror.com/new-programming-jargon/) to bridge class and constant names from your JSON theme files into your application code. If you've dealt with a system like this before (Core Data's entity and attribute names come to mind as an example), you know that over time, stringly-typed interfaces can become tedious to maintain. Thankfully, just as there exists [Mogenerator](https://github.com/rentzsch/mogenerator) to alleviate this problem when using Core Data, there also exists a similar solution for Motif to address this same problem: the Motif CLI.
+In the above examples, you might have noticed that Motif uses a lot of [stringly types](http://blog.codinghorror.com/new-programming-jargon/) to bridge class and constant names from your theme files into your application code. If you've dealt with a system like this before (Core Data's entity and attribute names come to mind as an example), you know that over time, stringly-typed interfaces can become tedious to maintain. Thankfully, just as there exists [Mogenerator](https://github.com/rentzsch/mogenerator) to alleviate this problem when using Core Data, there also exists a similar solution for Motif to address this same problem: the Motif CLI.
 
 ### Motif CLI
 
-Motif ships with a command line interface that makes it easy to ensure that your code is always in sync with your JSON theme files. Let's look at an example of how to use it in your app:
+Motif ships with a command line interface that makes it easy to ensure that your code is always in sync with your theme files. Let's look at an example of how to use it in your app:
 
-You have a simple JSON theme file, named `Buttons.json`:
+You have a simple YAML theme file, named `Buttons.yaml`:
 
-```javascript
-{
-    "$RedColor": "#f93d38",
-    "$BlueColor": "#50b5ed",
-    "$FontName": "AvenirNext-Regular",
-    ".ButtonText": {
-        "fontName": "$FontName",
-        "fontSize": 16
-    },
-    ".Button": {
-        "borderWidth": 1,
-        "cornerRadius": 5,
-        "contentEdgeInsets": "{10, 20, 10, 20}",
-        "tintColor": "$BlueColor",
-        "borderColor": "$BlueColor",
-        "titleText": ".ButtonText"
-    },
-    ".WarningButton": {
-        "_superclass": ".Button",
-        "tintColor": "$RedColor",
-        "borderColor": "$RedColor"
-    }
-}
+```yaml
+$RedColor: '#f93d38'
+$BlueColor: '#50b5ed'
+$FontName: AvenirNext-Regular
+
+.ButtonText:
+    fontName: $FontName
+    fontSize: 16
+
+.Button:
+    borderWidth: 1
+    cornerRadius: 5
+    contentEdgeInsets: '{10, 20, 10, 20}'
+    tintColor: $BlueColor
+    borderColor: $BlueColor
+    titleText: .ButtonText
+
+.WarningButton:
+    _superclass: .Button
+    tintColor: $RedColor
+    borderColor: $RedColor
 ```
 
 To generate theme symbols from this theme file, just run:
@@ -362,7 +358,7 @@ Now, when you add the above pair of files to your project, you can create and ap
 #import "ButtonSymbols.h"
 
 NSError *error;
-MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:ButtonsThemeName error:&error];
+MTFTheme *theme = [MTFTheme themeFromFileNamed:ButtonsThemeName error:&error];
 NSAssert(error == nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:ButtonsThemeClassNames.Button toObject:saveButton];
@@ -392,7 +388,7 @@ export THEMES_DIR="${SRCROOT}/${PRODUCT_NAME}"
 find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${THEMES_DIR}"
 ```
 
-This will ensure that your symbols files are always up to date with your JSON theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
+This will ensure that your symbols files are always up to date with your theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
 
 ## Live Reload
 

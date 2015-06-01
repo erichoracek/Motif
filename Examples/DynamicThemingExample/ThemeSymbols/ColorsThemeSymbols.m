@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ColorsTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'ColorsTheme.yaml'.
 
 #import "ColorsThemeSymbols.h"
 

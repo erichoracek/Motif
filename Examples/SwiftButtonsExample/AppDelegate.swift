@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         var error: NSError?
-        let theme = MTFTheme(fromJSONThemeNamed: ThemeName, error: &error)
+        let theme = MTFTheme(fromFileNamed: ThemeName, error: &error)
         assert(error == nil, "Error loading theme: \(error)")
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)

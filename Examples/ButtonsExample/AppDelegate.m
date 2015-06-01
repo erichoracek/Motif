@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError *error;
-    MTFTheme *theme = [MTFTheme themeFromJSONThemeNamed:ThemeName error:&error];
+    MTFTheme *theme = [MTFTheme themeFromFileNamed:ThemeName error:&error];
     NSAssert(error == nil, @"Error loading theme: %@", error);
     
     ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithTheme:theme];

@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'DarkMappingsTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'DarkMappingsTheme.yaml'.
 
 #import "DarkMappingsThemeSymbols.h"
 

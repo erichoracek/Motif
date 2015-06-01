@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'LightMappingsTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'LightMappingsTheme.yaml'.
 
 #import <Foundation/Foundation.h>
 

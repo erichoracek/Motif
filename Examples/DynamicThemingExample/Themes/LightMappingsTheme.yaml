@@ -1,0 +1,10 @@
+$ContentBackgroundColor: $WhiteColor
+$ContentForegroundColor: $WhiteLightColor
+$WarningColor: $RedDarkColor
+$PrimaryColor: $BlueDarkColor
+$SeparatorColor: $WhiteDarkColor
+$HeadingTextColor: $GrayColor
+$BodyTextColor: $GrayDarkColor
+$CaptionTextColor: $GrayLightColor
+$ButtonTextColor: $WhiteColor
+$ScrollIndicatorStyle: dark

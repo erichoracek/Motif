@@ -92,7 +92,7 @@
     if (!_lightTheme) {
         NSError *error;
         MTFTheme *theme = [MTFTheme
-            themeFromJSONThemesNamed:@[
+            themeFromFilesNamed:@[
                 ColorsThemeName,
                 LightMappingsThemeName,
                 TypographyThemeName,
@@ -111,7 +111,7 @@
     if (!_darkTheme) {
         NSError *error;
         MTFTheme *theme = [MTFTheme
-            themeFromJSONThemesNamed:@[
+            themeFromFilesNamed:@[
                 ColorsThemeName,
                 DarkMappingsThemeName,
                 TypographyThemeName,

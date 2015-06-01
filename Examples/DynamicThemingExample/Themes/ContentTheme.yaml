@@ -1,0 +1,30 @@
+.ContentBackground:
+    backgroundColor: $ContentBackgroundColor
+
+.ScrollableContentBackground:
+    _superclass: .ContentBackground
+    scrollIndicatorStyle: $ScrollIndicatorStyle
+
+.ContentDisplayText:
+    _superclass: .DisplayText
+    color: $HeadingTextColor
+
+.ContentHeadlineText:
+    _superclass: .HeadlineText
+    color: $HeadingTextColor
+
+.ContentTitleText:
+    _superclass: .TitleText
+    color: $HeadingTextColor
+
+.ContentSubheadText:
+    _superclass: .SubheadText
+    color: $HeadingTextColor
+
+.ContentBodyText:
+    _superclass: .BodyText
+    color: $BodyTextColor
+
+.ContentCaptionText:
+    _superclass: .CaptionText
+    color: $CaptionTextColor

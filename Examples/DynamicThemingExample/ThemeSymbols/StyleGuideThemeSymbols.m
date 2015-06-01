@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'StyleGuideTheme.json'.
+// WARNING: Do not modify. This file is machine-generated from 'StyleGuideTheme.yaml'.
 
 #import "StyleGuideThemeSymbols.h"
 
