@@ -53,9 +53,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     NSParameterAssert(themeNames);
     
     // Default to main bundle if bundle is nil
-    if (!bundle) {
-        bundle = NSBundle.mainBundle;
-    }
+    if (bundle == nil) bundle = NSBundle.mainBundle;
     
     // Build an array of fileURLs from the passed themeNames
     NSMutableArray *fileURLs = [NSMutableArray new];
@@ -149,7 +147,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
         NSString *localizedDescription = [NSString stringWithFormat:
             @"Invalid extension '%@' for theme file named '%@', expected one "
-                "of: %@",
+                "of: %@.",
             self.pathExtension,
             self.mtf_themeName,
             self.class.mtf_themeFileExtensions];
@@ -171,9 +169,9 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
         NSString *localizedDescription = [NSString stringWithFormat:
             @"The theme file named '%@' does not have a dictionary as the "
-                "root object. It is instead an '%@'.",
+                "root object. It is instead '%@'.",
             self.mtf_themeName,
-            [object class]];
+            [object class] ?: @"empty"];
 
         *error = [NSError
             errorWithDomain:MTFThemingErrorDomain

@@ -107,10 +107,19 @@
 		3A21963A1B1B9376006159D4 /* NSBundle+ExtensionURLs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A21963B1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */; };
 		3A21963C1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */; };
+		3A21963E1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */; };
+		3A21963F1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */; };
+		3A2196411B1BD436006159D4 /* BundledTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196401B1BD436006159D4 /* BundledTheme.yaml */; };
+		3A2196421B1BD436006159D4 /* BundledTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196401B1BD436006159D4 /* BundledTheme.yaml */; };
+		3A2196441B1BD62C006159D4 /* BasicTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196431B1BD62C006159D4 /* BasicTheme.yaml */; };
+		3A2196451B1BD62C006159D4 /* BasicTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196431B1BD62C006159D4 /* BasicTheme.yaml */; };
+		3A2196471B1BD632006159D4 /* BasicTheme.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196461B1BD632006159D4 /* BasicTheme.yml */; };
+		3A2196481B1BD632006159D4 /* BasicTheme.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196461B1BD632006159D4 /* BasicTheme.yml */; };
+		3A21964A1B1BD929006159D4 /* EmptyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196491B1BD929006159D4 /* EmptyTheme.yaml */; };
+		3A21964B1B1BD929006159D4 /* EmptyTheme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3A2196491B1BD929006159D4 /* EmptyTheme.yaml */; };
 		3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m */; };
 		3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m */; };
 		3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
-		3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
 		3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7967F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m */; };
 		3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
 		3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796801AC91D8400FD4320 /* MTFThemeClassTests.m */; };
@@ -169,7 +178,6 @@
 		3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */; };
 		3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */; };
 		3AA796931AC91D8400FD4320 /* MTFThemeLoadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */; };
-		3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */; };
 		3AA796951AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */; };
 		3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */; };
 		3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */; };
@@ -184,6 +192,8 @@
 		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
 		3AF172A11B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
+		3AF3C61B1B1BDEA100F0D3D4 /* NoExtensionTheme in Resources */ = {isa = PBXBuildFile; fileRef = 3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */; };
+		3AF3C61C1B1BDEA200F0D3D4 /* NoExtensionTheme in Resources */ = {isa = PBXBuildFile; fileRef = 3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +307,11 @@
 		3A1C4F581AEDD49C0048F84C /* MTFFileObservationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFFileObservationContext.m; sourceTree = "<group>"; };
 		3A2196371B1B9376006159D4 /* NSBundle+ExtensionURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ExtensionURLs.h"; sourceTree = "<group>"; };
 		3A2196381B1B9376006159D4 /* NSBundle+ExtensionURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ExtensionURLs.m"; sourceTree = "<group>"; };
+		3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ThemeFilesSpec.m"; sourceTree = "<group>"; };
+		3A2196401B1BD436006159D4 /* BundledTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BundledTheme.yaml; sourceTree = "<group>"; };
+		3A2196431B1BD62C006159D4 /* BasicTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicTheme.yaml; sourceTree = "<group>"; };
+		3A2196461B1BD632006159D4 /* BasicTheme.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicTheme.yml; sourceTree = "<group>"; };
+		3A2196491B1BD929006159D4 /* EmptyTheme.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyTheme.yaml; sourceTree = "<group>"; };
 		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFYAMLSerializationSpec.m; sourceTree = "<group>"; };
 		3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFYAMLSerialization.h; path = "YAML Serialization/MTFYAMLSerialization.h"; sourceTree = "<group>"; };
@@ -330,7 +345,6 @@
 		3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeConstantEqualityTests.m; sourceTree = "<group>"; };
 		3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeConstantTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeLoadingTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemeNameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertiesApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MTFThemePropertyApplierTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyAutoApplicationTests.m; sourceTree = "<group>"; };
@@ -342,6 +356,7 @@
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
+		3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NoExtensionTheme; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */,
+				3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -624,7 +640,6 @@
 				3AA796811AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m */,
 				3AA796821AC91D8400FD4320 /* MTFThemeConstantTests.m */,
 				3AA796831AC91D8400FD4320 /* MTFThemeLoadingTests.m */,
-				3AA796841AC91D8400FD4320 /* MTFThemeNameTests.m */,
 				3AA796851AC91D8400FD4320 /* MTFThemePropertiesApplierTests.m */,
 				3AA796861AC91D8400FD4320 /* MTFThemePropertyApplierTests.m */,
 				3AA796871AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m */,
@@ -634,7 +649,12 @@
 				3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */,
 				3AA796881AC91D8400FD4320 /* Basic.json */,
 				3AA796891AC91D8400FD4320 /* BasicTheme.json */,
+				3A2196431B1BD62C006159D4 /* BasicTheme.yaml */,
+				3A2196461B1BD632006159D4 /* BasicTheme.yml */,
 				3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */,
+				3A2196401B1BD436006159D4 /* BundledTheme.yaml */,
+				3A2196491B1BD929006159D4 /* EmptyTheme.yaml */,
+				3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */,
 				3A79EC701AC9147E000CCC01 /* Supporting Files */,
 			);
 			path = MotifTests;
@@ -864,8 +884,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */,
+				3A2196481B1BD632006159D4 /* BasicTheme.yml in Resources */,
 				3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */,
+				3A2196451B1BD62C006159D4 /* BasicTheme.yaml in Resources */,
 				3A406CDE1AC9B87600615428 /* Basic.json in Resources */,
+				3AF3C61C1B1BDEA200F0D3D4 /* NoExtensionTheme in Resources */,
+				3A21964B1B1BD929006159D4 /* EmptyTheme.yaml in Resources */,
+				3A2196421B1BD436006159D4 /* BundledTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,8 +906,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA796991AC91D8400FD4320 /* BasicTheme.json in Resources */,
+				3A2196471B1BD632006159D4 /* BasicTheme.yml in Resources */,
 				3AA7969B1AC91D8400FD4320 /* InvalidJSONTheme.json in Resources */,
+				3A2196441B1BD62C006159D4 /* BasicTheme.yaml in Resources */,
 				3AA796981AC91D8400FD4320 /* Basic.json in Resources */,
+				3AF3C61B1B1BDEA100F0D3D4 /* NoExtensionTheme in Resources */,
+				3A21964A1B1BD929006159D4 /* EmptyTheme.yaml in Resources */,
+				3A2196411B1BD436006159D4 /* BundledTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,12 +960,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A21963F1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
 				3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
 				3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */,
 				3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */,
 				3A406CC61AC9B87600615428 /* MTFThemeConstantEqualityTests.m in Sources */,
-				3A406CC71AC9B87600615428 /* MTFThemeNameTests.m in Sources */,
 				3A406CC81AC9B87600615428 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3A406CC91AC9B87600615428 /* MTFThemeConstantTests.m in Sources */,
 				3A406CCA1AC9B87600615428 /* MTFThemeClassTests.m in Sources */,
@@ -994,13 +1024,13 @@
 				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
 				3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
+				3A21963E1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
 				3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */,
 				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
 				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
 				3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */,
 				3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */,
-				3AA796941AC91D8400FD4320 /* MTFThemeNameTests.m in Sources */,
 				3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */,
 				3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */,
