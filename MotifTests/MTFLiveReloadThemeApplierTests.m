@@ -20,6 +20,7 @@
 
 @property (nonatomic, readonly) NSURL *themeDirectoryURL;
 @property (nonatomic, readonly) NSURL *themeURL;
+@property (nonatomic, readonly) NSURL *sourceFileURL;
 @property (nonatomic, readwrite) NSString *themeName;
 
 @end
@@ -36,6 +37,10 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     self.themeName = [[NSProcessInfo processInfo] globallyUniqueString];
 
     [self writeJSONObject:[self themeWithPropertyValue:PropertyValue1] toURL:self.themeURL];
+
+    NSError *error;
+    [@"test" writeToURL:self.sourceFileURL atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    XCTAssertNil(error);
 }
 
 - (void)tearDown {
@@ -45,6 +50,14 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     BOOL didRemoveFile = [NSFileManager.defaultManager removeItemAtURL:self.themeURL error:&error];
     
     XCTAssertTrue(didRemoveFile, @"Unable to remove file at location %@", self.themeURL);
+
+    didRemoveFile = [NSFileManager.defaultManager removeItemAtURL:self.sourceFileURL error:&error];
+
+    XCTAssertTrue(didRemoveFile, @"Unable to remove file at location %@", self.sourceFileURL);
+}
+
+- (void)testThrowsOnInitialization {
+    XCTAssertThrows([[MTFLiveReloadThemeApplier alloc] init]);
 }
 
 - (void)testLiveReloadThemePropertyApplied {
@@ -55,6 +68,35 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     MTFLiveReloadThemeApplier *applier = [[MTFLiveReloadThemeApplier alloc]
         initWithTheme:theme
         sourceDirectoryURL:self.themeDirectoryURL];
+    XCTAssertNotNil(applier, @"Unable to create theme applier");
+    
+    TestLiveReloadObject *testObject = [TestLiveReloadObject new];
+    [applier applyClassWithName:ClassName toObject:testObject];
+    
+    XCTAssertEqualObjects(testObject.testLiveReloadProperty, PropertyValue1);
+
+    [self
+        keyValueObservingExpectationForObject:testObject
+        keyPath:NSStringFromSelector(@selector(testLiveReloadProperty))
+        expectedValue:PropertyValue2];
+
+    // Wait for one second to allow for dispatch sources to setup properly
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        id JSONObject = [self themeWithPropertyValue:PropertyValue2];
+        [self writeJSONObject:JSONObject toURL:self.themeURL];
+    });
+
+    [self waitForExpectationsWithTimeout:5.0 handler:nil];
+}
+
+- (void)testLiveReloadThemePropertyAppliedFromSourceFile {
+    NSError *error;
+    MTFTheme *theme = [[MTFTheme alloc] initWithFile:self.themeURL error:&error];
+    XCTAssertNil(error, @"Unable to create theme from JSON file %@", self.themeURL);
+
+    MTFLiveReloadThemeApplier *applier = [[MTFLiveReloadThemeApplier alloc]
+        initWithTheme:theme
+        sourceFile:(char *)self.sourceFileURL.fileSystemRepresentation];
     XCTAssertNotNil(applier, @"Unable to create theme applier");
     
     TestLiveReloadObject *testObject = [TestLiveReloadObject new];
@@ -111,6 +153,10 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     NSString *pathComponent = [self.themeName stringByAppendingString:@".json"];
 
     return [self.themeDirectoryURL URLByAppendingPathComponent:pathComponent];
+}
+
+- (NSURL *)sourceFileURL {
+    return [self.themeDirectoryURL URLByAppendingPathComponent:@"FileName.m"];
 }
 
 @end
