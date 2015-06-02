@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFTheme;
 
 /// A block that is invoked when a theme is recreated from its source files
 /// when they were updated, and an error if there was one when creating it.
-typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * mtf_null_resettable);
+typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * null_resettable);
 
 /// Observes the JSON theme files that were used to create an MTFTheme, and
 /// creates a new MTFTheme whenever they are edited.
@@ -44,8 +43,8 @@ typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * mtf_null_resettable);
 @property (nonatomic, readonly) MTFTheme *updatedTheme;
 
 /// The error, if there was any, when creating the latest `updatedTheme`.
-@property (nonatomic, readonly, mtf_nullable) NSError *updatedThemeError;
+@property (nonatomic, readonly, nullable) NSError *updatedThemeError;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

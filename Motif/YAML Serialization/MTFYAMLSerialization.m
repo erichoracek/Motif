@@ -10,7 +10,7 @@
 
 #import "MTFYAMLSerialization.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFYAMLSerialization ()
 
@@ -20,7 +20,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) NSRegularExpression *floatRegularExpression;
 @property (readonly, nonatomic) NSDictionary *constantTags;
 @property (readonly, nonatomic) NSMutableDictionary *tagHandlers;
-@property (readonly, nonatomic, mtf_nullable) id object;
+@property (readonly, nonatomic, nullable) id object;
 
 @end
 
@@ -28,7 +28,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public
 
-+ (mtf_nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error {
++ (nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error {
     MTFYAMLSerialization *serialization = [[self alloc] initWithData:data error:error];
     return serialization.object;
 }
@@ -79,7 +79,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-- (void)registerMappingForTag:(NSString *)tag map:(mtf_nullable id (^)(id, NSError *__autoreleasing *))map {
+- (void)registerMappingForTag:(NSString *)tag map:(nullable id (^)(id, NSError *__autoreleasing *))map {
     if (map == nil) {
         map = ^(id value, NSError *__autoreleasing *_) {
             return value;
@@ -119,7 +119,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         }];
 }
 
-- (mtf_nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing *)error {
+- (nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing *)error {
     if (data.length == 0) {
         return nil;
     }
@@ -141,7 +141,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     return documents.firstObject;
 }
 
-- (mtf_nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+- (nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
     NSMutableArray *documents = [NSMutableArray array];
 
     BOOL didParseDocuments = [self parseDocumentComponent:documents withParser:parser error:error];
@@ -271,7 +271,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
-- (mtf_nullable id)valueForScalarEvent:(yaml_event_t *)event fromParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+- (nullable id)valueForScalarEvent:(yaml_event_t *)event fromParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
 
     NSString *tag;
     if (event->data.scalar.tag != NULL) {
@@ -434,4 +434,4 @@ NSString * const MTFYAMLSerializationContextDescriptionErrorKey = @"MTFYAMLSeria
 
 NSString * const MTFYAMLSerializationLineContentsErrorKey = @"MTFYAMLSerializationLineContentsErrorKey";
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

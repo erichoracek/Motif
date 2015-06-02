@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  Registers a set of convenience value transformers in its load method.
@@ -66,4 +65,4 @@ extern NSString * const MTFVectorFromStringTransformerName;
  */
 extern NSString * const MTFOffsetFromStringTransformerName;
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

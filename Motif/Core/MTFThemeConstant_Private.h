@@ -8,14 +8,14 @@
 
 #import <Motif/MTFThemeConstant.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFThemeConstant ()
 
 /**
  Initializes a new instance of an MTFThemeConstant.
  */
-- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(mtf_nullable id)mappedValue;
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue;
 
 /**
  The raw value of the constant, directly deserialized from the JSON file.
@@ -29,7 +29,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  Can be either an MTFThemeClass, MTFThemeConstant, or nil if the constant is not
  a reference.
  */
-@property (nonatomic, mtf_nullable) id mappedValue;
+@property (nonatomic, nullable) id mappedValue;
 
 /**
  A cache to hold transformed mapped values on this constant.
@@ -38,8 +38,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @see NSValueTransformer
  */
-@property (nonatomic, mtf_null_resettable) NSCache *transformedValueCache;
+@property (nonatomic, null_resettable) NSCache *transformedValueCache;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

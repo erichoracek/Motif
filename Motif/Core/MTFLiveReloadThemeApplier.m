@@ -9,7 +9,7 @@
 #import "MTFLiveReloadThemeApplier.h"
 #import "MTFThemeSourceObserver.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFLiveReloadThemeApplier ()
 
@@ -123,7 +123,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (mtf_nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {
+- (nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {
     NSParameterAssert(sourceFileURL);
     
     NSError *error;
@@ -141,4 +141,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

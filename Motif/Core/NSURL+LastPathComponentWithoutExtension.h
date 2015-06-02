@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (LastPathComponentWithoutExtension)
 
@@ -21,8 +20,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  First reads the lastPathComponent of the URL, and then takes its pathExtension
  and trims it from the lastPathComponent.
  */
-@property (nonatomic, readonly, mtf_nullable) NSString *mtf_lastPathComponentWithoutExtension;
+@property (nonatomic, readonly, nullable) NSString *mtf_lastPathComponentWithoutExtension;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

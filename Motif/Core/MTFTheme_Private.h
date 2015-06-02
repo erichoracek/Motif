@@ -8,7 +8,7 @@
 
 #import <Motif/MTFTheme.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFTheme ()
 
@@ -34,18 +34,18 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  The URLs of the JSON themes that were added to the theme, in the order that
  they were added in.
  */
-@property (nonatomic, mtf_null_resettable) NSArray *fileURLs;
+@property (nonatomic, null_resettable) NSArray *fileURLs;
 
 /**
  The MTFThemeConstant instances on the theme, keyed by their names.
  */
-@property (nonatomic, mtf_null_resettable) NSDictionary *constants;
+@property (nonatomic, null_resettable) NSDictionary *constants;
 
 /**
  The MTFThemeClass instances on the theme, keyed by their names.
  */
-@property (nonatomic, mtf_null_resettable) NSDictionary *classes;
+@property (nonatomic, null_resettable) NSDictionary *classes;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

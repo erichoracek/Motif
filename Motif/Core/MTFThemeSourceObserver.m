@@ -11,14 +11,14 @@
 #import "MTFTheme_Private.h"
 #import "MTFFileObservationContext.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFThemeSourceObserver ()
 
 @property (nonatomic, readonly) dispatch_queue_t fileObservationQueue;
 @property (nonatomic) NSArray *fileObservationContexts;
 @property (nonatomic) MTFTheme *updatedTheme;
-@property (nonatomic, mtf_nullable) NSError *updatedThemeError;
+@property (nonatomic, nullable) NSError *updatedThemeError;
 
 @end
 
@@ -222,7 +222,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         path:path];
 }
 
-- (mtf_nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
+- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
     NSParameterAssert(sourceFilePaths);
     
     // Transform the paths into URLs
@@ -302,4 +302,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

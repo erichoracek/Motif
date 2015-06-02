@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C84A1AD206FF00C420F2 /* MTFDynamicThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */; };
 		3A02C84C1AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -51,7 +50,6 @@
 		3A02C87B1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */; };
 		3A02C87E1AD206FF00C420F2 /* UIColor+HTMLColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C87F1AD206FF00C420F2 /* UIColor+HTMLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8481AD206FF00C420F2 /* UIColor+HTMLColors.m */; };
-		3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C8811AD2072500C420F2 /* MTFDynamicThemeApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C8821AD2072500C420F2 /* MTFDynamicThemeApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */; };
 		3A02C8831AD2072500C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -237,7 +235,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFBackwardsCompatableNullability.h; sourceTree = "<group>"; };
 		3A02C8111AD206FF00C420F2 /* MTFDynamicThemeApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFDynamicThemeApplier.h; sourceTree = "<group>"; };
 		3A02C8121AD206FF00C420F2 /* MTFDynamicThemeApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicThemeApplier.m; sourceTree = "<group>"; };
 		3A02C8131AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFDynamicThemeApplier_Private.h; sourceTree = "<group>"; };
@@ -400,7 +397,6 @@
 		3A02C80F1AD206FF00C420F2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3A02C8101AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h */,
 				3A02C8161AD206FF00C420F2 /* MTFTheme.h */,
 				3A02C8181AD206FF00C420F2 /* MTFTheme_Private.h */,
 				3A02C8171AD206FF00C420F2 /* MTFTheme.m */,
@@ -703,7 +699,6 @@
 				3A02C8981AD2072600C420F2 /* NSDictionary+IntersectingKeys.h in Headers */,
 				3A02C8A71AD208D900C420F2 /* MTFRuntimeExtensions.h in Headers */,
 				3A02C8891AD2072500C420F2 /* MTFThemeClass.h in Headers */,
-				3A02C8801AD2072500C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
 				3A02C8921AD2072500C420F2 /* MTFThemeParser.h in Headers */,
 				3A02C8A31AD2072600C420F2 /* NSURL+ThemeFiles.h in Headers */,
 				3A1C4F541AEDC9730048F84C /* MTFThemeSourceObserver.h in Headers */,
@@ -747,7 +742,6 @@
 				3A02C8521AD206FF00C420F2 /* MTFThemeClass.h in Headers */,
 				3A6C1D5E1B143ECA0034F5A8 /* yaml.h in Headers */,
 				3A1C4F591AEDD49C0048F84C /* MTFFileObservationContext.h in Headers */,
-				3A02C8491AD206FF00C420F2 /* MTFBackwardsCompatableNullability.h in Headers */,
 				3A02C85B1AD206FF00C420F2 /* MTFThemeParser.h in Headers */,
 				3A02C86C1AD206FF00C420F2 /* NSURL+ThemeFiles.h in Headers */,
 				3A02C85D1AD206FF00C420F2 /* MTFThemeSymbolReference.h in Headers */,

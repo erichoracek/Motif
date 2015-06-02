@@ -14,7 +14,6 @@ FOUNDATION_EXPORT double MotifVersionNumber;
 //! Project version string for Motif.
 FOUNDATION_EXPORT const unsigned char MotifVersionString[];
 
-#import <Motif/MTFBackwardsCompatableNullability.h>
 #import <Motif/MTFTheme.h>
 #import <Motif/MTFThemeClass.h>
 #import <Motif/MTFThemeClassApplicable.h>

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Motif/MTFDynamicThemeApplier.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A theme applier that changes its theme relative to the brightness of a
@@ -71,4 +70,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

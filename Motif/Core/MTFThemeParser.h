@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFTheme;
 
@@ -31,7 +30,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized theme parser.
  */
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(mtf_nullable MTFTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(nullable MTFTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 /**
  The theme constants parsed from the raw theme.
@@ -57,4 +56,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

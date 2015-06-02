@@ -7,9 +7,8 @@
 //
 
 @import Foundation;
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSBundle (ExtensionURLs)
 
@@ -17,8 +16,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 /// file extensions and located in the specified bundle subdirectory.
 ///
 /// @see URLsForResourcesWithExtension:subdirectory:
-- (mtf_nullable NSArray *)mtf_URLsForResourcesWithExtensions:(NSArray *)extensions subdirectory:(mtf_nullable NSString *)subdirectory;
+- (nullable NSArray *)mtf_URLsForResourcesWithExtensions:(NSArray *)extensions subdirectory:(nullable NSString *)subdirectory;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

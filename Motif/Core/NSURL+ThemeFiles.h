@@ -7,16 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (ThemeFiles)
 
 /**
  The theme name derived from this URL, if there is one.
  */
-@property (nonatomic, readonly, mtf_nullable) NSString *mtf_themeName;
+@property (nonatomic, readonly, nullable) NSString *mtf_themeName;
 
 /**
  Returns an array of NSURLs matching the theme names passed into the method.
@@ -31,7 +30,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return An array of NSURLs matching the theme names passed into the method.
  */
-+ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(mtf_nullable NSBundle *)bundle;
++ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(nullable NSBundle *)bundle;
 
 /**
  The dictionary representation of the theme file contents at this URL, if there
@@ -45,7 +44,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
               
  @return The dictionary representation of the theme file contents at this URL.
  */
-- (mtf_nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError **)error;
+- (nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError **)error;
 
 @end
 
@@ -56,4 +55,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  */
 extern NSString * const MTFThemeFileNotFoundException;
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

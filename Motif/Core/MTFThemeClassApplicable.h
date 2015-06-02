@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 #import <Motif/NSObject+ThemeClassAppliers.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFThemeClass;
 @class MTFTheme;
@@ -103,7 +102,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized theme class property applier.
  */
-- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(mtf_nullable NSString *)name requiredClass:(mtf_nullable Class)requiredClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperty:(NSString *)property valueTransformerName:(nullable NSString *)name requiredClass:(nullable Class)requiredClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
  The name of the property that this theme property applier is responsible for
@@ -116,13 +115,13 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  theme file to the value that is a parameter to the applier block, or nil if the
  value needs no transformation.
  */
-@property (nonatomic, copy, readonly, mtf_nullable) NSString *valueTransformerName;
+@property (nonatomic, copy, readonly, nullable) NSString *valueTransformerName;
 
 /**
  The class that the property value is required to be a kind of, or nil if the
  type of the value should not be checked.
  */
-@property (nonatomic, readonly, mtf_nullable) Class requiredClass;
+@property (nonatomic, readonly, nullable) Class requiredClass;
 
 /**
  The block that is invoked to apply the property value to an instance of the
@@ -153,7 +152,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized theme class properties applier.
  */
-- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(mtf_nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperties:(NSArray *)properties valueTransformersOrRequiredClasses:(nullable NSArray *)valueTransformersOrRequiredClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
  An array specifying either of the following, in the same order as the
@@ -168,7 +167,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  If nil, there are no value transfomer or required classes for this theme
  applier.
  */
-@property (nonatomic, readonly, mtf_nullable) NSArray *valueTransformersOrRequiredClasses;
+@property (nonatomic, readonly, nullable) NSArray *valueTransformersOrRequiredClasses;
 
 /**
  The block that is invoked to apply the property values to an instance of the
@@ -178,4 +177,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

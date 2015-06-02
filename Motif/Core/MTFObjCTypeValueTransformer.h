@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MTFBackwardsCompatableNullability.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  Implemented by NSValueTransformers to specify that their transformed value will
@@ -28,4 +27,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

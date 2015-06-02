@@ -13,7 +13,7 @@
 
 #import "NSValueTransformer+ValueTransformerRegistration.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSValueTransformer (ValueTransformerRegistration)
 
@@ -37,7 +37,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
         returningTransformedValueWithBlock:transformedValueBlock];
 }
 
-+ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(mtf_nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
++ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
     NSParameterAssert(name != nil);
     NSParameterAssert(transformedValueClass != nil);
     NSParameterAssert(reverseTransformedValueClass != nil);
@@ -186,4 +186,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END
