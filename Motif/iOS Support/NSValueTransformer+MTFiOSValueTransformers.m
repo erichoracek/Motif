@@ -13,7 +13,7 @@
 
 #import "NSValueTransformer+MTFiOSValueTransformers.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSValueTransformer (MTFiOSValueTransformers)
 
@@ -101,4 +101,4 @@ NSString * const MTFVectorFromStringTransformerName = @"MTFVectorFromStringTrans
 
 NSString * const MTFOffsetFromStringTransformerName = @"MTFOffsetFromStringTransformerName";
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

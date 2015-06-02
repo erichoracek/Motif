@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFThemeClass;
 @protocol MTFThemeClassApplicable;
@@ -191,4 +190,4 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

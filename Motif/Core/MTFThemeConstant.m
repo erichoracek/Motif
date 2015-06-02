@@ -57,7 +57,7 @@
 
 #pragma mark Private
 
-- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(mtf_nullable id)mappedValue {
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue {
     NSParameterAssert(name);
     NSParameterAssert(rawValue);
     self = [super init];

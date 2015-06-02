@@ -8,7 +8,7 @@
 
 #import "MTFFileObservationContext.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFFileObservationContext
 
@@ -40,4 +40,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A named constant value from an MTFTheme.
@@ -37,8 +36,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return The transformed value.
  */
-- (mtf_nullable id)transformedValueFromTransformerWithName:(NSString *)name;
+- (nullable id)transformedValueFromTransformerWithName:(NSString *)name;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

@@ -8,7 +8,7 @@
 
 #import <Motif/MTFDynamicThemeApplier.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFDynamicThemeApplier ()
 
@@ -20,8 +20,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  a class applied to it. When the theme property is changed, this enables an
  applier instance to apply the new theme to all of its previous applicants.
  */
-@property (nonatomic, mtf_null_resettable) NSHashTable *applicants;
+@property (nonatomic, null_resettable) NSHashTable *applicants;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

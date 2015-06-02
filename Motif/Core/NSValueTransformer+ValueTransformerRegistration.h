@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  Shorthand for quickly registering value transformer instances.
@@ -60,4 +59,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

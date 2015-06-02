@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  The type of a theme symbol.
@@ -67,7 +66,7 @@ extern NSString * const MTFThemeSuperclassKey;
 /**
  The symbol without any syntax included, e.g. "Class" from ".Class".
  */
-@property (nonatomic, readonly, mtf_nullable) NSString *mtf_symbol;
+@property (nonatomic, readonly, nullable) NSString *mtf_symbol;
 
 /**
  The type of the symbols, if it is one, or MTFThemeSymbolTypeNone otherwise.
@@ -82,4 +81,4 @@ extern NSString * const MTFThemeSuperclassKey;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

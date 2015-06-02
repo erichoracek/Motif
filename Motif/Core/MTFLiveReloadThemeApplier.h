@@ -7,9 +7,8 @@
 //
 
 #import <Motif/MTFDynamicThemeApplier.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// A theme applier that "live reloads" its theme at runtime whenever any of
 /// the source theme files are changed. By using this theme applier, you can
@@ -53,4 +52,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

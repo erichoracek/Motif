@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (IntersectingKeys)
 
@@ -21,8 +20,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  @return The set of keys that intersect with the specified dictionary's keys.
          Nil if no keys are found.
  */
-- (mtf_nullable NSSet *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
+- (nullable NSSet *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

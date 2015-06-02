@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A named class from an MTFTheme containing a set of named properties with
@@ -71,4 +70,4 @@ extern NSString * const MTFThemeClassUnappliedPropertyException;
  */
 extern NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName;
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

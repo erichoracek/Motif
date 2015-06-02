@@ -12,7 +12,7 @@
 #import "MTFYAMLSerialization.h"
 #import "MTFTheme.h"
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, MTFThemeFileType) {
     MTFThemeFileTypeInvalid,
@@ -31,7 +31,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
 #pragma mark - Public
 
-- (mtf_nullable NSString *)mtf_themeName {
+- (nullable NSString *)mtf_themeName {
     NSString *filenameWithoutExtension = self.mtf_lastPathComponentWithoutExtension;
     NSString *name = filenameWithoutExtension;
     // If the theme name ends with "Theme", then trim it out of the name
@@ -49,7 +49,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return name;
 }
 
-+ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(mtf_nullable NSBundle *)bundle {
++ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(nullable NSBundle *)bundle {
     NSParameterAssert(themeNames);
     
     // Default to main bundle if bundle is nil
@@ -94,7 +94,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return [fileURLs copy];
 }
 
-- (mtf_nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError * __autoreleasing *)error {
+- (nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError * __autoreleasing *)error {
     // If the file is not a file URL, populate the error object
     if (!self.isFileURL) {
         if (error == nil) return nil;
@@ -188,7 +188,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
 #pragma mark - Private
 
-+ (mtf_nullable NSURL *)mtf_fileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtension:(NSString *)extension {
++ (nullable NSURL *)mtf_fileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtension:(NSString *)extension {
     NSParameterAssert(themeName != nil);
     NSParameterAssert(bundle != nil);
     NSParameterAssert(extension != nil);
@@ -206,7 +206,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return fileURL;
 }
 
-+ (mtf_nullable NSURL *)mtf_firstFileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtensions:(NSArray *)extensions {
++ (nullable NSURL *)mtf_firstFileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtensions:(NSArray *)extensions {
     NSParameterAssert(themeName != nil);
     NSParameterAssert(bundle != nil);
     NSParameterAssert(extensions != nil);
@@ -239,4 +239,4 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

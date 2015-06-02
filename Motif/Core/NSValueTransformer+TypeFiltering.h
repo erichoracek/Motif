@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSValueTransformer (TypeFiltering)
 
@@ -25,7 +24,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (mtf_nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(mtf_nullable const char *)objCType;
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(nullable const char *)objCType;
 
 /**
  Returns the first value trasformer that is able to transform the specified
@@ -38,8 +37,8 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (mtf_nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(mtf_nullable Class)class;
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)class;
 
 @end
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

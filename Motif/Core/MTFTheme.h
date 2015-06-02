@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFThemeClass;
 
@@ -74,7 +73,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(mtf_nullable NSBundle *)bundle error:(NSError **)error;
++ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -131,7 +130,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return The constant value for the specified name, or if there is none, `nil`.
  */
-- (mtf_nullable id)constantValueForName:(NSString *)name;
+- (nullable id)constantValueForName:(NSString *)name;
 
 /**
  The class object for the specified class name.
@@ -140,7 +139,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  
  @return The class for the specified name, or if there is none, `nil`.
  */
-- (mtf_nullable MTFThemeClass *)classForName:(NSString *)name;
+- (nullable MTFThemeClass *)classForName:(NSString *)name;
 
 /**
  Applies a theme class with the specified name to an object.
@@ -161,4 +160,4 @@ MTF_NS_ASSUME_NONNULL_BEGIN
  */
 extern NSString * const MTFThemingErrorDomain;
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

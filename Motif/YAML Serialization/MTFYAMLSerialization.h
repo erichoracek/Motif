@@ -7,9 +7,8 @@
 //
 
 @import Foundation;
-#import <Motif/MTFBackwardsCompatableNullability.h>
 
-MTF_NS_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Converts YAML to Foundation objects.
 @interface MTFYAMLSerialization : NSObject
@@ -23,7 +22,7 @@ MTF_NS_ASSUME_NONNULL_BEGIN
 ///
 /// @return A Foundation object from the YAML data in data, or nil if an error
 ///         occurs.
-+ (mtf_nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error;
++ (nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error;
 
 @end
 
@@ -50,4 +49,4 @@ extern NSString * const MTFYAMLSerializationContextDescriptionErrorKey;
 /// An NSString containing the contents of the line on which the error occurred.
 extern NSString * const MTFYAMLSerializationLineContentsErrorKey;
 
-MTF_NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END
