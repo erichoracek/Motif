@@ -13,13 +13,15 @@
 #import "MTFTheme+SymbolsGeneration.h"
 #import "NSOutputStream+StringWriting.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, FileType) {
     FileTypeHeader,
     FileTypeImplementation
 };
 
 typedef NS_ENUM(NSInteger, SymbolType) {
-    SymbolTypeConstantKeys,
+    SymbolTypeConstantNames,
     SymbolTypeClassNames,
     SymbolTypeProperties,
     SymbolTypeCount
@@ -39,6 +41,7 @@ typedef NS_ENUM(NSInteger, SymbolType) {
         intoDirectoryWithURL:directoryURL
         indentation:indentation
         prefix:prefix];
+
     [self
         generateSymbolsFileOfType:FileTypeImplementation
         intoDirectoryWithURL:directoryURL
@@ -75,7 +78,7 @@ typedef NS_ENUM(NSInteger, SymbolType) {
     gbprintln(@"Generated: %@", outputFilename);
 }
 
-- (NSArray *)constantKeys {
+- (NSArray *)constantNames {
     return self.constants.allKeys;
 }
 
@@ -85,9 +88,11 @@ typedef NS_ENUM(NSInteger, SymbolType) {
 
 - (NSArray *)properties {
     NSMutableSet *properties = [NSMutableSet new];
+
     for (MTFThemeClass *class in self.classes.allValues) {
         [properties addObjectsFromArray:class.properties.allKeys];
     }
+
     return properties.allObjects;
 }
 
@@ -165,7 +170,9 @@ typedef NS_ENUM(NSInteger, SymbolType) {
     NSOutputStream *outputStream = [NSOutputStream
         outputStreamWithURL:outputFileURL
         append:NO];
+
     [outputStream open];
+
     return outputStream;
 }
 
@@ -179,6 +186,7 @@ static NSString * const NamePrefix = @"Theme";
     if (![symbolsName isEqualToString:NamePrefix]) {
         symbolsName = [symbolsName stringByAppendingString:NamePrefix];
     }
+
     return symbolsName;
 }
 
@@ -224,6 +232,7 @@ static NSString * const WarningCommentFormat = @"\
 
 - (NSString *)symbolsImportForName:(NSString *)name fileType:(FileType)fileType prefix:(NSString *)prefix {
     NSParameterAssert(name);
+    NSParameterAssert(prefix);
     
     switch (fileType) {
     case FileTypeHeader:
@@ -235,6 +244,8 @@ static NSString * const WarningCommentFormat = @"\
 }
 
 + (NSString *)symbolsHeaderImportForName:(NSString *)name prefix:(NSString *)prefix {
+    NSParameterAssert(name);
+    NSParameterAssert(prefix);
     
     NSString *importFileName = [self
         symbolsFilenameFromName:name
@@ -244,7 +255,7 @@ static NSString * const WarningCommentFormat = @"\
     return [NSString stringWithFormat:@"#import \"%@\"", importFileName];
 }
 
-- (NSString *)symbolsThemeNameStringConstFromName:(NSString *)name forFiletype:(FileType)fileType prefix:(NSString *)prefix {
+- (nullable NSString *)symbolsThemeNameStringConstFromName:(NSString *)name forFiletype:(FileType)fileType prefix:(NSString *)prefix {
     NSParameterAssert(name);
     NSParameterAssert(prefix);
     
@@ -267,14 +278,15 @@ static NSString * const WarningCommentFormat = @"\
     return nil;
 }
 
-- (NSString *)symbolsDeclartionOfType:(SymbolType)symbolType withFiletype:(FileType)fileType name:(NSString *)name indentation:(NSString *)indentation prefix:(NSString *)prefix {
+- (nullable NSString *)symbolsDeclartionOfType:(SymbolType)symbolType withFiletype:(FileType)fileType name:(NSString *)name indentation:(NSString *)indentation prefix:(NSString *)prefix {
+    NSParameterAssert(name);
     NSParameterAssert(indentation);
     NSParameterAssert(prefix);
     
     NSArray *symbols = [self symbolsForType:symbolType];
-    if (!symbols || !symbols.count) {
-        return nil;
-    }
+
+    if (!symbols || !symbols.count) return nil;
+
     symbols = [symbols sortedArrayUsingSelector:@selector(compare:)];
     
     NSMutableArray *lines = [NSMutableArray new];
@@ -301,7 +313,7 @@ static NSString * const WarningCommentFormat = @"\
     return [lines componentsJoinedByString:@"\n"];
 }
 
-- (NSString *)openingDeclarationForFiletype:(FileType)filetype enumName:(NSString *)enumName {
+- (nullable NSString *)openingDeclarationForFiletype:(FileType)filetype enumName:(NSString *)enumName {
     NSParameterAssert(enumName);
     
     switch (filetype) {
@@ -318,7 +330,7 @@ static NSString * const WarningCommentFormat = @"\
     return nil;
 }
 
-- (NSString *)memberDeclarationForSymbol:(NSString *)symbol fileType:(FileType)filetype indentation:(NSString *)indentation {
+- (nullable NSString *)memberDeclarationForSymbol:(NSString *)symbol fileType:(FileType)filetype indentation:(NSString *)indentation {
     NSParameterAssert(symbol);
     NSParameterAssert(indentation);
     
@@ -338,19 +350,19 @@ static NSString * const WarningCommentFormat = @"\
     return nil;
 }
 
-- (NSString *)closingDeclarationForFiletype:(FileType)filetype enumName:(NSString *)enumName {
+- (nullable NSString *)closingDeclarationForFiletype:(FileType)filetype enumName:(NSString *)enumName {
     NSParameterAssert(enumName);
     
     switch (filetype) {
-        case FileTypeHeader:
-            return [NSString stringWithFormat:@"} %@;", enumName];
-        case FileTypeImplementation:
-            return @"};";
+    case FileTypeHeader:
+        return [NSString stringWithFormat:@"} %@;", enumName];
+    case FileTypeImplementation:
+        return @"};";
     }
     return nil;
 }
 
-- (NSString *)enumNameForSymbolType:(SymbolType)symbolType name:(NSString *)name prefix:(NSString *)prefix {
+- (nullable NSString *)enumNameForSymbolType:(SymbolType)symbolType name:(NSString *)name prefix:(NSString *)prefix {
     NSParameterAssert(name);
     NSParameterAssert(prefix);
     
@@ -358,7 +370,7 @@ static NSString * const WarningCommentFormat = @"\
     switch (symbolType) {
     case SymbolTypeClassNames:
         return [enumName stringByAppendingString:@"ClassNames"];
-    case SymbolTypeConstantKeys:
+    case SymbolTypeConstantNames:
         return [enumName stringByAppendingString:@"ConstantNames"];
     case SymbolTypeProperties:
         return [enumName stringByAppendingString:@"Properties"];
@@ -367,12 +379,12 @@ static NSString * const WarningCommentFormat = @"\
     }
 }
 
-- (NSArray *)symbolsForType:(SymbolType)symbolType {
+- (nullable NSArray *)symbolsForType:(SymbolType)symbolType {
     switch (symbolType) {
     case SymbolTypeClassNames:
         return self.classNames;
-    case SymbolTypeConstantKeys:
-        return self.constantKeys;
+    case SymbolTypeConstantNames:
+        return self.constantNames;
     case SymbolTypeProperties:
         return self.properties;
     default:
@@ -381,3 +393,5 @@ static NSString * const WarningCommentFormat = @"\
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

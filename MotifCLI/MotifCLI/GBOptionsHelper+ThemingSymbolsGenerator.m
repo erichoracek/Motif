@@ -16,7 +16,7 @@
         long:MTFSettingsOptionThemes
         description:@"The YAML or JSON theme file(s) to generate symbols from. "
             "You may specify more than one theme by using this parameter more "
-            "than once (e.g. -t [theme1.json] -t [theme2.yaml])."
+            "than once (e.g. -t theme1.json -t theme2.yaml)."
         flags:GBOptionRequiredValue];
 
     [self registerOption:'o'

@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSURL (CLIHelpers)
 
-+ (NSURL *)mtf_fileURLFromPathParameter:(NSString *)path;
-+ (NSURL *)mtf_directoryURLFromPathParameter:(NSString *)path;
++ (nullable NSURL *)mtf_fileURLFromPathParameter:(nullable NSString *)path;
++ (nullable NSURL *)mtf_directoryURLFromPathParameter:(nullable NSString *)path;
 
 @end
+
+NS_ASSUME_NONNULL_END
