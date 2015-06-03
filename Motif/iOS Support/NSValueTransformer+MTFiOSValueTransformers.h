@@ -25,12 +25,6 @@ extern NSString * const MTFColorFromStringTransformerName;
 
 /**
  The name of the value transformer responsible for transforming an NSString to
- an NSValue wrapping a UIEdgeInsets struct.
- */
-extern NSString * const MTFEdgeInsetsFromStringTransformerName;
-
-/**
- The name of the value transformer responsible for transforming an NSString to
  an NSValue wrapping a CGPoint struct.
  */
 extern NSString * const MTFPointFromStringTransformerName;

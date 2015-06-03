@@ -27,14 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFEdgeInsetsFromStringTransformerName
-        transformedValueObjCType:@encode(UIEdgeInsets)
-        reverseTransformedValueClass:NSString.class
-        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
-            return [NSValue valueWithUIEdgeInsets:UIEdgeInsetsFromString(value)];
-        }];
-
-    [self
         mtf_registerValueTransformerWithName:MTFPointFromStringTransformerName
         transformedValueObjCType:@encode(CGPoint)
         reverseTransformedValueClass:NSString.class

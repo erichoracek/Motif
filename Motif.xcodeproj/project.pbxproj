@@ -186,6 +186,9 @@
 		3AAD45861B1A57F8003473E9 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD45811B1A57E1003473E9 /* Expecta.framework */; };
 		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
 		3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
+		3AEB5BEF1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AEB5BED1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h */; };
+		3AEB5BF01B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB5BEE1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m */; };
+		3AEB5BF41B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB5BF31B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m */; };
 		3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */; };
 		3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */; };
@@ -351,6 +354,9 @@
 		3AAD45811B1A57E1003473E9 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAD45831B1A57F3003473E9 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
+		3AEB5BED1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MotifUIEdgeInsets.h"; sourceTree = "<group>"; };
+		3AEB5BEE1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MotifUIEdgeInsets.m"; sourceTree = "<group>"; };
+		3AEB5BF31B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSValueTransformer_MotifUIEdgeInsetsSpec.m; sourceTree = "<group>"; };
 		3AEC52EF1AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFLiveReloadThemeApplierTests.m; sourceTree = "<group>"; };
 		3AF1729F1B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFDynamicValueTransformersTests.m; sourceTree = "<group>"; };
 		3AF3C6181B1BDE6100F0D3D4 /* NoExtensionTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NoExtensionTheme; sourceTree = "<group>"; };
@@ -462,6 +468,8 @@
 			children = (
 				3AA5A77A1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.h */,
 				3AA5A77B1B05D24F004FA3A4 /* NSValueTransformer+MTFiOSValueTransformers.m */,
+				3AEB5BED1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h */,
+				3AEB5BEE1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m */,
 				3A02C8431AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h */,
 				3A02C8441AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.m */,
 				3A02C8471AD206FF00C420F2 /* UIColor+HTMLColors.h */,
@@ -540,6 +548,7 @@
 			children = (
 				3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */,
 				3A21963D1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m */,
+				3AEB5BF31B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -716,6 +725,7 @@
 				3A02C87A1AD206FF00C420F2 /* MTFScreenBrightnessThemeApplier.h in Headers */,
 				3A02C8681AD206FF00C420F2 /* NSString+ThemeSymbols.h in Headers */,
 				3A02C84C1AD206FF00C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
+				3AEB5BEF1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h in Headers */,
 				3AA796641AC919FB00FD4320 /* Motif.h in Headers */,
 				3A02C84E1AD206FF00C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
 				3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */,
@@ -998,6 +1008,7 @@
 				3A02C8561AD206FF00C420F2 /* MTFThemeClassApplicable.m in Sources */,
 				3A02C84B1AD206FF00C420F2 /* MTFDynamicThemeApplier.m in Sources */,
 				3A21963B1B1B9376006159D4 /* NSBundle+ExtensionURLs.m in Sources */,
+				3AEB5BF01B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m in Sources */,
 				3A02C8501AD206FF00C420F2 /* MTFTheme.m in Sources */,
 				3A6C1D431B1438740034F5A8 /* MTFYAMLSerialization.m in Sources */,
 				3A6C1D4F1B143E840034F5A8 /* dumper.c in Sources */,
@@ -1017,6 +1028,7 @@
 			files = (
 				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
+				3AEB5BF41B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m in Sources */,
 				3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
 				3A21963E1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
 				3AA7968D1AC91D8400FD4320 /* MTFThemeClassApplierTests.m in Sources */,

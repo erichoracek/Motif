@@ -46,46 +46,6 @@
 
 @implementation MTFThemePropertyAutoApplicationTests
 
-- (void)testStructPropertyAutoApplication
-{
-    NSString *className = @".Class";
-    
-    UIEdgeInsets edgeInsetsValue = UIEdgeInsetsMake(1.0, 2.0, 3.0, 4.0);
-    CGRect rectValue = CGRectMake(1.0, 2.0, 3.0, 4.0);
-    CGSize sizeValue = CGSizeMake(1.0, 2.0);
-    CGPoint pointValue = CGPointMake(1.0, 2.0);
-    CGFloat floatValue = 1.0;
-    
-    NSDictionary *themeDictionary = @{
-        className: @{
-            NSStringFromSelector(@selector(edgeInsetsValue)): NSStringFromUIEdgeInsets(edgeInsetsValue),
-            NSStringFromSelector(@selector(rectValue)): NSStringFromCGRect(rectValue),
-            NSStringFromSelector(@selector(sizeValue)): NSStringFromCGSize(sizeValue),
-            NSStringFromSelector(@selector(pointValue)): NSStringFromCGPoint(pointValue),
-            NSStringFromSelector(@selector(floatValue)): @(floatValue)
-        }
-    };
-    
-    NSError *error;
-    MTFTheme *theme = [[MTFTheme alloc]
-        initWithThemeDictionary:themeDictionary
-        error:&error];
-    XCTAssertNil(error, @"Error must be nil when creating theme");
-    
-    MTFDynamicThemeApplier *applier = [[MTFDynamicThemeApplier alloc]
-        initWithTheme:theme];
-    
-    MTFTestCTypePropertiesObject *object = [MTFTestCTypePropertiesObject new];
-    
-    [applier applyClassWithName:className.mtf_symbol toObject:object];
-    
-    XCTAssert(CGRectEqualToRect(rectValue, object.rectValue), @"CGRect struct must be applied to object property");
-    XCTAssert(UIEdgeInsetsEqualToEdgeInsets(edgeInsetsValue, object.edgeInsetsValue), @"UIEdgeInsets struct must be applied to object property");
-    XCTAssert(CGPointEqualToPoint(pointValue, object.pointValue), @"CGPoint struct must be applied to object property");
-    XCTAssert(CGSizeEqualToSize(sizeValue, object.sizeValue), @"CGSize struct must be applied to object property");
-    XCTAssertEqual(floatValue, object.floatValue, @"CGFloat value must be applied to object property");
-}
-
 - (void)testClassPropertyAutoApplication
 {
     NSString *className = @".Class";
