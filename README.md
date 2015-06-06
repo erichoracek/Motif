@@ -66,7 +66,7 @@ $FontName: AvenirNext-Regular
 .Button:
     borderWidth: 1
     cornerRadius: 5
-    contentEdgeInsets: '{10, 20, 10, 20}'
+    contentEdgeInsets: [10, 20]
     tintColor: $BlueColor
     borderColor: $BlueColor
     titleText: .ButtonText
@@ -306,7 +306,7 @@ $FontName: AvenirNext-Regular
 .Button:
     borderWidth: 1
     cornerRadius: 5
-    contentEdgeInsets: '{10, 20, 10, 20}'
+    contentEdgeInsets: [10, 20]
     tintColor: $BlueColor
     borderColor: $BlueColor
     titleText: .ButtonText
