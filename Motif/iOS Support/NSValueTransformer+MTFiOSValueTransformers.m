@@ -55,18 +55,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 NSString * const MTFColorFromStringTransformerName = @"MTFColorFromStringTransformer";
 
-NSString * const MTFEdgeInsetsFromStringTransformerName = @"MTFEdgeInsetsFromStringTransformer";
-
-NSString * const MTFPointFromStringTransformerName = @"MTFPointFromStringTransformer";
-
 NSString * const MTFRectFromStringTransformerName = @"MTFRectFromStringTransformer";
-
-NSString * const MTFSizeFromStringTransformerName = @"MTFSizeFromStringTransformer";
 
 NSString * const MTFAffineTranformFromStringTransformerName = @"MTFAffineTranformFromStringTransformerName";
 
 NSString * const MTFVectorFromStringTransformerName = @"MTFVectorFromStringTransformerName";
-
-NSString * const MTFOffsetFromStringTransformerName = @"MTFOffsetFromStringTransformerName";
 
 NS_ASSUME_NONNULL_END

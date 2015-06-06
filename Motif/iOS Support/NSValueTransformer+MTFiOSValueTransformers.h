@@ -25,21 +25,9 @@ extern NSString * const MTFColorFromStringTransformerName;
 
 /**
  The name of the value transformer responsible for transforming an NSString to
- an NSValue wrapping a CGPoint struct.
- */
-extern NSString * const MTFPointFromStringTransformerName;
-
-/**
- The name of the value transformer responsible for transforming an NSString to
  an NSValue wrapping a CGRect struct.
  */
 extern NSString * const MTFRectFromStringTransformerName;
-
-/**
- The name of the value transformer responsible for transforming an NSString to
- an NSValue wrapping a CGSize struct.
- */
-extern NSString * const MTFSizeFromStringTransformerName;
 
 /**
  The name of the value transformer responsible for transforming an NSString to
@@ -52,11 +40,5 @@ extern NSString * const MTFAffineTranformFromStringTransformerName;
  an NSValue wrapping a CGVector struct.
  */
 extern NSString * const MTFVectorFromStringTransformerName;
-
-/**
- The name of the value transformer responsible for transforming an NSString to
- an NSValue wrapping a UIOffset struct.
- */
-extern NSString * const MTFOffsetFromStringTransformerName;
 
 NS_ASSUME_NONNULL_END
