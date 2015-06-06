@@ -39,7 +39,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
             NSAssert(values.count <= 4, @"Values array must have at most four elements");
             NSAssert(values.count > 1, @"Values array must have more than one elements");
 
-            for (id value in values) {
+            for (__unused id value in values) {
                 NSAssert(
                     [value isKindOfClass:NSNumber.class],
                     @"Value elements must be kind of class NSNumber");
@@ -66,7 +66,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
         returningTransformedValueWithBlock:^(NSDictionary *values) {
-            for (id value in [values objectEnumerator]) {
+            for (__unused id value in [values objectEnumerator]) {
                 NSAssert(
                     [value isKindOfClass:NSNumber.class],
                     @"Value objects must be kind of class NSNumber");

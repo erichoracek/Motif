@@ -36,7 +36,7 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
         returningTransformedValueWithBlock:^(NSArray *values) {
             NSAssert(values.count == 2, @"Values array must have two elements");
 
-            for (id value in values) {
+            for (__unused id value in values) {
                 NSAssert(
                     [value isKindOfClass:NSNumber.class],
                     @"Value elements must be kind of class NSNumber");
@@ -55,7 +55,7 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
         returningTransformedValueWithBlock:^(NSDictionary *values) {
-            for (id value in [values objectEnumerator]) {
+            for (__unused id value in [values objectEnumerator]) {
                 NSAssert(
                     [value isKindOfClass:NSNumber.class],
                     @"Value objects must be kind of class NSNumber");
