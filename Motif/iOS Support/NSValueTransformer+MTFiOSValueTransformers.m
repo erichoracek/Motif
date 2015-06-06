@@ -27,27 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFPointFromStringTransformerName
-        transformedValueObjCType:@encode(CGPoint)
-        reverseTransformedValueClass:NSString.class
-        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
-            return [NSValue valueWithCGPoint:CGPointFromString(value)];
-        }];
-
-    [self
         mtf_registerValueTransformerWithName:MTFRectFromStringTransformerName
         transformedValueObjCType:@encode(CGRect)
         reverseTransformedValueClass:NSString.class
         returningTransformedValueWithBlock:^NSValue *(NSString *value) {
             return [NSValue valueWithCGRect:CGRectFromString(value)];
-        }];
-
-    [self
-        mtf_registerValueTransformerWithName:MTFSizeFromStringTransformerName
-        transformedValueObjCType:@encode(CGSize)
-        reverseTransformedValueClass:NSString.class
-        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
-            return [NSValue valueWithCGSize:CGSizeFromString(value)];
         }];
 
     [self
@@ -64,14 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
         reverseTransformedValueClass:NSString.class
         returningTransformedValueWithBlock:^NSValue *(NSString *value) {
             return [NSValue valueWithCGVector:CGVectorFromString(value)];
-        }];
-
-    [self
-        mtf_registerValueTransformerWithName:MTFOffsetFromStringTransformerName
-        transformedValueObjCType:@encode(UIOffset)
-        reverseTransformedValueClass:NSString.class
-        returningTransformedValueWithBlock:^NSValue *(NSString *value) {
-            return [NSValue valueWithUIOffset:UIOffsetFromString(value)];
         }];
 }
 
