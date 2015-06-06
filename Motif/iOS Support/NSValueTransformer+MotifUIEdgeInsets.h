@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-@import Foundation;
+@import UIKit;
 
 @interface NSValueTransformer (MotifUIEdgeInsets)
 

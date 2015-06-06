@@ -1,43 +1,40 @@
 //
-//  NSValueTransformer+MotifUIEdgeInsets.m
+//  NSValueTransformer+MotifCGSize.m
 //  Motif
 //
-//  Created by Eric Horacek on 6/2/15.
+//  Created by Eric Horacek on 6/4/15.
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
 #import "NSValueTransformer+ValueTransformerRegistration.h"
 
-#import "NSValueTransformer+MotifUIEdgeInsets.h"
+#import "NSValueTransformer+MotifCGSize.h"
 
-typedef UIEdgeInsets TransformedValueCType;
-static const char * const TransformedValueObjCType = @encode(TransformedValueCType);
+typedef CGSize TransformedValueCType;
+static const char * const TransformedValueObjCType = @encode(CGSize);
 
-@implementation NSValueTransformer (MotifUIEdgeInsets)
+@implementation NSValueTransformer (MotifCGSize)
 
 + (void)load {
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromNumberTransformerName
+        mtf_registerValueTransformerWithName:MTFCGSizeFromNumberTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSNumber.class
         returningTransformedValueWithBlock:^(NSNumber *numberValue) {
             typeof(TransformedValueCType) value = {
-                .top = numberValue.floatValue,
-                .left = numberValue.floatValue,
-                .bottom = numberValue.floatValue,
-                .right = numberValue.floatValue,
+                .width = numberValue.floatValue,
+                .height = numberValue.floatValue,
             };
 
             return [NSValue value:&value withObjCType:TransformedValueObjCType];
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromArrayTransformerName
+        mtf_registerValueTransformerWithName:MTFCGSizeFromArrayTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSArray.class
         returningTransformedValueWithBlock:^(NSArray *values) {
-            NSAssert(values.count <= 4, @"Values array must have at most four elements");
-            NSAssert(values.count > 1, @"Values array must have more than one elements");
+            NSAssert(values.count == 2, @"Values array must have two elements");
 
             for (id value in values) {
                 NSAssert(
@@ -46,23 +43,15 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
             }
 
             typeof(TransformedValueCType) value = {
-                .top = [values[0] floatValue],
-                .right = [values[1] floatValue]
+                .width = [values[0] floatValue],
+                .height = [values[1] floatValue]
             };
-
-            if (values.count == 2) {
-                value.bottom = [values[0] floatValue];
-                value.left = [values[1] floatValue];
-            } else {
-                value.bottom = [values[2] floatValue];
-                value.left = (values.count == 4) ? [values[3] floatValue] : 0.0f;
-            }
 
             return [NSValue value:&value withObjCType:TransformedValueObjCType];
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromDictionaryTransformerName
+        mtf_registerValueTransformerWithName:MTFCGSizeFromDictionaryTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
         returningTransformedValueWithBlock:^(NSDictionary *values) {
@@ -72,7 +61,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
                     @"Value objects must be kind of class NSNumber");
             }
 
-            NSArray *validProperties = @[@"top", @"right", @"bottom", @"left"];
+            NSArray *validProperties = @[@"width", @"height"];
 
             // Ensure that the passed properties have valid keys
             NSMutableSet *passedInvalidPropertyNames = [NSMutableSet setWithArray:values.allKeys];
@@ -83,10 +72,8 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
                 passedInvalidPropertyNames);
 
             typeof(TransformedValueCType) value = {
-                .top = [values[validProperties[0]] floatValue],
-                .right = [values[validProperties[1]] floatValue],
-                .bottom = [values[validProperties[2]] floatValue],
-                .left = [values[validProperties[3]] floatValue],
+                .width = [values[validProperties[0]] floatValue],
+                .height = [values[validProperties[1]] floatValue]
             };
 
             return [NSValue value:&value withObjCType:TransformedValueObjCType];
@@ -95,8 +82,8 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
 
 @end
 
-NSString * const MTFUIEdgeInsetsFromNumberTransformerName = @"MTFUIEdgeInsetsFromNumberTransformerName";
+NSString * const MTFCGSizeFromNumberTransformerName = @"MTFCGSizeFromNumberTransformerName";
 
-NSString * const MTFUIEdgeInsetsFromArrayTransformerName = @"MTFUIEdgeInsetsFromArrayTransformerName";
+NSString * const MTFCGSizeFromArrayTransformerName = @"MTFCGSizeFromArrayTransformerName";
 
-NSString * const MTFUIEdgeInsetsFromDictionaryTransformerName = @"MTFUIEdgeInsetsFromDictionaryTransformerName";
+NSString * const MTFCGSizeFromDictionaryTransformerName = @"MTFCGSizeFromDictionaryTransformerName";
