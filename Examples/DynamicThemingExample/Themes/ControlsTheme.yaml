@@ -1,4 +1,4 @@
-$ButtonInsets: '{10, 15, 10, 15}'
+$ButtonInsets: [10, 15]
 $ButtonCornerRadius: 5
 
 .Button:

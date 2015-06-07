@@ -221,11 +221,11 @@
     NSString *class = @".Class";
     NSString *property = @"property";
     
-    NSString *valueTransfomerName = MTFPointFromStringTransformerName;
+    NSString *valueTransfomerName = MTFPointFromArrayTransformerName;
     
     CGPoint point = CGPointMake(10.0, 10.0);
     NSValue *pointValue = [NSValue valueWithCGPoint:point];
-    NSString *pointThemeValue = NSStringFromCGPoint(point);
+    NSArray *pointThemeValue = @[@10.0, @10.0];
     
     MTFTheme *theme = [self themeWithClass:class property:property value:pointThemeValue];
     
