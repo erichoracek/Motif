@@ -17,7 +17,7 @@ static const char * const TransformedValueObjCType = @encode(CGPoint);
 
 + (void)load {
     [self
-     mtf_registerValueTransformerWithName:MTFCGPointFromNumberTransformerName
+     mtf_registerValueTransformerWithName:MTFPointFromNumberTransformerName
      transformedValueObjCType:TransformedValueObjCType
      reverseTransformedValueClass:NSNumber.class
      returningTransformedValueWithBlock:^(NSNumber *numberValue) {
@@ -30,7 +30,7 @@ static const char * const TransformedValueObjCType = @encode(CGPoint);
      }];
 
     [self
-     mtf_registerValueTransformerWithName:MTFCGPointFromArrayTransformerName
+     mtf_registerValueTransformerWithName:MTFPointFromArrayTransformerName
      transformedValueObjCType:TransformedValueObjCType
      reverseTransformedValueClass:NSArray.class
      returningTransformedValueWithBlock:^(NSArray *values) {
@@ -51,7 +51,7 @@ static const char * const TransformedValueObjCType = @encode(CGPoint);
      }];
 
     [self
-     mtf_registerValueTransformerWithName:MTFCGPointFromDictionaryTransformerName
+     mtf_registerValueTransformerWithName:MTFPointFromDictionaryTransformerName
      transformedValueObjCType:TransformedValueObjCType
      reverseTransformedValueClass:NSDictionary.class
      returningTransformedValueWithBlock:^(NSDictionary *values) {
@@ -82,8 +82,8 @@ static const char * const TransformedValueObjCType = @encode(CGPoint);
 
 @end
 
-NSString * const MTFCGPointFromNumberTransformerName = @"MTFCGPointFromNumberTransformerName";
+NSString * const MTFPointFromNumberTransformerName = @"MTFPointFromNumberTransformerName";
 
-NSString * const MTFCGPointFromArrayTransformerName = @"MTFCGPointFromArrayTransformerName";
+NSString * const MTFPointFromArrayTransformerName = @"MTFPointFromArrayTransformerName";
 
-NSString * const MTFCGPointFromDictionaryTransformerName = @"MTFCGPointFromDictionaryTransformerName";
+NSString * const MTFPointFromDictionaryTransformerName = @"MTFPointFromDictionaryTransformerName";

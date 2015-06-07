@@ -17,7 +17,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
 
 + (void)load {
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromNumberTransformerName
+        mtf_registerValueTransformerWithName:MTFEdgeInsetsFromNumberTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSNumber.class
         returningTransformedValueWithBlock:^(NSNumber *numberValue) {
@@ -32,7 +32,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromArrayTransformerName
+        mtf_registerValueTransformerWithName:MTFEdgeInsetsFromArrayTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSArray.class
         returningTransformedValueWithBlock:^(NSArray *values) {
@@ -62,7 +62,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFUIEdgeInsetsFromDictionaryTransformerName
+        mtf_registerValueTransformerWithName:MTFEdgeInsetsFromDictionaryTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
         returningTransformedValueWithBlock:^(NSDictionary *values) {
@@ -95,8 +95,8 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
 
 @end
 
-NSString * const MTFUIEdgeInsetsFromNumberTransformerName = @"MTFUIEdgeInsetsFromNumberTransformerName";
+NSString * const MTFEdgeInsetsFromNumberTransformerName = @"MTFEdgeInsetsFromNumberTransformerName";
 
-NSString * const MTFUIEdgeInsetsFromArrayTransformerName = @"MTFUIEdgeInsetsFromArrayTransformerName";
+NSString * const MTFEdgeInsetsFromArrayTransformerName = @"MTFEdgeInsetsFromArrayTransformerName";
 
-NSString * const MTFUIEdgeInsetsFromDictionaryTransformerName = @"MTFUIEdgeInsetsFromDictionaryTransformerName";
+NSString * const MTFEdgeInsetsFromDictionaryTransformerName = @"MTFEdgeInsetsFromDictionaryTransformerName";

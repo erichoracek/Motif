@@ -17,7 +17,7 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
 
 + (void)load {
     [self
-        mtf_registerValueTransformerWithName:MTFCGSizeFromNumberTransformerName
+        mtf_registerValueTransformerWithName:MTFSizeFromNumberTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSNumber.class
         returningTransformedValueWithBlock:^(NSNumber *numberValue) {
@@ -30,7 +30,7 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFCGSizeFromArrayTransformerName
+        mtf_registerValueTransformerWithName:MTFSizeFromArrayTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSArray.class
         returningTransformedValueWithBlock:^(NSArray *values) {
@@ -51,7 +51,7 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
         }];
 
     [self
-        mtf_registerValueTransformerWithName:MTFCGSizeFromDictionaryTransformerName
+        mtf_registerValueTransformerWithName:MTFSizeFromDictionaryTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
         returningTransformedValueWithBlock:^(NSDictionary *values) {
@@ -82,8 +82,8 @@ static const char * const TransformedValueObjCType = @encode(CGSize);
 
 @end
 
-NSString * const MTFCGSizeFromNumberTransformerName = @"MTFCGSizeFromNumberTransformerName";
+NSString * const MTFSizeFromNumberTransformerName = @"MTFSizeFromNumberTransformerName";
 
-NSString * const MTFCGSizeFromArrayTransformerName = @"MTFCGSizeFromArrayTransformerName";
+NSString * const MTFSizeFromArrayTransformerName = @"MTFSizeFromArrayTransformerName";
 
-NSString * const MTFCGSizeFromDictionaryTransformerName = @"MTFCGSizeFromDictionaryTransformerName";
+NSString * const MTFSizeFromDictionaryTransformerName = @"MTFSizeFromDictionaryTransformerName";

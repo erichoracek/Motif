@@ -14,12 +14,12 @@
 
 /// The name of the value transformer responsible for transforming an NSNumber
 /// to a NSValue wrapping a CGPoint struct.
-extern NSString * const MTFCGPointFromNumberTransformerName;
+extern NSString * const MTFPointFromNumberTransformerName;
 
 /// The name of the value transformer responsible for transforming an NSAray to
 /// a NSValue wrapping a CGPoint struct.
-extern NSString * const MTFCGPointFromArrayTransformerName;
+extern NSString * const MTFPointFromArrayTransformerName;
 
 /// The name of the value transformer responsible for transforming an
 /// NSDictionary to a NSValue wrapping a CGPoint struct.
-extern NSString * const MTFCGPointFromDictionaryTransformerName;
+extern NSString * const MTFPointFromDictionaryTransformerName;

@@ -14,12 +14,12 @@
 
 /// The name of the value transformer responsible for transforming an NSNumber
 /// to a NSValue wrapping a CGSize struct.
-extern NSString * const MTFCGSizeFromNumberTransformerName;
+extern NSString * const MTFSizeFromNumberTransformerName;
 
 /// The name of the value transformer responsible for transforming an NSAray to
 /// a NSValue wrapping a CGSize struct.
-extern NSString * const MTFCGSizeFromArrayTransformerName;
+extern NSString * const MTFSizeFromArrayTransformerName;
 
 /// The name of the value transformer responsible for transforming an
 /// NSDictionary to a NSValue wrapping a CGSize struct.
-extern NSString * const MTFCGSizeFromDictionaryTransformerName;
+extern NSString * const MTFSizeFromDictionaryTransformerName;

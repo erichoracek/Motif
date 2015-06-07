@@ -221,7 +221,7 @@
     NSString *class = @".Class";
     NSString *property = @"property";
     
-    NSString *valueTransfomerName = MTFCGPointFromArrayTransformerName;
+    NSString *valueTransfomerName = MTFPointFromArrayTransformerName;
     
     CGPoint point = CGPointMake(10.0, 10.0);
     NSValue *pointValue = [NSValue valueWithCGPoint:point];
