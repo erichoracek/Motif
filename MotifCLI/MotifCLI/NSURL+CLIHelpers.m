@@ -8,51 +8,56 @@
 
 #import "NSURL+CLIHelpers.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSURL (CLIHelpers)
 
-+ (NSURL *)mtf_fileURLFromPathParameter:(NSString *)path {
-    NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
-    if (!resolvedURL) {
-        return nil;
-    }
++ (nullable NSURL *)mtf_fileURLFromPathParameter:(nullable NSString *)path {
+    NSURL *resolvedURL = [self mtf_URLResolvedFromPathParameter:path];
+
+    if (resolvedURL == nil) return nil;
+
     // Ensure the URL isn't a directory and exists
     BOOL isDirectory = NO;
     BOOL exists = [NSFileManager.defaultManager
         fileExistsAtPath:resolvedURL.path
         isDirectory:&isDirectory];
-    if (exists && !isDirectory) {
-        return resolvedURL;
-    }
-    return nil;
+
+    if (!exists || isDirectory) return nil;
+
+    return resolvedURL;
 }
 
-+ (NSURL *)mtf_directoryURLFromPathParameter:(NSString *)path {
-    NSURL *resolvedURL = [self URLResolvedFromPathParameter:path];
-    if (!resolvedURL) {
-        return nil;
-    }
++ (nullable NSURL *)mtf_directoryURLFromPathParameter:(nullable NSString *)path {
+    NSURL *resolvedURL = [self mtf_URLResolvedFromPathParameter:path];
+
+    if (resolvedURL == nil) return nil;
+
     // Ensure the URL isn't a directory and exists
     BOOL isDirectory = NO;
     BOOL exists = [NSFileManager.defaultManager
         fileExistsAtPath:resolvedURL.path
         isDirectory:&isDirectory];
-    if (exists && isDirectory) {
-        return resolvedURL;
-    }
-    return nil;
+
+    if (!exists || !isDirectory) return nil;
+
+    return resolvedURL;
 }
 
-+ (NSURL *)URLResolvedFromPathParameter:(NSString *)path {
-    if (!path) {
-        return nil;
-    }
++ (nullable NSURL *)mtf_URLResolvedFromPathParameter:(nullable NSString *)path {
+    if (path == nil) return nil;
+
     // If the path begins with a tilde, expand it
     if ([path rangeOfString:@"~"].location == 0) {
         path = path.stringByExpandingTildeInPath;
     }
+
     // Resolve the URL using NSURL's built-in method
-    NSURL *fileURL =  [NSURL fileURLWithPath:path];
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+
     return fileURL;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
