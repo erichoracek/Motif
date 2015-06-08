@@ -78,24 +78,18 @@
     return _transformedValueCache;
 }
 
-- (id)transformedValueFromTransformerWithName:(NSString *)name {
-    NSParameterAssert(name);
-    
-    id cachedValue = [self.transformedValueCache objectForKey:name];
-    if (cachedValue) {
-        return cachedValue;
-    }
-    
-    NSValueTransformer *transformer = [NSValueTransformer
-        valueTransformerForName:name];
-    
-    if (transformer) {
-        id transformedValue = [transformer transformedValue:self.value];
-        [self.transformedValueCache setObject:transformedValue forKey:name];
-        return transformedValue;
-    }
-    
-    return self.value;
+- (id)transformedValueFromTransformer:(NSValueTransformer *)transformer {
+    NSParameterAssert(transformer != nil);
+
+    NSValue *key = [NSValue valueWithNonretainedObject:transformer];
+
+    id cachedValue = [self.transformedValueCache objectForKey:key];
+    if (cachedValue != nil) return cachedValue;
+
+    id transformedValue = [transformer transformedValue:self.value];
+    [self.transformedValueCache setObject:transformedValue forKey:key];
+
+    return transformedValue;
 }
 
 #pragma mark Equality

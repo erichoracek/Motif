@@ -48,7 +48,7 @@
     XCTestExpectation *theme1ApplicationExpectation = [self expectationWithDescription:@"theme 1 application"];
     XCTestExpectation *theme2ApplicationExpectation = [self expectationWithDescription:@"theme 2 application"];
     
-    id <MTFThemeClassApplicable> classApplier = [objectClass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
+    id<MTFThemeClassApplicable> classApplier = [objectClass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
         if (propertyValue == value1) {
             [theme1ApplicationExpectation fulfill];
         }

@@ -47,7 +47,7 @@
     XCTestExpectation *applierExpectation = [self
         expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperty:property
         applierBlock:^(id propertyValue, id objectToTheme) {
             XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
@@ -76,7 +76,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperty:property
         requiringValueOfClass:NSNumber.class
         applierBlock:^(id propertyValue, id objectToTheme) {
@@ -102,7 +102,7 @@
     Class objectClass = MTFThemePropertyApplierTestClass.class;
     id object = [objectClass new];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperty:property
         requiringValueOfClass:NSNumber.class
         applierBlock:^(id propertyValue, id objectToTheme) {}];
@@ -191,14 +191,14 @@
 
     XCTestExpectation *exceptionExpectation = [self expectationWithDescription:@"Exception should be thrown when theme property value is of incorrect class"];
 
-    id <MTFThemeClassApplicable> numberPropertyApplier = [objectClass
+    id<MTFThemeClassApplicable> numberPropertyApplier = [objectClass
         mtf_registerThemeProperty:property
         requiringValueOfClass:NSNumber.class
         applierBlock:^(id propertyValue, id objectToTheme) {
             XCTFail(@"Number applier should not be invoked");
         }];
 
-    id <MTFThemeClassApplicable> stringPropertyApplier = [objectClass
+    id<MTFThemeClassApplicable> stringPropertyApplier = [objectClass
         mtf_registerThemeProperty:property
         requiringValueOfClass:NSString.class
         applierBlock:^(id propertyValue, id objectToTheme) {
@@ -220,9 +220,7 @@
 {
     NSString *class = @".Class";
     NSString *property = @"property";
-    
-    NSString *valueTransfomerName = MTFPointFromArrayTransformerName;
-    
+
     CGPoint point = CGPointMake(10.0, 10.0);
     NSValue *pointValue = [NSValue valueWithCGPoint:point];
     NSArray *pointThemeValue = @[@10.0, @10.0];
@@ -234,11 +232,14 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass mtf_registerThemeProperty:property valueTransformerName:valueTransfomerName applierBlock:^(id propertyValue, id objectToTheme) {
-        XCTAssertEqualObjects(pointValue, propertyValue, @"The value applied in the applier must equal the property value in the theme");
-        XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
-        [applierExpectation fulfill];
-    }];
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
+        mtf_registerThemeProperty:property
+        requiringValueOfObjCType:@encode(CGPoint)
+        applierBlock:^(id propertyValue, id objectToTheme) {
+            XCTAssertEqualObjects(pointValue, propertyValue, @"The value applied in the applier must equal the property value in the theme");
+            XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
+            [applierExpectation fulfill];
+        }];
     
     [theme applyClassWithName:class.mtf_symbol toObject:object];
     
@@ -263,7 +264,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectSuperclass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
+    id<MTFThemeClassApplicable> propertyApplier = [objectSuperclass mtf_registerThemeProperty:property applierBlock:^(id propertyValue, id objectToTheme) {
         XCTAssertEqualObjects(value, propertyValue, @"The value applied in the applier must equal the property value in the theme");
         XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
         [applierExpectation fulfill];
@@ -293,7 +294,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperty:property
         applierBlock:^(id propertyValue, id objectToTheme) {
             XCTAssertEqual(
@@ -305,7 +306,7 @@
             [applierExpectation fulfill];
         }];
     
-    id <MTFThemeClassApplicable> propertyNotInClassApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyNotInClassApplier = [objectClass
         mtf_registerThemeProperty:propertyNotInClass
         applierBlock:^(id propertyValue, id objectToTheme) {
             XCTFail(@"This applier must not be invoked");

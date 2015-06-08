@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The name of the theme class, as specified in the JSON theme file.
  */
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /**
  The properties of the theme class as specified in the JSON theme file.
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  This dictionary is keyed by property names with values of the properties
  values.
  */
-@property (nonatomic, readonly) NSDictionary *properties;
+@property (nonatomic, copy, readonly) NSDictionary *properties;
 
 /**
  Applies this theme class to an object.

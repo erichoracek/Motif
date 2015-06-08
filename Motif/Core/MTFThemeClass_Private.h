@@ -20,12 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The property constants for this specific theme class, keyed by constants.
  */
-@property (nonatomic) NSDictionary *propertiesConstants;
+@property (nonatomic, copy) NSDictionary *propertiesConstants;
 
 /**
  The resolved property constants across all superclasses.
  */
-@property (nonatomic, readonly) NSDictionary *resolvedPropertiesConstants;
+@property (nonatomic, copy, readonly) NSDictionary *resolvedPropertiesConstants;
 
 @end
 

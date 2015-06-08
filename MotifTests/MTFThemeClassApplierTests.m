@@ -41,7 +41,7 @@
     XCTestExpectation *expectation = [self
         expectationWithDescription:@"Theme class applier expectation"];
     
-    id <MTFThemeClassApplicable> classApplier = [objectClass
+    id<MTFThemeClassApplicable> classApplier = [objectClass
         mtf_registerThemeClassApplierBlock:^(MTFThemeClass *class, id objectToTheme) {
             XCTAssertEqual(object, objectToTheme, @"The object in the applier must the same object that has a theme applied to it");
             [expectation fulfill];

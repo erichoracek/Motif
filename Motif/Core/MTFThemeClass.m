@@ -81,10 +81,9 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
     // Apply each of the class appliers registered on the applicant's class
     NSArray *classAppliers = [[object class] mtf_themeClassAppliers];
 
-    for (id <MTFThemeClassApplicable> classApplier in classAppliers) {
-        if ([classApplier shouldApplyClass:self]) {
-            [classApplier applyClass:self toObject:object];
-
+    for (id<MTFThemeClassApplicable> classApplier in classAppliers) {
+        BOOL didApply = [classApplier applyClass:self toObject:object];
+        if (didApply) {
             NSSet *appliedProperties = [NSSet setWithArray:classApplier.properties];
 
             [unappliedProperties minusSet:appliedProperties];

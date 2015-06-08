@@ -37,7 +37,7 @@
     
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
     
-    id <MTFThemeClassApplicable> propertyApplier = [objectClass
+    id<MTFThemeClassApplicable> propertyApplier = [objectClass
         mtf_registerThemeProperties:properties.allObjects
         applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
             NSSet *propertiesSet = [NSSet setWithArray:valuesForProperties.allKeys];
@@ -72,7 +72,7 @@
     Class objectClass = MTFThemePropertiesApplierTestObject.class;
     id object = [objectClass new];
 
-    id <MTFThemeClassApplicable> propertiesApplier = [objectClass
+    id<MTFThemeClassApplicable> propertiesApplier = [objectClass
         mtf_registerThemeProperties:properties
         applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
             XCTFail(@"Must not invoke applier");
@@ -80,7 +80,7 @@
 
     XCTestExpectation *applierExpectation = [self expectationWithDescription:@"Theme property applier expectation"];
 
-    id <MTFThemeClassApplicable> propertiesMinusOneApplier = [objectClass
+    id<MTFThemeClassApplicable> propertiesMinusOneApplier = [objectClass
         mtf_registerThemeProperties:propertiesMinusOne
         applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme) {
             [applierExpectation fulfill];
