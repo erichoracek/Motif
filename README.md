@@ -103,7 +103,7 @@ The first set of property appliers we've created is on `UIView`:
 
     [self
         mtf_registerThemeProperty:@"borderColor"
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
         }];
@@ -115,10 +115,6 @@ Here we've added two property appliers to `UIView`: one for `borderWidth` and an
 #### Applier type safety
 
 If we want to ensure that we always apply property values a of specific type, we can specify that an applier requires a value of a certain class by using `requiringValueOfClass:` when registering an applier. In the case of the `borderWidth` property above, we require that its value is of class `NSNumber`. This way, if we ever accidentally provide a non-number value for a `borderWidth` property, a runtime exception will be thrown so that we can easily identify and fix our mistake.
-
-#### Applier value transformers
-
-In the case of `borderColor`, the value specified in the theme file is not a color, but instead a color encoded as the string: `"#f93d38"`. To ensure that this value is transformed from a `NSString` to a `UIColor` before entering the applier block, we specify a `valueTransformerName` of `MTFColorFromStringTransformerName` when registering the `borderColor` property. This name identifies a custom `NSValueTransformer` subclass included in Motif that transforms values from `NSString` to `UIColor`. By specifying this transformer, there's no need to manually decode the string-encoded color each time the applier is called. Instead, when the applier block is invoked, the property value is already of type `UIColor`, and setting this value as the `borderColor` of a view is just a one line operation.
 
 Now that we've defined these two properties on `UIView`, they will be available to apply any other themes with the same properties in the future. As such, whenever we have another class wants to specify a `borderColor` or `borderWidth` to a `UIView` or any of its descendants, these appliers will be able to apply those values as well.
 
@@ -132,12 +128,12 @@ Next up, we're going to add an applier to `UILabel` to style our text:
         mtf_registerThemeProperties:@[
             @"fontName",
             @"fontSize"
-        ] valueTransformerNamesOrRequiredClasses:@[
+        ] requiringValuesOfClassOrObjCType:@[
             NSString.class,
             NSNumber.class
         ] applierBlock:^(NSDictionary *properties, UILabel *label) {
-            NSString *name = properties[ThemeProperties.fontName];
-            CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
+            NSString *name = properties[@"fontName"];
+            CGFloat size = [properties[@"fontSize"] floatValue];
             label.font = [UIFont fontWithName:name size:size];
         }];
 }
