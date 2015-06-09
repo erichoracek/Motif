@@ -166,6 +166,38 @@ describe(@"deserialization from data", ^{
                 expect(number.integerValue).to.equal(0);
             });
 
+            it(@"should handle scientific notation", ^{
+                NSNumber *number = objectFromYAML(@"10e2");
+
+                expect(number).notTo.beNil();
+                expect(number).to.beKindOf(NSNumber.class);
+                expect(number.floatValue).to.beCloseTo(1000.0);
+            });
+
+            it(@"should handle scientific notation with an uppercase E", ^{
+                NSNumber *number = objectFromYAML(@"10E2");
+
+                expect(number).notTo.beNil();
+                expect(number).to.beKindOf(NSNumber.class);
+                expect(number.floatValue).to.beCloseTo(1000.0);
+            });
+
+            it(@"should handle scientific notation with a positive exponent", ^{
+                NSNumber *number = objectFromYAML(@"10e+2");
+
+                expect(number).notTo.beNil();
+                expect(number).to.beKindOf(NSNumber.class);
+                expect(number.floatValue).to.beCloseTo(1000.0);
+            });
+
+            it(@"should handle scientific notation with a negative exponent", ^{
+                NSNumber *number = objectFromYAML(@"10e-2");
+
+                expect(number).notTo.beNil();
+                expect(number).to.beKindOf(NSNumber.class);
+                expect(number.floatValue).to.beCloseTo(0.1);
+            });
+
             it(@"should handle nans", ^{
                 NSDecimalNumber *number = objectFromYAML(@".nan");
 
