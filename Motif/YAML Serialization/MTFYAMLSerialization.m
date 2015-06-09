@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
         error:NULL];
 
     _floatRegularExpression = [NSRegularExpression
-        regularExpressionWithPattern:@"^(-?[1-9]\\d*(\\.\\d*)?(e[-+]?[1-9][0-9]+)?|0|inf|-inf|nan)$"
+        regularExpressionWithPattern:@"^(-?\\d+(\\.\\d*)?(e[-+]?\\d+)?|0|inf|-inf|nan)$"
         options:0
         error:NULL];
 
