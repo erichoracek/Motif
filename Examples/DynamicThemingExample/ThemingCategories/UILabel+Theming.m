@@ -48,7 +48,8 @@
     NSString *colorString = themeClass.properties[ContentThemeProperties.color];
     UIColor *color;
     if (colorString != nil) {
-        color = [[NSValueTransformer valueTransformerForName:MTFColorFromStringTransformerName] transformedValue:colorString];
+        NSValueTransformer *transformer = [NSValueTransformer mtf_valueTransformerForTransformingObject:colorString toClass:UIColor.class];
+        color = [transformer transformedValue:colorString];
     }
     if (color != nil) {
         attributes[NSForegroundColorAttributeName] = color;
