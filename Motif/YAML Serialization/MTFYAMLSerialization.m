@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
         @".inf" : @(INFINITY),
         @"-.inf" : @(-INFINITY),
         @"+.inf" : @(INFINITY),
-        @".nan" : @(NAN),
+        @".nan" : [NSDecimalNumber notANumber],
     };
 
     [self registerHandlers];
