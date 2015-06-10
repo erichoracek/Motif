@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error {
-    NSParameterAssert(data);
+    NSParameterAssert(data != nil);
 
     self = [super init];
     if (self == nil) return nil;
@@ -194,10 +194,6 @@ NS_ASSUME_NONNULL_BEGIN
 
         break;
         case YAML_SEQUENCE_START_EVENT: {
-            if (event.data.sequence_start.anchor != NULL) {
-                return [self populateInvalidAnchorError:error fromParser:parser];
-            }
-
             NSMutableArray *sequence = [NSMutableArray array];
 
             BOOL didParseSequence = [self
@@ -212,10 +208,6 @@ NS_ASSUME_NONNULL_BEGIN
 
         break;
         case YAML_MAPPING_START_EVENT: {
-            if (event.data.mapping_start.anchor != NULL) {
-                return [self populateInvalidAnchorError:error fromParser:parser];
-            }
-
             NSMutableDictionary *mapping = [NSMutableDictionary dictionary];
 
             BOOL didParseMapping = [self
