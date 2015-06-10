@@ -50,72 +50,66 @@ NS_ASSUME_NONNULL_BEGIN
 
     _tagHandlers = [NSMutableDictionary dictionary];
 
+    // Regexes from http://yaml.org/spec/1.2/spec.html#id2804356
+
     _integerRegularExpression = [NSRegularExpression
-        regularExpressionWithPattern:@"^-?\\d+$"
+        regularExpressionWithPattern:@"^-?(0|[1-9][0-9]*)$"
         options:0
         error:NULL];
 
     _floatRegularExpression = [NSRegularExpression
-        regularExpressionWithPattern:@"^(-?\\d+(\\.\\d*)?([eE][-+]?\\d+)?|0|inf|-inf|nan)$"
+        regularExpressionWithPattern:@"^-?(0|[1-9][0-9]*)(\\.[0-9]*)?([eE][-+]?[0-9]+)?$"
         options:0
         error:NULL];
 
     _constantTags = @{
-        @"true" : @YES,
-        @"false" : @NO,
-        @"yes" : @YES,
-        @"no" : @NO,
-        @"null" : NSNull.null,
+        @"true": @YES,
+        @"false": @NO,
+        @"null": NSNull.null,
         @".inf" : @(INFINITY),
         @"-.inf" : @(-INFINITY),
-        @"+.inf" : @(INFINITY),
         @".nan" : [NSDecimalNumber notANumber],
     };
 
     [self registerHandlers];
-
     _object = [self deserializeData:data error:error];
 
     return self;
 }
 
-- (void)registerMappingForTag:(NSString *)tag map:(nullable id (^)(id, NSError *__autoreleasing *))map {
-    if (map == nil) {
-        map = ^(id value, NSError *__autoreleasing *_) {
-            return value;
-        };
-    }
-
+- (void)registerMappingForTag:(NSString *)tag map:(id (^)(NSString *))map {
     self.tagHandlers[tag] = [map copy];
 }
 
 - (void)registerHandlers {
     [self
         registerMappingForTag:@(YAML_NULL_TAG)
-        map:^(id value, NSError *__autoreleasing *_) {
+        map:^(NSString *value) {
             return NSNull.null;
         }];
 
     [self
         registerMappingForTag:@(YAML_BOOL_TAG)
-        map:^(id value, NSError *__autoreleasing *_) {
-            return @([value boolValue]);
+        map:^(NSString *value) {
+            return @(value.boolValue);
         }];
 
     [self
         registerMappingForTag:@(YAML_STR_TAG)
-        map:nil];
+        map:^id(NSString *value) {
+            return value;
+        }];
 
     [self
         registerMappingForTag:@(YAML_INT_TAG)
-        map:^(id value, NSError *__autoreleasing *_) {
-            return @([value integerValue]);
+        map:^(NSString *value) {
+            return @(value.integerValue);
         }];
 
     [self
         registerMappingForTag:@(YAML_FLOAT_TAG)
-        map:^(id value, NSError *__autoreleasing *_) {
-            return @([value doubleValue]);
+        map:^(NSString *value) {
+            return @(value.doubleValue);
         }];
 }
 
@@ -271,68 +265,72 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
+#pragma mark - Scalars
+
+- (nullable id)tagForScalarEvent:(yaml_event_t *)event {
+    if (event->data.scalar.tag != NULL) return @((char *)event->data.scalar.tag);
+
+    switch ((int)event->data.scalar.style) {
+    case YAML_SINGLE_QUOTED_SCALAR_STYLE:
+    case YAML_DOUBLE_QUOTED_SCALAR_STYLE:
+    case YAML_LITERAL_SCALAR_STYLE:
+        return @(YAML_STR_TAG);
+    }
+
+    NSString *stringValue = @((char *)event->data.scalar.value);
+
+    NSUInteger numberOfIntegerMatches = [self.integerRegularExpression
+        numberOfMatchesInString:stringValue
+        options:0
+        range:NSMakeRange(0, stringValue.length)];
+
+    if (numberOfIntegerMatches == 1) return @(YAML_INT_TAG);
+
+    NSUInteger numberOfFloatMatches = [self.floatRegularExpression
+        numberOfMatchesInString:stringValue
+        options:0
+        range:NSMakeRange(0, stringValue.length)];
+
+    if (numberOfFloatMatches == 1) return @(YAML_FLOAT_TAG);
+
+    return nil;
+}
+
 - (nullable id)valueForScalarEvent:(yaml_event_t *)event fromParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
-
-    NSString *tag;
-    if (event->data.scalar.tag != NULL) {
-        tag = @((char *)event->data.scalar.tag);
-    }
-
-    if (tag == nil) {
-        switch ((int)event->data.scalar.style) {
-        case YAML_SINGLE_QUOTED_SCALAR_STYLE:
-        case YAML_DOUBLE_QUOTED_SCALAR_STYLE:
-        case YAML_LITERAL_SCALAR_STYLE:
-            tag = @(YAML_STR_TAG);
-        }
-    }
-
-    NSString *string = @((char *)event->data.scalar.value);
-
-    if (tag == nil) {
-        NSUInteger numberOfMatches = [self.integerRegularExpression
-            numberOfMatchesInString:string
-            options:0
-            range:NSMakeRange(0, string.length)];
-
-        if (numberOfMatches == 1) {
-            tag = @(YAML_INT_TAG);
-        }
-    }
-
-    if (tag == nil) {
-        NSUInteger numberOfMatches = [self.floatRegularExpression
-            numberOfMatchesInString:string
-            options:0
-            range:NSMakeRange(0, string.length)];
-
-        if (numberOfMatches == 1) {
-            tag = @(YAML_FLOAT_TAG);
-        }
-    }
-
+    NSString *tag = [self tagForScalarEvent:event];
+    NSString *stringValue = @((char *)event->data.scalar.value);
+    
     id value;
 
     if (tag != nil) {
-        id (^handler)(NSString*, NSError *__autoreleasing *) = self.tagHandlers[tag];
-        if (handler) {
-            value = handler(string, error);
+        id (^tagHandler)(NSString*) = self.tagHandlers[tag];
+
+        if (tagHandler != nil) {
+            value = tagHandler(stringValue);
         } else {
             if (error == NULL) return nil;
 
-            *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain
-                code:-1
-                userInfo:@{
-                    NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Unhandled tag type: %@ (value: %@)", tag, string],
-                    MTFYAMLSerializationOffsetErrorKey : @(parser->offset),
-                }];
+            NSMutableDictionary *userInfo = [self
+                errorUserInfoForMark:parser->mark
+                offset:parser->offset
+                fromParser:parser];
+
+            userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:
+                NSLocalizedString(@"Unhandled tag type: %@ (value: %@)", nil),
+                tag,
+                stringValue];
+
+            *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
 
             return nil;
         }
     }
 
-    if (value == nil) value = self.constantTags[string.lowercaseString];
-    if (value == nil) value = string;
+    if (value == nil) {
+        value = self.constantTags[stringValue];
+    }
+
+    if (value == nil) return stringValue;
 
     return value;
 }
@@ -374,7 +372,10 @@ NS_ASSUME_NONNULL_BEGIN
         offset:parser->offset
         fromParser:parser];
 
-    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"YAML aliases (denoted by a leading '*') are not supported in Motif theme files.", nil),
+    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
+        @"YAML aliases (denoted by a leading '*') are not supported in Motif "
+            "theme files.",
+        nil),
 
     *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
 
@@ -389,7 +390,10 @@ NS_ASSUME_NONNULL_BEGIN
         offset:parser->offset
         fromParser:parser];
 
-    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"YAML anchors (denoted by a leading '&') are not supported in Motif theme files.", nil);
+    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
+        @"YAML anchors (denoted by a leading '&') are not supported in Motif "
+            "theme files.",
+        nil);
 
     *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
 

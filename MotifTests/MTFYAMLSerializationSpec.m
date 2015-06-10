@@ -86,13 +86,13 @@ describe(@"deserialization from data", ^{
     });
 
     it(@"should treat a bracketed sequence as an array", ^{
-        NSArray *sequence = objectFromYAML(@"[1, 2]");
+        NSArray *sequence = objectFromYAML(@"[1, true]");
 
         expect(sequence).notTo.beNil();
         expect(sequence).to.beKindOf(NSArray.class);
         expect(sequence.count).to.equal(2);
         expect(sequence.firstObject).to.equal(@1);
-        expect(sequence.lastObject).to.equal(@2);
+        expect(sequence.lastObject).to.equal(@YES);
         expect(error).to.beNil();
     });
 
@@ -214,14 +214,6 @@ describe(@"deserialization from data", ^{
                 expect(number.floatValue).to.equal(INFINITY);
             });
 
-            it(@"should handle positive infinity", ^{
-                NSNumber *number = objectFromYAML(@"+.inf");
-
-                expect(number).notTo.beNil();
-                expect(number).to.beKindOf(NSNumber.class);
-                expect(number.floatValue).to.equal(INFINITY);
-            });
-
             it(@"should handle negative infinity", ^{
                 NSNumber *number = objectFromYAML(@"-.inf");
 
@@ -232,22 +224,6 @@ describe(@"deserialization from data", ^{
         });
 
         describe(@"with boolean values", ^{
-            it(@"should handle 'yes' boolean", ^{
-                NSNumber *number = objectFromYAML(@"yes");
-
-                expect(number).notTo.beNil();
-                expect(number).to.beKindOf(NSNumber.class);
-                expect(number.boolValue).to.equal(@YES);
-            });
-
-            it(@"should handle 'no' boolean", ^{
-                NSNumber *number = objectFromYAML(@"no");
-
-                expect(number).notTo.beNil();
-                expect(number).to.beKindOf(NSNumber.class);
-                expect(number.boolValue).to.equal(@NO);
-            });
-
             it(@"should handle 'true' boolean", ^{
                 NSNumber *number = objectFromYAML(@"true");
 
@@ -291,28 +267,70 @@ describe(@"deserialization from data", ^{
                 expect(string).to.equal(@"string");
             });
 
-            it(@"should handle nulls with the null tag", ^{
-                NSNull *null = objectFromYAML(@"!!null null");
+            it(@"should handle plain strings", ^{
+                NSString *string = objectFromYAML(@"string");
 
-                expect(null).notTo.beNil();
-                expect(null).to.beKindOf(NSNull.class);
+                expect(string).notTo.beNil();
+                expect(string).to.beKindOf(NSString.class);
+                expect(string).to.equal(@"string");
             });
-            
-            it(@"should handle booleans with the bool tag", ^{
-                NSNumber *number = objectFromYAML(@"!!bool false");
-                
-                expect(number).notTo.beNil();
-                expect(number).to.beKindOf(NSNumber.class);
-                expect(number.boolValue).to.equal(@NO);
-            });
-            
-            it(@"should handle strings with the string tag", ^{
-                NSNull *number = objectFromYAML(@"!!str string");
-                
-                expect(number).notTo.beNil();
-                expect(number).to.beKindOf(NSString.class);
-                expect(number).to.equal(@"string");
-            });
+        });
+    });
+
+    describe(@"explicitly tagged values", ^{
+        it(@"should the null tag", ^{
+            NSNull *null = objectFromYAML(@"!!null null");
+
+            expect(null).notTo.beNil();
+            expect(null).to.beKindOf(NSNull.class);
+        });
+
+        it(@"should handle the bool tag", ^{
+            NSNumber *number = objectFromYAML(@"!!bool false");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.boolValue).to.equal(@NO);
+        });
+
+        it(@"should handle the float tag", ^{
+            NSNumber *number = objectFromYAML(@"!!float -1.0");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.floatValue).to.beCloseTo(-1.0f);
+        });
+
+        it(@"should handle the int tag", ^{
+            NSNumber *number = objectFromYAML(@"!!int 1");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSNumber.class);
+            expect(number.integerValue).to.equal(1);
+        });
+
+        it(@"should handle the string tag", ^{
+            NSNull *number = objectFromYAML(@"!!str string");
+
+            expect(number).notTo.beNil();
+            expect(number).to.beKindOf(NSString.class);
+            expect(number).to.equal(@"string");
+        });
+
+        it(@"should handle the map tag", ^{
+            NSDictionary *map = objectFromYAML(@"!!map {1: 2}");
+
+            expect(map).notTo.beNil();
+            expect(map).to.beKindOf(NSDictionary.class);
+            expect(map).to.equal(@{@1: @2});
+        });
+
+        it(@"should handle the seq tag", ^{
+            NSDictionary *seq = objectFromYAML(@"!!seq [1, 2]");
+
+            expect(seq).notTo.beNil();
+            expect(seq).to.beKindOf(NSArray.class);
+            expect(seq).to.equal(@[@1, @2]);
         });
     });
 

@@ -11,6 +11,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Converts YAML to Foundation objects.
+///
+/// Implements the seq (NSArray), map (NSDictionary), and str (NSString) types
+/// from the YAML 1.2 failsafe schema:
+/// http://yaml.org/spec/1.2/spec.html#schema/failsafe/
+///
+/// Implements the int (NSNumber), float (NSNumber), and null (NSNull) types
+/// from the YAML 1.2 JSON schema:
+/// http://yaml.org/spec/1.2/spec.html#schema/JSON/
+///
+/// Does not support:
+/// - Alias nodes http://yaml.org/spec/1.2/spec.html#id2786196
+/// - Local tags http://yaml.org/spec/1.2/spec.html#id2764295
+/// - Multiple documents http://yaml.org/spec/1.2/spec.html#id2800132
 @interface MTFYAMLSerialization : NSObject
 
 /// Returns a Foundation object from given YAML data.
