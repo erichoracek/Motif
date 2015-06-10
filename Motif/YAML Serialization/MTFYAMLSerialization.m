@@ -63,15 +63,19 @@ NS_ASSUME_NONNULL_BEGIN
         error:NULL];
 
     _constantTags = @{
+        // From http://yaml.org/spec/1.2/spec.html#id2803362
+        @"null": NSNull.null,
+        // From http://yaml.org/spec/1.2/spec.html#id2803629
         @"true": @YES,
         @"false": @NO,
-        @"null": NSNull.null,
+        // From http://yaml.org/spec/1.2/spec.html#id2804092
         @".inf" : @(INFINITY),
         @"-.inf" : @(-INFINITY),
         @".nan" : [NSDecimalNumber notANumber],
     };
 
     [self registerHandlers];
+
     _object = [self deserializeData:data error:error];
 
     return self;
