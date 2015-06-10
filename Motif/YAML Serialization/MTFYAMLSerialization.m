@@ -50,13 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 
     _tagHandlers = [NSMutableDictionary dictionary];
 
-    // Regexes from http://yaml.org/spec/1.2/spec.html#id2804356
-
+    // From http://yaml.org/spec/1.2/spec.html#id2804356
     _integerRegularExpression = [NSRegularExpression
         regularExpressionWithPattern:@"^-?(0|[1-9][0-9]*)$"
         options:0
         error:NULL];
 
+    // From http://yaml.org/spec/1.2/spec.html#id2804356
     _floatRegularExpression = [NSRegularExpression
         regularExpressionWithPattern:@"^-?(0|[1-9][0-9]*)(\\.[0-9]*)?([eE][-+]?[0-9]+)?$"
         options:0
