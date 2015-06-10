@@ -342,28 +342,40 @@ describe(@"deserialization from data", ^{
         });
     });
 
-    it(@"should populate the error parameter on anchors", ^{
-        id object = objectFromYAML(@"&anchor");
+    describe(@"anchors and aliases", ^{
+        it(@"should populate the error parameter on anchors", ^{
+            id object = objectFromYAML(@"&anchor");
 
-        expect(object).to.beNil();
-        expect(error).notTo.beNil();
-        expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+            expect(object).to.beNil();
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+        });
+
+        it(@"should populate the error parameter on aliases", ^{
+            id object = objectFromYAML(@"default: &alias\n*default");
+
+            expect(object).to.beNil();
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+        });
     });
 
-    it(@"should populate the error parameter on aliases", ^{
-        id object = objectFromYAML(@"*alias");
+    describe(@"tags", ^{
+        it(@"should populate the error parameter on unhandled tags", ^{
+            id object = objectFromYAML(@"!!binary 1234");
 
-        expect(object).to.beNil();
-        expect(error).notTo.beNil();
-        expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
-    });
+            expect(object).to.beNil();
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+        });
 
-    it(@"should populate the error parameter on unhandled tags", ^{
-        id object = objectFromYAML(@"!!binary 1234");
+        it(@"should populate the error parameter on custom tags", ^{
+            id object = objectFromYAML(@"!customTag 1234");
 
-        expect(object).to.beNil();
-        expect(error).notTo.beNil();
-        expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+            expect(object).to.beNil();
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFYAMLSerializationErrorDomain);
+        });
     });
 
     it(@"should populate the error parameter on syntax errors", ^{
