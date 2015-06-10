@@ -126,6 +126,14 @@ describe(@"deserialization from data", ^{
                 expect(number.floatValue).to.beCloseTo(0.5);
             });
 
+            it(@"should handle floats ending with a decimal point", ^{
+                NSNumber *number = objectFromYAML(@"1.");
+
+                expect(number).notTo.beNil();
+                expect(number).to.beKindOf(NSNumber.class);
+                expect(number.floatValue).to.beCloseTo(1.);
+            });
+
             it(@"should handle negative floats beginning with a zero", ^{
                 NSNumber *number = objectFromYAML(@"-0.5");
 
