@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// http://yaml.org/spec/1.2/spec.html#schema/JSON/
 ///
 /// Does not support:
+/// - Core YAML schema http://yaml.org/spec/1.2/spec.html#schema/core/
 /// - Alias nodes http://yaml.org/spec/1.2/spec.html#id2786196
 /// - Local tags http://yaml.org/spec/1.2/spec.html#id2764295
 /// - Multiple documents http://yaml.org/spec/1.2/spec.html#id2800132
