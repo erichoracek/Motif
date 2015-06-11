@@ -22,6 +22,14 @@
 
 #pragma mark - Public
 
+- (instancetype)init {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    // Ensure that exception is thrown when just `init` is called.
+    return [self initWithRawTheme:nil inheritingFromTheme:nil error:nil];
+#pragma clang diagnostic pop
+}
+
 - (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError *__autoreleasing *)error {
     NSParameterAssert(rawTheme);
     
