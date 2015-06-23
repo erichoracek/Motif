@@ -128,7 +128,7 @@ Next up, we're going to add an applier to `UILabel` to style our text:
         mtf_registerThemeProperties:@[
             @"fontName",
             @"fontSize"
-        ] requiringValuesOfClassOrObjCType:@[
+        ] requiringValuesOfType:@[
             NSString.class,
             NSNumber.class
         ] applierBlock:^(NSDictionary *properties, UILabel *label) {
