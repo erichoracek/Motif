@@ -23,7 +23,6 @@
  */
 - (instancetype)initWithClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
-
 /**
  The block that is invoked when a theme class is applied to an instance of the
  class that this applier is registered with.

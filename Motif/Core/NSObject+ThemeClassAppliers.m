@@ -87,17 +87,17 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfClassOrObjCType:(NSArray *)valueClassesOrObjCTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock {
     NSParameterAssert(properties != nil);
     NSAssert(
-        valueClassesOrObjCTypes != nil,
+        valueTypes != nil,
         @"transformersOrClasses is nil. Use the equivalent method without "
              "transformersOrClasses instead.");
     NSParameterAssert(applierBlock != nil);
     
     MTFThemeClassTypedValuesPropertiesApplier *applier = [[MTFThemeClassTypedValuesPropertiesApplier alloc]
         initWithProperties:properties
-        valueClassesOrObjCTypes:valueClassesOrObjCTypes
+        valueTypes:valueTypes
         applierBlock:applierBlock];
 
     [self mtf_registerThemeClassApplier:applier];

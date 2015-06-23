@@ -24,11 +24,13 @@
 #pragma mark - MTFThemeClassApplier
 
 - (instancetype)initWithClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock {
-    NSParameterAssert(applierBlock);
+    NSParameterAssert(applierBlock != nil);
+
     self = [super init];
-    if (self) {
-        _applierBlock = applierBlock;
-    }
+    if (self == nil) return nil;
+
+    _applierBlock = applierBlock;
+
     return self;
 }
 
@@ -41,17 +43,11 @@
 }
 
 - (BOOL)applyClass:(MTFThemeClass *)class toObject:(id)object; {
-    NSParameterAssert(class);
-    NSParameterAssert(object);
+    NSParameterAssert(class != nil);
+    NSParameterAssert(object != nil);
     
     self.applierBlock(class, object);
 
-    return YES;
-}
-
-- (BOOL)shouldApplyClass:(MTFThemeClass *)themeClass {
-    NSParameterAssert(themeClass);
-    
     return YES;
 }
 

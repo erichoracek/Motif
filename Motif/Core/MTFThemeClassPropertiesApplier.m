@@ -90,28 +90,28 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wnonnull"
     // Ensure that exception is thrown when just `init` is called.
-    return [self initWithProperties:nil valueClassesOrObjCTypes:nil applierBlock:nil];
+    return [self initWithProperties:nil valueTypes:nil applierBlock:nil];
 #pragma clang diagnostic pop
 }
 
-- (instancetype)initWithProperties:(NSArray *)properties valueClassesOrObjCTypes:(NSArray *)valueClassesOrObjCTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {
-    NSParameterAssert(valueClassesOrObjCTypes);
+- (instancetype)initWithProperties:(NSArray *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {
+    NSParameterAssert(valueTypes);
     NSAssert(
-        properties.count == valueClassesOrObjCTypes.count,
+        properties.count == valueTypes.count,
         @"Properties and value classes/ObjC types must be of same length");
 
-    for (__unused id valueClassOrObjCType in valueClassesOrObjCTypes) {
+    for (__unused id valueClassOrObjCType in valueTypes) {
         NSAssert(
             class_isMetaClass(object_getClass(valueClassOrObjCType)) ||
             [valueClassOrObjCType isKindOfClass:NSString.class],
-            @"valueClassesOrObjCTypes must be either a class or an Objective-C "
+            @"valueTypes must be either a class or an Objective-C "
                 "type.");
     }
 
     self = [super initWithProperties:properties applierBlock:applierBlock];
     if (self == nil) return nil;
 
-    _valueClassesOrObjCTypes = [valueClassesOrObjCTypes copy];
+    _valueTypes = [valueTypes copy];
 
     return self;
 }
@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - MTFThemeClassTypedValuesPropertiesApplier
 
 - (nullable Class)classForPropertyAtIndex:(NSUInteger)index {
-    Class class = self.valueClassesOrObjCTypes[index];
+    Class class = self.valueTypes[index];
     
     // Check for whether the passed object is of type Class
     if (class_isMetaClass(object_getClass(class))) return class;
@@ -128,7 +128,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (nullable const char *)objCTypeForPropertyAtIndex:(NSUInteger)index {
-    NSString *name = self.valueClassesOrObjCTypes[index];
+    NSString *name = self.valueTypes[index];
 
     if ([name isKindOfClass:NSString.class]) return name.UTF8String;
 

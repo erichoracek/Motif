@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
+    NSParameterAssert(property != nil);
+    NSParameterAssert(applierBlock != nil);
+
     self = [super init];
     if (self == nil) return nil;
 
@@ -38,12 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 #pragma mark - MTFThemePropertyApplier <MTFThemeClassApplicable>
-
-- (BOOL)shouldApplyClass:(MTFThemeClass *)themeClass {
-    NSParameterAssert(themeClass != nil);
-
-    return (themeClass.properties[self.property] != nil);
-}
 
 - (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
     NSParameterAssert(themeClass != nil);
@@ -76,6 +73,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithProperty:(NSString *)property valueClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
+    NSParameterAssert(property != nil);
+    NSParameterAssert(valueClass != Nil);
     NSParameterAssert(applierBlock != nil);
 
     self = [super initWithProperty:property applierBlock:applierBlock];
@@ -107,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable id)valueForApplyingProperty:(NSString *)property withValueClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass {
     NSParameterAssert(property != nil);
-    NSParameterAssert(valueClass != nil);
+    NSParameterAssert(valueClass != Nil);
     NSParameterAssert(themeClass != nil);
 
     MTFThemeConstant *constant = themeClass.resolvedPropertiesConstants[property];
@@ -140,6 +139,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithProperty:(NSString *)property valueObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
+    NSParameterAssert(applierBlock != nil);
+    NSParameterAssert(valueObjCType != NULL);
     NSParameterAssert(applierBlock != nil);
 
     self = [super initWithProperty:property applierBlock:applierBlock];

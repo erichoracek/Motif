@@ -129,6 +129,8 @@
 		3A406CD81AC9B87600615428 /* BasicTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796891AC91D8400FD4320 /* BasicTheme.json */; };
 		3A406CDC1AC9B87600615428 /* InvalidJSONTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA7968B1AC91D8400FD4320 /* InvalidJSONTheme.json */; };
 		3A406CDE1AC9B87600615428 /* Basic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AA796881AC91D8400FD4320 /* Basic.json */; };
+		3A50942D1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A50942C1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m */; };
+		3A50942E1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A50942C1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m */; };
 		3A57FB2A1AD20B8E003E7670 /* MTFRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8391AD206FF00C420F2 /* MTFRuntimeExtensions.m */; };
 		3A5E2BCD1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
 		3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */; };
@@ -188,6 +190,8 @@
 		3AB62B201B257133008F1CF3 /* MTFThemeClassPropertiesApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB62B1D1B257133008F1CF3 /* MTFThemeClassPropertiesApplier.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AB62B211B257133008F1CF3 /* MTFThemeClassPropertiesApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB62B1E1B257133008F1CF3 /* MTFThemeClassPropertiesApplier.m */; };
 		3AB62B221B257133008F1CF3 /* MTFThemeClassPropertiesApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB62B1E1B257133008F1CF3 /* MTFThemeClassPropertiesApplier.m */; };
+		3AC0335E1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0335D1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m */; };
+		3AC0335F1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0335D1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m */; };
 		3AC72F0F1B2163D2008A742E /* NSValueTransformer+MotifCGSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC72F0D1B2163D2008A742E /* NSValueTransformer+MotifCGSize.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AC72F101B2163D2008A742E /* NSValueTransformer+MotifCGSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC72F0E1B2163D2008A742E /* NSValueTransformer+MotifCGSize.m */; };
 		3ADECD6D1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */; };
@@ -205,6 +209,8 @@
 		3AE8E4EF1B2519B300CCC758 /* MTFThemeClassPropertyApplier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE8E4EC1B2519B300CCC758 /* MTFThemeClassPropertyApplier.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AE8E4F01B2519B300CCC758 /* MTFThemeClassPropertyApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8E4ED1B2519B300CCC758 /* MTFThemeClassPropertyApplier.m */; };
 		3AE8E4F11B2519B300CCC758 /* MTFThemeClassPropertyApplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8E4ED1B2519B300CCC758 /* MTFThemeClassPropertyApplier.m */; };
+		3AE9F6471B2E89F400E117C0 /* MTFThemeClassApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9F6461B2E89F400E117C0 /* MTFThemeClassApplierSpec.m */; };
+		3AE9F6481B2E89F400E117C0 /* MTFThemeClassApplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9F6461B2E89F400E117C0 /* MTFThemeClassApplierSpec.m */; };
 		3AEB5BEF1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AEB5BED1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3AEB5BF01B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB5BEE1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m */; };
 		3AEB5BF41B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB5BF31B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m */; };
@@ -333,6 +339,7 @@
 		3A38B9991B2580E000061214 /* MTFThemeClassApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClassApplier.h; sourceTree = "<group>"; };
 		3A38B99A1B2580E000061214 /* MTFThemeClassApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassApplier.m; sourceTree = "<group>"; };
 		3A406CE91AC9B87600615428 /* Motif-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Motif-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A50942C1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassPropertiesApplierSpec.m; sourceTree = "<group>"; };
 		3A5E2BCC1B19968000E688F1 /* MTFYAMLSerializationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFYAMLSerializationSpec.m; sourceTree = "<group>"; };
 		3A6C1D3F1B1438740034F5A8 /* MTFYAMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFYAMLSerialization.h; path = "YAML Serialization/MTFYAMLSerialization.h"; sourceTree = "<group>"; };
 		3A6C1D401B1438740034F5A8 /* MTFYAMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFYAMLSerialization.m; path = "YAML Serialization/MTFYAMLSerialization.m"; sourceTree = "<group>"; };
@@ -373,6 +380,7 @@
 		3AAD45831B1A57F3003473E9 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB62B1D1B257133008F1CF3 /* MTFThemeClassPropertiesApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClassPropertiesApplier.h; sourceTree = "<group>"; };
 		3AB62B1E1B257133008F1CF3 /* MTFThemeClassPropertiesApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassPropertiesApplier.m; sourceTree = "<group>"; };
+		3AC0335D1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassPropertyApplierSpec.m; sourceTree = "<group>"; };
 		3AC72F0D1B2163D2008A742E /* NSValueTransformer+MotifCGSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MotifCGSize.h"; sourceTree = "<group>"; };
 		3AC72F0E1B2163D2008A742E /* NSValueTransformer+MotifCGSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MotifCGSize.m"; sourceTree = "<group>"; };
 		3ADECD6C1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemePropertyValuesByKeywordTests.m; sourceTree = "<group>"; };
@@ -387,6 +395,7 @@
 		3AE8E4E71B24C6D600CCC758 /* NSValueTransformer+MotifUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MotifUIColor.m"; sourceTree = "<group>"; };
 		3AE8E4EC1B2519B300CCC758 /* MTFThemeClassPropertyApplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemeClassPropertyApplier.h; sourceTree = "<group>"; };
 		3AE8E4ED1B2519B300CCC758 /* MTFThemeClassPropertyApplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassPropertyApplier.m; sourceTree = "<group>"; };
+		3AE9F6461B2E89F400E117C0 /* MTFThemeClassApplierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemeClassApplierSpec.m; sourceTree = "<group>"; };
 		3AEB5BED1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MotifUIEdgeInsets.h"; sourceTree = "<group>"; };
 		3AEB5BEE1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MotifUIEdgeInsets.m"; sourceTree = "<group>"; };
 		3AEB5BF31B1EE086006C9C67 /* NSValueTransformer_MotifUIEdgeInsetsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSValueTransformer_MotifUIEdgeInsetsSpec.m; sourceTree = "<group>"; };
@@ -596,6 +605,9 @@
 				3AE8E4D81B238C7800CCC758 /* NSValueTransformer_MotifCGSizeSpec.m */,
 				3AE8E4DE1B23910400CCC758 /* NSValueTransformer_MotifCGPointSpec.m */,
 				3AE8E4E41B23943A00CCC758 /* NSValueTransformer_MotifUIOffsetSpec.m */,
+				3AE9F6461B2E89F400E117C0 /* MTFThemeClassApplierSpec.m */,
+				3AC0335D1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m */,
+				3A50942C1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -1024,6 +1036,7 @@
 			files = (
 				3A21963F1B1BD050006159D4 /* NSURL+ThemeFilesSpec.m in Sources */,
 				3A5E2BCE1B19968000E688F1 /* MTFYAMLSerializationSpec.m in Sources */,
+				3AC0335F1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m in Sources */,
 				3A406CC21AC9B87600615428 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3ADECD6E1B0C61D2008B7AF6 /* MTFThemePropertyValuesByKeywordTests.m in Sources */,
 				3A406CC31AC9B87600615428 /* MTFThemeClassApplierTests.m in Sources */,
@@ -1035,7 +1048,9 @@
 				3A406CCB1AC9B87600615428 /* MTFThemeClassEqualityTests.m in Sources */,
 				3AEC52F11AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A406CCC1AC9B87600615428 /* MTFThemePropertiesApplierTests.m in Sources */,
+				3AE9F6481B2E89F400E117C0 /* MTFThemeClassApplierSpec.m in Sources */,
 				3A406CCD1AC9B87600615428 /* MTFThemeLoadingTests.m in Sources */,
+				3A50942E1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,6 +1104,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC0335E1B2EC03B00936F36 /* MTFThemeClassPropertyApplierSpec.m in Sources */,
 				3AA7968C1AC91D8400FD4320 /* MTFDynamicThemeApplierTests.m in Sources */,
 				3AF172A01B05B7DB005CF0F4 /* MTFDynamicValueTransformersTests.m in Sources */,
 				3AE8E4DF1B23910400CCC758 /* NSValueTransformer_MotifCGPointSpec.m in Sources */,
@@ -1100,8 +1116,10 @@
 				3AA796961AC91D8400FD4320 /* MTFThemePropertyApplierTests.m in Sources */,
 				3AA796971AC91D8400FD4320 /* MTFThemePropertyAutoApplicationTests.m in Sources */,
 				3AA796911AC91D8400FD4320 /* MTFThemeConstantEqualityTests.m in Sources */,
+				3A50942D1B393D3B0075E97E /* MTFThemeClassPropertiesApplierSpec.m in Sources */,
 				3AEC52F01AEEBC23008E635B /* MTFLiveReloadThemeApplierTests.m in Sources */,
 				3A916EFA1AF86DA300C1A0A3 /* MTFScreenBrightnessThemeApplierTests.m in Sources */,
+				3AE9F6471B2E89F400E117C0 /* MTFThemeClassApplierSpec.m in Sources */,
 				3AA7968F1AC91D8400FD4320 /* MTFThemeClassInheritanceTests.m in Sources */,
 				3AA796921AC91D8400FD4320 /* MTFThemeConstantTests.m in Sources */,
 				3AA796901AC91D8400FD4320 /* MTFThemeClassTests.m in Sources */,

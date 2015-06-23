@@ -146,9 +146,9 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  the property values, or uses the specified required class to ensure that the
  property values are a kind of the correct class.
  
- @param properties            The names of the theme class properties that this
-                              applier block is responsible for applying.
- @param transformersOrClasses An array of value transformer names or required
+ @param properties The names of the theme class properties that this applier
+                   block is responsible for applying.
+ @param valueTypes An array of value transformer names or required
                               classes in the same order as the property names.
  @param applierBlock          The block that is invoked when the specified
                               properties are applied to an instance of the 
@@ -156,7 +156,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @return An opaque theme class applier. You may discard this reference.
  */
-+ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfClassOrObjCType:(NSArray *)valueClassesOrObjCTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock;
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock;
 
 /**
  Registers a set of keywords that are each mapped to a specific value, such that
