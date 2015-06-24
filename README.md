@@ -150,7 +150,7 @@ The final applier that we'll need is on `UIButton` to style its `titleLabel`:
 ```objective-c
 + (void)load {
     [self
-        mtf_registerThemeProperty:"titleText"
+        mtf_registerThemeProperty:@"titleText"
         requiringValueOfClass:MTFThemeClass.class
         applierBlock:^(MTFThemeClass *class, UIButton *button) {
             [class applyToObject:button.titleLabel];
