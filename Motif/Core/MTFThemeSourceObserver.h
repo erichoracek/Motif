@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// when they were updated, and an error if there was one when creating it.
 typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * null_resettable);
 
-/// Observes the JSON theme files that were used to create an MTFTheme, and
-/// creates a new MTFTheme whenever they are edited.
+/// Observes the theme files that were used to create an MTFTheme, and creates a
+/// new MTFTheme whenever they are edited.
 @interface MTFThemeSourceObserver : NSObject
 
 /// Creates a theme source observer that observes the source of the specified

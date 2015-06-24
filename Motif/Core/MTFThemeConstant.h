@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTFThemeConstant : NSObject
 
 /**
- The constant name, as specified in the JSON theme file.
+ The constant name, as specified in the theme file.
  */
 @property (nonatomic, copy, readonly) NSString *name;
 
