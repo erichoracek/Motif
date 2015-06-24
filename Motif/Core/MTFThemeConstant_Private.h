@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue;
 
 /**
- The raw value of the constant, directly deserialized from the JSON file.
+ The raw value of the constant, directly deserialized from the theme file.
  */
 @property (nonatomic, readonly) id rawValue;
 

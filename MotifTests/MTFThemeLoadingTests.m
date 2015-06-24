@@ -24,7 +24,7 @@
     MTFTheme *theme;
     XCTAssertThrows(
         theme = [[MTFTheme alloc] initWithFile:URL error:nil],
-        @"Exception should be thrown when JSON file URL is invalid");
+        @"Exception should be thrown when theme file URL is invalid");
 }
 
 - (void)testNonExistentFileURLIsInvalid
@@ -41,7 +41,7 @@
     MTFTheme *theme;
     XCTAssertThrows(
         theme = [[MTFTheme alloc] initWithFile:fileURL error:nil],
-        @"Exception should be thrown when JSON file URL is invalid");
+        @"Exception should be thrown when theme file URL is invalid");
 }
 
 - (void)testInvalidJSONFileIsInvalid {
@@ -53,7 +53,7 @@
     MTFTheme *theme;
     XCTAssertThrows(
         theme = [[MTFTheme alloc] initWithFile:fileURL error:nil],
-        @"Exception should be thrown when JSON file URL is invalid");
+        @"Exception should be thrown when theme file URL is invalid");
 }
 
 - (void)testJSONFileIsAdded {

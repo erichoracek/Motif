@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTFThemeClass : NSObject
 
 /**
- The name of the theme class, as specified in the JSON theme file.
+ The name of the theme class, as specified in the theme file.
  */
 @property (nonatomic, copy, readonly) NSString *name;
 
 /**
- The properties of the theme class as specified in the JSON theme file.
+ The properties of the theme class as specified in the theme file.
  
  This dictionary is keyed by property names with values of the properties
  values.
@@ -39,11 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
  2. This list of properties is compared to the class properties defined in the
     theme file.
  3. If any of the properties from the theme file have the same type as the
-    properties on the class, the value from the JSON theme file is set using
+    properties on the class, the value from the theme file is set using
     key-value coding.
  4. If any of the matched properties have different types, an NSValueTransformer
-    subclass if located transform the JSON value to the type of the
-    property, e.g. NSString → UIEdgeInsets.
+    subclass if located transform the raw value to the type of the property,
+    e.g. NSString → UIEdgeInsets.
  5. The value from the above steps is set on the object using key-value coding.
  6. If there are no properties available for the theme property, its value is
     set on the object via key-value coding, which may throw an exception if the

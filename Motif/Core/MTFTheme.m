@@ -84,8 +84,8 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     
     NSAssert(
         (themeDictionaries.count > 0),
-        @"None of the specified JSON theme files at the following URLs "
-            "contained valid themes %@. Error %@",
+        @"None of the specified theme files at the following URLs contained "
+            "valid themes %@. Error %@",
         fileURLs,
         (error ? *error : nil));
     

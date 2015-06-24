@@ -63,7 +63,7 @@ static NSString * const PropertyValue2 = @"propertyValue2";
 - (void)testLiveReloadThemePropertyApplied {
     NSError *error;
     MTFTheme *theme = [[MTFTheme alloc] initWithFile:self.themeURL error:&error];
-    XCTAssertNil(error, @"Unable to create theme from JSON file %@", self.themeURL);
+    XCTAssertNil(error, @"Unable to create theme from file %@", self.themeURL);
     
     MTFLiveReloadThemeApplier *applier = [[MTFLiveReloadThemeApplier alloc]
         initWithTheme:theme
@@ -92,7 +92,7 @@ static NSString * const PropertyValue2 = @"propertyValue2";
 - (void)testLiveReloadThemePropertyAppliedFromSourceFile {
     NSError *error;
     MTFTheme *theme = [[MTFTheme alloc] initWithFile:self.themeURL error:&error];
-    XCTAssertNil(error, @"Unable to create theme from JSON file %@", self.themeURL);
+    XCTAssertNil(error, @"Unable to create theme from file %@", self.themeURL);
 
     MTFLiveReloadThemeApplier *applier = [[MTFLiveReloadThemeApplier alloc]
         initWithTheme:theme
