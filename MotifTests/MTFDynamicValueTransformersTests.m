@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import <Motif/Motif.h>
+#import <Motif/MTFObjCTypeValueTransformer.h>
+#import <Motif/MTFReverseTransformedValueClass.h>
 
 @interface DynamicValueTransformerTestClass : NSObject
 

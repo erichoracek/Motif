@@ -48,10 +48,10 @@
     return nil;
 }
 
-+ (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)class {
++ (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)toClass {
     NSParameterAssert(object);
     
-    if (class == Nil) {
+    if (toClass == Nil) {
         return nil;
     }
     
@@ -73,7 +73,7 @@
             
             BOOL canTransformObject = [object
                 isKindOfClass:reverseTransformedValueClass];
-            BOOL isValidTransformation = (class == transformedValueClass);
+            BOOL isValidTransformation = (toClass == transformedValueClass);
             
             if (canTransformObject && isValidTransformation) {
                 return valueTransformer;

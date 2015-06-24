@@ -8,6 +8,7 @@
 
 #import <GBCli/GBCli.h>
 #import <Motif/Motif.h>
+#import <Motif/MTFThemeParser.h>
 #import "MTFThemingSymbolsGenerator.h"
 #import "GBSettings+ThemingSymbolsGenerator.h"
 #import "GBOptionsHelper+ThemingSymbolsGenerator.h"

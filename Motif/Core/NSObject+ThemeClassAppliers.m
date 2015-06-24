@@ -7,9 +7,14 @@
 //
 
 #import <objc/runtime.h>
+#import "MTFThemeClassApplier.h"
+#import "MTFThemeClassPropertyApplier.h"
+#import "MTFThemeClassPropertiesApplier.h"
 #import "NSObject+ThemeClassAppliers.h"
 #import "NSObject+ThemeClassAppliersPrivate.h"
 #import "MTFThemeClassApplicable.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSObject (ThemeAppliers)
 
@@ -19,6 +24,7 @@
     NSParameterAssert(applierBlock);
     
     MTFThemeClassApplier *applier = [[MTFThemeClassApplier alloc] initWithClassApplierBlock:applierBlock];
+
     [self mtf_registerThemeClassApplier:applier];
     return applier;
 }
@@ -29,8 +35,6 @@
     
     MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc]
         initWithProperty:property
-        valueTransformerName:nil
-        requiredClass:nil
         applierBlock:applierBlock];
     
     [self mtf_registerThemeClassApplier:applier];
@@ -45,42 +49,57 @@
              "parameter instead.");
     NSParameterAssert(applierBlock);
     
-    MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc] initWithProperty:property valueTransformerName:nil requiredClass:valueClass applierBlock:applierBlock];
+    MTFThemeClassValueClassPropertyApplier *applier = [[MTFThemeClassValueClassPropertyApplier alloc]
+        initWithProperty:property
+        valueClass:valueClass
+        applierBlock:applierBlock];
+        
     [self mtf_registerThemeClassApplier:applier];
     return applier;
 }
 
-+ (id)mtf_registerThemeProperty:(NSString *)property valueTransformerName:(NSString *)transformerName applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-    NSParameterAssert(property);
++ (id)mtf_registerThemeProperty:(NSString *)property requiringValueOfObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyObjCValueApplierBlock)applierBlock {
+    NSParameterAssert(property != nil);
+    NSParameterAssert(applierBlock != nil);
     NSAssert(
-        transformerName,
-        @"transformerName is nil. Use the equivalent method without "
-             "transformerName instead.");
-    NSParameterAssert(applierBlock);
-    
-    MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc] initWithProperty:property valueTransformerName:transformerName requiredClass:nil applierBlock:applierBlock];
+        valueObjCType != NULL,
+        @"valueObjCType is NULL. Use the equivalent method without "
+             "valueObjCType instead.");
+
+    MTFThemeClassValueObjCTypePropertyApplier *applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc]
+        initWithProperty:property
+        valueObjCType:valueObjCType
+        applierBlock:applierBlock];
+
     [self mtf_registerThemeClassApplier:applier];
     return applier;
 }
 
 + (id)mtf_registerThemeProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
-    NSParameterAssert(properties);
-    NSParameterAssert(applierBlock);
+    NSParameterAssert(properties != nil);
+    NSParameterAssert(applierBlock != nil);
     
-    MTFThemeClassPropertiesApplier *applier = [[MTFThemeClassPropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:nil applierBlock:applierBlock];
+    MTFThemeClassPropertiesApplier *applier = [[MTFThemeClassPropertiesApplier alloc]
+        initWithProperties:properties
+        applierBlock:applierBlock];
+
     [self mtf_registerThemeClassApplier:applier];
     return applier;
 }
 
-+ (id)mtf_registerThemeProperties:(NSArray *)properties valueTransformerNamesOrRequiredClasses:(NSArray *)transformersOrClasses applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
-    NSParameterAssert(properties);
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock {
+    NSParameterAssert(properties != nil);
     NSAssert(
-        transformersOrClasses,
+        valueTypes != nil,
         @"transformersOrClasses is nil. Use the equivalent method without "
              "transformersOrClasses instead.");
-    NSParameterAssert(applierBlock);
+    NSParameterAssert(applierBlock != nil);
     
-    MTFThemeClassPropertiesApplier *applier = [[MTFThemeClassPropertiesApplier alloc] initWithProperties:properties valueTransformersOrRequiredClasses:transformersOrClasses applierBlock:applierBlock];
+    MTFThemeClassTypedValuesPropertiesApplier *applier = [[MTFThemeClassTypedValuesPropertiesApplier alloc]
+        initWithProperties:properties
+        valueTypes:valueTypes
+        applierBlock:applierBlock];
+
     [self mtf_registerThemeClassApplier:applier];
     return applier;
 }
@@ -108,7 +127,7 @@
         }];
 }
 
-+ (void)mtf_registerThemeClassApplier:(id <MTFThemeClassApplicable>)applier {
++ (void)mtf_registerThemeClassApplier:(id<MTFThemeClassApplicable>)applier {
     NSParameterAssert(applier);
     
     NSAssert(
@@ -126,7 +145,7 @@
 
 #pragma mark - Public
 
-+ (void)mtf_deregisterThemeClassApplier:(id <MTFThemeClassApplicable>)applier {
++ (void)mtf_deregisterThemeClassApplier:(id<MTFThemeClassApplicable>)applier {
     NSParameterAssert(applier);
     
     NSAssert(
@@ -161,3 +180,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -22,7 +22,7 @@
 
     [self
         mtf_registerThemeProperty:ThemeProperties.borderColor
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UIView *view) {
             view.layer.borderColor = color.CGColor;
         }];
@@ -36,7 +36,7 @@
     
     [self
         mtf_registerThemeProperty:ThemeProperties.backgroundColor
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UIView *view) {
             view.backgroundColor = color;
         }];

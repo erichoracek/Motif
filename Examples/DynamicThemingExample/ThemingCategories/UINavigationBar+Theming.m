@@ -17,27 +17,28 @@
 + (void)load {
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.backgroundColor
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
             navigationBar.barTintColor = color;
             navigationBar.barStyle = [navigationBar mtf_barStyleForColor:color];
-            // Translucency must be set to NO for an opaque background color to appear correctly
+            // Translucency must be set to NO for an opaque background color to
+            // appear correctly
             navigationBar.translucent = NO;
-    }];
+        }];
     
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.text
         requiringValueOfClass:MTFThemeClass.class
         applierBlock:^(MTFThemeClass *themeClass, UINavigationBar *navigationBar) {
             navigationBar.titleTextAttributes = [UILabel mtf_textAttributesForThemeClass:themeClass];
-    }];
+        }];
     
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.separatorColor
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
             [navigationBar mtf_setShadowColor:color];
-    }];
+        }];
 }
 
 - (UIBarStyle)mtf_barStyleForColor:(UIColor *)color {

@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param applier The applier that should be deregistered.
  */
-+ (void)mtf_deregisterThemeClassApplier:(id <MTFThemeClassApplicable>)applier;
++ (void)mtf_deregisterThemeClassApplier:(id<MTFThemeClassApplicable>)applier;
 
 /**
  The theme class appliers registered for this class resolved across the entire

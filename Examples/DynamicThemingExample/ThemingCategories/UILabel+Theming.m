@@ -17,7 +17,7 @@
         mtf_registerThemeProperties:@[
             TypographyThemeProperties.fontSize,
             TypographyThemeProperties.fontName,
-        ] valueTransformerNamesOrRequiredClasses:@[
+        ] requiringValuesOfType:@[
             NSNumber.class,
             NSString.class,
         ] applierBlock:^(NSDictionary *valuesForProperties, UILabel *label) {
@@ -28,7 +28,7 @@
     
     [self
         mtf_registerThemeProperty:ContentThemeProperties.color
-        valueTransformerName:MTFColorFromStringTransformerName
+        requiringValueOfClass:UIColor.class
         applierBlock:^(UIColor *color, UILabel *label) {
             label.textColor = color;
     }];
@@ -48,7 +48,8 @@
     NSString *colorString = themeClass.properties[ContentThemeProperties.color];
     UIColor *color;
     if (colorString != nil) {
-        color = [[NSValueTransformer valueTransformerForName:MTFColorFromStringTransformerName] transformedValue:colorString];
+        NSValueTransformer *transformer = [NSValueTransformer mtf_valueTransformerForTransformingObject:colorString toClass:UIColor.class];
+        color = [transformer transformedValue:colorString];
     }
     if (color != nil) {
         attributes[NSForegroundColorAttributeName] = color;

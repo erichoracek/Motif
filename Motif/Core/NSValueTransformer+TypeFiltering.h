@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)class;
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)toClass;
 
 @end
 

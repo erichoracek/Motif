@@ -26,17 +26,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) id value;
 
 /**
- Shortcut for accessing a transformed value from registered value transformer.
+ Shortcut for accessing a transformed value from a registered value transformer.
  
  The trasformed values are cached before being returned, and as such this is the
  best way to access value-transformed values on the theme constant.
  
- @param name The name of the value transformer that should transform constant
-             value.
- 
+ @param transformer The value transformer that should transform the constant
+                    value.
+
  @return The transformed value.
  */
-- (nullable id)transformedValueFromTransformerWithName:(NSString *)name;
+- (nullable id)transformedValueFromTransformer:(NSValueTransformer *)transformer;
 
 @end
 

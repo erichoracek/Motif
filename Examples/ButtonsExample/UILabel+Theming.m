@@ -17,7 +17,7 @@
         mtf_registerThemeProperties:@[
             ThemeProperties.fontName,
             ThemeProperties.fontSize
-        ] valueTransformerNamesOrRequiredClasses:@[
+        ] requiringValuesOfType:@[
             NSString.class,
             NSNumber.class
         ] applierBlock:^(NSDictionary *properties, UILabel *label) {
