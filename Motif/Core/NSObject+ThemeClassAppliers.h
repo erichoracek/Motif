@@ -113,7 +113,8 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
 ///
 /// @param valueObjCType A C string containing the Objective-C type that the
 ///                      property value is required to be a kind of. Should be
-///                      invoked with the value of the @encdoe directive.
+///                      invoked with the value of the @encode directive, e.g.
+///                      `@encode(CGPoint)`.
 ///
 /// @param applierBlock The block that is invoked when the specified property is
 ///                     applied to an instance of the receiving class.
@@ -129,6 +130,7 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @param properties   The names of the theme class properties that this applier
                      block is responsible for applying.
+
  @param applierBlock The block that is invoked when the specified properties are
                      applied to an instance of the receiving class.
 
@@ -148,11 +150,15 @@ typedef void (^MTFThemePropertiesApplierBlock)(NSDictionary *valuesForProperties
  
  @param properties The names of the theme class properties that this applier
                    block is responsible for applying.
- @param valueTypes An array of value transformer names or required
-                              classes in the same order as the property names.
- @param applierBlock          The block that is invoked when the specified
-                              properties are applied to an instance of the 
-                              receiving class.
+
+ @param valueTypes The classes or Objective-C types that the applied property
+                   values should be type of. Should be in the same order as
+                   the properties array, and consist of either Classes or
+                   NSString-wrapped Objective-C types, e.g. `NSString.class`
+                   or `@(@encode(UIEdgeInsets))`.
+
+ @param applierBlock The block that is invoked when the specified properties are
+                     applied to an instance of the receiving class.
  
  @return An opaque theme class applier. You may discard this reference.
  */
