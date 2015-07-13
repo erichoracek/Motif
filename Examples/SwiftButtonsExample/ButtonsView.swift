@@ -7,61 +7,83 @@
 //
 
 import UIKit
-import Cartography
 
 class ButtonsView: UIView {
-    
-    // MARK: - UIView
-    
+
+    // MARK: - Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(saveButton)
         addSubview(deleteButton)
-        
-        saveButton.setTitle("Save", forState: UIControlState.Normal)
-        deleteButton.setTitle("Delete", forState: UIControlState.Normal)
     }
-    
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        // Workaround for a strange UIKit bug causing UIButton to not update its
-        // intrinsic size and autolayout deciding it has a height of 0.0
-        self.layoutIfNeeded()
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: - UIView
+
     override class func requiresConstraintBasedLayout() -> Bool {
         return true
     }
     
     override func updateConstraints() {
-        constrain(saveButton) { view in
-            view.right == view.superview!.centerX - (self.buttonPadding)
-            view.centerY == view.superview!.centerY
-            view.width == self.buttonWidth
-        }
-        
-        constrain(deleteButton) { view in
-            view.left == view.superview!.centerX + (self.buttonPadding)
-            view.centerY == view.superview!.centerY
-            view.width == self.buttonWidth
-        }
-        
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
+            "[saveButton(145)]-5-[deleteButton(145)]",
+            options: NSLayoutFormatOptions.allZeros,
+            metrics: nil,
+            views: ["saveButton": saveButton, "deleteButton": deleteButton])
+
+        let saveButtonCenterYConstraint = NSLayoutConstraint(
+            item: saveButton,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .CenterY,
+            multiplier: 1,
+            constant: 0)
+
+        let deleteButtonCenterYConstraint = NSLayoutConstraint(
+            item: deleteButton,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .CenterY,
+            multiplier: 1,
+            constant: 0)
+
+        let buttonHorizontalCenteringConstraint = NSLayoutConstraint(
+            item: saveButton,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .CenterX,
+            multiplier: 1,
+            constant: -2.5)
+
+        addConstraints(horizontalConstraints)
+        addConstraint(saveButtonCenterYConstraint)
+        addConstraint(deleteButtonCenterYConstraint)
+        addConstraint(buttonHorizontalCenteringConstraint)
+
         super.updateConstraints()
     }
-    
-    // MARK: - UIView: NSCoding
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: - ButtonsView
     
-    let saveButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-    let deleteButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-    
-    let buttonWidth = 145.0;
-    let buttonPadding = 5.0;
-    
+    let saveButton: UIButton = {
+        let button = UIButton.buttonWithType(.System) as! UIButton
+        button.setTitle("Save", forState: .Normal)
+        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        return button
+    }()
+
+    let deleteButton: UIButton = {
+        let button = UIButton.buttonWithType(.System) as! UIButton
+        button.setTitle("Delete", forState: .Normal)
+        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        return button
+    }()
 }

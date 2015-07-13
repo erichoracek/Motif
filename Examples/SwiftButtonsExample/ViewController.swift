@@ -10,11 +10,23 @@ import UIKit
 import Motif
 
 class ViewController: UIViewController {
-    
+
+    // MARK: - Lifecycle
+
+    init(theme: MTFTheme) {
+        self.theme = theme
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - UIViewController
     
     override func loadView() {
-        self.view = ButtonsView.new()
+        self.view = ButtonsView()
     }
     
     override func viewDidLoad() {
@@ -22,22 +34,10 @@ class ViewController: UIViewController {
 
         theme.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, toObject:buttonsView)
     }
-    
-    // MARK: - UIViewController: NSCoding
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: ViewController
     
     let theme: MTFTheme
-    
-    init(theme: MTFTheme) {
-        self.theme = theme
-        
-        super.init(nibName: nil, bundle: nil)
-    }
     
     var buttonsView: ButtonsView {
         get {

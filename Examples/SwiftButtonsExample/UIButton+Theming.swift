@@ -11,9 +11,7 @@ import Motif
 
 extension UIButton {
     public override class func initialize() {
-        if self !== UIButton.self {
-            return
-        }
+        if self !== UIButton.self { return }
         
         self.mtf_registerThemeProperty(
             ThemeProperties.titleText.rawValue,

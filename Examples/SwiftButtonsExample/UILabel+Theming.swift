@@ -11,17 +11,15 @@ import Motif
 
 extension UILabel {
     public override class func initialize() {
-        if self !== UILabel.self {
-            return
-        }
+        if self !== UILabel.self { return }
         
         self.mtf_registerThemeProperties([
             ThemeProperties.fontName.rawValue,
             ThemeProperties.fontSize.rawValue
-            ], valueTransformerNamesOrRequiredClasses: [
+            ], requiringValuesOfType: [
                 NSString.self,
                 NSNumber.self
-            ], applierBlock: { (properties, label: AnyObject) -> Void in
+            ], applierBlock: { (properties, label) -> Void in
                 if
                     let name = properties[ThemeProperties.fontName.rawValue] as? String,
                     let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber,
