@@ -75,14 +75,14 @@ class ButtonsView: UIView {
     
     let saveButton: UIButton = {
         let button = UIButton.buttonWithType(.System) as! UIButton
-        button.setTitle("Save", forState: UIControlState.Normal)
+        button.setTitle("Save", forState: .Normal)
         button.setTranslatesAutoresizingMaskIntoConstraints(false)
         return button
     }()
 
     let deleteButton: UIButton = {
         let button = UIButton.buttonWithType(.System) as! UIButton
-        button.setTitle("Delete", forState: UIControlState.Normal)
+        button.setTitle("Delete", forState: .Normal)
         button.setTranslatesAutoresizingMaskIntoConstraints(false)
         return button
     }()

@@ -19,7 +19,7 @@ extension UILabel {
             ], requiringValuesOfType: [
                 NSString.self,
                 NSNumber.self
-            ], applierBlock: { (properties, label: AnyObject) -> Void in
+            ], applierBlock: { (properties, label) -> Void in
                 if
                     let name = properties[ThemeProperties.fontName.rawValue] as? String,
                     let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber,
