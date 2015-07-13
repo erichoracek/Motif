@@ -1,5 +1,5 @@
 github "specta/expecta" "v1.0.1"
 github "yaml/libyaml" "0.1.4"
-github "snapkit/masonry" "598b874615da6c0f317878a65062a3d89b2520dd"
+github "snapkit/masonry" "v0.6.2"
 github "specta/specta" "v1.0.2"
 github "jspahrsummers/xcconfigs" "0.8"
