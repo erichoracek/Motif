@@ -1217,7 +1217,7 @@
 			attributes = {
 				CLASSPREFIX = EXP;
 				LastTestingUpgradeCheck = 0630;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Peter Jihoon Kim";
 				TargetAttributes = {
 					908379101A8B9660009844DA = {
@@ -1686,6 +1686,7 @@
 		3A0A59891AD4418C003DA3E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1699,6 +1700,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ExpectaTests;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1707,6 +1709,7 @@
 		3A0A598A1AD4418C003DA3E4 /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1720,6 +1723,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ExpectaTests;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1728,6 +1732,7 @@
 		3A0A598B1AD4418C003DA3E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1741,6 +1746,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ExpectaTests;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1749,7 +1755,6 @@
 		3A0A59BC1AD441CB003DA3E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1764,6 +1769,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Expecta-iOSTests";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -1773,7 +1779,6 @@
 		3A0A59BD1AD441CB003DA3E4 /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1788,6 +1793,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Expecta-iOSTests";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -1797,7 +1803,6 @@
 		3A0A59BE1AD441CB003DA3E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1812,6 +1817,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Expecta-iOSTests";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -1832,6 +1838,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1852,6 +1859,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1872,6 +1880,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1881,6 +1890,7 @@
 		9083798D1A8B972C009844DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1893,6 +1903,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SKIP_INSTALL = YES;
 			};
@@ -1901,6 +1912,7 @@
 		9083798E1A8B972C009844DA /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1913,6 +1925,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SKIP_INSTALL = YES;
 			};
@@ -1921,6 +1934,7 @@
 		9083798F1A8B972C009844DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1933,6 +1947,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Expecta;
 				SKIP_INSTALL = YES;
 			};
@@ -1941,6 +1956,7 @@
 		9C44170917FF3F4A00978F09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1953,6 +1969,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1961,6 +1978,7 @@
 		9C44170A17FF3F4A00978F09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1973,6 +1991,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1981,7 +2000,6 @@
 		BE5C179E18EDFA93003A13EC /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2003,6 +2021,7 @@
 		BE5C179F18EDFA93003A13EC /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
@@ -2014,7 +2033,6 @@
 		BE5C17A018EDFA93003A13EC /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				INSTALL_PATH = /;
@@ -2030,7 +2048,6 @@
 		BE5C17A218EDFA93003A13EC /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2043,6 +2060,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -2052,6 +2070,7 @@
 		BE5C17A318EDFA93003A13EC /* Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -2064,6 +2083,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -2072,7 +2092,6 @@
 		E93067EE13B2E6D100EA26FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				INSTALL_PATH = /;
@@ -2088,7 +2107,6 @@
 		E93067EF13B2E6D100EA26FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				INSTALL_PATH = /;
@@ -2104,7 +2122,6 @@
 		E93067F013B2E6D100EA26FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2117,6 +2134,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -2126,7 +2144,6 @@
 		E93067F113B2E6D100EA26FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2139,6 +2156,7 @@
 					"-framework",
 					XCTest,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raingrove.expecta.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = xctest;
@@ -2148,11 +2166,11 @@
 		E9ACDF2D13B2DD520010F4D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2170,7 +2188,6 @@
 		E9ACDF2E13B2DD520010F4D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2187,6 +2204,7 @@
 		E9ACDF3013B2DD520010F4D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
@@ -2198,6 +2216,7 @@
 		E9ACDF3113B2DD520010F4D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Expecta/Expecta-Prefix.pch";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";

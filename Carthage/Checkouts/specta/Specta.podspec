@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'Specta'
-  s.version  = '1.0.2'
+  s.version  = '1.0.3'
   s.license  = 'MIT'
   s.summary  = 'A light-weight TDD / BDD framework.'
   s.homepage = 'http://github.com/specta/specta'
@@ -12,7 +12,8 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'Foundation', 'XCTest'
   s.requires_arc    = true
+  s.ios.deployment_target = '6.0'
+  s.osx.deployment_target = '10.8'
   s.osx.xcconfig    = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(DEVELOPER_FRAMEWORKS_DIR) "$(PLATFORM_DIR)/Developer/Library/Frameworks" "$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/Library/Frameworks"' }
   s.ios.xcconfig    = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(DEVELOPER_FRAMEWORKS_DIR) "$(PLATFORM_DIR)/Developer/Library/Frameworks" "$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks"' }
 end
-
