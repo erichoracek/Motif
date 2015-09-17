@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// to an object
 @interface MTFThemeClassPropertiesApplier : NSObject <MTFThemeClassApplicable>
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Initializes a theme class properties applier.
  
@@ -39,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// An applier that is responsible for applying a set of theme class properties
 /// of specific types to an object.
 @interface MTFThemeClassTypedValuesPropertiesApplier : MTFThemeClassPropertiesApplier
+
+- (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_UNAVAILABLE;
 
 /**
  Initializes a theme class properties applier.

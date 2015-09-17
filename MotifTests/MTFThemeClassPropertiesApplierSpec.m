@@ -28,12 +28,6 @@ describe(@"lifecycle", ^{
         expect(applier.properties).to.equal(properties);
         expect(applier.applierBlock).to.equal(applierBlock);
     });
-
-    it(@"should raise on initialization with init", ^{
-        expect(^{
-            __unused id applier = [[MTFThemeClassPropertiesApplier alloc] init];
-        }).to.raise(NSInternalInconsistencyException);
-    });
 });
 
 describe(@"application", ^{
@@ -102,14 +96,6 @@ describe(@"lifecycle", ^{
         expect(applier.properties).to.equal(properties);
         expect(applier.valueTypes).to.equal(valueTypes);
         expect(applier.applierBlock).to.equal(applierBlock);
-    });
-
-    it(@"should raise on initialization with initWithProperties:applierBlock:", ^{
-        expect(^{
-            __unused id applier = [[MTFThemeClassTypedValuesPropertiesApplier alloc]
-                initWithProperties:@[@"property"]
-                applierBlock:^(NSDictionary *valuesForProperties, id objectToTheme){}];
-        }).to.raise(NSInternalInconsistencyException);
     });
 });
 

@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// - Multiple documents http://yaml.org/spec/1.2/spec.html#id2800132
 @interface MTFYAMLSerialization : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /// Returns a Foundation object from given YAML data.
 ///
 /// @param data A data object containing YAML data.

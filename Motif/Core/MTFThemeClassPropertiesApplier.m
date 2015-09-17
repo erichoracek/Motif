@@ -24,11 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Lifecycle
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    return [self initWithProperties:nil applierBlock:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
@@ -87,11 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Lifecycle
 
 - (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    return [self initWithProperties:nil valueTypes:nil applierBlock:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithProperties:(NSArray *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {

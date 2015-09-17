@@ -13,6 +13,8 @@
  */
 @interface MTFThemeClassApplier : NSObject <MTFThemeClassApplicable>
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Initializes an theme class applier.
  

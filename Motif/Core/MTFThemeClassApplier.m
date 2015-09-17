@@ -13,12 +13,7 @@
 #pragma mark - NSObject
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    self = [self initWithClassApplierBlock:nil];
-#pragma clang diagnostic pop
-    return self;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 #pragma mark - MTFThemeClassApplier

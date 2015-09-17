@@ -20,11 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Lifecycle
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    return [self initWithProperty:nil applierBlock:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
@@ -65,11 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Lifecycle
 
 - (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `initWithProperty:applierBlock:` is called.
-    return [self initWithProperty:nil valueClass:nil applierBlock:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithProperty:(NSString *)property valueClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
@@ -131,11 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Lifecycle
 
 - (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `initWithProperty:applierBlock:` is called.
-    return [self initWithProperty:nil valueObjCType:NULL applierBlock:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithProperty:(NSString *)property valueObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyApplierBlock)applierBlock {

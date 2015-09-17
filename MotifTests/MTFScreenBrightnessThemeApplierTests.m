@@ -95,10 +95,6 @@ static CGFloat TestScreenBrightness = 0.0f;
     XCTAssertThrows([applier setTheme:darkTheme], @"An exception should be thrown when invoking setTheme:");
 }
 
-- (void)testExceptionThrownWhenCreatedWithInit {
-    XCTAssertThrows([[MTFScreenBrightnessThemeApplier alloc] init], @"An exception should be thrown when invoking init");
-}
-
 @end
 
 @implementation TestScreen

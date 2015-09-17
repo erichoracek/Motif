@@ -28,12 +28,6 @@ describe(@"lifecycle", ^{
         expect(applier.property).to.equal(property);
         expect(applier.applierBlock).to.equal(applierBlock);
     });
-
-    it(@"should raise on initialization with init", ^{
-        expect(^{
-            __unused id applier = [[MTFThemeClassPropertyApplier alloc] init];
-        }).to.raise(NSInternalInconsistencyException);
-    });
 });
 
 describe(@"property application", ^{
@@ -99,12 +93,6 @@ describe(@"lifecycle", ^{
         expect(applier.valueClass).to.beIdenticalTo(valueClass);
         expect(applier.applierBlock).to.equal(applierBlock);
     });
-
-    it(@"should raise on initialization with initWithProperty:applierBlock:", ^{
-        expect(^{
-            __unused id applier = [[MTFThemeClassValueClassPropertyApplier alloc] initWithProperty:@"" applierBlock:^(id propertyValue, id objectToTheme) {}];
-        }).to.raise(NSInternalInconsistencyException);
-    });
 });
 
 describe(@"property application", ^{
@@ -169,12 +157,6 @@ describe(@"lifecycle", ^{
         expect(applier.property).to.equal(property);
         expect(@(applier.valueObjCType)).to.equal(@(valueObjCType));
         expect(applier.applierBlock).to.equal(applierBlock);
-    });
-
-    it(@"should raise on initialization with initWithProperty:applierBlock:", ^{
-        expect(^{
-            __unused id applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc] initWithProperty:@"" applierBlock:^(id propertyValue, id objectToTheme) {}];
-        }).to.raise(NSInternalInconsistencyException);
     });
 });
 

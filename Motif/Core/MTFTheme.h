@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MTFTheme : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Creates a theme object from a theme file with the specified name.
  

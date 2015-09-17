@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// access to the theme's source files within the same directory structure.
 @interface MTFLiveReloadThemeApplier : MTFDynamicThemeApplier
 
+- (instancetype)initWithTheme:(MTFTheme *)theme NS_UNAVAILABLE;
+
 /// Initializes a live reload theme applier using the __FILE__ directive.
 ///
 /// The file that this method is invoked from should not be at a higer directory

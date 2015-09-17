@@ -36,10 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Private
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    return [self initWithData:nil error:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error {
