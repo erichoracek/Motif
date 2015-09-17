@@ -912,7 +912,8 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MTF;
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A79EC5F1AC9147E000CCC01 = {

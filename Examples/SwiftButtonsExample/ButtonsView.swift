@@ -19,7 +19,7 @@ class ButtonsView: UIView {
         addSubview(deleteButton)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -32,7 +32,7 @@ class ButtonsView: UIView {
     override func updateConstraints() {
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
             "[saveButton(145)]-5-[deleteButton(145)]",
-            options: NSLayoutFormatOptions.allZeros,
+            options: NSLayoutFormatOptions(),
             metrics: nil,
             views: ["saveButton": saveButton, "deleteButton": deleteButton])
 
@@ -74,16 +74,16 @@ class ButtonsView: UIView {
     // MARK: - ButtonsView
     
     let saveButton: UIButton = {
-        let button = UIButton.buttonWithType(.System) as! UIButton
+        let button = UIButton(type: .System)
         button.setTitle("Save", forState: .Normal)
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     let deleteButton: UIButton = {
-        let button = UIButton.buttonWithType(.System) as! UIButton
+        let button = UIButton(type: .System)
         button.setTitle("Delete", forState: .Normal)
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 }

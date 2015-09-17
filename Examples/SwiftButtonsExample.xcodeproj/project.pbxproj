@@ -221,7 +221,9 @@
 		3A7EC5D91AB51D5C00FD37F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A7EC5E01AB51D5C00FD37F3 = {
