@@ -61,6 +61,8 @@
 		3A5D20EB1AD654E70020C6B9 /* StyleGuideThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */; };
 		3A73B87B1ACD158100A6A2E0 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; };
 		3A73B87C1ACD158100A6A2E0 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B8791ACD157600A6A2E0 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3AC6F7DB1BAA89CC009F6966 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6F7DA1BAA89CC009F6966 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3AC6F7DC1BAA89CC009F6966 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6F7DA1BAA89CC009F6966 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3ACE0E061AE4617500B79147 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACE0E051AE4617500B79147 /* Masonry.framework */; };
 		3ACE0E081AE461BC00B79147 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACE0E051AE4617500B79147 /* Masonry.framework */; };
 		3ACE0E091AE461BC00B79147 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACE0E051AE4617500B79147 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -141,6 +143,7 @@
 		3A5D20E81AD654E70020C6B9 /* StyleGuideThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleGuideThemeSymbols.h; sourceTree = "<group>"; };
 		3A5D20E91AD654E70020C6B9 /* StyleGuideThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleGuideThemeSymbols.m; sourceTree = "<group>"; };
 		3A73B8791ACD157600A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AC6F7DA1BAA89CC009F6966 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3ACE0E051AE4617500B79147 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACE0E5A1AE462D000B79147 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		3ACE0E5C1AE462D000B79147 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -342,6 +345,7 @@
 				3ADB363E1A5692220059796A /* UIColor+LightnessType.h */,
 				3ADB363F1A5692220059796A /* UIColor+LightnessType.m */,
 				3ADB36171A567D8B0059796A /* Images.xcassets */,
+				3AC6F7DA1BAA89CC009F6966 /* Launch Screen.storyboard */,
 				3ADB35E71A5645B30059796A /* Supporting Files */,
 			);
 			path = DynamicThemingExample;
@@ -443,6 +447,7 @@
 				3A35531D1B17027000653137 /* NavigationTheme.yaml in Resources */,
 				3A3553171B17027000653137 /* ControlsTheme.yaml in Resources */,
 				3A01C5D71AD07E9900AA479F /* Images.xcassets in Resources */,
+				3AC6F7DC1BAA89CC009F6966 /* Launch Screen.storyboard in Resources */,
 				3A35531F1B17027000653137 /* StyleGuideTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +464,7 @@
 				3A35531C1B17027000653137 /* NavigationTheme.yaml in Resources */,
 				3A3553161B17027000653137 /* ControlsTheme.yaml in Resources */,
 				3ADB36181A567D8B0059796A /* Images.xcassets in Resources */,
+				3AC6F7DB1BAA89CC009F6966 /* Launch Screen.storyboard in Resources */,
 				3A35531E1B17027000653137 /* StyleGuideTheme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,7 +565,6 @@
 			baseConfigurationReference = 3ACE0E6D1AE462D000B79147 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -575,7 +580,6 @@
 			baseConfigurationReference = 3ACE0E6D1AE462D000B79147 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -609,7 +613,6 @@
 			baseConfigurationReference = 3ACE0E6D1AE462D000B79147 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				PRODUCT_NAME = DynamicThemingExample;
@@ -621,7 +624,6 @@
 			baseConfigurationReference = 3ACE0E6D1AE462D000B79147 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
 				PRODUCT_NAME = DynamicThemingExample;
