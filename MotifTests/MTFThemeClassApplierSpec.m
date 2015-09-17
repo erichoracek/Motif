@@ -25,12 +25,6 @@ describe(@"lifecycle", ^{
 
         expect(applier.applierBlock).to.equal(applierBlock);
     });
-
-    it(@"should raise on initialization with init", ^{
-        expect(^{
-            __unused MTFThemeClassApplier *applier = [[MTFThemeClassApplier alloc] init];
-        }).to.raise(NSInternalInconsistencyException);
-    });
 });
 
 describe(@"application", ^{

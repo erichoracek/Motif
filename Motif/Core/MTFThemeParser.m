@@ -23,11 +23,7 @@
 #pragma mark - Public
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    return [self initWithRawTheme:nil inheritingFromTheme:nil error:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 - (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError *__autoreleasing *)error {

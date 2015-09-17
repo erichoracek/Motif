@@ -15,11 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - NSObject
 
 - (instancetype)init {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnonnull"
-    // Ensure that exception is thrown when just `init` is called.
-    return [self initWithDispatchSource:NULL fileDescriptor:0 path:nil];
-#pragma clang diagnostic pop
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
 #pragma mark - MTFFileObservationContext

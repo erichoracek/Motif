@@ -56,10 +56,6 @@ static NSString * const PropertyValue2 = @"propertyValue2";
     XCTAssertTrue(didRemoveFile, @"Unable to remove file at location %@", self.sourceFileURL);
 }
 
-- (void)testThrowsOnInitialization {
-    XCTAssertThrows([[MTFLiveReloadThemeApplier alloc] init]);
-}
-
 - (void)testLiveReloadThemePropertyApplied {
     NSError *error;
     MTFTheme *theme = [[MTFTheme alloc] initWithFile:self.themeURL error:&error];

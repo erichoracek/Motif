@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MTFScreenBrightnessThemeApplier : MTFDynamicThemeApplier
 
+- (instancetype)initWithTheme:(MTFTheme *)theme NS_UNAVAILABLE;
+
 /**
  Initializes a screen brightness theme applier with the main screen.
  

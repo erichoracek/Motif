@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MTFFileObservationContext : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Initializes a file observation context.
  

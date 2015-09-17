@@ -14,14 +14,6 @@
 
 SpecBegin(MTFYAMLSerialization)
 
-describe(@"lifecycle", ^{
-    it(@"should raise an exception on direct initalization", ^{
-        expect(^{
-            __unused MTFYAMLSerialization *serialization = [[MTFYAMLSerialization alloc] init];
-        }).to.raise(NSInternalInconsistencyException);
-    });
-});
-
 describe(@"deserialization from data", ^{
     __block NSError *error;
     __block MTFTheme *theme;

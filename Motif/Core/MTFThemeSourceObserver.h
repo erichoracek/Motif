@@ -20,6 +20,8 @@ typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * null_resettable);
 /// new MTFTheme whenever they are edited.
 @interface MTFThemeSourceObserver : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /// Creates a theme source observer that observes the source of the specified
 /// theme, invoking the didUpdate block whenever a new theme is reloaded
 ///

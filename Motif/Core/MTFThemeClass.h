@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MTFThemeClass : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  The name of the theme class, as specified in the theme file.
  */

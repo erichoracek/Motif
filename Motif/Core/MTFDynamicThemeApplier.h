@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface MTFDynamicThemeApplier : NSObject
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Initializes a dynamic theme applier with a theme.
  
