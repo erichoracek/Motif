@@ -493,7 +493,7 @@ static inline MTFFloatTriple HSB2HSL(CGFloat hue, CGFloat saturation, CGFloat br
     CGFloat l = (2.0f - saturation) * brightness;
     saturation *= brightness;
     CGFloat satDiv = (l <= 1.0f) ? l : (2.0f - l);
-    if (satDiv) {
+    if (satDiv != 0.0) {
         saturation /= satDiv;
     }
     l *= 0.5;
@@ -510,7 +510,7 @@ static inline MTFFloatTriple HSL2HSB(CGFloat hue, CGFloat saturation, CGFloat l)
     l *= 2.0f;
     CGFloat s = saturation * ((l <= 1.0f) ? l : (2.0f - l));
     CGFloat brightness = (l + s) * 0.5f;
-    if (s) {
+    if (s != 0.0) {
         s = (2.0f * s) / (l + s);
     }
     MTFFloatTriple hsb = {
