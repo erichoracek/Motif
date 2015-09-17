@@ -154,11 +154,6 @@
 		3ACE0E6E1AE462D000B79147 /* iOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E6F1AE462D000B79147 /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		3ACE0E701AE462D000B79147 /* iOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E721AE462D000B79147 /* Mac-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Application.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E731AE462D000B79147 /* Mac-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Base.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E741AE462D000B79147 /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E751AE462D000B79147 /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
-		3ACE0E761AE462D000B79147 /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		3ADB35E41A5645B30059796A /* DynamicThemingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicThemingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB35E91A5645B30059796A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ADB35EB1A5645B30059796A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -266,7 +261,6 @@
 			children = (
 				3ACE0E591AE462D000B79147 /* Base */,
 				3ACE0E6C1AE462D000B79147 /* iOS */,
-				3ACE0E711AE462D000B79147 /* Mac OS X */,
 			);
 			name = Configuration;
 			path = ../Carthage/Checkouts/xcconfigs;
@@ -312,18 +306,6 @@
 				3ACE0E701AE462D000B79147 /* iOS-StaticLibrary.xcconfig */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		3ACE0E711AE462D000B79147 /* Mac OS X */ = {
-			isa = PBXGroup;
-			children = (
-				3ACE0E721AE462D000B79147 /* Mac-Application.xcconfig */,
-				3ACE0E731AE462D000B79147 /* Mac-Base.xcconfig */,
-				3ACE0E741AE462D000B79147 /* Mac-DynamicLibrary.xcconfig */,
-				3ACE0E751AE462D000B79147 /* Mac-Framework.xcconfig */,
-				3ACE0E761AE462D000B79147 /* Mac-StaticLibrary.xcconfig */,
-			);
-			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
 		3ADB35DB1A5645B30059796A = {
@@ -421,7 +403,7 @@
 		3ADB35DC1A5645B30059796A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3ADB35E31A5645B30059796A = {

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A73B87E1ACD15B000A6A2E0 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* Motif.framework */; };
-		3A73B8801ACD15C500A6A2E0 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A73B87D1ACD15B000A6A2E0 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A277DBA1BAA6ED000394657 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB81BAA6ED000394657 /* Masonry.framework */; settings = {ASSET_TAGS = (); }; };
+		3A277DBB1BAA6ED000394657 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB91BAA6ED000394657 /* Motif.framework */; settings = {ASSET_TAGS = (); }; };
+		3A277DBD1BAA6F7300394657 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB81BAA6ED000394657 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A277DBF1BAA6F7300394657 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB91BAA6ED000394657 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
-		3ACE0E891AE4641E00B79147 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACE0E871AE4640700B79147 /* Masonry.framework */; };
-		3ACE0E8A1AE4641E00B79147 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACE0E871AE4640700B79147 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ACE598C1AD4B61600F308EF /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */; };
 		3ACE598F1AD4B67600F308EF /* UIButton+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE598E1AD4B67600F308EF /* UIButton+Theming.m */; };
 		3AD69A501A4F750B0002FA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A4F1A4F750B0002FA8F /* main.m */; };
@@ -24,14 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3AE26FCE1ACD135B0012FD2E /* Embed Frameworks */ = {
+		3A277DC01BAA6F7300394657 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3ACE0E8A1AE4641E00B79147 /* Masonry.framework in Embed Frameworks */,
-				3A73B8801ACD15C500A6A2E0 /* Motif.framework in Embed Frameworks */,
+				3A277DBF1BAA6F7300394657 /* Motif.framework in Embed Frameworks */,
+				3A277DBD1BAA6F7300394657 /* Masonry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,7 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A73B87D1ACD15B000A6A2E0 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A277DB81BAA6ED000394657 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A277DB91BAA6ED000394657 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAD1AF31AE46ECF00A68625 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		3AAD1AF51AE46ECF00A68625 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3AAD1AF61AE46ECF00A68625 /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Profile.xcconfig; sourceTree = "<group>"; };
@@ -52,14 +53,8 @@
 		3AAD1B081AE46ECF00A68625 /* iOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
 		3AAD1B091AE46ECF00A68625 /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		3AAD1B0A1AE46ECF00A68625 /* iOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B0C1AE46ECF00A68625 /* Mac-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Application.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B0D1AE46ECF00A68625 /* Mac-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Base.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B0E1AE46ECF00A68625 /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B0F1AE46ECF00A68625 /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B101AE46ECF00A68625 /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		3ABF074C1A52105A00E6A83C /* ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSymbols.h; sourceTree = "<group>"; };
 		3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSymbols.m; sourceTree = "<group>"; };
-		3ACE0E871AE4640700B79147 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACE598A1AD4B61600F308EF /* UILabel+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Theming.h"; sourceTree = "<group>"; };
 		3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Theming.m"; sourceTree = "<group>"; };
 		3ACE598D1AD4B67600F308EF /* UIButton+Theming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Theming.h"; sourceTree = "<group>"; };
@@ -84,8 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACE0E891AE4641E00B79147 /* Masonry.framework in Frameworks */,
-				3A73B87E1ACD15B000A6A2E0 /* Motif.framework in Frameworks */,
+				3A277DBB1BAA6ED000394657 /* Motif.framework in Frameworks */,
+				3A277DBA1BAA6ED000394657 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +92,6 @@
 			children = (
 				3AAD1AF21AE46ECF00A68625 /* Base */,
 				3AAD1B061AE46ECF00A68625 /* iOS */,
-				3AAD1B0B1AE46ECF00A68625 /* Mac OS X */,
 			);
 			name = Configuration;
 			path = ../Carthage/Checkouts/xcconfigs;
@@ -143,18 +137,6 @@
 				3AAD1B0A1AE46ECF00A68625 /* iOS-StaticLibrary.xcconfig */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		3AAD1B0B1AE46ECF00A68625 /* Mac OS X */ = {
-			isa = PBXGroup;
-			children = (
-				3AAD1B0C1AE46ECF00A68625 /* Mac-Application.xcconfig */,
-				3AAD1B0D1AE46ECF00A68625 /* Mac-Base.xcconfig */,
-				3AAD1B0E1AE46ECF00A68625 /* Mac-DynamicLibrary.xcconfig */,
-				3AAD1B0F1AE46ECF00A68625 /* Mac-Framework.xcconfig */,
-				3AAD1B101AE46ECF00A68625 /* Mac-StaticLibrary.xcconfig */,
-			);
-			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
 		3AD69A411A4F750B0002FA8F = {
@@ -211,8 +193,8 @@
 		6DE4D76277E1B49110B96DA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A73B87D1ACD15B000A6A2E0 /* Motif.framework */,
-				3ACE0E871AE4640700B79147 /* Masonry.framework */,
+				3A277DB81BAA6ED000394657 /* Masonry.framework */,
+				3A277DB91BAA6ED000394657 /* Motif.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,7 +210,7 @@
 				3AD69A461A4F750B0002FA8F /* Sources */,
 				3AD69A471A4F750B0002FA8F /* Frameworks */,
 				3AD69A481A4F750B0002FA8F /* Resources */,
-				3AE26FCE1ACD135B0012FD2E /* Embed Frameworks */,
+				3A277DC01BAA6F7300394657 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,7 +227,7 @@
 		3AD69A421A4F750B0002FA8F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3AD69A491A4F750B0002FA8F = {
@@ -348,6 +330,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ButtonsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -360,6 +343,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ButtonsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
