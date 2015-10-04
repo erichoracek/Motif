@@ -52,6 +52,11 @@
         long:MTFSettingsOptionVerbose
         description:@"Print output verbosely when executing."
         flags:GBOptionNoValue];
+
+    [self registerOption:'s'
+        long:MTFSettingsOptionSwfit
+        description:@"Output symbol files in swift."
+        flags:GBOptionNoValue];
 }
 
 @end

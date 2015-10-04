@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'StyleGuideTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'StyleGuideTheme.yaml' by Motif.
 
 #import <Foundation/Foundation.h>
 

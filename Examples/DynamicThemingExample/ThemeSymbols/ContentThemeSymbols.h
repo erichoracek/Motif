@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ContentTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'ContentTheme.yaml' by Motif.
 
 #import <Foundation/Foundation.h>
 

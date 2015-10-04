@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ColorsTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'ColorsTheme.yaml' by Motif.
 
 #import "ColorsThemeSymbols.h"
 

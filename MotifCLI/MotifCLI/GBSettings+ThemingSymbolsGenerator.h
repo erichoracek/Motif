@@ -15,6 +15,12 @@ extern NSString * const MTFSettingsOptionTabs;
 extern NSString * const MTFSettingsOptionIndentationCount;
 extern NSString * const MTFSettingsOptionHelp;
 extern NSString * const MTFSettingsOptionVerbose;
+extern NSString * const MTFSettingsOptionSwfit;
+
+typedef NS_ENUM(NSInteger, MTFSymbolLaunguage) {
+    MTFSymbolLaunguageObjC,
+    MTFSymbolLaunguageSwift
+};
 
 @interface GBSettings (ThemingSymbolsGenerator)
 
@@ -23,21 +29,18 @@ extern NSString * const MTFSettingsOptionVerbose;
 - (void)mtf_applyDefaults;
 
 @property (nonatomic, setter=mtf_setThemes:) NSArray *mtf_themes;
-
 @property (nonatomic, setter=mtf_setPrefix:) NSString *mtf_prefix;
-
 @property (nonatomic, setter=mtf_setOutput:) NSString *mtf_output;
-
 @property (nonatomic, setter=mtf_setShouldIndentUsingTabs:) BOOL mtf_shouldIndentUsingTabs;
-
 @property (nonatomic, setter=mtf_setIndentationCount:) NSInteger mtf_indentationCount;
-
 @property (nonatomic, setter=mtf_setHelp:) BOOL mtf_help;
-
 @property (nonatomic, setter=mtf_setVerbose:) BOOL mtf_verbose;
+@property (nonatomic, setter=mtf_setOutputSwift:) BOOL mtf_outputSwift;
 
 #pragma mark - Derived Properties
 
 - (NSString *)mtf_indentation;
+
+- (MTFSymbolLaunguage)mtf_symbolLanguage;
 
 @end

@@ -204,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A7EC6001AB51D5C00FD37F3 /* Build configuration list for PBXNativeTarget "SwiftButtonsExample" */;
 			buildPhases = (
+				3AC8A9631B82F80C003D2CD5 /* ShellScript */,
 				3A7EC5DD1AB51D5C00FD37F3 /* Sources */,
 				3A7EC5DE1AB51D5C00FD37F3 /* Frameworks */,
 				3A7EC5DF1AB51D5C00FD37F3 /* Resources */,
@@ -264,6 +265,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3AC8A9631B82F80C003D2CD5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/usr/local/bin\"\nexport CLI_TOOL='motif'\n\nwhich \"${CLI_TOOL}\"\n\nif [ $? -ne 0  ]; then exit 0; fi\n\nexport THEMES_DIR=\"${SRCROOT}/${PRODUCT_NAME}\"\n\nfind \"${THEMES_DIR}\" -name '*Theme.yaml' |  sed 's/^/-t /' | xargs \"${CLI_TOOL}\" -s -o \"${THEMES_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A7EC5DD1AB51D5C00FD37F3 /* Sources */ = {
