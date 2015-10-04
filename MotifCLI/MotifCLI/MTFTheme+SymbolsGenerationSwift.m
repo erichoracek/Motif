@@ -30,14 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
     NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL];
     [outputStream open];
 
-    // Write a warning comment at the top of the file
+    // Write a warning comment at the top of the file.
     [outputStream mtf_writeString:self.warningComment];
 
-    // Write a warning comment at the top of the file
+    // Add the theme name constant.
     NSString *nameConstant = [self symbolsThemeNameConstantDeclaration];
     [outputStream mtf_writeString:[NSString stringWithFormat:@"\n%@\n", nameConstant]];
 
-    // Write all types of symbols from the theme
+    // Write all types of symbols from the theme.
     for (MTFSymbolType symbolType = 0; symbolType < MTFSymbolTypeCount; symbolType++) {
         NSString *symbolsDeclartion = [self symbolsDeclartionOfType:symbolType withIndentation:indentation];
         
