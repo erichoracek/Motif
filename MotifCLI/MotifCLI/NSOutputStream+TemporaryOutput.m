@@ -94,7 +94,6 @@ NSString * const MTFTemporaryOutputStreamErrorDomain = @"MTFTemporaryOutputStrea
         }
 
         return success;
-
     }
 
     // Otherwise, remove the destination file and move the temporary file to
