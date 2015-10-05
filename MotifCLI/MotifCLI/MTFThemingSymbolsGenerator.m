@@ -16,6 +16,8 @@
 #import "MTFTheme+SymbolsGenerationSwift.h"
 #import "NSURL+CLIHelpers.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFThemingSymbolsGenerator
 
 + (instancetype)sharedInstance {
@@ -60,39 +62,61 @@
         return 1;
     }
 
-    [self generateSymbolsForThemes:themes inDirectory:outputDirectoryURL withSettings:settings];
+    NSError *error;
+    BOOL success = [self generateSymbolsForThemes:themes inDirectory:outputDirectoryURL withSettings:settings error:&error];
+    if (!success) {
+        gbfprintln(stderr, @"[!] Error: unable to generate theme files: %@.", error);
+        return 1;
+    }
 
     return 0;
 }
 
-- (void)generateSymbolsForThemes:(NSArray *)themes inDirectory:(NSURL *)directory withSettings:(GBSettings *)settings {
+- (BOOL)generateSymbolsForThemes:(NSArray *)themes inDirectory:(NSURL *)directory withSettings:(GBSettings *)settings error:(NSError **)error {
+    NSParameterAssert(themes != nil);
+    NSParameterAssert(directory != nil);
+    NSParameterAssert(settings != nil);
+
     switch (settings.mtf_symbolLanguage) {
     case MTFSymbolLaunguageObjC:
         for (MTFTheme *theme in themes) {
-            [theme
+            BOOL success = [theme
                 generateObjCSymbolsFilesInDirectory:directory
                 indentation:settings.mtf_indentation
-                prefix:settings.mtf_prefix];
+                prefix:settings.mtf_prefix
+                error:error];
+
+            if (!success) return NO;
         }
         
         // If there is more than one theme, generate an umbrella header to
         // enable consumers to import all symbols files at once
         if (themes.count > 1) {
-            [MTFTheme
+            BOOL success = [MTFTheme
                 generateObjCSymbolsUmbrellaHeaderFromThemes:themes
                 inDirectory:directory
-                prefix:settings.mtf_prefix];
+                prefix:settings.mtf_prefix
+                error:error];
+
+            if (!success) return NO;
         }
 
         break;
 
     case MTFSymbolLaunguageSwift:
         for (MTFTheme *theme in themes) {
-            [theme generateSwiftSymbolsFileInDirectory:directory indentation:settings.mtf_indentation];
+            BOOL success = [theme
+                generateSwiftSymbolsFileInDirectory:directory
+                indentation:settings.mtf_indentation
+                error:error];
+
+            if (!success) return NO;
         }
 
         break;
     }
+
+    return YES;
 }
 
 @end
@@ -126,3 +150,5 @@ int MTFThemingSymbolsGeneratorMain(int argc, const char *argv[]) {
 
     return result;
 }
+
+NS_ASSUME_NONNULL_END

@@ -6,27 +6,43 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
+@import ObjectiveC;
 #import <GBCli/GBCli.h>
-#import <objc/runtime.h>
 
 #import "NSOutputStream+TemporaryOutput.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+NSString * const MTFTemporaryOutputStreamErrorDomain = @"MTFTemporaryOutputStreamErrorDomain";
+
 @implementation NSOutputStream (TemporaryOutput)
 
-+ (instancetype)temporaryOutputStreamWithDestinationURL:(NSURL *)destinationURL {
++ (nullable instancetype)temporaryOutputStreamWithDestinationURL:(NSURL *)destinationURL error:(NSError **)error {
     NSParameterAssert(destinationURL != nil);
 
     NSString *templateName = [destinationURL.lastPathComponent stringByAppendingString:@"XXX"];
 
-    NSURL *temporaryURL = [self createTemporaryFileWithTemplateName:templateName error:NULL];
+    NSURL *temporaryURL = [self createTemporaryFileWithTemplateName:templateName error:error];
     if (temporaryURL == nil) return nil;
 
     NSOutputStream *stream = [self outputStreamWithURL:temporaryURL append:NO];
+    if (stream == nil) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:NSLocalizedString(@"Failed to create temporary output stream to URL: %@", nil), temporaryURL];
 
-    stream.temporaryURL = [temporaryURL copy];
-    stream.destinationURL = [destinationURL copy];
+            *error = [NSError
+                errorWithDomain:MTFTemporaryOutputStreamErrorDomain
+                code:MTFTemporaryOutputStreamErrorCreationFailure
+                userInfo:@{
+                    NSLocalizedDescriptionKey: description,
+                }];
+        }
+
+        return nil;
+    }
+
+    stream.temporaryURL = temporaryURL;
+    stream.destinationURL = destinationURL;
 
     return stream;
 }
@@ -56,29 +72,51 @@ NS_ASSUME_NONNULL_BEGIN
     return [NSURL fileURLWithPath:path isDirectory:NO];
 }
 
-- (void)copyToDestinationIfNecessary {
+- (BOOL)copyToDestinationIfNecessaryWithError:(NSError **)error {
     NSAssert(self.streamStatus == NSStreamStatusClosed, @"Stream must be closed");
 
     BOOL equalContents = [NSFileManager.defaultManager
         contentsEqualAtPath:self.temporaryURL.path
         andPath:self.destinationURL.path];
 
+    // If contents are equal, just delete the temporary file.
     if (equalContents) {
-        [NSFileManager.defaultManager removeItemAtURL:self.temporaryURL error:NULL];
+        NSError *removeError;
+        BOOL success = [NSFileManager.defaultManager removeItemAtURL:self.temporaryURL error:&removeError];
 
-    } else {
-        [NSFileManager.defaultManager removeItemAtURL:self.destinationURL error:NULL];
-
-        NSError *error;
-        BOOL success = [NSFileManager.defaultManager
-            moveItemAtURL:self.temporaryURL
-            toURL:self.destinationURL
-            error:&error];
-
-        if (!success) {
-            gbfprintln(stderr, @"[!] Error: unable to create file at path %@: %@", self.destinationURL, error);
+        // If failed to delete a file that doesn't exist, this is fine.
+        if (!success && [removeError.domain isEqual:NSCocoaErrorDomain] && removeError.code == NSFileNoSuchFileError) {
+            return YES;
         }
+
+        if (!success && error != NULL) {
+            *error = removeError;
+        }
+
+        return success;
+
     }
+
+    // Otherwise, remove the destination file and move the temporary file to
+    // replace it.
+    NSError *removeError;
+    BOOL removeSuccess = [NSFileManager.defaultManager removeItemAtURL:self.destinationURL error:&removeError];
+
+    BOOL failedToRemoveNonExistentFile = !removeSuccess && ([removeError.domain isEqual:NSCocoaErrorDomain] && removeError.code != NSFileNoSuchFileError);
+
+    // If failed in any way other than failure to delete a file that doesn't
+    // exist, consider this a failure.
+    if (!removeSuccess && !failedToRemoveNonExistentFile) {
+        if (error != NULL) {
+            *error = removeError;
+        }
+        return NO;
+    }
+
+    return [NSFileManager.defaultManager
+        moveItemAtURL:self.temporaryURL
+        toURL:self.destinationURL
+        error:error];
 }
 
 - (NSURL *)temporaryURL {

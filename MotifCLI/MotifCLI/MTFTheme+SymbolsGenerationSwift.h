@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFTheme (SymbolsGenerationSwift)
 
-- (void)generateSwiftSymbolsFileInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation;
+- (BOOL)generateSwiftSymbolsFileInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation error:(NSError **)error;
 
 @end
 

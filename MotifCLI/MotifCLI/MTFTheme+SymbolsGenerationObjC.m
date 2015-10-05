@@ -27,25 +27,29 @@ typedef NS_ENUM(NSInteger, FileType) {
 
 #pragma mark - Public
 
-- (void)generateObjCSymbolsFilesInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation prefix:(NSString *)prefix; {
+- (BOOL)generateObjCSymbolsFilesInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation prefix:(NSString *)prefix error:(NSError **)error {
     NSParameterAssert(directoryURL);
     NSParameterAssert(indentation);
     NSParameterAssert(prefix);
     
-    [self
+    BOOL success = [self
         generateSymbolsFileOfType:FileTypeHeader
         intoDirectoryWithURL:directoryURL
         indentation:indentation
-        prefix:prefix];
+        prefix:prefix
+        error:error];
 
-    [self
+    if (!success) return NO;
+
+    return [self
         generateSymbolsFileOfType:FileTypeImplementation
         intoDirectoryWithURL:directoryURL
         indentation:indentation
-        prefix:prefix];
+        prefix:prefix
+        error:error];
 }
 
-+ (void)generateObjCSymbolsUmbrellaHeaderFromThemes:(NSArray *)themes inDirectory:(NSURL *)directoryURL prefix:(NSString *)prefix; {
++ (BOOL)generateObjCSymbolsUmbrellaHeaderFromThemes:(NSArray *)themes inDirectory:(NSURL *)directoryURL prefix:(NSString *)prefix error:(NSError **)error {
     NSParameterAssert(themes);
     NSAssert(themes.count > 0, @"Must supply at least one theme");
     NSParameterAssert(directoryURL);
@@ -54,7 +58,10 @@ typedef NS_ENUM(NSInteger, FileType) {
     // Create an opened stream from the file at the specified directory
     NSString *outputFilename = [self umbrellaHeaderFilenameWithPrefix:prefix];
     NSURL *destinationURL = [directoryURL URLByAppendingPathComponent:outputFilename];
-    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL];
+
+    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL error:error];
+    if (outputStream == nil) return NO;
+
     [outputStream open];
     
     // Write a warning comment at the top of the file
@@ -67,14 +74,18 @@ typedef NS_ENUM(NSInteger, FileType) {
     }
     
     [outputStream close];
-    [outputStream copyToDestinationIfNecessary];
+    if (![outputStream copyToDestinationIfNecessaryWithError:error]) {
+        return NO;
+    }
     
     gbprintln(@"Generated: %@", outputFilename);
+
+    return YES;
 }
 
 #pragma mark - Private
 
-- (void)generateSymbolsFileOfType:(FileType)fileType intoDirectoryWithURL:(NSURL *)directoryURL indentation:(NSString *)indentation prefix:(NSString *)prefix {
+- (BOOL)generateSymbolsFileOfType:(FileType)fileType intoDirectoryWithURL:(NSURL *)directoryURL indentation:(NSString *)indentation prefix:(NSString *)prefix error:(NSError **)error {
     NSParameterAssert(directoryURL);
     NSParameterAssert(indentation);
     NSParameterAssert(prefix);
@@ -85,7 +96,9 @@ typedef NS_ENUM(NSInteger, FileType) {
         prefix:prefix];
     
     NSURL *destinationURL = [directoryURL URLByAppendingPathComponent:outputFilename];
-    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL];
+    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL error:error];
+    if (outputStream == nil) return NO;
+
     [outputStream open];
     
     // Write a warning comment at the top of the file
@@ -120,9 +133,11 @@ typedef NS_ENUM(NSInteger, FileType) {
     }
 
     [outputStream close];
-    [outputStream copyToDestinationIfNecessary];
+    if (![outputStream copyToDestinationIfNecessaryWithError:error]) return NO;
     
     gbprintln(@"Generated: %@", outputFilename);
+
+    return YES;
 }
 
 - (NSString *)symbolsFilenameForFileType:(FileType)filetype prefix:(NSString *)prefix {

@@ -20,14 +20,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFTheme (SymbolsGenerationSwift)
 
-- (void)generateSwiftSymbolsFileInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation {
+- (BOOL)generateSwiftSymbolsFileInDirectory:(NSURL *)directoryURL indentation:(NSString *)indentation error:(NSError **)error {
     NSParameterAssert(directoryURL != nil);
     NSParameterAssert(indentation != nil);
 
     NSString *outputFilename = [self symbolsFilename];
 
     NSURL *destinationURL = [directoryURL URLByAppendingPathComponent:outputFilename];
-    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL];
+    NSOutputStream *outputStream = [NSOutputStream temporaryOutputStreamWithDestinationURL:destinationURL error:error];
+    if (outputStream == nil) return NO;
+
     [outputStream open];
 
     // Write a warning comment at the top of the file.
@@ -48,9 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     [outputStream close];
-    [outputStream copyToDestinationIfNecessary];
+    if (![outputStream copyToDestinationIfNecessaryWithError:error]) {
+        return NO;
+    }
 
     gbprintln(@"Generated: %@", outputFilename);
+
+    return YES;
 }
 
 - (NSString *)symbolsFilename {

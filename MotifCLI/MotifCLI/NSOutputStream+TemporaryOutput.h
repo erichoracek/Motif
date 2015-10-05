@@ -10,11 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// The domain for errors originating from temporary output streams.
+extern NSString * const MTFTemporaryOutputStreamErrorDomain;
+
+typedef NS_ENUM(NSInteger, MTFTemporaryOutputStreamError) {
+    /// An error that occurs when a temporary output stream is unable to be
+    /// created.
+    MTFTemporaryOutputStreamErrorCreationFailure
+};
+
 @interface NSOutputStream (TemporaryOutput)
 
 /// Returns an output stream that writes its contents to a temporary location,
 /// to eventually be moved to the specified destination upon closure.
-+ (instancetype)temporaryOutputStreamWithDestinationURL:(NSURL *)destinationURL;
++ (nullable instancetype)temporaryOutputStreamWithDestinationURL:(NSURL *)destinationURL error:(NSError **)error;
 
 /// Compares the contents of the temporary file that output was written to with
 /// that of the final destination URL that the receiver was initialized with (if
@@ -23,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// the temporary file is deleted and no further action is taken.
 ///
 /// Expects to operate on a closed stream.
-- (void)copyToDestinationIfNecessary;
+- (BOOL)copyToDestinationIfNecessaryWithError:(NSError **)error;
 
 /// The URL that temporary output is directed to.
 @property (nonatomic, copy) NSURL *temporaryURL;
