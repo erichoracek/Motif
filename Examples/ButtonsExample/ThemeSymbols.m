@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'Theme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'Theme.yaml' by Motif.
 
 #import "ThemeSymbols.h"
 

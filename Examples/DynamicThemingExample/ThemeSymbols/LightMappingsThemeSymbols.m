@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'LightMappingsTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'LightMappingsTheme.yaml' by Motif.
 
 #import "LightMappingsThemeSymbols.h"
 

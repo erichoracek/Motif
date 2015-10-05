@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'TypographyTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'TypographyTheme.yaml' by Motif.
 
 #import "TypographyThemeSymbols.h"
 

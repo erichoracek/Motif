@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'DarkMappingsTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'DarkMappingsTheme.yaml' by Motif.
 
 #import "DarkMappingsThemeSymbols.h"
 

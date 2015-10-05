@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'NavigationTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'NavigationTheme.yaml' by Motif.
 
 #import "NavigationThemeSymbols.h"
 

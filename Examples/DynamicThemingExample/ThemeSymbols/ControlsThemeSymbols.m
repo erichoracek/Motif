@@ -1,4 +1,4 @@
-// WARNING: Do not modify. This file is machine-generated from 'ControlsTheme.yaml'.
+// WARNING: Do not modify. This file is machine-generated from 'ControlsTheme.yaml' by Motif.
 
 #import "ControlsThemeSymbols.h"
 

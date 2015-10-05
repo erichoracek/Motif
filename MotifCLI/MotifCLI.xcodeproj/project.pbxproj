@@ -10,9 +10,13 @@
 		3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */; };
 		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
 		3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */; };
-		3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */; };
+		3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */; };
 		3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */; };
 		3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */; };
+		3AC8A9561B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A9551B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m */; };
+		3AC8A9591B824D12003D2CD5 /* MTFTheme+Symbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A9581B824D12003D2CD5 /* MTFTheme+Symbols.m */; };
+		3AC8A95F1B825500003D2CD5 /* MTFTheme+WarningComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A95E1B825500003D2CD5 /* MTFTheme+WarningComment.m */; };
+		3AC8A9621B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A9611B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m */; };
 		3ACAF1811AD1ED0C00383DA2 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAF1801AD1ED0C00383DA2 /* Motif.framework */; };
 		3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB6F8F1A50A8B7004EDEF3 /* main.m */; };
 		9E23F8B4DB584962C25AAD87 /* libPods-MotifCLI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */; };
@@ -40,12 +44,20 @@
 		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
 		3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemingSymbolsGenerator.h; sourceTree = "<group>"; };
 		3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemingSymbolsGenerator.m; sourceTree = "<group>"; };
-		3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+SymbolsGeneration.h"; sourceTree = "<group>"; };
-		3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MTFTheme+SymbolsGeneration.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+SymbolsGenerationObjC.h"; sourceTree = "<group>"; };
+		3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MTFTheme+SymbolsGenerationObjC.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBOptionsHelper+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
 		3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBOptionsHelper+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
 		3ABF073F1A5141DE00E6A83C /* NSURL+CLIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CLIHelpers.h"; sourceTree = "<group>"; };
 		3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CLIHelpers.m"; sourceTree = "<group>"; };
+		3AC8A9541B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+SymbolsGenerationSwift.h"; sourceTree = "<group>"; };
+		3AC8A9551B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTFTheme+SymbolsGenerationSwift.m"; sourceTree = "<group>"; };
+		3AC8A9571B824D12003D2CD5 /* MTFTheme+Symbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+Symbols.h"; sourceTree = "<group>"; };
+		3AC8A9581B824D12003D2CD5 /* MTFTheme+Symbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTFTheme+Symbols.m"; sourceTree = "<group>"; };
+		3AC8A95D1B825500003D2CD5 /* MTFTheme+WarningComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+WarningComment.h"; sourceTree = "<group>"; };
+		3AC8A95E1B825500003D2CD5 /* MTFTheme+WarningComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTFTheme+WarningComment.m"; sourceTree = "<group>"; };
+		3AC8A9601B826146003D2CD5 /* NSOutputStream+TemporaryOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+TemporaryOutput.h"; sourceTree = "<group>"; };
+		3AC8A9611B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+TemporaryOutput.m"; sourceTree = "<group>"; };
 		3ACAF1801AD1ED0C00383DA2 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB6F8C1A50A8B7004EDEF3 /* motif */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = motif; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB6F8F1A50A8B7004EDEF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,8 +108,14 @@
 			children = (
 				3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */,
 				3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */,
-				3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.h */,
-				3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m */,
+				3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.h */,
+				3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */,
+				3AC8A9541B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.h */,
+				3AC8A9551B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m */,
+				3AC8A9571B824D12003D2CD5 /* MTFTheme+Symbols.h */,
+				3AC8A9581B824D12003D2CD5 /* MTFTheme+Symbols.m */,
+				3AC8A95D1B825500003D2CD5 /* MTFTheme+WarningComment.h */,
+				3AC8A95E1B825500003D2CD5 /* MTFTheme+WarningComment.m */,
 				3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */,
 				3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */,
 				3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */,
@@ -106,6 +124,8 @@
 				3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */,
 				3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */,
 				3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */,
+				3AC8A9601B826146003D2CD5 /* NSOutputStream+TemporaryOutput.h */,
+				3AC8A9611B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m */,
 				3A3DD93F1A88B52F00DBA831 /* Supporting Files */,
 			);
 			path = MotifCLI;
@@ -266,12 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGeneration.m in Sources */,
+				3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m in Sources */,
+				3AC8A9561B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m in Sources */,
 				3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */,
+				3AC8A9621B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m in Sources */,
 				3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */,
 				3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */,
 				3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */,
 				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
+				3AC8A9591B824D12003D2CD5 /* MTFTheme+Symbols.m in Sources */,
+				3AC8A95F1B825500003D2CD5 /* MTFTheme+WarningComment.m in Sources */,
 				3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
