@@ -101,7 +101,7 @@ NSString * const MTFTemporaryOutputStreamErrorDomain = @"MTFTemporaryOutputStrea
     NSError *removeError;
     BOOL removeSuccess = [NSFileManager.defaultManager removeItemAtURL:self.destinationURL error:&removeError];
 
-    BOOL failedToRemoveNonExistentFile = !removeSuccess && ([removeError.domain isEqual:NSCocoaErrorDomain] && removeError.code != NSFileNoSuchFileError);
+    BOOL failedToRemoveNonExistentFile = !removeSuccess && ([removeError.domain isEqual:NSCocoaErrorDomain] && removeError.code == NSFileNoSuchFileError);
 
     // If failed in any way other than failure to delete a file that doesn't
     // exist, consider this a failure.
