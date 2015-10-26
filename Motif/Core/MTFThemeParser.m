@@ -26,17 +26,17 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError *__autoreleasing *)error {
     NSParameterAssert(rawTheme);
     
     self = [super init];
     if (self) {
         // Filter out the constants and classes from the raw dictionary
-        NSDictionary *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
-        NSDictionary *rawClasses = [self rawClassesFromRawTheme:rawTheme];
+        NSDictionary<NSString *, id> *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
+        NSDictionary<NSString *, id> *rawClasses = [self rawClassesFromRawTheme:rawTheme];
         
         // Determine the invalid keys from the raw theme
-        NSArray *invalidSymbols = [self
+        NSArray<NSString *> *invalidSymbols = [self
             invalidSymbolsFromRawTheme:rawTheme
             rawConstants:rawConstants
             rawClasses:rawClasses];
@@ -53,19 +53,21 @@
         }
         
         // Map the constants from the raw theme
-        NSDictionary *parsedConstants = [self
+        NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants = [self
             constantsParsedFromRawConstants:rawConstants
             error:error];
-        NSDictionary *parsedClasses = [self
+
+        NSDictionary<NSString *, MTFThemeClass *> *parsedClasses = [self
             classesParsedFromRawClasses:rawClasses
             error:error];
         
         if (self.class.shouldResolveReferences) {
-            NSDictionary *mergedConstants = [self
+            NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self
                 mergeParsedConstants:parsedConstants
                 intoExistingConstants:theme.constants
                 error:error];
-            NSDictionary *mergedClasses = [self
+
+            NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self
                 mergeParsedClasses:parsedClasses
                 intoExistingClasses:theme.classes
                 error:error];
@@ -93,7 +95,7 @@
 
 #pragma mark Raw Theme Parsing
 
-- (NSDictionary *)rawConstantsFromRawTheme:(NSDictionary *)rawTheme {
+- (NSDictionary<NSString *, id> *)rawConstantsFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
     NSMutableDictionary *rawConstants = [NSMutableDictionary new];
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolConstantReference) {
@@ -103,7 +105,7 @@
     return [rawConstants copy];
 }
 
-- (NSDictionary *)rawClassesFromRawTheme:(NSDictionary *)rawTheme {
+- (NSDictionary<NSString *, id> *)rawClassesFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
     NSMutableDictionary *rawClasses = [NSMutableDictionary new];
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolClassReference) {
@@ -113,9 +115,8 @@
     return [rawClasses copy];
 }
 
-- (NSArray *)invalidSymbolsFromRawTheme:(NSDictionary *)rawThemeDictionary rawConstants:(NSDictionary *)rawConstants rawClasses:(NSDictionary *)rawClasses {
-    NSMutableSet *remainingKeys = [NSMutableSet
-        setWithArray:rawThemeDictionary.allKeys];
+- (NSArray<NSString *> *)invalidSymbolsFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme rawConstants:(NSDictionary<NSString *, id> *)rawConstants rawClasses:(NSDictionary<NSString *, id> *)rawClasses {
+    NSMutableSet<NSString *> *remainingKeys = [NSMutableSet setWithArray:rawTheme.allKeys];
     [remainingKeys minusSet:[NSSet setWithArray:rawConstants.allKeys]];
     [remainingKeys minusSet:[NSSet setWithArray:rawClasses.allKeys]];
     return remainingKeys.allObjects;
@@ -123,7 +124,7 @@
 
 #pragma mark Constants
 
-- (NSDictionary *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *parsedConstants = [NSMutableDictionary new];
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
@@ -169,9 +170,9 @@
         mappedValue:reference];
 }
 
-- (NSDictionary *)resolveReferencesInParsedClasses:(NSDictionary *)parsedClasses fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
-    NSArray *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
+    NSArray<MTFThemeClass *> *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
     
     for (MTFThemeClass *parsedClass in parsedClassObjects) {
         // Resolve the references within this class
@@ -200,9 +201,9 @@
     return [resolvedClasses copy];
 }
 
-- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary *)parsedConstants fromConstants:(NSDictionary *)constants classes:(NSDictionary *)classes error:(NSError *__autoreleasing *)error {
+- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError *__autoreleasing *)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
-    NSArray *parsedConstantObjects = [parsedConstants
+    NSArray<MTFThemeConstant *> *parsedConstantObjects = [parsedConstants
         objectEnumerator].allObjects;
     
     for (MTFThemeConstant *parsedConstant in parsedConstantObjects) {
@@ -326,9 +327,9 @@
 
 #pragma mark Classes
 
-- (NSDictionary *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error {
     // Create MTFThemeClass objects from the raw classes
-    NSMutableDictionary *parsedClasses = [NSMutableDictionary new];
+    NSMutableDictionary<NSString *, MTFThemeClass *> *parsedClasses = [NSMutableDictionary new];
     
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
@@ -419,8 +420,8 @@
 
 #pragma mark Merging
 
-- (NSDictionary *)mergeParsedConstants:(NSDictionary *)parsedConstants intoExistingConstants:(NSDictionary *)existingConstants error:(NSError *__autoreleasing *)error {
-    NSSet *intersectingConstants = [existingConstants
+- (NSDictionary<NSString *, MTFThemeConstant *> *)mergeParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants intoExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants error:(NSError **)error {
+    NSSet<NSString *> *intersectingConstants = [existingConstants
         mtf_intersectingKeysWithDictionary:parsedConstants];
     if (intersectingConstants.count && error) {
         NSString *localizedDescription = [NSString stringWithFormat:
@@ -435,13 +436,13 @@
                 NSLocalizedDescriptionKey : localizedDescription
             }];
     }
-    NSMutableDictionary *mergedConstants = [existingConstants mutableCopy];
+    NSMutableDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
     return [mergedConstants copy];
 }
 
-- (NSDictionary *)mergeParsedClasses:(NSDictionary *)parsedClasses intoExistingClasses:(NSDictionary *)existingClasses error:(NSError *__autoreleasing *)error {
-    NSSet *intersectingClasses = [existingClasses
+- (NSDictionary<NSString *, MTFThemeClass *> *)mergeParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses intoExistingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
+    NSSet<NSString *> *intersectingClasses = [existingClasses
         mtf_intersectingKeysWithDictionary:parsedClasses];
     if (intersectingClasses.count && error) {
         NSString *localizedDescription = [NSString stringWithFormat:
@@ -456,7 +457,7 @@
                 NSLocalizedDescriptionKey : localizedDescription
             }];
     }
-    NSMutableDictionary *mergedClasses = [existingClasses mutableCopy];
+    NSMutableDictionary<NSString *, MTFThemeClass *> *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];
     return [mergedClasses copy];
 }

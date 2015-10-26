@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// A block that is invoked when a theme is recreated from its source files
 /// when they were updated, and an error if there was one when creating it.
-typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError * null_resettable);
+typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError *);
 
 /// Observes the theme files that were used to create an MTFTheme, and creates a
 /// new MTFTheme whenever they are edited.

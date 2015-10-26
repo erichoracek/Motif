@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, nonatomic) NSRegularExpression *integerRegularExpression;
 @property (readonly, nonatomic) NSRegularExpression *floatRegularExpression;
-@property (readonly, nonatomic) NSDictionary *constantTags;
+@property (readonly, nonatomic) NSDictionary<NSString *, id> *constantTags;
 @property (readonly, nonatomic) NSMutableDictionary *tagHandlers;
 @property (readonly, nonatomic, nullable) id object;
 
@@ -303,7 +303,7 @@ NS_ASSUME_NONNULL_BEGIN
         } else {
             if (error == NULL) return nil;
 
-            NSMutableDictionary *userInfo = [self
+            NSMutableDictionary<NSString *, id> *userInfo = [self
                 errorUserInfoForMark:parser->mark
                 offset:parser->offset
                 fromParser:parser];
@@ -333,7 +333,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)populateParseError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
-    NSMutableDictionary *userInfo = [self
+    NSMutableDictionary<NSString *, id> *userInfo = [self
         errorUserInfoForMark:parser->problem_mark
         offset:parser->problem_offset
         fromParser:parser];
@@ -360,7 +360,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)populateInvalidAliasError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
-    NSMutableDictionary *userInfo = [self
+    NSMutableDictionary<NSString *, id> *userInfo = [self
         errorUserInfoForMark:parser->mark
         offset:parser->offset
         fromParser:parser];
@@ -378,7 +378,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)populateInvalidAnchorError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
-    NSMutableDictionary *userInfo = [self
+    NSMutableDictionary<NSString *, id> *userInfo = [self
         errorUserInfoForMark:parser->mark
         offset:parser->offset
         fromParser:parser];
@@ -393,8 +393,8 @@ NS_ASSUME_NONNULL_BEGIN
     return NO;
 }
 
-- (NSMutableDictionary *)errorUserInfoForMark:(yaml_mark_t)mark offset:(size_t)offset fromParser:(yaml_parser_t *)parser {
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
+- (NSMutableDictionary<NSString *, id> *)errorUserInfoForMark:(yaml_mark_t)mark offset:(size_t)offset fromParser:(yaml_parser_t *)parser {
+    NSMutableDictionary<NSString *, id> *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
         MTFYAMLSerializationOffsetErrorKey: @(offset),
         MTFYAMLSerializationLineErrorKey: @(mark.line),
         MTFYAMLSerializationColumnErrorKey: @(mark.column),

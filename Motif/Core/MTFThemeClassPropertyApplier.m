@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
-- (NSArray *)properties {
+- (NSArray<NSString *> *)properties {
     return @[self.property];
 }
 

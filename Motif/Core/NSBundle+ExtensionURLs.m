@@ -12,13 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSBundle (ExtensionURLs)
 
-- (nullable NSArray *)mtf_URLsForResourcesWithExtensions:(NSArray *)extensions subdirectory:(nullable NSString *)subdirectory {
+- (nullable NSArray<NSURL *> *)mtf_URLsForResourcesWithExtensions:(NSArray<NSString *> *)extensions subdirectory:(nullable NSString *)subdirectory {
     NSParameterAssert(extensions != nil);
 
-    NSMutableArray *URLs = [[NSMutableArray alloc] init];
+    NSMutableArray<NSURL *> *URLs = [[NSMutableArray alloc] init];
 
     for (NSString *extension in extensions) {
-        NSArray *extensionURLs = [self URLsForResourcesWithExtension:extension subdirectory:subdirectory];
+        NSArray<NSURL *> *extensionURLs = [self URLsForResourcesWithExtension:extension subdirectory:subdirectory];
 
         if (extensionURLs != nil) {
             [URLs addObjectsFromArray:extensionURLs];

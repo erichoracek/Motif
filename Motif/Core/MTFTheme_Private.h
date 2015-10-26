@@ -8,6 +8,9 @@
 
 #import <Motif/MTFTheme.h>
 
+@class MTFThemeConstant;
+@class MTFThemeClass;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFTheme ()
@@ -20,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  the filename. If the filename is "Filename.json", the name will be "Filename".
  If the filename is "ColorsTheme.json", the name will be "Colors".
  */
-@property (nonatomic, copy, readonly) NSArray *names;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *names;
 
 /**
  The filenames of the themes files that were added to the theme, in the order
@@ -28,23 +31,23 @@ NS_ASSUME_NONNULL_BEGIN
  
  If the file name is "Filename.json", the file name will be "Filename".
  */
-@property (nonatomic, copy, readonly) NSArray *filenames;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *filenames;
 
 /**
  The URLs of the theme files that were added to the theme, in the order that
  they were added in.
  */
-@property (nonatomic, copy, null_resettable) NSArray *fileURLs;
+@property (nonatomic, copy, null_resettable) NSArray<NSURL *> *fileURLs;
 
 /**
  The MTFThemeConstant instances on the theme, keyed by their names.
  */
-@property (nonatomic, copy, null_resettable) NSDictionary *constants;
+@property (nonatomic, copy, null_resettable) NSDictionary<NSString *, MTFThemeConstant *> *constants;
 
 /**
  The MTFThemeClass instances on the theme, keyed by their names.
  */
-@property (nonatomic, copy, null_resettable) NSDictionary *classes;
+@property (nonatomic, copy, null_resettable) NSDictionary<NSString *, MTFThemeClass *> *classes;
 
 @end
 

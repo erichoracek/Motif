@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  This dictionary is keyed by property names with values of the properties
  values.
  */
-@property (nonatomic, copy, readonly) NSDictionary *properties;
+@property (nonatomic, copy, readonly) NSDictionary<NSString *, id> *properties;
 
 /**
  Applies this theme class to an object.

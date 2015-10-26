@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An array of NSURLs matching the theme names passed into the method.
  */
-+ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(nullable NSBundle *)bundle;
++ (NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle;
 
 /**
  The dictionary representation of the theme file contents at this URL, if there

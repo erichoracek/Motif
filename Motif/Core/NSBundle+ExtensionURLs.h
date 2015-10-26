@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// file extensions and located in the specified bundle subdirectory.
 ///
 /// @see URLsForResourcesWithExtension:subdirectory:
-- (nullable NSArray *)mtf_URLsForResourcesWithExtensions:(NSArray *)extensions subdirectory:(nullable NSString *)subdirectory;
+- (nullable NSArray<NSURL *> *)mtf_URLsForResourcesWithExtensions:(NSArray<NSString *> *)extensions subdirectory:(nullable NSString *)subdirectory;
 
 @end
 

@@ -34,7 +34,7 @@ NSString * const MTFThemeSuperclassKey = @"_superclass";
         (self.length > MTFClassPrefixSymbol.length));
 }
 
-- (NSString *)mtf_symbol {
+- (nullable NSString *)mtf_symbol {
     switch (self.mtf_symbolType) {
     case MTFThemeSymbolTypeClass:
         return [self substringFromIndex:MTFClassPrefixSymbol.length];

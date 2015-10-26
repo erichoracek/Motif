@@ -11,7 +11,7 @@
 
 @implementation NSDictionary (DictionaryValueValidation)
 
-- (NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
+- (nullable NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
     NSDictionary *value = self[key];
     // If there is no value for the specified key, is it not an error, just
     // return
