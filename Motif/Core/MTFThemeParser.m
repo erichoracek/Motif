@@ -26,7 +26,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError **)error {
     NSParameterAssert(rawTheme);
     
     self = [super init];
@@ -124,7 +124,7 @@
 
 #pragma mark Constants
 
-- (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError **)error {
     NSMutableDictionary *parsedConstants = [NSMutableDictionary new];
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
@@ -137,7 +137,7 @@
     return [parsedConstants copy];
 }
 
-- (MTFThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError *__autoreleasing *)error {
+- (MTFThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError **)error {
     // If the symbol is a reference (in the case of a root-level constant), use
     // it. Otherwise it is a reference to in a class' properties, so just keep
     // it as-is
@@ -170,7 +170,7 @@
         mappedValue:reference];
 }
 
-- (NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
     NSArray<MTFThemeClass *> *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
     
@@ -201,7 +201,7 @@
     return [resolvedClasses copy];
 }
 
-- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError *__autoreleasing *)error {
+- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
     NSArray<MTFThemeConstant *> *parsedConstantObjects = [parsedConstants
         objectEnumerator].allObjects;
@@ -282,7 +282,7 @@
     return [resolvedConstants copy];
 }
 
-- (NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError *__autoreleasing *)error {
+- (NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
     // Don't continue if there's no superclass, as it's the only reason why a
     // reference would be invalid
     MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] mappedValue];
@@ -327,7 +327,7 @@
 
 #pragma mark Classes
 
-- (NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError *__autoreleasing *)error {
+- (NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error {
     // Create MTFThemeClass objects from the raw classes
     NSMutableDictionary<NSString *, MTFThemeClass *> *parsedClasses = [NSMutableDictionary new];
     
@@ -355,7 +355,7 @@
     return [parsedClasses copy];
 }
 
-- (MTFThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError *__autoreleasing *)error {
+- (MTFThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError **)error {
     NSParameterAssert(rawName);
     NSParameterAssert(rawProperties);
     
@@ -377,7 +377,7 @@
     return class;
 }
 
-- (NSDictionary *)filteredPropertiesFromMappedClassProperties:(NSDictionary *)mappedClassProperties className:(NSString *)className error:(NSError *__autoreleasing *)error {
+- (NSDictionary *)filteredPropertiesFromMappedClassProperties:(NSDictionary *)mappedClassProperties className:(NSString *)className error:(NSError **)error {
     NSMutableDictionary *filteredClassProperties = [mappedClassProperties mutableCopy];
     
     // If there is a superclass property, filter it out if it doesn't contain a

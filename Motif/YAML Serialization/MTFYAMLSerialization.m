@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFYAMLSerialization ()
 
-- (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithData:(NSData *)data error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, nonatomic) NSRegularExpression *integerRegularExpression;
 @property (readonly, nonatomic) NSRegularExpression *floatRegularExpression;
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithData:(NSData *)data error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithData:(NSData *)data error:(NSError **)error {
     NSParameterAssert(data != nil);
 
     self = [super init];
@@ -114,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
         }];
 }
 
-- (nullable id)deserializeData:(NSData*)data error:(NSError *__autoreleasing *)error {
+- (nullable id)deserializeData:(NSData*)data error:(NSError **)error {
     if (data.length == 0) {
         return nil;
     }
@@ -136,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
     return documents.firstObject;
 }
 
-- (nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+- (nullable NSArray *)parseDocumentsWithParser:(yaml_parser_t *)parser error:(NSError **)error {
     NSMutableArray *documents = [NSMutableArray array];
 
     BOOL didParseDocuments = [self parseDocumentComponent:documents withParser:parser error:error];
@@ -145,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
     return [documents copy];
 }
 
-- (BOOL)parseDocumentComponent:(id)documentComponent withParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+- (BOOL)parseDocumentComponent:(id)documentComponent withParser:(yaml_parser_t *)parser error:(NSError **)error {
     NSParameterAssert(documentComponent != nil);
     NSParameterAssert(parser != NULL);
 
@@ -289,7 +289,7 @@ NS_ASSUME_NONNULL_BEGIN
     return nil;
 }
 
-- (nullable id)valueForScalarEvent:(yaml_event_t *)event fromParser:(yaml_parser_t *)parser error:(NSError *__autoreleasing *)error {
+- (nullable id)valueForScalarEvent:(yaml_event_t *)event fromParser:(yaml_parser_t *)parser error:(NSError **)error {
     NSString *tag = [self tagForScalarEvent:event];
     NSString *stringValue = @((char *)event->data.scalar.value);
     
@@ -330,7 +330,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Error handling
 
-- (BOOL)populateParseError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+- (BOOL)populateParseError:(NSError **)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
     NSMutableDictionary<NSString *, id> *userInfo = [self
@@ -357,7 +357,7 @@ NS_ASSUME_NONNULL_BEGIN
     return NO;
 }
 
-- (BOOL)populateInvalidAliasError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+- (BOOL)populateInvalidAliasError:(NSError **)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
     NSMutableDictionary<NSString *, id> *userInfo = [self
@@ -375,7 +375,7 @@ NS_ASSUME_NONNULL_BEGIN
     return NO;
 }
 
-- (BOOL)populateInvalidAnchorError:(NSError *__autoreleasing *)error fromParser:(yaml_parser_t *)parser {
+- (BOOL)populateInvalidAnchorError:(NSError **)error fromParser:(yaml_parser_t *)parser {
     if (error == NULL) return NO;
 
     NSMutableDictionary<NSString *, id> *userInfo = [self

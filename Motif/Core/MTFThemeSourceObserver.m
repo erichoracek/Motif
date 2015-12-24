@@ -218,7 +218,7 @@ NS_ASSUME_NONNULL_BEGIN
         path:path];
 }
 
-- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray<NSString *> *)sourceFilePaths error:(NSError *__autoreleasing *)error {
+- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray<NSString *> *)sourceFilePaths error:(NSError **)error {
     NSParameterAssert(sourceFilePaths);
     
     // Transform the paths into URLs

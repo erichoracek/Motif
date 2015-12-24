@@ -94,7 +94,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return [fileURLs copy];
 }
 
-- (nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError * __autoreleasing *)error {
+- (nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError * *)error {
     // If the file is not a file URL, populate the error object
     if (!self.isFileURL) {
         if (error == nil) return nil;
