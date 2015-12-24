@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
         initWithTheme:theme
         sourceDirectoryURL:self.sourceDirectoryURL
         didUpdate:^(MTFTheme *theme, NSError *error) {
-            __weak typeof(self) self = __weak_self;
+            typeof(__weak_self) self = __weak_self;
             
             [self safelySetTheme:theme];
         }];
@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
         initWithTheme:theme
         sourceDirectoryURL:sourceDirectoryURL
         didUpdate:^(MTFTheme *theme, NSError *error) {
-            __weak typeof(self) self = __weak_self;
+            typeof(__weak_self) self = __weak_self;
             
             [self safelySetTheme:theme];
         }];
