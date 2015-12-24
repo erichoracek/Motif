@@ -50,18 +50,18 @@ static CGFloat const DefaultBrightnessThreshold = 0.5;
         darkTheme:darkTheme];
     
     self = [super initWithTheme:theme];
-    if (self) {
-        _screen = screen;
-        _lightTheme = lightTheme;
-        _darkTheme = darkTheme;
-        _brightnessThreshold = DefaultBrightnessThreshold;
+
+    _screen = screen;
+    _lightTheme = lightTheme;
+    _darkTheme = darkTheme;
+    _brightnessThreshold = DefaultBrightnessThreshold;
+    
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(screenBrightnessDidChange:)
+        name:UIScreenBrightnessDidChangeNotification
+        object:_screen];
         
-        [[NSNotificationCenter defaultCenter]
-            addObserver:self
-            selector:@selector(screenBrightnessDidChange:)
-            name:UIScreenBrightnessDidChangeNotification
-            object:_screen];
-    }
     return self;
 }
 

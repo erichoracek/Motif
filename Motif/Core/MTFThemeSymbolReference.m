@@ -16,9 +16,9 @@
 - (instancetype)initWithRawSymbol:(NSString *)rawSymbol {
     NSParameterAssert(rawSymbol.mtf_isRawSymbolReference);
     self = [super init];
-    if (self) {
-        _rawSymbol = rawSymbol;
-    }
+
+    _rawSymbol = rawSymbol;
+
     return self;
 }
 

@@ -91,7 +91,6 @@ NS_ASSUME_NONNULL_BEGIN
         }];
     
     self = [super initWithTheme:themeSourceObserver.updatedTheme];
-    if (self == nil) return nil;
     
     _sourceDirectoryURL = sourceDirectoryURL;
     _themeSourceObserver = themeSourceObserver;

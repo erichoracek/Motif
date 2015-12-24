@@ -30,64 +30,64 @@
     NSParameterAssert(rawTheme);
     
     self = [super init];
-    if (self) {
-        // Filter out the constants and classes from the raw dictionary
-        NSDictionary<NSString *, id> *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
-        NSDictionary<NSString *, id> *rawClasses = [self rawClassesFromRawTheme:rawTheme];
-        
-        // Determine the invalid keys from the raw theme
-        NSArray<NSString *> *invalidSymbols = [self
-            invalidSymbolsFromRawTheme:rawTheme
-            rawConstants:rawConstants
-            rawClasses:rawClasses];
-        if (invalidSymbols.count && error) {
-            NSString *localizedDescription = [NSString stringWithFormat:
-                @"The following symbols in the theme are invalid %@",
-                invalidSymbols];
-            *error = [NSError
-                errorWithDomain:MTFThemingErrorDomain
-                code:0
-                userInfo:@{
-                    NSLocalizedDescriptionKey: localizedDescription
-                }];
-        }
-        
-        // Map the constants from the raw theme
-        NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants = [self
-            constantsParsedFromRawConstants:rawConstants
-            error:error];
 
-        NSDictionary<NSString *, MTFThemeClass *> *parsedClasses = [self
-            classesParsedFromRawClasses:rawClasses
-            error:error];
-        
-        if (self.class.shouldResolveReferences) {
-            NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self
-                mergeParsedConstants:parsedConstants
-                intoExistingConstants:theme.constants
-                error:error];
-
-            NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self
-                mergeParsedClasses:parsedClasses
-                intoExistingClasses:theme.classes
-                error:error];
-            
-            parsedConstants = [self
-                resolveReferencesInParsedConstants:parsedConstants
-                fromConstants:mergedConstants
-                classes:mergedClasses
-                error:error];
-            
-            parsedClasses = [self
-                resolveReferencesInParsedClasses:parsedClasses
-                fromConstants:mergedConstants
-                classes:mergedClasses
-                error:error];
-        }
-        
-        _parsedConstants = parsedConstants;
-        _parsedClasses = parsedClasses;
+    // Filter out the constants and classes from the raw dictionary
+    NSDictionary<NSString *, id> *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
+    NSDictionary<NSString *, id> *rawClasses = [self rawClassesFromRawTheme:rawTheme];
+    
+    // Determine the invalid keys from the raw theme
+    NSArray<NSString *> *invalidSymbols = [self
+        invalidSymbolsFromRawTheme:rawTheme
+        rawConstants:rawConstants
+        rawClasses:rawClasses];
+    if (invalidSymbols.count && error) {
+        NSString *localizedDescription = [NSString stringWithFormat:
+            @"The following symbols in the theme are invalid %@",
+            invalidSymbols];
+        *error = [NSError
+            errorWithDomain:MTFThemingErrorDomain
+            code:0
+            userInfo:@{
+                NSLocalizedDescriptionKey: localizedDescription
+            }];
     }
+    
+    // Map the constants from the raw theme
+    NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants = [self
+        constantsParsedFromRawConstants:rawConstants
+        error:error];
+
+    NSDictionary<NSString *, MTFThemeClass *> *parsedClasses = [self
+        classesParsedFromRawClasses:rawClasses
+        error:error];
+    
+    if (self.class.shouldResolveReferences) {
+        NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self
+            mergeParsedConstants:parsedConstants
+            intoExistingConstants:theme.constants
+            error:error];
+
+        NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self
+            mergeParsedClasses:parsedClasses
+            intoExistingClasses:theme.classes
+            error:error];
+        
+        parsedConstants = [self
+            resolveReferencesInParsedConstants:parsedConstants
+            fromConstants:mergedConstants
+            classes:mergedClasses
+            error:error];
+        
+        parsedClasses = [self
+            resolveReferencesInParsedClasses:parsedClasses
+            fromConstants:mergedConstants
+            classes:mergedClasses
+            error:error];
+    }
+    
+    _parsedConstants = parsedConstants;
+    _parsedClasses = parsedClasses;
+
     return self;
 }
 

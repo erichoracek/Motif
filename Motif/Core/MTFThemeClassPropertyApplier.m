@@ -28,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(applierBlock != nil);
 
     self = [super init];
-    if (self == nil) return nil;
 
     _property = [property copy];
     _applierBlock = [applierBlock copy];
@@ -70,7 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(applierBlock != nil);
 
     self = [super initWithProperty:property applierBlock:applierBlock];
-    if (self == nil) return nil;
 
     _valueClass = valueClass;
 
@@ -132,7 +130,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(applierBlock != nil);
 
     self = [super initWithProperty:property applierBlock:applierBlock];
-    if (self == nil) return nil;
 
     _valueObjCType = valueObjCType;
 

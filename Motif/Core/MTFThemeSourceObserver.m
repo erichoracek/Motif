@@ -47,7 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be a file URL");
     
     self = [super init];
-    if (self == nil) return nil;
     
     _fileObservationQueue = dispatch_queue_create(
         "com.erichoracek.auttheming.themesourceobservation",

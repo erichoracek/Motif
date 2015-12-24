@@ -22,7 +22,6 @@
     NSParameterAssert(applierBlock != nil);
 
     self = [super init];
-    if (self == nil) return nil;
 
     _applierBlock = applierBlock;
 

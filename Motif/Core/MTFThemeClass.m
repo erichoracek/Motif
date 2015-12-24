@@ -246,10 +246,10 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 
 - (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
     self = [super init];
-    if (self) {
-        _name = name;
-        _propertiesConstants = propertiesConstants;
-    }
+
+    _name = name;
+    _propertiesConstants = propertiesConstants;
+
     return self;
 }
 

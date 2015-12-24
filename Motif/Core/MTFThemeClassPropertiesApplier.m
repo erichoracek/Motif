@@ -32,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(applierBlock != nil);
     
     self = [super init];
-    if (self == nil) return nil;
 
     _properties = [[NSArray alloc] initWithArray:properties copyItems:YES];
     _applierBlock = [applierBlock copy];
@@ -101,7 +100,6 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     self = [super initWithProperties:properties applierBlock:applierBlock];
-    if (self == nil) return nil;
 
     _valueTypes = [valueTypes copy];
 
