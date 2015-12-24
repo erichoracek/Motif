@@ -7,11 +7,27 @@
 //
 
 #import <Motif/Motif.h>
-#import "StyleGuideViewController.h"
+
 #import "StyleGuideView.h"
 #import "ThemeSymbols.h"
 
+#import "StyleGuideViewController.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation StyleGuideViewController
+
+#pragma mark - Lifecycle
+
+- (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier {
+    NSParameterAssert(themeApplier);
+    
+    self = [super init];
+
+    _themeApplier = themeApplier;
+
+    return self;
+}
 
 #pragma mark - UIViewController
 
@@ -31,14 +47,6 @@
 
 #pragma mark - StyleGuideViewController
 
-- (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier {
-    NSParameterAssert(themeApplier);
-    
-    self = [super init];
-    if (self) {
-        _themeApplier = themeApplier;
-    }
-    return self;
-}
-
 @end
+
+NS_ASSUME_NONNULL_END

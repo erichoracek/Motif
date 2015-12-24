@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface StyleGuideView : UIScrollView
 
@@ -28,3 +30,5 @@
 @property (nonatomic, readonly) UISegmentedControl *segmentedControl;
 
 @end
+
+NS_ASSUME_NONNULL_END

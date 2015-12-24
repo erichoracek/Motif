@@ -1,5 +1,4 @@
 github "jspahrsummers/xcconfigs" == 0.8
-github "snapkit/masonry" == 0.6.2
 github "yaml/libyaml" == 0.1.4
 github "specta/specta" "c4bde15"
 github "specta/expecta" ~> 1.0

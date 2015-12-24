@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class MTFTheme;
 
@@ -17,3 +19,5 @@
 @property (nonatomic, readonly) MTFTheme *theme;
 
 @end
+
+NS_ASSUME_NONNULL_END

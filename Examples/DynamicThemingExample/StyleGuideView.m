@@ -6,16 +6,140 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <Masonry/Masonry.h>
 #import "StyleGuideView.h"
 
-@interface StyleGuideView ()
-
-@property (nonatomic, readonly) NSArray *textLabels;
-
-@end
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation StyleGuideView
+
+#pragma mark - Lifecycle
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+
+    self.alwaysBounceVertical = YES;
+    
+    _button = [UIButton buttonWithType:UIButtonTypeSystem];;
+    _warningButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _secondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];;
+    _warningSecondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    _displayTextLabel = [UILabel new];
+    _headlineTextLabel = [UILabel new];
+    _titleTextLabel = [UILabel new];
+    _subheadTextLabel = [UILabel new];
+    _bodyTextLabel = [UILabel new];
+    _captionTextLabel = [UILabel new];
+    
+    _toggle = [UISwitch new];
+    _slider = [UISlider new];
+    NSArray<NSString *> *items = @[ @"One", @"Two", @"Three" ];
+    _segmentedControl = [[UISegmentedControl alloc] initWithItems:items];
+    
+    self.bodyTextLabel.numberOfLines = 0;
+    
+    [self.button setTitle:@"Button" forState:UIControlStateNormal];
+    [self.warningButton setTitle:@"Warning Button" forState:UIControlStateNormal];
+    [self.secondaryButton setTitle:@"Button" forState:UIControlStateNormal];
+    [self.warningSecondaryButton setTitle:@"Warning Button" forState:UIControlStateNormal];
+    
+    self.displayTextLabel.text = @"Display";
+    self.headlineTextLabel.text = @"Headline";
+    self.titleTextLabel.text = @"Title";
+    self.subheadTextLabel.text = @"Subhead";
+    self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus "
+        "auctor fringilla. Cum sociis natoque penatibus et magnis dis "
+        "parturient montes, nascetur ridiculus mus.";
+    self.captionTextLabel.text = @"Caption";
+    
+    self.toggle.on = YES;
+    self.slider.value = 0.5f;
+    self.segmentedControl.selectedSegmentIndex = 0;
+
+    UIStackView *contentStackView = [self createContentStackView];
+    [self addSubview:contentStackView];
+
+    contentStackView.translatesAutoresizingMaskIntoConstraints = NO;
+    [contentStackView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+    [contentStackView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [contentStackView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+    [contentStackView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
+
+    return self;
+}
+
+#pragma mark - StyleGuideView
+
+static CGFloat const SectionPadding = 40;
+static CGFloat const ElementPadding = 10;
+
+- (UIStackView *)createButtonsStackView {
+    NSArray<UIView *> *subviews = @[ self.button, self.warningButton ];
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:subviews];
+    stackView.spacing = ElementPadding;
+    stackView.distribution = UIStackViewDistributionFillEqually;
+    return stackView;
+}
+
+- (UIStackView *)createSecondaryButtonsStackView {
+    NSArray<UIView *> *subviews = @[ self.secondaryButton, self.warningSecondaryButton ];
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:subviews];
+    stackView.spacing = ElementPadding;
+    stackView.distribution = UIStackViewDistributionFillEqually;
+    return stackView;
+}
+
+- (UIStackView *)createButtonsContainerStackView {
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
+        [self createButtonsStackView],
+        [self createSecondaryButtonsStackView],
+    ]];
+    stackView.axis = UILayoutConstraintAxisVertical;
+    stackView.spacing = ElementPadding;
+    return stackView;
+}
+
+- (UIStackView *)createTextLabelsStackView {
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
+        self.displayTextLabel,
+        self.headlineTextLabel,
+        self.titleTextLabel,
+        self.subheadTextLabel,
+        self.bodyTextLabel,
+        self.captionTextLabel,
+    ]];
+    stackView.axis = UILayoutConstraintAxisVertical;
+    stackView.spacing = ElementPadding;
+    return stackView;
+}
+
+- (UIStackView *)createControlsStackView {
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
+        self.toggle,
+        self.slider,
+    ]];
+    stackView.spacing = ElementPadding;
+    return stackView;
+}
+
+- (UIStackView *)createContentStackView {
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
+        [self createButtonsContainerStackView],
+        [self createTextLabelsStackView],
+        [self createControlsStackView],
+        self.segmentedControl,
+    ]];
+    stackView.axis = UILayoutConstraintAxisVertical;
+    stackView.spacing = SectionPadding;
+    stackView.layoutMarginsRelativeArrangement = YES;
+    stackView.layoutMargins = (UIEdgeInsets){
+        .top = SectionPadding,
+        .left = ElementPadding,
+        .bottom = SectionPadding,
+        .right = ElementPadding,
+    };
+    return stackView;
+}
 
 #pragma mark - UIView
 
@@ -23,154 +147,6 @@
     return YES;
 }
 
-static CGFloat const SectionPadding = 40.0f;
-static CGFloat const ElementPadding = 10.0f;
-static CGFloat const SegmentedControlHeight = 32.0f;
-
-- (void)updateConstraints {
-    [self.button
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(SectionPadding);
-            make.left.equalTo(@(ElementPadding));
-            make.right.equalTo(self.mas_centerX).offset(-(ElementPadding / 2.0));
-            make.width.equalTo(self.warningButton);
-        }];
-    
-    [self.warningButton
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.mas_centerX).offset(ElementPadding / 2.0);
-            make.centerY.equalTo(self.button);
-            make.width.equalTo(self.button);
-        }];
-    
-    [self.secondaryButton
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.button.mas_bottom).offset(ElementPadding);
-            make.left.equalTo(self.button);
-            make.width.equalTo(self.button);
-        }];
-    
-    [self.warningSecondaryButton
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.warningButton);
-            make.centerY.equalTo(self.secondaryButton);
-            make.width.equalTo(self.secondaryButton);
-        }];
-    
-    __block UIView *topView = self.secondaryButton;
-    [self.textLabels enumerateObjectsUsingBlock:^(UILabel *textLabel, NSUInteger textLabelIndex, BOOL *stop) {
-        [textLabel
-            mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self).offset(ElementPadding);
-                make.right.equalTo(self).offset(-ElementPadding);
-                make.top.equalTo(topView.mas_bottom).offset((textLabelIndex == 0) ? SectionPadding : ElementPadding);
-                make.width.equalTo(self).offset(-ElementPadding * 2.0);
-            }];
-        
-        topView = textLabel;
-    }];
-    
-    [self.toggle
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).offset(ElementPadding);
-            make.top.equalTo([self.textLabels.lastObject mas_bottom]).offset(SectionPadding);
-        }];
-    
-    [self.slider
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.toggle.mas_right).offset(ElementPadding);
-            make.right.equalTo(self).offset(-ElementPadding);
-            make.centerY.equalTo(self.toggle);
-        }];
-    
-    [self.segmentedControl
-        mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.toggle.mas_bottom).offset(SectionPadding);
-            make.left.equalTo(self).offset(ElementPadding);
-            make.right.equalTo(self).offset(-ElementPadding);
-            make.height.equalTo(@(SegmentedControlHeight));
-            make.bottom.equalTo(self.mas_bottom).offset(-SectionPadding);
-        }];
-    
-    [super updateConstraints];
-}
-
-#pragma mark - ButtonsView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.alwaysBounceVertical = YES;
-        
-        _button = [UIButton buttonWithType:UIButtonTypeSystem];;
-        _warningButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _secondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];;
-        _warningSecondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        
-        _displayTextLabel = [UILabel new];
-        _headlineTextLabel = [UILabel new];
-        _titleTextLabel = [UILabel new];
-        _subheadTextLabel = [UILabel new];
-        _bodyTextLabel = [UILabel new];
-        _captionTextLabel = [UILabel new];
-        
-        _toggle = [UISwitch new];
-        _slider = [UISlider new];
-        _segmentedControl = [[UISegmentedControl alloc]
-            initWithItems:@[
-                @"One",
-                @"Two",
-                @"Three"
-            ]];
-        
-        [self addSubview:self.button];
-        [self addSubview:self.warningButton];
-        [self addSubview:self.secondaryButton];
-        [self addSubview:self.warningSecondaryButton];
-        
-        [self addSubview:self.displayTextLabel];
-        [self addSubview:self.headlineTextLabel];
-        [self addSubview:self.titleTextLabel];
-        [self addSubview:self.subheadTextLabel];
-        [self addSubview:self.bodyTextLabel];
-        [self addSubview:self.captionTextLabel];
-        
-        [self addSubview:self.toggle];
-        [self addSubview:self.slider];
-        [self addSubview:self.segmentedControl];
-        
-        self.bodyTextLabel.numberOfLines = 0;
-        
-        [self.button setTitle:@"Button" forState:UIControlStateNormal];
-        [self.warningButton setTitle:@"Warning Button" forState:UIControlStateNormal];
-        [self.secondaryButton setTitle:@"Button" forState:UIControlStateNormal];
-        [self.warningSecondaryButton setTitle:@"Warning Button" forState:UIControlStateNormal];
-        
-        self.displayTextLabel.text = @"Display";
-        self.headlineTextLabel.text = @"Headline";
-        self.titleTextLabel.text = @"Title";
-        self.subheadTextLabel.text = @"Subhead";
-        self.bodyTextLabel.text = @"Body Donec ullamcorper nulla non metus "
-            "auctor fringilla. Cum sociis natoque penatibus et magnis dis "
-            "parturient montes, nascetur ridiculus mus.";
-        self.captionTextLabel.text = @"Caption";
-        
-        self.toggle.on = YES;
-        self.slider.value = 0.5f;
-        self.segmentedControl.selectedSegmentIndex = 0;
-    }
-    return self;
-}
-
-- (NSArray *)textLabels {
-    return @[
-        self.displayTextLabel,
-        self.headlineTextLabel,
-        self.titleTextLabel,
-        self.subheadTextLabel,
-        self.bodyTextLabel,
-        self.captionTextLabel
-    ];
-}
-
 @end
+
+NS_ASSUME_NONNULL_END

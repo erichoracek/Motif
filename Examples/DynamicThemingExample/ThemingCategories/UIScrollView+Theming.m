@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <Motif/Motif.h>
-#import "UIScrollView+Theming.h"
+@import Motif;
+
 #import "ThemeSymbols.h"
+
+#import "UIScrollView+Theming.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation UIScrollView (Theming)
 
@@ -31,3 +35,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationBar (Theming)
 
@@ -15,3 +17,5 @@
 - (void)mtf_setShadowColor:(UIColor *)color;
 
 @end
+
+NS_ASSUME_NONNULL_END

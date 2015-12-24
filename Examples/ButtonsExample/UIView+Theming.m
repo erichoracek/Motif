@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <Motif/Motif.h>
-#import "UIView+Theming.h"
+@import Motif;
+
 #import "ThemeSymbols.h"
+
+#import "UIView+Theming.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation UIView (Theming)
 
@@ -43,3 +47,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
