@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "NSDictionary+DictionaryValueValidation.h"
 #import "MTFTheme.h"
+
+#import "NSDictionary+DictionaryValueValidation.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSDictionary (DictionaryValueValidation)
 
-- (nullable NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error {
+- (nullable NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError **)error {
     NSDictionary *value = self[key];
     // If there is no value for the specified key, is it not an error, just
     // return
@@ -38,3 +41,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
