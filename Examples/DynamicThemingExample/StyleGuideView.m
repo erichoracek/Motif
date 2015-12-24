@@ -99,7 +99,7 @@ static CGFloat const ElementPadding = 10;
     return stackView;
 }
 
-- (UIStackView *)createTextLabelStackView {
+- (UIStackView *)createTextLabelsStackView {
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
         self.displayTextLabel,
         self.headlineTextLabel,
@@ -125,7 +125,7 @@ static CGFloat const ElementPadding = 10;
 - (UIStackView *)createContentStackView {
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[
         [self createButtonsContainerStackView],
-        [self createTextLabelStackView],
+        [self createTextLabelsStackView],
         [self createControlsStackView],
         self.segmentedControl,
     ]];
