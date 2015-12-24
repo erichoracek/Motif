@@ -464,27 +464,14 @@
 
 static BOOL ShouldResolveReferences = YES;
 
-+ (dispatch_queue_t)globalSettingsQueue {
-    static dispatch_queue_t settingsQueue;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        settingsQueue = dispatch_queue_create("com.erichoracek.auttheming.settingsqueue", DISPATCH_QUEUE_CONCURRENT);
-    });
-    return settingsQueue;
-}
-
 + (BOOL)shouldResolveReferences {
-    __block BOOL result = NO;
-    dispatch_sync(self.globalSettingsQueue, ^{
-        result = ShouldResolveReferences;
-    });
-    return result;
+    NSAssert(NSThread.isMainThread, @"%@ should only be invoked from the main thread", NSStringFromSelector(_cmd));
+    return ShouldResolveReferences;
 }
 
 + (void)setShouldResolveReferences:(BOOL)shouldResolveReferences {
-    dispatch_barrier_async(self.globalSettingsQueue, ^{
-        ShouldResolveReferences = shouldResolveReferences;
-    });
+    NSAssert(NSThread.isMainThread, @"%@ should only be invoked from the main thread", NSStringFromSelector(_cmd));
+    ShouldResolveReferences = shouldResolveReferences;
 }
 
 @end
