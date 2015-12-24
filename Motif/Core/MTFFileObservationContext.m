@@ -25,7 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSAssert(fileDescriptor != -1, @"File descriptor must not be -1.");
     
     self = [super init];
-    if (self == nil) return nil;
     
     _dispatchSource = dispatchSource;
     _fileDescriptor = fileDescriptor;

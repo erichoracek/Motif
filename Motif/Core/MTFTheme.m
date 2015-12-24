@@ -85,11 +85,11 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
         (error ? *error : nil));
     
     self = [self initWithThemeDictionaries:themeDictionaries error:error];
-    if (self) {
-        for (NSURL *fileURL in validFileURLs) {
-            [self addFileURLsObject:fileURL];
-        }
+
+    for (NSURL *fileURL in validFileURLs) {
+        [self addFileURLsObject:fileURL];
     }
+
     return self;
 }
 
@@ -106,16 +106,16 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
         @"Must provide at least one theme dictionary");
     
     self = [super init];
-    if (self) {
-        for (NSDictionary *dictionary in dictionaries) {
-            MTFThemeParser *parser = [[MTFThemeParser alloc]
-                initWithRawTheme:dictionary
-                inheritingFromTheme:self
-                error:error];
-            [self addConstantsFromDictionary:parser.parsedConstants];
-            [self addClassesFromDictionary:parser.parsedClasses];
-        }
+
+    for (NSDictionary *dictionary in dictionaries) {
+        MTFThemeParser *parser = [[MTFThemeParser alloc]
+            initWithRawTheme:dictionary
+            inheritingFromTheme:self
+            error:error];
+        [self addConstantsFromDictionary:parser.parsedConstants];
+        [self addClassesFromDictionary:parser.parsedClasses];
     }
+
     return self;
 }
 

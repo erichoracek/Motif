@@ -61,11 +61,11 @@
     NSParameterAssert(name);
     NSParameterAssert(rawValue);
     self = [super init];
-    if (self) {
-        _name = name;
-        _rawValue = rawValue;
-        _mappedValue = mappedValue;
-    }
+
+    _name = name;
+    _rawValue = rawValue;
+    _mappedValue = mappedValue;
+    
     return self;
 }
 

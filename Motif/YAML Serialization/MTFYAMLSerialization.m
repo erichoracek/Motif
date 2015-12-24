@@ -43,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(data != nil);
 
     self = [super init];
-    if (self == nil) return nil;
 
     _tagHandlers = [NSMutableDictionary dictionary];
 
