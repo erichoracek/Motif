@@ -15,7 +15,7 @@
 		3A7EC6141AB5277200FD37F3 /* UIView+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6131AB5277200FD37F3 /* UIView+Theming.swift */; };
 		3A7EC6161AB5657D00FD37F3 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6151AB5657D00FD37F3 /* ButtonsView.swift */; };
 		3A7EC6181AB56B2200FD37F3 /* UIButton+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EC6171AB56B2200FD37F3 /* UIButton+Theming.swift */; };
-		3AC6F7E01BAA8A48009F6966 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6F7DF1BAA8A48009F6966 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3AC6F7E01BAA8A48009F6966 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6F7DF1BAA8A48009F6966 /* Launch Screen.storyboard */; };
 		3ACE59941AD4C00800F308EF /* UILabel+Theming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE59931AD4C00800F308EF /* UILabel+Theming.swift */; };
 		3AE77C401AF3E88F009849C1 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179D841AC93D2700BD598C /* Motif.framework */; };
 		3AE77C411AF3E88F009849C1 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A179D841AC93D2700BD598C /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -59,11 +59,6 @@
 		3AAD1B4A1AE4731F00A68625 /* iOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Base.xcconfig"; sourceTree = "<group>"; };
 		3AAD1B4B1AE4731F00A68625 /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		3AAD1B4C1AE4731F00A68625 /* iOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B4E1AE4731F00A68625 /* Mac-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Application.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B4F1AE4731F00A68625 /* Mac-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Base.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B501AE4731F00A68625 /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B511AE4731F00A68625 /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
-		3AAD1B521AE4731F00A68625 /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		3AC6F7DF1BAA8A48009F6966 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3ACE59931AD4C00800F308EF /* UILabel+Theming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Theming.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,7 +132,6 @@
 			children = (
 				3AAD1B341AE4731F00A68625 /* Base */,
 				3AAD1B481AE4731F00A68625 /* iOS */,
-				3AAD1B4D1AE4731F00A68625 /* Mac OS X */,
 			);
 			name = Configuration;
 			path = ../Carthage/Checkouts/xcconfigs;
@@ -183,18 +177,6 @@
 				3AAD1B4C1AE4731F00A68625 /* iOS-StaticLibrary.xcconfig */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		3AAD1B4D1AE4731F00A68625 /* Mac OS X */ = {
-			isa = PBXGroup;
-			children = (
-				3AAD1B4E1AE4731F00A68625 /* Mac-Application.xcconfig */,
-				3AAD1B4F1AE4731F00A68625 /* Mac-Base.xcconfig */,
-				3AAD1B501AE4731F00A68625 /* Mac-DynamicLibrary.xcconfig */,
-				3AAD1B511AE4731F00A68625 /* Mac-Framework.xcconfig */,
-				3AAD1B521AE4731F00A68625 /* Mac-StaticLibrary.xcconfig */,
-			);
-			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,7 +286,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AAD1B371AE4731F00A68625 /* Debug.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,7 +296,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AAD1B391AE4731F00A68625 /* Release.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -13,10 +13,25 @@ class ButtonsView: UIView {
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {
+        saveButton = UIButton(type: .System)
+        deleteButton = UIButton(type: .System)
+
+        saveButton.setTitle("Save", forState: .Normal)
+        deleteButton.setTitle("Delete", forState: .Normal)
+
         super.init(frame: frame)
-        
-        addSubview(saveButton)
-        addSubview(deleteButton)
+
+        let stackView = UIStackView(arrangedSubviews: [ saveButton, deleteButton ])
+        stackView.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
+        stackView.layoutMarginsRelativeArrangement = true
+        stackView.spacing = 10
+        stackView.distribution = .FillEqually
+        addSubview(stackView)
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
+        stackView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
+        stackView.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,62 +43,9 @@ class ButtonsView: UIView {
     override class func requiresConstraintBasedLayout() -> Bool {
         return true
     }
-    
-    override func updateConstraints() {
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
-            "[saveButton(145)]-5-[deleteButton(145)]",
-            options: NSLayoutFormatOptions(),
-            metrics: nil,
-            views: ["saveButton": saveButton, "deleteButton": deleteButton])
-
-        let saveButtonCenterYConstraint = NSLayoutConstraint(
-            item: saveButton,
-            attribute: .CenterY,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterY,
-            multiplier: 1,
-            constant: 0)
-
-        let deleteButtonCenterYConstraint = NSLayoutConstraint(
-            item: deleteButton,
-            attribute: .CenterY,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterY,
-            multiplier: 1,
-            constant: 0)
-
-        let buttonHorizontalCenteringConstraint = NSLayoutConstraint(
-            item: saveButton,
-            attribute: .Right,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .CenterX,
-            multiplier: 1,
-            constant: -2.5)
-
-        addConstraints(horizontalConstraints)
-        addConstraint(saveButtonCenterYConstraint)
-        addConstraint(deleteButtonCenterYConstraint)
-        addConstraint(buttonHorizontalCenteringConstraint)
-
-        super.updateConstraints()
-    }
 
     // MARK: - ButtonsView
     
-    let saveButton: UIButton = {
-        let button = UIButton(type: .System)
-        button.setTitle("Save", forState: .Normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    let deleteButton: UIButton = {
-        let button = UIButton(type: .System)
-        button.setTitle("Delete", forState: .Normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    let saveButton: UIButton
+    let deleteButton: UIButton
 }

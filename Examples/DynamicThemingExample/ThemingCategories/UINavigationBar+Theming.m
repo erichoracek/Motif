@@ -6,11 +6,16 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <Motif/Motif.h>
-#import "ThemeSymbols.h"
-#import "UINavigationBar+Theming.h"
+@import Motif;
+
 #import "UIColor+LightnessType.h"
 #import "UILabel+Theming.h"
+
+#import "ThemeSymbols.h"
+
+#import "UINavigationBar+Theming.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation UINavigationBar (Theming)
 
@@ -67,3 +72,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

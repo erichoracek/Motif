@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A277DBA1BAA6ED000394657 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB81BAA6ED000394657 /* Masonry.framework */; settings = {ASSET_TAGS = (); }; };
-		3A277DBB1BAA6ED000394657 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB91BAA6ED000394657 /* Motif.framework */; settings = {ASSET_TAGS = (); }; };
-		3A277DBD1BAA6F7300394657 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB81BAA6ED000394657 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A277DBB1BAA6ED000394657 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB91BAA6ED000394657 /* Motif.framework */; };
 		3A277DBF1BAA6F7300394657 /* Motif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A277DB91BAA6ED000394657 /* Motif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABF074E1A52105A00E6A83C /* ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF074D1A52105A00E6A83C /* ThemeSymbols.m */; };
 		3ACE598C1AD4B61600F308EF /* UILabel+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE598B1AD4B61600F308EF /* UILabel+Theming.m */; };
@@ -20,7 +18,7 @@
 		3AD69A751A4F788E0002FA8F /* UIView+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A741A4F788E0002FA8F /* UIView+Theming.m */; };
 		3AD69A801A4FA1480002FA8F /* ButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69A7F1A4FA1480002FA8F /* ButtonsView.m */; };
 		3AD69A821A4FB2BC0002FA8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AD69A811A4FB2BC0002FA8F /* Images.xcassets */; };
-		3AF07C171BAA8B52002818A5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF07C161BAA8B52002818A5 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3AF07C171BAA8B52002818A5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF07C161BAA8B52002818A5 /* Launch Screen.storyboard */; };
 		3AF12DDE1B1459EE0065AB58 /* Theme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3AF12DDD1B1459EE0065AB58 /* Theme.yaml */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +30,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3A277DBF1BAA6F7300394657 /* Motif.framework in Embed Frameworks */,
-				3A277DBD1BAA6F7300394657 /* Masonry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +37,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A277DB81BAA6ED000394657 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A277DB91BAA6ED000394657 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAD1AF31AE46ECF00A68625 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		3AAD1AF51AE46ECF00A68625 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -82,7 +78,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A277DBB1BAA6ED000394657 /* Motif.framework in Frameworks */,
-				3A277DBA1BAA6ED000394657 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +191,6 @@
 		6DE4D76277E1B49110B96DA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A277DB81BAA6ED000394657 /* Masonry.framework */,
 				3A277DB91BAA6ED000394657 /* Motif.framework */,
 			);
 			name = Frameworks;
@@ -230,7 +224,7 @@
 		3AD69A421A4F750B0002FA8F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3AD69A491A4F750B0002FA8F = {
@@ -310,7 +304,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AAD1AF51AE46ECF00A68625 /* Debug.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -320,7 +314,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AAD1AF71AE46ECF00A68625 /* Release.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

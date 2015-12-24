@@ -17,9 +17,6 @@
       location = "group:Examples/SwiftButtonsExample.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/masonry/Masonry.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Carthage/Checkouts/specta/Specta/Specta.xcodeproj">
    </FileRef>
    <FileRef

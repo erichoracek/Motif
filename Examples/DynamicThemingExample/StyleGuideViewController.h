@@ -10,6 +10,8 @@
 
 @class MTFDynamicThemeApplier;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface StyleGuideViewController : UIViewController
 
 - (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier;
@@ -17,3 +19,5 @@
 @property (nonatomic, readonly) MTFDynamicThemeApplier *themeApplier;
 
 @end
+
+NS_ASSUME_NONNULL_END
