@@ -33,7 +33,7 @@
 
 @dynamic properties;
 
-- (NSArray *)properties {
+- (NSArray<NSString *> *)properties {
     return @[];
 }
 

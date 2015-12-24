@@ -29,12 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
  The theme class appliers registered for this class resolved across the entire
  class hierarchy.
  */
-+ (NSArray *)mtf_themeClassAppliers;
++ (NSArray<id<MTFThemeClassApplicable>> *)mtf_themeClassAppliers;
 
 /**
  The theme appliers registerd for just this class, not including superclasses.
  */
-+ (NSMutableArray *)mtf_classThemeClassAppliers;
++ (NSMutableArray<id<MTFThemeClassApplicable>> *)mtf_classThemeClassAppliers;
 
 @end
 

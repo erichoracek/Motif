@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromFilesNamed:(NSArray *)themeNames error:(NSError **)error;
++ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-+ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
++ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -100,31 +100,33 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A theme object.
  */
-- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError **)error;
+- (instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error;
 
 /**
  Initializes a theme from a theme dictionary.
  
- @param dictionary The dictionary to initialze the theme from. Should follow the
-                   syntax of the theme files. Required.
- @param error      If an error occurs, upon return contains an NSError object
-                   that describes the problem.
+ @param dictionary The dictionary to initialize the theme from. Should follow 
+        the syntax of the theme files. Required.
+
+ @param error If an error occurs, upon return contains an NSError object that
+        describes the problem.
  
  @return A theme object.
  */
-- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError **)error;
+- (instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error;
 
 /**
  Initializes a theme from an array of theme dictionaries.
  
- @param dictionaries The dictionaries to initialze the theme from. Should mirror
-                     the syntax of the theme files. Required.
- @param error        If an error occurs, upon return contains an NSError object
-                     that describes the problem.
+ @param dictionaries The dictionaries to initialize the theme from. Should 
+        mirror the syntax of the theme files. Required.
+
+ @param error If an error occurs, upon return contains an NSError object that
+        describes the problem.
  
  @return A theme object.
  */
-- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError **)error;
+- (instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error;
 
 /**
  The constant value from the theme collection for the specified key.

@@ -17,67 +17,67 @@ static const char * const TransformedValueObjCType = @encode(CGPoint);
 
 + (void)load {
     [self
-     mtf_registerValueTransformerWithName:MTFPointFromNumberTransformerName
-     transformedValueObjCType:TransformedValueObjCType
-     reverseTransformedValueClass:NSNumber.class
-     returningTransformedValueWithBlock:^(NSNumber *numberValue) {
-         typeof(TransformedValueCType) value = {
-             .x = numberValue.floatValue,
-             .y = numberValue.floatValue,
-         };
+        mtf_registerValueTransformerWithName:MTFPointFromNumberTransformerName
+        transformedValueObjCType:TransformedValueObjCType
+        reverseTransformedValueClass:NSNumber.class
+        returningTransformedValueWithBlock:^(NSNumber *numberValue) {
+            typeof(TransformedValueCType) value = {
+                .x = numberValue.floatValue,
+                .y = numberValue.floatValue,
+            };
 
-         return [NSValue value:&value withObjCType:TransformedValueObjCType];
-     }];
+            return [NSValue value:&value withObjCType:TransformedValueObjCType];
+        }];
+
+        [self
+         mtf_registerValueTransformerWithName:MTFPointFromArrayTransformerName
+         transformedValueObjCType:TransformedValueObjCType
+         reverseTransformedValueClass:NSArray.class
+         returningTransformedValueWithBlock:^(NSArray<NSNumber *> *values) {
+             NSAssert(values.count == 2, @"Values array must have two elements");
+
+             for (__unused id value in values) {
+                 NSAssert(
+                    [value isKindOfClass:NSNumber.class],
+                    @"Value elements must be kind of class NSNumber");
+             }
+
+             typeof(TransformedValueCType) value = {
+                 .x = values[0].floatValue,
+                 .y = values[1].floatValue,
+             };
+             
+             return [NSValue value:&value withObjCType:TransformedValueObjCType];
+        }];
 
     [self
-     mtf_registerValueTransformerWithName:MTFPointFromArrayTransformerName
-     transformedValueObjCType:TransformedValueObjCType
-     reverseTransformedValueClass:NSArray.class
-     returningTransformedValueWithBlock:^(NSArray *values) {
-         NSAssert(values.count == 2, @"Values array must have two elements");
+        mtf_registerValueTransformerWithName:MTFPointFromDictionaryTransformerName
+        transformedValueObjCType:TransformedValueObjCType
+        reverseTransformedValueClass:NSDictionary.class
+        returningTransformedValueWithBlock:^(NSDictionary<NSString *, NSNumber *> *values) {
+            for (__unused id value in [values objectEnumerator]) {
+                NSAssert(
+                    [value isKindOfClass:NSNumber.class],
+                    @"Value objects must be kind of class NSNumber");
+            }
 
-         for (__unused id value in values) {
-             NSAssert(
-                [value isKindOfClass:NSNumber.class],
-                @"Value elements must be kind of class NSNumber");
-         }
+            NSArray<NSString *> *validProperties = @[@"x", @"y"];
 
-         typeof(TransformedValueCType) value = {
-             .x = [values[0] floatValue],
-             .y = [values[1] floatValue]
-         };
+            // Ensure that the passed properties have valid keys
+            NSMutableSet<NSString *> *passedInvalidPropertyNames = [NSMutableSet setWithArray:values.allKeys];
+            [passedInvalidPropertyNames minusSet:[NSSet setWithArray:validProperties]];
+            NSAssert(
+                passedInvalidPropertyNames.count == 0,
+                @"Invalid property name(s): %@",
+                passedInvalidPropertyNames);
 
-         return [NSValue value:&value withObjCType:TransformedValueObjCType];
-     }];
-
-    [self
-     mtf_registerValueTransformerWithName:MTFPointFromDictionaryTransformerName
-     transformedValueObjCType:TransformedValueObjCType
-     reverseTransformedValueClass:NSDictionary.class
-     returningTransformedValueWithBlock:^(NSDictionary *values) {
-         for (__unused id value in [values objectEnumerator]) {
-             NSAssert(
-                [value isKindOfClass:NSNumber.class],
-                @"Value objects must be kind of class NSNumber");
-         }
-
-         NSArray *validProperties = @[@"x", @"y"];
-
-         // Ensure that the passed properties have valid keys
-         NSMutableSet *passedInvalidPropertyNames = [NSMutableSet setWithArray:values.allKeys];
-         [passedInvalidPropertyNames minusSet:[NSSet setWithArray:validProperties]];
-         NSAssert(
-            passedInvalidPropertyNames.count == 0,
-            @"Invalid property name(s): %@",
-            passedInvalidPropertyNames);
-
-         typeof(TransformedValueCType) value = {
-             .x = [values[validProperties[0]] floatValue],
-             .y = [values[validProperties[1]] floatValue]
-         };
-
-         return [NSValue value:&value withObjCType:TransformedValueObjCType];
-     }];
+            typeof(TransformedValueCType) value = {
+                .x = values[validProperties[0]].floatValue,
+                .y = values[validProperties[1]].floatValue
+            };
+            
+            return [NSValue value:&value withObjCType:TransformedValueObjCType];
+        }];
 }
 
 @end

@@ -19,7 +19,7 @@
         return nil;
     }
     
-    NSArray *valueTransformerNames = NSValueTransformer.valueTransformerNames;
+    NSArray<NSString *> *valueTransformerNames = NSValueTransformer.valueTransformerNames;
     
     for (NSString *valueTransformerName in valueTransformerNames) {
         NSValueTransformer *valueTransfomerForName = [NSValueTransformer
@@ -55,7 +55,7 @@
         return nil;
     }
     
-    NSArray *valueTransformerNames = NSValueTransformer.valueTransformerNames;
+    NSArray<NSString *> *valueTransformerNames = NSValueTransformer.valueTransformerNames;
     
     for (NSString *valueTransformerName in valueTransformerNames) {
         NSValueTransformer *valueTransfomerForName = [NSValueTransformer

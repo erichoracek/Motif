@@ -30,25 +30,25 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Public
 
-+ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error {
     NSParameterAssert(themeName);
     
-    return [self themeFromFilesNamed:@[themeName] error:error];
+    return [self themeFromFilesNamed:@[ themeName ] error:error];
 }
 
-+ (instancetype)themeFromFilesNamed:(NSArray *)themeNames error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     return [self themeFromFilesNamed:themeNames bundle:nil error:error];
 }
 
-+ (instancetype)themeFromFilesNamed:(NSArray *)themeNames bundle:(NSBundle *)bundle error:(NSError *__autoreleasing *)error {
++ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     // Build an array of URLs from the specified theme names
-    NSArray *fileURLs = [NSURL
+    NSArray<NSURL *> *fileURLs = [NSURL
         mtf_fileURLsFromThemeNames:themeNames
         inBundle:bundle];
     
@@ -58,15 +58,15 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 - (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error; {
     NSParameterAssert(fileURL);
     
-    return [self initWithFiles:@[fileURL] error:error];
+    return [self initWithFiles:@[ fileURL ] error:error];
 }
 
-- (instancetype)initWithFiles:(NSArray *)fileURLs error:(NSError *__autoreleasing *)error {
+- (instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error {
     NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     
-    NSMutableArray *themeDictionaries = [NSMutableArray new];
-    NSMutableArray *validFileURLs = [NSMutableArray new];
+    NSMutableArray<NSDictionary *> *themeDictionaries = [NSMutableArray new];
+    NSMutableArray<NSURL *> *validFileURLs = [NSMutableArray new];
     
     for (NSURL *fileURL in fileURLs) {
         NSDictionary *themeDictionary = [fileURL mtf_themeDictionaryWithError:error];
@@ -93,14 +93,14 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     return self;
 }
 
-- (instancetype)initWithThemeDictionary:(NSDictionary *)dictionary error:(NSError *__autoreleasing *)error {
-    NSParameterAssert(dictionary);
+- (instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error {
+    NSParameterAssert(dictionary != nil);
     
-    return [self initWithThemeDictionaries:@[dictionary] error:error];
+    return [self initWithThemeDictionaries:@[ dictionary ] error:error];
 }
 
-- (instancetype)initWithThemeDictionaries:(NSArray *)dictionaries error:(NSError *__autoreleasing *)error; {
-    NSParameterAssert(dictionaries);
+- (instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error {
+    NSParameterAssert(dictionaries != nil);
     NSAssert(
         dictionaries.count > 0,
         @"Must provide at least one theme dictionary");
@@ -146,8 +146,8 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Names
 
-- (NSArray *)names {
-    NSMutableArray *names = [NSMutableArray new];
+- (NSArray<NSString *> *)names {
+    NSMutableArray<NSString *> *names = [NSMutableArray new];
     for (NSURL *fileURL in self.fileURLs) {
         [names addObject:fileURL.mtf_themeName];
     }
@@ -156,8 +156,8 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Filenames
 
-- (NSArray *)filenames {
-    NSMutableArray *filenames = [NSMutableArray new];
+- (NSArray<NSString *> *)filenames {
+    NSMutableArray<NSString *> *filenames = [NSMutableArray new];
     for (NSURL *fileURL in self.fileURLs) {
         [filenames addObject:fileURL.lastPathComponent];
     }
@@ -166,7 +166,7 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark FileURLs
 
-- (NSArray *)fileURLs {
+- (NSArray<NSURL *> *)fileURLs {
     if (!_fileURLs) {
         self.fileURLs = [NSMutableArray new];
     }
@@ -174,7 +174,7 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 }
 
 - (void)addFileURLsObject:(NSURL *)fileURL {
-    NSMutableSet *fileURLs = [self.fileURLs mutableCopy];
+    NSMutableSet<NSURL *> *fileURLs = [self.fileURLs mutableCopy];
     [fileURLs addObject:fileURL];
     self.fileURLs = [fileURLs copy];
 }
@@ -185,36 +185,36 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     return self.constants[name];
 }
 
-- (NSDictionary *)constants {
+- (NSDictionary<NSString *, MTFThemeConstant *> *)constants {
     if (!_constants) {
         _constants = [NSDictionary new];
     }
     return _constants;
 }
 
-- (void)addConstantsFromDictionary:(NSDictionary *)dictionary {
+- (void)addConstantsFromDictionary:(NSDictionary<NSString *, MTFThemeConstant *> *)dictionary {
     if (!dictionary.count) {
         return;
     }
-    NSMutableDictionary *constants = [self.constants mutableCopy];
+    NSMutableDictionary<NSString *, MTFThemeConstant *> *constants = [self.constants mutableCopy];
     [constants addEntriesFromDictionary:dictionary];
     self.constants = [constants copy];
 }
 
 #pragma mark Classes
 
-- (NSDictionary *)classes {
+- (NSDictionary<NSString *, MTFThemeClass *> *)classes {
     if (!_classes) {
         _classes = [NSDictionary new];
     }
     return _classes;
 }
 
-- (void)addClassesFromDictionary:(NSDictionary *)dictionary {
+- (void)addClassesFromDictionary:(NSDictionary<NSString *, MTFThemeClass *> *)dictionary {
     if (!dictionary.count) {
         return;
     }
-    NSMutableDictionary *classes = [self.classes mutableCopy];
+    NSMutableDictionary<NSString *, MTFThemeClass *> *classes = [self.classes mutableCopy];
     [classes addEntriesFromDictionary:dictionary];
     self.classes = [classes copy];
 }

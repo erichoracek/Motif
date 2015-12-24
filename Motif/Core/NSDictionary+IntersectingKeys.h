@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary (IntersectingKeys)
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (IntersectingKeys)
 
 /**
  The set of keys that intersect with another dictionary's set of keys.
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return The set of keys that intersect with the specified dictionary's keys.
          Nil if no keys are found.
  */
-- (nullable NSSet *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
+- (nullable NSSet<KeyType> *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary;
 
 @end
 

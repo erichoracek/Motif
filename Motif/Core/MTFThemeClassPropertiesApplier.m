@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties != nil);
     NSParameterAssert(applierBlock != nil);
     
@@ -43,8 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - MTFThemeClassPropertiesApplier
 
 - (BOOL)shouldApplyClass:(MTFThemeClass *)themeClass {
-    NSSet *applierPropertiesKeys = [NSSet setWithArray:self.properties];
-    NSSet *classPropertiesKeys = [NSSet setWithArray:themeClass.properties.allKeys];
+    NSSet<NSString *> *applierPropertiesKeys = [NSSet setWithArray:self.properties];
+    NSSet<NSString *> *classPropertiesKeys = [NSSet setWithArray:themeClass.properties.allKeys];
 
     // Only apply when all keys are present
     return [applierPropertiesKeys isSubsetOfSet:classPropertiesKeys];
@@ -60,8 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (![self shouldApplyClass:themeClass]) return NO;
 
-    NSMutableDictionary *valuesForProperties = [[NSMutableDictionary alloc] init];
-    NSDictionary *properties = themeClass.properties;
+    NSMutableDictionary<NSString *, id> *valuesForProperties = [[NSMutableDictionary alloc] init];
+    NSDictionary<NSString *, id> *properties = themeClass.properties;
 
     [self.properties enumerateObjectsUsingBlock:^(NSString *property, NSUInteger index, BOOL *stop) {
         id value = properties[property];
@@ -82,11 +82,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithProperties:(NSArray *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {
     NSParameterAssert(valueTypes);
     NSAssert(
         properties.count == valueTypes.count,
@@ -135,7 +135,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (![self shouldApplyClass:themeClass]) return NO;
 
-    NSMutableDictionary *valuesForProperties = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary<NSString *, id> *valuesForProperties = [[NSMutableDictionary alloc] init];
 
     __block BOOL shouldApply = YES;
     [self.properties enumerateObjectsUsingBlock:^(NSString *property, NSUInteger index, BOOL *stop) {

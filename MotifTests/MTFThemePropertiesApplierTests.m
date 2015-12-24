@@ -96,8 +96,7 @@
 
 #pragma mark - Helpers
 
-- (MTFTheme *)themeWithClass:(NSString *)class properties:(NSArray *)properties values:(NSArray *)values
-{
+- (MTFTheme *)themeWithClass:(NSString *)class properties:(NSArray *)properties values:(NSArray *)values {
     NSMutableDictionary *rawClassDictionary = [NSMutableDictionary new];
     NSEnumerator *propertiesEnumerator = [properties objectEnumerator];
     NSEnumerator *valuesEnumerator = [values objectEnumerator];

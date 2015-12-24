@@ -56,8 +56,8 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 
 @dynamic properties;
 
-- (NSDictionary *)properties {
-    NSMutableDictionary *properties = [NSMutableDictionary new];
+- (NSDictionary<NSString *, id> *)properties {
+    NSMutableDictionary<NSString *, id> *properties = [NSMutableDictionary new];
 
     [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *name, MTFThemeConstant *constant, BOOL *_) {
         properties[name] = constant.value;
@@ -71,16 +71,16 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
     
     if (object == nil) return NO;
     
-    NSDictionary *properties = self.properties;
-    NSMutableSet *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
+    NSDictionary<NSString *, id> *properties = self.properties;
+    NSMutableSet<NSString *> *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
     
     // Apply each of the class appliers registered on the applicant's class
-    NSArray *classAppliers = [[object class] mtf_themeClassAppliers];
+    NSArray<id<MTFThemeClassApplicable>> *classAppliers = [[object class] mtf_themeClassAppliers];
 
     for (id<MTFThemeClassApplicable> classApplier in classAppliers) {
         BOOL didApply = [classApplier applyClass:self toObject:object];
         if (didApply) {
-            NSSet *appliedProperties = [NSSet setWithArray:classApplier.properties];
+            NSSet<NSString *> *appliedProperties = [NSSet setWithArray:classApplier.properties];
 
             [unappliedProperties minusSet:appliedProperties];
         }
@@ -244,7 +244,7 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
     );
 }
 
-- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary *)propertiesConstants {
+- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
     self = [super init];
     if (self) {
         _name = name;
@@ -255,8 +255,8 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 
 @dynamic resolvedPropertiesConstants;
 
-- (NSDictionary *)resolvedPropertiesConstants {
-    NSMutableDictionary *propertiesConstants = [NSMutableDictionary new];
+- (NSDictionary<NSString *, MTFThemeConstant *> *)resolvedPropertiesConstants {
+    NSMutableDictionary<NSString *, MTFThemeConstant *> *propertiesConstants = [NSMutableDictionary new];
     [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(
         NSString *name,
         MTFThemeConstant *constant,
@@ -268,12 +268,11 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
                 // In the case of the symbol generator, the superclasses could
                 // not be resolved, and thus may strings rather than references
                 if ([superclass isKindOfClass:MTFThemeClass.class]) {
-                    NSMutableDictionary *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
+                    NSMutableDictionary<NSString *, MTFThemeConstant *> *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
                     // Ensure that subclasses are able to override properties
                     // by removing keys from the resolved properties constants
                     [superclassProperties removeObjectsForKeys:propertiesConstants.allKeys];
-                    [propertiesConstants
-                        addEntriesFromDictionary:superclassProperties];
+                    [propertiesConstants addEntriesFromDictionary:superclassProperties];
                 }
             } else {
                 propertiesConstants[name] = constant;

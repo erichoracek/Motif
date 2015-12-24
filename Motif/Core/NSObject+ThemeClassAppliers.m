@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public
 
-+ (id)mtf_registerThemeClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock {
     NSParameterAssert(applierBlock);
     
     MTFThemeClassApplier *applier = [[MTFThemeClassApplier alloc] initWithClassApplierBlock:applierBlock];
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id)mtf_registerThemeProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property);
     NSParameterAssert(applierBlock);
     
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id)mtf_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property);
     NSAssert(
         valueClass,
@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id)mtf_registerThemeProperty:(NSString *)property requiringValueOfObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyObjCValueApplierBlock)applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyObjCValueApplierBlock)applierBlock {
     NSParameterAssert(property != nil);
     NSParameterAssert(applierBlock != nil);
     NSAssert(
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id)mtf_registerThemeProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray<NSString *> *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties != nil);
     NSParameterAssert(applierBlock != nil);
     
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(void (^)(NSDictionary *valuesForProperties, id objectToTheme))applierBlock {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray<NSString *> *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties != nil);
     NSAssert(
         valueTypes != nil,
@@ -104,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
     return applier;
 }
 
-+ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property forKeyPath:(NSString *)keyPath withValuesByKeyword:(NSDictionary *)valuesByKeyword {
++ (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property forKeyPath:(NSString *)keyPath withValuesByKeyword:(NSDictionary<NSString *, id> *)valuesByKeyword {
     NSParameterAssert(property != nil);
     NSParameterAssert(keyPath != nil);
     NSParameterAssert(valuesByKeyword != nil);
@@ -156,18 +156,18 @@ NS_ASSUME_NONNULL_BEGIN
     [self.mtf_classThemeClassAppliers removeObject:applier];
 }
 
-+ (NSArray *)mtf_themeClassAppliers {
-    NSMutableArray *appliers = [NSMutableArray new];
++ (NSArray<id<MTFThemeClassApplicable>> *)mtf_themeClassAppliers {
+    NSMutableArray<id<MTFThemeClassApplicable>> *appliers = [NSMutableArray new];
     Class class = self.class;
     do {
-        NSArray *classAppliers = class.mtf_classThemeClassAppliers;
+        NSMutableArray<id<MTFThemeClassApplicable>> *classAppliers = class.mtf_classThemeClassAppliers;
         [appliers addObjectsFromArray:classAppliers];
     } while ((class = class.superclass));
     return appliers;
 }
 
-+ (NSMutableArray *)mtf_classThemeClassAppliers {
-    NSMutableArray *appliers = objc_getAssociatedObject(self, _cmd);
++ (NSMutableArray<id<MTFThemeClassApplicable>> *)mtf_classThemeClassAppliers {
+    NSMutableArray<id<MTFThemeClassApplicable>> *appliers = objc_getAssociatedObject(self, _cmd);
     if (!appliers) {
         appliers = [NSMutableArray new];
         objc_setAssociatedObject(

@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class MTFTheme;
+@class MTFThemeClass;
+@class MTFThemeConstant;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  Parsing a raw theme into its classes and constants, optionally inheriting from
@@ -32,21 +34,21 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized theme parser.
  */
-- (instancetype)initWithRawTheme:(NSDictionary *)rawTheme inheritingFromTheme:(nullable MTFTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingFromTheme:(nullable MTFTheme *)theme error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 /**
  The theme constants parsed from the raw theme.
  
  A dictionary keyed by theme constant names with values of MTFThemeConstant.
  */
-@property (nonatomic, readonly) NSDictionary *parsedConstants;
+@property (nonatomic, readonly) NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants;
 
 /**
  The theme classes parsed from the raw theme.
  
  A dictionary keyed by theme class names with values of MTFThemeClass.
  */
-@property (nonatomic, readonly) NSDictionary *parsedClasses;
+@property (nonatomic, readonly) NSDictionary<NSString *, MTFThemeClass *> *parsedClasses;
 
 /**
  Whether theme parsers should globally resolve their constants, producing errors

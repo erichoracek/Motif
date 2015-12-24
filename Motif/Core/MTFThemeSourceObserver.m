@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTFThemeSourceObserver ()
 
 @property (nonatomic, readonly) dispatch_queue_t fileObservationQueue;
-@property (nonatomic) NSArray *fileObservationContexts;
+@property (nonatomic) NSArray<MTFFileObservationContext *> *fileObservationContexts;
 @property (nonatomic) MTFTheme *updatedTheme;
 @property (nonatomic, nullable) NSError *updatedThemeError;
 
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
         onQueue:self.fileObservationQueue
         didUpdate:didUpdate];
     
-    NSArray *sourceFilePaths = [self
+    NSArray<NSString *> *sourceFilePaths = [self
         sourceFilePathsForTheme:theme
         inSourceDirectoryURL:self.sourceDirectoryURL];
     
@@ -71,11 +71,11 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
-- (NSArray *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
+- (NSArray<NSString *> *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme);
     NSParameterAssert(sourceDirectoryURL);
     
-    NSMutableArray *sourceFilePaths = [NSMutableArray new];
+    NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray new];
     
     for (NSString *filename in theme.filenames) {
         NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectoryURL:sourceDirectoryURL];
@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(sourceDirectoryURL);
     
     NSError *error;
-    NSArray *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
+    NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
     
     NSAssert(
         error == nil,
@@ -100,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
         sourceDirectoryURL,
         error);
     
-    NSMutableArray *filenames = [NSMutableArray new];
+    NSMutableArray<NSString *> *filenames = [NSMutableArray new];
     for (NSString *path in subpaths) {
         NSString *filename = path.lastPathComponent;
         NSAssert(
@@ -132,12 +132,12 @@ NS_ASSUME_NONNULL_BEGIN
     return [subpaths objectAtIndex:matchingIndices.firstIndex];
 }
 
-- (NSArray *)observeUpdatesToPaths:(NSArray *)paths onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
+- (NSArray<MTFFileObservationContext *> *)observeUpdatesToPaths:(NSArray<NSString *> *)paths onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
     NSParameterAssert(paths);
     NSParameterAssert(queue);
     NSParameterAssert(didUpdate);
     
-    NSMutableArray *fileObservationContexts = [NSMutableArray new];
+    NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [NSMutableArray new];
     
     for (NSString *path in paths) {
         MTFFileObservationContext *fileObservationContext = [self
@@ -218,11 +218,11 @@ NS_ASSUME_NONNULL_BEGIN
         path:path];
 }
 
-- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray *)sourceFilePaths error:(NSError *__autoreleasing *)error {
+- (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray<NSString *> *)sourceFilePaths error:(NSError *__autoreleasing *)error {
     NSParameterAssert(sourceFilePaths);
     
     // Transform the paths into URLs
-    NSMutableArray *sourceFileURLs = [NSMutableArray new];
+    NSMutableArray<NSURL *> *sourceFileURLs = [NSMutableArray new];
     for (NSString *sourceFilePath in sourceFilePaths) {
         NSURL *sourceFileURL = [NSURL fileURLWithPath:sourceFilePath];
         [sourceFileURLs addObject:sourceFileURL];
@@ -233,12 +233,12 @@ NS_ASSUME_NONNULL_BEGIN
         error:error];
 }
 
-- (NSArray *)observeSourceFilesOfTheme:(MTFTheme *)theme onQueue:(dispatch_queue_t)queue didUpdate:(MTFThemeDidUpdate)didUpdate {
+- (NSArray<MTFFileObservationContext *> *)observeSourceFilesOfTheme:(MTFTheme *)theme onQueue:(dispatch_queue_t)queue didUpdate:(MTFThemeDidUpdate)didUpdate {
     NSParameterAssert(theme);
     NSParameterAssert(queue);
     NSParameterAssert(didUpdate);
 
-    NSArray *sourceFilePaths = [self
+    NSArray<NSString *> *sourceFilePaths = [self
         sourceFilePathsForTheme:theme
         inSourceDirectoryURL:self.sourceDirectoryURL];
 
@@ -278,7 +278,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateObservationContext:(MTFFileObservationContext *)contextToUpdate {
     NSParameterAssert(contextToUpdate);
     
-    NSMutableArray *fileObservationContexts = [self.fileObservationContexts mutableCopy];
+    NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [self.fileObservationContexts mutableCopy];
     
     NSInteger indexToReplace = [fileObservationContexts
         indexOfObjectPassingTest:^BOOL(MTFFileObservationContext *context, NSUInteger index, BOOL *stop) {

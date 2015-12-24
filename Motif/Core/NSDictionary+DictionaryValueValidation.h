@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (DictionaryValueValidation)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (DictionaryValueValidation)
 
 /**
- Returns an NSDictionary value for the specified key in the callee, otherwise
+ Returns an NSDictionary value for the specified key in the receiver, otherwise
  populates a pass-by-reference error if there's a type error.
  */
-- (NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError *__autoreleasing *)error;
+- (nullable NSDictionary *)mtf_dictionaryValueForKey:(KeyType)key error:(NSError **)error;
 
 @end
+
+NS_ASSUME_NONNULL_END

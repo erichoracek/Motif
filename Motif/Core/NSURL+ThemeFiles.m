@@ -49,14 +49,14 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return name;
 }
 
-+ (NSArray *)mtf_fileURLsFromThemeNames:(NSArray *)themeNames inBundle:(nullable NSBundle *)bundle {
++ (NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle {
     NSParameterAssert(themeNames);
     
     // Default to main bundle if bundle is nil
     if (bundle == nil) bundle = NSBundle.mainBundle;
     
     // Build an array of fileURLs from the passed themeNames
-    NSMutableArray *fileURLs = [NSMutableArray new];
+    NSMutableArray<NSURL *> *fileURLs = [NSMutableArray new];
 
     for (NSString *themeName in themeNames) {
         // Ensure the theme names are strings
@@ -74,7 +74,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
         // If no file is found, throw an exception
         if (fileURL == nil) {
-            NSArray *suggestedURLs = [bundle
+            NSArray<NSURL *> *suggestedURLs = [bundle
                 mtf_URLsForResourcesWithExtensions:self.class.mtf_themeFileExtensions
                 subdirectory:nil];
 
@@ -206,7 +206,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return fileURL;
 }
 
-+ (nullable NSURL *)mtf_firstFileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtensions:(NSArray *)extensions {
++ (nullable NSURL *)mtf_firstFileURLFromThemeName:(NSString *)themeName inBundle:(NSBundle *)bundle withExtensions:(NSArray<NSString *> *)extensions {
     NSParameterAssert(themeName != nil);
     NSParameterAssert(bundle != nil);
     NSParameterAssert(extensions != nil);
@@ -223,7 +223,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return nil;
 }
 
-+ (NSArray *)mtf_themeFileExtensions {
++ (NSArray<NSString *> *)mtf_themeFileExtensions {
     return @[YAMLExtension, YAMLExtensionShort, JSONExtension];
 }
 

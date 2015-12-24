@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized theme class properties applier.
  */
-- (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /**
  The block that is invoked to apply the property values to an instance of the
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// of specific types to an object.
 @interface MTFThemeClassTypedValuesPropertiesApplier : MTFThemeClassPropertiesApplier
 
-- (instancetype)initWithProperties:(NSArray *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_UNAVAILABLE;
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_UNAVAILABLE;
 
 /**
  Initializes a theme class properties applier.
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return An initialized theme class properties applier.
  */
-- (instancetype)initWithProperties:(NSArray *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithProperties:(NSArray<NSString *> *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
 
 /// An array of either the classes or ObjC types that this property applier
 /// is expecting, in the order of its properties array.

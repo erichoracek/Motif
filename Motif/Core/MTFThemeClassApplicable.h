@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  The properties that the theme applier is responsible for applying to the target
  object.
  */
-@property (nonatomic, copy, readonly) NSArray *properties;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *properties;
 
 /**
  Attempts to appliy an MTFThemeClass from an MTFTheme to an object.
