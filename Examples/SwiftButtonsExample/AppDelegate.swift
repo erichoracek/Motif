@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var error: NSError?
-        let theme = MTFTheme(fromFileNamed: ThemeName, error: &error)
-        assert(error == nil, "Error loading theme: \(error)")
-        
+        let theme = try! MTFTheme(fromFileNamed: ThemeName)
+
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = ViewController(theme: theme)
+        window!.rootViewController = ViewController(themeApplier: theme)
         window!.makeKeyAndVisible()
         
         return true

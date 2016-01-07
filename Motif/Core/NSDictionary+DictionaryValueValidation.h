@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (DictionaryValueValidation)
+@interface NSDictionary (DictionaryValueValidation)
 
 /**
  Returns an NSDictionary value for the specified key in the receiver, otherwise
  populates a pass-by-reference error if there's a type error.
  */
-- (nullable NSDictionary *)mtf_dictionaryValueForKey:(KeyType)key error:(NSError **)error;
+- (nullable NSDictionary *)mtf_dictionaryValueForKey:(id)key error:(NSError **)error;
 
 @end
 

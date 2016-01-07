@@ -20,29 +20,33 @@ NS_ASSUME_NONNULL_BEGIN
     [self
         mtf_registerThemeProperty:ThemeProperties.borderWidth
         requiringValueOfClass:NSNumber.class
-        applierBlock:^(NSNumber *width, UIView *view) {
+        applierBlock:^(NSNumber *width, UIView *view, NSError **error) {
             view.layer.borderWidth = width.floatValue;
+            return YES;
         }];
 
     [self
         mtf_registerThemeProperty:ThemeProperties.borderColor
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UIView *view) {
+        applierBlock:^(UIColor *color, UIView *view, NSError **error) {
             view.layer.borderColor = color.CGColor;
+            return YES;
         }];
     
     [self
         mtf_registerThemeProperty:ThemeProperties.cornerRadius
         requiringValueOfClass:NSNumber.class
-        applierBlock:^(NSNumber *cornerRadius, UIView *view) {
+        applierBlock:^(NSNumber *cornerRadius, UIView *view, NSError **error) {
             view.layer.cornerRadius = cornerRadius.floatValue;
+            return YES;
         }];
     
     [self
         mtf_registerThemeProperty:ThemeProperties.backgroundColor
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UIView *view) {
+        applierBlock:^(UIColor *color, UIView *view, NSError **error) {
             view.backgroundColor = color;
+            return YES;
         }];
 }
 

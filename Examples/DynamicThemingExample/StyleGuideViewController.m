@@ -15,12 +15,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface StyleGuideViewController ()
+
+@property (readonly, nonatomic) id<MTFThemeApplier> themeApplier;
+
+@end
+
 @implementation StyleGuideViewController
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier {
-    NSParameterAssert(themeApplier);
+- (instancetype)initWithThemeApplier:(id<MTFThemeApplier>)themeApplier {
+    NSParameterAssert(themeApplier != nil);
     
     self = [super init];
 
@@ -31,21 +37,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - UIViewController
 
-@dynamic view;
-
 - (void)loadView {
-    self.view = [StyleGuideView new];
+    self.view = [[StyleGuideView alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.themeApplier
-        applyClassWithName:StyleGuideThemeClassNames.StyleGuide
-        toObject:self.view];
-}
 
-#pragma mark - StyleGuideViewController
+   NSError *error;
+    if (![self.themeApplier applyClassWithName:StyleGuideThemeClassNames.StyleGuide to:self.view error:&error]) {
+        NSLog(@"%@", error);
+    }
+}
 
 @end
 

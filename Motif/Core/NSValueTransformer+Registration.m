@@ -1,23 +1,25 @@
 //
-//  NSValueTransformer+ValueTransformerRegistration.m
+//  NSValueTransformer+Registration.m
 //  Motif
 //
 //  Created by Eric Horacek on 5/14/15.
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <objc/runtime.h>
+@import ObjectiveC;
 
+#import "MTFErrors.h"
 #import "MTFReverseTransformedValueClass.h"
 #import "MTFObjCTypeValueTransformer.h"
+#import "MTFValueTransformerErrorHandling.h"
 
-#import "NSValueTransformer+ValueTransformerRegistration.h"
+#import "NSValueTransformer+Registration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation NSValueTransformer (ValueTransformerRegistration)
+@implementation NSValueTransformer (Registration)
 
-+ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueObjCType:(const char *)transformedValueObjCType reverseTransformedValueClass:(Class)reverseTransformedValueClass returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
++ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueObjCType:(const char *)transformedValueObjCType reverseTransformedValueClass:(Class)reverseTransformedValueClass transformationBlock:(MTFObjCValueTransformationBlock)transformationBlock {
     NSParameterAssert(transformedValueObjCType != NULL);
 
     return [self
@@ -25,23 +27,25 @@ NS_ASSUME_NONNULL_BEGIN
         transformedValueClass:NSValue.class
         reverseTransformedValueClass:reverseTransformedValueClass
         transformedValueObjCType:transformedValueObjCType
-        returningTransformedValueWithBlock:transformedValueBlock];
+        transformationBlock:^(id value, NSError **error) {
+            return transformationBlock(value, error);
+        }];
 }
 
-+ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
++ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformationBlock:(MTFValueTransformationBlock)transformationBlock {
     return [self
         mtf_registerValueTransformerWithName:name
         transformedValueClass:transformedValueClass
         reverseTransformedValueClass:reverseTransformedValueClass
         transformedValueObjCType:NULL
-        returningTransformedValueWithBlock:transformedValueBlock];
+        transformationBlock:transformationBlock];
 }
 
-+ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(nullable const char *)transformedValueObjCType returningTransformedValueWithBlock:(id (^)(id value))transformedValueBlock {
++ (BOOL)mtf_registerValueTransformerWithName:(NSString *)name transformedValueClass:(Class)transformedValueClass reverseTransformedValueClass:(Class)reverseTransformedValueClass transformedValueObjCType:(nullable const char *)transformedValueObjCType transformationBlock:(MTFValueTransformationBlock)transformationBlock {
     NSParameterAssert(name != nil);
     NSParameterAssert(transformedValueClass != nil);
     NSParameterAssert(reverseTransformedValueClass != nil);
-    NSParameterAssert(transformedValueBlock != nil);
+    NSParameterAssert(transformationBlock != nil);
 
     // Do not allow names that are identical to an existing Objective-C class
     if (objc_lookUpClass(name.UTF8String) != Nil) return NO;
@@ -58,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
         return NO;
     }
 
-    // Override transformedValue instance method
+    // Override transformedValue: instance method
     SEL transformedValueSelector = @selector(transformedValue:);
 
     IMP transformedValueImplementation = imp_implementationWithBlock(^id (id __unused _, id value){
@@ -70,17 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
             NSStringFromClass(reverseTransformedValueClass),
             name);
 
-        id transformedValue = transformedValueBlock(value);
-
-        NSAssert(
-            transformedValue != nil,
-            @"Unable to transform '%@' from input value '%@' for value "
-                "transformer %@",
-            transformedValueClass,
-            value,
-            name);
-
-        return transformedValue;
+        return transformationBlock(value, NULL);
     });
 
     Method transformedValueMethod = class_getInstanceMethod(
@@ -93,11 +87,44 @@ NS_ASSUME_NONNULL_BEGIN
         transformedValueImplementation,
         method_getTypeEncoding(transformedValueMethod));
 
-    objc_registerClassPair(class);
+    // Implement transformedValue:success:error: instance method
+    SEL transformedValueErrorSelector = @selector(transformedValue:error:);
 
-    // The metaclass is only able to be queried after the class pair is
-    // registered with the runtime
-    Class metaClass = objc_getMetaClass(name.UTF8String);
+    IMP transformedValueErrorImplementation = imp_implementationWithBlock(^id (id __unused _, id value, NSError **error){
+        NSAssert(
+            [value isKindOfClass:reverseTransformedValueClass],
+            @"Input value to '%@' must be of class '%@' for value transformer"
+                 "named '%@'",
+            NSStringFromClass(self.class),
+            NSStringFromClass(reverseTransformedValueClass),
+            name);
+
+        return transformationBlock(value, error);
+    });
+
+    NSString *type = [NSString stringWithFormat:@"%s@:", @encode(Class)];
+
+    __unused BOOL transformedValueErrorSuccess = class_addMethod(
+        class,
+        transformedValueErrorSelector,
+        transformedValueErrorImplementation,
+        type.UTF8String);
+
+    NSAssert(
+        transformedValueErrorSuccess,
+        @"Failed to add method %@",
+        NSStringFromSelector(transformedValueErrorSelector));
+
+    __unused BOOL addValueTransformerErrorHandlingSuccess = class_addProtocol(
+        class,
+        @protocol(MTFValueTransformerErrorHandling));
+
+    NSAssert(
+        addValueTransformerErrorHandlingSuccess,
+        @"Failed to add protocol %@",
+        @protocol(MTFValueTransformerErrorHandling));
+
+    objc_registerClassPair(class);
 
     // Override transformedValueClass class method
     SEL transformedValueClassSelector = @selector(transformedValueClass);
@@ -105,6 +132,10 @@ NS_ASSUME_NONNULL_BEGIN
     IMP transformedValueClassImplementation = imp_implementationWithBlock(^Class {
         return transformedValueClass;
     });
+
+    // The metaclass is only able to be queried after the class pair is
+    // registered with the runtime
+    Class metaClass = objc_getMetaClass(name.UTF8String);
 
     Method transformedValueClassMethod = class_getClassMethod(
         metaClass,
@@ -133,7 +164,7 @@ NS_ASSUME_NONNULL_BEGIN
         return reverseTransformedValueClass;
     });
 
-    NSString *type = [NSString stringWithFormat:@"%s@:", @encode(Class)];
+    type = [NSString stringWithFormat:@"%s@:", @encode(Class)];
 
     __unused BOOL reverseTransformedValueClassSuccess = class_addMethod(
         metaClass,
@@ -182,6 +213,31 @@ NS_ASSUME_NONNULL_BEGIN
     [self setValueTransformer:valueTransformer forName:name];
 
     return YES;
+}
+
++ (nullable id)mtf_populateTransformationError:(NSError **)error withDescription:(NSString *)description {
+    NSParameterAssert(description != nil);
+
+    if (error == NULL) return nil;
+
+    *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+        NSLocalizedDescriptionKey: description,
+    }];
+
+    return nil;
+}
+
++ (nullable id)mtf_populateTransformationError:(NSError **)error withDescriptionFormat:(NSString *)descriptionFormat, ... NS_FORMAT_FUNCTION(2,3) {
+    NSParameterAssert(descriptionFormat != nil);
+
+    if (error == NULL) return nil;
+
+    va_list args;
+    va_start(args, descriptionFormat);
+    NSString *description = [[NSString alloc] initWithFormat:descriptionFormat arguments:args];
+    va_end(args);
+
+    return [self mtf_populateTransformationError:error withDescription:description];
 }
 
 @end

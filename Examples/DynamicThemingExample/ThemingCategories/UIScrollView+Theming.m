@@ -20,13 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
     [self
         mtf_registerThemeProperty:ContentThemeProperties.scrollIndicatorStyle
         requiringValueOfClass:NSString.class
-        applierBlock:^(NSString *scrollIndicatorStyle, UIScrollView *scrollView) {
+        applierBlock:^(NSString *scrollIndicatorStyle, UIScrollView *scrollView, NSError **error) {
             [scrollView mtf_setScrollIndicatorStyle:scrollIndicatorStyle];
+            return YES;
         }];
 }
 
-- (void)mtf_setScrollIndicatorStyle:(NSString *)scrollIndicatorStyle
-{
+- (void)mtf_setScrollIndicatorStyle:(NSString *)scrollIndicatorStyle {
     if ([scrollIndicatorStyle isEqualToString:@"light"]) {
         self.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     } else {

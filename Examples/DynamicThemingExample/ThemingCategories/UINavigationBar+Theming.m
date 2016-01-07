@@ -23,26 +23,31 @@ NS_ASSUME_NONNULL_BEGIN
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.backgroundColor
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+        applierBlock:^(UIColor *color, UINavigationBar *navigationBar, NSError **error) {
             navigationBar.barTintColor = color;
             navigationBar.barStyle = [navigationBar mtf_barStyleForColor:color];
+            
             // Translucency must be set to NO for an opaque background color to
             // appear correctly
             navigationBar.translucent = NO;
+
+            return YES;
         }];
     
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.text
         requiringValueOfClass:MTFThemeClass.class
-        applierBlock:^(MTFThemeClass *themeClass, UINavigationBar *navigationBar) {
+        applierBlock:^(MTFThemeClass *themeClass, UINavigationBar *navigationBar, NSError **error) {
             navigationBar.titleTextAttributes = [UILabel mtf_textAttributesForThemeClass:themeClass];
+            return YES;
         }];
     
     [self
         mtf_registerThemeProperty:NavigationThemeProperties.separatorColor
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UINavigationBar *navigationBar) {
+        applierBlock:^(UIColor *color, UINavigationBar *navigationBar, NSError **error) {
             [navigationBar mtf_setShadowColor:color];
+            return YES;
         }];
 }
 

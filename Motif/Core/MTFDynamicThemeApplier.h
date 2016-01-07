@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import <Motif/MTFThemeApplier.h>
 
 @class MTFTheme;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A dynamic theme applier enables dynamic theming, allowing the objects that are
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  property on the dynamic theme applier that initially applied their theme class.
  
  When using a MTFDynamicThemeApplier, you should not use the 
- applyClassWithName:toObject: method on MTFTheme to apply theme classes to
+ applyClassWithName:to:error: method on MTFTheme to apply theme classes to
  objects. Instead, use the method on MTFDynamicThemeApplier.
  
  If the `theme` property is changed on an `MTFDynamicThemeApplier`, it reapplies
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  theme. If some classes are unavailable in the new theme, they are ignored, and
  no style is applied to the object.
  */
-@interface MTFDynamicThemeApplier : NSObject
+@interface MTFDynamicThemeApplier : NSObject <MTFThemeApplier>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -43,23 +43,16 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The theme that the dynamic theme applier should be responsible for applying.
  
+ Use setTheme:error: to change the theme.
+ */
+@property (nonatomic, readonly) MTFTheme *theme;
+
+/**
  When the theme is changed, the objects that had the previous theme applied to
  theme have the same theme classes reapplied to them from the new theme.
  The value of this property may not be nil.
  */
-@property (nonatomic) MTFTheme *theme;
-
-/**
- Applies a theme class with the specified name to an object.
- 
- @param className If className is nil or does not map to an existing class on
-                  theme, this method has no effect.
- @param object    If the object is nil or has no registered class appliers, 
-                  this method has no effect.
- 
- @return Whether the class was applied to the object.
- */
-- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object;
+- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error;
 
 @end
 

@@ -12,7 +12,7 @@
 /**
  Represents a reference to another theme symbol.
 
- Used during theme parsing, by MTFThemeParser.
+ Used during theme parsing by MTFThemeParser.
  */
 @interface MTFThemeSymbolReference : NSObject
 

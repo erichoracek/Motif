@@ -12,33 +12,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFThemeConstant ()
 
-/**
- Initializes a new instance of an MTFThemeConstant.
- */
+/// Initializes a new instance of an MTFThemeConstant.
 - (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue;
 
-/**
- The raw value of the constant, directly deserialized from the theme file.
- */
+/// The raw value of the constant, directly deserialized from the theme file.
 @property (nonatomic, readonly) id rawValue;
 
-/**
- If the theme constant is a reference to a class or a constant, the object that
- it is referencing.
- 
- Can be either an MTFThemeClass, MTFThemeConstant, or nil if the constant is not
- a reference.
- */
+/// If the theme constant is a reference to a class or a constant, the object
+/// that it is referencing.
+///
+/// Can be either an MTFThemeClass, MTFThemeConstant, or nil if the constant is
+/// not a reference.
 @property (nonatomic, nullable) id mappedValue;
 
-/**
- A cache to hold transformed mapped values on this constant.
- 
- Keyed by the transformer name.
- 
- @see NSValueTransformer
- */
-@property (nonatomic, null_resettable) NSCache *transformedValueCache;
+/// A cache to hold transformed mapped values on this constant.
+///
+/// Keyed by an NSValue wrapping a nonretained reference to the
+/// NSValueTransformer that transformed the value.
+@property (nonatomic, readonly) NSCache *transformedValueCache;
 
 @end
 

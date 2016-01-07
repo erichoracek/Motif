@@ -6,17 +6,14 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@class MTFDynamicThemeApplier;
+@import UIKit;
+@import Motif;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface StyleGuideViewController : UIViewController
 
-- (instancetype)initWithThemeApplier:(MTFDynamicThemeApplier *)themeApplier;
-
-@property (nonatomic, readonly) MTFDynamicThemeApplier *themeApplier;
+- (instancetype)initWithThemeApplier:(id<MTFThemeApplier>)themeApplier;
 
 @end
 

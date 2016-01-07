@@ -6,23 +6,22 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
+#import "NSValueTransformer+TypeFiltering.h"
+#import "NSObject+ThemeClassAppliersPrivate.h"
+#import "NSObject+ThemeClassName.h"
+#import "NSString+ThemeSymbols.h"
+
 #import "MTFRuntimeExtensions.h"
 #import "MTFThemeClass.h"
 #import "MTFThemeClass_Private.h"
 #import "MTFTheme.h"
 #import "MTFTheme_Private.h"
 #import "MTFThemeConstant.h"
-#import "NSString+ThemeSymbols.h"
-#import "NSValueTransformer+TypeFiltering.h"
 #import "MTFThemeClassApplicable.h"
-#import "NSObject+ThemeClassAppliersPrivate.h"
-#import "NSObject+ThemeClassName.h"
+#import "MTFErrors.h"
+#import "MTFValueTransformerErrorHandling.h"
 
 @implementation MTFThemeClass
-
-NSString * const MTFThemeClassUnappliedPropertyException = @"MTFThemeClassUnappliedPropertyException";
-
-NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"PropertyName";
 
 #pragma mark - NSObject
 
@@ -54,167 +53,241 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 
 #pragma mark Public
 
-@dynamic properties;
+- (BOOL)applyTo:(id)object error:(NSError **)error {
+    NSParameterAssert(object != nil);
 
-- (NSDictionary<NSString *, id> *)properties {
-    NSMutableDictionary<NSString *, id> *properties = [NSMutableDictionary new];
+    // Contains the names of properties that were not able to be applied to the
+    // object.
+    NSMutableSet<NSString *> *unappliedProperties = [NSMutableSet setWithArray:self.properties.allKeys];
 
-    [self.resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *name, MTFThemeConstant *constant, BOOL *_) {
-        properties[name] = constant.value;
-    }];
+    // Contains the errors that occurred while applying properties to the
+    // object.
+    NSMutableArray<NSError *> *errors = [NSMutableArray array];
 
-    return [properties copy];
-}
+    // Contains the names of properties that were not able to be applied to the
+    // object.
+    NSMutableSet<NSString *> *propertiesWithErrors = [NSMutableSet set];
 
-- (BOOL)applyToObject:(id)object {
-    NSParameterAssert(object);
-    
-    if (object == nil) return NO;
-    
-    NSDictionary<NSString *, id> *properties = self.properties;
-    NSMutableSet<NSString *> *unappliedProperties = [NSMutableSet setWithArray:properties.allKeys];
-    
-    // Apply each of the class appliers registered on the applicant's class
-    NSArray<id<MTFThemeClassApplicable>> *classAppliers = [[object class] mtf_themeClassAppliers];
-
-    for (id<MTFThemeClassApplicable> classApplier in classAppliers) {
-        BOOL didApply = [classApplier applyClass:self toObject:object];
-        if (didApply) {
-            NSSet<NSString *> *appliedProperties = [NSSet setWithArray:classApplier.properties];
-
+    // First, attempt to apply each of the class appliers registered on the
+    // applicant's class.
+    for (id<MTFThemeClassApplicable> classApplier in [[object class] mtf_themeClassAppliers]) {
+        NSError *applierError;
+        NSSet<NSString *> *appliedProperties = [classApplier applyClass:self to:object error:&applierError];
+        
+        if (appliedProperties != nil) {
             [unappliedProperties minusSet:appliedProperties];
+        } else {
+            [unappliedProperties minusSet:classApplier.properties];
+            [propertiesWithErrors unionSet:classApplier.properties];
+
+            if (applierError != nil) {
+                [errors addObject:applierError];
+            }
         }
     }
+
+    NSDictionary<NSString *, MTFThemeConstant *> *resolvedPropertiesConstants = self.resolvedPropertiesConstants;
     
-    // If no theme class appliers were found, attempt to locate a property on
-    // the applicant's class with the same name as the theme class property. If
-    // one is found, use KVC to set its value.
+    // Second, for each of the properties that had no appliers, attempt to
+    // locate a property on the applicant's class with the same name as the
+    // theme class property. If one is found, use KVC to set its value.
     for (NSString *property in [unappliedProperties copy]) {
-        
         // Traverse the class hierarchy from the applicant's class up by
-        // superclass
+        // superclasses.
         Class applicantClass = [object class];
         do {
-            // Locate any properties of the same name on the applicant's class
-            // hierarchy
+            // Locate the first property of the same name as the theme class
+            // property in the applicant's class hierarchy.
             objc_property_t objc_property = class_getProperty(
                 applicantClass,
                 property.UTF8String);
             
             if (objc_property == NULL) continue;
             
-            // Create a property attributes struct to figure out attributes of
-            // the properties
+            // Build a property attributes struct to figure out the type of the
+            // property.
             mtf_propertyAttributes *propertyAttributes = NULL;
             propertyAttributes = mtf_copyPropertyAttributes(objc_property);
-            if (propertyAttributes == NULL) {
-                continue;
-            }
-            
+            if (propertyAttributes == NULL) continue;
+
             Class propertyClass = propertyAttributes->objectClass;
             const char *propertyObjCType = propertyAttributes->type;
-            id value = properties[property];
-            
-            // Locate a value transformer that can be used to transform from the
-            // theme class property value to the type of the property that was
-            // located
+            MTFThemeConstant *constant = resolvedPropertiesConstants[property];
+
+            // If it's an Obj-C class object property:
+            if (propertyClass != Nil) {
+                // If the constant value can be set directly as the value of the
+                // property without transformation, do so immediately and break
+                // out of the loop.
+                if ([constant.value isKindOfClass:propertyClass]) {
+                    [unappliedProperties removeObject:property];
+                    [object setValue:constant.value forKey:property];
+                    break;
+                }
+            }
+            // If it's an Obj-C NSValue type:
+            else if (propertyObjCType != NULL) {
+                // Whether the property is an C numeric type.
+                BOOL isPropertyNumericCType = (
+                    strlen(propertyObjCType) == 1
+                    && strchr("cislqCISLQfdB", propertyObjCType[0])
+                );
+
+                // If it's a numeric C type with an NSNumber equivalent,
+                // set it with KVC as no transformation is needed.
+                if (isPropertyNumericCType && [constant.value isKindOfClass:NSNumber.class]) {
+                    [unappliedProperties removeObject:property];
+                    [object setValue:constant.value forKey:property];
+                    break;
+                }
+            }
+
+            // Attempt to locate a value transformer that can be used to
+            // transform from the theme class property value to to the type of
+            // the property.
             NSValueTransformer *valueTransformer;
+
+            // If it's an Obj-C class object property:
             if (propertyClass != Nil) {
                 valueTransformer = [NSValueTransformer
-                    mtf_valueTransformerForTransformingObject:value
+                    mtf_valueTransformerForTransformingObject:constant.value
                     toClass:propertyClass];
             }
-            // Otherwise, if it's an ObjC type, attempt to locate a value
-            // transformer for transforming the value
+            // If it's an Obj-C NSValue type:
             else if (propertyObjCType != NULL) {
                 valueTransformer = [NSValueTransformer
-                    mtf_valueTransformerForTransformingObject:value
+                    mtf_valueTransformerForTransformingObject:constant.value
                     toObjCType:propertyObjCType];
             }
             
             free(propertyAttributes);
             
-            // If a value transformer is found, use KVC to set the transformed
-            // theme class property value on the applicant object, and break
-            // out of this loop
-            if (valueTransformer) {
-                id transformedValue = [valueTransformer transformedValue:value];
-                [object setValue:transformedValue forKey:property];
+            // If a value transformer is found for the property, use KVC to set
+            // the transformed theme class property value on the applicant
+            // object, and break out of this loop.
+            if (valueTransformer != nil) {
+                [unappliedProperties removeObject:property];
 
-                [unappliedProperties minusSet:[NSSet setWithObject:property]];
+                NSError *valueTransformationError;
+                id transformedValue = [constant transformedValueFromTransformer:valueTransformer error:&valueTransformationError];
+
+                if (transformedValue != nil) {
+                    [object setValue:transformedValue forKey:property];
+                    break;
+                }
+
+                [propertiesWithErrors addObject:property];
+
+                if (valueTransformationError != nil) {
+                    [errors addObject:valueTransformationError];
+                }
+
                 break;
             }
             
             id propertyValue = [object valueForKey:property];
             BOOL isPropertyTypeThemeClass = (propertyClass == MTFThemeClass.class);
-            BOOL isValueThemeClass = [value isKindOfClass:MTFThemeClass.class];
+            BOOL isValueThemeClass = [constant.value isKindOfClass:MTFThemeClass.class];
 
             // If the property currently set to a value and the property being
-            // applied is a theme class reference, directly apply the theme
-            // class to the property value, unless the property type is a theme
-            // class
+            // applied is a theme class reference, apply the theme class
+            // directly to the property value, unless the property type is a
+            // theme class itself.
             if (propertyValue && isValueThemeClass && !isPropertyTypeThemeClass) {
-                MTFThemeClass *themeClass = (MTFThemeClass *)value;
-                [themeClass applyToObject:propertyValue];
-                [unappliedProperties minusSet:[NSSet setWithObject:property]];
+                MTFThemeClass *themeClass = (MTFThemeClass *)constant.value;
+
+                [unappliedProperties removeObject:property];
+
+                NSError *applyPropertyError;
+                if (![themeClass applyTo:propertyValue error:&applyPropertyError]) {
+                    [propertiesWithErrors addObject:property];
+
+                    if (applyPropertyError != nil) {
+                        [errors addObject:applyPropertyError];
+                    }
+                }
+
                 break;
             }
             
         } while ((applicantClass = [applicantClass superclass]));
     }
-    
-    // If no appliers are found for properties specified in the class, attempt
-    // to set the property value via setValue:forKeyPath:
-    for (NSString *property in [unappliedProperties copy]) {
-        id value = properties[property];
 
-        // Must be wrapped in try-catch, since setValue:forKeyPath: throws
-        // exceptions when keyPath doesn't exist
-        @try {
-            [object setValue:value forKeyPath:property];
+    BOOL logFailures = getenv("MTF_LOG_THEME_APPLICATION_ERRORS") != NULL;
+
+    // If no appliers nor Obj-C properties were found for any of the properties
+    // specified in the theme class, application was unsuccessful.
+    if (unappliedProperties.count > 0) {
+        if (error == NULL && !logFailures) return NO;
+
+        NSMutableDictionary *unappliedValuesByProperties = [NSMutableDictionary dictionary];
+        for (NSString *property in unappliedProperties.allObjects) {
+            unappliedValuesByProperties[property] = self.properties[property];
         }
-        @catch (NSException *exception) {
-            // If the exception is not an NSUndefinedKeyException, rethrow it
-            // as-is to prevent an incorrect exception from being propagated
-            if (![exception.name isEqual:NSUndefinedKeyException]) {
-                @throw exception;
 
-                return NO;
-            }
+        NSString *description = [NSString stringWithFormat:
+            @"Failed to apply the properties %@ from the theme class "\
+                "named '%@' to an instance of %@. %@ or any of its "\
+                "ancestors must either: (1) Have a readwrite property "\
+                "with the same name as the unapplied properties. (2) Have "\
+                "an applier block registered for the unapplied properties.",
+            [unappliedProperties.allObjects componentsJoinedByString:@", "],
+            self.name,
+            [object class],
+            [object class]];
 
-            // Only throw unapplied property exception when debugging, as this
-            // is a recoverable error and should not crash the application
-#ifdef DEBUG
-            NSString *className = NSStringFromClass([object class]);
+        NSError *failedToApplyThemeError = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+            NSLocalizedDescriptionKey: description,
+            MTFUnappliedPropertiesErrorKey: unappliedValuesByProperties,
+            MTFThemeClassNameErrorKey: self.name,
+            MTFApplicantErrorKey: object,
+        }];
 
-            NSString *reason = [NSString stringWithFormat:
-                @"Failed to apply the property '%@' with value '%@' from the "
-                    "theme class named '%@' to an instance of '%@'. '%@' or "
-                    "any of its ancestors must either:\n"
-                    "- Have a readwrite property named '%@'\n"
-                    "- Have an applier block registered for the property '%@'\n"
-                    "- Be key-value coding compliant for setting the key '%@'",
-                property,
-                value,
-                self.name,
-                className,
-                className,
-                property,
-                property,
-                property];
-
-            NSException *applicationFailureException = [NSException
-                exceptionWithName:MTFThemeClassUnappliedPropertyException
-                reason:reason
-                userInfo:@{
-                    MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName: property
-                }];
-
-            @throw applicationFailureException;
-#endif
-
-            return NO;
+        if (error != NULL) {
+            *error = failedToApplyThemeError;
         }
+
+        if (logFailures) {
+            NSLog(@"Motif: Theme class application failed: %@", failedToApplyThemeError);
+        }
+
+        return NO;
+    }
+
+    // If any of the appliers or transformers produced an error, application was
+    // unsuccessful.
+    if (propertiesWithErrors.count > 0) {
+        if (error == NULL && !logFailures) return NO;
+
+        NSMutableDictionary *valuesByPropertiesWithErrors = [NSMutableDictionary dictionary];
+        for (NSString *property in propertiesWithErrors) {
+            valuesByPropertiesWithErrors[property] = self.properties[property];
+        }
+
+        NSString *description = [NSString stringWithFormat:
+            @"Failed to apply theme class properties %@ from the theme class "\
+                "named '%@' to an instance of %@.",
+            [propertiesWithErrors.allObjects componentsJoinedByString:@", "],
+            self.name,
+            [object class]];
+
+        NSError *failedToApplyThemeError = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+            NSLocalizedDescriptionKey: description,
+            MTFUnappliedPropertiesErrorKey: valuesByPropertiesWithErrors,
+            MTFThemeClassNameErrorKey: self.name,
+            MTFUnderlyingErrorsErrorKey: errors,
+            MTFApplicantErrorKey: object,
+        }];
+
+        if (error != NULL) {
+            *error = failedToApplyThemeError;
+        }
+
+        if (logFailures) {
+            NSLog(@"Motif: Theme class application failed: %@", failedToApplyThemeError);
+        }
+
+        return NO;
     }
     
     [object mtf_setThemeClassName:self.name];
@@ -223,8 +296,6 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 }
 
 #pragma mark Private
-
-@synthesize propertiesConstants = _propertiesConstants;
 
 - (BOOL)isEqualToThemeClass:(MTFThemeClass *)themeClass {
     if (!themeClass) {
@@ -249,36 +320,57 @@ NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName = @"Prop
 
     _name = name;
     _propertiesConstants = propertiesConstants;
+    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
+    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
 
     return self;
 }
 
-@dynamic resolvedPropertiesConstants;
+- (void)setPropertiesConstants:(NSDictionary<NSString *,MTFThemeConstant *> *)propertiesConstants {
+    NSParameterAssert(propertiesConstants != nil);
 
-- (NSDictionary<NSString *, MTFThemeConstant *> *)resolvedPropertiesConstants {
-    NSMutableDictionary<NSString *, MTFThemeConstant *> *propertiesConstants = [NSMutableDictionary new];
-    [self.propertiesConstants enumerateKeysAndObjectsUsingBlock:^(
-        NSString *name,
-        MTFThemeConstant *constant,
-        BOOL *_) {
-            // Resolve references to superclass into the properties constants
-            // dictionary
-            if (name.mtf_isSuperclassProperty) {
-                MTFThemeClass *superclass = (MTFThemeClass *)constant.value;
-                // In the case of the symbol generator, the superclasses could
-                // not be resolved, and thus may strings rather than references
-                if ([superclass isKindOfClass:MTFThemeClass.class]) {
-                    NSMutableDictionary<NSString *, MTFThemeConstant *> *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
-                    // Ensure that subclasses are able to override properties
-                    // by removing keys from the resolved properties constants
-                    [superclassProperties removeObjectsForKeys:propertiesConstants.allKeys];
-                    [propertiesConstants addEntriesFromDictionary:superclassProperties];
-                }
-            } else {
-                propertiesConstants[name] = constant;
+    _propertiesConstants = propertiesConstants;
+    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
+    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
+}
+
+- (NSDictionary<NSString *, MTFThemeConstant *> *)createResolvedPropertiesConstantsFromPropertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
+    NSParameterAssert(propertiesConstants != nil);
+
+    NSMutableDictionary<NSString *, MTFThemeConstant *> *resolvedPropertiesConstants = [NSMutableDictionary dictionary];
+
+    [propertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *name, MTFThemeConstant *constant, BOOL *_) {
+        // Resolve references to superclass into the properties constants
+        // dictionary
+        if (name.mtf_isSuperclassProperty) {
+            MTFThemeClass *superclass = (MTFThemeClass *)constant.value;
+            // In the case of the symbol generator, the superclasses could
+            // not be resolved, and thus may strings rather than references
+            if ([superclass isKindOfClass:MTFThemeClass.class]) {
+                NSMutableDictionary<NSString *, MTFThemeConstant *> *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
+                // Ensure that subclasses are able to override properties
+                // by removing keys from the resolved properties constants
+                [superclassProperties removeObjectsForKeys:propertiesConstants.allKeys];
+                [resolvedPropertiesConstants addEntriesFromDictionary:superclassProperties];
             }
-        }];
-    return [propertiesConstants copy];
+        } else {
+            resolvedPropertiesConstants[name] = constant;
+        }
+    }];
+
+    return [resolvedPropertiesConstants copy];
+}
+
+- (NSDictionary<NSString *, id> *)createPropertiesFromResolvedPropertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)resolvedPropertiesConstants {
+    NSParameterAssert(resolvedPropertiesConstants != nil);
+
+    NSMutableDictionary<NSString *, id> *properties = [NSMutableDictionary dictionary];
+
+    [resolvedPropertiesConstants enumerateKeysAndObjectsUsingBlock:^(NSString *name, MTFThemeConstant *constant, BOOL *_) {
+        properties[name] = constant.value;
+    }];
+
+    return [properties copy];
 }
 
 @end

@@ -6,12 +6,18 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-@import Specta;
-@import Expecta;
-@import Motif;
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
+#import <Motif/Motif.h>
 #import <Motif/NSURL+ThemeFiles.h>
 
 SpecBegin(NSURL_ThemeFiles)
+
+__block NSError *error;
+
+beforeEach(^{
+    error = nil;
+});
 
 describe(@"name", ^{
     it(@"should accept json files with the json extension", ^{
@@ -51,25 +57,33 @@ describe(@"name", ^{
 });
 
 describe(@"URLs from theme names", ^{
+    __block NSBundle *bundle;
+
+    beforeEach(^{
+        bundle = [NSBundle bundleForClass:self.class];
+    });
+
     it(@"should default to the main bundle when none is specified", ^{
-        NSArray *URLs = [NSURL mtf_fileURLsFromThemeNames:@[] inBundle:nil];
+        NSArray *URLs = [NSURL mtf_fileURLsFromThemeNames:@[] inBundle:nil error:&error];
 
         expect(URLs).notTo.beNil();
         expect(URLs).to.beEmpty();
     });
 
     it(@"should locate a bundled theme file", ^{
-        NSBundle *bundle = [NSBundle bundleForClass:self.class];
-        NSArray *URLs = [NSURL mtf_fileURLsFromThemeNames:@[@"Bundled"] inBundle:bundle];
+        NSArray *URLs = [NSURL mtf_fileURLsFromThemeNames:@[ @"Bundled" ] inBundle:bundle error:&error];
 
         expect(URLs).notTo.beNil();
         expect(URLs).to.haveACountOf(1);
     });
 
-    it(@"should raise when trying to locate a nonexistent theme", ^{
-        expect(^{
-            [NSURL mtf_fileURLsFromThemeNames:@[@"Nonexistent"] inBundle:nil];
-        }).to.raise(MTFThemeFileNotFoundException);
+    it(@"should error when trying to locate a nonexistent theme", ^{
+        NSArray *URLs = [NSURL mtf_fileURLsFromThemeNames:@[ @"Unknown" ] inBundle:bundle error:&error];
+
+        expect(URLs).to.beNil();
+        expect(error).notTo.beNil();
+        expect(error.domain).to.equal(MTFErrorDomain);
+        expect(error.code).to.equal(MTFErrorFailedToParseTheme);
     });
 });
 
@@ -116,8 +130,11 @@ describe(@"dictionaries from theme URLs", ^{
         afterEach(^{
             NSError *error;
             NSDictionary *contents = [URL mtf_themeDictionaryWithError:&error];
-            expect(error).notTo.beNil();
             expect(contents).to.beNil();
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToParseTheme);
         });
 
         it(@"should produce an error with non-file URL", ^{

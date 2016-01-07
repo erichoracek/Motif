@@ -13,29 +13,21 @@
 @implementation NSValueTransformer (TypeFiltering)
 
 + (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(const char *)objCType {
-    NSParameterAssert(object);
-    
-    if (objCType == NULL) {
-        return nil;
-    }
+    NSParameterAssert(object != nil);
+    NSParameterAssert(objCType != NULL);
     
     NSArray<NSString *> *valueTransformerNames = NSValueTransformer.valueTransformerNames;
     
     for (NSString *valueTransformerName in valueTransformerNames) {
-        NSValueTransformer *valueTransfomerForName = [NSValueTransformer
-            valueTransformerForName:valueTransformerName];
-        BOOL isObjCTypeTransformer = [valueTransfomerForName
-            conformsToProtocol:@protocol(MTFObjCTypeValueTransformer)];
-        BOOL hasKnownInputClass = [valueTransfomerForName
-            conformsToProtocol:@protocol(MTFReverseTransformedValueClass)];
+        NSValueTransformer *valueTransfomerForName = [NSValueTransformer valueTransformerForName:valueTransformerName];
+        BOOL isObjCTypeTransformer = [valueTransfomerForName conformsToProtocol:@protocol(MTFObjCTypeValueTransformer)];
+        BOOL hasKnownInputClass = [valueTransfomerForName conformsToProtocol:@protocol(MTFReverseTransformedValueClass)];
         
         if (isObjCTypeTransformer && hasKnownInputClass) {
             NSValueTransformer <MTFObjCTypeValueTransformer, MTFReverseTransformedValueClass> *valueTransformer;
             valueTransformer = (id)valueTransfomerForName;
-            Class inputClass = [valueTransformer.class
-                reverseTransformedValueClass];
-            const char * outputObjCType = [valueTransformer.class
-                transformedValueObjCType];
+            Class inputClass = [valueTransformer.class reverseTransformedValueClass];
+            const char * outputObjCType = [valueTransformer.class transformedValueObjCType];
             
             BOOL canTransformObject = [object isKindOfClass:inputClass];
             BOOL isValidTransformation = (strcmp(outputObjCType, objCType) == 0);
@@ -49,30 +41,22 @@
 }
 
 + (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)toClass {
-    NSParameterAssert(object);
-    
-    if (toClass == Nil) {
-        return nil;
-    }
+    NSParameterAssert(object != nil);
+    NSParameterAssert(toClass != Nil);
     
     NSArray<NSString *> *valueTransformerNames = NSValueTransformer.valueTransformerNames;
     
     for (NSString *valueTransformerName in valueTransformerNames) {
-        NSValueTransformer *valueTransfomerForName = [NSValueTransformer
-            valueTransformerForName:valueTransformerName];
-        BOOL hasKnownInputClass = [valueTransfomerForName
-            conformsToProtocol:@protocol(MTFReverseTransformedValueClass)];
+        NSValueTransformer *valueTransfomerForName = [NSValueTransformer valueTransformerForName:valueTransformerName];
+        BOOL hasKnownInputClass = [valueTransfomerForName conformsToProtocol:@protocol(MTFReverseTransformedValueClass)];
         
         if (hasKnownInputClass) {
             NSValueTransformer <MTFReverseTransformedValueClass> *valueTransformer;
             valueTransformer = (id)valueTransfomerForName;
-            Class reverseTransformedValueClass = [valueTransformer.class
-                reverseTransformedValueClass];
-            Class transformedValueClass = [valueTransformer.class
-                transformedValueClass];
+            Class reverseTransformedValueClass = [valueTransformer.class reverseTransformedValueClass];
+            Class transformedValueClass = [valueTransformer.class transformedValueClass];
             
-            BOOL canTransformObject = [object
-                isKindOfClass:reverseTransformedValueClass];
+            BOOL canTransformObject = [object isKindOfClass:reverseTransformedValueClass];
             BOOL isValidTransformation = (toClass == transformedValueClass);
             
             if (canTransformObject && isValidTransformation) {

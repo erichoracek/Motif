@@ -17,14 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation UISegmentedControl (Theming)
 
-+ (void)load
-{
++ (void)load {
     [self
         mtf_registerThemeProperty:ControlsThemeProperties.text
         requiringValueOfClass:[MTFThemeClass class]
-        applierBlock:^(MTFThemeClass *themeClass, UISegmentedControl *segmentedControl) {
+        applierBlock:^(MTFThemeClass *themeClass, UISegmentedControl *segmentedControl, NSError **error) {
             NSDictionary *textAttributes = [UILabel mtf_textAttributesForThemeClass:themeClass];
             [segmentedControl setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
+
+            return YES;
         }];
 }
 

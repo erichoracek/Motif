@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "NSURL+ThemeFiles.h"
 #import "NSURL+LastPathComponentWithoutExtension.h"
 #import "NSBundle+ExtensionURLs.h"
+
 #import "MTFYAMLSerialization.h"
-#import "MTFTheme.h"
+#import "MTFErrors.h"
+
+#import "NSURL+ThemeFiles.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,8 +26,6 @@ static NSString * const ThemeNameOptionalSuffix = @"Theme";
 static NSString * const JSONExtension = @"json";
 static NSString * const YAMLExtension = @"yaml";
 static NSString * const YAMLExtensionShort = @"yml";
-
-NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException";
 
 @implementation NSURL (ThemeFiles)
 
@@ -49,7 +49,7 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
     return name;
 }
 
-+ (NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle {
++ (nullable NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle error:(NSError **)error {
     NSParameterAssert(themeNames);
     
     // Default to main bundle if bundle is nil
@@ -74,21 +74,27 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
         // If no file is found, throw an exception
         if (fileURL == nil) {
-            NSArray<NSURL *> *suggestedURLs = [bundle
-                mtf_URLsForResourcesWithExtensions:self.class.mtf_themeFileExtensions
-                subdirectory:nil];
+            if (error != NULL) {
+                NSArray<NSURL *> *suggestedURLs = [bundle
+                    mtf_URLsForResourcesWithExtensions:self.class.mtf_themeFileExtensions
+                    subdirectory:nil];
 
-            NSString *reason = [NSString stringWithFormat:
-                @"No theme was found with the name '%@' in the bundle %@. Perhaps "
-                    "you meant one of the following: %@",
-                themeName,
-                bundle,
-                suggestedURLs];
+                NSString *description = [NSString stringWithFormat:
+                    @"No theme was found with the name '%@' in the bundle %@. "\
+                        "Perhaps you meant one of the following: %@",
+                    themeName,
+                    bundle,
+                    suggestedURLs];
 
-            @throw [[NSException alloc] initWithName:MTFThemeFileNotFoundException reason:reason userInfo:nil];
-        } else {
-            [fileURLs addObject:fileURL];
+                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                    NSInternalInconsistencyException: description,
+                }];
+            }
+
+            return nil;
         }
+        
+        [fileURLs addObject:fileURL];
     }
 
     return [fileURLs copy];
@@ -103,47 +109,47 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
             @"The specified file URL is invalid %@",
             self];
 
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey : localizedDescription
+        }];
 
         return nil;
     }
-    
-    NSData *data = [NSData dataWithContentsOfURL:self options:0 error:error];
+
+    NSError *dataError;
+    NSData *data = [NSData dataWithContentsOfURL:self options:0 error:&dataError];
     
     if (data == nil) {
-        if (error == nil) return nil;
+        if (error == NULL) return nil;
 
-        NSString *localizedDescription = [NSString stringWithFormat:
+        NSString *description = [NSString stringWithFormat:
             @"Unable to load contents of file at URL %@",
             self];
 
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
+            NSLocalizedDescriptionKey : description,
+        }];
+
+        userInfo[NSUnderlyingErrorKey] = dataError;
+
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:userInfo];
 
         return nil;
     }
 
     id object;
+    NSError *parseError;
     switch (self.mtf_themeFileType) {
     case MTFThemeFileTypeJSON:
-        object = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+        object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
 
     break;
     case MTFThemeFileTypeYAML:
-        object = [MTFYAMLSerialization YAMLObjectWithData:data error:error];
+        object = [MTFYAMLSerialization YAMLObjectWithData:data error:&parseError];
 
     break;
     default: {
-        if (error == nil) return nil;
+        if (error == NULL) return nil;
 
         NSString *localizedDescription = [NSString stringWithFormat:
             @"Invalid extension '%@' for theme file named '%@', expected one "
@@ -152,16 +158,31 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
             self.mtf_themeName,
             self.class.mtf_themeFileExtensions];
 
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey : localizedDescription
+        }];
 
         return nil;
     }
     break;
+    }
+
+    if (object == nil) {
+        if (error == nil) return nil;
+
+        NSString *description = [NSString stringWithFormat:
+            @"Unable to parse theme file named '%@'",
+            self.mtf_themeName];
+
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
+            NSLocalizedDescriptionKey : description,
+        }];
+
+        userInfo[NSUnderlyingErrorKey] = parseError;
+
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:userInfo];
+
+        return nil;
     }
     
     if (![object isKindOfClass:NSDictionary.class]) {
@@ -169,16 +190,13 @@ NSString * const MTFThemeFileNotFoundException = @"MTFThemeFileNotFoundException
 
         NSString *localizedDescription = [NSString stringWithFormat:
             @"The theme file named '%@' does not have a dictionary as the "
-                "root object. It is instead '%@'.",
+                "root object. It is instead %@.",
             self.mtf_themeName,
-            [object class] ?: @"empty"];
+            [object class]];
 
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey : localizedDescription
+        }];
 
         return nil;
     }

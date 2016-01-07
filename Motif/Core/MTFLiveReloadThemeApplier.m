@@ -25,28 +25,18 @@ NS_ASSUME_NONNULL_BEGIN
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (void)setTheme:(MTFTheme *)theme {
+- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error {
     NSParameterAssert(theme);
-    
-    __weak typeof(self) __weak_self = self;
-    
-    self.themeSourceObserver = [[MTFThemeSourceObserver alloc]
-        initWithTheme:theme
-        sourceDirectoryURL:self.sourceDirectoryURL
-        didUpdate:^(MTFTheme *theme, NSError *error) {
-            typeof(__weak_self) self = __weak_self;
-            
-            [self safelySetTheme:theme];
-        }];
-    
-    super.theme = self.themeSourceObserver.updatedTheme;
+
+    self.themeSourceObserver = [self createThemeSourceObserverFromTheme:theme];
+    return [super setTheme:theme error:error];
 }
 
 #pragma mark - MTFLiveReloadThemeApplier
 
 #pragma mark Public
 
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceFile:(char *)sourceFile {
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceFile:(char const *)sourceFile {
     NSParameterAssert(theme);
     NSParameterAssert(sourceFile);
     
@@ -78,44 +68,36 @@ NS_ASSUME_NONNULL_BEGIN
         @"Source directory (%@) is not a valid directory. Error: %@",
         sourceDirectoryURL,
         error);
-    
-    __weak typeof(self) __weak_self = self;
-    
-    MTFThemeSourceObserver *themeSourceObserver = [[MTFThemeSourceObserver alloc]
-        initWithTheme:theme
-        sourceDirectoryURL:sourceDirectoryURL
-        didUpdate:^(MTFTheme *theme, NSError *error) {
-            typeof(__weak_self) self = __weak_self;
-            
-            [self safelySetTheme:theme];
-        }];
-    
-    self = [super initWithTheme:themeSourceObserver.updatedTheme];
+
+    self = [super initWithTheme:theme];
     
     _sourceDirectoryURL = sourceDirectoryURL;
-    _themeSourceObserver = themeSourceObserver;
+    _themeSourceObserver = [self createThemeSourceObserverFromTheme:theme];
 
     return self;
 }
 
 #pragma mark Private
 
-- (void)safelySetTheme:(MTFTheme *)theme {
-    // Catch runtime exceptions when reloading a theme due to live reload. This
-    // prevents the consumer from having to re-build and re-run if they mistype
-    // a property name during live reload.
-    @try {
-        super.theme = theme;
-    }
-    @catch (NSException *exception) {
-#ifdef DEBUG
-        NSLog(
-            @"Exception raised while attempting to reapply the reloaded theme. "
-                "This exception will not be caught outside the context "
-                "of live reloading. Exception:\n%@",
-            exception);
-#endif
-    }
+- (MTFThemeSourceObserver *)createThemeSourceObserverFromTheme:(MTFTheme *)theme {
+    __weak typeof(self) __weak_self = self;
+
+    return [[MTFThemeSourceObserver alloc]
+        initWithTheme:theme
+        sourceDirectoryURL:self.sourceDirectoryURL
+        didUpdate:^(MTFTheme *theme, NSError *error) {
+            typeof(__weak_self) self = __weak_self;
+
+            if (theme == nil) {
+                NSLog(@"Error loading live-reloaded theme: %@", error);
+                return;
+            }
+
+            NSError *applicationError;
+            if (![self setTheme:theme error:&applicationError]) {
+                NSLog(@"Error applying live-reloaded theme: %@", applicationError);
+            }
+        }];
 }
 
 - (nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {

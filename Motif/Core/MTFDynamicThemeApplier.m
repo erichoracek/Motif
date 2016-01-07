@@ -12,76 +12,78 @@
 #import "MTFThemeClass.h"
 #import "NSObject+ThemeClassName.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFDynamicThemeApplier
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
+}
+
+- (instancetype)initWithTheme:(MTFTheme *)theme {
+    NSParameterAssert(theme);
+
+    self = [super init];
+
+    _theme = theme;
+    _applicants = [NSHashTable weakObjectsHashTable];
+
+    return self;
 }
 
 #pragma mark - MTFDynamicThemeApplier
 
 #pragma mark Public
 
-- (instancetype)initWithTheme:(MTFTheme *)theme {
-    NSParameterAssert(theme);
-    self = [super init];
-    if (theme) {
-        _theme = theme;
-    }
-    return self;
-}
-
-- (void)setTheme:(MTFTheme *)theme {
-    NSAssert(theme, @"The theme property is not optional.");
+- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error {
+    NSParameterAssert(theme != nil);
     
-    if (theme == _theme) {
-        return;
-    }
-    // The theme has just changed if there is an existing theme and it was just
-    // replaced
-    BOOL shouldReapply = (_theme && theme);
+    if (theme == _theme) return YES;
+
     _theme = theme;
-    if (shouldReapply) {
-        [self applyTheme:theme toApplicants:self.applicants];
-    }
+
+    return [self applyTheme:theme toApplicants:self.applicants error:error];
 }
 
-- (BOOL)applyClassWithName:(NSString *)className toObject:(id)object {
-    NSParameterAssert(className);
-    NSParameterAssert(object);
-    
-    if (!className || !object) {
-        return NO;
+#pragma mark - MTFDynamicThemeApplier <MTFThemeApplier>
+
+- (BOOL)applyClassWithName:(NSString *)className to:(id)applicant error:(NSError **)error {
+    NSParameterAssert(className != nil);
+    NSParameterAssert(applicant != nil);
+
+    if ([self.theme applyClassWithName:className to:applicant error:error]) {
+        [self.applicants addObject:applicant];
+
+        return YES;
     }
-    BOOL didApply = [self.theme applyClassWithName:className toObject:object];
-    if (didApply) {
-        [self addApplicantsObject:object];
-    }
-    return didApply;
+
+    return NO;
 }
 
 #pragma mark Private
 
-- (void)applyTheme:(MTFTheme *)theme toApplicants:(NSHashTable *)applicants {
+- (BOOL)applyTheme:(MTFTheme *)theme toApplicants:(NSHashTable *)applicants error:(NSError **)error {
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(applicants != nil);
+
+    BOOL themeSuccess = YES;
+
     for (NSObject *applicant in applicants) {
-        [self
+        BOOL classSuccess = [self
             applyClassWithName:applicant.mtf_themeClassName
-            toObject:applicant];
-    }
-}
+            to:applicant
+            error:error];
 
-- (void)addApplicantsObject:(id)object {
-    NSParameterAssert(object);
-    [self.applicants addObject:object];
-}
-
-- (NSHashTable *)applicants {
-    if (!_applicants) {
-        self.applicants = NSHashTable.weakObjectsHashTable;
+        if (!classSuccess) {
+            themeSuccess = NO;
+        }
     }
-    return _applicants;
+
+    return themeSuccess;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

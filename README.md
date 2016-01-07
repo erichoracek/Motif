@@ -97,15 +97,17 @@ The first set of property appliers we've created is on `UIView`:
     [self
         mtf_registerThemeProperty:@"borderWidth"
         requiringValueOfClass:NSNumber.class
-        applierBlock:^(NSNumber *width, UIView *view) {
+        applierBlock:^(NSNumber *width, UIView *view, NSError **error) {
             view.layer.borderWidth = width.floatValue;
+            return YES;
         }];
 
     [self
         mtf_registerThemeProperty:@"borderColor"
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UIView *view) {
+        applierBlock:^(UIColor *color, UIView *view, NSError **error) {
             view.layer.borderColor = color.CGColor;
+            return YES;
         }];
 }
 ```
@@ -128,13 +130,24 @@ Next up, we're going to add an applier to `UILabel` to style our text:
         mtf_registerThemeProperties:@[
             @"fontName",
             @"fontSize"
-        ] requiringValuesOfType:@[
+        ]
+        requiringValuesOfType:@[
             NSString.class,
             NSNumber.class
-        ] applierBlock:^(NSDictionary *properties, UILabel *label) {
-            NSString *name = properties[@"fontName"];
-            CGFloat size = [properties[@"fontSize"] floatValue];
-            label.font = [UIFont fontWithName:name size:size];
+        ]
+        applierBlock:^(NSDictionary<NSString *, id> *properties, UILabel *label, NSError **error) {
+            NSString *name = properties[ThemeProperties.fontName];
+            CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
+            UIFont *font = [UIFont fontWithName:name size:size];
+
+            if (font != nil) {
+                label.font = font;
+                return YES;
+            }
+
+            return [self
+                mtf_populateApplierError:error
+                withDescriptionFormat:@"Unable to create a font named %@ of size %@", name, @(size)];
         }];
 }
 ```
@@ -169,8 +182,8 @@ NSError *error;
 MTFTheme *theme = [MTFTheme themeFromFileNamed:@"Theme" error:&error];
 NSAssert(error == nil, @"Error loading theme %@", error);
 
-[theme applyClassWithName:@"Button" toObject:saveButton];
-[theme applyClassWithName:@"WarningButton" toObject:deleteButton];
+[theme applyClassWithName:@"Button" to:saveButton error:NULL];
+[theme applyClassWithName:@"WarningButton" to:deleteButton error:NULL];
 ```
 
 We now have everything we need to style our buttons to match the spec. To do so, we must instantiate a `MTFTheme` object from our theme file to access our theme from our code. The best way to do this is to use `themeFromFileNamed:`, which works just like `imageNamed:`, but for `MTFTheme` instead of `UIImage`.
@@ -217,14 +230,14 @@ MTFTheme *lightTheme = [MTFTheme themeFromFileNamed:@"LightTheme" error:nil];
 MTFDynamicThemeApplier *applier = [[MTFDynamicThemeApplier alloc] initWithTheme:lightTheme];
 
 // Style objects the same way as we did with an MTFTheme instance
-[applier applyClassWithName:@"InterfaceElement" toObject:anInterfaceElement];
+[applier applyClassWithName:@"InterfaceElement" to:anInterfaceElement error:NULL];
 ```
 
 Later on...
 
 ```objective-c
 // It's time to switch to the dark theme
-MTFTheme *darkTheme = [MTFTheme themeFromFileNamed:@"DarkTheme" error:nil];
+MTFTheme *darkTheme = [MTFTheme themeFromFileNamed:@"DarkTheme" error:NULL];
 
 // We now change the applier's theme to the dark theme, which will automatically
 // re-apply this new theme to all interface elements that previously had the
@@ -355,10 +368,10 @@ Now, when you add the above pair of files to your project, you can create and ap
 
 NSError *error;
 MTFTheme *theme = [MTFTheme themeFromFileNamed:ButtonsThemeName error:&error];
-NSAssert(error == nil, @"Error loading theme %@", error);
+NSAssert(theme != nil, @"Error loading theme %@", error);
 
-[theme applyClassWithName:ButtonsThemeClassNames.Button toObject:saveButton];
-[theme applyClassWithName:ButtonsThemeClassNames.WarningButton toObject:deleteButton];
+[theme applyClassWithName:ButtonsThemeClassNames.Button to:saveButton error:NULL];
+[theme applyClassWithName:ButtonsThemeClassNames.WarningButton to:deleteButton error:NULL];
 ```
 
 As you can see, there's now no more stringly-typing in your application code. To delve further into an example of how to use the Motif CLI, check out any of the examples in `Motif.xcworkspace`.

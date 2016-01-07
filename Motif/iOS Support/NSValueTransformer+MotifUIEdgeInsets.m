@@ -6,12 +6,13 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "NSValueTransformer+ValueTransformerRegistration.h"
+#import "NSValueTransformer+Registration.h"
 
 #import "NSValueTransformer+MotifUIEdgeInsets.h"
 
 typedef UIEdgeInsets TransformedValueCType;
 static const char * const TransformedValueObjCType = @encode(TransformedValueCType);
+static NSString * const TypeDescription = @"Edge insets";
 
 @implementation NSValueTransformer (MotifUIEdgeInsets)
 
@@ -20,7 +21,7 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         mtf_registerValueTransformerWithName:MTFEdgeInsetsFromNumberTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSNumber.class
-        returningTransformedValueWithBlock:^(NSNumber *numberValue) {
+        transformationBlock:^(NSNumber *numberValue, NSError **error) {
             typeof(TransformedValueCType) value = {
                 .top = numberValue.floatValue,
                 .left = numberValue.floatValue,
@@ -35,14 +36,25 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         mtf_registerValueTransformerWithName:MTFEdgeInsetsFromArrayTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSArray.class
-        returningTransformedValueWithBlock:^(NSArray<NSNumber *> *values) {
-            NSAssert(values.count <= 4, @"Values array must have at most four elements");
-            NSAssert(values.count > 1, @"Values array must have more than one elements");
+        transformationBlock:^ NSValue * (NSArray<NSNumber *> *values, NSError **error) {
+            if (values.count > 4) {
+                return [self
+                    mtf_populateTransformationError:error
+                    withDescriptionFormat:@"%@ array must have at most four elements", TypeDescription];
+            }
 
-            for (__unused id value in values) {
-                NSAssert(
-                    [value isKindOfClass:NSNumber.class],
-                    @"Value elements must be kind of class NSNumber");
+            if (values.count < 2) {
+                return [self
+                    mtf_populateTransformationError:error
+                    withDescriptionFormat:@"%@ array must have more than one element", TypeDescription];
+            }
+
+            for (id value in values) {
+                if (![value isKindOfClass:NSNumber.class]) {
+                    return [self
+                        mtf_populateTransformationError:error
+                        withDescriptionFormat:@"%@ array elements must be kind of class NSNumber", TypeDescription];
+                }
             }
 
             typeof(TransformedValueCType) value = {
@@ -65,28 +77,31 @@ static const char * const TransformedValueObjCType = @encode(TransformedValueCTy
         mtf_registerValueTransformerWithName:MTFEdgeInsetsFromDictionaryTransformerName
         transformedValueObjCType:TransformedValueObjCType
         reverseTransformedValueClass:NSDictionary.class
-        returningTransformedValueWithBlock:^(NSDictionary<NSString *, NSNumber *> *values) {
-            for (__unused id value in [values objectEnumerator]) {
-                NSAssert(
-                    [value isKindOfClass:NSNumber.class],
-                    @"Value objects must be kind of class NSNumber");
+        transformationBlock:^ NSValue * (NSDictionary<NSString *, NSNumber *> *values, NSError **error) {
+            for (id value in [values objectEnumerator]) {
+                if (![value isKindOfClass:NSNumber.class]) {
+                    return [self
+                        mtf_populateTransformationError:error
+                        withDescriptionFormat:@"%@ dictionary values must be kind of class NSNumber", TypeDescription];
+                }
             }
 
-            NSArray<NSString *> *validProperties = @[@"top", @"right", @"bottom", @"left"];
+            NSArray<NSString *> *validKeys = @[ @"top", @"right", @"bottom", @"left" ];
 
             // Ensure that the passed properties have valid keys
-            NSMutableSet<NSString *> *passedInvalidPropertyNames = [NSMutableSet setWithArray:values.allKeys];
-            [passedInvalidPropertyNames minusSet:[NSSet setWithArray:validProperties]];
-            NSAssert(
-                passedInvalidPropertyNames.count == 0,
-                @"Invalid property name(s): %@",
-                passedInvalidPropertyNames);
+            NSMutableSet<NSString *> *invalidKeys = [NSMutableSet setWithArray:values.allKeys];
+            [invalidKeys minusSet:[NSSet setWithArray:validKeys]];
+            if (invalidKeys.count > 0) {
+                return [self
+                    mtf_populateTransformationError:error
+                    withDescriptionFormat:@"%@ invalid dictionary key(s): %@", TypeDescription, invalidKeys];
+            }
 
             typeof(TransformedValueCType) value = {
-                .top = values[validProperties[0]].floatValue,
-                .right = values[validProperties[1]].floatValue,
-                .bottom = values[validProperties[2]].floatValue,
-                .left = values[validProperties[3]].floatValue,
+                .top = values[validKeys[0]].floatValue,
+                .right = values[validKeys[1]].floatValue,
+                .bottom = values[validKeys[2]].floatValue,
+                .left = values[validKeys[3]].floatValue,
             };
 
             return [NSValue value:&value withObjCType:TransformedValueObjCType];

@@ -344,7 +344,7 @@ describe(@"deserialization from data", ^{
         });
 
         it(@"should populate the error parameter on aliases", ^{
-            id object = objectFromYAML(@"default: &alias\n*default");
+            id object = objectFromYAML(@"*default");
 
             expect(object).to.beNil();
             expect(error).notTo.beNil();

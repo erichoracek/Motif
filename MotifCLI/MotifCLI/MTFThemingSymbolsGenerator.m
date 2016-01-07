@@ -20,15 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFThemingSymbolsGenerator
 
-+ (instancetype)sharedInstance {
-    static id sharedInstance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [self new];
-    });
-    return sharedInstance;
-}
-
 - (int)runWithSettings:(GBSettings *)settings {
     // Do not resolve references when parsing themes
     [MTFThemeParser setShouldResolveReferences:NO];
@@ -37,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *themes = [NSMutableArray new];
     for (NSString *themePath in settings.mtf_themes) {
         NSURL *themeURL = [NSURL mtf_fileURLFromPathParameter:themePath];
-        if (!themeURL) {
+        if (themeURL == nil) {
             gbfprintln(stderr, @"[!] Error: '%@' is an invalid file path. Please supply another.", themePath);
             return 1;
         }
+
         NSError *error;
-        MTFTheme *theme = [[MTFTheme alloc]
-            initWithFile:themeURL
-            error:&error];
-        if (error) {
+        MTFTheme *theme = [[MTFTheme alloc] initWithFile:themeURL error:&error];
+        if (theme == nil) {
             gbfprintln(stderr, @"[!] Error: Unable to parse theme at URL '%@': %@", themeURL, error);
             return 1;
         }
+
         [themes addObject:theme];
     }
     
@@ -145,7 +136,7 @@ int MTFThemingSymbolsGeneratorMain(int argc, const char *argv[]) {
             return 0;
         }
         
-        result = [MTFThemingSymbolsGenerator.sharedInstance runWithSettings:settings];
+        result = [[[MTFThemingSymbolsGenerator alloc] init] runWithSettings:settings];
     }
 
     return result;

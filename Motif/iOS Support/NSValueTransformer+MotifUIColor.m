@@ -7,7 +7,7 @@
 //
 
 #import "UIColor+HTMLColors.h"
-#import "NSValueTransformer+ValueTransformerRegistration.h"
+#import "NSValueTransformer+Registration.h"
 
 #import "NSValueTransformer+MotifUIColor.h"
 
@@ -18,8 +18,14 @@
         mtf_registerValueTransformerWithName:MTFColorFromStringTransformerName
         transformedValueClass:UIColor.class
         reverseTransformedValueClass:NSString.class
-        returningTransformedValueWithBlock:^UIColor *(NSString *value) {
-            return [UIColor mtf_colorWithCSS:value];
+        transformationBlock:^ UIColor * (NSString *value, NSError **error) {
+            UIColor *color = [UIColor mtf_colorWithCSS:value];
+
+            if (color != nil) return color;
+
+            return [self
+                mtf_populateTransformationError:error
+                withDescriptionFormat:@"Unable to parse color from string '%@'", value];
         }];
 }
 

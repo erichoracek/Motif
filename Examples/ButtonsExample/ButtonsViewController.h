@@ -7,16 +7,13 @@
 //
 
 @import UIKit;
+@import Motif;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MTFTheme;
-
 @interface ButtonsViewController : UIViewController
 
-- (instancetype)initWithTheme:(MTFTheme *)theme;
-
-@property (nonatomic, readonly) MTFTheme *theme;
+- (instancetype)initWithThemeApplier:(id<MTFThemeApplier>)themeApplier;
 
 @end
 

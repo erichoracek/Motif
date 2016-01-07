@@ -6,37 +6,50 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-@import Specta;
-@import Expecta;
-@import Motif;
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
+#import <Motif/Motif.h>
 #import <Motif/NSValueTransformer+TypeFiltering.h>
+#import <Motif/MTFValueTransformerErrorHandling.h>
 
 SpecBegin(NSValueTransformer_MotifCGSizeSpecs)
 
-typedef CGSize TransformedValueCType;
-static const char * const TransformedValueObjCType = @encode(TransformedValueCType);
+typedef CGSize StructType;
+static const char * const ObjCType = @encode(StructType);
+
+__block NSError *error;
+__block BOOL success;
+__block typeof(StructType) value;
+
+beforeEach(^{
+    error = nil;
+    success = NO;
+    value = (typeof(StructType)){};
+});
 
 describe(@"values", ^{
-    typeof(TransformedValueCType)(^transformValue)(id) = ^typeof(TransformedValueCType)(id value) {
-        NSValueTransformer *valueTransformer = [NSValueTransformer
+    BOOL(^transformValue)(id, typeof(StructType) *, NSError **) = ^ (id value, typeof(StructType) *objCTypeValue, NSError **error) {
+        NSValueTransformer<MTFValueTransformerErrorHandling> *transformer = (id<MTFValueTransformerErrorHandling>)[NSValueTransformer
             mtf_valueTransformerForTransformingObject:value
-            toObjCType:TransformedValueObjCType];
+            toObjCType:ObjCType];
 
-        expect(valueTransformer).notTo.beNil();
-        NSValue *transformedValue = [valueTransformer transformedValue:value];
+        expect(transformer).notTo.beNil();
+        NSValue *transformedValue = [transformer transformedValue:value error:error];
+        if (transformedValue == nil) return NO;
 
         expect(transformedValue).notTo.beNil();
         expect(transformedValue).to.beKindOf(NSValue.class);
-        expect(strcmp(transformedValue.objCType, TransformedValueObjCType)).to.equal(0);
+        expect(strcmp(transformedValue.objCType, ObjCType)).to.equal(0);
 
-        typeof(TransformedValueCType) objCTypeValue;
-        [transformedValue getValue:&objCTypeValue];
-        return objCTypeValue;
+        [transformedValue getValue:objCTypeValue];
+        return YES;
     };
 
     describe(@"from a number", ^{
         it(@"should transform", ^{
-            typeof(TransformedValueCType) value = transformValue(@1);
+            success = transformValue(@1, &value, &error);
+            expect(success).to.beTruthy();
+            expect(error).to.beNil();
 
             expect(value.width).to.beCloseTo(1.0f);
             expect(value.height).to.beCloseTo(1.0f);
@@ -45,56 +58,66 @@ describe(@"values", ^{
 
     describe(@"from an array", ^{
         it(@"should transform with two elements", ^{
-            typeof(TransformedValueCType) value = transformValue(@[@1, @2]);
+            success = transformValue(@[ @1, @2 ], &value, &error);
+            expect(success).to.beTruthy();
+            expect(error).to.beNil();
 
             expect(value.width).to.beCloseTo(1.0f);
             expect(value.height).to.beCloseTo(2.0f);
         });
 
-        it(@"should raise an exception with more than two elements", ^{
-            expect(^{
-                transformValue(@[@1, @2, @3]);
-            }).to.raise(NSInternalInconsistencyException);
+        it(@"should error with more than two elements", ^{
+            success = transformValue(@[ @1, @2, @3 ], &value, &error);
+            expect(success).to.beFalsy();
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToApplyTheme);
         });
 
-        it(@"should raise an exception with one element", ^{
-            expect(^{
-                transformValue(@[@1]);
-            }).to.raise(NSInternalInconsistencyException);
+        it(@"should error with one element", ^{
+            success = transformValue(@[@1], &value, &error);
+            expect(success).to.beFalsy();
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToApplyTheme);
+
         });
 
-        it(@"should raise an exception with an invalid value type", ^{
-            expect(^{
-                transformValue(@[@"notNumber", @"notNumber"]);
-            }).to.raise(NSInternalInconsistencyException);
+        it(@"should error with an invalid value type", ^{
+            success = transformValue(@[@"notNumber", @"notNumber"], &value, &error);
+            expect(success).to.beFalsy();
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToApplyTheme);
         });
     });
 
     describe(@"values from a dictionary", ^{
         it(@"should transform", ^{
-            typeof(TransformedValueCType) value = transformValue(@{
-                @"width": @1,
-                @"height": @2,
-            });
+            success = transformValue(@{ @"width": @1, @"height": @2 }, &value, &error);
+            expect(error).to.beNil();
 
             expect(value.width).to.beCloseTo(1.0f);
             expect(value.height).to.beCloseTo(2.0f);
         });
 
-        it(@"should raise an exception with an invalid key", ^{
-            expect(^{
-                transformValue(@{
-                    @"invalid": @1
-                });
-            }).to.raise(NSInternalInconsistencyException);
+        it(@"should error with an invalid key", ^{
+            success = transformValue(@{ @"invalid": @1 }, &value, &error);
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToApplyTheme);
         });
 
-        it(@"should raise an exception with an invalid value", ^{
-            expect(^{
-                transformValue(@{
-                    @"width": @"notANumber"
-                });
-            }).to.raise(NSInternalInconsistencyException);
+        it(@"should error with an invalid value", ^{
+            success = transformValue(@{ @"width": @"notANumber" }, &value, &error);
+
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToApplyTheme);
         });
     });
 });

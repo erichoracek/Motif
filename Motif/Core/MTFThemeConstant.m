@@ -6,20 +6,22 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "MTFThemeConstant.h"
+#import "MTFValueTransformerErrorHandling.h"
+#import "MTFErrors.h"
+
 #import "MTFThemeConstant_Private.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFThemeConstant
 
 #pragma mark - NSObject
 
 - (BOOL)isEqual:(id)object {
-    if (self == object) {
-        return YES;
-    }
-    if (![object isKindOfClass:self.class]) {
-        return NO;
-    }
+    if (self == object) return YES;
+
+    if (![object isKindOfClass:self.class]) return NO;
+
     return [self isEqualToThemeConstant:object];
 }
 
@@ -65,28 +67,53 @@
     _name = name;
     _rawValue = rawValue;
     _mappedValue = mappedValue;
+    _transformedValueCache = [[NSCache alloc] init];
     
     return self;
 }
 
 #pragma mark Value Transformation
 
-- (NSCache *)transformedValueCache {
-    if (!_transformedValueCache) {
-        self.transformedValueCache = [NSCache new];
-    }
-    return _transformedValueCache;
-}
+- (nullable id)transformedValueFromTransformer:(NSValueTransformer *)valueTransformer error:(NSError **)error {
+    NSParameterAssert(valueTransformer != nil);
 
-- (id)transformedValueFromTransformer:(NSValueTransformer *)transformer {
-    NSParameterAssert(transformer != nil);
-
-    NSValue *key = [NSValue valueWithNonretainedObject:transformer];
+    NSString *key = NSStringFromClass(valueTransformer.class);
 
     id cachedValue = [self.transformedValueCache objectForKey:key];
     if (cachedValue != nil) return cachedValue;
 
-    id transformedValue = [transformer transformedValue:self.value];
+    id transformedValue;
+    NSError *valueTransformationError;
+    if ([valueTransformer conformsToProtocol:@protocol(MTFValueTransformerErrorHandling)]) {
+        NSValueTransformer<MTFValueTransformerErrorHandling> *errorHandlingValueTransformer = (id<MTFValueTransformerErrorHandling>)valueTransformer;
+        transformedValue = [errorHandlingValueTransformer transformedValue:self.value error:&valueTransformationError];
+    } else {
+        transformedValue = [valueTransformer transformedValue:self.value];
+    }
+
+    if (transformedValue == nil) {
+        if (error == NULL) return nil;
+
+        NSString *description = [NSString stringWithFormat:
+            @"Failed to transform value from %@: %@ using %@",
+            self.name,
+            self.value,
+            valueTransformer];
+
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:@{
+            NSLocalizedDescriptionKey: description,
+        }];
+
+        userInfo[NSUnderlyingErrorKey] = valueTransformationError;
+
+        *error = [NSError
+            errorWithDomain:MTFErrorDomain
+            code:MTFErrorFailedToApplyTheme
+            userInfo:[userInfo copy]];
+
+        return nil;
+    }
+
     [self.transformedValueCache setObject:transformedValue forKey:key];
 
     return transformedValue;
@@ -95,26 +122,19 @@
 #pragma mark Equality
 
 - (BOOL)isEqualToThemeConstant:(MTFThemeConstant *)themeConstant {
-    if (!themeConstant) {
-        return NO;
-    }
-    BOOL haveEqualNames = (
-        (!self.name && !themeConstant.name)
-        || [self.name isEqualToString:themeConstant.name]
-    );
-    BOOL haveEqualRawValues = (
-        (!self.rawValue && !themeConstant.rawValue)
-        || [self.rawValue isEqual:themeConstant.rawValue]
-    );
+    NSParameterAssert(themeConstant != nil);
+
+    BOOL haveEqualNames = [self.name isEqualToString:themeConstant.name];
+    BOOL haveEqualRawValues = [self.rawValue isEqual:themeConstant.rawValue];
+
     BOOL haveEqualMappedValues = (
         (!self.mappedValue && !themeConstant.mappedValue)
         || [self.mappedValue isEqual:themeConstant.mappedValue]
     );
-    return (
-        haveEqualNames
-        && haveEqualRawValues
-        && haveEqualMappedValues
-    );
+
+    return (haveEqualNames && haveEqualRawValues && haveEqualMappedValues);
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

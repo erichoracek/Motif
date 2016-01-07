@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "MTFTheme.h"
+#import "MTFErrors.h"
 
 #import "NSDictionary+DictionaryValueValidation.h"
 
@@ -24,13 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
     // If the value for the specified key is a dictionary but is not a valid
     // type, return with error
     if (![value isKindOfClass:NSDictionary.class]) {
-        if (error) {
+        if (error != NULL) {
             NSString *localizedDescription = [NSString stringWithFormat:
                 @"The value for the key '%@' is not a dictionary",
                 key];
             *error = [NSError
-                errorWithDomain:MTFThemingErrorDomain
-                code:1
+                errorWithDomain:MTFErrorDomain
+                code:MTFErrorFailedToParseTheme
                 userInfo:@{
                     NSLocalizedDescriptionKey : localizedDescription
                 }];

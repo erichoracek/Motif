@@ -58,11 +58,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param valueClass The class that the return value should be kind of.
 ///
 /// @param themeClass The theme class that contains the property to be queried
-///                       for.
+/// for.
 ///
-/// @return The property value of kind valueClass, or nil if none was found or
-///         was able to be transformed.
-+ (nullable id)valueForApplyingProperty:(NSString *)property withValueClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass;
+/// @return
++ (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error;
 
 @end
 
@@ -94,18 +93,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// the value to the specified type. If one is found, it transforms the returned
 /// value if one is found.
 ///
-/// @param property       The name of the property to query the theme class for.
+/// @param property The name of the property to query the theme class for.
 ///
-/// @param valueObjCType The Objective-C type that the return value should be
-///                          kind of. Should be invoked with the value returned by
-///                          the @encode directive, e.g. @encode(UIEdgeInsets).
+/// @param objCType The Objective-C type that the return value should be kind
+/// of. Should be invoked with the value returned by the @encode directive, e.g.
+/// @encode(UIEdgeInsets).
 ///
-/// @param themeClass    The theme class that contains the property to be
-///                          queried for.
+/// @param themeClass The theme class that contains the property to be queried
+/// for.
 ///
-/// @return The property value wrapped within an NSValue, or nil if none was
-///         found or was able to be transformed.
-+ (nullable NSValue *)valueForApplyingProperty:(NSString *)property withValueObjCType:(const char *)valueObjCType fromThemeClass:(MTFThemeClass *)themeClass;
+/// @return
++ (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asObjCType:(const char *)objCType fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error;
 
 @end
 

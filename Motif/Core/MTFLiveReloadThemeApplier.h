@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///                   derived from. You should pass __FILE__ for this parameter.
 ///
 /// @return An initialized theme applier.
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceFile:(char *)sourceFile;
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceFile:(char const *)sourceFile;
 
 /// Initializes a live reload theme applier using a source directory path.
 ///

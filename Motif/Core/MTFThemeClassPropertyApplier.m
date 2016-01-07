@@ -10,6 +10,7 @@
 #import "MTFThemeClass_Private.h"
 #import "MTFThemeConstant.h"
 #import "NSValueTransformer+TypeFiltering.h"
+#import "MTFErrors.h"
 
 #import "MTFThemeClassPropertyApplier.h"
 
@@ -37,20 +38,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemePropertyApplier <MTFThemeClassApplicable>
 
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
+- (nullable NSSet<NSString *> *)applyClass:(MTFThemeClass *)themeClass to:(id)applicant error:(NSError **)error {
     NSParameterAssert(themeClass != nil);
-    NSParameterAssert(object != nil);
+    NSParameterAssert(applicant != nil);
 
     id value = themeClass.properties[self.property];
-    if (value == nil) return NO;
+    if (value == nil) return [NSSet set];
 
-    self.applierBlock(value, object);
-
-    return YES;
+    return self.applierBlock(value, applicant, error) ? self.properties : nil;
 }
 
-- (NSArray<NSString *> *)properties {
-    return @[self.property];
+- (NSSet<NSString *> *)properties {
+    return [NSSet setWithObject:self.property];
 }
 
 @end
@@ -58,10 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation MTFThemeClassValueClassPropertyApplier
 
 #pragma mark - Lifecycle
-
-- (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
-}
 
 - (instancetype)initWithProperty:(NSString *)property valueClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(property != nil);
@@ -77,41 +72,63 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemePropertyApplier <MTFThemeClassApplicable>
 
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
+- (nullable NSSet<NSString *> *)applyClass:(MTFThemeClass *)themeClass to:(id)applicant error:(NSError **)error {
     NSParameterAssert(themeClass != nil);
-    NSParameterAssert(object != nil);
+    NSParameterAssert(applicant != nil);
 
-    id value = [self.class
+    NSDictionary<NSString *, id> *transformedValueByProperty = [self.class
         valueForApplyingProperty:self.property
-        withValueClass:self.valueClass
-        fromThemeClass:themeClass];
-        
-    if (value == nil) return NO;
+        asClass:self.valueClass
+        fromThemeClass:themeClass
+        error:error];
 
-    self.applierBlock(value, object);
-    return YES;
+    if (transformedValueByProperty == nil) return nil;
+    if (transformedValueByProperty.count == 0) return [NSSet set];
+
+    id transformedValue = transformedValueByProperty[self.property];
+    return self.applierBlock(transformedValue, applicant, error) ? self.properties : nil;
 }
 
 #pragma mark - MTFThemeClassValueClassPropertyApplier
 
-+ (nullable id)valueForApplyingProperty:(NSString *)property withValueClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass {
++ (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error {
     NSParameterAssert(property != nil);
     NSParameterAssert(valueClass != Nil);
     NSParameterAssert(themeClass != nil);
 
     MTFThemeConstant *constant = themeClass.resolvedPropertiesConstants[property];
-    if (constant == nil) return nil;
+    if (constant == nil) return [NSDictionary dictionary];
 
     id value = constant.value;
-    if ([value isKindOfClass:valueClass]) return value;
+    if ([value isKindOfClass:valueClass]) return @{ property: value };
 
     NSValueTransformer *transformer = [NSValueTransformer
         mtf_valueTransformerForTransformingObject:value
         toClass:valueClass];
 
-    if (transformer) return [constant transformedValueFromTransformer:transformer];
+    if (transformer == nil) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"Unable to locate a value transformer to transform from %@ "\
+                    "to %@ for property '%@'. Ensure that a value transformer "\
+                    "capable of this transformation is registered via one of "\
+                    "the mtf_registerValueTransformerWithName... methods.",
+                [constant.value class],
+                valueClass,
+                property];
 
-    return nil;
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+                NSLocalizedDescriptionKey: description,
+            }];
+        }
+
+        return nil;
+    }
+
+    NSValue *transformedValue = [constant transformedValueFromTransformer:transformer error:error];
+    if (transformedValue == nil) return nil;
+
+    return @{ property: transformedValue };
 }
 
 @end
@@ -119,10 +136,6 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation MTFThemeClassValueObjCTypePropertyApplier
 
 #pragma mark - Lifecycle
-
-- (instancetype)initWithProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
-}
 
 - (instancetype)initWithProperty:(NSString *)property valueObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
     NSParameterAssert(applierBlock != nil);
@@ -138,45 +151,67 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemePropertyApplier <MTFThemeClassApplicable>
 
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
+- (nullable NSSet<NSString *> *)applyClass:(MTFThemeClass *)themeClass to:(id)applicant error:(NSError **)error {
     NSParameterAssert(themeClass != nil);
-    NSParameterAssert(object != nil);
+    NSParameterAssert(applicant != nil);
 
-    id value = [self.class
+    NSDictionary<NSString *, id> *transformedValueByProperty = [self.class
         valueForApplyingProperty:self.property
-        withValueObjCType:self.valueObjCType
-        fromThemeClass:themeClass];
+        asObjCType:self.valueObjCType
+        fromThemeClass:themeClass
+        error:error];
 
-    if (value == nil) return NO;
+    if (transformedValueByProperty == nil) return nil;
+    if (transformedValueByProperty.count == 0) return [NSSet set];
 
-    self.applierBlock(value, object);
-    return YES;
+    id transformedValue = transformedValueByProperty[self.property];
+    return self.applierBlock(transformedValue, applicant, error) ? self.properties : nil;
 }
 
 #pragma mark - MTFThemeClassValueObjCTypePropertyApplier
 
-+ (nullable id)valueForApplyingProperty:(NSString *)property withValueObjCType:(const char *)valueObjCType fromThemeClass:(MTFThemeClass *)themeClass {
++ (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asObjCType:(const char *)objCType fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error {
     NSParameterAssert(property != nil);
-    NSParameterAssert(valueObjCType != NULL);
+    NSParameterAssert(objCType != NULL);
     NSParameterAssert(themeClass != nil);
 
     MTFThemeConstant *constant = themeClass.resolvedPropertiesConstants[property];
-    if (constant == nil) return nil;
+    if (constant == nil) return [NSDictionary dictionary];
 
     id value = constant.value;
     if ([value isKindOfClass:NSValue.class]) {
         NSValue *valueAsValue = (NSValue *)value;
 
-        if (strcmp(valueAsValue.objCType, valueObjCType) == 0) return value;
+        if (strcmp(valueAsValue.objCType, objCType) == 0) return @{ property: value };
     }
 
     NSValueTransformer *transformer = [NSValueTransformer
         mtf_valueTransformerForTransformingObject:value
-        toObjCType:valueObjCType];
+        toObjCType:objCType];
 
-    if (transformer) return [constant transformedValueFromTransformer:transformer];
+    if (transformer == nil) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"Unable to locate a value transformer to transform from %@ to "\
+                    "%@ for property '%@'. Ensure that a value transformer "\
+                    "capable of this transformation is registered via one of the "\
+                    "mtf_registerValueTransformerWithName... methods.",
+                [constant.value class],
+                @(objCType),
+                property];
 
-    return nil;
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+                NSLocalizedDescriptionKey: description,
+            }];
+        }
+
+        return nil;
+    }
+
+    NSValue *transformedValue = [constant transformedValueFromTransformer:transformer error:error];
+    if (transformedValue == nil) return nil;
+
+    return @{ property: transformedValue };
 }
 
 @end
