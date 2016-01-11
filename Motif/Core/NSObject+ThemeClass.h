@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The name of the theme class that was most recently applied to this object.
 ///
-/// Remains populated even if the weak mtf_themeClass reference is nilled out
-/// due to the weak reference to mtf_themeClass auto-nilling.
+/// Remains populated even if the weak mtf_themeClass property is nilled out
+/// due its value being deallocated.
 @property (nonatomic, readonly, copy, nullable) NSString *mtf_themeClassName IBInspectable;
 
 @end
