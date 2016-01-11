@@ -132,7 +132,11 @@
 - (void)toggleTheme {
     // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
     // objects that had a theme class previously applied with it
-    self.themeApplier.theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
+    MTFTheme *theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
+    NSError *error;
+    if (![self.themeApplier setTheme:theme error:&error]) {
+        NSLog(@"Error updating theme %@", error);
+    }
     
     self.isDisplayingDarkTheme = !self.isDisplayingDarkTheme;
 }
