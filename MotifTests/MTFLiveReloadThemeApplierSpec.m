@@ -21,6 +21,18 @@ __block NSURL *temporaryDirectoryURL;
 __block NSURL *themeFileURL;
 __block NSURL *sourceFileURL;
 
+describe(@"initialization", ^{
+    it(@"should raise when initialized via initWithTheme:", ^{
+        expect(^{
+            MTFTheme *theme = [[MTFTheme alloc] initWithThemeDictionary:@{} error:&error];
+            expect(theme).to.beAnInstanceOf(MTFTheme.class);
+            expect(error).to.beNil();
+
+            __unused id applier = [(id)[MTFLiveReloadThemeApplier alloc] initWithTheme:theme];
+        }).to.raise(NSInternalInconsistencyException);
+    });
+});
+
 beforeEach(^{
     success = NO;
     error = nil;
@@ -40,13 +52,8 @@ beforeEach(^{
 });
 
 afterEach(^{
-    success = [NSFileManager.defaultManager removeItemAtURL:themeFileURL error:&error];
-    expect(success).to.beTruthy();
-    expect(error).to.beNil();
-
-    success = [NSFileManager.defaultManager removeItemAtURL:sourceFileURL error:&error];
-    expect(success).to.beTruthy();
-    expect(error).to.beNil();
+    [NSFileManager.defaultManager removeItemAtURL:themeFileURL error:&error];
+    [NSFileManager.defaultManager removeItemAtURL:sourceFileURL error:&error];
 });
 
 BOOL (^writeJSONObject)(id, NSURL *, NSError **) = ^(id JSONObject, NSURL *url, NSError **error) {
