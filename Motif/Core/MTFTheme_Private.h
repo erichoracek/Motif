@@ -37,17 +37,17 @@ NS_ASSUME_NONNULL_BEGIN
  The URLs of the theme files that were added to the theme, in the order that
  they were added in.
  */
-@property (nonatomic, copy, null_resettable) NSArray<NSURL *> *fileURLs;
+@property (nonatomic, copy, readonly) NSArray<NSURL *> *fileURLs;
 
 /**
  The MTFThemeConstant instances on the theme, keyed by their names.
  */
-@property (nonatomic, copy, null_resettable) NSDictionary<NSString *, MTFThemeConstant *> *constants;
+@property (nonatomic, copy, readonly) NSDictionary<NSString *, MTFThemeConstant *> *constants;
 
 /**
  The MTFThemeClass instances on the theme, keyed by their names.
  */
-@property (nonatomic, copy, null_resettable) NSDictionary<NSString *, MTFThemeClass *> *classes;
+@property (nonatomic, copy, readonly) NSDictionary<NSString *, MTFThemeClass *> *classes;
 
 @end
 
