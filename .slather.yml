@@ -4,3 +4,4 @@ source_directory: Motif
 ignore:
   - Motif/Objective-C Runtime/*
   - Motif/iOS Support/UIColor+HTMLColors.m
+  - Motif/Core/MTFErrors.m
