@@ -77,7 +77,7 @@ BUILD_TOOL = 'xcodebuild'
 
 BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}' "
 BUILD_FLAGS_IOS = "-sdk #{TEST_SDK} " + BUILD_FLAGS
-BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6s' " + BUILD_FLAGS_IOS
+BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6s' " + BUILD_FLAGS_IOS
 BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
 BUILD_FLAGS_BUILD_CLI = "build -scheme #{SCHEME_CLI} " + BUILD_FLAGS
 BUILD_FLAGS_BUTTONS_EXAMPLE = "build -scheme '#{SCHEME_BUTTONS_EXAMPLE}' " + BUILD_FLAGS_IOS
