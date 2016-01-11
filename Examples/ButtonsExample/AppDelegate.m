@@ -8,9 +8,10 @@
 
 @import Motif;
 
-#import "AppDelegate.h"
 #import "ButtonsViewController.h"
 #import "ThemeSymbols.h"
+
+#import "AppDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
     NSError *error;
     MTFTheme *theme = [MTFTheme themeFromFileNamed:ThemeName error:&error];
-    NSAssert(error == nil, @"Error loading theme: %@", error);
+    NSAssert(theme != nil, @"Error loading theme: %@", error);
     
-    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithTheme:theme];
+    ButtonsViewController *viewController = [[ButtonsViewController alloc] initWithThemeApplier:theme];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.rootViewController = viewController;

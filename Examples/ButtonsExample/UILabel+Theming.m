@@ -2,8 +2,8 @@
 //  UILabel+Theming.m
 //  ButtonsExample
 //
-//  Created by Eric Horacek on 4/7/15.
-//  Copyright (c) 2015 Eric Horacek. All rights reserved.
+//  Created by Eric Horacek on 1/1/16.
+//  Copyright © 2016 Eric Horacek. All rights reserved.
 //
 
 @import Motif;
@@ -12,8 +12,6 @@
 
 #import "UILabel+Theming.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @implementation UILabel (Theming)
 
 + (void)load {
@@ -21,16 +19,25 @@ NS_ASSUME_NONNULL_BEGIN
         mtf_registerThemeProperties:@[
             ThemeProperties.fontName,
             ThemeProperties.fontSize
-        ] requiringValuesOfType:@[
+        ]
+        requiringValuesOfType:@[
             NSString.class,
             NSNumber.class
-        ] applierBlock:^(NSDictionary *properties, UILabel *label) {
+        ]
+        applierBlock:^(NSDictionary<NSString *, id> *properties, UILabel *label, NSError **error) {
             NSString *name = properties[ThemeProperties.fontName];
             CGFloat size = [properties[ThemeProperties.fontSize] floatValue];
-            label.font = [UIFont fontWithName:name size:size];
+            UIFont *font = [UIFont fontWithName:name size:size];
+
+            if (font != nil) {
+                label.font = font;
+                return YES;
+            }
+
+            return [self
+                mtf_populateApplierError:error
+                withDescriptionFormat:@"Unable to create a font named %@ of size %@", name, @(size)];
         }];
 }
 
 @end
-
-NS_ASSUME_NONNULL_END

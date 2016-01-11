@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(nullable const char *)objCType;
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(const char *)objCType;
 
 /**
  Returns the first value trasformer that is able to transform the specified
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
-+ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(nullable Class)toClass;
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)toClass;
 
 @end
 

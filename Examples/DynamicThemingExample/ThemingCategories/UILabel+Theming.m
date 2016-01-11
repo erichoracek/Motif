@@ -19,22 +19,34 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)load {
     [self
         mtf_registerThemeProperties:@[
-            TypographyThemeProperties.fontSize,
             TypographyThemeProperties.fontName,
-        ] requiringValuesOfType:@[
-            NSNumber.class,
+            TypographyThemeProperties.fontSize,
+        ]
+        requiringValuesOfType:@[
             NSString.class,
-        ] applierBlock:^(NSDictionary *valuesForProperties, UILabel *label) {
-            NSString *name = valuesForProperties[TypographyThemeProperties.fontName];
-            CGFloat size = [valuesForProperties[TypographyThemeProperties.fontSize] floatValue];
-            label.font = [UIFont fontWithName:name size:size];
+            NSNumber.class
+        ]
+        applierBlock:^(NSDictionary<NSString *, id> *properties, UILabel *label, NSError **error) {
+            NSString *name = properties[TypographyThemeProperties.fontName];
+            CGFloat size = [properties[TypographyThemeProperties.fontSize] floatValue];
+            UIFont *font = [UIFont fontWithName:name size:size];
+
+            if (font != nil) {
+                label.font = font;
+                return YES;
+            }
+
+            return [self
+                mtf_populateApplierError:error
+                withDescriptionFormat:@"Unable to create font named %@ of size %@", name, @(size)];
         }];
     
     [self
         mtf_registerThemeProperty:ContentThemeProperties.color
         requiringValueOfClass:UIColor.class
-        applierBlock:^(UIColor *color, UILabel *label) {
+        applierBlock:^(UIColor *color, UILabel *label, NSError **error) {
             label.textColor = color;
+            return YES;
     }];
 }
 

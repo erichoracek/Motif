@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTFThemingSymbolsGenerator : NSObject
 
-+ (instancetype)sharedInstance;
-
 @end
 
 int MTFThemingSymbolsGeneratorMain(int argc, const char *argv[]);

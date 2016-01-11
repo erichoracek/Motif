@@ -15,8 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Parsing a raw theme into its classes and constants, optionally inheriting from
- another theme.
+ Parses a raw theme into its classes and constants, optionally inheriting 
+ exiting classes and constants from another theme.
  */
 @interface MTFThemeParser : NSObject
 
@@ -41,14 +41,14 @@ NS_ASSUME_NONNULL_BEGIN
  
  A dictionary keyed by theme constant names with values of MTFThemeConstant.
  */
-@property (nonatomic, readonly) NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants;
+@property (nonatomic, copy, readonly) NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants;
 
 /**
  The theme classes parsed from the raw theme.
  
  A dictionary keyed by theme class names with values of MTFThemeClass.
  */
-@property (nonatomic, readonly) NSDictionary<NSString *, MTFThemeClass *> *parsedClasses;
+@property (nonatomic, copy, readonly) NSDictionary<NSString *, MTFThemeClass *> *parsedClasses;
 
 /**
  Whether theme parsers should globally resolve their constants, producing errors

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,13 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The properties of the theme class as specified in the theme file.
  
- This dictionary is keyed by property names with values of the properties
+ This dictionary is keyed by property names with values of the properties as
  values.
  */
 @property (nonatomic, copy, readonly) NSDictionary<NSString *, id> *properties;
 
 /**
- Applies this theme class to an object.
+ Applies the receiver to an object.
  
  When a theme class is applied to an object:
  
@@ -46,30 +46,19 @@ NS_ASSUME_NONNULL_BEGIN
  4. If any of the matched properties have different types, an NSValueTransformer
     subclass if located transform the raw value to the type of the property,
     e.g. NSString → UIEdgeInsets.
- 5. The value from the above steps is set on the object using key-value coding.
- 6. If there are no properties available for the theme property, its value is
-    set on the object via key-value coding, which may throw an exception if the
-    keypath is not implemented on the object.
+    
+ If none of the above steps was successful, theme application is considered
+ unsuccessful and the pass-by-reference error parameter is populated.
  
- @param object The object that this theme class should be applied to.
+ @param applicant The object that this theme class should be applied to.
  
+ @param error If an error occurs, upon return contains an NSError object that
+        describes the problem.
+
  @return Whether the application was successful.
  */
-- (BOOL)applyToObject:(id)object;
+- (BOOL)applyTo:(id)applicant error:(NSError **)error;
 
 @end
-
-/**
- The exception that is thrown when a property from a theme class is not able
- to be applied to an object.
- */
-extern NSString * const MTFThemeClassUnappliedPropertyException;
-
-/**
- The user info key identifying the property name for which the class application
- failed, as contained within the info of an 
- MTFThemeClassUnappliedPropertyException
- */
-extern NSString * const MTFThemeClassExceptionUserInfoKeyUnappliedPropertyName;
 
 NS_ASSUME_NONNULL_END

@@ -9,41 +9,35 @@
 #import <Foundation/Foundation.h>
 #import <Motif/NSObject+ThemeClassAppliers.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class MTFThemeClass;
 @class MTFTheme;
 
-/**
- MTFThemeClassApplicable is an abstract protocol that defines the methods and
- properties required to apply an MTFThemeClass from an MTFTheme to an object.
- 
- You likely won't ever have to use an object that conforms to
- MTFThemeClassApplicable directly. The easiest way to register an applier is by
- using the `+[NSObject mtf_registerTheme...applierBlock:]` methods, which is a
- convenience method for creating and registering an applier that conforms to
- this protocol.
- */
+NS_ASSUME_NONNULL_BEGIN
+
+/// Objects that wish to apply an MTFThemeClass to an object should conform to
+/// this protocol.
+///
+/// You likely won't ever have to use an object that conforms to
+/// MTFThemeClassApplicable directly. The easiest way to register an applier is
+/// by using the `+[NSObject mtf_registerTheme...applierBlock:]` methods, which
+/// is a convenience method for creating and registering an applier that
+/// conforms to this protocol.
 @protocol MTFThemeClassApplicable <NSObject>
 
-/**
- The properties that the theme applier is responsible for applying to the target
- object.
- */
-@property (nonatomic, copy, readonly) NSArray<NSString *> *properties;
+/// The properties that the theme applier is responsible for applying to an
+/// object.
+@property (nonatomic, copy, readonly) NSSet<NSString *> *properties;
 
-/**
- Attempts to appliy an MTFThemeClass from an MTFTheme to an object.
- 
- @param class  The class that should have its properties applied
-
- @param theme  The theme that should be applied to the specified class.
-
- @param object The object that should have the class applied to it.
- 
- @return Whether the theme class was applied to the object.
- */
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object;
+/// Attempts to apply an MTFThemeClass to an object.
+///
+/// @param themeClass The theme class that should have its properties applied by
+/// the receiver.
+///
+/// @param applicant The object that should have the class applied to it.
+///
+/// @return The properties that were successfully applied by the receiver, or
+/// nil if an error occurred during application.
+- (nullable NSSet <NSString *>*)applyClass:(MTFThemeClass *)themeClass to:(id)applicant error:(NSError **)error;
 
 @end
 

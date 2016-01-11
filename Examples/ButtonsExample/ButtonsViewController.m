@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ButtonsViewController ()
 
-@property (nonatomic) ButtonsView *view;
+@property (readonly, nonatomic) id<MTFThemeApplier> themeApplier;
 
 @end
 
@@ -25,19 +25,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithTheme:(MTFTheme *)theme {
-    NSParameterAssert(theme != nil);
+- (instancetype)initWithThemeApplier:(id<MTFThemeApplier>)themeApplier {
+    NSParameterAssert(themeApplier != nil);
     
     self = [super init];
 
-    _theme = theme;
+    _themeApplier = themeApplier;
 
     return self;
 }
 
 #pragma mark - UIViewController
-
-@dynamic view;
 
 - (void)loadView {
     self.view = [[ButtonsView alloc] init];
@@ -45,8 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.theme applyClassWithName:ThemeClassNames.ButtonsView toObject:self.view];
+
+    NSError *error;
+    if (![self.themeApplier applyClassWithName:ThemeClassNames.ButtonsView to:self.view error:&error]) {
+        NSLog(@"%@", error);
+    }
 }
 
 @end

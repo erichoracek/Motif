@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     // MARK: - Lifecycle
 
-    init(theme: MTFTheme) {
-        self.theme = theme
+    init(themeApplier: MTFThemeApplier) {
+        self.themeApplier = themeApplier
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,17 +32,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        theme.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, toObject:buttonsView)
+        do {
+            try themeApplier.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, to:buttonsView)
+        } catch {
+            print(error)
+        }
     }
 
     // MARK: ViewController
     
-    let theme: MTFTheme
+    let themeApplier: MTFThemeApplier
     
     var buttonsView: ButtonsView {
-        get {
-            return self.view as! ButtonsView
-        }
+        return self.view as! ButtonsView
     }
-    
 }

@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import <Motif/MTFDynamicThemeApplier.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -69,6 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
  threshold.
  */
 @property (nonatomic, readonly) MTFTheme *darkTheme;
+
+- (void)setTheme:(MTFTheme *)theme NS_UNAVAILABLE;
+- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error NS_UNAVAILABLE;
 
 @end
 

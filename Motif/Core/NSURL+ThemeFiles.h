@@ -27,10 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
                    for.
  @param bundle     The bundle that should be searched. Defaults to the main
                    bundle if no bundle is specified.
+                   
+ @param error If an error occurs, upon return contains an NSError object that
+              describes the problem.
  
- @return An array of NSURLs matching the theme names passed into the method.
+ @return An array of NSURLs matching the theme names passed into the method, or
+         nil if any of the names were invalid.
  */
-+ (NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle;
++ (nullable NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  The dictionary representation of the theme file contents at this URL, if there
@@ -47,12 +51,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDictionary *)mtf_themeDictionaryWithError:(NSError **)error;
 
 @end
-
-/**
- The execption that is thrown when a theme is queried for that does not exist.
- 
- Thrown when invoking `mtf_fileURLsFromThemeNames:inBundle:`.
- */
-extern NSString * const MTFThemeFileNotFoundException;
 
 NS_ASSUME_NONNULL_END

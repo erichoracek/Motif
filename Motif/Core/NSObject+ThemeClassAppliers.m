@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <objc/runtime.h>
-#import "MTFThemeClassApplier.h"
+@import ObjectiveC;
+
 #import "MTFThemeClassPropertyApplier.h"
 #import "MTFThemeClassPropertiesApplier.h"
-#import "NSObject+ThemeClassAppliers.h"
-#import "NSObject+ThemeClassAppliersPrivate.h"
 #import "MTFThemeClassApplicable.h"
+#import "MTFErrors.h"
+
+#import "NSObject+ThemeClassAppliersPrivate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,18 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Public
 
-+ (id<MTFThemeClassApplicable>)mtf_registerThemeClassApplierBlock:(MTFThemeClassApplierBlock)applierBlock {
-    NSParameterAssert(applierBlock);
-    
-    MTFThemeClassApplier *applier = [[MTFThemeClassApplier alloc] initWithClassApplierBlock:applierBlock];
-
-    [self mtf_registerThemeClassApplier:applier];
-    return applier;
-}
-
 + (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-    NSParameterAssert(property);
-    NSParameterAssert(applierBlock);
+    NSParameterAssert(property != nil);
+    NSParameterAssert(applierBlock != nil);
     
     MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc]
         initWithProperty:property
@@ -42,12 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfClass:(Class)valueClass applierBlock:(MTFThemePropertyApplierBlock)applierBlock {
-    NSParameterAssert(property);
-    NSAssert(
-        valueClass,
-        @"valueClass is Nil. Use the equivalent method without valueClass as a "
-             "parameter instead.");
-    NSParameterAssert(applierBlock);
+    NSParameterAssert(property != nil);
+    NSParameterAssert(valueClass != nil);
+    NSParameterAssert(applierBlock != nil);
     
     MTFThemeClassValueClassPropertyApplier *applier = [[MTFThemeClassValueClassPropertyApplier alloc]
         initWithProperty:property
@@ -61,10 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (id<MTFThemeClassApplicable>)mtf_registerThemeProperty:(NSString *)property requiringValueOfObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyObjCValueApplierBlock)applierBlock {
     NSParameterAssert(property != nil);
     NSParameterAssert(applierBlock != nil);
-    NSAssert(
-        valueObjCType != NULL,
-        @"valueObjCType is NULL. Use the equivalent method without "
-             "valueObjCType instead.");
+    NSParameterAssert(valueObjCType != nil);
 
     MTFThemeClassValueObjCTypePropertyApplier *applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc]
         initWithProperty:property
@@ -89,10 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id<MTFThemeClassApplicable>)mtf_registerThemeProperties:(NSArray<NSString *> *)properties requiringValuesOfType:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock)applierBlock {
     NSParameterAssert(properties != nil);
-    NSAssert(
-        valueTypes != nil,
-        @"transformersOrClasses is nil. Use the equivalent method without "
-             "transformersOrClasses instead.");
+    NSParameterAssert(valueTypes != nil);
     NSParameterAssert(applierBlock != nil);
     
     MTFThemeClassTypedValuesPropertiesApplier *applier = [[MTFThemeClassTypedValuesPropertiesApplier alloc]
@@ -113,17 +96,22 @@ NS_ASSUME_NONNULL_BEGIN
     return [self
         mtf_registerThemeProperty:property
         requiringValueOfClass:NSString.class
-        applierBlock:^(NSString *keyword, id applicant){
+        applierBlock:^(NSString *keyword, id applicant, NSError **error){
             NSNumber *value = valuesByKeyword[keyword];
 
-            NSAssert(
-                value != nil,
-                @"Invalid %@ property value: %@, must be one of: %@.",
-                property,
-                keyword,
-                [valuesByKeyword.allKeys componentsJoinedByString:@", "]);
+            if (value == nil) {
+                return [self
+                    mtf_populateApplierError:error
+                    withDescriptionFormat:
+                        @"Invalid %@ key %@, must be one of: %@.",
+                        property,
+                        keyword,
+                        [valuesByKeyword.allKeys componentsJoinedByString:@", "]];
+            }
 
             [applicant setValue:value forKeyPath:keyPath];
+
+            return YES;
         }];
 }
 
@@ -137,6 +125,31 @@ NS_ASSUME_NONNULL_BEGIN
             "methods.");
     
     [self.mtf_classThemeClassAppliers addObject:applier];
+}
+
++ (BOOL)mtf_populateApplierError:(NSError **)error withDescription:(NSString *)description {
+    NSParameterAssert(description != nil);
+
+    if (error != NULL) {
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+            NSLocalizedDescriptionKey: description,
+        }];
+    }
+
+    return NO;
+}
+
++ (BOOL)mtf_populateApplierError:(NSError **)error withDescriptionFormat:(NSString *)descriptionFormat, ... NS_FORMAT_FUNCTION(2,3) {
+    NSParameterAssert(descriptionFormat != nil);
+
+    if (error == NULL) return NO;
+
+    va_list args;
+    va_start(args, descriptionFormat);
+    NSString *description = [[NSString alloc] initWithFormat:descriptionFormat arguments:args];
+    va_end(args);
+
+    return [self mtf_populateApplierError:error withDescription:description];
 }
 
 @end

@@ -120,9 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     yaml_parser_t *parser = NULL;
     parser = malloc(sizeof(*parser));
-    if (parser == NULL) {
-        return nil;
-    }
+    if (parser == NULL) return nil;
 
     yaml_parser_initialize(parser);
     yaml_parser_set_input_string(parser, data.bytes, data.length);
@@ -227,7 +225,6 @@ NS_ASSUME_NONNULL_BEGIN
         case YAML_ALIAS_EVENT:
             return [self populateInvalidAliasError:error fromParser:parser];
 
-        break;
         default:
         break;
         }
@@ -300,19 +297,19 @@ NS_ASSUME_NONNULL_BEGIN
         if (tagHandler != nil) {
             value = tagHandler(stringValue);
         } else {
-            if (error == NULL) return nil;
+            if (error != NULL) {
+                NSMutableDictionary<NSString *, id> *userInfo = [self
+                    errorUserInfoForMark:parser->mark
+                    offset:parser->offset
+                    fromParser:parser];
 
-            NSMutableDictionary<NSString *, id> *userInfo = [self
-                errorUserInfoForMark:parser->mark
-                offset:parser->offset
-                fromParser:parser];
+                userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:
+                    NSLocalizedString(@"Unhandled tag type: %@ (value: %@)", nil),
+                    tag,
+                    stringValue];
 
-            userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:
-                NSLocalizedString(@"Unhandled tag type: %@ (value: %@)", nil),
-                tag,
-                stringValue];
-
-            *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+                *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+            }
 
             return nil;
         }
@@ -330,64 +327,64 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Error handling
 
 - (BOOL)populateParseError:(NSError **)error fromParser:(yaml_parser_t *)parser {
-    if (error == NULL) return NO;
+    if (error != NULL) {
+        NSMutableDictionary<NSString *, id> *userInfo = [self
+            errorUserInfoForMark:parser->problem_mark
+            offset:parser->problem_offset
+            fromParser:parser];
 
-    NSMutableDictionary<NSString *, id> *userInfo = [self
-        errorUserInfoForMark:parser->problem_mark
-        offset:parser->problem_offset
-        fromParser:parser];
+        const char *problem = parser->problem;
+        if (problem != NULL) {
+            NSString *string = @(problem);
 
-    const char *problem = parser->problem;
-    if (problem != NULL) {
-        NSString *string = @(problem);
+            userInfo[NSLocalizedDescriptionKey] = string;
+        }
 
-        userInfo[NSLocalizedDescriptionKey] = string;
+        const char *context = parser->context;
+        if (context != NULL) {
+            NSString *string = @(context);
+
+            userInfo[MTFYAMLSerializationContextDescriptionErrorKey] = string;
+        }
+
+        *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:parser->error userInfo:[userInfo copy]];
     }
-
-    const char *context = parser->context;
-    if (context != NULL) {
-        NSString *string = @(context);
-
-        userInfo[MTFYAMLSerializationContextDescriptionErrorKey] = string;
-    }
-
-    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:parser->error userInfo:[userInfo copy]];
 
     return NO;
 }
 
 - (BOOL)populateInvalidAliasError:(NSError **)error fromParser:(yaml_parser_t *)parser {
-    if (error == NULL) return NO;
+    if (error != NULL) {
+        NSMutableDictionary<NSString *, id> *userInfo = [self
+            errorUserInfoForMark:parser->mark
+            offset:parser->offset
+            fromParser:parser];
 
-    NSMutableDictionary<NSString *, id> *userInfo = [self
-        errorUserInfoForMark:parser->mark
-        offset:parser->offset
-        fromParser:parser];
+        userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
+            @"YAML aliases (denoted by a leading '*') are not supported in Motif "
+                "theme files.",
+            nil),
 
-    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
-        @"YAML aliases (denoted by a leading '*') are not supported in Motif "
-            "theme files.",
-        nil),
-
-    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+        *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+    }
 
     return NO;
 }
 
 - (BOOL)populateInvalidAnchorError:(NSError **)error fromParser:(yaml_parser_t *)parser {
-    if (error == NULL) return NO;
+    if (error != NULL) {
+        NSMutableDictionary<NSString *, id> *userInfo = [self
+            errorUserInfoForMark:parser->mark
+            offset:parser->offset
+            fromParser:parser];
 
-    NSMutableDictionary<NSString *, id> *userInfo = [self
-        errorUserInfoForMark:parser->mark
-        offset:parser->offset
-        fromParser:parser];
+        userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
+            @"YAML anchors (denoted by a leading '&') are not supported in Motif "
+                "theme files.",
+            nil);
 
-    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
-        @"YAML anchors (denoted by a leading '&') are not supported in Motif "
-            "theme files.",
-        nil);
-
-    *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+        *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
+    }
 
     return NO;
 }

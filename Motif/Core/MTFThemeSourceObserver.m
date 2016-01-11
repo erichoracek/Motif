@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
     self = [super init];
     
     _fileObservationQueue = dispatch_queue_create(
-        "com.erichoracek.auttheming.themesourceobservation",
+        "com.erichoracek.motif.MTFThemeSourceObserver",
         DISPATCH_QUEUE_CONCURRENT);
     
     _sourceDirectoryURL = sourceDirectoryURL;
@@ -58,14 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
         observeSourceFilesOfTheme:theme
         onQueue:self.fileObservationQueue
         didUpdate:didUpdate];
-    
-    NSArray<NSString *> *sourceFilePaths = [self
-        sourceFilePathsForTheme:theme
-        inSourceDirectoryURL:self.sourceDirectoryURL];
-    
-    NSError *error;
-    _updatedTheme = [self themeFromSourceFilePaths:sourceFilePaths error:&error];
-    _updatedThemeError = error;
     
     return self;
 }
@@ -250,27 +242,14 @@ NS_ASSUME_NONNULL_BEGIN
             typeof(__weak_self) self = __weak_self;
 
             NSError *error;
-            MTFTheme *theme;
+            MTFTheme *theme = [self
+                themeFromSourceFilePaths:sourceFilePaths
+                error:&error];
+
+            self.updatedTheme = theme;
+            self.updatedThemeError = error;
             
-            // If a MTFTheme is unable to be created from any of the provided
-            // URLs, an exception will be thrown. In this case, catch the
-            // exception and log it, since we already have a valid theme.
-            @try {
-                theme = [self
-                    themeFromSourceFilePaths:sourceFilePaths
-                    error:&error];
-            }
-            @catch (NSException *exception) {
-#ifdef DEBUG
-                NSLog(@"Exception raised when attempting to reload theme: %@", exception);
-#endif
-            }
-            
-            if (theme) {
-                self.updatedTheme = theme;
-                self.updatedThemeError = error;
-                didUpdate(theme, error);
-            }
+            didUpdate(theme, error);
         }];
 }
 

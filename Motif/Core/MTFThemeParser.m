@@ -6,17 +6,19 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import "MTFThemeParser.h"
+#import "NSString+ThemeSymbols.h"
+#import "NSDictionary+IntersectingKeys.h"
+#import "NSDictionary+DictionaryValueValidation.h"
+
 #import "MTFThemeConstant.h"
 #import "MTFThemeConstant_Private.h"
 #import "MTFThemeClass.h"
 #import "MTFThemeClass_Private.h"
-#import "MTFTheme.h"
 #import "MTFThemeSymbolReference.h"
 #import "MTFTheme_Private.h"
-#import "NSString+ThemeSymbols.h"
-#import "NSDictionary+IntersectingKeys.h"
-#import "NSDictionary+DictionaryValueValidation.h"
+#import "MTFErrors.h"
+
+#import "MTFThemeParser.h"
 
 @implementation MTFThemeParser
 
@@ -40,16 +42,15 @@
         invalidSymbolsFromRawTheme:rawTheme
         rawConstants:rawConstants
         rawClasses:rawClasses];
+        
     if (invalidSymbols.count && error) {
-        NSString *localizedDescription = [NSString stringWithFormat:
-            @"The following symbols in the theme are invalid %@",
+        NSString *description = [NSString stringWithFormat:
+            @"The following theme symbols are invalid %@",
             invalidSymbols];
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:0
-            userInfo:@{
-                NSLocalizedDescriptionKey: localizedDescription
-            }];
+
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey: description
+        }];
     }
     
     // Map the constants from the raw theme
@@ -224,27 +225,39 @@
         switch (reference.type) {
         case MTFThemeSymbolTypeConstant: {
             // Locate the referenced constant in the existing constants
-            // dictionary
+            // dictionary.
             MTFThemeConstant *constantReference = constants[reference.symbol];
-            if (constantReference) {
+            BOOL isSelfReferential = constantReference == parsedConstant;
+
+            if (constantReference && !isSelfReferential) {
                 parsedConstant.mappedValue = constantReference;
                 continue;
             }
+
             // This is an invalid reference, so remove it from the resolved
-            // constants
+            // constants.
             [resolvedConstants removeObjectForKey:parsedConstant.name];
+
             if (error) {
-                NSString *localizedDescription = [NSString stringWithFormat:
-                    @"The named constant value for property '%@' ('%@') was "
-                        "not found as a registered constant",
-                    parsedConstant.name,
-                    parsedConstant.rawValue];
-                *error = [NSError
-                    errorWithDomain:MTFThemingErrorDomain
-                    code:0
-                    userInfo:@{
-                        NSLocalizedDescriptionKey: localizedDescription
-                    }];
+                NSString *description;
+
+                if (isSelfReferential) {
+                    description = [NSString stringWithFormat:
+                        @"The named constant value for property '%@' ('%@') may "
+                            "not reference itself",
+                        parsedConstant.name,
+                        parsedConstant.rawValue];
+                } else {
+                    description = [NSString stringWithFormat:
+                        @"The named constant value for property '%@' ('%@') was "
+                            "not found as a registered constant",
+                        parsedConstant.name,
+                        parsedConstant.rawValue];
+                }
+
+                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                    NSLocalizedDescriptionKey: description
+                }];
             }
         }
         break;
@@ -259,23 +272,23 @@
             // constants
             [resolvedConstants removeObjectForKey:parsedConstant.name];
             if (error) {
-                NSString *localizedDescription = [NSString stringWithFormat:
+                NSString *description = [NSString stringWithFormat:
                     @"The named constant value for property '%@' ('%@') was "
                         "not found as a registered constant",
                     parsedConstant.name,
                     parsedConstant.rawValue];
-                *error = [NSError
-                    errorWithDomain:MTFThemingErrorDomain
-                    code:0
-                    userInfo:@{
-                        NSLocalizedDescriptionKey: localizedDescription
-                    }];
+
+                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                    NSLocalizedDescriptionKey: description
+                }];
             }
         }
         break;
         default:
-            NSAssert(NO, @"Unhandled symbol type");
-            break;
+            @throw [NSException
+                exceptionWithName:NSInternalInconsistencyException
+                reason:[NSString stringWithFormat:@"Unhanded symbol type %@", reference]
+                userInfo:nil];
         }
     }
     
@@ -300,21 +313,17 @@
             // Filter the superclass from the parsed constants if it
             // transitively references itself
             [filteredParsedConstants removeObjectForKey:MTFThemeSuperclassKey];
-            
+
             if (error) {
-                NSString *localizedDescription = [NSString stringWithFormat:
+                NSString *description = [NSString stringWithFormat:
                     @"The superclass of '%@' causes it to inherit from itself. "
                         "It is currently '%@'.",
                     class.name,
                     classSuperclass.name];
                 
-                *error = [NSError
-                    errorWithDomain:MTFThemingErrorDomain
-                    code:1
-                    userInfo:@{
-                        NSLocalizedDescriptionKey: localizedDescription
-                    }];
-                
+                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                    NSLocalizedDescriptionKey: description
+                }];
             }
             
             break;
@@ -399,18 +408,15 @@
             
             // Populate an error with the failure reason
             if (error) {
-                NSString *localizedDescription = [NSString stringWithFormat:
+                NSString *description = [NSString stringWithFormat:
                     @"The value for the 'superclass' property in '%@' must "
                         "reference a valid theme class. It is currently '%@'.",
                     className,
                     superclass.rawValue];
                 
-                *error = [NSError
-                    errorWithDomain:MTFThemingErrorDomain
-                    code:1
-                    userInfo:@{
-                        NSLocalizedDescriptionKey: localizedDescription
-                    }];
+                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                    NSLocalizedDescriptionKey: description
+                }];
             }
         }
     }
@@ -424,17 +430,15 @@
     NSSet<NSString *> *intersectingConstants = [existingConstants
         mtf_intersectingKeysWithDictionary:parsedConstants];
     if (intersectingConstants.count && error) {
-        NSString *localizedDescription = [NSString stringWithFormat:
+        NSString *description = [NSString stringWithFormat:
             @"Registering new constants with identical names to "
                 "previously-defined constants will overwrite existing "
                 "constants with the following names: %@",
             intersectingConstants];
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey : description
+        }];
     }
     NSMutableDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
@@ -445,17 +449,15 @@
     NSSet<NSString *> *intersectingClasses = [existingClasses
         mtf_intersectingKeysWithDictionary:parsedClasses];
     if (intersectingClasses.count && error) {
-        NSString *localizedDescription = [NSString stringWithFormat:
+        NSString *description = [NSString stringWithFormat:
             @"Registering new classes with identical names to "
                 "previously-defined classes will overwrite existing classes "
                 "with the following names: %@",
             intersectingClasses];
-        *error = [NSError
-            errorWithDomain:MTFThemingErrorDomain
-            code:1
-            userInfo:@{
-                NSLocalizedDescriptionKey : localizedDescription
-            }];
+            
+        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+            NSLocalizedDescriptionKey : description
+        }];
     }
     NSMutableDictionary<NSString *, MTFThemeClass *> *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];

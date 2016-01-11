@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
-NS_ASSUME_NONNULL_BEGIN
+#import <Motif/MTFThemeApplier.h>
 
 @class MTFThemeClass;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  A collection of classes and constants used to style interface objects.
@@ -32,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  can be any Foundation types, or alternatively a reference to a class or
  constant.
  */
-@interface MTFTheme : NSObject
+@interface MTFTheme : NSObject <MTFThemeApplier>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -45,9 +47,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error     If an error occurs, upon return contains an NSError object
                   that describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-+ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error;
++ (nullable instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the
@@ -59,9 +62,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error      If an error occurs, upon return contains an NSError object
                    that describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-+ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error;
++ (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error;
 
 /**
  Creates a theme object from a set of one or mores theme files with the
@@ -74,9 +78,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error      If an error occurs, upon return contains an NSError object
                    that describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-+ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
++ (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -86,9 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error   If an error occurs, upon return contains an NSError object that
                 describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error;
+- (nullable instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error;
 
 /**
  Initializes a theme from a theme file.
@@ -98,9 +104,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error If an error occurs, upon return contains an NSError object that
               describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-- (instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error;
+- (nullable instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error;
 
 /**
  Initializes a theme from a theme dictionary.
@@ -111,9 +118,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error If an error occurs, upon return contains an NSError object that
         describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-- (instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error;
+- (nullable instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error;
 
 /**
  Initializes a theme from an array of theme dictionaries.
@@ -124,9 +132,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param error If an error occurs, upon return contains an NSError object that
         describes the problem.
  
- @return A theme object.
+ @return A theme object, or nil if an error occurred while initializing the
+         theme.
  */
-- (instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error;
+- (nullable instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error;
 
 /**
  The constant value from the theme collection for the specified key.
@@ -146,23 +155,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable MTFThemeClass *)classForName:(NSString *)name;
 
-/**
- Applies a theme class with the specified name to an object.
- 
- @param name   If name is nil or does not map to an existing class on theme,
-               this method has no effect.
- @param object If the object is nil or has no registered class appliers, this
-               method has no effect.
- 
- @return Whether the class was applied to the object.
- */
-- (BOOL)applyClassWithName:(NSString *)name toObject:(id)object;
-
 @end
-
-/**
- The domain for theme parsing errors.
- */
-extern NSString * const MTFThemingErrorDomain;
 
 NS_ASSUME_NONNULL_END

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// A block that is invoked when a theme is recreated from its source files
 /// when they were updated, and an error if there was one when creating it.
-typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError *);
+typedef void (^MTFThemeDidUpdate)(MTFTheme * _Nullable, NSError * _Nullable);
 
 /// Observes the theme files that were used to create an MTFTheme, and creates a
 /// new MTFTheme whenever they are edited.
@@ -42,9 +42,13 @@ typedef void (^MTFThemeDidUpdate)(MTFTheme *, NSError *);
 ///
 /// Before the `didUpdate` block is invoked, this property is updated to be the
 /// latest theme that was created from the source files.
-@property (nonatomic, readonly) MTFTheme *updatedTheme;
+///
+/// Nil if there was an error creating a theme or the source has yet to be
+/// changed. If there was an error, `updatedThemeError` will be populated.
+@property (nonatomic, readonly, nullable) MTFTheme *updatedTheme;
 
-/// The error, if there was any, when creating the latest `updatedTheme`.
+/// The last error, if there was any, that occurred when attempting to create a
+/// new `updatedTheme` due to a change in the source files.
 @property (nonatomic, readonly, nullable) NSError *updatedThemeError;
 
 @end

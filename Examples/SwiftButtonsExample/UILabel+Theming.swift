@@ -21,12 +21,19 @@ extension UILabel {
                 NSString.self,
                 NSNumber.self
             ],
-            applierBlock: { (properties, label) -> Void in
-                guard let name = properties[ThemeProperties.fontName.rawValue] as? String else { return }
-                guard let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber else { return }
-                guard let label = label as? UILabel else { return }
+            applierBlock: { (properties, label, error) -> Bool in
+                guard let name = properties[ThemeProperties.fontName.rawValue] as? String else { return false }
+                guard let size = properties[ThemeProperties.fontSize.rawValue] as? NSNumber else { return false }
+                guard let label = label as? UILabel else { return false }
 
-                label.font = UIFont(name: name, size: CGFloat(size.floatValue))
+                let font = UIFont(name: name, size: CGFloat(size.floatValue))
+
+                if let font = font {
+                    label.font = font
+                    return true
+                }
+
+                return self.mtf_populateApplierError(error, withDescription: "Unable to create font named \(name) of size \(size)")
             })
     }
 }

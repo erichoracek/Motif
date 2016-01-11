@@ -15,8 +15,9 @@
 #import "MTFThemeParser.h"
 #import "NSURL+ThemeFiles.h"
 #import "MTFYAMLSerialization.h"
+#import "MTFErrors.h"
 
-NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFTheme
 
@@ -30,38 +31,41 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Public
 
-+ (instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error {
++ (nullable instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error {
     NSParameterAssert(themeName);
     
     return [self themeFromFilesNamed:@[ themeName ] error:error];
 }
 
-+ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error {
++ (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     return [self themeFromFilesNamed:themeNames bundle:nil error:error];
 }
 
-+ (instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(NSBundle *)bundle error:(NSError **)error {
++ (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error {
     NSParameterAssert(themeNames);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     // Build an array of URLs from the specified theme names
     NSArray<NSURL *> *fileURLs = [NSURL
         mtf_fileURLsFromThemeNames:themeNames
-        inBundle:bundle];
+        inBundle:bundle
+        error:error];
+
+    if (fileURLs == nil) return nil;
     
     return [[MTFTheme alloc] initWithFiles:fileURLs error:error];
 }
 
-- (instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error; {
+- (nullable instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error; {
     NSParameterAssert(fileURL);
     
     return [self initWithFiles:@[ fileURL ] error:error];
 }
 
-- (instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error {
+- (nullable instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error {
     NSParameterAssert(fileURLs);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     
@@ -70,20 +74,12 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     
     for (NSURL *fileURL in fileURLs) {
         NSDictionary *themeDictionary = [fileURL mtf_themeDictionaryWithError:error];
+        if (themeDictionary == nil) return nil;
 
-        if (themeDictionary) {
-            [themeDictionaries addObject:themeDictionary];
-            [validFileURLs addObject:fileURL];
-        }
+        [themeDictionaries addObject:themeDictionary];
+        [validFileURLs addObject:fileURL];
     }
-    
-    NSAssert(
-        (themeDictionaries.count > 0),
-        @"None of the specified theme files at the following URLs contained "
-            "valid themes %@. Error %@",
-        fileURLs,
-        (error ? *error : nil));
-    
+
     self = [self initWithThemeDictionaries:themeDictionaries error:error];
 
     for (NSURL *fileURL in validFileURLs) {
@@ -93,25 +89,32 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     return self;
 }
 
-- (instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error {
+- (nullable instancetype)initWithThemeDictionary:(NSDictionary<NSString *, id> *)dictionary error:(NSError **)error {
     NSParameterAssert(dictionary != nil);
     
     return [self initWithThemeDictionaries:@[ dictionary ] error:error];
 }
 
-- (instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error {
+- (nullable instancetype)initWithThemeDictionaries:(NSArray<NSDictionary<NSString *, id> *> *)dictionaries error:(NSError **)error {
     NSParameterAssert(dictionaries != nil);
-    NSAssert(
-        dictionaries.count > 0,
-        @"Must provide at least one theme dictionary");
+    NSAssert(dictionaries.count > 0, @"Must provide at least one theme dictionary");
     
     self = [super init];
 
     for (NSDictionary *dictionary in dictionaries) {
+        NSError *parseError;
         MTFThemeParser *parser = [[MTFThemeParser alloc]
             initWithRawTheme:dictionary
             inheritingFromTheme:self
-            error:error];
+            error:&parseError];
+
+        if (parseError != nil) {
+            if (error != NULL) {
+                *error = parseError;
+            }
+            return nil;
+        }
+
         [self addConstantsFromDictionary:parser.parsedConstants];
         [self addClassesFromDictionary:parser.parsedClasses];
     }
@@ -119,27 +122,42 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
     return self;
 }
 
-- (id)constantValueForName:(NSString *)name {
+- (nullable id)constantValueForName:(NSString *)name {
     NSParameterAssert(name);
     
-    return [self constantForName:name].value;
+    return self.constants[name].value;
 }
 
-- (MTFThemeClass *)classForName:(NSString *)name {
+- (nullable MTFThemeClass *)classForName:(NSString *)name {
     NSParameterAssert(name);
     
     return self.classes[name];
 }
 
-- (BOOL)applyClassWithName:(NSString *)name toObject:(id)object {
+- (BOOL)applyClassWithName:(NSString *)name to:(id)applicant error:(NSError **)error {
     NSParameterAssert(name);
-    NSParameterAssert(object);
+    NSParameterAssert(applicant);
     
     MTFThemeClass *class = [self classForName:name];
-    if (!class) {
+
+    if (class == nil) {
+        if (error != NULL) {
+            NSString *desciption = [NSString stringWithFormat:
+                @"Unable to locate theme class named '%@' to apply to %@ from "\
+                    "%@",
+                name,
+                applicant,
+                self];
+
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
+                NSLocalizedDescriptionKey: desciption,
+            }];
+        }
+
         return NO;
     }
-    return [class applyToObject:object];
+
+    return [class applyTo:applicant error:error];
 }
 
 #pragma mark Private
@@ -181,10 +199,6 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 
 #pragma mark Constants
 
-- (MTFThemeConstant *)constantForName:(NSString *)name {
-    return self.constants[name];
-}
-
 - (NSDictionary<NSString *, MTFThemeConstant *> *)constants {
     if (!_constants) {
         _constants = [NSDictionary new];
@@ -220,3 +234,5 @@ NSString * const MTFThemingErrorDomain = @"com.erichoracek.MTFTheming";
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

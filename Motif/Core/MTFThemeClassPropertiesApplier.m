@@ -19,6 +19,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface MTFThemeClassPropertiesApplier ()
+
+@property (readonly, nonatomic, strong) NSOrderedSet *orderedProperties;
+
+@end
+
 @implementation MTFThemeClassPropertiesApplier
 
 #pragma mark - Lifecycle
@@ -33,7 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     self = [super init];
 
-    _properties = [[NSArray alloc] initWithArray:properties copyItems:YES];
+    NSArray *copiedProperties = [[NSArray alloc] initWithArray:properties copyItems:YES];
+    _orderedProperties = [NSOrderedSet orderedSetWithArray:copiedProperties];
     _applierBlock = [applierBlock copy];
 
     return self;
@@ -41,38 +48,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemeClassPropertiesApplier
 
-- (BOOL)shouldApplyClass:(MTFThemeClass *)themeClass {
-    NSSet<NSString *> *applierPropertiesKeys = [NSSet setWithArray:self.properties];
-    NSSet<NSString *> *classPropertiesKeys = [NSSet setWithArray:themeClass.properties.allKeys];
+- (BOOL)shouldApplyValuesByProperties:(NSDictionary<NSString *, id> *)valuesByProperties {
+    NSParameterAssert(valuesByProperties != nil);
+
+    NSSet<NSString *> *propertiesToApply = [NSSet setWithArray:valuesByProperties.allKeys];
 
     // Only apply when all keys are present
-    return [applierPropertiesKeys isSubsetOfSet:classPropertiesKeys];
+    return [self.properties isSubsetOfSet:propertiesToApply];
 }
 
 #pragma mark - MTFThemeClassPropertiesApplier <MTFThemeClassApplicable>
 
-@synthesize properties = _properties;
+- (NSSet<NSString *> *)properties {
+    return self.orderedProperties.set;
+}
 
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
+- (nullable NSSet<NSString *> *)applyClass:(MTFThemeClass *)themeClass to:(id)object error:(NSError **)error {
     NSParameterAssert(themeClass != nil);
     NSParameterAssert(object != nil);
 
-    if (![self shouldApplyClass:themeClass]) return NO;
-
-    NSMutableDictionary<NSString *, id> *valuesForProperties = [[NSMutableDictionary alloc] init];
     NSDictionary<NSString *, id> *properties = themeClass.properties;
+    NSMutableDictionary<NSString *, id> *filteredValuesForProperties = [NSMutableDictionary dictionary];
 
-    [self.properties enumerateObjectsUsingBlock:^(NSString *property, NSUInteger index, BOOL *stop) {
+    [self.orderedProperties enumerateObjectsUsingBlock:^(NSString * property, NSUInteger _, BOOL *stop) {
         id value = properties[property];
-
-        if (value != nil) {
-            valuesForProperties[property] = value;
-        }
+        if (value == nil) return;
+        filteredValuesForProperties[property] = value;
     }];
-    
-    self.applierBlock([valuesForProperties copy], object);
 
-    return YES;
+    if (![self shouldApplyValuesByProperties:filteredValuesForProperties]) return [NSSet set];
+    
+    return self.applierBlock([filteredValuesForProperties copy], object, error) ? self.properties : nil;
 }
 
 @end
@@ -86,10 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithProperties:(NSArray<NSString *> *)properties valueTypes:(NSArray *)valueTypes applierBlock:(MTFThemePropertiesApplierBlock __nonnull)applierBlock {
-    NSParameterAssert(valueTypes);
-    NSAssert(
-        properties.count == valueTypes.count,
-        @"Properties and value classes/ObjC types must be of same length");
+    NSParameterAssert(valueTypes != nil);
+    NSAssert(properties.count == valueTypes.count, @"Properties and value classes/ObjC types must be of same length");
 
     for (__unused id valueClassOrObjCType in valueTypes) {
         NSAssert(
@@ -127,47 +131,56 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - MTFThemeClassTypedValuesPropertiesApplier
 
-- (BOOL)applyClass:(MTFThemeClass *)themeClass toObject:(id)object {
+- (nullable NSSet<NSString *> *)applyClass:(MTFThemeClass *)themeClass to:(id)object error:(NSError **)error {
     NSParameterAssert(themeClass != nil);
     NSParameterAssert(object != nil);
 
-    if (![self shouldApplyClass:themeClass]) return NO;
+    NSMutableDictionary<NSString *, id> *transformedValuesByProperties = [NSMutableDictionary dictionary];
 
-    NSMutableDictionary<NSString *, id> *valuesForProperties = [[NSMutableDictionary alloc] init];
+    __block BOOL transformationSuccess = YES;
+    __block NSError *transformationError;
 
-    __block BOOL shouldApply = YES;
-    [self.properties enumerateObjectsUsingBlock:^(NSString *property, NSUInteger index, BOOL *stop) {
+    [self.orderedProperties enumerateObjectsUsingBlock:^(NSString *property, NSUInteger index, BOOL *stop) {
         Class valueClass = [self classForPropertyAtIndex:index];
         const char *objCType = [self objCTypeForPropertyAtIndex:index];
-        id value;
+
+        NSDictionary<NSString *, id> *transformedValueByProperty;
+        NSError *error;
 
         if (valueClass != Nil) {
-            value = [MTFThemeClassValueClassPropertyApplier
+            transformedValueByProperty = [MTFThemeClassValueClassPropertyApplier
                 valueForApplyingProperty:property
-                withValueClass:valueClass
-                fromThemeClass:themeClass];
+                asClass:valueClass
+                fromThemeClass:themeClass
+                error:&error];
         } else if (objCType != NULL) {
-            value = [MTFThemeClassValueObjCTypePropertyApplier
+            transformedValueByProperty = [MTFThemeClassValueObjCTypePropertyApplier
                 valueForApplyingProperty:property
-                withValueObjCType:objCType
-                fromThemeClass:themeClass];
+                asObjCType:objCType
+                fromThemeClass:themeClass
+                error:&error];
         }
 
-        if (value == nil) {
-            shouldApply = NO;
+        if (transformedValueByProperty == nil) {
+            transformationSuccess = NO;
+            transformationError = error;
             *stop = YES;
             return;
-        } else {
-            valuesForProperties[property] = value;
-            return;
         }
+
+        [transformedValuesByProperties addEntriesFromDictionary:transformedValueByProperty];
     }];
 
-    if (!shouldApply) return NO;
-    
-    self.applierBlock([valuesForProperties copy], object);
+    if (!transformationSuccess) {
+        if (error != NULL) {
+            *error = transformationError;
+        }
+        return nil;
+    }
 
-    return YES;
+    if (![self shouldApplyValuesByProperties:transformedValuesByProperties]) return [NSSet set];
+    
+    return self.applierBlock([transformedValuesByProperties copy], object, error) ? self.properties : nil;
 }
 
 @end

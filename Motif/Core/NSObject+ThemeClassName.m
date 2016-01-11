@@ -6,16 +6,19 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <objc/runtime.h>
+@import ObjectiveC;
+
 #import "NSObject+ThemeClassName.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSObject (ThemeClassName)
 
-- (NSString *)mtf_themeClassName {
+- (nullable NSString *)mtf_themeClassName {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)mtf_setThemeClassName:(NSString *)themeClassName {
+- (void)mtf_setThemeClassName:(nullable NSString *)themeClassName {
     objc_setAssociatedObject(
         self,
         @selector(mtf_themeClassName),
@@ -24,3 +27,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

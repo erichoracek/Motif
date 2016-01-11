@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <Motif/Motif.h>
+@import Motif;
+
 #import "StyleGuideViewController.h"
 #import "AppDelegate.h"
 #import "ThemeSymbols.h"
@@ -26,11 +27,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    
+
+    self.lightTheme = [self createLightTheme];
+    self.darkTheme = [self createDarkTheme];
+
 #if defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
     
     self.themeApplier = [[MTFScreenBrightnessThemeApplier alloc]
-        initWithScreen:[UIScreen mainScreen]
+        initWithScreen:UIScreen.mainScreen
         lightTheme:self.lightTheme
         darkTheme:self.darkTheme];
     
@@ -40,11 +44,9 @@
     viewController.navigationItem.title = @"Screen Brightness Theming";
     
 #if TARGET_IPHONE_SIMULATOR
-    viewController.navigationItem.prompt = @"The theme will only change on-"
-        "device.";
+    viewController.navigationItem.prompt = @"The theme will only change on-device.";
 #else
-    viewController.navigationItem.prompt = @"Adjust the brightness to toggle "
-        "the theme.";
+    viewController.navigationItem.prompt = @"Adjust the brightness to toggle the theme.";
 #endif
     
 #else
@@ -62,8 +64,7 @@
         initWithThemeApplier:self.themeApplier];
     
     viewController.navigationItem.title = @"Dynamic Theming";
-    viewController.navigationItem.prompt = @"Tap the refresh button to toggle "
-        "the theme.";
+    viewController.navigationItem.prompt = @"Tap the refresh button to toggle the theme.";
     
     viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
@@ -72,12 +73,12 @@
     
 #endif
     
-    UINavigationController *navigationController = [[UINavigationController alloc]
-        initWithRootViewController:viewController];
-    
-    [self.themeApplier
-        applyClassWithName:NavigationThemeClassNames.NavigationBar
-        toObject:navigationController.navigationBar];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+    NSError *error;
+    if (![self.themeApplier applyClassWithName:NavigationThemeClassNames.NavigationBar to:navigationController.navigationBar error:&error]) {
+        NSLog(@"%@", error);
+    }
     
     self.window.rootViewController = navigationController;
     self.window.backgroundColor = UIColor.whiteColor;
@@ -88,42 +89,42 @@
 
 #pragma mark - AppDelegate
 
-- (MTFTheme *)lightTheme {
-    if (!_lightTheme) {
-        NSError *error;
-        MTFTheme *theme = [MTFTheme
-            themeFromFilesNamed:@[
-                ColorsThemeName,
-                LightMappingsThemeName,
-                TypographyThemeName,
-                ControlsThemeName,
-                NavigationThemeName,
-                ContentThemeName,
-                StyleGuideThemeName
-            ] error:&error];
-        NSAssert(error == nil, @"Error loading theme: %@", error);
-        self.lightTheme = theme;
-    }
-    return _lightTheme;
+- (MTFTheme *)createLightTheme {
+    NSError *error;
+    MTFTheme *theme = [MTFTheme
+        themeFromFilesNamed:@[
+            ColorsThemeName,
+            LightMappingsThemeName,
+            TypographyThemeName,
+            ControlsThemeName,
+            NavigationThemeName,
+            ContentThemeName,
+            StyleGuideThemeName,
+        ]
+        error:&error];
+
+    NSAssert(theme != nil, @"Error loading light theme: %@", error);
+
+    return theme;
 }
 
-- (MTFTheme *)darkTheme {
-    if (!_darkTheme) {
-        NSError *error;
-        MTFTheme *theme = [MTFTheme
-            themeFromFilesNamed:@[
-                ColorsThemeName,
-                DarkMappingsThemeName,
-                TypographyThemeName,
-                ControlsThemeName,
-                NavigationThemeName,
-                ContentThemeName,
-                StyleGuideThemeName
-            ] error:&error];
-        NSAssert(error == nil, @"Error loading theme: %@", error);
-        self.darkTheme = theme;
-    }
-    return _darkTheme;
+- (MTFTheme *)createDarkTheme {
+    NSError *error;
+    MTFTheme *theme = [MTFTheme
+        themeFromFilesNamed:@[
+            ColorsThemeName,
+            DarkMappingsThemeName,
+            TypographyThemeName,
+            ControlsThemeName,
+            NavigationThemeName,
+            ContentThemeName,
+            StyleGuideThemeName,
+        ]
+        error:&error];
+
+    NSAssert(theme != nil, @"Error loading dark theme: %@", error);
+
+    return theme;
 }
 
 #if !defined(SCREEN_BRIGHTNESS_THEME_APPLIER)
@@ -131,7 +132,11 @@
 - (void)toggleTheme {
     // Changing an MTFDynamicThemeApplier's theme property reapplies it to all
     // objects that had a theme class previously applied with it
-    self.themeApplier.theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
+    MTFTheme *theme = (self.isDisplayingDarkTheme ? self.lightTheme : self.darkTheme);
+    NSError *error;
+    if (![self.themeApplier setTheme:theme error:&error]) {
+        NSLog(@"Error updating theme %@", error);
+    }
     
     self.isDisplayingDarkTheme = !self.isDisplayingDarkTheme;
 }

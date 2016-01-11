@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     [self
         mtf_registerThemeProperty:ThemeProperties.titleText
         requiringValueOfClass:MTFThemeClass.class
-        applierBlock:^(MTFThemeClass *themeClass, UIButton *button) {
-            [themeClass applyToObject:button.titleLabel];
+        applierBlock:^(MTFThemeClass *themeClass, UIButton *button, NSError **error) {
+            return [themeClass applyTo:button.titleLabel error:error];
         }];
 }
 
