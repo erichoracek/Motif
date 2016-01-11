@@ -47,7 +47,7 @@ task :slather do
 end
 
 task :clean do
-    sh("rm -rf '#{DERIVED_DATA_PATH}'")
+    sh("rm -rf #{DERIVED_DATA_PATH}/*")
 end
 
 task :ci => [
