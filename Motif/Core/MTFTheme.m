@@ -82,9 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     self = [self initWithThemeDictionaries:themeDictionaries error:error];
 
-    for (NSURL *fileURL in validFileURLs) {
-        [self addFileURLsObject:fileURL];
-    }
+    _fileURLs = [validFileURLs copy];
 
     return self;
 }
@@ -101,11 +99,15 @@ NS_ASSUME_NONNULL_BEGIN
     
     self = [super init];
 
+    NSMutableDictionary<NSString *, MTFThemeConstant *> *constants = [NSMutableDictionary dictionary];
+    NSMutableDictionary<NSString *, MTFThemeClass *> *classes = [NSMutableDictionary dictionary];
+
     for (NSDictionary *dictionary in dictionaries) {
         NSError *parseError;
         MTFThemeParser *parser = [[MTFThemeParser alloc]
             initWithRawTheme:dictionary
-            inheritingFromTheme:self
+            inheritingExistingConstants:constants
+            existingClasses:classes
             error:&parseError];
 
         if (parseError != nil) {
@@ -115,9 +117,13 @@ NS_ASSUME_NONNULL_BEGIN
             return nil;
         }
 
-        [self addConstantsFromDictionary:parser.parsedConstants];
-        [self addClassesFromDictionary:parser.parsedClasses];
+        [constants addEntriesFromDictionary:parser.parsedConstants];
+        [classes addEntriesFromDictionary:parser.parsedClasses];
     }
+
+    _constants = [constants copy];
+    _classes = [classes copy];
+    _fileURLs = @[];
 
     return self;
 }
@@ -180,57 +186,6 @@ NS_ASSUME_NONNULL_BEGIN
         [filenames addObject:fileURL.lastPathComponent];
     }
     return [filenames copy];
-}
-
-#pragma mark FileURLs
-
-- (NSArray<NSURL *> *)fileURLs {
-    if (!_fileURLs) {
-        self.fileURLs = [NSMutableArray new];
-    }
-    return _fileURLs;
-}
-
-- (void)addFileURLsObject:(NSURL *)fileURL {
-    NSMutableSet<NSURL *> *fileURLs = [self.fileURLs mutableCopy];
-    [fileURLs addObject:fileURL];
-    self.fileURLs = [fileURLs copy];
-}
-
-#pragma mark Constants
-
-- (NSDictionary<NSString *, MTFThemeConstant *> *)constants {
-    if (!_constants) {
-        _constants = [NSDictionary new];
-    }
-    return _constants;
-}
-
-- (void)addConstantsFromDictionary:(NSDictionary<NSString *, MTFThemeConstant *> *)dictionary {
-    if (!dictionary.count) {
-        return;
-    }
-    NSMutableDictionary<NSString *, MTFThemeConstant *> *constants = [self.constants mutableCopy];
-    [constants addEntriesFromDictionary:dictionary];
-    self.constants = [constants copy];
-}
-
-#pragma mark Classes
-
-- (NSDictionary<NSString *, MTFThemeClass *> *)classes {
-    if (!_classes) {
-        _classes = [NSDictionary new];
-    }
-    return _classes;
-}
-
-- (void)addClassesFromDictionary:(NSDictionary<NSString *, MTFThemeClass *> *)dictionary {
-    if (!dictionary.count) {
-        return;
-    }
-    NSMutableDictionary<NSString *, MTFThemeClass *> *classes = [self.classes mutableCopy];
-    [classes addEntriesFromDictionary:dictionary];
-    self.classes = [classes copy];
 }
 
 @end

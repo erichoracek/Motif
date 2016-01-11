@@ -28,8 +28,10 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingFromTheme:(MTFTheme *)theme error:(NSError **)error {
-    NSParameterAssert(rawTheme);
+- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants existingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
+    NSParameterAssert(rawTheme != nil);
+    NSParameterAssert(existingConstants != nil);
+    NSParameterAssert(existingClasses != nil);
     
     self = [super init];
 
@@ -65,12 +67,12 @@
     if (self.class.shouldResolveReferences) {
         NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self
             mergeParsedConstants:parsedConstants
-            intoExistingConstants:theme.constants
+            intoExistingConstants:existingConstants
             error:error];
 
         NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self
             mergeParsedClasses:parsedClasses
-            intoExistingClasses:theme.classes
+            intoExistingClasses:existingClasses
             error:error];
         
         parsedConstants = [self
