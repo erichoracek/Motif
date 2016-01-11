@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */; };
 		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
-		3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */; };
+		3ABF07351A50CEDA00E6A83C /* MTFCLI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* MTFCLI.m */; };
 		3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */; };
 		3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF073D1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m */; };
 		3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07401A5141DE00E6A83C /* NSURL+CLIHelpers.m */; };
@@ -42,8 +42,8 @@
 		3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+StringWriting.m"; sourceTree = "<group>"; };
 		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
 		3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GBSettings+ThemingSymbolsGenerator.m"; sourceTree = "<group>"; };
-		3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFThemingSymbolsGenerator.h; sourceTree = "<group>"; };
-		3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFThemingSymbolsGenerator.m; sourceTree = "<group>"; };
+		3ABF07331A50CEDA00E6A83C /* MTFCLI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFCLI.h; sourceTree = "<group>"; };
+		3ABF07341A50CEDA00E6A83C /* MTFCLI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFCLI.m; sourceTree = "<group>"; };
 		3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTFTheme+SymbolsGenerationObjC.h"; sourceTree = "<group>"; };
 		3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "MTFTheme+SymbolsGenerationObjC.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3ABF073C1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBOptionsHelper+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 		3ADB6F8E1A50A8B7004EDEF3 /* MotifCLI */ = {
 			isa = PBXGroup;
 			children = (
-				3ABF07331A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.h */,
-				3ABF07341A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m */,
+				3ABF07331A50CEDA00E6A83C /* MTFCLI.h */,
+				3ABF07341A50CEDA00E6A83C /* MTFCLI.m */,
 				3ABF07391A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.h */,
 				3ABF073A1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m */,
 				3AC8A9541B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.h */,
@@ -180,6 +180,7 @@
 		3ADB6F841A50A8B7004EDEF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MTF;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
@@ -296,7 +297,7 @@
 				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
 				3AC8A9591B824D12003D2CD5 /* MTFTheme+Symbols.m in Sources */,
 				3AC8A95F1B825500003D2CD5 /* MTFTheme+WarningComment.m in Sources */,
-				3ABF07351A50CEDA00E6A83C /* MTFThemingSymbolsGenerator.m in Sources */,
+				3ABF07351A50CEDA00E6A83C /* MTFCLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
