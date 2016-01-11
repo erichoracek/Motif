@@ -180,7 +180,7 @@ Previously, we created a style applier on `UILabel` that allows us specify a cus
 ```objective-c
 NSError *error;
 MTFTheme *theme = [MTFTheme themeFromFileNamed:@"Theme" error:&error];
-NSAssert(error == nil, @"Error loading theme %@", error);
+NSAssert(theme != nil, @"Error loading theme %@", error);
 
 [theme applyClassWithName:@"Button" to:saveButton error:NULL];
 [theme applyClassWithName:@"WarningButton" to:deleteButton error:NULL];
