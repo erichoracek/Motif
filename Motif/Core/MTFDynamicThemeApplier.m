@@ -10,7 +10,7 @@
 #import "MTFDynamicThemeApplier_Private.h"
 #import "MTFTheme.h"
 #import "MTFThemeClass.h"
-#import "NSObject+ThemeClassName.h"
+#import "NSObject+ThemeClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

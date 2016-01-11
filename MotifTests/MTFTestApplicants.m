@@ -35,3 +35,12 @@
 @implementation MTFTestEnumerationPropertiesApplicant
 
 @end
+
+@implementation MTFTestSetterCountingApplicant
+
+- (void)setStringValue:(NSString *)stringValue {
+    _applications++;
+    _stringValue = stringValue;
+}
+
+@end
