@@ -47,7 +47,7 @@ task :slather do
 end
 
 task :clean do
-    sh("rm -rf #{DERIVED_DATA_PATH}/*")
+    sh("rm -rf #{DERIVED_DATA_PATH}")
 end
 
 task :ci => [
@@ -76,7 +76,7 @@ TEST_SDK = 'iphonesimulator'
 BUILD_TOOL = 'xcodebuild'
 
 BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}' "
-BUILD_FLAGS_IOS = "-sdk #{TEST_SDK} -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6' -destination 'platform=iOS Simulator,OS=latest,name=iPhone 5' ONLY_ACTIVE_ARCH=YES " + BUILD_FLAGS
+BUILD_FLAGS_IOS = "-sdk #{TEST_SDK} -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6' " + BUILD_FLAGS
 BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' " + BUILD_FLAGS_IOS
 BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
 BUILD_FLAGS_BUILD_CLI = "build -scheme #{SCHEME_CLI} " + BUILD_FLAGS
