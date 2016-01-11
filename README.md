@@ -165,8 +165,8 @@ The final applier that we'll need is on `UIButton` to style its `titleLabel`:
     [self
         mtf_registerThemeProperty:@"titleText"
         requiringValueOfClass:MTFThemeClass.class
-        applierBlock:^(MTFThemeClass *class, UIButton *button) {
-            [class applyToObject:button.titleLabel];
+        applierBlock:^(MTFThemeClass *class, UIButton *button, NSError **error) {
+            return [class applyTo:button.titleLabel error:error];
         }];
 }
 ```
@@ -223,7 +223,7 @@ To enable dynamic theming, where you would normally use the theme class applica
 
 ```objective-c
 // We're going to default to the light theme
-MTFTheme *lightTheme = [MTFTheme themeFromFileNamed:@"LightTheme" error:nil];
+MTFTheme *lightTheme = [MTFTheme themeFromFileNamed:@"LightTheme" error:NULL];
 
 // Create a dynamic theme applier, which we will use to style all of our
 // interface elements
@@ -242,7 +242,7 @@ MTFTheme *darkTheme = [MTFTheme themeFromFileNamed:@"DarkTheme" error:NULL];
 // We now change the applier's theme to the dark theme, which will automatically
 // re-apply this new theme to all interface elements that previously had the
 // light theme applied to them
-applier.theme = darkTheme;
+[applier setTheme:darkTheme error:NULL];
 ```
 
 ### "Mapping" themes
@@ -281,14 +281,14 @@ MTFTheme *lightTheme = *theme = [MTFTheme
         @"Colors",
         @"LightMappings",
         @"Buttons"
-    ] error:nil];
+    ] error:NULL];
 
 MTFTheme *darkTheme = *theme = [MTFTheme
     themeFromFileNamed:@[
         @"Colors",
         @"DarkMappings",
         @"Buttons"
-    ] error:nil];
+    ] error:NULL];
 ```
 
 This way, we only have to create our theme classes one time, rather than once for each theme that we want to add to our app. For a more in-depth look at this pattern, clone this repo and read the source of the `DynamicThemingExample` target within `Motif.xcworkspace`.
