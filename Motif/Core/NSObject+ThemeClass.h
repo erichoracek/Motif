@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Remains populated even if the weak mtf_themeClass property is nilled out
 /// due its value being deallocated.
-@property (nonatomic, readonly, copy, nullable) NSString *mtf_themeClassName IBInspectable;
+@property (nonatomic, readonly, copy, nullable) NSString *mtf_themeClassName;
 
 @end
 
