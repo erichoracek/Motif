@@ -1,6 +1,6 @@
 //
-//  MTFThemingSymbolsGenerator.m
-//  MTFThemingSymbolsGenerator
+//  MTFCLI.m
+//  MotifCLI
 //
 //  Created by Eric Horacek on 12/28/14.
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
@@ -9,7 +9,7 @@
 #import <GBCli/GBCli.h>
 #import <Motif/Motif.h>
 #import <Motif/MTFThemeParser.h>
-#import "MTFThemingSymbolsGenerator.h"
+#import "MTFCLI.h"
 #import "GBSettings+ThemingSymbolsGenerator.h"
 #import "GBOptionsHelper+ThemingSymbolsGenerator.h"
 #import "MTFTheme+SymbolsGenerationObjC.h"
@@ -18,7 +18,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation MTFThemingSymbolsGenerator
+@implementation MTFCLI
 
 - (int)runWithSettings:(GBSettings *)settings {
     // Do not resolve references when parsing themes
@@ -112,7 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-int MTFThemingSymbolsGeneratorMain(int argc, const char *argv[]) {
+int MTFCLIMain(int argc, const char *argv[]) {
     int result = 0;
 
     @autoreleasepool {
@@ -136,7 +136,7 @@ int MTFThemingSymbolsGeneratorMain(int argc, const char *argv[]) {
             return 0;
         }
         
-        result = [[[MTFThemingSymbolsGenerator alloc] init] runWithSettings:settings];
+        result = [[[MTFCLI alloc] init] runWithSettings:settings];
     }
 
     return result;

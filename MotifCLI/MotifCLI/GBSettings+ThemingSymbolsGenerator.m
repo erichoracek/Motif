@@ -1,6 +1,6 @@
 //
 //  GBSettings+ThemingSymbolsGenerator.m
-//  MTFThemingSymbolsGenerator
+//  MotifCLI
 //
 //  Created by Eric Horacek on 12/28/14.
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
@@ -17,7 +17,7 @@ NSString * const MTFSettingsOptionHelp = @"help";
 NSString * const MTFSettingsOptionVerbose = @"verbose";
 NSString * const MTFSettingsOptionSwfit = @"swift";
 
-@implementation GBSettings (MTFThemingSymbolsGenerator)
+@implementation GBSettings (MTFCLI)
 
 + (instancetype)mtf_settingsWithName:(NSString *)name parent:(GBSettings *)parent {
     id result = [self settingsWithName:name parent:parent];
