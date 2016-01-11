@@ -289,6 +289,33 @@ describe(@"application", ^{
         });
     });
 
+    describe(@"repeated applications", ^{
+        it(@"should not reinvoke the setter when applying the same class", ^{
+            theme = themeFromDictionary(@{
+                className: @{
+                    NSStringFromSelector(@selector(stringValue)): stringValue,
+                }
+            });
+            expect(theme).to.beAnInstanceOf(MTFTheme.class);
+            expect(error).to.beNil();
+            
+            MTFTestSetterCountingApplicant *applicant = [[MTFTestSetterCountingApplicant alloc] init];
+            success = [theme applyClassWithName:className.mtf_symbol to:applicant error:&error];
+            expect(success).to.beTruthy();
+            expect(error).to.beNil();
+
+            expect(applicant.stringValue).to.equal(stringValue);
+            expect(applicant.applications).to.equal(1);
+
+            success = [theme applyClassWithName:className.mtf_symbol to:applicant error:&error];
+            expect(success).to.beTruthy();
+            expect(error).to.beNil();
+
+            expect(applicant.stringValue).to.equal(stringValue);
+            expect(applicant.applications).to.equal(1);
+        });
+    });
+
     describe(@"failures", ^{
         it(@"should fail when a property is unapplied", ^{
             theme = themeFromDictionary(@{

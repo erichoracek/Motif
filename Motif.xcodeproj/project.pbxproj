@@ -33,8 +33,8 @@
 		3A02C8631AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */; };
 		3A02C8651AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C8671AD206FF00C420F2 /* NSObject+ThemeClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */; };
+		3A02C8661AD206FF00C420F2 /* NSObject+ThemeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C8671AD206FF00C420F2 /* NSObject+ThemeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClass.m */; };
 		3A02C8681AD206FF00C420F2 /* NSString+ThemeSymbols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8691AD206FF00C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
 		3A02C86A1AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -75,8 +75,8 @@
 		3A02C89A1AD2072600C420F2 /* NSObject+ThemeClassAppliers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A02C89B1AD2072600C420F2 /* NSObject+ThemeClassAppliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */; };
 		3A02C89C1AD2072600C420F2 /* NSObject+ThemeClassAppliersPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		3A02C89D1AD2072600C420F2 /* NSObject+ThemeClassName.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A02C89E1AD2072600C420F2 /* NSObject+ThemeClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */; };
+		3A02C89D1AD2072600C420F2 /* NSObject+ThemeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A02C89E1AD2072600C420F2 /* NSObject+ThemeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClass.m */; };
 		3A02C89F1AD2072600C420F2 /* NSString+ThemeSymbols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A02C8A01AD2072600C420F2 /* NSString+ThemeSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */; };
 		3A02C8A11AD2072600C420F2 /* NSURL+LastPathComponentWithoutExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -286,8 +286,8 @@
 		3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliers.h"; sourceTree = "<group>"; };
 		3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClassAppliers.m"; sourceTree = "<group>"; };
 		3A02C82C1AD206FF00C420F2 /* NSObject+ThemeClassAppliersPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassAppliersPrivate.h"; sourceTree = "<group>"; };
-		3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClassName.h"; sourceTree = "<group>"; };
-		3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClassName.m"; sourceTree = "<group>"; };
+		3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeClass.h"; sourceTree = "<group>"; };
+		3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeClass.m"; sourceTree = "<group>"; };
 		3A02C82F1AD206FF00C420F2 /* NSString+ThemeSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ThemeSymbols.h"; sourceTree = "<group>"; };
 		3A02C8301AD206FF00C420F2 /* NSString+ThemeSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ThemeSymbols.m"; sourceTree = "<group>"; };
 		3A02C8311AD206FF00C420F2 /* NSURL+LastPathComponentWithoutExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+LastPathComponentWithoutExtension.h"; sourceTree = "<group>"; };
@@ -467,8 +467,8 @@
 				3A02C8231AD206FF00C420F2 /* MTFThemeParser.m */,
 				3A02C82A1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.h */,
 				3A02C82B1AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m */,
-				3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClassName.h */,
-				3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClassName.m */,
+				3A02C82D1AD206FF00C420F2 /* NSObject+ThemeClass.h */,
+				3A02C82E1AD206FF00C420F2 /* NSObject+ThemeClass.m */,
 				3A02C81E1AD206FF00C420F2 /* MTFThemeConstant.h */,
 				3A02C81F1AD206FF00C420F2 /* MTFThemeConstant.m */,
 				3A02C8201AD206FF00C420F2 /* MTFThemeConstant_Private.h */,
@@ -751,7 +751,7 @@
 				3A02C8831AD2072500C420F2 /* MTFDynamicThemeApplier_Private.h in Headers */,
 				3A179DA71AC9483900BD598C /* Motif.h in Headers */,
 				3A02C8851AD2072500C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
-				3A02C89D1AD2072600C420F2 /* NSObject+ThemeClassName.h in Headers */,
+				3A02C89D1AD2072600C420F2 /* NSObject+ThemeClass.h in Headers */,
 				3A02C8961AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */,
 				3A02C88B1AD2072500C420F2 /* MTFThemeClass_Private.h in Headers */,
 				3A02C89A1AD2072600C420F2 /* NSObject+ThemeClassAppliers.h in Headers */,
@@ -798,7 +798,7 @@
 				3A5C07D51C2CB6F500DB6EAB /* MTFErrors.h in Headers */,
 				3AEB5BEF1B1EDB2D006C9C67 /* NSValueTransformer+MotifUIEdgeInsets.h in Headers */,
 				3A02C84E1AD206FF00C420F2 /* MTFReverseTransformedValueClass.h in Headers */,
-				3A02C8661AD206FF00C420F2 /* NSObject+ThemeClassName.h in Headers */,
+				3A02C8661AD206FF00C420F2 /* NSObject+ThemeClass.h in Headers */,
 				3A02C85F1AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.h in Headers */,
 				3AFF69EB1C2D1DA90046140D /* MTFValueTransformerErrorHandling.h in Headers */,
 				3A02C8541AD206FF00C420F2 /* MTFThemeClass_Private.h in Headers */,
@@ -1011,7 +1011,7 @@
 				3A02C88A1AD2072500C420F2 /* MTFThemeClass.m in Sources */,
 				3A02C8951AD2072600C420F2 /* MTFThemeSymbolReference.m in Sources */,
 				3A02C88F1AD2072500C420F2 /* MTFThemeConstant.m in Sources */,
-				3A02C89E1AD2072600C420F2 /* NSObject+ThemeClassName.m in Sources */,
+				3A02C89E1AD2072600C420F2 /* NSObject+ThemeClass.m in Sources */,
 				3A02C8971AD2072600C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */,
 				3A1C4F561AEDC9730048F84C /* MTFThemeSourceObserver.m in Sources */,
 				3A5D79521C42EF8400645869 /* NSValueTransformer+MotifCGSize.m in Sources */,
@@ -1079,7 +1079,7 @@
 				3A02C85E1AD206FF00C420F2 /* MTFThemeSymbolReference.m in Sources */,
 				3A1C4F5B1AEDD49C0048F84C /* MTFFileObservationContext.m in Sources */,
 				3A02C8581AD206FF00C420F2 /* MTFThemeConstant.m in Sources */,
-				3A02C8671AD206FF00C420F2 /* NSObject+ThemeClassName.m in Sources */,
+				3A02C8671AD206FF00C420F2 /* NSObject+ThemeClass.m in Sources */,
 				3A02C8601AD206FF00C420F2 /* NSDictionary+DictionaryValueValidation.m in Sources */,
 				3A02C85C1AD206FF00C420F2 /* MTFThemeParser.m in Sources */,
 				3A02C8641AD206FF00C420F2 /* NSObject+ThemeClassAppliers.m in Sources */,

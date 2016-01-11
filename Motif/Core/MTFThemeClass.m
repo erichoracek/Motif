@@ -8,7 +8,7 @@
 
 #import "NSValueTransformer+TypeFiltering.h"
 #import "NSObject+ThemeClassAppliersPrivate.h"
-#import "NSObject+ThemeClassName.h"
+#import "NSObject+ThemeClass.h"
 #import "NSString+ThemeSymbols.h"
 
 #import "MTFRuntimeExtensions.h"
@@ -53,8 +53,12 @@
 
 #pragma mark Public
 
-- (BOOL)applyTo:(id)object error:(NSError **)error {
-    NSParameterAssert(object != nil);
+- (BOOL)applyTo:(id)applicant error:(NSError **)error {
+    NSParameterAssert(applicant != nil);
+
+    // If the theme class has already been applied to the applicant, do no
+    // reapply.
+    if ([applicant mtf_themeClass] == self) return YES;
 
     // Contains the names of properties that were not able to be applied to the
     // object.
@@ -70,9 +74,9 @@
 
     // First, attempt to apply each of the class appliers registered on the
     // applicant's class.
-    for (id<MTFThemeClassApplicable> classApplier in [[object class] mtf_themeClassAppliers]) {
+    for (id<MTFThemeClassApplicable> classApplier in [[applicant class] mtf_themeClassAppliers]) {
         NSError *applierError;
-        NSSet<NSString *> *appliedProperties = [classApplier applyClass:self to:object error:&applierError];
+        NSSet<NSString *> *appliedProperties = [classApplier applyClass:self to:applicant error:&applierError];
         
         if (appliedProperties != nil) {
             [unappliedProperties minusSet:appliedProperties];
@@ -94,7 +98,7 @@
     for (NSString *property in [unappliedProperties copy]) {
         // Traverse the class hierarchy from the applicant's class up by
         // superclasses.
-        Class applicantClass = [object class];
+        Class applicantClass = [applicant class];
         do {
             // Locate the first property of the same name as the theme class
             // property in the applicant's class hierarchy.
@@ -121,7 +125,7 @@
                 // out of the loop.
                 if ([constant.value isKindOfClass:propertyClass]) {
                     [unappliedProperties removeObject:property];
-                    [object setValue:constant.value forKey:property];
+                    [applicant setValue:constant.value forKey:property];
                     break;
                 }
             }
@@ -137,7 +141,7 @@
                 // set it with KVC as no transformation is needed.
                 if (isPropertyNumericCType && [constant.value isKindOfClass:NSNumber.class]) {
                     [unappliedProperties removeObject:property];
-                    [object setValue:constant.value forKey:property];
+                    [applicant setValue:constant.value forKey:property];
                     break;
                 }
             }
@@ -172,7 +176,7 @@
                 id transformedValue = [constant transformedValueFromTransformer:valueTransformer error:&valueTransformationError];
 
                 if (transformedValue != nil) {
-                    [object setValue:transformedValue forKey:property];
+                    [applicant setValue:transformedValue forKey:property];
                     break;
                 }
 
@@ -185,7 +189,7 @@
                 break;
             }
             
-            id propertyValue = [object valueForKey:property];
+            id propertyValue = [applicant valueForKey:property];
             BOOL isPropertyTypeThemeClass = (propertyClass == MTFThemeClass.class);
             BOOL isValueThemeClass = [constant.value isKindOfClass:MTFThemeClass.class];
 
@@ -233,14 +237,14 @@
                 "an applier block registered for the unapplied properties.",
             [unappliedProperties.allObjects componentsJoinedByString:@", "],
             self.name,
-            [object class],
-            [object class]];
+            [applicant class],
+            [applicant class]];
 
         NSError *failedToApplyThemeError = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
             NSLocalizedDescriptionKey: description,
             MTFUnappliedPropertiesErrorKey: unappliedValuesByProperties,
             MTFThemeClassNameErrorKey: self.name,
-            MTFApplicantErrorKey: object,
+            MTFApplicantErrorKey: applicant,
         }];
 
         if (error != NULL) {
@@ -269,14 +273,14 @@
                 "named '%@' to an instance of %@.",
             [propertiesWithErrors.allObjects componentsJoinedByString:@", "],
             self.name,
-            [object class]];
+            [applicant class]];
 
         NSError *failedToApplyThemeError = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToApplyTheme userInfo:@{
             NSLocalizedDescriptionKey: description,
             MTFUnappliedPropertiesErrorKey: valuesByPropertiesWithErrors,
             MTFThemeClassNameErrorKey: self.name,
             MTFUnderlyingErrorsErrorKey: errors,
-            MTFApplicantErrorKey: object,
+            MTFApplicantErrorKey: applicant,
         }];
 
         if (error != NULL) {
@@ -289,8 +293,8 @@
 
         return NO;
     }
-    
-    [object mtf_setThemeClassName:self.name];
+
+    [applicant mtf_setThemeClass:self];
     
     return YES;
 }

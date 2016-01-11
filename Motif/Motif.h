@@ -22,7 +22,7 @@ FOUNDATION_EXPORT const unsigned char MotifVersionString[];
 #import <Motif/MTFErrors.h>
 #import <Motif/MTFValueTransformerErrorHandling.h>
 #import <Motif/MTFThemeClassApplicable.h>
-#import <Motif/NSObject+ThemeClassName.h>
+#import <Motif/NSObject+ThemeClass.h>
 #import <Motif/NSObject+ThemeClassAppliers.h>
 #import <Motif/NSValueTransformer+Registration.h>
 #import <Motif/NSValueTransformer+TypeFiltering.h>

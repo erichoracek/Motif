@@ -32,14 +32,14 @@
 
 @interface MTFTestObjCClassPropertiesApplicant : NSObject
 
-@property (nonatomic) NSString *stringValue;
-@property (nonatomic) NSNumber *numberValue;
+@property (nonatomic, copy) NSString *stringValue;
+@property (nonatomic, copy) NSNumber *numberValue;
 
 @end
 
 @interface MTFTestSuperclassPropertyApplicant : NSObject
 
-@property (nonatomic) NSNumber *superclassProperty;
+@property (nonatomic, copy) NSNumber *superclassProperty;
 
 @end
 
@@ -68,5 +68,13 @@ typedef NS_ENUM(NSInteger, MTFTestEnumeration) {
 @interface MTFTestEnumerationPropertiesApplicant : NSObject
 
 @property (nonatomic) MTFTestEnumeration enumeration;
+
+@end
+
+@interface MTFTestSetterCountingApplicant : NSObject
+
+@property (readonly, nonatomic) NSInteger applications;
+
+@property (nonatomic, copy) NSString *stringValue;
 
 @end
