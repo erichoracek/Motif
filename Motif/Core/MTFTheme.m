@@ -65,8 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(fileURLs != nil);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     
-    NSMutableArray<NSDictionary *> *themeDictionaries = [NSMutableArray new];
-    NSMutableArray<NSURL *> *validFileURLs = [NSMutableArray new];
+    NSMutableArray<NSDictionary *> *themeDictionaries = [NSMutableArray array];
+    NSMutableArray<NSURL *> *validFileURLs = [NSMutableArray array];
     
     for (NSURL *fileURL in fileURLs) {
         NSDictionary *themeDictionary = [fileURL mtf_themeDictionaryWithError:error];
@@ -171,7 +171,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Names
 
 - (NSArray<NSString *> *)names {
-    NSMutableArray<NSString *> *names = [NSMutableArray new];
+    NSMutableArray<NSString *> *names = [NSMutableArray array];
     for (NSURL *fileURL in self.fileURLs) {
         [names addObject:fileURL.mtf_themeName];
     }
@@ -181,7 +181,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Filenames
 
 - (NSArray<NSString *> *)filenames {
-    NSMutableArray<NSString *> *filenames = [NSMutableArray new];
+    NSMutableArray<NSString *> *filenames = [NSMutableArray array];
     for (NSURL *fileURL in self.fileURLs) {
         [filenames addObject:fileURL.lastPathComponent];
     }

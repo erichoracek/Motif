@@ -219,7 +219,7 @@ typedef NS_ENUM(NSInteger, FileType) {
     NSArray *symbols = [self symbolsForType:symbolType];
     if (symbols == nil || symbols.count == 0) return nil;
 
-    NSMutableArray *lines = [NSMutableArray new];
+    NSMutableArray *lines = [NSMutableArray array];
  
     NSString *enumName = [self enumNameForSymbolType:symbolType prefix:prefix];
     NSString *openingDeclaration = [self openingDeclarationForFiletype:fileType enumName:enumName];

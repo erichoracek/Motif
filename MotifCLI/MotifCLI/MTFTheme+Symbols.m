@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSArray *)properties {
-    NSMutableSet *properties = [NSMutableSet new];
+    NSMutableSet *properties = [NSMutableSet set];
 
     for (MTFThemeClass *class in self.classes.allValues) {
         [properties addObjectsFromArray:class.properties.allKeys];

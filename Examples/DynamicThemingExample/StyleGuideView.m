@@ -24,15 +24,15 @@ NS_ASSUME_NONNULL_BEGIN
     _secondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];;
     _warningSecondaryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    _displayTextLabel = [UILabel new];
-    _headlineTextLabel = [UILabel new];
-    _titleTextLabel = [UILabel new];
-    _subheadTextLabel = [UILabel new];
-    _bodyTextLabel = [UILabel new];
-    _captionTextLabel = [UILabel new];
+    _displayTextLabel = [[UILabel alloc] init];
+    _headlineTextLabel = [[UILabel alloc] init];
+    _titleTextLabel = [[UILabel alloc] init];
+    _subheadTextLabel = [[UILabel alloc] init];
+    _bodyTextLabel = [[UILabel alloc] init];
+    _captionTextLabel = [[UILabel alloc] init];
     
-    _toggle = [UISwitch new];
-    _slider = [UISlider new];
+    _toggle = [[UISwitch alloc] init];
+    _slider = [[UISlider alloc] init];
     NSArray<NSString *> *items = @[ @"One", @"Two", @"Three" ];
     _segmentedControl = [[UISegmentedControl alloc] initWithItems:items];
     

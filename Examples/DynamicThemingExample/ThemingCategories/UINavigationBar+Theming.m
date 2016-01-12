@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
     shadowImage = [shadowImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
     [self setShadowImage:shadowImage];
     // A 'backgroundImage' is required for the shadow image to work.
-    [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
 }
 
 @end

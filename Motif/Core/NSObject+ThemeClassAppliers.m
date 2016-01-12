@@ -170,7 +170,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (NSArray<id<MTFThemeClassApplicable>> *)mtf_themeClassAppliers {
-    NSMutableArray<id<MTFThemeClassApplicable>> *appliers = [NSMutableArray new];
+    NSMutableArray<id<MTFThemeClassApplicable>> *appliers = [NSMutableArray array];
     Class class = self.class;
     do {
         NSMutableArray<id<MTFThemeClassApplicable>> *classAppliers = class.mtf_classThemeClassAppliers;
@@ -182,7 +182,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSMutableArray<id<MTFThemeClassApplicable>> *)mtf_classThemeClassAppliers {
     NSMutableArray<id<MTFThemeClassApplicable>> *appliers = objc_getAssociatedObject(self, _cmd);
     if (appliers == nil) {
-        appliers = [NSMutableArray new];
+        appliers = [NSMutableArray array];
         objc_setAssociatedObject(
             self,
             _cmd,

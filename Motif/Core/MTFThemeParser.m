@@ -99,7 +99,7 @@
 #pragma mark Raw Theme Parsing
 
 - (NSDictionary<NSString *, id> *)rawConstantsFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
-    NSMutableDictionary *rawConstants = [NSMutableDictionary new];
+    NSMutableDictionary *rawConstants = [NSMutableDictionary dictionary];
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolConstantReference) {
             rawConstants[symbol] = rawTheme[symbol];
@@ -109,7 +109,7 @@
 }
 
 - (NSDictionary<NSString *, id> *)rawClassesFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
-    NSMutableDictionary *rawClasses = [NSMutableDictionary new];
+    NSMutableDictionary *rawClasses = [NSMutableDictionary dictionary];
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolClassReference) {
             rawClasses[symbol] = rawTheme[symbol];
@@ -128,7 +128,7 @@
 #pragma mark Constants
 
 - (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError **)error {
-    NSMutableDictionary *parsedConstants = [NSMutableDictionary new];
+    NSMutableDictionary *parsedConstants = [NSMutableDictionary dictionary];
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
         MTFThemeConstant *constant = [self
@@ -340,7 +340,7 @@
 
 - (NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error {
     // Create MTFThemeClass objects from the raw classes
-    NSMutableDictionary<NSString *, MTFThemeClass *> *parsedClasses = [NSMutableDictionary new];
+    NSMutableDictionary<NSString *, MTFThemeClass *> *parsedClasses = [NSMutableDictionary dictionary];
     
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
