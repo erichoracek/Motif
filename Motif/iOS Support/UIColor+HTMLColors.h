@@ -86,28 +86,28 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Scan a color hex, RGB, HSL or X11 named color.
  */
-- (BOOL)mtf_scanCSSColor:(UIColor **)color;
+- (BOOL)mtf_scanCSSColor:(UIColor * _Nullable * _Nullable)color;
 
 /**
  * Scan an RGB color ("rgb(255, 255, 255)", "rgba(255, 255, 255, 1.0)").
  */
-- (BOOL)mtf_scanRGBColor:(UIColor **)color;
+- (BOOL)mtf_scanRGBColor:(UIColor * _Nullable * _Nullable)color;
 
 /**
  * Scan an HSL color ("hsl(359, 100%, 100%)", "hsla(359, 100%, 100%, 1.0)").
  */
-- (BOOL)mtf_scanHSLColor:(UIColor **)color;
+- (BOOL)mtf_scanHSLColor:(UIColor * _Nullable * _Nullable)color;
 
 /**
  * Scan a hex color ("#FFFFFF", "#FFF").
  */
-- (BOOL)mtf_scanHexColor:(UIColor **)color;
+- (BOOL)mtf_scanHexColor:(UIColor * _Nullable * _Nullable)color;
 
 /**
  * Scan a CSS3/SVG named color. These are similar to the X11 named colors.
  * See: http://www.w3.org/TR/css3-color/#svg-color
  */
-- (BOOL)mtf_scanW3CNamedColor:(UIColor **)color;
+- (BOOL)mtf_scanW3CNamedColor:(UIColor * _Nullable * _Nullable)color;
 
 @end
 
