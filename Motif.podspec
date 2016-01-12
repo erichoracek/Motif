@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Motif'
-  s.version = '0.2.1'
+  s.version = '0.3.0'
   s.license = {
     :type => 'MIT',
     :file => 'LICENSE'
