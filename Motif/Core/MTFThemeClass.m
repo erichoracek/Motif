@@ -296,17 +296,12 @@
 #pragma mark Private
 
 - (BOOL)isEqualToThemeClass:(MTFThemeClass *)themeClass {
-    if (!themeClass) {
-        return NO;
-    }
-    BOOL haveEqualNames = (
-        (!self.name && !themeClass.name)
-        || [self.name isEqualToString:themeClass.name]
-    );
-    BOOL haveEqualPropertiesConstants = (
-        (!self.propertiesConstants && !themeClass.propertiesConstants)
-        || [self.propertiesConstants isEqual:themeClass.propertiesConstants]
-    );
+    if (themeClass == nil) return NO;
+
+    BOOL haveEqualNames = [self.name isEqualToString:themeClass.name];
+
+    BOOL haveEqualPropertiesConstants = [self.propertiesConstants isEqual:themeClass.propertiesConstants];
+
     return (
         haveEqualNames
         && haveEqualPropertiesConstants

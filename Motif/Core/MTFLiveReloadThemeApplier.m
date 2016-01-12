@@ -99,7 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (nullable NSURL *)URLForSourceDirectoryFromSourceFileURL:(NSURL *)sourceFileURL {
-    NSParameterAssert(sourceFileURL);
+    NSParameterAssert(sourceFileURL != nil);
     
     NSError *error;
     __unused BOOL isReachable = [sourceFileURL checkResourceIsReachableAndReturnError:&error];

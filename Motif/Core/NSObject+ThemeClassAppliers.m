@@ -116,7 +116,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (void)mtf_registerThemeClassApplier:(id<MTFThemeClassApplicable>)applier {
-    NSParameterAssert(applier);
+    NSParameterAssert(applier != nil);
     
     NSAssert(
         NSThread.isMainThread,
@@ -159,7 +159,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Public
 
 + (void)mtf_deregisterThemeClassApplier:(id<MTFThemeClassApplicable>)applier {
-    NSParameterAssert(applier);
+    NSParameterAssert(applier != nil);
     
     NSAssert(
         NSThread.isMainThread,
@@ -181,7 +181,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSMutableArray<id<MTFThemeClassApplicable>> *)mtf_classThemeClassAppliers {
     NSMutableArray<id<MTFThemeClassApplicable>> *appliers = objc_getAssociatedObject(self, _cmd);
-    if (!appliers) {
+    if (appliers == nil) {
         appliers = [NSMutableArray new];
         objc_setAssociatedObject(
             self,

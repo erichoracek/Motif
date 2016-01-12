@@ -19,8 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithDispatchSource:(dispatch_source_t)dispatchSource fileDescriptor:(int)fileDescriptor path:(NSString *)path {
-    NSParameterAssert(dispatchSource);
+    NSParameterAssert(dispatchSource != NULL);
     NSAssert(fileDescriptor != -1, @"File descriptor must not be -1.");
+    NSParameterAssert(path != nil);
     
     self = [super init];
     

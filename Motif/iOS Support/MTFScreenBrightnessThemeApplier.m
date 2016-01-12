@@ -23,9 +23,9 @@
 static CGFloat const DefaultBrightnessThreshold = 0.5;
 
 - (instancetype)initWithScreen:(UIScreen *)screen lightTheme:(MTFTheme *)lightTheme darkTheme:(MTFTheme *)darkTheme {
-    NSParameterAssert(screen);
-    NSParameterAssert(lightTheme);
-    NSParameterAssert(darkTheme);
+    NSParameterAssert(screen != nil);
+    NSParameterAssert(lightTheme != nil);
+    NSParameterAssert(darkTheme != nil);
     
     MTFTheme *theme = [self
         themeForScreen:screen
@@ -71,9 +71,9 @@ static CGFloat const DefaultBrightnessThreshold = 0.5;
 #pragma mark - MTFScreenBrightnessThemeApplier
 
 - (MTFTheme *)themeForScreen:(UIScreen *)screen withBrightnessThreshold:(CGFloat)brightnessThreshold lightTheme:(MTFTheme *)lightTheme darkTheme:(MTFTheme *)darkTheme {
-    NSParameterAssert(screen);
-    NSParameterAssert(lightTheme);
-    NSParameterAssert(darkTheme);
+    NSParameterAssert(screen != nil);
+    NSParameterAssert(lightTheme != nil);
+    NSParameterAssert(darkTheme != nil);
     
     return (screen.brightness > brightnessThreshold) ? lightTheme : darkTheme;
 }

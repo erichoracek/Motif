@@ -17,12 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDictionary *)mtf_dictionaryValueForKey:(NSString *)key error:(NSError **)error {
     NSDictionary *value = self[key];
     // If there is no value for the specified key, is it not an error, just
-    // return
-    if (!value) {
-        return nil;
-    }
+    // return.
+    if (value == nil) return nil;
+
     // If the value for the specified key is a dictionary but is not a valid
-    // type, return with error
+    // type, return with error.
     if (![value isKindOfClass:NSDictionary.class]) {
         if (error != NULL) {
             NSString *localizedDescription = [NSString stringWithFormat:

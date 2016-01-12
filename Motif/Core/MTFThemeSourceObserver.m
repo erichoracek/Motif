@@ -63,8 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - MTFThemeSourceObserver
 
 - (NSArray<NSString *> *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
-    NSParameterAssert(theme);
-    NSParameterAssert(sourceDirectoryURL);
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
     
     NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray new];
     
@@ -79,14 +79,14 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
-    NSParameterAssert(themeFilename);
-    NSParameterAssert(sourceDirectoryURL);
+    NSParameterAssert(themeFilename != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
     
     NSError *error;
     NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
     
     NSAssert(
-        error == nil,
+        subpaths != nil,
         @"Error traversing directory at path %@: %@",
         sourceDirectoryURL,
         error);
@@ -124,9 +124,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSArray<MTFFileObservationContext *> *)observeUpdatesToPaths:(NSArray<NSString *> *)paths onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
-    NSParameterAssert(paths);
-    NSParameterAssert(queue);
-    NSParameterAssert(didUpdate);
+    NSParameterAssert(paths != nil);
+    NSParameterAssert(queue != nil);
+    NSParameterAssert(didUpdate != nil);
     
     NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [NSMutableArray new];
     
@@ -143,9 +143,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (MTFFileObservationContext *)observeUpdatesToPath:(NSString *)path onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
-    NSParameterAssert(path);
-    NSParameterAssert(queue);
-    NSParameterAssert(didUpdate);
+    NSParameterAssert(path != nil);
+    NSParameterAssert(queue != nil);
+    NSParameterAssert(didUpdate != nil);
     
     const char *fileSystemRepresentation = path.fileSystemRepresentation;
     int fileDescriptor = open(fileSystemRepresentation, O_EVTONLY, 0);
@@ -210,7 +210,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (nullable MTFTheme *)themeFromSourceFilePaths:(NSArray<NSString *> *)sourceFilePaths error:(NSError **)error {
-    NSParameterAssert(sourceFilePaths);
+    NSParameterAssert(sourceFilePaths != nil);
     
     // Transform the paths into URLs
     NSMutableArray<NSURL *> *sourceFileURLs = [NSMutableArray new];
@@ -225,9 +225,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSArray<MTFFileObservationContext *> *)observeSourceFilesOfTheme:(MTFTheme *)theme onQueue:(dispatch_queue_t)queue didUpdate:(MTFThemeDidUpdate)didUpdate {
-    NSParameterAssert(theme);
-    NSParameterAssert(queue);
-    NSParameterAssert(didUpdate);
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(queue != nil);
+    NSParameterAssert(didUpdate != nil);
 
     NSArray<NSString *> *sourceFilePaths = [self
         sourceFilePathsForTheme:theme
@@ -254,7 +254,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)updateObservationContext:(MTFFileObservationContext *)contextToUpdate {
-    NSParameterAssert(contextToUpdate);
+    NSParameterAssert(contextToUpdate != nil);
     
     NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [self.fileObservationContexts mutableCopy];
     
