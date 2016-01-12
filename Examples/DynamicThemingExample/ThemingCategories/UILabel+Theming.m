@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (NSDictionary *)mtf_textAttributesForThemeClass:(MTFThemeClass *)themeClass {
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
     
     NSString *name = themeClass.properties[TypographyThemeProperties.fontName];
     CGFloat size = [themeClass.properties[TypographyThemeProperties.fontSize] floatValue];

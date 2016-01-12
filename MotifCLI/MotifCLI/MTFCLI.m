@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     [MTFThemeParser setShouldResolveReferences:NO];
     
     // Build an array of `MTFThemes` from the passed `theme` path params
-    NSMutableArray *themes = [NSMutableArray new];
+    NSMutableArray *themes = [NSMutableArray array];
     for (NSString *themePath in settings.mtf_themes) {
         NSURL *themeURL = [NSURL mtf_fileURLFromPathParameter:themePath];
         if (themeURL == nil) {
@@ -121,10 +121,10 @@ int MTFCLIMain(int argc, const char *argv[]) {
         
         [defaultSettings mtf_applyDefaults];
         
-        GBOptionsHelper *options = [GBOptionsHelper new];
+        GBOptionsHelper *options = [[GBOptionsHelper alloc] init];
         [options mtf_registerOptions];
         
-        GBCommandLineParser *parser = [GBCommandLineParser new];
+        GBCommandLineParser *parser = [[GBCommandLineParser alloc] init];
         [parser registerSettings:settings];
         [parser registerOptions:options];
         [parser parseOptionsWithArguments:(char **)argv count:argc];

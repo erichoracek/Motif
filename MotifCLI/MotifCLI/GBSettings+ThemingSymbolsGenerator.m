@@ -51,7 +51,7 @@ GB_SYNTHESIZE_BOOL(mtf_outputSwift, mtf_setOutputSwift, MTFSettingsOptionSwfit)
 }
 
 - (NSString *)mtf_indentation {
-    NSMutableString *indentationString = [NSMutableString new];
+    NSMutableString *indentationString = [NSMutableString string];
     for (NSInteger _ = 0; _ < self.mtf_indentationCount; _++) {
         [indentationString appendString:self.mtf_indentationCharacter];
     }

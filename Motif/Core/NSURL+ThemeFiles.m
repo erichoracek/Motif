@@ -56,7 +56,7 @@ static NSString * const YAMLExtensionShort = @"yml";
     if (bundle == nil) bundle = NSBundle.mainBundle;
     
     // Build an array of fileURLs from the passed themeNames
-    NSMutableArray<NSURL *> *fileURLs = [NSMutableArray new];
+    NSMutableArray<NSURL *> *fileURLs = [NSMutableArray array];
 
     for (NSString *themeName in themeNames) {
         // Ensure the theme names are strings

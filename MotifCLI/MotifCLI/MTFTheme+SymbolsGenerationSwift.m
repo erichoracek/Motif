@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSArray *symbols = [self symbolsForType:symbolType];
     if (symbols == nil || symbols.count == 0) return nil;
 
-    NSMutableArray *lines = [NSMutableArray new];
+    NSMutableArray *lines = [NSMutableArray array];
 
     NSString *openingDeclaration = [self openingDeclarationForSymbolType:symbolType];
     [lines addObject:openingDeclaration];

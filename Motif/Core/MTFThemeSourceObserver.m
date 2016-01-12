@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(theme != nil);
     NSParameterAssert(sourceDirectoryURL != nil);
     
-    NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray new];
+    NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray array];
     
     for (NSString *filename in theme.filenames) {
         NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectoryURL:sourceDirectoryURL];
@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
         sourceDirectoryURL,
         error);
     
-    NSMutableArray<NSString *> *filenames = [NSMutableArray new];
+    NSMutableArray<NSString *> *filenames = [NSMutableArray array];
     for (NSString *path in subpaths) {
         NSString *filename = path.lastPathComponent;
         NSAssert(
@@ -128,7 +128,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(queue != nil);
     NSParameterAssert(didUpdate != nil);
     
-    NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [NSMutableArray new];
+    NSMutableArray<MTFFileObservationContext *> *fileObservationContexts = [NSMutableArray array];
     
     for (NSString *path in paths) {
         MTFFileObservationContext *fileObservationContext = [self
@@ -213,7 +213,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(sourceFilePaths != nil);
     
     // Transform the paths into URLs
-    NSMutableArray<NSURL *> *sourceFileURLs = [NSMutableArray new];
+    NSMutableArray<NSURL *> *sourceFileURLs = [NSMutableArray array];
     for (NSString *sourceFilePath in sourceFilePaths) {
         NSURL *sourceFileURL = [NSURL fileURLWithPath:sourceFilePath];
         [sourceFileURLs addObject:sourceFileURL];
