@@ -8,19 +8,26 @@
 
 #import "NSURL+LastPathComponentWithoutExtension.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSURL (LastPathComponentWithoutExtension)
 
-- (NSString *)mtf_lastPathComponentWithoutExtension {
+- (nullable NSString *)mtf_lastPathComponentWithoutExtension {
     NSString *lastPathComponent = self.lastPathComponent;
+
     // Trim path extension if there is one
     if (lastPathComponent.pathExtension) {
         NSString *extensionIncludingDot = [@"."
             stringByAppendingString:lastPathComponent.pathExtension];
+
         lastPathComponent = [lastPathComponent
             stringByReplacingOccurrencesOfString:extensionIncludingDot
             withString:@""];
     }
+
     return lastPathComponent;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

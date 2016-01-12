@@ -10,6 +10,8 @@
 
 #import "NSValueTransformer+MotifCGSize.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef CGSize TransformedValueCType;
 static const char * const TransformedValueObjCType = @encode(CGSize);
 static NSString * const TypeDescription = @"Size";
@@ -97,3 +99,5 @@ NSString * const MTFSizeFromNumberTransformerName = @"MTFSizeFromNumberTransform
 NSString * const MTFSizeFromArrayTransformerName = @"MTFSizeFromArrayTransformerName";
 
 NSString * const MTFSizeFromDictionaryTransformerName = @"MTFSizeFromDictionaryTransformerName";
+
+NS_ASSUME_NONNULL_END

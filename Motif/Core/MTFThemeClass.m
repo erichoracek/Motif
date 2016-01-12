@@ -21,6 +21,8 @@
 #import "MTFErrors.h"
 #import "MTFValueTransformerErrorHandling.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFThemeClass
 
 #pragma mark - Lifecycle
@@ -383,3 +385,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

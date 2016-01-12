@@ -20,6 +20,8 @@
 
 #import "MTFThemeParser.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFThemeParser
 
 #pragma mark - Lifecycle
@@ -479,3 +481,5 @@ static BOOL ShouldResolveReferences = YES;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

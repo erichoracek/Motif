@@ -10,6 +10,8 @@
 
 #import "NSValueTransformer+MotifUIEdgeInsets.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef UIEdgeInsets TransformedValueCType;
 static const char * const TransformedValueObjCType = @encode(TransformedValueCType);
 static NSString * const TypeDescription = @"Edge insets";
@@ -115,3 +117,5 @@ NSString * const MTFEdgeInsetsFromNumberTransformerName = @"MTFEdgeInsetsFromNum
 NSString * const MTFEdgeInsetsFromArrayTransformerName = @"MTFEdgeInsetsFromArrayTransformerName";
 
 NSString * const MTFEdgeInsetsFromDictionaryTransformerName = @"MTFEdgeInsetsFromDictionaryTransformerName";
+
+NS_ASSUME_NONNULL_END

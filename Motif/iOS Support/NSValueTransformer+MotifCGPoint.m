@@ -10,6 +10,8 @@
 
 #import "NSValueTransformer+MotifCGPoint.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef CGPoint TransformedValueCType;
 static const char * const TransformedValueObjCType = @encode(CGPoint);
 static NSString * const TypeDescription = @"Point";
@@ -97,3 +99,5 @@ NSString * const MTFPointFromNumberTransformerName = @"MTFPointFromNumberTransfo
 NSString * const MTFPointFromArrayTransformerName = @"MTFPointFromArrayTransformerName";
 
 NSString * const MTFPointFromDictionaryTransformerName = @"MTFPointFromDictionaryTransformerName";
+
+NS_ASSUME_NONNULL_END

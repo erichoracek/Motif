@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Extensions to read and write colors in the formats supported by CSS.
  * Emphasis has been given to parsing corrently formatted colors, rather
@@ -18,14 +20,14 @@
  * Reads a color from a string containing hex, RGB, HSL or X11 named color.
  * Returns `nil` on failure.
  */
-+ (UIColor *)mtf_colorWithCSS:(NSString *)cssColor;
++ (nullable UIColor *)mtf_colorWithCSS:(NSString *)cssColor;
 
 /**
  * Reads a color from a string containing a hex color, of the form
  * "#FFFFFF" or "#FFF".
  * Returns `nil` on failure.
  */
-+ (UIColor *)mtf_colorWithHexString:(NSString *)hexColor;
++ (nullable UIColor *)mtf_colorWithHexString:(NSString *)hexColor;
 
 /**
  * Reads a color from a string containing an RGB color, of the form
@@ -33,40 +35,40 @@
  * represented as percentages.
  * Returns `nil` on failure.
  */
-+ (UIColor *)mtf_colorWithRGBString:(NSString *)rgbColor;
++ (nullable UIColor *)mtf_colorWithRGBString:(NSString *)rgbColor;
 
 /**
  * Reads a color from a string containing an HSL color, of the form
  * "hsl(359, 100%, 100%)" or "hsla(359, 100%, 100%, 1.0)".
  * Returns `nil` on failure.
  */
-+ (UIColor *)mtf_colorWithHSLString:(NSString *)hslColor;
++ (nullable UIColor *)mtf_colorWithHSLString:(NSString *)hslColor;
 
 /**
  * Reads a color from a string containing a W3C named color.
  * Returns `nil` on failure.
  */
-+ (UIColor *)mtf_colorWithW3CNamedColor:(NSString *)namedColor;
++ (nullable UIColor *)mtf_colorWithW3CNamedColor:(NSString *)namedColor;
 
 /**
  * Returns a representation of this color as a hex string, of the form "#FFFFFF".
  * Alpha information is not represented.
  */
-- (NSString *)mtf_hexStringValue;
+- (nullable NSString *)mtf_hexStringValue;
 
 /**
  * Returns a representation of this color as an RGB string, of the form
  * "rgb(255, 255, 255)" or "rgba(255, 255, 255, 1.0)".
  * Returns `nil` on failure.
  */
-- (NSString *)mtf_rgbStringValue;
+- (nullable NSString *)mtf_rgbStringValue;
 
 /**
  * Returns a representation of this color as an RGB string, of the form
  * "hsl(359, 100%, 100%)" or "hsla(359, 100%, 100%, 1.0)".
  * Returns `nil` on failure.
  */
-- (NSString *)mtf_hslStringValue;
+- (nullable NSString *)mtf_hslStringValue;
 
 /**
  * FOR DEBUGGING - All the supported W3C color names.
@@ -108,3 +110,5 @@
 - (BOOL)mtf_scanW3CNamedColor:(UIColor **)color;
 
 @end
+
+NS_ASSUME_NONNULL_END

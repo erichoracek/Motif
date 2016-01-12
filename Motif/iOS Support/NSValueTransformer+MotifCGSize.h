@@ -8,6 +8,8 @@
 
 @import CoreGraphics;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (MotifCGSize)
 
 @end
@@ -23,3 +25,5 @@ extern NSString * const MTFSizeFromArrayTransformerName;
 /// The name of the value transformer responsible for transforming an
 /// NSDictionary to a NSValue wrapping a CGSize struct.
 extern NSString * const MTFSizeFromDictionaryTransformerName;
+
+NS_ASSUME_NONNULL_END

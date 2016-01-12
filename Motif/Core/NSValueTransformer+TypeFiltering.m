@@ -10,9 +10,11 @@
 #import "MTFReverseTransformedValueClass.h"
 #import "MTFObjCTypeValueTransformer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSValueTransformer (TypeFiltering)
 
-+ (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(const char *)objCType {
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toObjCType:(const char *)objCType {
     NSParameterAssert(object != nil);
     NSParameterAssert(objCType != NULL);
     
@@ -37,10 +39,11 @@
             }
         }
     }
+
     return nil;
 }
 
-+ (NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)toClass {
++ (nullable NSValueTransformer *)mtf_valueTransformerForTransformingObject:(id)object toClass:(Class)toClass {
     NSParameterAssert(object != nil);
     NSParameterAssert(toClass != Nil);
     
@@ -64,7 +67,10 @@
             }
         }
     }
+    
     return nil;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

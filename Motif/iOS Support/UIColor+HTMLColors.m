@@ -7,6 +7,7 @@
 
 #import "UIColor+HTMLColors.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 typedef struct {
     CGFloat a, b, c;
@@ -28,7 +29,7 @@ static NSDictionary *MTFW3CNamedColors(void);
 
 #pragma mark - Reading
 
-+ (UIColor *)mtf_colorWithCSS:(NSString *)cssColor
++ (nullable UIColor *)mtf_colorWithCSS:(NSString *)cssColor
 {
     UIColor *color = nil;
     NSScanner *scanner = [NSScanner scannerWithString:cssColor];
@@ -36,7 +37,7 @@ static NSDictionary *MTFW3CNamedColors(void);
     return (scanner.isAtEnd) ? color : nil;
 }
 
-+ (UIColor *)mtf_colorWithHexString:(NSString *)hexColor
++ (nullable UIColor *)mtf_colorWithHexString:(NSString *)hexColor
 {
     UIColor *color = nil;
     NSScanner *scanner = [NSScanner scannerWithString:hexColor];
@@ -44,7 +45,7 @@ static NSDictionary *MTFW3CNamedColors(void);
     return (scanner.isAtEnd) ? color : nil;
 }
 
-+ (UIColor *)mtf_colorWithRGBString:(NSString *)rgbColor
++ (nullable UIColor *)mtf_colorWithRGBString:(NSString *)rgbColor
 {
     UIColor *color = nil;
     NSScanner *scanner = [NSScanner scannerWithString:rgbColor];
@@ -52,7 +53,7 @@ static NSDictionary *MTFW3CNamedColors(void);
     return (scanner.isAtEnd) ? color : nil;
 }
 
-+ (UIColor *)mtf_colorWithHSLString:(NSString *)hslColor
++ (nullable UIColor *)mtf_colorWithHSLString:(NSString *)hslColor
 {
     UIColor *color = nil;
     NSScanner *scanner = [NSScanner scannerWithString:hslColor];
@@ -60,7 +61,7 @@ static NSDictionary *MTFW3CNamedColors(void);
     return (scanner.isAtEnd) ? color : nil;
 }
 
-+ (UIColor *)mtf_colorWithW3CNamedColor:(NSString *)namedColor
++ (nullable UIColor *)mtf_colorWithW3CNamedColor:(NSString *)namedColor
 {
     UIColor *color = nil;
     NSScanner *scanner = [NSScanner scannerWithString:namedColor];
@@ -76,7 +77,7 @@ static inline unsigned ToByte(CGFloat f)
     return (unsigned)round(f * 255);
 }
 
-- (NSString *)mtf_hexStringValue
+- (nullable NSString *)mtf_hexStringValue
 {
     NSString *hex = nil;
     CGFloat red, green, blue, alpha;
@@ -87,7 +88,7 @@ static inline unsigned ToByte(CGFloat f)
     return hex;
 }
 
-- (NSString *)mtf_rgbStringValue
+- (nullable NSString *)mtf_rgbStringValue
 {
     NSString *rgb = nil;
     CGFloat red, green, blue, alpha;
@@ -114,7 +115,7 @@ static inline unsigned ToPercentage(CGFloat f)
     return (unsigned)round(f * 100);
 }
 
-- (NSString *)mtf_hslStringValue
+- (nullable NSString *)mtf_hslStringValue
 {
     NSString *hsl = nil;
     CGFloat hue, saturation, brightness, alpha;
@@ -698,3 +699,5 @@ static NSDictionary *MTFW3CNamedColors() {
     });
     return namedColors;
 }
+
+NS_ASSUME_NONNULL_END

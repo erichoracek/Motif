@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (MotifUIColor)
 
 /**
@@ -17,3 +19,5 @@
 extern NSString * const MTFColorFromStringTransformerName;
 
 @end
+
+NS_ASSUME_NONNULL_END

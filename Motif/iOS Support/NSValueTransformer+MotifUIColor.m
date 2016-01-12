@@ -11,6 +11,8 @@
 
 #import "NSValueTransformer+MotifUIColor.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSValueTransformer (MotifUIColor)
 
 + (void)load {
@@ -32,3 +34,5 @@
 NSString * const MTFColorFromStringTransformerName = @"MTFColorFromStringTransformerName";
 
 @end
+
+NS_ASSUME_NONNULL_END
