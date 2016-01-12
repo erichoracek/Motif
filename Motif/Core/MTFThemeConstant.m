@@ -20,12 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue {
     NSParameterAssert(name != nil);
     NSParameterAssert(rawValue != nil);
+
     self = [super init];
 
     _name = [name copy];
     _rawValue = rawValue;
     _mappedValue = mappedValue;
     _transformedValueCache = [[NSCache alloc] init];
+    _value = [self valueFromMappedValue:_mappedValue rawValue:_rawValue];
     
     return self;
 }
@@ -34,21 +36,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Public
 
-@dynamic value;
+- (id)valueFromMappedValue:(nullable id)mappedValue rawValue:(id)rawValue {
+    NSParameterAssert(rawValue != nil);
 
-- (id)value {
     // If the mapped value is a reference to another constant, return that
     // constant's value
-    if ([self.mappedValue isKindOfClass:MTFThemeConstant.class]) {
-        MTFThemeConstant *mappedConstant = (MTFThemeConstant *)self.mappedValue;
+    if (mappedValue != nil && [mappedValue isKindOfClass:MTFThemeConstant.class]) {
+        MTFThemeConstant *mappedConstant = (MTFThemeConstant *)mappedValue;
         return mappedConstant.value;
     }
+
     // Otherwise, return either the mapped value or the raw value, in that
     // order.
-    return (self.mappedValue ?: self.rawValue);
+    return (mappedValue ?: rawValue);
 }
 
 #pragma mark Private
+
+- (void)setMappedValue:(nullable id)mappedValue {
+    _mappedValue = mappedValue;
+
+    _value = [self valueFromMappedValue:_mappedValue rawValue:self.rawValue];
+}
 
 #pragma mark Value Transformation
 
