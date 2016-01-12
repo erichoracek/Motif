@@ -24,10 +24,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFThemeSourceObserver
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
+}
+
+- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL didUpdate:(MTFThemeDidUpdate)didUpdate {
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
+    NSParameterAssert(didUpdate != nil);
+    
+    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be a file URL");
+    
+    self = [super init];
+    
+    _fileObservationQueue = dispatch_queue_create(
+        "com.erichoracek.motif.MTFThemeSourceObserver",
+        DISPATCH_QUEUE_CONCURRENT);
+    
+    _sourceDirectoryURL = [sourceDirectoryURL copy];
+    
+    _fileObservationContexts = [self
+        observeSourceFilesOfTheme:theme
+        onQueue:self.fileObservationQueue
+        didUpdate:didUpdate];
+    
+    return self;
 }
 
 - (void)dealloc {
@@ -38,29 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 #pragma mark - MTFThemeSourceObserver
-
-- (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL didUpdate:(MTFThemeDidUpdate)didUpdate {
-    NSParameterAssert(theme);
-    NSParameterAssert(sourceDirectoryURL);
-    NSParameterAssert(didUpdate);
-    
-    NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be a file URL");
-    
-    self = [super init];
-    
-    _fileObservationQueue = dispatch_queue_create(
-        "com.erichoracek.motif.MTFThemeSourceObserver",
-        DISPATCH_QUEUE_CONCURRENT);
-    
-    _sourceDirectoryURL = sourceDirectoryURL;
-    
-    _fileObservationContexts = [self
-        observeSourceFilesOfTheme:theme
-        onQueue:self.fileObservationQueue
-        didUpdate:didUpdate];
-    
-    return self;
-}
 
 - (NSArray<NSString *> *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme);

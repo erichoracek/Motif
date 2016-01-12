@@ -26,14 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFYAMLSerialization
 
-#pragma mark - Public
-
-+ (nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error {
-    MTFYAMLSerialization *serialization = [[self alloc] initWithData:data error:error];
-    return serialization.object;
-}
-
-#pragma mark - Private
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
@@ -76,6 +69,15 @@ NS_ASSUME_NONNULL_BEGIN
 
     return self;
 }
+
+#pragma mark - Public
+
++ (nullable id)YAMLObjectWithData:(NSData *)data error:(NSError **)error {
+    MTFYAMLSerialization *serialization = [[self alloc] initWithData:data error:error];
+    return serialization.object;
+}
+
+#pragma mark - Private
 
 - (void)registerMappingForTag:(NSString *)tag map:(id (^)(NSString *))map {
     self.tagHandlers[tag] = [map copy];

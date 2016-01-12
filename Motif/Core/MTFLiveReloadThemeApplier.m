@@ -19,26 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFLiveReloadThemeApplier
 
-#pragma mark - MTFDynamicThemeApplier
+#pragma mark - Lifecycle
 
 - (instancetype)initWithTheme:(MTFTheme *)theme {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error {
-    NSParameterAssert(theme);
-
-    self.themeSourceObserver = [self createThemeSourceObserverFromTheme:theme];
-    return [super setTheme:theme error:error];
-}
-
-#pragma mark - MTFLiveReloadThemeApplier
-
-#pragma mark Public
-
 - (instancetype)initWithTheme:(MTFTheme *)theme sourceFile:(char const *)sourceFile {
-    NSParameterAssert(theme);
-    NSParameterAssert(sourceFile);
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(sourceFile != nil);
     
     NSURL *sourceFileURL = [NSURL
         fileURLWithFileSystemRepresentation:sourceFile
@@ -51,8 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithTheme:(MTFTheme *)theme sourceDirectoryURL:(NSURL *)sourceDirectoryURL {
-    NSParameterAssert(theme);
-    NSParameterAssert(sourceDirectoryURL);
+    NSParameterAssert(theme != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
     
     NSAssert(sourceDirectoryURL.isFileURL, @"Source directory URL must be file URL");
     
@@ -71,13 +60,22 @@ NS_ASSUME_NONNULL_BEGIN
 
     self = [super initWithTheme:theme];
     
-    _sourceDirectoryURL = sourceDirectoryURL;
+    _sourceDirectoryURL = [sourceDirectoryURL copy];
     _themeSourceObserver = [self createThemeSourceObserverFromTheme:theme];
 
     return self;
 }
 
-#pragma mark Private
+#pragma mark - MTFDynamicThemeApplier
+
+- (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error {
+    NSParameterAssert(theme != nil);
+
+    self.themeSourceObserver = [self createThemeSourceObserverFromTheme:theme];
+    return [super setTheme:theme error:error];
+}
+
+#pragma mark - MTFLiveReloadThemeApplier
 
 - (MTFThemeSourceObserver *)createThemeSourceObserverFromTheme:(MTFTheme *)theme {
     __weak typeof(self) __weak_self = self;

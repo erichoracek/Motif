@@ -12,13 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFFileObservationContext
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
-
-#pragma mark - MTFFileObservationContext
 
 - (instancetype)initWithDispatchSource:(dispatch_source_t)dispatchSource fileDescriptor:(int)fileDescriptor path:(NSString *)path {
     NSParameterAssert(dispatchSource);

@@ -21,15 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFTheme
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
-
-#pragma mark - MTFTheme
-
-#pragma mark Public
 
 + (nullable instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error {
     NSParameterAssert(themeName);
@@ -127,6 +123,10 @@ NS_ASSUME_NONNULL_BEGIN
 
     return self;
 }
+
+#pragma mark - MTFTheme
+
+#pragma mark Public
 
 - (nullable id)constantValueForName:(NSString *)name {
     NSParameterAssert(name);

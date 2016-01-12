@@ -23,30 +23,24 @@
 
 @implementation MTFThemeClass
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (BOOL)isEqual:(id)object {
-    if (self == object) return YES;
+- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
+    NSParameterAssert(name != nil);
+    NSParameterAssert(propertiesConstants != nil);
 
-    if (![object isKindOfClass:self.class]) return NO;
+    self = [super init];
 
-    return [self isEqualToThemeClass:object];
-}
+    _name = [name copy];
+    _propertiesConstants = [propertiesConstants copy];
+    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
+    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
 
-- (NSUInteger)hash {
-    return (self.name.hash ^ self.propertiesConstants.hash);
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%@ {%@: %@, %@: %@}",
-        NSStringFromClass(self.class),
-        NSStringFromSelector(@selector(name)), self.name,
-        NSStringFromSelector(@selector(properties)), self.properties
-    ];
+    return self;
 }
 
 #pragma mark - MTFThemeClass
@@ -319,17 +313,6 @@
     );
 }
 
-- (instancetype)initWithName:(NSString *)name propertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
-    self = [super init];
-
-    _name = name;
-    _propertiesConstants = propertiesConstants;
-    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
-    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
-
-    return self;
-}
-
 - (void)setPropertiesConstants:(NSDictionary<NSString *,MTFThemeConstant *> *)propertiesConstants {
     NSParameterAssert(propertiesConstants != nil);
 
@@ -375,6 +358,28 @@
     }];
 
     return [properties copy];
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) return YES;
+
+    if (![object isKindOfClass:self.class]) return NO;
+
+    return [self isEqualToThemeClass:object];
+}
+
+- (NSUInteger)hash {
+    return (self.name.hash ^ self.propertiesConstants.hash);
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ {%@: %@, %@: %@}",
+        NSStringFromClass(self.class),
+        NSStringFromSelector(@selector(name)), self.name,
+        NSStringFromSelector(@selector(properties)), self.properties
+    ];
 }
 
 @end

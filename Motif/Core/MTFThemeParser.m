@@ -22,7 +22,7 @@
 
 @implementation MTFThemeParser
 
-#pragma mark - Public
+#pragma mark - Lifecycle
 
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
@@ -94,7 +94,7 @@
     return self;
 }
 
-#pragma mark - Private
+#pragma mark - MTFThemeParser
 
 #pragma mark Raw Theme Parsing
 
