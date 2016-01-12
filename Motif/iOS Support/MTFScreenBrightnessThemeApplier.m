@@ -12,11 +12,15 @@
 
 #pragma mark - Lifecycle
 
-static CGFloat const DefaultBrightnessThreshold = 0.5;
+- (instancetype)initWithTheme:(MTFTheme *)theme {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
+}
 
 - (instancetype)initWithLightTheme:(MTFTheme *)lightTheme darkTheme:(MTFTheme *)darkTheme {
     return [self initWithScreen:UIScreen.mainScreen lightTheme:lightTheme darkTheme:darkTheme];
 }
+
+static CGFloat const DefaultBrightnessThreshold = 0.5;
 
 - (instancetype)initWithScreen:(UIScreen *)screen lightTheme:(MTFTheme *)lightTheme darkTheme:(MTFTheme *)darkTheme {
     NSParameterAssert(screen);
@@ -50,10 +54,6 @@ static CGFloat const DefaultBrightnessThreshold = 0.5;
 }
 
 #pragma mark - MTFDynamicThemeApplier
-
-- (instancetype)initWithTheme:(MTFTheme *)theme {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
-}
 
 - (BOOL)setTheme:(MTFTheme *)theme error:(NSError **)error {
     NSParameterAssert(theme != nil);

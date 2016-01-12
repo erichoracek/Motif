@@ -8,21 +8,26 @@
 
 #import "MTFThemeSymbolReference.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFThemeSymbolReference
 
-@dynamic symbol;
-@dynamic type;
+#pragma mark - Lifecycle
 
 - (instancetype)initWithRawSymbol:(NSString *)rawSymbol {
+    NSParameterAssert(rawSymbol != nil);
     NSParameterAssert(rawSymbol.mtf_isRawSymbolReference);
+
     self = [super init];
 
-    _rawSymbol = rawSymbol;
+    _rawSymbol = [rawSymbol copy];
 
     return self;
 }
 
-- (NSString *)symbol {
+#pragma mark - MTFThemeSymbolReference
+
+- (nullable NSString *)symbol {
     return self.rawSymbol.mtf_symbol;
 }
 
@@ -31,3 +36,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

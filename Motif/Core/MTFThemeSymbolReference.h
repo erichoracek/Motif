@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Motif/NSString+ThemeSymbols.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Represents a reference to another theme symbol.
 
@@ -36,7 +38,7 @@
  The name of the symbol that the reference is referencing, with no syntax
  included, e.g. "Class" or "Constant".
  */
-@property (nonatomic, readonly) NSString *symbol;
+@property (nonatomic, readonly, nullable) NSString *symbol;
 
 /**
  The type of symbol that the reference is referencing.
@@ -44,3 +46,5 @@
 @property (nonatomic, readonly) MTFThemeSymbolType type;
 
 @end
+
+NS_ASSUME_NONNULL_END

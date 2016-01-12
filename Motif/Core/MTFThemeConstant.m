@@ -15,28 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MTFThemeConstant
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
-- (BOOL)isEqual:(id)object {
-    if (self == object) return YES;
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue {
+    NSParameterAssert(name != nil);
+    NSParameterAssert(rawValue != nil);
+    self = [super init];
 
-    if (![object isKindOfClass:self.class]) return NO;
-
-    return [self isEqualToThemeConstant:object];
-}
-
-- (NSUInteger)hash {
-    return (self.name.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:
-        @"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
-        NSStringFromClass(self.class),
-        NSStringFromSelector(@selector(name)), self.name,
-        NSStringFromSelector(@selector(rawValue)), self.rawValue,
-        NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
-        NSStringFromSelector(@selector(value)), self.value];
+    _name = [name copy];
+    _rawValue = rawValue;
+    _mappedValue = mappedValue;
+    _transformedValueCache = [[NSCache alloc] init];
+    
+    return self;
 }
 
 #pragma mark - MTFThemeConstant
@@ -58,19 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 #pragma mark Private
-
-- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue {
-    NSParameterAssert(name);
-    NSParameterAssert(rawValue);
-    self = [super init];
-
-    _name = name;
-    _rawValue = rawValue;
-    _mappedValue = mappedValue;
-    _transformedValueCache = [[NSCache alloc] init];
-    
-    return self;
-}
 
 #pragma mark Value Transformation
 
@@ -133,6 +111,30 @@ NS_ASSUME_NONNULL_BEGIN
     );
 
     return (haveEqualNames && haveEqualRawValues && haveEqualMappedValues);
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) return YES;
+
+    if (![object isKindOfClass:self.class]) return NO;
+
+    return [self isEqualToThemeConstant:object];
+}
+
+- (NSUInteger)hash {
+    return (self.name.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:
+        @"%@ {%@: %@, %@: %@, %@: %@, %@: %@}",
+        NSStringFromClass(self.class),
+        NSStringFromSelector(@selector(name)), self.name,
+        NSStringFromSelector(@selector(rawValue)), self.rawValue,
+        NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
+        NSStringFromSelector(@selector(value)), self.value];
 }
 
 @end

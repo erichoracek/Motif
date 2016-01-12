@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return An initialized file observation context.
  */
-- (instancetype)initWithDispatchSource:(dispatch_source_t)dispatchSource fileDescriptor:(int)fileDescriptor path:(NSString *)path;
+- (instancetype)initWithDispatchSource:(dispatch_source_t)dispatchSource fileDescriptor:(int)fileDescriptor path:(NSString *)path NS_DESIGNATED_INITIALIZER;
 
 /**
  The dispatch source for the file that is being observed.

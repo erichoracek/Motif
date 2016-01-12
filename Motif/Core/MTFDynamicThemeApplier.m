@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (instancetype)initWithTheme:(MTFTheme *)theme {
-    NSParameterAssert(theme);
+    NSParameterAssert(theme != nil);
 
     self = [super init];
 
@@ -47,21 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
     return [self applyTheme:theme toApplicants:self.applicants error:error];
 }
 
-#pragma mark - MTFDynamicThemeApplier <MTFThemeApplier>
-
-- (BOOL)applyClassWithName:(NSString *)className to:(id)applicant error:(NSError **)error {
-    NSParameterAssert(className != nil);
-    NSParameterAssert(applicant != nil);
-
-    if ([self.theme applyClassWithName:className to:applicant error:error]) {
-        [self.applicants addObject:applicant];
-
-        return YES;
-    }
-
-    return NO;
-}
-
 #pragma mark Private
 
 - (BOOL)applyTheme:(MTFTheme *)theme toApplicants:(NSHashTable *)applicants error:(NSError **)error {
@@ -82,6 +67,21 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     return themeSuccess;
+}
+
+#pragma mark - MTFDynamicThemeApplier <MTFThemeApplier>
+
+- (BOOL)applyClassWithName:(NSString *)className to:(id)applicant error:(NSError **)error {
+    NSParameterAssert(className != nil);
+    NSParameterAssert(applicant != nil);
+
+    if ([self.theme applyClassWithName:className to:applicant error:error]) {
+        [self.applicants addObject:applicant];
+
+        return YES;
+    }
+
+    return NO;
 }
 
 @end
