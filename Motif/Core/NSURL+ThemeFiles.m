@@ -50,7 +50,7 @@ static NSString * const YAMLExtensionShort = @"yml";
 }
 
 + (nullable NSArray<NSURL *> *)mtf_fileURLsFromThemeNames:(NSArray<NSString *> *)themeNames inBundle:(nullable NSBundle *)bundle error:(NSError **)error {
-    NSParameterAssert(themeNames);
+    NSParameterAssert(themeNames != nil);
     
     // Default to main bundle if bundle is nil
     if (bundle == nil) bundle = NSBundle.mainBundle;

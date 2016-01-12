@@ -11,11 +11,7 @@
 @implementation NSDictionary (IntersectingKeys)
 
 - (nullable NSSet *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary {
-    NSParameterAssert(dictionary);
-    
-    if (!dictionary) {
-        return nil;
-    }
+    NSParameterAssert(dictionary != nil);
     
     NSSet *selfKeys = [NSSet setWithArray:self.allKeys];
     NSSet *dictionaryKeys = [NSSet setWithArray:dictionary.allKeys];

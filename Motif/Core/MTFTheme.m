@@ -28,20 +28,20 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (nullable instancetype)themeFromFileNamed:(NSString *)themeName error:(NSError **)error {
-    NSParameterAssert(themeName);
+    NSParameterAssert(themeName != nil);
     
     return [self themeFromFilesNamed:@[ themeName ] error:error];
 }
 
 + (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames error:(NSError **)error {
-    NSParameterAssert(themeNames);
+    NSParameterAssert(themeNames != nil);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     return [self themeFromFilesNamed:themeNames bundle:nil error:error];
 }
 
 + (nullable instancetype)themeFromFilesNamed:(NSArray<NSString *> *)themeNames bundle:(nullable NSBundle *)bundle error:(NSError **)error {
-    NSParameterAssert(themeNames);
+    NSParameterAssert(themeNames != nil);
     NSAssert(themeNames.count > 0, @"Must provide at least one theme name");
     
     // Build an array of URLs from the specified theme names
@@ -56,13 +56,13 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (nullable instancetype)initWithFile:(NSURL *)fileURL error:(NSError **)error; {
-    NSParameterAssert(fileURL);
+    NSParameterAssert(fileURL != nil);
     
     return [self initWithFiles:@[ fileURL ] error:error];
 }
 
 - (nullable instancetype)initWithFiles:(NSArray<NSURL *> *)fileURLs error:(NSError **)error {
-    NSParameterAssert(fileURLs);
+    NSParameterAssert(fileURLs != nil);
     NSAssert(fileURLs.count > 0, @"Must provide at least one file URL");
     
     NSMutableArray<NSDictionary *> *themeDictionaries = [NSMutableArray new];
@@ -129,20 +129,20 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Public
 
 - (nullable id)constantValueForName:(NSString *)name {
-    NSParameterAssert(name);
+    NSParameterAssert(name != nil);
     
     return self.constants[name].value;
 }
 
 - (nullable MTFThemeClass *)classForName:(NSString *)name {
-    NSParameterAssert(name);
+    NSParameterAssert(name != nil);
     
     return self.classes[name];
 }
 
 - (BOOL)applyClassWithName:(NSString *)name to:(id)applicant error:(NSError **)error {
-    NSParameterAssert(name);
-    NSParameterAssert(applicant);
+    NSParameterAssert(name != nil);
+    NSParameterAssert(applicant != nil);
     
     MTFThemeClass *class = [self classForName:name];
 

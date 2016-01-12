@@ -240,7 +240,7 @@
             // constants.
             [resolvedConstants removeObjectForKey:parsedConstant.name];
 
-            if (error) {
+            if (error != NULL) {
                 NSString *description;
 
                 if (isSelfReferential) {
@@ -266,14 +266,14 @@
         case MTFThemeSymbolTypeClass: {
             // Locate the referenced class in the existing constants dictionary
             MTFThemeClass *classReference = classes[reference.symbol];
-            if (classReference) {
+            if (classReference != nil) {
                 parsedConstant.mappedValue = classReference;
                 continue;
             }
             // This is an invalid reference, so remove it from the resolved
             // constants
             [resolvedConstants removeObjectForKey:parsedConstant.name];
-            if (error) {
+            if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
                     @"The named constant value for property '%@' ('%@') was "
                         "not found as a registered constant",
@@ -316,7 +316,7 @@
             // transitively references itself
             [filteredParsedConstants removeObjectForKey:MTFThemeSuperclassKey];
 
-            if (error) {
+            if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
                     @"The superclass of '%@' causes it to inherit from itself. "
                         "It is currently '%@'.",
@@ -348,7 +348,7 @@
             mtf_dictionaryValueForKey:rawClassName
             error:error];
         
-        if (!rawProperties) {
+        if (rawProperties == nil) {
             break;
         }
         
@@ -358,7 +358,7 @@
             rawName:rawClassName
             error:error];
         
-        if (class) {
+        if (class != nil) {
             parsedClasses[class.name] = class;
         }
     }
@@ -367,8 +367,8 @@
 }
 
 - (MTFThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError **)error {
-    NSParameterAssert(rawName);
-    NSParameterAssert(rawProperties);
+    NSParameterAssert(rawName != nil);
+    NSParameterAssert(rawProperties != nil);
     
     NSString *name = rawName.mtf_symbol;
     
@@ -394,7 +394,7 @@
     // If there is a superclass property, filter it out if it doesn't contain a
     // reference and populate the error
     MTFThemeConstant *superclass = filteredClassProperties[MTFThemeSuperclassKey];
-    if (superclass) {
+    if (superclass != nil) {
         BOOL isSymbolReference = [superclass.mappedValue isKindOfClass:MTFThemeSymbolReference.class];
         BOOL isSuperclassClassReference = NO;
         
@@ -409,7 +409,7 @@
             [filteredClassProperties removeObjectForKey:MTFThemeSuperclassKey];
             
             // Populate an error with the failure reason
-            if (error) {
+            if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
                     @"The value for the 'superclass' property in '%@' must "
                         "reference a valid theme class. It is currently '%@'.",

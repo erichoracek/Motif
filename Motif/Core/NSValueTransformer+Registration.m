@@ -58,9 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
         name.UTF8String,
         0);
 
-    if (!class) {
-        return NO;
-    }
+    if (class == Nil) return NO;
 
     // Override transformedValue: instance method
     SEL transformedValueSelector = @selector(transformedValue:);
