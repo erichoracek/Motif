@@ -8,6 +8,8 @@
 
 @import CoreGraphics;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (MotifCGPoint)
 
 @end
@@ -23,3 +25,5 @@ extern NSString * const MTFPointFromArrayTransformerName;
 /// The name of the value transformer responsible for transforming an
 /// NSDictionary to a NSValue wrapping a CGPoint struct.
 extern NSString * const MTFPointFromDictionaryTransformerName;
+
+NS_ASSUME_NONNULL_END

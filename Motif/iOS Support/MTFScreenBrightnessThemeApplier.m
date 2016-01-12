@@ -8,6 +8,8 @@
 
 #import "MTFScreenBrightnessThemeApplier.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation MTFScreenBrightnessThemeApplier
 
 #pragma mark - Lifecycle
@@ -99,3 +101,5 @@ static CGFloat const DefaultBrightnessThreshold = 0.5;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

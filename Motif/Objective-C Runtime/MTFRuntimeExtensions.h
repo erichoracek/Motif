@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Describes the memory management policy of a property.
  */
@@ -111,4 +113,6 @@ typedef struct {
  * You must \c free() the returned pointer. Returns \c NULL if there is an error
  * obtaining information from \a property.
  */
-mtf_propertyAttributes *mtf_copyPropertyAttributes (objc_property_t property);
+mtf_propertyAttributes * _Nullable mtf_copyPropertyAttributes (objc_property_t property);
+
+NS_ASSUME_NONNULL_END

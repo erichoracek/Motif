@@ -16,7 +16,9 @@
 #import <stdlib.h>
 #import <string.h>
 
-mtf_propertyAttributes *mtf_copyPropertyAttributes (objc_property_t property) {
+NS_ASSUME_NONNULL_BEGIN
+
+mtf_propertyAttributes * _Nullable mtf_copyPropertyAttributes (objc_property_t property) {
     const char * const attrString = property_getAttributes(property);
     if (!attrString) {
         fprintf(stderr, "ERROR: Could not get attribute string from property %s\n", property_getName(property));
@@ -214,3 +216,5 @@ errorOut:
     free(attributes);
     return NULL;
 }
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import "NSDictionary+IntersectingKeys.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation NSDictionary (IntersectingKeys)
 
 - (nullable NSSet *)mtf_intersectingKeysWithDictionary:(NSDictionary *)dictionary {
@@ -26,3 +28,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

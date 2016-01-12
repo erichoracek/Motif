@@ -10,6 +10,8 @@
 
 #import "NSValueTransformer+MotifUIOffset.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef UIOffset TransformedValueCType;
 static const char * const TransformedValueObjCType = @encode(UIOffset);
 static NSString * const TypeDescription = @"Offset";
@@ -97,3 +99,5 @@ NSString * const MTFOffsetFromNumberTransformerName = @"MTFOffsetFromNumberTrans
 NSString * const MTFOffsetFromArrayTransformerName = @"MTFOffsetFromArrayTransformerName";
 
 NSString * const MTFOffsetFromDictionaryTransformerName = @"MTFOffsetFromDictionaryTransformerName";
+
+NS_ASSUME_NONNULL_END

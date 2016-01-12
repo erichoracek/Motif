@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (MotifUIEdgeInsets)
 
 @end
@@ -29,3 +31,5 @@ extern NSString * const MTFEdgeInsetsFromArrayTransformerName;
  to a NSValue wrapping a UIEdgeInsets struct.
  */
 extern NSString * const MTFEdgeInsetsFromDictionaryTransformerName;
+
+NS_ASSUME_NONNULL_END

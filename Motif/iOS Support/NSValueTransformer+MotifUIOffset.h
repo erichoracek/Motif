@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSValueTransformer (MotifUIOffset)
 
 @end
@@ -23,3 +25,5 @@ extern NSString * const MTFOffsetFromArrayTransformerName;
 /// The name of the value transformer responsible for transforming an
 /// NSDictionary to a NSValue wrapping a UIOffset struct.
 extern NSString * const MTFOffsetFromDictionaryTransformerName;
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import "NSString+ThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const MTFClassPrefixSymbol = @".";
 
 NSString * const MTFConstantPrefixSymbol = @"$";
@@ -60,3 +62,5 @@ NSString * const MTFThemeSuperclassKey = @"_superclass";
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
