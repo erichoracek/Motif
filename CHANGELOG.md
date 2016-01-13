@@ -1,3 +1,9 @@
+# 0.3.1
+
+## Features
+
+- The Motif CLI now uses nullability annotations and modular imports in generated Objective-C symbols files (#76)
+
 # 0.3.0
 
 ## Features
