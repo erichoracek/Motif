@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'ColorsTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const ColorsThemeName;
 
@@ -16,3 +18,5 @@ extern const struct ColorsThemeConstantNames {
     __unsafe_unretained NSString *WhiteDarkColor;
     __unsafe_unretained NSString *WhiteLightColor;
 } ColorsThemeConstantNames;
+
+NS_ASSUME_NONNULL_END

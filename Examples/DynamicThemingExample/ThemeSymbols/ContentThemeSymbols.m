@@ -2,6 +2,8 @@
 
 #import "ContentThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const ContentThemeName = @"ContentTheme";
 
 const struct ContentThemeClassNames ContentThemeClassNames = {
@@ -20,3 +22,5 @@ const struct ContentThemeProperties ContentThemeProperties = {
     .color = @"color",
     .scrollIndicatorStyle = @"scrollIndicatorStyle",
 };
+
+NS_ASSUME_NONNULL_END

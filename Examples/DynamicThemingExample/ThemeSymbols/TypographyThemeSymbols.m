@@ -2,6 +2,8 @@
 
 #import "TypographyThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const TypographyThemeName = @"TypographyTheme";
 
 const struct TypographyThemeConstantNames TypographyThemeConstantNames = {
@@ -29,3 +31,5 @@ const struct TypographyThemeProperties TypographyThemeProperties = {
     .fontName = @"fontName",
     .fontSize = @"fontSize",
 };
+
+NS_ASSUME_NONNULL_END

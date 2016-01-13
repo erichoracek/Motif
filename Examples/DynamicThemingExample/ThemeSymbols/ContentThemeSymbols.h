@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'ContentTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const ContentThemeName;
 
@@ -20,3 +22,5 @@ extern const struct ContentThemeProperties {
     __unsafe_unretained NSString *color;
     __unsafe_unretained NSString *scrollIndicatorStyle;
 } ContentThemeProperties;
+
+NS_ASSUME_NONNULL_END

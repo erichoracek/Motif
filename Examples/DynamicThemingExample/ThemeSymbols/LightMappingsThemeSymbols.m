@@ -2,6 +2,8 @@
 
 #import "LightMappingsThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const LightMappingsThemeName = @"LightMappingsTheme";
 
 const struct LightMappingsThemeConstantNames LightMappingsThemeConstantNames = {
@@ -16,3 +18,5 @@ const struct LightMappingsThemeConstantNames LightMappingsThemeConstantNames = {
     .SeparatorColor = @"SeparatorColor",
     .WarningColor = @"WarningColor",
 };
+
+NS_ASSUME_NONNULL_END

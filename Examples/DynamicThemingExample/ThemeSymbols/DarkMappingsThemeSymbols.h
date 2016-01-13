@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'DarkMappingsTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const DarkMappingsThemeName;
 
@@ -16,3 +18,5 @@ extern const struct DarkMappingsThemeConstantNames {
     __unsafe_unretained NSString *SeparatorColor;
     __unsafe_unretained NSString *WarningColor;
 } DarkMappingsThemeConstantNames;
+
+NS_ASSUME_NONNULL_END

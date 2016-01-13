@@ -2,6 +2,8 @@
 
 #import "ControlsThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const ControlsThemeName = @"ControlsTheme";
 
 const struct ControlsThemeConstantNames ControlsThemeConstantNames = {
@@ -33,3 +35,5 @@ const struct ControlsThemeProperties ControlsThemeProperties = {
     .text = @"text",
     .tintColor = @"tintColor",
 };
+
+NS_ASSUME_NONNULL_END

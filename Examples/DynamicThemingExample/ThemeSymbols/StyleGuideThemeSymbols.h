@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'StyleGuideTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const StyleGuideThemeName;
 
@@ -23,3 +25,5 @@ extern const struct StyleGuideThemeProperties {
     __unsafe_unretained NSString *warningButton;
     __unsafe_unretained NSString *warningSecondaryButton;
 } StyleGuideThemeProperties;
+
+NS_ASSUME_NONNULL_END

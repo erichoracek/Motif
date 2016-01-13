@@ -2,6 +2,8 @@
 
 #import "ThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const ThemeName = @"Theme";
 
 const struct ThemeConstantNames ThemeConstantNames = {
@@ -32,3 +34,5 @@ const struct ThemeProperties ThemeProperties = {
     .tintColor = @"tintColor",
     .titleText = @"titleText",
 };
+
+NS_ASSUME_NONNULL_END

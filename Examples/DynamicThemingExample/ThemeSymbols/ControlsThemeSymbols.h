@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'ControlsTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const ControlsThemeName;
 
@@ -33,3 +35,5 @@ extern const struct ControlsThemeProperties {
     __unsafe_unretained NSString *text;
     __unsafe_unretained NSString *tintColor;
 } ControlsThemeProperties;
+
+NS_ASSUME_NONNULL_END
