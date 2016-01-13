@@ -1,4 +1,4 @@
-github "jspahrsummers/xcconfigs" == 0.8
+github "jspahrsummers/xcconfigs" ~> 0.8.0
+github "specta/specta" ~> 1.0.0
+github "specta/expecta" ~> 1.0.0
 github "yaml/libyaml" == 0.1.4
-github "specta/specta" "c4bde15"
-github "specta/expecta" ~> 1.0
