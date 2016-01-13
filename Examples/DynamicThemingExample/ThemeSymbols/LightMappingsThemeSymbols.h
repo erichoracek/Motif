@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'LightMappingsTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const LightMappingsThemeName;
 
@@ -16,3 +18,5 @@ extern const struct LightMappingsThemeConstantNames {
     __unsafe_unretained NSString *SeparatorColor;
     __unsafe_unretained NSString *WarningColor;
 } LightMappingsThemeConstantNames;
+
+NS_ASSUME_NONNULL_END

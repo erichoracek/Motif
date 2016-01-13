@@ -2,6 +2,8 @@
 
 #import "NavigationThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const NavigationThemeName = @"NavigationTheme";
 
 const struct NavigationThemeClassNames NavigationThemeClassNames = {
@@ -14,3 +16,5 @@ const struct NavigationThemeProperties NavigationThemeProperties = {
     .text = @"text",
     .tintColor = @"tintColor",
 };
+
+NS_ASSUME_NONNULL_END

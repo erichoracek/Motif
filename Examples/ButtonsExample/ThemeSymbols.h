@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'Theme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const ThemeName;
 
@@ -32,3 +34,5 @@ extern const struct ThemeProperties {
     __unsafe_unretained NSString *tintColor;
     __unsafe_unretained NSString *titleText;
 } ThemeProperties;
+
+NS_ASSUME_NONNULL_END

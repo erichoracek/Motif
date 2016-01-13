@@ -2,6 +2,8 @@
 
 #import "DarkMappingsThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const DarkMappingsThemeName = @"DarkMappingsTheme";
 
 const struct DarkMappingsThemeConstantNames DarkMappingsThemeConstantNames = {
@@ -16,3 +18,5 @@ const struct DarkMappingsThemeConstantNames DarkMappingsThemeConstantNames = {
     .SeparatorColor = @"SeparatorColor",
     .WarningColor = @"WarningColor",
 };
+
+NS_ASSUME_NONNULL_END

@@ -1,6 +1,8 @@
 // WARNING: Do not modify. This file is machine-generated from 'TypographyTheme.yaml' by Motif.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const TypographyThemeName;
 
@@ -29,3 +31,5 @@ extern const struct TypographyThemeProperties {
     __unsafe_unretained NSString *fontName;
     __unsafe_unretained NSString *fontSize;
 } TypographyThemeProperties;
+
+NS_ASSUME_NONNULL_END

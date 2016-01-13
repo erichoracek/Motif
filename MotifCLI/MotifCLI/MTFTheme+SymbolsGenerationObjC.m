@@ -103,13 +103,14 @@ typedef NS_ENUM(NSInteger, FileType) {
     
     // Write a warning comment at the top of the file
     [outputStream mtf_writeString:self.warningComment];
-    
+
     // Add the necessary import
     NSString *import = [self symbolsImportForFileType:fileType prefix:prefix];
-    
-    [outputStream
-        mtf_writeString:[NSString stringWithFormat: @"\n%@\n", import]];
-    
+    [outputStream mtf_writeString:[NSString stringWithFormat: @"\n%@\n", import]];
+
+    // Write a nullability annotation begin
+    [outputStream mtf_writeString:@"\nNS_ASSUME_NONNULL_BEGIN\n"];
+
     // Add the theme name constant
     NSString *nameConstant = [self symbolsThemeNameStringConstForFiletype:fileType prefix:prefix];
     
@@ -131,6 +132,9 @@ typedef NS_ENUM(NSInteger, FileType) {
             [outputStream mtf_writeString:symbolsDeclarationOutput];
         }
     }
+
+    // Write a nullability annotation end
+    [outputStream mtf_writeString:@"\nNS_ASSUME_NONNULL_END\n"];
 
     [outputStream close];
     if (![outputStream copyToDestinationIfNecessaryWithError:error]) return NO;
@@ -173,7 +177,7 @@ typedef NS_ENUM(NSInteger, FileType) {
     
     switch (fileType) {
     case FileTypeHeader:
-        return @"#import <Foundation/Foundation.h>";
+        return @"@import Foundation;";
     case FileTypeImplementation:
         return [self symbolsHeaderImportWithPrefix:prefix];
     }

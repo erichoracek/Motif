@@ -2,6 +2,8 @@
 
 #import "StyleGuideThemeSymbols.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 NSString * const StyleGuideThemeName = @"StyleGuideTheme";
 
 const struct StyleGuideThemeClassNames StyleGuideThemeClassNames = {
@@ -23,3 +25,5 @@ const struct StyleGuideThemeProperties StyleGuideThemeProperties = {
     .warningButton = @"warningButton",
     .warningSecondaryButton = @"warningSecondaryButton",
 };
+
+NS_ASSUME_NONNULL_END
