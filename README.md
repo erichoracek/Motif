@@ -329,7 +329,7 @@ $FontName: AvenirNext-Regular
 To generate theme symbols from this theme file, just run:
 
 ```
-motif --theme Buttons.json
+motif --theme Buttons.yaml
 ```
 
 This will generate the a pair of files named `ButtonSymbols.{h,m}`. `ButtonSymbols.h` looks like this:
@@ -382,7 +382,7 @@ To install the Motif CLI, simply build and run the `MotifCLI` target within `Mot
 
 ### As a "Run Script" build phase
 
-To automate the symbols generation, just add the following to a run script build phase to your application. This script assumes that all of your theme files end in `Theme.json`, but you can modify this to your liking.
+To automate the symbols generation, just add the following to a run script build phase to your application. This script assumes that all of your theme files end in `Theme.yaml`, but you can modify this to your liking.
 
 ```bash
 export PATH="$PATH:/usr/local/bin/"
@@ -394,7 +394,7 @@ if [ $? -ne 0  ]; then exit 0; fi
 
 export THEMES_DIR="${SRCROOT}/${PRODUCT_NAME}"
 
-find "${THEMES_DIR}" -name '*Theme.json' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${THEMES_DIR}"
+find "${THEMES_DIR}" -name '*Theme.yaml' |  sed 's/^/-t /' | xargs "${CLI_TOOL}" -o "${THEMES_DIR}"
 ```
 
 This will ensure that your symbols files are always up to date with your theme files. Just make sure the this run script build phase is before your "Compile Sources" build phase in your project. For an example of this in practice, check out any of the example projects within `Motif.xcworkspace`.
