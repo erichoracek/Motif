@@ -1,3 +1,10 @@
+# 0.3.2
+
+## Fixes
+
+- Fixes an issue that could cause an `EXC_BAD_ACCESS` when an error occurred while creating a theme (#81)
+- Fixes an issue where multiple inter-theme constant references could fail to resolve by recursively resolving constant references (#82)
+
 # 0.3.1
 
 ## Features
