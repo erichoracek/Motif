@@ -233,11 +233,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable id)resolvedValueForThemeConstant:(MTFThemeConstant *)constant referenceHistory:(NSArray<MTFThemeConstant *> *)referenceHistory fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     id referencedValue = constant.referencedValue;
 
-    // If the constant does not have a reference as its value, return its raw
-    // value.
+    // If the constant does not have a reference as its value, return its value.
     BOOL isReferencedValueSymbolReference = [referencedValue isKindOfClass:MTFThemeSymbolReference.class];
-    if (!referencedValue || !isReferencedValueSymbolReference) {
-        return constant.rawValue;
+    if (referencedValue == nil || !isReferencedValueSymbolReference) {
+        return constant.value;
     }
     
     // Otherwise, the constant has a symbol reference as its referenced value,
@@ -247,8 +246,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     switch (reference.type) {
     case MTFThemeSymbolTypeConstant: {
-        // Locate the referenced constant in the existing constants
-        // dictionary.
+        // Locate the referenced constant in the existing constants dictionary.
         MTFThemeConstant *constantReference = constants[reference.symbol];
         BOOL isSelfReferential = [referenceHistory containsObject:constantReference];
 
