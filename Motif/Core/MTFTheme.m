@@ -77,6 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     self = [self initWithThemeDictionaries:themeDictionaries error:error];
+    
+    if (self == nil) return nil;
 
     _fileURLs = [validFileURLs copy];
 
