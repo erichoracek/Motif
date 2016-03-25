@@ -52,8 +52,8 @@ describe(@"property application", ^{
         NSArray *properties = @[ @"property1", @"property2" ];
         NSArray *values = @[ @"value1", @"value2" ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject referencedValue:nil]
         }];
 
         __block NSSet *applierProperties;
@@ -84,8 +84,8 @@ describe(@"property application", ^{
         NSArray *properties = @[ @"property1", @"property2" ];
         NSArray *values = @[ @"value1", @"value2" ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            @"anotherProperty": [[MTFThemeConstant alloc] initWithName:@"anotherProperty" rawValue:@"anotherValue" mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            @"anotherProperty": [[MTFThemeConstant alloc] initWithName:@"anotherProperty" rawValue:@"anotherValue" referencedValue:nil]
         }];
 
         MTFThemeClassPropertiesApplier *applier = [[MTFThemeClassPropertiesApplier alloc]
@@ -106,8 +106,8 @@ describe(@"property application", ^{
         NSArray *properties = @[ @"property1", @"property2" ];
         NSArray *values = @[ @"value1", @"value2" ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            properties.lastObject: [[MTFThemeConstant alloc] initWithName:@"anotherProperty" rawValue:@"anotherValue" mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            properties.lastObject: [[MTFThemeConstant alloc] initWithName:@"anotherProperty" rawValue:@"anotherValue" referencedValue:nil]
         }];
 
         MTFThemeClassPropertiesApplier *applier = [[MTFThemeClassPropertiesApplier alloc]
@@ -174,8 +174,8 @@ describe(@"property application", ^{
         NSArray *valueTypes = @[ NSString.class, @(@encode(CGPoint)) ];
         NSArray *values = @[ @"value1", [NSValue value:&objCValue withObjCType:@encode(CGPoint)] ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject referencedValue:nil]
         }];
 
         __block NSSet *applierProperties;
@@ -208,8 +208,8 @@ describe(@"property application", ^{
         CGPoint objCValue = (CGPoint){.x = 1.0f, .y = 2.0f};
         NSArray *values = @[ @"value1", [NSValue value:&objCValue withObjCType:@encode(CGPoint)] ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            @"anotherProperty": [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            @"anotherProperty": [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject referencedValue:nil]
         }];
 
         NSArray *valueTypes = @[ NSString.class, @(@encode(CGPoint)) ];
@@ -232,8 +232,8 @@ it(@"should propapgate errors from value transformers when applying", ^{
         NSArray *properties = @[ @"property1", @"property2" ];
         NSArray *values = @[ @"1", @"2" ];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject mappedValue:nil],
-            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject mappedValue:nil]
+            properties.firstObject: [[MTFThemeConstant alloc] initWithName:properties.firstObject rawValue:values.firstObject referencedValue:nil],
+            properties.lastObject: [[MTFThemeConstant alloc] initWithName:properties.lastObject rawValue:values.lastObject referencedValue:nil]
         }];
 
         NSString *transformerName = @"MTFThemeClassValueObjCTypePropertyApplier Errors";

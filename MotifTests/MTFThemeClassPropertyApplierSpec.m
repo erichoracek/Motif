@@ -52,7 +52,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         __block id appliedValue;
@@ -82,7 +82,7 @@ describe(@"property application", ^{
         NSString *classProperty = @"classProperty";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value mappedValue:nil]
+            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc]
@@ -103,7 +103,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassPropertyApplier alloc]
@@ -162,7 +162,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         __block id appliedValue;
@@ -192,7 +192,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueClassPropertyApplier alloc]
@@ -217,7 +217,7 @@ describe(@"property application", ^{
         NSString *classProperty = @"classProperty";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value mappedValue:nil]
+            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueClassPropertyApplier alloc]
@@ -239,7 +239,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"1";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         NSString *transformerName = @"MTFThemeClassValueClassPropertyApplier Transformation";
@@ -277,7 +277,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"1";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         NSString *transformerName = @"MTFThemeClassValueClassPropertyApplier Errors";
@@ -312,7 +312,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueClassPropertyApplier alloc]
@@ -370,7 +370,7 @@ describe(@"property application", ^{
         CGPoint value = (CGPoint){.x = 1.0f, .y = 2.0f};
         NSValue *wrappedValue = [NSValue value:&value withObjCType:@encode(CGPoint)];
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:wrappedValue mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:wrappedValue referencedValue:nil]
         }];
 
         __block id appliedValue;
@@ -397,7 +397,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc]
@@ -422,7 +422,7 @@ describe(@"property application", ^{
         NSString *classProperty = @"classProperty";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value mappedValue:nil]
+            classProperty: [[MTFThemeConstant alloc] initWithName:classProperty rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc]
@@ -444,7 +444,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"1";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         NSString *transformerName = @"MTFThemeClassValueObjCTypePropertyApplierTransformation";
@@ -487,7 +487,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"1";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         NSString *transformerName = @"MTFThemeClassValueObjCTypePropertyApplierErrors";
@@ -522,7 +522,7 @@ describe(@"property application", ^{
         NSString *property = @"property";
         NSString *value = @"value";
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFThemeClassPropertyApplier *applier = [[MTFThemeClassValueObjCTypePropertyApplier alloc]

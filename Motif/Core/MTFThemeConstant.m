@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue mappedValue:(nullable id)mappedValue {
+- (instancetype)initWithName:(NSString *)name rawValue:(id)rawValue referencedValue:(nullable id)referencedValue {
     NSParameterAssert(name != nil);
     NSParameterAssert(rawValue != nil);
 
@@ -25,9 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
     _name = [name copy];
     _rawValue = rawValue;
-    _mappedValue = mappedValue;
+    _referencedValue = referencedValue;
     _transformedValueCache = [[NSCache alloc] init];
-    _value = [self valueFromMappedValue:_mappedValue rawValue:_rawValue];
     
     return self;
 }
@@ -36,28 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Public
 
-- (id)valueFromMappedValue:(nullable id)mappedValue rawValue:(id)rawValue {
-    NSParameterAssert(rawValue != nil);
-
-    // If the mapped value is a reference to another constant, return that
-    // constant's value
-    if (mappedValue != nil && [mappedValue isKindOfClass:MTFThemeConstant.class]) {
-        MTFThemeConstant *mappedConstant = (MTFThemeConstant *)mappedValue;
-        return mappedConstant.value;
-    }
-
-    // Otherwise, return either the mapped value or the raw value, in that
-    // order.
-    return (mappedValue ?: rawValue);
+- (id)value {
+    return self.referencedValue ?: self.rawValue;
 }
 
 #pragma mark Private
-
-- (void)setMappedValue:(nullable id)mappedValue {
-    _mappedValue = mappedValue;
-
-    _value = [self valueFromMappedValue:_mappedValue rawValue:self.rawValue];
-}
 
 #pragma mark Value Transformation
 
@@ -114,12 +96,12 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL haveEqualNames = [self.name isEqualToString:themeConstant.name];
     BOOL haveEqualRawValues = [self.rawValue isEqual:themeConstant.rawValue];
 
-    BOOL haveEqualMappedValues = (
-        (!self.mappedValue && !themeConstant.mappedValue)
-        || [self.mappedValue isEqual:themeConstant.mappedValue]
+    BOOL haveEqualReferencedValues = (
+        (!self.referencedValue && !themeConstant.referencedValue)
+        || [self.referencedValue isEqual:themeConstant.referencedValue]
     );
 
-    return (haveEqualNames && haveEqualRawValues && haveEqualMappedValues);
+    return (haveEqualNames && haveEqualRawValues && haveEqualReferencedValues);
 }
 
 #pragma mark - NSObject
@@ -133,7 +115,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSUInteger)hash {
-    return (self.name.hash ^ [self.rawValue hash] ^ [self.mappedValue hash]);
+    return (self.name.hash ^ [self.rawValue hash] ^ [self.referencedValue hash]);
 }
 
 - (NSString *)description {
@@ -142,7 +124,7 @@ NS_ASSUME_NONNULL_BEGIN
         NSStringFromClass(self.class),
         NSStringFromSelector(@selector(name)), self.name,
         NSStringFromSelector(@selector(rawValue)), self.rawValue,
-        NSStringFromSelector(@selector(mappedValue)), self.mappedValue,
+        NSStringFromSelector(@selector(referencedValue)), self.referencedValue,
         NSStringFromSelector(@selector(value)), self.value];
 }
 
