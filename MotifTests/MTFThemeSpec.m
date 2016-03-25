@@ -153,7 +153,7 @@ describe(@"raw theme parsing", ^{
     NSString *anotherClass = @".AnotherClass";
     NSString *constant = @"$Constant";
     NSString *anotherConstant = @"$AnotherConstant";
-    NSString *yetAnotherConstant = @"$AnotherConstant";
+    NSString *yetAnotherConstant = @"$YetAnotherConstant";
     NSString *property = @"property";
     NSString *stringValue = @"value";
     NSNumber *numberValue = @0;
@@ -236,12 +236,24 @@ describe(@"raw theme parsing", ^{
             expect(error.code).to.equal(MTFErrorFailedToParseTheme);
         });
 
+        it(@"should fail with transitively referencing self", ^{
+            theme = themeFromDictionary(@{
+                yetAnotherConstant: anotherConstant,
+                anotherConstant: constant,
+                constant: yetAnotherConstant,
+            });
+
+            expect(theme).to.beNil();
+            expect(error).notTo.beNil();
+            expect(error.domain).to.equal(MTFErrorDomain);
+            expect(error.code).to.equal(MTFErrorFailedToParseTheme);
+        });
 
         it(@"should succeed with referencing another constant that references yet another constant", ^{
             theme = themeFromDictionary(@{
-                constant: stringValue,
-                anotherConstant: constant,
                 yetAnotherConstant: anotherConstant,
+                anotherConstant: constant,
+                constant: stringValue,
             });
 
             expect(theme).to.beAnInstanceOf(MTFTheme.class);
@@ -280,6 +292,35 @@ describe(@"raw theme parsing", ^{
             expect(themeClass).to.beAnInstanceOf(MTFThemeClass.class);
             expect(themeClass.properties.allKeys).to.haveACountOf(1);
             expect(themeClass.properties[property]).to.equal(stringValue);
+        });
+
+        it(@"should succeed with referencing another constant that references a class", ^{
+            theme = themeFromDictionary(@{
+                class: @{ property: stringValue },
+                anotherConstant: class,
+                constant: anotherConstant,
+            });
+
+            expect(theme).to.beAnInstanceOf(MTFTheme.class);
+            expect(error).to.beNil();
+
+            MTFThemeConstant *themeConstant = theme.constants[constant.mtf_symbol];
+            expect(themeConstant).to.beAnInstanceOf(MTFThemeConstant.class);
+            expect(themeConstant.name).to.equal(constant.mtf_symbol);
+
+            MTFThemeClass *themeConstantThemeClass = themeConstant.value;
+            expect(themeConstantThemeClass).to.beAnInstanceOf(MTFThemeClass.class);
+            expect(themeConstantThemeClass.properties.allKeys).to.haveACountOf(1);
+            expect(themeConstantThemeClass.properties[property]).to.equal(stringValue);
+
+            MTFThemeConstant *anotherThemeConstant = theme.constants[anotherConstant.mtf_symbol];
+            expect(anotherThemeConstant).to.beAnInstanceOf(MTFThemeConstant.class);
+            expect(anotherThemeConstant.name).to.equal(anotherConstant.mtf_symbol);
+
+            MTFThemeClass *anotherThemeConstantThemeClass = themeConstant.value;
+            expect(anotherThemeConstantThemeClass).to.beAnInstanceOf(MTFThemeClass.class);
+            expect(anotherThemeConstantThemeClass.properties.allKeys).to.haveACountOf(1);
+            expect(anotherThemeConstantThemeClass.properties[property]).to.equal(stringValue);
         });
     });
 

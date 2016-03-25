@@ -17,19 +17,19 @@ describe(@"equality", ^{
     NSString *anotherName = @"anotherName";
     NSString *rawValue = @"rawValue";
     NSString *anotherRawValue = @"anotherRawValue";
-    NSString *mappedValue = @"mappedValue";
-    NSString *anotherMappedValue = @"anotherMappedValue";
+    NSString *referencedValue = @"referencedValue";
+    NSString *anotherReferencedValue = @"anotherReferencedValue";
 
     it(@"should equal another constant", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
             
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         expect(constant1).to.equal(constant2);
     });
@@ -38,12 +38,12 @@ describe(@"equality", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
             
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:anotherName
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         expect(constant1).notTo.equal(constant2);
     });
@@ -52,40 +52,40 @@ describe(@"equality", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
             
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:anotherRawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         expect(constant1).notTo.equal(constant2);
     });
 
-    it(@"should not equal another constant with a different mapped value", ^{
+    it(@"should not equal another constant with a different referenced value", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
             
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:anotherMappedValue];
+            referencedValue:anotherReferencedValue];
 
         expect(constant1).notTo.equal(constant2);
     });
 
-    it(@"should not equal another constant with a nil mapped value", ^{
+    it(@"should not equal another constant with a nil referenced value", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
             
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:name
             rawValue:rawValue
-            mappedValue:nil];
+            referencedValue:nil];
 
         expect(constant1).notTo.equal(constant2);
     });

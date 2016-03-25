@@ -156,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
         return [[MTFThemeConstant alloc]
             initWithName:symbol
             rawValue:rawValue
-            mappedValue:nil];
+            referencedValue:nil];
     }
     
     // We now know that this constant's value is a string, so cast it
@@ -172,7 +172,7 @@ NS_ASSUME_NONNULL_BEGIN
     return [[MTFThemeConstant alloc]
         initWithName:symbol
         rawValue:rawValue
-        mappedValue:reference];
+        referencedValue:reference];
 }
 
 - (NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
@@ -208,101 +208,116 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
-    NSArray<MTFThemeConstant *> *parsedConstantObjects = [parsedConstants
-        objectEnumerator].allObjects;
+    NSArray<MTFThemeConstant *> *parsedConstantObjects = [parsedConstants objectEnumerator].allObjects;
     
     for (MTFThemeConstant *parsedConstant in parsedConstantObjects) {
-        id mappedValue = parsedConstant.mappedValue;
-        
-        // If the constant does not have a reference as its value, continue
-        BOOL isMappedValueSymbolReference = [mappedValue
-            isKindOfClass:MTFThemeSymbolReference.class];
-        if (!mappedValue || !isMappedValueSymbolReference) {
-            continue;
+        id value = [self
+            resolvedValueForThemeConstant:parsedConstant
+            referenceHistory:@[ parsedConstant ]
+            fromConstants:constants
+            classes:classes error:error];
+
+        if (value != nil) {
+            parsedConstant.referencedValue = value;
         }
-        
-        // Otherwise, the constant has a symbol reference as its mapped value,
-        // so resolve it
-        MTFThemeSymbolReference *reference;
-        reference = (MTFThemeSymbolReference *)mappedValue;
-        
-        switch (reference.type) {
-        case MTFThemeSymbolTypeConstant: {
-            // Locate the referenced constant in the existing constants
-            // dictionary.
-            MTFThemeConstant *constantReference = constants[reference.symbol];
-            BOOL isSelfReferential = constantReference == parsedConstant;
-
-            if (constantReference && !isSelfReferential) {
-                parsedConstant.mappedValue = constantReference;
-                continue;
-            }
-
-            // This is an invalid reference, so remove it from the resolved
-            // constants.
+        // This is an invalid reference, so remove it from the resolved
+        // constants.
+        else {
             [resolvedConstants removeObjectForKey:parsedConstant.name];
-
-            if (error != NULL) {
-                NSString *description;
-
-                if (isSelfReferential) {
-                    description = [NSString stringWithFormat:
-                        @"The named constant value for property '%@' ('%@') may "
-                            "not reference itself",
-                        parsedConstant.name,
-                        parsedConstant.rawValue];
-                } else {
-                    description = [NSString stringWithFormat:
-                        @"The named constant value for property '%@' ('%@') was "
-                            "not found as a registered constant",
-                        parsedConstant.name,
-                        parsedConstant.rawValue];
-                }
-
-                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-                    NSLocalizedDescriptionKey: description
-                }];
-            }
-        }
-        break;
-        case MTFThemeSymbolTypeClass: {
-            // Locate the referenced class in the existing constants dictionary
-            MTFThemeClass *classReference = classes[reference.symbol];
-            if (classReference != nil) {
-                parsedConstant.mappedValue = classReference;
-                continue;
-            }
-            // This is an invalid reference, so remove it from the resolved
-            // constants
-            [resolvedConstants removeObjectForKey:parsedConstant.name];
-            if (error != NULL) {
-                NSString *description = [NSString stringWithFormat:
-                    @"The named constant value for property '%@' ('%@') was "
-                        "not found as a registered constant",
-                    parsedConstant.name,
-                    parsedConstant.rawValue];
-
-                *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-                    NSLocalizedDescriptionKey: description
-                }];
-            }
-        }
-        break;
-        default:
-            @throw [NSException
-                exceptionWithName:NSInternalInconsistencyException
-                reason:[NSString stringWithFormat:@"Unhanded symbol type %@", reference]
-                userInfo:nil];
         }
     }
     
     return [resolvedConstants copy];
 }
 
+- (nullable id)resolvedValueForThemeConstant:(MTFThemeConstant *)constant referenceHistory:(NSArray<MTFThemeConstant *> *)referenceHistory fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
+    id referencedValue = constant.referencedValue;
+
+    // If the constant does not have a reference as its value, return its value.
+    BOOL isReferencedValueSymbolReference = [referencedValue isKindOfClass:MTFThemeSymbolReference.class];
+    if (referencedValue == nil || !isReferencedValueSymbolReference) {
+        return constant.value;
+    }
+    
+    // Otherwise, the constant has a symbol reference as its referenced value,
+    // so resolve it.
+    MTFThemeSymbolReference *reference;
+    reference = (MTFThemeSymbolReference *)referencedValue;
+    
+    switch (reference.type) {
+    case MTFThemeSymbolTypeConstant: {
+        // Locate the referenced constant in the existing constants dictionary.
+        MTFThemeConstant *constantReference = constants[reference.symbol];
+        BOOL isSelfReferential = [referenceHistory containsObject:constantReference];
+
+        if (constantReference != nil && !isSelfReferential) {
+            return [self
+                resolvedValueForThemeConstant:constantReference
+                referenceHistory:[referenceHistory arrayByAddingObject:constantReference]
+                fromConstants:constants
+                classes:classes
+                error:error];
+        }
+
+        if (error != NULL) {
+            NSString *description;
+
+            if (isSelfReferential) {
+                description = [NSString stringWithFormat:
+                    @"The named constant value for property '%@' ('%@') may "
+                        "not reference itself",
+                    constant.name,
+                    constant.rawValue];
+            } else {
+                description = [NSString stringWithFormat:
+                    @"The named constant value for property '%@' ('%@') was "
+                        "not found as a registered constant",
+                    constant.name,
+                    constant.rawValue];
+            }
+
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                NSLocalizedDescriptionKey: description
+            }];
+        }
+
+        return nil;
+    }
+    break;
+    case MTFThemeSymbolTypeClass: {
+        // Locate the referenced class in the existing constants dictionary
+        MTFThemeClass *classReference = classes[reference.symbol];
+        if (classReference != nil) {
+            return classReference;
+        }
+
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"The named constant value for property '%@' ('%@') was "
+                    "not found as a registered constant",
+                constant.name,
+                constant.rawValue];
+
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                NSLocalizedDescriptionKey: description
+            }];
+        }
+
+        return nil;
+    }
+    break;
+    default:
+        @throw [NSException
+            exceptionWithName:NSInternalInconsistencyException
+            reason:[NSString stringWithFormat:@"Unhanded symbol type %@", reference]
+            userInfo:nil];
+    }
+}
+
 - (NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
     // Don't continue if there's no superclass, as it's the only reason why a
     // reference would be invalid
-    MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] mappedValue];
+    MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] referencedValue];
     if (classSuperclass == nil) {
         return parsedConstants;
     }
@@ -333,7 +348,7 @@ NS_ASSUME_NONNULL_BEGIN
             break;
         }
         
-    } while ((superclass = [superclass.propertiesConstants[MTFThemeSuperclassKey] mappedValue]));
+    } while ((superclass = [superclass.propertiesConstants[MTFThemeSuperclassKey] referencedValue]));
     
     return [filteredParsedConstants copy];
 }
@@ -373,13 +388,13 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(rawProperties != nil);
     
     NSString *name = rawName.mtf_symbol;
-    
-    NSDictionary *mappedProperties = [self
+
+    NSDictionary *resolvedProperties = [self
         constantsParsedFromRawConstants:rawProperties
         error:error];
     
     NSDictionary *filteredProperties = [self
-        filteredPropertiesFromMappedClassProperties:mappedProperties
+        filteredPropertiesFromResolvedClassProperties:resolvedProperties
         className:name
         error:error];
     
@@ -390,18 +405,18 @@ NS_ASSUME_NONNULL_BEGIN
     return class;
 }
 
-- (NSDictionary *)filteredPropertiesFromMappedClassProperties:(NSDictionary *)mappedClassProperties className:(NSString *)className error:(NSError **)error {
-    NSMutableDictionary *filteredClassProperties = [mappedClassProperties mutableCopy];
+- (NSDictionary *)filteredPropertiesFromResolvedClassProperties:(NSDictionary *)resolvedClassProperties className:(NSString *)className error:(NSError **)error {
+    NSMutableDictionary *filteredClassProperties = [resolvedClassProperties mutableCopy];
     
     // If there is a superclass property, filter it out if it doesn't contain a
     // reference and populate the error
     MTFThemeConstant *superclass = filteredClassProperties[MTFThemeSuperclassKey];
     if (superclass != nil) {
-        BOOL isSymbolReference = [superclass.mappedValue isKindOfClass:MTFThemeSymbolReference.class];
+        BOOL isSymbolReference = [superclass.referencedValue isKindOfClass:MTFThemeSymbolReference.class];
         BOOL isSuperclassClassReference = NO;
         
         if (isSymbolReference) {
-            MTFThemeSymbolReference *reference = superclass.mappedValue;
+            MTFThemeSymbolReference *reference = superclass.referencedValue;
             isSuperclassClassReference = (reference.type == MTFThemeSymbolTypeClass);
         }
         

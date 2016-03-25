@@ -53,7 +53,7 @@ describe(@"-mtf_registerThemeProperty:forKeyPath:withValuesByKeyword:", ^{
 
     it(@"should set a value when it is present in a theme class", ^{
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:value referencedValue:nil]
         }];
 
         MTFTestEnumerationPropertiesApplicant *applicant = [[applicantClass alloc] init];
@@ -67,7 +67,7 @@ describe(@"-mtf_registerThemeProperty:forKeyPath:withValuesByKeyword:", ^{
 
     it(@"should error when invoked with an invalid value", ^{
         MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:@"class" propertiesConstants:@{
-            property: [[MTFThemeConstant alloc] initWithName:property rawValue:invalidValue mappedValue:nil]
+            property: [[MTFThemeConstant alloc] initWithName:property rawValue:invalidValue referencedValue:nil]
         }];
 
         MTFTestEnumerationPropertiesApplicant *applicant = [[applicantClass alloc] init];

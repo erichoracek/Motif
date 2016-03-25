@@ -344,19 +344,19 @@ describe(@"equality", ^{
     NSString *anotherName = @"anotherName";
     NSString *key = @"key";
     NSString *rawValue = @"rawValue";
-    NSString *mappedValue = @"mappedValue";
-    NSString *anotherMappedValue = @"anotherMappedValue";
+    NSString *referencedValue = @"referencedValue";
+    NSString *anotherReferencedValue = @"anotherReferencedValue";
 
     it(@"should be equal to another class with equal properties", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:key
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:key
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         MTFThemeClass *class1 = [[MTFThemeClass alloc]
             initWithName:name
@@ -385,12 +385,12 @@ describe(@"equality", ^{
         MTFThemeConstant *constant1 = [[MTFThemeConstant alloc]
             initWithName:key
             rawValue:rawValue
-            mappedValue:mappedValue];
+            referencedValue:referencedValue];
 
         MTFThemeConstant *constant2 = [[MTFThemeConstant alloc]
             initWithName:key
             rawValue:rawValue
-            mappedValue:anotherMappedValue];
+            referencedValue:anotherReferencedValue];
 
         MTFThemeClass *class1 = [[MTFThemeClass alloc]
             initWithName:name
