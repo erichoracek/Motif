@@ -43,7 +43,7 @@ task :lint_podspec do
 end
 
 task :slather do
-    sh("bundle exec slather --input-format gcov")
+    sh('bundle exec slather')
 end
 
 task :clean do
