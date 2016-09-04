@@ -1,3 +1,8 @@
+# 0.3.3
+
+- Fix angle bracet issue when included via CocoaPods (#82)
+- Migrate from gcov to profdata (#87)
+
 # 0.3.2
 
 ## Fixes
