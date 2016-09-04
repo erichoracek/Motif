@@ -43,7 +43,8 @@ task :lint_podspec do
 end
 
 task :slather do
-    sh("bundle exec slather coverage --input-format profdata --ignore \"Carthage/*\" --ignore \"../*\" -s #{project_file_path}")
+    sh("bundle exec slather coverage -s --workspace Motif --scheme Motif-iOS --ignore \"Carthage/*\" --ignore 'Motif/iOS Support/UIColor+HTMLColors.m'")
+    # --input-format profdata --ignore \"Carthage/*\" --ignore \"../*\" -s #{project_file_path}")
 end
 
 task :clean do
