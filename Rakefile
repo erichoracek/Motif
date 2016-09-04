@@ -43,7 +43,7 @@ task :lint_podspec do
 end
 
 task :slather do
-    sh('bundle exec slather coverage -s')
+    sh('bundle exec slather coverage')
 end
 
 task :clean do
