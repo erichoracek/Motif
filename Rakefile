@@ -7,8 +7,8 @@ task :run_tests_osx do
 end
 
 task :run_tests => [
+    :run_tests_osx,
     :run_tests_ios,
-    :run_tests_osx
 ]
 
 task :build_cli do
@@ -43,8 +43,7 @@ task :lint_podspec do
 end
 
 task :slather do
-    sh("bundle exec slather coverage -s --workspace Motif --scheme Motif-iOS --ignore \"Carthage/*\" --ignore 'Motif/iOS Support/UIColor+HTMLColors.m'")
-    # --input-format profdata --ignore \"Carthage/*\" --ignore \"../*\" -s #{project_file_path}")
+    sh('bundle exec slather coverage -s')
 end
 
 task :clean do
@@ -84,7 +83,7 @@ BUILD_FLAGS_IOS =
     "-destination 'platform=iOS Simulator,OS=latest,name=iPhone 5' "\
     "ONLY_ACTIVE_ARCH=YES " + BUILD_FLAGS
 
-BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' -enableCodeCoverage YES " + BUILD_FLAGS_IOS
+BUILD_FLAGS_TEST_IOS = "test -scheme '#{LIBRARY_NAME}-iOS' " + BUILD_FLAGS_IOS
 BUILD_FLAGS_TEST_OSX = "test -scheme '#{LIBRARY_NAME}-OSX' " + BUILD_FLAGS
 BUILD_FLAGS_BUILD_CLI = "build -scheme #{SCHEME_CLI} " + BUILD_FLAGS
 BUILD_FLAGS_BUTTONS_EXAMPLE = "build -scheme '#{SCHEME_BUTTONS_EXAMPLE}' " + BUILD_FLAGS_IOS

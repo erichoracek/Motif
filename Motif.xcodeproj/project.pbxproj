@@ -921,7 +921,7 @@
 			attributes = {
 				CLASSPREFIX = MTF;
 				LastSwiftMigration = 0700;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A79EC5F1AC9147E000CCC01 = {
