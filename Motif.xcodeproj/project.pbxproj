@@ -921,11 +921,12 @@
 			attributes = {
 				CLASSPREFIX = MTF;
 				LastSwiftMigration = 0700;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A79EC5F1AC9147E000CCC01 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 					3A79EC6A1AC9147E000CCC01 = {
 						CreatedOnToolsVersion = 6.3;
@@ -1158,6 +1159,7 @@
 					"HAVE_CONFIG_H=1",
 				);
 				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
 			};
 			name = Debug;
@@ -1173,6 +1175,7 @@
 					"HAVE_CONFIG_H=1",
 				);
 				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
 			};
 			name = Release;
@@ -1183,6 +1186,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Motif-OSXTests";
 			};
 			name = Debug;
@@ -1193,6 +1197,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Motif-OSXTests";
 			};
 			name = Release;
@@ -1201,7 +1206,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E241AC9AE6000BD598C /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1214,6 +1222,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E261AC9AE6000BD598C /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -1227,7 +1237,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -1236,7 +1246,9 @@
 					"HAVE_CONFIG_H=1",
 				);
 				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1244,7 +1256,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -1253,7 +1265,9 @@
 					"HAVE_CONFIG_H=1",
 				);
 				INFOPLIST_FILE = Motif/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1264,6 +1278,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Motif-iOSTests";
 			};
 			name = Debug;
@@ -1275,6 +1290,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Motif-iOSTests";
 			};
 			name = Release;

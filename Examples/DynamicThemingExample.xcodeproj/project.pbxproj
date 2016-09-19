@@ -397,7 +397,7 @@
 		3ADB35DC1A5645B30059796A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3ADB35E31A5645B30059796A = {
@@ -561,6 +561,7 @@
 					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Debug;
@@ -576,6 +577,7 @@
 					"SCREEN_BRIGHTNESS_THEME_APPLIER=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ScreenBrightnessThemingExample;
 			};
 			name = Release;
@@ -584,6 +586,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ACE0E5C1AE462D000B79147 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				ENABLE_TESTABILITY = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -594,6 +599,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ACE0E5E1AE462D000B79147 /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,6 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Debug;
@@ -618,6 +626,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DynamicThemingExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DynamicThemingExample;
 			};
 			name = Release;

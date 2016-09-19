@@ -89,7 +89,7 @@ typedef struct {
      * \c @synthesize was not used, and therefore no instance variable exists. This
      * would also be the case if the property is implemented dynamically.
      */
-    const char *ivar;
+    const char * _Nullable ivar;
 
     /**
      * If this property is defined as being an instance of a specific class,

@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         do {
-            try themeApplier.applyClassWithName(ThemeClassNames.ButtonsView.rawValue, to:buttonsView)
+            try themeApplier.applyClass(withName: ThemeClassNames.ButtonsView.rawValue, to:buttonsView)
         } catch {
             print(error)
         }
