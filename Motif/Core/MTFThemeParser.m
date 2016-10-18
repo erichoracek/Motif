@@ -170,8 +170,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
     NSArray<MTFThemeClass *> *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
     
+    // Resolve the references within all classes.
     for (MTFThemeClass *parsedClass in parsedClassObjects) {
-        // Resolve the references within this class
         NSDictionary *propertiesConstants = [self
             resolveReferencesInParsedConstants:parsedClass.propertiesConstants
             fromConstants:constants
@@ -183,19 +183,16 @@ NS_ASSUME_NONNULL_BEGIN
         parsedClass.propertiesConstants = propertiesConstants;
     }
     
-    // Once all references have been resolved, filter invalid references
+    // Once all references have been resolved, error if there are any circular
+    // superclass references. If we don't do this here, we could infinitely
+    // recurse during lazy superclass property resolution.
     for (MTFThemeClass *resolvedClass in [resolvedClasses objectEnumerator].allObjects) {
-        NSDictionary *propertiesConstants = resolvedClass.propertiesConstants;
-        
-        // Filter invalid references from class properties
-        NSDictionary *filteredPropertiesConstants = [self
-            filterInvalidReferencesInParsedConstants:propertiesConstants
+        BOOL noCircularSuperclassReferences = [self
+            parsedConstantsContainsNoCircularSuperclassReferences:resolvedClass.propertiesConstants
             forClass:resolvedClass
             error:error];
 
-        if (filteredPropertiesConstants == nil) return nil;
-        
-        resolvedClass.propertiesConstants = filteredPropertiesConstants;
+        if (!noCircularSuperclassReferences) return nil;
     }
     
     return [resolvedClasses copy];
@@ -305,25 +302,17 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (nullable NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
+- (BOOL)parsedConstantsContainsNoCircularSuperclassReferences:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
     // Don't continue if there's no superclass, as it's the only reason why a
     // reference would be invalid
     MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] referencedValue];
-    if (classSuperclass == nil) {
-        return parsedConstants;
-    }
-    
-    NSMutableDictionary *filteredParsedConstants = [parsedConstants mutableCopy];
+    if (classSuperclass == nil) return parsedConstants;
     
     // Ensure that no superclass all the way up the inheritance hierarchy
     // causes a circular reference.
     MTFThemeClass *superclass = classSuperclass;
     do {
         if (superclass == class) {
-            // Filter the superclass from the parsed constants if it
-            // transitively references itself
-            [filteredParsedConstants removeObjectForKey:MTFThemeSuperclassKey];
-
             if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
                     @"The superclass of '%@' causes it to inherit from itself. "
@@ -336,12 +325,12 @@ NS_ASSUME_NONNULL_BEGIN
                 }];
             }
             
-            return nil;
+            return NO;
         }
         
     } while ((superclass = [superclass.propertiesConstants[MTFThemeSuperclassKey] referencedValue]));
     
-    return [filteredParsedConstants copy];
+    return YES;
 }
 
 #pragma mark Classes
