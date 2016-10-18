@@ -36,9 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param error A pass-by-reference error, populated if a parsing error occurred.
  
- @return An initialized theme parser.
+ @return An initialized theme parser, or nil if the parse failed.
  */
-- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants existingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants existingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
 /**
  The theme constants parsed from the raw theme.

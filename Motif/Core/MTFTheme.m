@@ -101,19 +101,13 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableDictionary<NSString *, MTFThemeClass *> *classes = [NSMutableDictionary dictionary];
 
     for (NSDictionary *dictionary in dictionaries) {
-        NSError *parseError;
         MTFThemeParser *parser = [[MTFThemeParser alloc]
             initWithRawTheme:dictionary
             inheritingExistingConstants:constants
             existingClasses:classes
-            error:&parseError];
+            error:error];
 
-        if (parseError != nil) {
-            if (error != NULL) {
-                *error = parseError;
-            }
-            return nil;
-        }
+        if (parser == nil) return nil;
 
         [constants addEntriesFromDictionary:parser.parsedConstants];
         [classes addEntriesFromDictionary:parser.parsedClasses];

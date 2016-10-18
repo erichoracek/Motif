@@ -39,8 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 
     _name = [name copy];
     _propertiesConstants = [propertiesConstants copy];
-    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
-    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
 
     return self;
 }
@@ -310,12 +308,34 @@ NS_ASSUME_NONNULL_BEGIN
     );
 }
 
+@synthesize propertiesConstants = _propertiesConstants;
+
 - (void)setPropertiesConstants:(NSDictionary<NSString *,MTFThemeConstant *> *)propertiesConstants {
     NSParameterAssert(propertiesConstants != nil);
 
-    _propertiesConstants = propertiesConstants;
-    _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:_propertiesConstants];
-    _properties = [self createPropertiesFromResolvedPropertiesConstants:_resolvedPropertiesConstants];
+    _propertiesConstants = [propertiesConstants copy];
+    _resolvedPropertiesConstants = nil;
+    _properties = nil;
+}
+
+@synthesize resolvedPropertiesConstants = _resolvedPropertiesConstants;
+
+- (NSDictionary<NSString *,MTFThemeConstant *> *)resolvedPropertiesConstants {
+    if (_resolvedPropertiesConstants == nil) {
+        _resolvedPropertiesConstants = [self createResolvedPropertiesConstantsFromPropertiesConstants:self.propertiesConstants];
+    }
+
+    return _resolvedPropertiesConstants;
+}
+
+@synthesize properties = _properties;
+
+- (NSDictionary<NSString *,id> *)properties {
+    if (_properties == nil) {
+        _properties = [self createPropertiesFromResolvedPropertiesConstants:self.resolvedPropertiesConstants];
+    }
+
+    return _properties;
 }
 
 - (NSDictionary<NSString *, MTFThemeConstant *> *)createResolvedPropertiesConstantsFromPropertiesConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)propertiesConstants {
@@ -331,7 +351,10 @@ NS_ASSUME_NONNULL_BEGIN
             // In the case of the symbol generator, the superclasses could
             // not be resolved, and thus may strings rather than references
             if ([superclass isKindOfClass:MTFThemeClass.class]) {
+                // By accessing resolvedPropertiesConstants here, it will be
+                // recursively resolved across all superclasses.
                 NSMutableDictionary<NSString *, MTFThemeConstant *> *superclassProperties = [superclass.resolvedPropertiesConstants mutableCopy];
+
                 // Ensure that subclasses are able to override properties
                 // by removing keys from the resolved properties constants
                 [superclassProperties removeObjectsForKeys:propertiesConstants.allKeys];

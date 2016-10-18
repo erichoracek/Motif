@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The resolved property constants across all superclasses.
  */
-@property (nonatomic, copy, readonly) NSDictionary<NSString *, MTFThemeConstant *> *resolvedPropertiesConstants;
+@property (nonatomic, copy, readonly, null_resettable) NSDictionary<NSString *, MTFThemeConstant *> *resolvedPropertiesConstants;
 
 @end
 
