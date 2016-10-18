@@ -156,11 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "MotifCLI" */;
 			buildPhases = (
-				9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */,
+				9E8A27E9455C99C98A01B753 /* [CP] Check Pods Manifest.lock */,
 				3ADB6F881A50A8B7004EDEF3 /* Sources */,
 				3ADB6F891A50A8B7004EDEF3 /* Frameworks */,
 				3ADB6F8A1A50A8B7004EDEF3 /* Copy Files */,
-				E1073F23AE98EF2180E7B39A /* Copy Pods Resources */,
+				E1073F23AE98EF2180E7B39A /* [CP] Copy Pods Resources */,
 				3ABF07421A51453500E6A83C /* Install in /usr/local/bin/ */,
 				3A555A281ACCFE7600726EC9 /* Install Frameworks to /usr/local/Frameworks/ */,
 				3A555A2B1ACD00F800726EC9 /* Link Framework */,
@@ -250,29 +250,29 @@
 			shellScript = "cp -f ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME} /usr/local/bin/${PRODUCT_NAME}";
 			showEnvVarsInLog = 0;
 		};
-		9E8A27E9455C99C98A01B753 /* Check Pods Manifest.lock */ = {
+		9E8A27E9455C99C98A01B753 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E1073F23AE98EF2180E7B39A /* Copy Pods Resources */ = {
+		E1073F23AE98EF2180E7B39A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
