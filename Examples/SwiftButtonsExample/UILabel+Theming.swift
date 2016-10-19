@@ -10,7 +10,7 @@ import Foundation
 import Motif
 
 extension UILabel {
-    public override class func initialize() {
+    open override class func initialize() {
         guard self === UILabel.self else { return }
         
         self.mtf_registerThemeProperties([

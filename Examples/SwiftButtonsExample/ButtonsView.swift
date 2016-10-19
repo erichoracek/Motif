@@ -13,25 +13,25 @@ class ButtonsView: UIView {
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {
-        saveButton = UIButton(type: .System)
-        deleteButton = UIButton(type: .System)
+        saveButton = UIButton(type: .system)
+        deleteButton = UIButton(type: .system)
 
-        saveButton.setTitle("Save", forState: .Normal)
-        deleteButton.setTitle("Delete", forState: .Normal)
+        saveButton.setTitle("Save", for: UIControlState())
+        deleteButton.setTitle("Delete", for: UIControlState())
 
         super.init(frame: frame)
 
         let stackView = UIStackView(arrangedSubviews: [ saveButton, deleteButton ])
         stackView.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.spacing = 10
-        stackView.distribution = .FillEqually
+        stackView.distribution = .fillEqually
         addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        stackView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        stackView.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
+        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +40,7 @@ class ButtonsView: UIView {
 
     // MARK: - UIView
 
-    override class func requiresConstraintBasedLayout() -> Bool {
+    override class var requiresConstraintBasedLayout : Bool {
         return true
     }
 
