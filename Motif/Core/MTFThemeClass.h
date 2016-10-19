@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  This dictionary is keyed by property names with values of the properties as
  values.
  */
-@property (nonatomic, copy, readonly) NSDictionary<NSString *, id> *properties;
+@property (nonatomic, copy, readonly, null_resettable) NSDictionary<NSString *, id> *properties;
 
 /**
  Applies the receiver to an object.

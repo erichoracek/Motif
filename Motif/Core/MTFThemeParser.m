@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Use the designated initializer instead" userInfo:nil];
 }
 
-- (instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants existingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
+- (nullable instancetype)initWithRawTheme:(NSDictionary<NSString *, id> *)rawTheme inheritingExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants existingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
     NSParameterAssert(rawTheme != nil);
     NSParameterAssert(existingConstants != nil);
     NSParameterAssert(existingClasses != nil);
@@ -40,54 +40,26 @@ NS_ASSUME_NONNULL_BEGIN
     // Filter out the constants and classes from the raw dictionary
     NSDictionary<NSString *, id> *rawConstants = [self rawConstantsFromRawTheme:rawTheme];
     NSDictionary<NSString *, id> *rawClasses = [self rawClassesFromRawTheme:rawTheme];
-    
-    // Determine the invalid keys from the raw theme
-    NSArray<NSString *> *invalidSymbols = [self
-        invalidSymbolsFromRawTheme:rawTheme
-        rawConstants:rawConstants
-        rawClasses:rawClasses];
-        
-    if (invalidSymbols.count && error) {
-        NSString *description = [NSString stringWithFormat:
-            @"The following theme symbols are invalid %@",
-            invalidSymbols];
 
-        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-            NSLocalizedDescriptionKey: description
-        }];
-    }
-    
-    // Map the constants from the raw theme
-    NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants = [self
-        constantsParsedFromRawConstants:rawConstants
-        error:error];
+    if ([self rawThemeContainsInvalidSymbols:rawTheme rawConstants:rawConstants rawClasses:rawClasses error:error]) return nil;
 
-    NSDictionary<NSString *, MTFThemeClass *> *parsedClasses = [self
-        classesParsedFromRawClasses:rawClasses
-        error:error];
-    
+    NSDictionary<NSString *, MTFThemeConstant *> *parsedConstants = [self constantsParsedFromRawConstants:rawConstants];
+
+    NSDictionary<NSString *, MTFThemeClass *> *parsedClasses = [self classesParsedFromRawClasses:rawClasses error:error];
+    if (parsedClasses == nil) return nil;
+
     if (self.class.shouldResolveReferences) {
-        NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self
-            mergeParsedConstants:parsedConstants
-            intoExistingConstants:existingConstants
-            error:error];
+        NSDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [self mergeParsedConstants:parsedConstants intoExistingConstants:existingConstants error:error];
+        if (mergedConstants == nil) return nil;
 
-        NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self
-            mergeParsedClasses:parsedClasses
-            intoExistingClasses:existingClasses
-            error:error];
+        NSDictionary<NSString *, MTFThemeClass *> *mergedClasses = [self mergeParsedClasses:parsedClasses intoExistingClasses:existingClasses error:error];
+        if (mergedClasses == nil) return nil;
         
-        parsedConstants = [self
-            resolveReferencesInParsedConstants:parsedConstants
-            fromConstants:mergedConstants
-            classes:mergedClasses
-            error:error];
+        parsedConstants = [self resolveReferencesInParsedConstants:parsedConstants fromConstants:mergedConstants classes:mergedClasses error:error];
+        if (parsedConstants == nil) return nil;
         
-        parsedClasses = [self
-            resolveReferencesInParsedClasses:parsedClasses
-            fromConstants:mergedConstants
-            classes:mergedClasses
-            error:error];
+        parsedClasses = [self resolveReferencesInParsedClasses:parsedClasses fromConstants:mergedConstants classes:mergedClasses error:error];
+        if (parsedClasses == nil) return nil;
     }
     
     _parsedConstants = parsedConstants;
@@ -102,47 +74,67 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDictionary<NSString *, id> *)rawConstantsFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
     NSMutableDictionary *rawConstants = [NSMutableDictionary dictionary];
+
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolConstantReference) {
             rawConstants[symbol] = rawTheme[symbol];
         }
     }
+
     return [rawConstants copy];
 }
 
 - (NSDictionary<NSString *, id> *)rawClassesFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme {
     NSMutableDictionary *rawClasses = [NSMutableDictionary dictionary];
+
     for (NSString *symbol in rawTheme) {
         if (symbol.mtf_isRawSymbolClassReference) {
             rawClasses[symbol] = rawTheme[symbol];
         }
     }
+
     return [rawClasses copy];
 }
 
-- (NSArray<NSString *> *)invalidSymbolsFromRawTheme:(NSDictionary<NSString *, id> *)rawTheme rawConstants:(NSDictionary<NSString *, id> *)rawConstants rawClasses:(NSDictionary<NSString *, id> *)rawClasses {
+- (BOOL)rawThemeContainsInvalidSymbols:(NSDictionary<NSString *, id> *)rawTheme rawConstants:(NSDictionary<NSString *, id> *)rawConstants rawClasses:(NSDictionary<NSString *, id> *)rawClasses error:(NSError **)error {
     NSMutableSet<NSString *> *remainingKeys = [NSMutableSet setWithArray:rawTheme.allKeys];
     [remainingKeys minusSet:[NSSet setWithArray:rawConstants.allKeys]];
     [remainingKeys minusSet:[NSSet setWithArray:rawClasses.allKeys]];
-    return remainingKeys.allObjects;
+
+    if (remainingKeys.count > 0) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"The following theme symbols are invalid %@",
+                remainingKeys];
+
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                NSLocalizedDescriptionKey: description
+            }];
+        }
+
+        return YES;
+    }
+
+    return NO;
 }
 
 #pragma mark Constants
 
-- (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants error:(NSError **)error {
+- (NSDictionary<NSString *, MTFThemeConstant *> *)constantsParsedFromRawConstants:(NSDictionary *)rawConstants {
     NSMutableDictionary *parsedConstants = [NSMutableDictionary dictionary];
+
     for (NSString *rawSymbol in rawConstants) {
         id rawValue = rawConstants[rawSymbol];
-        MTFThemeConstant *constant = [self
-            constantParsedFromRawSymbol:rawSymbol
-            rawValue:rawValue
-            error:error];
+
+        MTFThemeConstant *constant = [self constantParsedFromRawSymbol:rawSymbol rawValue:rawValue];
+
         parsedConstants[constant.name] = constant;
     };
+
     return [parsedConstants copy];
 }
 
-- (MTFThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue error:(NSError **)error {
+- (MTFThemeConstant *)constantParsedFromRawSymbol:(NSString *)rawSymbol rawValue:(id)rawValue {
     // If the symbol is a reference (in the case of a root-level constant), use
     // it. Otherwise it is a reference to in a class' properties, so just keep
     // it as-is
@@ -165,8 +157,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     // Determine if this string value is a symbol reference
     if (rawValueString.mtf_isRawSymbolReference) {
-        reference = [[MTFThemeSymbolReference alloc]
-            initWithRawSymbol:rawValueString];
+        reference = [[MTFThemeSymbolReference alloc] initWithRawSymbol:rawValueString];
     }
     
     return [[MTFThemeConstant alloc]
@@ -175,38 +166,39 @@ NS_ASSUME_NONNULL_BEGIN
         referencedValue:reference];
 }
 
-- (NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
+- (nullable NSDictionary<NSString *, MTFThemeClass *> *)resolveReferencesInParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     NSMutableDictionary *resolvedClasses = [parsedClasses mutableCopy];
     NSArray<MTFThemeClass *> *parsedClassObjects = [parsedClasses objectEnumerator].allObjects;
     
+    // Resolve the references within all classes.
     for (MTFThemeClass *parsedClass in parsedClassObjects) {
-        // Resolve the references within this class
         NSDictionary *propertiesConstants = [self
             resolveReferencesInParsedConstants:parsedClass.propertiesConstants
             fromConstants:constants
             classes:classes
             error:error];
+
+        if (propertiesConstants == nil) return nil;
         
         parsedClass.propertiesConstants = propertiesConstants;
     }
     
-    // Once all references have been resolved, filter invalid references
+    // Once all references have been resolved, error if there are any circular
+    // superclass references. If we don't do this here, we could infinitely
+    // recurse during lazy superclass property resolution.
     for (MTFThemeClass *resolvedClass in [resolvedClasses objectEnumerator].allObjects) {
-        NSDictionary *propertiesConstants = resolvedClass.propertiesConstants;
-        
-        // Filter invalid references from class properties
-        NSDictionary *filteredPropertiesConstants = [self
-            filterInvalidReferencesInParsedConstants:propertiesConstants
+        BOOL noCircularSuperclassReferences = [self
+            parsedConstantsContainsNoCircularSuperclassReferences:resolvedClass.propertiesConstants
             forClass:resolvedClass
             error:error];
-        
-        resolvedClass.propertiesConstants = filteredPropertiesConstants;
+
+        if (!noCircularSuperclassReferences) return nil;
     }
     
     return [resolvedClasses copy];
 }
 
-- (NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
+- (nullable NSDictionary *)resolveReferencesInParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants fromConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)constants classes:(NSDictionary<NSString *, MTFThemeClass *> *)classes error:(NSError **)error {
     NSMutableDictionary *resolvedConstants = [parsedConstants mutableCopy];
     NSArray<MTFThemeConstant *> *parsedConstantObjects = [parsedConstants objectEnumerator].allObjects;
     
@@ -215,16 +207,12 @@ NS_ASSUME_NONNULL_BEGIN
             resolvedValueForThemeConstant:parsedConstant
             referenceHistory:@[ parsedConstant ]
             fromConstants:constants
-            classes:classes error:error];
+            classes:classes
+            error:error];
 
-        if (value != nil) {
-            parsedConstant.referencedValue = value;
-        }
-        // This is an invalid reference, so remove it from the resolved
-        // constants.
-        else {
-            [resolvedConstants removeObjectForKey:parsedConstant.name];
-        }
+        if (value == nil) return nil;
+
+        parsedConstant.referencedValue = value;
     }
     
     return [resolvedConstants copy];
@@ -314,25 +302,17 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (NSDictionary *)filterInvalidReferencesInParsedConstants:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
+- (BOOL)parsedConstantsContainsNoCircularSuperclassReferences:(NSDictionary *)parsedConstants forClass:(MTFThemeClass *)class error:(NSError **)error {
     // Don't continue if there's no superclass, as it's the only reason why a
     // reference would be invalid
     MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] referencedValue];
-    if (classSuperclass == nil) {
-        return parsedConstants;
-    }
-    
-    NSMutableDictionary *filteredParsedConstants = [parsedConstants mutableCopy];
+    if (classSuperclass == nil) return YES;
     
     // Ensure that no superclass all the way up the inheritance hierarchy
     // causes a circular reference.
     MTFThemeClass *superclass = classSuperclass;
     do {
         if (superclass == class) {
-            // Filter the superclass from the parsed constants if it
-            // transitively references itself
-            [filteredParsedConstants removeObjectForKey:MTFThemeSuperclassKey];
-
             if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
                     @"The superclass of '%@' causes it to inherit from itself. "
@@ -345,72 +325,58 @@ NS_ASSUME_NONNULL_BEGIN
                 }];
             }
             
-            break;
+            return NO;
         }
         
     } while ((superclass = [superclass.propertiesConstants[MTFThemeSuperclassKey] referencedValue]));
     
-    return [filteredParsedConstants copy];
+    return YES;
 }
 
 #pragma mark Classes
 
-- (NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error {
+- (nullable NSDictionary<NSString *, MTFThemeClass *> *)classesParsedFromRawClasses:(NSDictionary *)rawClasses error:(NSError **)error {
     // Create MTFThemeClass objects from the raw classes
     NSMutableDictionary<NSString *, MTFThemeClass *> *parsedClasses = [NSMutableDictionary dictionary];
     
     for (NSString *rawClassName in rawClasses) {
         // Ensure that the raw properties are a dictionary and not another type
-        NSDictionary *rawProperties = [rawClasses
-            mtf_dictionaryValueForKey:rawClassName
-            error:error];
-        
-        if (rawProperties == nil) {
-            break;
-        }
+        NSDictionary *rawProperties = [rawClasses mtf_dictionaryValueForKey:rawClassName error:error];
+        if (rawProperties == nil) return nil;
         
         // Create a theme class from this properties dictionary
-        MTFThemeClass *class = [self
-            classParsedFromRawProperties:rawProperties
-            rawName:rawClassName
-            error:error];
-        
-        if (class != nil) {
-            parsedClasses[class.name] = class;
-        }
+        MTFThemeClass *class = [self classParsedFromRawProperties:rawProperties rawName:rawClassName error:error];
+        if (class == nil) return nil;
+
+        parsedClasses[class.name] = class;
     }
     
     return [parsedClasses copy];
 }
 
-- (MTFThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError **)error {
+- (nullable MTFThemeClass *)classParsedFromRawProperties:(NSDictionary *)rawProperties rawName:(NSString *)rawName error:(NSError **)error {
     NSParameterAssert(rawName != nil);
     NSParameterAssert(rawProperties != nil);
     
     NSString *name = rawName.mtf_symbol;
 
-    NSDictionary *resolvedProperties = [self
-        constantsParsedFromRawConstants:rawProperties
-        error:error];
+    NSDictionary *resolvedProperties = [self constantsParsedFromRawConstants:rawProperties];
     
-    NSDictionary *filteredProperties = [self
-        filteredPropertiesFromResolvedClassProperties:resolvedProperties
-        className:name
-        error:error];
+    NSDictionary *filteredProperties = [self filteredPropertiesFromResolvedClassProperties:resolvedProperties className:name error:error];
+    if (filteredProperties == nil) return nil;
     
-    MTFThemeClass *class = [[MTFThemeClass alloc]
-        initWithName:name
-        propertiesConstants:filteredProperties];
+    MTFThemeClass *class = [[MTFThemeClass alloc] initWithName:name propertiesConstants:filteredProperties];
     
     return class;
 }
 
-- (NSDictionary *)filteredPropertiesFromResolvedClassProperties:(NSDictionary *)resolvedClassProperties className:(NSString *)className error:(NSError **)error {
+- (nullable NSDictionary *)filteredPropertiesFromResolvedClassProperties:(NSDictionary *)resolvedClassProperties className:(NSString *)className error:(NSError **)error {
     NSMutableDictionary *filteredClassProperties = [resolvedClassProperties mutableCopy];
     
     // If there is a superclass property, filter it out if it doesn't contain a
     // reference and populate the error
     MTFThemeConstant *superclass = filteredClassProperties[MTFThemeSuperclassKey];
+
     if (superclass != nil) {
         BOOL isSymbolReference = [superclass.referencedValue isKindOfClass:MTFThemeSymbolReference.class];
         BOOL isSuperclassClassReference = NO;
@@ -422,9 +388,6 @@ NS_ASSUME_NONNULL_BEGIN
         
         // If superclass property doesn't refer to a class, populate the error
         if (!isSuperclassClassReference || !isSymbolReference) {
-            // Filter this property out from this class' properties
-            [filteredClassProperties removeObjectForKey:MTFThemeSuperclassKey];
-            
             // Populate an error with the failure reason
             if (error != NULL) {
                 NSString *description = [NSString stringWithFormat:
@@ -437,6 +400,8 @@ NS_ASSUME_NONNULL_BEGIN
                     NSLocalizedDescriptionKey: description
                 }];
             }
+
+            return nil;
         }
     }
     
@@ -445,39 +410,49 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Merging
 
-- (NSDictionary<NSString *, MTFThemeConstant *> *)mergeParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants intoExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants error:(NSError **)error {
-    NSSet<NSString *> *intersectingConstants = [existingConstants
-        mtf_intersectingKeysWithDictionary:parsedConstants];
-    if (intersectingConstants.count && error) {
-        NSString *description = [NSString stringWithFormat:
-            @"Registering new constants with identical names to "
-                "previously-defined constants will overwrite existing "
-                "constants with the following names: %@",
-            intersectingConstants];
+- (nullable NSDictionary<NSString *, MTFThemeConstant *> *)mergeParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants intoExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants error:(NSError **)error {
+    NSSet<NSString *> *intersectingConstants = [existingConstants mtf_intersectingKeysWithDictionary:parsedConstants];
 
-        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-            NSLocalizedDescriptionKey : description
-        }];
+    if (intersectingConstants.count > 0) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"Registering new constants with identical names to "
+                    "previously-defined constants will overwrite existing "
+                    "constants with the following names: %@",
+                intersectingConstants];
+
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                NSLocalizedDescriptionKey : description
+            }];
+        }
+
+        return nil;
     }
+
     NSMutableDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
     return [mergedConstants copy];
 }
 
-- (NSDictionary<NSString *, MTFThemeClass *> *)mergeParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses intoExistingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
-    NSSet<NSString *> *intersectingClasses = [existingClasses
-        mtf_intersectingKeysWithDictionary:parsedClasses];
-    if (intersectingClasses.count && error) {
-        NSString *description = [NSString stringWithFormat:
-            @"Registering new classes with identical names to "
-                "previously-defined classes will overwrite existing classes "
-                "with the following names: %@",
-            intersectingClasses];
-            
-        *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-            NSLocalizedDescriptionKey : description
-        }];
+- (nullable NSDictionary<NSString *, MTFThemeClass *> *)mergeParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses intoExistingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
+    NSSet<NSString *> *intersectingClasses = [existingClasses mtf_intersectingKeysWithDictionary:parsedClasses];
+
+    if (intersectingClasses.count > 0) {
+        if (error != NULL) {
+            NSString *description = [NSString stringWithFormat:
+                @"Registering new classes with identical names to "
+                    "previously-defined classes will overwrite existing classes "
+                    "with the following names: %@",
+                intersectingClasses];
+                
+            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+                NSLocalizedDescriptionKey : description
+            }];
+        }
+
+        return nil;
     }
+
     NSMutableDictionary<NSString *, MTFThemeClass *> *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];
     return [mergedClasses copy];
