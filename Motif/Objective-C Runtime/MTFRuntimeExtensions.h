@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
  * Describes the memory management policy of a property.
  */
@@ -114,5 +112,3 @@ typedef struct {
  * obtaining information from \a property.
  */
 mtf_propertyAttributes * _Nullable mtf_copyPropertyAttributes (objc_property_t property);
-
-NS_ASSUME_NONNULL_END
