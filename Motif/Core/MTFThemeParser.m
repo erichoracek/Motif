@@ -306,7 +306,7 @@ NS_ASSUME_NONNULL_BEGIN
     // Don't continue if there's no superclass, as it's the only reason why a
     // reference would be invalid
     MTFThemeClass *classSuperclass = [parsedConstants[MTFThemeSuperclassKey] referencedValue];
-    if (classSuperclass == nil) return parsedConstants;
+    if (classSuperclass == nil) return YES;
     
     // Ensure that no superclass all the way up the inheritance hierarchy
     // causes a circular reference.
