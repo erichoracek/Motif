@@ -1,3 +1,10 @@
+# 0.3.4
+
+## Fixes
+
+- Fixes an issue that could cause some classes to not resolve superclass properties (#90)
+- Project updates for Xcode 8 (#89)
+
 # 0.3.3
 
 - Fix angle bracet issue when included via CocoaPods (#82)
