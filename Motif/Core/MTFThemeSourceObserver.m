@@ -65,46 +65,56 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray<NSString *> *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme != nil);
     NSParameterAssert(sourceDirectoryURL != nil);
-    
+
+    NSArray<NSString *> *subpaths = [self subpathsOfDirectoryAtURL:sourceDirectoryURL];
+    NSArray<NSString *> *lastPathComponents = [self lastPathComponentsForPaths:subpaths];
+
     NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray array];
-    
     for (NSString *filename in theme.filenames) {
-        NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectoryURL:sourceDirectoryURL];
-        
-        NSString *sourceFilePath = [sourceDirectoryURL URLByAppendingPathComponent:sourceFileRelativePath].path;
+        NSString *sourceFilePath = [self
+            sourceFilePathForThemeFilename:filename
+            inSourceDirectoryURL:sourceDirectoryURL
+            withSubpaths:subpaths
+            lastPathComponents:lastPathComponents];
+
         [sourceFilePaths addObject:sourceFilePath];
     }
-    
+
     return [sourceFilePaths copy];
 }
 
-- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
-    NSParameterAssert(themeFilename != nil);
-    NSParameterAssert(sourceDirectoryURL != nil);
-    
+- (NSArray<NSString *> *)subpathsOfDirectoryAtURL:(NSURL *)url {
+    NSParameterAssert(url != nil);
+
     NSError *error;
-    NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
-    
-    NSAssert(
-        subpaths != nil,
-        @"Error traversing directory at path %@: %@",
-        sourceDirectoryURL,
-        error);
-    
+    NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:url.path error:&error];
+    NSAssert(subpaths != nil, @"Error traversing directory at path %@: %@", url, error);
+    return subpaths;
+}
+
+- (NSArray<NSString *> *)lastPathComponentsForPaths:(NSArray<NSString *> *)paths {
+    NSParameterAssert(paths != nil);
+
     NSMutableArray<NSString *> *filenames = [NSMutableArray array];
-    for (NSString *path in subpaths) {
+    for (NSString *path in paths) {
         NSString *filename = path.lastPathComponent;
-        NSAssert(
-            filename != nil,
-            @"Unable to parse last path component from path: %@",
-            path);
-        
+        NSAssert(filename != nil, @"Unable to parse last path component from path: %@", path);
+
         [filenames addObject:filename];
     }
-    
-    NSIndexSet *matchingIndices = [filenames
-        indexesOfObjectsPassingTest:^BOOL(NSString *filename, NSUInteger idx, BOOL *stop) {
-            return [filename isEqualToString:themeFilename];
+
+    return [filenames copy];
+}
+
+- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL withSubpaths:(NSArray<NSString *> *)subpaths lastPathComponents:(NSArray<NSString *> *)lastPathComponents {
+    NSParameterAssert(themeFilename != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
+    NSParameterAssert(subpaths != nil);
+    NSParameterAssert(lastPathComponents != nil);
+
+    NSIndexSet *matchingIndices = [lastPathComponents
+        indexesOfObjectsPassingTest:^BOOL(NSString *lastPathComponent, NSUInteger idx, BOOL *stop) {
+            return [lastPathComponent isEqualToString:themeFilename];
         }];
     
     NSAssert(
@@ -120,7 +130,9 @@ NS_ASSUME_NONNULL_BEGIN
         themeFilename,
         sourceDirectoryURL);
     
-    return [subpaths objectAtIndex:matchingIndices.firstIndex];
+    NSString *relativeSubpath = [subpaths objectAtIndex:matchingIndices.firstIndex];
+
+    return [sourceDirectoryURL URLByAppendingPathComponent:relativeSubpath].path;
 }
 
 - (NSArray<MTFFileObservationContext *> *)observeUpdatesToPaths:(NSArray<NSString *> *)paths onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
