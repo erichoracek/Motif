@@ -65,43 +65,53 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray<NSString *> *)sourceFilePathsForTheme:(MTFTheme *)theme inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
     NSParameterAssert(theme != nil);
     NSParameterAssert(sourceDirectoryURL != nil);
-    
+
+    NSArray<NSString *> *subpaths = [self subpathsOfDirectoryAtURL:sourceDirectoryURL];
+    NSArray<NSString *> *filenames = [self filenamesForPaths:subpaths];
+
     NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray array];
-    
     for (NSString *filename in theme.filenames) {
-        NSString *sourceFileRelativePath = [self sourceFilePathForThemeFilename:filename inSourceDirectoryURL:sourceDirectoryURL];
-        
-        NSString *sourceFilePath = [sourceDirectoryURL URLByAppendingPathComponent:sourceFileRelativePath].path;
+        NSString *sourceFilePath = [self
+            sourceFilePathForThemeFilename:filename
+            inSourceDirectoryURL:sourceDirectoryURL
+            withSubpaths:subpaths
+            filenames:filenames];
+
         [sourceFilePaths addObject:sourceFilePath];
     }
-    
+
     return [sourceFilePaths copy];
 }
 
-- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL {
-    NSParameterAssert(themeFilename != nil);
-    NSParameterAssert(sourceDirectoryURL != nil);
-    
+- (NSArray<NSString *> *)subpathsOfDirectoryAtURL:(NSURL *)url {
+    NSParameterAssert(url != nil);
+
     NSError *error;
-    NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:sourceDirectoryURL.path error:&error];
-    
-    NSAssert(
-        subpaths != nil,
-        @"Error traversing directory at path %@: %@",
-        sourceDirectoryURL,
-        error);
-    
+    NSArray<NSString *> *subpaths = [NSFileManager.defaultManager subpathsOfDirectoryAtPath:url.path error:&error];
+    NSAssert(subpaths != nil, @"Error traversing directory at path %@: %@", url, error);
+    return subpaths;
+}
+
+- (NSArray<NSString *> *)filenamesForPaths:(NSArray<NSString *> *)paths {
+    NSParameterAssert(paths != nil);
+
     NSMutableArray<NSString *> *filenames = [NSMutableArray array];
-    for (NSString *path in subpaths) {
+    for (NSString *path in paths) {
         NSString *filename = path.lastPathComponent;
-        NSAssert(
-            filename != nil,
-            @"Unable to parse last path component from path: %@",
-            path);
+        NSAssert(filename != nil, @"Unable to parse last path component from path: %@", path);
         
         [filenames addObject:filename];
     }
-    
+
+    return [filenames copy];
+}
+
+- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL withSubpaths:(NSArray<NSString *> *)subpaths filenames:(NSArray<NSString *> *)filenames {
+    NSParameterAssert(themeFilename != nil);
+    NSParameterAssert(sourceDirectoryURL != nil);
+    NSParameterAssert(subpaths != nil);
+    NSParameterAssert(filenames != nil);
+
     NSIndexSet *matchingIndices = [filenames
         indexesOfObjectsPassingTest:^BOOL(NSString *filename, NSUInteger idx, BOOL *stop) {
             return [filename isEqualToString:themeFilename];
@@ -120,7 +130,9 @@ NS_ASSUME_NONNULL_BEGIN
         themeFilename,
         sourceDirectoryURL);
     
-    return [subpaths objectAtIndex:matchingIndices.firstIndex];
+    NSString *relativeSubpath = [subpaths objectAtIndex:matchingIndices.firstIndex];
+
+    return [sourceDirectoryURL URLByAppendingPathComponent:relativeSubpath].path;
 }
 
 - (NSArray<MTFFileObservationContext *> *)observeUpdatesToPaths:(NSArray<NSString *> *)paths onQueue:(dispatch_queue_t)queue didUpdate:(void(^)(NSString *))didUpdate {
