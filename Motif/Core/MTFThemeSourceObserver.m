@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSParameterAssert(sourceDirectoryURL != nil);
 
     NSArray<NSString *> *subpaths = [self subpathsOfDirectoryAtURL:sourceDirectoryURL];
-    NSArray<NSString *> *filenames = [self filenamesForPaths:subpaths];
+    NSArray<NSString *> *lastPathComponents = [self lastPathComponentsForPaths:subpaths];
 
     NSMutableArray<NSString *> *sourceFilePaths = [NSMutableArray array];
     for (NSString *filename in theme.filenames) {
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
             sourceFilePathForThemeFilename:filename
             inSourceDirectoryURL:sourceDirectoryURL
             withSubpaths:subpaths
-            filenames:filenames];
+            lastPathComponents:lastPathComponents];
 
         [sourceFilePaths addObject:sourceFilePath];
     }
@@ -92,29 +92,29 @@ NS_ASSUME_NONNULL_BEGIN
     return subpaths;
 }
 
-- (NSArray<NSString *> *)filenamesForPaths:(NSArray<NSString *> *)paths {
+- (NSArray<NSString *> *)lastPathComponentsForPaths:(NSArray<NSString *> *)paths {
     NSParameterAssert(paths != nil);
 
     NSMutableArray<NSString *> *filenames = [NSMutableArray array];
     for (NSString *path in paths) {
         NSString *filename = path.lastPathComponent;
         NSAssert(filename != nil, @"Unable to parse last path component from path: %@", path);
-        
+
         [filenames addObject:filename];
     }
 
     return [filenames copy];
 }
 
-- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL withSubpaths:(NSArray<NSString *> *)subpaths filenames:(NSArray<NSString *> *)filenames {
+- (NSString *)sourceFilePathForThemeFilename:(NSString *)themeFilename inSourceDirectoryURL:(NSURL *)sourceDirectoryURL withSubpaths:(NSArray<NSString *> *)subpaths lastPathComponents:(NSArray<NSString *> *)lastPathComponents {
     NSParameterAssert(themeFilename != nil);
     NSParameterAssert(sourceDirectoryURL != nil);
     NSParameterAssert(subpaths != nil);
-    NSParameterAssert(filenames != nil);
+    NSParameterAssert(lastPathComponents != nil);
 
-    NSIndexSet *matchingIndices = [filenames
-        indexesOfObjectsPassingTest:^BOOL(NSString *filename, NSUInteger idx, BOOL *stop) {
-            return [filename isEqualToString:themeFilename];
+    NSIndexSet *matchingIndices = [lastPathComponents
+        indexesOfObjectsPassingTest:^BOOL(NSString *lastPathComponent, NSUInteger idx, BOOL *stop) {
+            return [lastPathComponent isEqualToString:themeFilename];
         }];
     
     NSAssert(
