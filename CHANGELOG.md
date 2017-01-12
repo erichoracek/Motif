@@ -1,3 +1,9 @@
+# 0.3.5
+
+## Fixes
+
+- Speed up theme source observation with deep source directories and theme hierarchies (#91)
+
 # 0.3.4
 
 ## Fixes
