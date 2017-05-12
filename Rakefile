@@ -1,9 +1,9 @@
 task :run_tests_ios do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_IOS} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_IOS} ")
 end
 
 task :run_tests_osx do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_OSX} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_TEST_OSX} ")
 end
 
 task :run_tests => [
@@ -12,23 +12,23 @@ task :run_tests => [
 ]
 
 task :build_cli do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUILD_CLI} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUILD_CLI} ")
 end
 
 task :build_buttons_example do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUTTONS_EXAMPLE} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_BUTTONS_EXAMPLE} ")
 end
 
 task :build_swift_buttons_example do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_SWIFT_BUTTONS_EXAMPLE} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_SWIFT_BUTTONS_EXAMPLE} ")
 end
 
 task :build_dynamic_themes_example do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_DYNAMIC_THEMES_EXAMPLE} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_DYNAMIC_THEMES_EXAMPLE} ")
 end
 
 task :build_screen_brightness_example do
-    sh("#{BUILD_TOOL} #{BUILD_FLAGS_SCREEN_BRIGHTNESS_EXAMPLE} | #{PRETTIFY}")
+    sh("#{BUILD_TOOL} #{BUILD_FLAGS_SCREEN_BRIGHTNESS_EXAMPLE} ")
 end
 
 task :build_examples => [
