@@ -1237,7 +1237,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1255,7 +1254,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2F1AC9AE6000BD598C /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1273,7 +1271,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1285,7 +1282,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E2D1AC9AE6000BD598C /* iOS-Application.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MotifTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
