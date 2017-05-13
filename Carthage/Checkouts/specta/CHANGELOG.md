@@ -1,3 +1,11 @@
+Master
+
+v1.0.6
+======
+
+* Log out when skipping a not-focused spec [orta]
+* Fixed spt_dequeueFailures causing deadlock when running vanilla `XCTestCase` with `XCTestExpectation` [MatejBalantic]
+
 v1.0.5
 ======
 * Disables bitcode - [guidomb/timbodeit]
