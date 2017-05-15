@@ -1,3 +1,9 @@
+# 0.3.6
+
+## Fixes
+
+- Disable code flow instrumentation build setting (`GCC_INSTRUMENT_PROGRAM_FLOW_ARCS`)
+
 # 0.3.5
 
 ## Fixes
