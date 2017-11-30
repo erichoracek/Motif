@@ -1,4 +1,4 @@
 github "jspahrsummers/xcconfigs" "0.9"
-github "specta/expecta" "v1.0.5"
-github "specta/specta" "v1.0.6"
+github "specta/expecta" "v1.0.6"
+github "specta/specta" "v1.0.7"
 github "yaml/libyaml" "0.1.4"
