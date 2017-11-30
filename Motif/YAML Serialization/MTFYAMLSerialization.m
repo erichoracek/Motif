@@ -365,7 +365,7 @@ NS_ASSUME_NONNULL_BEGIN
         userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(
             @"YAML aliases (denoted by a leading '*') are not supported in Motif "
                 "theme files.",
-            nil),
+            nil);
 
         *error = [NSError errorWithDomain:MTFYAMLSerializationErrorDomain code:-1 userInfo:[userInfo copy]];
     }

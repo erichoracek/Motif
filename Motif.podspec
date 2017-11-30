@@ -23,7 +23,8 @@ Pod::Spec.new do |s|
     "#{s.name}/Objective-C Runtime/*.{h,m}",
     "#{s.name}/YAML Serialization/*.{h,m}",
     'Carthage/Checkouts/libyaml/config.h',
-    'Carthage/Checkouts/libyaml/**/*.{h,c}'
+    'Carthage/Checkouts/libyaml/src/*.{h,c}',
+    'Carthage/Checkouts/libyaml/include/*.{h,c}',
   ]
   s.ios.source_files = [
     "#{s.name}/iOS Support/*.{h,m}"

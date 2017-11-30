@@ -42,22 +42,21 @@ task :lint_podspec do
     sh("#{POD_LINT_TOOL} #{POD_LINT_FLAGS}")
 end
 
-task :slather do
-    sh('bundle exec slather coverage')
+task :carthage_build do
+    sh("carthage build --no-skip-current")
 end
 
-task :clean do
-    sh("rm -rf #{DERIVED_DATA_PATH}")
+task :slather do
+    sh('bundle exec slather coverage')
 end
 
 task :ci => [
     :run_tests,
     :slather,
-    :clean,
     :build_examples,
-    :clean,
     :build_cli,
     :lint_podspec,
+    :carthage_build,
 ]
 
 private
@@ -80,7 +79,6 @@ BUILD_FLAGS = "-workspace '#{WORKSPACE_PATH}' "
 
 BUILD_FLAGS_IOS =
     "-destination 'platform=iOS Simulator,OS=latest,name=iPhone 6' "\
-    "-destination 'platform=iOS Simulator,OS=latest,name=iPhone 5' "\
     "ONLY_ACTIVE_ARCH=YES "\
     "CODE_SIGNING_REQUIRED=NO " + BUILD_FLAGS
 
@@ -98,4 +96,4 @@ PRETTIFY = "xcpretty --color; exit ${PIPESTATUS[0]}"
 
 PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
 POD_LINT_TOOL = 'bundle exec pod lib lint'
-POD_LINT_FLAGS = "#{PODSPEC_PATH}"
+POD_LINT_FLAGS = "#{PODSPEC_PATH} --allow-warnings"

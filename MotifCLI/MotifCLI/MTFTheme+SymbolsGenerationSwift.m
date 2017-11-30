@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Eric Horacek. All rights reserved.
 //
 
-#import <GBCli/GBCli.h>
 #import <Motif/MTFTheme_Private.h>
+#import "GBCli.h"
 
 #import "MTFTheme+Symbols.h"
 #import "MTFTheme+WarningComment.h"

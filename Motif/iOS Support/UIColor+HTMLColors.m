@@ -192,7 +192,7 @@ static inline unsigned ToPercentage(CGFloat f)
         || [self mtf_scanW3CNamedColor:color];
 }
 
-- (BOOL)mtf_scanRGBColor:(UIColor **)color
+- (BOOL)mtf_scanRGBColor:(__autoreleasing UIColor **)color
 {
     return [self mtf_caseInsensitiveWithCleanup:^BOOL{
         if ([self scanString:@"rgba" intoString:NULL]) {
@@ -224,7 +224,7 @@ static inline CGFloat MTFNormHue(CGFloat hue)
     return hue - floorf((float)hue);
 }
 
-- (BOOL)mtf_scanHSLColor:(UIColor **)color
+- (BOOL)mtf_scanHSLColor:(__autoreleasing UIColor **)color
 {
     return [self mtf_caseInsensitiveWithCleanup:^BOOL{
         if ([self scanString:@"hsla" intoString:NULL]) {
@@ -252,7 +252,7 @@ static inline CGFloat MTFNormHue(CGFloat hue)
     }];
 }
 
-- (BOOL)mtf_scanHexColor:(UIColor **)color
+- (BOOL)mtf_scanHexColor:(__autoreleasing UIColor **)color
 {
     return [self mtf_resetScanLocationOnFailure:^BOOL{
         return [self scanString:@"#" intoString:NULL]
@@ -260,7 +260,7 @@ static inline CGFloat MTFNormHue(CGFloat hue)
     }];
 }
 
-- (BOOL)mtf_scanW3CNamedColor:(UIColor **)color
+- (BOOL)mtf_scanW3CNamedColor:(__autoreleasing UIColor **)color
 {
     return [self mtf_caseInsensitiveWithCleanup:^BOOL{
         NSArray *colorNames = MTFW3CColorNames();
@@ -324,7 +324,7 @@ static inline CGFloat MTFNormHue(CGFloat hue)
     return YES;
 }
 
-- (BOOL)mtf_caseInsensitiveWithCleanup:(BOOL (^)(void))block
+- (BOOL)mtf_caseInsensitiveWithCleanup:(__attribute__((noescape)) BOOL (^)(void))block
 {
     NSUInteger initialScanLocation = self.scanLocation;
     BOOL caseSensitive = self.caseSensitive;
@@ -411,7 +411,7 @@ static NSUInteger MTFParseHex(NSString *str, BOOL repeated)
 }
 
 // Scan "transparent"
-- (BOOL)mtf_scanTransparent:(UIColor **)color
+- (BOOL)mtf_scanTransparent:(__autoreleasing UIColor **)color
 {
     return [self mtf_caseInsensitiveWithCleanup:^BOOL{
         if ([self scanString:@"transparent" intoString:NULL]) {

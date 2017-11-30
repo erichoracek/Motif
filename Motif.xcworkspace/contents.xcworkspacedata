@@ -22,7 +22,4 @@
    <FileRef
       location = "group:Carthage/Checkouts/expecta/Expecta.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
 </Workspace>

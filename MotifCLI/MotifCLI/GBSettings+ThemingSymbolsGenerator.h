@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <GBCli/GBCli.h>
+#import "GBCli.h"
 
 extern NSString * const MTFSettingsOptionThemes;
 extern NSString * const MTFSettingsOptionPrefix;

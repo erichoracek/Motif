@@ -7,7 +7,8 @@
 //
 
 @import ObjectiveC;
-#import <GBCli/GBCli.h>
+
+#import "GBCli.h"
 
 #import "NSOutputStream+TemporaryOutput.h"
 

@@ -921,7 +921,7 @@
 			attributes = {
 				CLASSPREFIX = MTF;
 				LastSwiftMigration = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3A79EC5F1AC9147E000CCC01 = {
@@ -1206,7 +1206,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E241AC9AE6000BD598C /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_TESTABILITY = YES;
@@ -1222,7 +1226,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A179E261AC9AE6000BD598C /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

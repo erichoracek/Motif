@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2A90651FCFC0E80021E64F /* GBPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A90581FCFC0E70021E64F /* GBPrint.m */; };
+		3A2A90661FCFC0E80021E64F /* GBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A905A1FCFC0E70021E64F /* GBSettings.m */; };
+		3A2A90671FCFC0E80021E64F /* GBCommandLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A905F1FCFC0E70021E64F /* GBCommandLineParser.m */; };
+		3A2A90681FCFC0E80021E64F /* GBOptionsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A90601FCFC0E70021E64F /* GBOptionsHelper.m */; };
 		3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */; };
 		3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07311A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m */; };
 		3ABF07351A50CEDA00E6A83C /* MTFCLI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF07341A50CEDA00E6A83C /* MTFCLI.m */; };
@@ -19,7 +23,6 @@
 		3AC8A9621B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8A9611B826146003D2CD5 /* NSOutputStream+TemporaryOutput.m */; };
 		3ACAF1811AD1ED0C00383DA2 /* Motif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACAF1801AD1ED0C00383DA2 /* Motif.framework */; };
 		3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB6F8F1A50A8B7004EDEF3 /* main.m */; };
-		9E23F8B4DB584962C25AAD87 /* libPods-MotifCLI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,8 +39,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotifCLI.release.xcconfig"; path = "../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI.release.xcconfig"; sourceTree = "<group>"; };
-		2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MotifCLI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A2A90581FCFC0E70021E64F /* GBPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBPrint.m; sourceTree = "<group>"; };
+		3A2A90591FCFC0E70021E64F /* GBCli.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCli.h; sourceTree = "<group>"; };
+		3A2A905A1FCFC0E70021E64F /* GBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSettings.m; sourceTree = "<group>"; };
+		3A2A905B1FCFC0E70021E64F /* GBOptionsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBOptionsHelper.h; sourceTree = "<group>"; };
+		3A2A905C1FCFC0E70021E64F /* GBCommandLineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCommandLineParser.h; sourceTree = "<group>"; };
+		3A2A905D1FCFC0E70021E64F /* GBPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBPrint.h; sourceTree = "<group>"; };
+		3A2A905E1FCFC0E70021E64F /* GBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSettings.h; sourceTree = "<group>"; };
+		3A2A905F1FCFC0E70021E64F /* GBCommandLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCommandLineParser.m; sourceTree = "<group>"; };
+		3A2A90601FCFC0E70021E64F /* GBOptionsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBOptionsHelper.m; sourceTree = "<group>"; };
 		3A3DD9161A8898FE00DBA831 /* NSOutputStream+StringWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+StringWriting.h"; sourceTree = "<group>"; };
 		3A3DD9171A8898FE00DBA831 /* NSOutputStream+StringWriting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+StringWriting.m"; sourceTree = "<group>"; };
 		3ABF07301A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBSettings+ThemingSymbolsGenerator.h"; sourceTree = "<group>"; };
@@ -61,7 +71,6 @@
 		3ACAF1801AD1ED0C00383DA2 /* Motif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Motif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB6F8C1A50A8B7004EDEF3 /* motif */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = motif; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB6F8F1A50A8B7004EDEF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotifCLI.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +79,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ACAF1811AD1ED0C00383DA2 /* Motif.framework in Frameworks */,
-				9E23F8B4DB584962C25AAD87 /* libPods-MotifCLI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2A90521FCFC0E70021E64F /* GBCli */ = {
+			isa = PBXGroup;
+			children = (
+				3A2A90571FCFC0E70021E64F /* src */,
+			);
+			name = GBCli;
+			path = ../Carthage/Checkouts/GBCli/GBCli;
+			sourceTree = "<group>";
+		};
+		3A2A90571FCFC0E70021E64F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3A2A90581FCFC0E70021E64F /* GBPrint.m */,
+				3A2A90591FCFC0E70021E64F /* GBCli.h */,
+				3A2A905A1FCFC0E70021E64F /* GBSettings.m */,
+				3A2A905B1FCFC0E70021E64F /* GBOptionsHelper.h */,
+				3A2A905C1FCFC0E70021E64F /* GBCommandLineParser.h */,
+				3A2A905D1FCFC0E70021E64F /* GBPrint.h */,
+				3A2A905E1FCFC0E70021E64F /* GBSettings.h */,
+				3A2A905F1FCFC0E70021E64F /* GBCommandLineParser.m */,
+				3A2A90601FCFC0E70021E64F /* GBOptionsHelper.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		3A3DD93F1A88B52F00DBA831 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +121,10 @@
 		3ADB6F831A50A8B7004EDEF3 = {
 			isa = PBXGroup;
 			children = (
+				3A2A90521FCFC0E70021E64F /* GBCli */,
 				3ADB6F8E1A50A8B7004EDEF3 /* MotifCLI */,
 				3ADB6F8D1A50A8B7004EDEF3 /* Products */,
 				62694A310AC109295AD8C761 /* Frameworks */,
-				FD2F367AA7A560B19DACC6CF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,18 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				3ACAF1801AD1ED0C00383DA2 /* Motif.framework */,
-				2BF6DC89C1375F78E9BF9DBA /* libPods-MotifCLI.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FD2F367AA7A560B19DACC6CF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */,
-				076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +179,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ADB6F931A50A8B7004EDEF3 /* Build configuration list for PBXNativeTarget "MotifCLI" */;
 			buildPhases = (
-				9E8A27E9455C99C98A01B753 /* [CP] Check Pods Manifest.lock */,
 				3ADB6F881A50A8B7004EDEF3 /* Sources */,
 				3ADB6F891A50A8B7004EDEF3 /* Frameworks */,
 				3ADB6F8A1A50A8B7004EDEF3 /* Copy Files */,
-				E1073F23AE98EF2180E7B39A /* [CP] Copy Pods Resources */,
 				3ABF07421A51453500E6A83C /* Install in /usr/local/bin/ */,
 				3A555A281ACCFE7600726EC9 /* Install Frameworks to /usr/local/Frameworks/ */,
 				3A555A2B1ACD00F800726EC9 /* Link Framework */,
@@ -181,7 +202,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MTF;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Eric Horacek";
 				TargetAttributes = {
 					3ADB6F8B1A50A8B7004EDEF3 = {
@@ -250,36 +271,6 @@
 			shellScript = "cp -f ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME} /usr/local/bin/${PRODUCT_NAME}";
 			showEnvVarsInLog = 0;
 		};
-		9E8A27E9455C99C98A01B753 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E1073F23AE98EF2180E7B39A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-MotifCLI/Pods-MotifCLI-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -287,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2A90661FCFC0E80021E64F /* GBSettings.m in Sources */,
 				3ABF073B1A512DFE00E6A83C /* MTFTheme+SymbolsGenerationObjC.m in Sources */,
 				3AC8A9561B824C16003D2CD5 /* MTFTheme+SymbolsGenerationSwift.m in Sources */,
 				3ADB6F901A50A8B7004EDEF3 /* main.m in Sources */,
@@ -294,9 +286,12 @@
 				3A3DD9181A8898FE00DBA831 /* NSOutputStream+StringWriting.m in Sources */,
 				3ABF07321A50BFC000E6A83C /* GBSettings+ThemingSymbolsGenerator.m in Sources */,
 				3ABF07411A5141DE00E6A83C /* NSURL+CLIHelpers.m in Sources */,
+				3A2A90651FCFC0E80021E64F /* GBPrint.m in Sources */,
 				3ABF073E1A513D6200E6A83C /* GBOptionsHelper+ThemingSymbolsGenerator.m in Sources */,
+				3A2A90681FCFC0E80021E64F /* GBOptionsHelper.m in Sources */,
 				3AC8A9591B824D12003D2CD5 /* MTFTheme+Symbols.m in Sources */,
 				3AC8A95F1B825500003D2CD5 /* MTFTheme+WarningComment.m in Sources */,
+				3A2A90671FCFC0E80021E64F /* GBCommandLineParser.m in Sources */,
 				3ABF07351A50CEDA00E6A83C /* MTFCLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,14 +307,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -356,14 +357,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -387,7 +394,6 @@
 		};
 		3ADB6F941A50A8B7004EDEF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 624847F2316A21CFB0DBE435 /* Pods-MotifCLI.debug.xcconfig */;
 			buildSettings = {
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/. @executable_path/Motif.framework/Versions/Current/Frameworks /Library/Frameworks /Library/Frameworks/Motif.framework/Versions/Current/Frameworks";
 				PRODUCT_NAME = motif;
@@ -396,7 +402,6 @@
 		};
 		3ADB6F951A50A8B7004EDEF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 076BD53F62FABD4B515E1E59 /* Pods-MotifCLI.release.xcconfig */;
 			buildSettings = {
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/. @executable_path/Motif.framework/Versions/Current/Frameworks /Library/Frameworks /Library/Frameworks/Motif.framework/Versions/Current/Frameworks";
 				PRODUCT_NAME = motif;
