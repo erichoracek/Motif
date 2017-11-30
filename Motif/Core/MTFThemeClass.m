@@ -120,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
                 if ([constant.value isKindOfClass:propertyClass]) {
                     [unappliedProperties removeObject:property];
                     [applicant setValue:constant.value forKey:property];
+                    free(propertyAttributes);
                     break;
                 }
             }
@@ -136,6 +137,7 @@ NS_ASSUME_NONNULL_BEGIN
                 if (isPropertyNumericCType && [constant.value isKindOfClass:NSNumber.class]) {
                     [unappliedProperties removeObject:property];
                     [applicant setValue:constant.value forKey:property];
+                    free(propertyAttributes);
                     break;
                 }
             }
