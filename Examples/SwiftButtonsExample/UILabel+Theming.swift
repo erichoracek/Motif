@@ -9,11 +9,10 @@
 import Foundation
 import Motif
 
-extension UILabel {
-    open override class func initialize() {
-        guard self === UILabel.self else { return }
-        
-        self.mtf_registerThemeProperties([
+extension Themeable where ApplicantType == UILabel {
+
+    static func registerProperties() {
+        ApplicantType.mtf_registerThemeProperties([
                 ThemeProperties.fontName.rawValue,
                 ThemeProperties.fontSize.rawValue
             ],
@@ -33,7 +32,8 @@ extension UILabel {
                     return true
                 }
 
-                return self.mtf_populateApplierError(error, withDescription: "Unable to create font named \(name) of size \(size)")
+                return ApplicantType.mtf_populateApplierError(error, withDescription: "Unable to create font named \(name) of size \(size)")
             })
     }
+
 }

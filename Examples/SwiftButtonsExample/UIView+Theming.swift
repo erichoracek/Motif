@@ -9,11 +9,10 @@
 import UIKit
 import Motif
 
-extension UIView {
-    open override class func initialize() {
-        guard self === UIView.self else { return }
-        
-        self.mtf_registerThemeProperty(
+extension Themeable where ApplicantType == UIView {
+
+    static func registerProperties() {
+        ApplicantType.mtf_registerThemeProperty(
             ThemeProperties.backgroundColor.rawValue,
             requiringValueOf: UIColor.self,
             applierBlock: { (color, view, _) -> Bool in
@@ -25,7 +24,7 @@ extension UIView {
                 return true
             })
         
-        self.mtf_registerThemeProperty(
+        ApplicantType.mtf_registerThemeProperty(
             ThemeProperties.borderColor.rawValue,
             requiringValueOf: UIColor.self,
             applierBlock: { (color, view, _) -> Bool in
@@ -37,7 +36,7 @@ extension UIView {
                 return true
             })
         
-        self.mtf_registerThemeProperty(
+        ApplicantType.mtf_registerThemeProperty(
             ThemeProperties.cornerRadius.rawValue,
             requiringValueOf: NSNumber.self,
             applierBlock: { (cornerRadius, view, _) -> Bool in
@@ -49,7 +48,7 @@ extension UIView {
                 return true
             })
         
-        self.mtf_registerThemeProperty(
+        ApplicantType.mtf_registerThemeProperty(
             ThemeProperties.borderWidth.rawValue,
             requiringValueOf: NSNumber.self,
             applierBlock: { (borderWidth, view, _) -> Bool in
@@ -61,4 +60,5 @@ extension UIView {
                 return true
             })
     }
+    
 }

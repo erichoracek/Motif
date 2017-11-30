@@ -9,11 +9,10 @@
 import UIKit
 import Motif
 
-extension UIButton {
-    open override class func initialize() {
-        guard self === UIButton.self else { return }
+extension Themeable where ApplicantType == UIButton {
 
-        self.mtf_registerThemeProperty(
+    static func registerProperties() {
+        ApplicantType.mtf_registerThemeProperty(
             ThemeProperties.titleText.rawValue,
             requiringValueOf: MTFThemeClass.self,
             applierBlock: { (themeClass, button, error) -> Bool in
@@ -29,4 +28,5 @@ extension UIButton {
                 return true
             })
     }
+    
 }
