@@ -1,3 +1,10 @@
+# 0.3.7
+
+## Fixes
+
+- Update to Xcode 9.1 (#96)
+- Fix memory leaks (#95)
+
 # 0.3.6
 
 ## Fixes
