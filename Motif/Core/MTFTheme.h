@@ -99,10 +99,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a theme from a theme file.
  
- @param files An array of NSURL reference to the theme file that the theme
-              object should be created from. Required.
+ @param fileURLs An array of NSURL reference to the theme file that the theme
+        object should be created from. Required.
  @param error If an error occurs, upon return contains an NSError object that
-              describes the problem.
+        describes the problem.
  
  @return A theme object, or nil if an error occurred while initializing the
          theme.

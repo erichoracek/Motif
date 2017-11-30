@@ -26,12 +26,12 @@ typedef _Nullable id (^MTFValueTransformationBlock)(id value, NSError **error);
 ///
 /// @param transformedValueObjCType The ObjC type that the value transformer is
 /// responsible for transforming its values to, as wrapped within an NSValue.
-/// Should be the value returned by the @encode directive.
+/// Should be the value returned by the \@encode directive.
 ///
 /// @param reverseTransformedValueClass The class that the value transformer is
 /// expecting as its input to transformValue:
 ///
-/// @param transformedValueBlock The block that is used as the implementation of
+/// @param transformationBlock The block that is used as the implementation of
 /// the transformValue: method.
 ///
 /// @return Whether the value transformer was successfully registered.
@@ -49,7 +49,7 @@ typedef _Nullable id (^MTFValueTransformationBlock)(id value, NSError **error);
 /// @param reverseTransformedValueClass The class that the value transformer is
 /// expecting as its input to transformValue:
 ///
-/// @param transformedValueBlock The block that is used as the implementation of
+/// @param transformationBlock The block that is used as the implementation of
 /// the transformValue: method.
 ///
 /// @return Whether the value transformer was successfully registered.

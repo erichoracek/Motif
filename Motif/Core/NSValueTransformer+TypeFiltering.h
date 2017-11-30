@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
                  transform the value of.
  @param objCType The Obj-C type of the value that the value transformer should
                  transform the object to. You may pass the value returned by the
-                 @encode directive.
+                 \@encode directive.
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */
@@ -32,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param object The object that the value transformer should be able to transform
                the value of.
- @param class  The class of the value that the value transformer should 
-               transform the object to.
+ @param toClass The class of the value that the value transformer should
+                transform the object to.
  
  @return A NSValueTransformer instance, or nil if one could not be found.
  */

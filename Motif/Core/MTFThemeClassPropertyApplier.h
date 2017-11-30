@@ -59,8 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param themeClass The theme class that contains the property to be queried
 /// for.
-///
-/// @return
 + (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asClass:(Class)valueClass fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error;
 
 @end
@@ -76,8 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param valueObjCType The Objective-C type that the applied property value
 ///                      should be a type of. Should be invoked with the value
-///                      returned by the @encode directive, e.g.
-///                      @encode(UIEdgeInsets).
+///                      returned by the \@encode directive, e.g.
+///                      \@encode(UIEdgeInsets).
 ///
 /// @return An initialized theme class property applier.
 - (instancetype)initWithProperty:(NSString *)property valueObjCType:(const char *)valueObjCType applierBlock:(MTFThemePropertyApplierBlock)applierBlock NS_DESIGNATED_INITIALIZER;
@@ -96,13 +94,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param property The name of the property to query the theme class for.
 ///
 /// @param objCType The Objective-C type that the return value should be kind
-/// of. Should be invoked with the value returned by the @encode directive, e.g.
-/// @encode(UIEdgeInsets).
+/// of. Should be invoked with the value returned by the \@encode directive, e.g.
+/// \@encode(UIEdgeInsets).
 ///
 /// @param themeClass The theme class that contains the property to be queried
 /// for.
-///
-/// @return
 + (nullable NSDictionary<NSString *, id> *)valueForApplyingProperty:(NSString *)property asObjCType:(const char *)objCType fromThemeClass:(MTFThemeClass *)themeClass error:(NSError **)error;
 
 @end

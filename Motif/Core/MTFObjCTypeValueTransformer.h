@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  its transformedValue: method, as contained within an NSValue instance.
  
  This is the same value that's returned when using the encode directive, e.g.
- @encode(UIEdgeInsets).
+ \@encode(UIEdgeInsets).
  */
 + (const char *)transformedValueObjCType;
 

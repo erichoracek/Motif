@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
                      values should be type of. Should be in the same order as
                      the properties array, and consist of either Classes or
                      NSString- wrapped Objective-C types, e.g. `NSString.class`
-                     or `@(@encode(UIEdgeInsets))`.
+                     or `@(\@encode(UIEdgeInsets))`.
 
  @param applierBlock The block that is invoked when all of the specified
                      properties are contained within a theme class that is being
