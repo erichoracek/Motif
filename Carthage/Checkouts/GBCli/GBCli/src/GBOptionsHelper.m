@@ -352,7 +352,7 @@ static NSUInteger GBOptionInternalEndGroup = 1 << 10;
 		return;
 	}
 	NSString *string = block();
-	if (self.applicationBuildFromBlockOrNil)
+	if (self.applicationNameFromBlockOrDefault)
 		string = [string stringByReplacingOccurrencesOfString:@"%APPNAME" withString:self.applicationNameFromBlockOrDefault];
 	if (self.applicationVersionFromBlockOrNil)
 		string = [string stringByReplacingOccurrencesOfString:@"%APPVERSION" withString:self.applicationVersionFromBlockOrNil];

@@ -15,6 +15,7 @@ static NSString * const GBCommandLineShortOptionKey = @"short";
 static NSString * const GBCommandLineRequirementKey = @"requirement";
 static NSString * const GBCommandLineOptionGroupKey = @"group"; // this is returned while parsing to indicate an option group was detected.
 static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this is returned while parsing to indicate an argument was detected.
+static NSString * const GBCommandLineEndOfOptionsKey = @"end-of-options"; // this is returned while parsing to indicate an "end-of-options" option is detected.
 
 #pragma mark -
 
@@ -141,7 +142,7 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 				gbfprintln(stderr, @"Unknown command line option %@, try --help!", argument);
 				break;
 			case GBParseFlagMissingValue:
-				gbfprintln(stderr, @"Missing value for command line option %s, try --help!", argument);
+				gbfprintln(stderr, @"Missing value for command line option %@, try --help!", argument);
 				break;
 			case GBParseFlagWrongGroup:
 				gbfprintln(stderr, @"Invalid option %@ for group %@!", argument, self.currentOptionsGroupName);
@@ -196,15 +197,27 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 		id value = nil;
 		NSString *input = [arguments objectAtIndex:index];
 		NSDictionary *data = [self optionDataForOption:input value:&value];
-		if (data == (id)GBCommandLineNotAnOptionKey) break; // no more options, only arguments left...
+		if (data == (id)GBCommandLineEndOfOptionsKey) {
+			// End of options detected. Skip this one and end option parsing.
+			index++;
+			break;
+		}
 		if (data == (id)GBCommandLineOptionGroupKey) {
 			// If this is group name, continue with next option...
 			handler(GBParseFlagOption, input, @YES, &stop);
+			if (stop) break;
+			index++;
+			continue;
+		} else if (data == (id)GBCommandLineNotAnOptionKey) {
+			// If this is a non-option argument, notify observer.
+			[self.parsedArguments addObject:input];
+			handler(GBParseFlagArgument, nil, input, &stop);
+			if (stop) break;
 			index++;
 			continue;
 		}
 		
-		NSString *name = data[GBCommandLineLongOptionKey];
+		NSString *name = nil;
 		GBParseFlags flags = GBParseFlagOption;
 		
 		if (data == nil) {
@@ -212,12 +225,14 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 			name = input;
 			flags = GBParseFlagUnknownOption;
 			result = NO;
-		} else if (self.currentOptionsGroupOptions && ![self.currentOptionsGroupOptions containsObject:name]) {
+		} else if (self.currentOptionsGroupOptions && ![self.currentOptionsGroupOptions containsObject:data[GBCommandLineLongOptionKey]]) {
 			// If name of the option is not registered for the current group, notify observer.
 			name = input;
 			flags = GBParseFlagWrongGroup;
 			result = NO;
 		} else {
+			name = data[GBCommandLineLongOptionKey];
+
 			// Prepare the value or notify about problem with it.
 			GBValueRequirements requirement = [data[GBCommandLineRequirementKey] unsignedIntegerValue];
 			switch (requirement) {
@@ -228,13 +243,19 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 							value = [arguments objectAtIndex:index + 1];
 							if ([self isShortOrLongOptionName:value]) {
 								flags = GBParseFlagMissingValue;
+								result = NO;
+								stop = YES;
 							} else if ([self isOptionGroupName:value]) {
 								flags = GBParseFlagMissingValue;
+								result = NO;
+								stop = YES;
 							} else {
 								index++;
 							}
 						} else {
 							flags = GBParseFlagMissingValue;
+							result = NO;
+							stop = YES;
 						}
 					}
 					break;
@@ -281,12 +302,12 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 		if (stop) return NO;
 		
 		// Remember parsed option and continue with next one.
-		if (value) [self.parsedOptions setObject:value forKey:name];
+		if (name && value) [self.parsedOptions setObject:value forKey:name];
 		index++;
 	}
 	
 	// Prepare arguments (arguments are command line options after options).
-	while (index < arguments.count) {
+	while (!stop && index < arguments.count) {
 		NSString *input = [arguments objectAtIndex:index];
 		[self.parsedArguments addObject:input];
 		handler(GBParseFlagArgument, nil, input, &stop);
@@ -305,9 +326,11 @@ static NSString * const GBCommandLineNotAnOptionKey = @"not-an-option"; // this 
 	
 	// Extract the option name.
 	if ([shortOrLongName hasPrefix:@"--"]) {
+		if (shortOrLongName.length == 2) return (id)GBCommandLineEndOfOptionsKey;
 		name = [shortOrLongName substringFromIndex:2];
 		options = self.registeredOptionsByLongNames;
 	} else if ([shortOrLongName hasPrefix:@"-"]) {
+		if (shortOrLongName.length == 1) return (id)GBCommandLineEndOfOptionsKey;
 		name = [shortOrLongName substringFromIndex:1];
 		options = self.registeredOptionsByShortNames;
 	} else if ([self isOptionGroupName:shortOrLongName]) {

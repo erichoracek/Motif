@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Eric Horacek. All rights reserved.
 //
 
-#import <GBCli/GBCli.h>
 #import <Motif/Motif.h>
 #import <Motif/MTFThemeParser.h>
+#import "GBCli.h"
 #import "MTFCLI.h"
 #import "GBSettings+ThemingSymbolsGenerator.h"
 #import "GBOptionsHelper+ThemingSymbolsGenerator.h"

@@ -14,6 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-int MTFCLIMain(int argc, const char *argv[]);
+int MTFCLIMain(int argc, const char * _Nonnull argv[_Nullable]);
 
 NS_ASSUME_NONNULL_END
