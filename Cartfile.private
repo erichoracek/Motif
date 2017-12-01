@@ -1,5 +1,5 @@
 github "jspahrsummers/xcconfigs" ~> 0.9.0
 github "specta/specta" ~> 1.0
 github "specta/expecta" ~> 1.0
-github "yaml/libyaml" == 0.1.4
+github "yaml/libyaml" == 0.1.7
 github "tomaz/GBCli" ~> 1.2.1

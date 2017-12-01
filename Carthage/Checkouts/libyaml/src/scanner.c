@@ -615,11 +615,11 @@ yaml_parser_decrease_flow_level(yaml_parser_t *parser);
  */
 
 static int
-yaml_parser_roll_indent(yaml_parser_t *parser, int column,
-        int number, yaml_token_type_t type, yaml_mark_t mark);
+yaml_parser_roll_indent(yaml_parser_t *parser, ptrdiff_t column,
+        ptrdiff_t number, yaml_token_type_t type, yaml_mark_t mark);
 
 static int
-yaml_parser_unroll_indent(yaml_parser_t *parser, int column);
+yaml_parser_unroll_indent(yaml_parser_t *parser, ptrdiff_t column);
 
 /*
  * Token fetchers.
@@ -1103,14 +1103,7 @@ yaml_parser_save_simple_key(yaml_parser_t *parser)
      */
 
     int required = (!parser->flow_level
-            && parser->indent == (int)parser->mark.column);
-
-    /*
-     * A simple key is required only when it is the first token in the current
-     * line.  Therefore it is always allowed.  But we add a check anyway.
-     */
-
-    assert(parser->simple_key_allowed || !required);    /* Impossible. */
+            && parser->indent == (ptrdiff_t)parser->mark.column);
 
     /*
      * If the current position may start a simple key, save it.
@@ -1176,6 +1169,11 @@ yaml_parser_increase_flow_level(yaml_parser_t *parser)
 
     /* Increase the flow level. */
 
+    if (parser->flow_level == INT_MAX) {
+        parser->error = YAML_MEMORY_ERROR;
+        return 0;
+    }
+
     parser->flow_level++;
 
     return 1;
@@ -1206,8 +1204,8 @@ yaml_parser_decrease_flow_level(yaml_parser_t *parser)
  */
 
 static int
-yaml_parser_roll_indent(yaml_parser_t *parser, int column,
-        int number, yaml_token_type_t type, yaml_mark_t mark)
+yaml_parser_roll_indent(yaml_parser_t *parser, ptrdiff_t column,
+        ptrdiff_t number, yaml_token_type_t type, yaml_mark_t mark)
 {
     yaml_token_t token;
 
@@ -1225,6 +1223,11 @@ yaml_parser_roll_indent(yaml_parser_t *parser, int column,
 
         if (!PUSH(parser, parser->indents, parser->indent))
             return 0;
+
+        if (column > INT_MAX) {
+            parser->error = YAML_MEMORY_ERROR;
+            return 0;
+        }
 
         parser->indent = column;
 
@@ -1254,7 +1257,7 @@ yaml_parser_roll_indent(yaml_parser_t *parser, int column,
 
 
 static int
-yaml_parser_unroll_indent(yaml_parser_t *parser, int column)
+yaml_parser_unroll_indent(yaml_parser_t *parser, ptrdiff_t column)
 {
     yaml_token_t token;
 
@@ -2574,7 +2577,7 @@ yaml_parser_scan_tag_uri(yaml_parser_t *parser, int directive,
 
     /* Resize the string to include the head. */
 
-    while (string.end - string.start <= (int)length) {
+    while ((size_t)(string.end - string.start) <= length) {
         if (!yaml_string_extend(&string.start, &string.pointer, &string.end)) {
             parser->error = YAML_MEMORY_ERROR;
             goto error;
@@ -2619,6 +2622,9 @@ yaml_parser_scan_tag_uri(yaml_parser_t *parser, int directive,
         /* Check if it is a URI-escape sequence. */
 
         if (CHECK(parser->buffer, '%')) {
+            if (!STRING_EXTEND(parser, string))
+                goto error;
+
             if (!yaml_parser_scan_uri_escapes(parser,
                         directive, start_mark, &string)) goto error;
         }
