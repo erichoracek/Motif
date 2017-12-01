@@ -926,7 +926,7 @@
 				TargetAttributes = {
 					3A79EC5F1AC9147E000CCC01 = {
 						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0910;
 					};
 					3A79EC6A1AC9147E000CCC01 = {
 						CreatedOnToolsVersion = 6.3;
@@ -1254,7 +1254,7 @@
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1271,7 +1271,7 @@
 				INFOPLIST_FILE = Motif/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.erichoracek.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Motif;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

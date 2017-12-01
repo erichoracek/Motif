@@ -46,6 +46,6 @@ class ButtonsView: UIView {
 
     // MARK: - ButtonsView
     
-    let saveButton: UIButton
-    let deleteButton: UIButton
+    @objc let saveButton: UIButton
+    @objc let deleteButton: UIButton
 }

@@ -12,11 +12,13 @@ import Motif
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // MARK: AppDelegate: UIApplicationDelegate
-    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Themeable<UIView>.registerProperties()
+        Themeable<UIButton>.registerProperties()
+        Themeable<UILabel>.registerProperties()
+
         let theme = try! MTFTheme(fromFileNamed: ThemeName)
 
         window = UIWindow(frame: UIScreen.main.bounds)
