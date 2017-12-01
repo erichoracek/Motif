@@ -1,3 +1,11 @@
+# 0.3.8
+
+## Fixes
+
+- Update example project to Swift 4 (#99)
+- Update to latest libyaml (#98)
+- Fix warnings (#97)
+
 # 0.3.7
 
 ## Fixes
