@@ -5,8 +5,8 @@ Pod::Spec.new do |s|
     :type => 'MIT',
     :file => 'LICENSE'
   }
-  s.osx.deployment_target = '10.8'
-  s.ios.deployment_target  = '7.0'
+  s.osx.deployment_target = '10.9'
+  s.ios.deployment_target  = '8.0'
   s.summary = 'A lightweight and customizable stylesheet framework for iOS'
   s.homepage = "https://github.com/erichoracek/#{s.name}"
   s.author = { 'Eric Horacek' => 'eric@automatic.com' }

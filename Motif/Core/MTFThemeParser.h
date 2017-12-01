@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param existingConstants The existing constants that this parsed theme should 
         inherit.
         
- @param existingConstants The existing classes that this parsed theme should
+ @param existingClasses The existing classes that this parsed theme should
         inherit.
 
  @param error A pass-by-reference error, populated if a parsing error occurred.

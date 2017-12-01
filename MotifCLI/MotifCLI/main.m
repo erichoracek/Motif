@@ -8,6 +8,10 @@
 
 #import "MTFCLI.h"
 
-int main(int argc, const char * argv[]) {
+NS_ASSUME_NONNULL_BEGIN
+
+int main(int argc, const char * _Nonnull argv[]) {
     return MTFCLIMain(argc, argv);
 }
+
+NS_ASSUME_NONNULL_END

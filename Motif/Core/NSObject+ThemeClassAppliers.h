@@ -92,8 +92,8 @@ typedef BOOL (^MTFThemePropertiesApplierBlock)(NSDictionary<NSString *, id> *val
 ///
 /// @param valueObjCType A C string containing the Objective-C type that the
 ///                      property value is required to be a kind of. Should be
-///                      invoked with the value of the @encode directive, e.g.
-///                      `@encode(CGPoint)`.
+///                      invoked with the value of the \@encode directive, e.g.
+///                      `\@encode(CGPoint)`.
 ///
 /// @param applierBlock The block that is invoked when the specified property is
 ///                     applied to an instance of the receiving class.
@@ -134,7 +134,7 @@ typedef BOOL (^MTFThemePropertiesApplierBlock)(NSDictionary<NSString *, id> *val
                    values should be type of. Should be in the same order as
                    the properties array, and consist of either Classes or
                    NSString-wrapped Objective-C types, e.g. `NSString.class`
-                   or `@(@encode(UIEdgeInsets))`.
+                   or `@(\@encode(UIEdgeInsets))`.
 
  @param applierBlock The block that is invoked when the specified properties are
                      applied to an instance of the receiving class.
